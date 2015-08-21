@@ -1,0 +1,25 @@
+# O.S.-generated files
+
+.apdisk
+.AppleDB
+.AppleDesktop
+.AppleDouble
+.DS_Store
+.DS_Store?
+.LSOverride
+Network Trash Folder
+.Spotlight-V100
+Temporary Items
+.Trashes
+
+ehthumbs.db
+Thumbs.db
+
+# Computer programs-generated files
+
+#*#
+*~
+
+*.swp
+*.swo
+*.swn
