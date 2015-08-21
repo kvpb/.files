@@ -1,0 +1,21 @@
+alias sudo="sudo "
+
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
+
+alias kb="cd ~/"
+alias de="cd ~/Desktop/"
+alias dc="cd ~/Documents/"
+alias dw="cd ~/Downloads/"
+alias dr="cd ~/Dropbox/"
+alias li="cd ~/Library/"
+alias mi="cd ~/Miscellaneous/"
+alias mo="cd ~/Movies/"
+alias mu="cd ~/Music/"
+alias op="cd ~/OPs/"
+alias pi="cd ~/Pictures/"
+alias tr="cd ~/.Trash/"
+
+alias l="ls -la"
+alias gcem="git commit -a --allow-empty-message -m ''"
