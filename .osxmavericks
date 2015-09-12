@@ -77,6 +77,8 @@ defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryCli
 
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3 # Enable full keyboard access for all controls.
 
+defaults write com.apple.driver.AppleHIDMouse.plist Button2 -int 2 # Enable secondary mouse click.
+
 defaults write com.apple.universalaccess closeViewScrollWheelToggle  -boolean true
 defaults write com.apple.universalaccess clHIDScrollZoomModifierMask -int  262144
 defaults write com.apple.universalaccess closeViewZoomFollowsFocus   -boolean true
@@ -166,6 +168,9 @@ defaults write com.apple.finder                OpenWindowForNewRemovableDisk -bo
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 # Use columns view in all Finder window by default. (i) Other viewing modes are "icnv" for icons, "Nlsv" for newlines and "Flwv" for Cover flow.
 
+defaults write com.apple.finder FXArrangeGroupViewBy -string Kind
+# Arrange files by kind in Finder.
+
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -boolean true
 # Enable AirDrop over Ethernet and on unsupported Macs running Mac OS X Lion.
 
@@ -207,6 +212,31 @@ defaults write  com.apple.dock autohide-delay                          -float   
 defaults write  com.apple.dock autohide-time-modifier                  -float     0
 defaults write  com.apple.dock persistent-others                       -array-add '{"tile-data" = {"list-type = 1;}; "tile-type" = "recents-tile";}'
 # Reset Dock to defaults, enable highlight when hovering for the grid view of a stack on the Dock, enable Single app mode, display hidden apps, set window minimaximazation effect as the clean one (purifying OS X of a bit of its weird sick crazyness — vade retro satana), minimize windows into their application’s icon, enable auto-hiding and speed animation up, enable spring loading for all items, show indicator lights for open applications, wipe the Dock so clean one'd see their face in, disable app opening from Dock animation, make hidden applications Dock icons translucent and add a Recently used applications stack. /!\ Do not set window minimaximazation effect to hidden "suck" ; the beast could be released!
+
+defaults delete com.apple.dock persistent-apps
+defaults delete com.apple.dock persistent-others
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/App Store.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/BlackBerry Link.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Calendar.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Contacts.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Content Manager Assistant.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Evernote.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Macaw.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Pixelmator.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Reminders.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/RubyMine.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Safari.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Sketch.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Skype.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Terminal.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/TextEdit.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Twitter.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/VLC.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-apps   -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Xcode.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write  com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Users/$USR/Downloads</string><key>_CFURLStringType</key><integer>0</integer></dict><key>file-label</key><string>Downloads</string><key>file-type</key><integer>18</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
+defaults delete com.apple.dock mod-count
+# Delete all applications and folders from the Dock and add App Store, BlackBerry Link, Calendar, Contacts, Content Manager Assistant, Evernote, Macaw, Mail, Pixelmator, Reminders, RubyMine, Safari, Skype, Terminal, TextEdit, Twitter, V.L.C., Xcode and the Downloads folder.
 
 defaults write com.apple.ActivityMonitor OpenMainWindow -boolean   true
 defaults write com.apple.ActivityMonitor IconType       -int    5
