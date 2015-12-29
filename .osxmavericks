@@ -348,14 +348,14 @@ defaults write com.twitter.twitter-mac ESCClosesComposeWindow            -boolea
 defaults write com.twitter.twitter-mac ShowFullNames                     -boolean true
 # Launch the app at login, disable smart quotes, enable Develop menu, enable [Escape] to close New tweet window and show full names rather than usernames in Twitter.
 
-if [ -d "~/{Miscellaneous,OPs}/" ]; then
-if [ -L "~/{Miscellaneous,OPs}/" ]; then # shit's a symlink so
-rm ~/{Miscellaneous,OPs}/
+if [ -d "~/{.files,Miscellaneous,OPs}/" ]; then
+if [ -L "~/{.files,Miscellaneous,OPs}/" ]; then # shit's a symlink so
+rm ~/{.files,Miscellaneous,OPs}/
 else
-mkdir -p ~/{Miscellaneous,OPs}/
+mkdir -p ~/{.files,Miscellaneous,OPs}/
 fi
 fi
-# Ensure that Miscellaneous/ and OPs/ exist in ~/.
+# Ensure that .files, Miscellaneous/ and OPs/ exist in ~/.
 
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" "Dock" "Finder" "iCal" "Mail" "Messages" "Safari" "SystemUIServer" "Terminal" "Transmission" "Twitter"; do
     killall "${app}" > /dev/null 2>&1
