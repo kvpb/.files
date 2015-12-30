@@ -12,4 +12,5 @@ alias ls='pwd; ls -lp' # Print working directory then list directory contents in
 HISTSIZE=LONG_MAX
 SAVEHIST=LONG_MAX
 HISTFILE='~/.files/.shellhistory'
+export HISTFILE SAVEHIST
 setopt APPEND_HISTORY EXTENDED_HISTORY INC_APPEND_HISTORY
