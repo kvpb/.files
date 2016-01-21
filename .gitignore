@@ -1,5 +1,7 @@
 # O.S.-generated files
 
+## Mac OS, Mac OS X & OS X
+
 .apdisk
 .AppleDB
 .AppleDesktop
@@ -12,13 +14,19 @@ Network Trash Folder
 Temporary Items
 .Trashes
 
+## Windows
+
 ehthumbs.db
 Thumbs.db
 
 # Computer programs-generated files
 
+## EMACS
+
 #*#
 *~
+
+## VIm
 
 *.swp
 *.swo
