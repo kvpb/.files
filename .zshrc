@@ -1,4 +1,5 @@
 source ~/.files/.aliases
+source ~/.files/.functions
 HISTSIZE=LONG_MAX
 SAVEHIST=LONG_MAX
 HISTFILE='~/.files/.shellhistory'
