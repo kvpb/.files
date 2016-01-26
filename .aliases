@@ -54,3 +54,7 @@ alias	gcem="git commit -a --allow-empty-message -m ''"
 
 alias	gs='git status'
 
+#		tar		- manipulate tape archives
+
+alias	tgz='tar -czvf '
+
