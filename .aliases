@@ -50,9 +50,15 @@ alias	tr='cd ~/.Trash/'
 
 # alias	git='/usr/local/git/bin/git' # Get fucked, Apple. (i) Requires Git for Mac OS X from the official Git website (http://git-scm.com/).
 
+alias	ga='git add'
+
+alias	gc='git commit -m'
+
 alias	gcem="git commit -a --allow-empty-message -m ''"
 
 alias	gs='git status'
+
+alias	gp='git push'
 
 #		tar		- manipulate tape archives
 
