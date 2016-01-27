@@ -370,3 +370,4 @@ for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" "D
 done
 echo "Done. It's time to reboot, as usual."
 # Kill all affected applications.
+
