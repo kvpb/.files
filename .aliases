@@ -56,9 +56,13 @@ alias	gc='git commit -m'
 
 alias	gcem="git commit -a --allow-empty-message -m ''"
 
+alias	gr='git rm'
+
 alias	gs='git status'
 
 alias	gp='git push'
+
+alias	gpo='git push origin'
 
 #		tar		- manipulate tape archives
 
