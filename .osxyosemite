@@ -13,7 +13,7 @@ sudo pmset -a standbydelay 86400 # Set standby delay to 24h
 
 sudo nvram SystemAudioVolume=" " # Disable the startup sound.
 
-defaults write NSGlobalDomain AppleHighlightColor -string "0.787 0.414 0.185" # Set highlight color to orange.
+defaults write NSGlobalDomain AppleHighlightColor -string "1.000000 0.749020 0.823529" # Set highlight color to OS X Yosemite's default pink.
 
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false # Don't save to iCloud by default anymore.
 
@@ -116,8 +116,8 @@ defaults write com.apple.screencapture type           -string "png"
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 # Enable Hi.-D.P.I. display modes. /!\ Restart required.
 
-# defaults write com.apple.finder QuitMenuItem -bool true
-# Allow Finder to be quit with [⌘ ]+[Q].
+defaults write com.apple.finder QuitMenuItem -bool true
+# Allow Finder to be quit with [⌘ ] + [Q].
 
 defaults write com.apple.finder NewWindowTarget     -string "PfLo"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
