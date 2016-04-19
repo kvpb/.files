@@ -2,6 +2,7 @@
 * [Michael Kaiser-Nyman](http://www.epicodus.com/)
 * [Mathias Bynens](https://mathiasbynens.be/) for [`.osx`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.osx)
 * [Matt Butcher](http://technosophos.com/)
+* [Mark Nichols](http://zanshin.net/) for ~~the reminder~~ [`dotfiles/README.markdown`](https://raw.githubusercontent.com/zanshin/dotfiles/master/README.markdown)
 
 - - -
 
@@ -9,7 +10,7 @@
 
 ##### &nbsp;&nbsp;`.osxmavericks`
 
-&nbsp;&nbsp;**First-party: System-wide & user-specific preferences**
+&nbsp;&nbsp;**First-party: System-wide & user-specific prefs**
 
 - [x] Computer's name
 - [x] Standby delay
@@ -18,9 +19,10 @@
 - [x] Open with menu duplicates
 - [x] Automatic termination of inactive apps
 - [x] Crash reporter
+- [ ] Shell [change bash for zsh, & other]
 - [ ] ...
 
-&nbsp;&nbsp;**U.X. / U.I.**:
+&nbsp;&nbsp;**UX / UI**:
 - [x] Startup sound
 - [x] ~~Highlight color~~
 - [x] Plain text view caret notation ASCII control characters display
@@ -29,9 +31,18 @@
 
 &nbsp;&nbsp;**Second-party: User-specific filesystem customs**
 
+- [ ] Directory structure [refer to my Dropbox structure for symlinks etc., which more or less serves as crash test]
+  - [x] Personnal directories [check for .files/ anyhow, git clone JHs/, add Misc/, Ops/, & other]
+  - [ ] Symbolic links [.zshrc, .bashrc, etc. pointing to .files/ originals, or symlinks to JHs/* scripts]
+- [ ] Extract 'tellfiles', and copy them where needed
+  - [ ] .DS_Store [since I found no way to set filesystem-wide then dir-specific Finder viewing defaults]
+  - [ ] .nomedia [those are for Android, especially for Downloads/, bluetooth/, & similar dirs]
+  - [ ] ...
+- [ ] Crontabs [frequently clean filesystem from root, check that all ~/JHs/APLSCPTS/ files are symlinked in ~/Library/Scripts/, etc.]
+- [ ] Invisible folders and files [using SetFile or chflags, give Invisible attribute to .files/, JHs/, Misc/, & OPs/]
 - [ ] ...
 
-&nbsp;&nbsp;**Third-party: System-wide & user-specific xenogenetic software & preferences**
+&nbsp;&nbsp;**Third-party: System-wide & user-specific xenogenetic software & prefs**
 
 - [ ] ...
 
