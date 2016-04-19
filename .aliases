@@ -54,6 +54,8 @@ alias	tr='cd ~/.Trash/' # Change the working dir to current user's trash's.
 
 alias	ga='git add '
 
+alias	gaa='git add --all'
+
 alias	gc='git commit -m '
 
 alias	gcem="git commit -a --allow-empty-message -m ''"
