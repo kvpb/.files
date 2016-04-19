@@ -1,4 +1,4 @@
-# 	sudo, sudoedit		— execute a command as another user
+# 	sudo,	sudoedit	— execute a command as another user
 
 alias	sudo="sudo "
 
@@ -14,57 +14,65 @@ alias ls='pwd; ls -lp' # Print working directory then list directory contents in
 
 # 		cd		- change the working directory
 
-alias	..='cd ../'
+alias	..='cd ../' # Change the working dir to current user's parent one.
 
-alias	...='cd ../../'
+alias	...='cd ../../' # Change the working dir to current's grand-parent one.
 
-alias	....='cd ../../../'
+alias	....='cd ../../../' # Change the working dir to current's grand-grand-parent one.
 
-alias	kb='cd ~/'
+#alias	rt='cd /' # Change the working dir to root's.
 
-alias	.f='cd ~/.files/'
+alias	.f='cd ~/.files/' # Change the working dir to cur user's dotfiles'.
 
-alias	de='cd ~/Desktop/'
+alias	de='cd ~/Desktop/' # Change the working dir to cur user's desktop'.
 
-alias	dc='cd ~/Documents/'
+alias	dc='cd ~/Documents/' # Change the working dir to cur user's documents'.
 
-alias	dw='cd ~/Downloads/'
+alias	dl='cd ~/Downloads/' # Change the working dir to cur user's downloads'.
 
-alias	dr='cd ~/Dropbox/'
+alias	db='cd ~/Dropbox/' # Change the working directory to current user's Dropbox's.
 
-alias	li='cd ~/Library/'
+alias	jh='cd ~/JHs/' # Change the working dir to my personal one.
 
-alias	mi='cd ~/Miscellaneous/'
+alias	li='cd ~/Library/' # Change the working directory to current user's library's.
 
-alias	mo='cd ~/Movies/'
+alias	mi='cd ~/Miscellaneous/' # Change the working dir to current user's misc files'.
 
-alias	mu='cd ~/Music/'
+alias	mo='cd ~/Movies/' # Change the working dir to current user's movies'.
 
-alias	op='cd ~/OPs/'
+alias	mu='cd ~/Music/' # Change the working dir to current user's music's.
 
-alias	pi='cd ~/Pictures/'
+alias	op='cd ~/OPs/' # Change the working dir to my personal operations'.
 
-alias	tr='cd ~/.Trash/'
+alias	pi='cd ~/Pictures/' # Change the working dir to current user's pictures'.
+
+alias	tr='cd ~/.Trash/' # Change the working dir to current user's trash's.
 
 # 		git		- the stupid content tracker
 
 # alias	git='/usr/local/git/bin/git' # Get fucked, Apple. (i) Requires Git for Mac OS X from the official Git website (http://git-scm.com/).
 
-alias	ga='git add'
+alias	ga='git add '
 
-alias	gc='git commit -m'
+alias	gc='git commit -m '
 
 alias	gcem="git commit -a --allow-empty-message -m ''"
 
-alias	gr='git rm'
+alias	gr='git rm '
 
-alias	gs='git status'
+alias	gs='git status '
 
-alias	gp='git push'
+#alias	gp='git pull '
 
-alias	gpo='git push origin'
+alias	gp='git push '
+
+alias	gpo='git push origin '
 
 #		tar		- manipulate tape archives
 
 alias	tgz='tar -czvf '
+
+# 		revoltxs'	- user-specific aliases
+
+alias	emptrash='cd ~/.Trash/ ; rm -rf {,.}*'
 
