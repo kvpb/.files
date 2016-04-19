@@ -32,7 +32,7 @@ alias	dl='cd ~/Downloads/' # Change the working dir to cur user's downloads'.
 
 alias	db='cd ~/Dropbox/' # Change the working directory to current user's Dropbox's.
 
-alias	jh='cd ~/JHs/' # Change the working dir to my personal one.
+alias	jh='cd ~/jhs/' # Change the working dir to my personal one.
 
 alias	li='cd ~/Library/' # Change the working directory to current user's library's.
 
