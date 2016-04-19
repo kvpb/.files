@@ -32,14 +32,14 @@
 &nbsp;&nbsp;**Second-party: User-specific filesystem customs**
 
 - [ ] Directory structure [refer to my Dropbox structure for symlinks etc., which more or less serves as crash test]
-  - [x] Personnal directories [check for .files/ anyhow, git clone JHs/, add Misc/, Ops/, & other]
-  - [ ] Symbolic links [.zshrc, .bashrc, etc. pointing to .files/ originals, or symlinks to JHs/* scripts]
+  - [x] Personnal directories [check for .files/ anyhow, git clone jhs/, add Misc/, Ops/, & other]
+  - [ ] Symbolic links [.zshrc, .bashrc, etc. pointing to .files/ originals, or symlinks to jhs/* scripts]
 - [ ] Extract 'tellfiles', and copy them where needed
   - [ ] .DS_Store [since I found no way to set filesystem-wide then dir-specific Finder viewing defaults]
   - [ ] .nomedia [those are for Android, especially for Downloads/, bluetooth/, & similar dirs]
   - [ ] ...
-- [ ] Crontabs [frequently clean filesystem from root, check that all ~/JHs/APLSCPTS/ files are symlinked in ~/Library/Scripts/, etc.]
-- [ ] Invisible folders and files [using SetFile or chflags, give Invisible attribute to .files/, JHs/, Misc/, & OPs/]
+- [ ] Crontabs [frequently clean filesystem from root, check that all ~/jhs/applescripts/ files are symlinked in ~/Library/Scripts/, etc.]
+- [ ] Invisible folders and files [using SetFile or chflags, give Invisible attribute to .files/ & jhs/]
 - [ ] ...
 
 &nbsp;&nbsp;**Third-party: System-wide & user-specific xenogenetic software & prefs**
