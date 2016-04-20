@@ -1,6 +1,6 @@
 ##### Thanks to
 * [Michael Kaiser-Nyman](http://www.epicodus.com/)
-* [Mathias Bynens](https://mathiasbynens.be/) for [`.osx`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.osx)
+* [Mathias Bynens](https://mathiasbynens.be/) for [`dotfiles/.osx`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.osx)
 * [Matt Butcher](http://technosophos.com/)
 * [Mark Nichols](http://zanshin.net/) for ~~the reminder~~ [`dotfiles/README.markdown`](https://raw.githubusercontent.com/zanshin/dotfiles/master/README.markdown)
 
