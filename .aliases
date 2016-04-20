@@ -70,6 +70,10 @@ alias	gp='git push '
 
 alias	gpo='git push origin '
 
+#		ruby		- Interpreted object-oriented scripting language
+
+alias	rb='ruby '
+
 #		tar		- manipulate tape archives
 
 alias	tgz='tar -czvf '
