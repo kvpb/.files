@@ -188,8 +188,8 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # Expand General, Open with and Sharing & permissions file info panes by default.
 
 defaults write com.apple.dock expose-animation-duration -float 0.1
-# defaults write com.apple.dock expose-group-by-app -boolean false
-# Spee animations up and use Exposé behaviour in Mission Control. (i) Don't group windows by application in Mission Control.
+#defaults write com.apple.dock expose-group-by-app -boolean false
+# Speed animations up and use Exposé behaviour in Mission Control. (i) Don't group windows by application in Mission Control.
 
 defaults write com.apple.dashboard mcx-disabled    -boolean true
 defaults write com.apple.dock dashboard-in-overlay -boolean true
@@ -198,16 +198,17 @@ defaults write com.apple.dock dashboard-in-overlay -boolean true
 defaults write com.apple.dock mru-spaces -boolean false
 # Don’t automatically rearrange Spaces based on most recent use.
 
-# defaults delete com.apple.dock
+#defaults delete com.apple.dock
 defaults write  com.apple.dock mouse-over-hilite-stack                 -boolean   true
-# defaults write  com.apple.dock single-app                              -boolean   true
-# defaults write  com.apple.dock pinning                                 -string    start
+#defaults write  com.apple.dock single-app                              -boolean   true
+defaults write  com.apple.dock orientation                                        left
+defaults write  com.apple.dock pinning                                 -string    start
 defaults write  com.apple.dock showhidden                              -boolean   true
 defaults write  com.apple.dock mineffect                               -string    "scale"
 defaults write  com.apple.dock minimize-to-application                 -boolean   true
 defaults write  com.apple.dock enable-spring-load-actions-on-all-items -boolean   true
 defaults write  com.apple.dock show-process-indicators                 -boolean   true
-# defaults write  com.apple.dock persistent-apps                         -array
+#defaults write  com.apple.dock persistent-apps                         -array
 defaults write  com.apple.dock launchanim                              -boolean   false
 defaults write  com.apple.dock autohide                                -boolean   true
 defaults write  com.apple.dock autohide-delay                          -float     0
