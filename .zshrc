@@ -1,6 +1,8 @@
 source ~/.files/.aliases
 source ~/.files/.functions
 
+date | grep -C6 --color "\b$(date +%e)\b"; cal | sed -n '1!p' | grep -C6 --color "\b$(date +%e)\b"
+
 HISTFILE=~/.zsh_history
 HISTSIZE=92795
 SAVEHIST=$HISTSIZE
@@ -17,4 +19,4 @@ setopt SHARE_HISTORY # Share history between all sessions.
 #setopt HIST_REDUCE_BLANKS # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY # Don't execute immediately upon history expansion.
 setopt HIST_BEEP # Beep when accessing nonexistent history.
-# 
+
