@@ -1,91 +1,49 @@
-##### Thanks to
-* [Michael Kaiser-Nyman](http://www.epicodus.com/)
-* [Mathias Bynens](https://mathiasbynens.be/) for [`dotfiles/.osx`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.osx)
-* [Matt Butcher](http://technosophos.com/)
-* [Mark Nichols](http://zanshin.net/) for ~~the reminder~~ [`dotfiles/README.markdown`](https://raw.githubusercontent.com/zanshin/dotfiles/master/README.markdown)
+# `.files`
+#### Runcoms, configuration files and setups.
+
+# &nbsp;&nbsp;`.macosx`, `.osx` & `.macos`
+
+#### What-is
+
+&nbsp;&nbsp;Apple computers operating systems configuration scripts family.
+
+#### How-to [eg OS X 10.9 Mavericks]
+
+&nbsp;&nbsp;Launch a terminal emulator (eg Terminal.app) then enter this:
+
+```sh
+cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osxmavericks # Replace '.osxmavericks' by the one you need!
+```
+
+**Note:** Don't hesitate to help me finding new hidden preferences with `defaults read`! (You'll get full credits for that, of course.)
 
 - - -
 
-##### To-do
+#### To-do
 
-##### &nbsp;&nbsp;`.osxmavericks`
+####&nbsp;&nbsp;`.macosx`, `.osx` & `.macos`
 
-&nbsp;&nbsp;**First-party: System-wide & user-specific prefs**
+- [x] ~~Reorganize the scripts into 3 parts:~~
+  - [x] First-party: System-wide & user-specific preferences
+  - [x] Second-party: User-specific filesystem customs
+  - [x] Third-party: System-wide & user-specific xenogenetic software & preferences
+- [x] Reorganize the scripts by layers (my 3 parts, from firmware, kernel and drivers to applications, from important to trivial and from open standard to closed proprietary)
 
-- [x] Computer's name
-- [x] Standby delay
-- [x] iCloud save
-- [x] App opening warning
-- [x] Open with menu duplicates
-- [x] Automatic termination of inactive apps
-- [x] Crash reporter
-- [ ] Shell [change bash for zsh, & other]
-- [ ] Add login screen message (sudo defaults write /Library/Preferences/com.apple.loginwindow LoginWindowText '{ Login screen message }')
-- [ ] Restore the 'Save as' menu item
-- [ ] Expand as much dialog panes (Save as, Print, Get info, & co) as possible by default
-- [ ] Display the current font smoothing ? ('defaults -currentHost read -globalDomain AppleFontSmoothing', but use this shit after testing it on an OS X install to be trashed afterwards.)
-- [ ] Terminal windows are focused on as mouse cursor hovers them
-- [ ] Add [Command] + [Enter] sends mail in Mail ('defaults write com.apple.mail NSUserKeyEquivalents -dict-add 'Send' '@U21a9')
-- [ ] Set security stuff, like Gatekeeper (and the SIP in later OS X versions)
-- [ ] ...
+- - -
 
-&nbsp;&nbsp;**UX / UI**:
-- [x] Startup sound
-- [x] ~~Highlight color~~
-- [x] Plain text view caret notation ASCII control characters display
-- [x] Ancient UTF-8 bug in QuickLook
-- [ ] ...
+#### Thanks to
 
-&nbsp;&nbsp;**Second-party: User-specific filesystem customs**
+* [Mathias Bynens](https://mathiasbynens.be/) for [~~`dotfiles/.osx`~~](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.osx) [`dotfiles/.macos`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.macos) [~~*NM.ND.2014*~~](https://github.com/mathiasbynens/dotfiles/commit/3b4eb3efb692aa4d19a1e2c30c2ed9a65e9c7d8c) [*7.21.2016*](https://github.com/mathiasbynens/dotfiles/commit/47268d92afbec69e3a7243a144a126bbd25bcf2c)
+* [Michael Kaiser-Nyman](http://www.epicodus.com/) *NM.ND.2015*
+* [Matt Butcher](http://technosophos.com/) *NM.ND.2015*
+* [Mark Nichols](http://zanshin.net/) for [`dotfiles/README.markdown`](https://raw.githubusercontent.com/zanshin/dotfiles/master/README.markdown) [*NM.ND.2016*](https://github.com/zanshin/dotfiles/commit/02ec428566e893b765e1c34c31f330bb6531dd51)
+* [Brandon Brown](https://brandonb.io/) for [`osx-for-hackers.sh`](https://gist.github.com/brandonb927/3195465) [*6.5.2016*](https://gist.github.com/brandonb927/3195465/06fe593551bc778a232584593aa462a1ce635a70)
+* [Hannes Juutilainen](https://obsoletesysadmin.wordpress.com/) for [`dotfiles/bin/osx-system-defaults.sh`](https://raw.githubusercontent.com/hjuutilainen/dotfiles/master/bin/osx-system-defaults.sh) and [`dotfiles/bin/osx-user-defaults.sh`](https://raw.githubusercontent.com/hjuutilainen/dotfiles/master/bin/osx-user-defaults.sh) [*7.24.2016*](https://github.com/hjuutilainen/dotfiles/commit/93f33a7a5954fe63c075f43dbda688d941643d9e)
 
-- [ ] Directory structure [refer to my Dropbox structure for symlinks etc., which more or less serves as crash test]
-  - [x] Personnal directories [check for .files/ anyhow, git clone jhs/, add Misc/, Ops/, & other]
-  - [ ] Symbolic links [.zshrc, .bashrc, etc. pointing to .files/ originals, or symlinks to jhs/* scripts]
-- [ ] Extract 'tellfiles', and copy them where needed
-  - [ ] .DS_Store [since I found no way to set filesystem-wide then dir-specific Finder viewing defaults]
-  - [ ] .nomedia [those are for Android, especially for Downloads/, bluetooth/, & similar dirs]
-  - [ ] ...
-- [ ] Crontabs [frequently clean filesystem from root, check that all ~/jhs/applescripts/ files are symlinked in ~/Library/Scripts/, etc.]
-- [ ] Invisible folders and files [using SetFile or chflags, give Invisible attribute to .files/ & jhs/]
-- [ ] Retrieve the command line to reset Mail composing window size and position to defaults
-- [ ] ...
+#### Author
 
-&nbsp;&nbsp;**Third-party: System-wide & user-specific xenogenetic software & prefs**
+<p align="center"><a href="http://kvpb.co"><img src="https://rawgit.com/kvpb/b9c0737f2941542ae22b2806b66a3c19/raw/2352bb5c55f1f6246872a796b32980ea5e816412/quickresponsecode.svg"></a><br>
+<b>Karl Bertin (kvpb)</b><br>
+<a href="https://www.linkedin.com/in/karlbertin">LinkedIn</a> | <a href="https://www.facebook.com/karlbertin">Facebook</a> | <s>Twitter</s></p>
 
-- [ ] ...
-
-##### &nbsp;&nbsp;`readme.md`
-
-- [ ] Clean up, maybe as (or some hybrid form with the current one's big parts; since I don't want too much nesting, I could reuse my note-taking structure I built at university):
-
-> ##### &nbsp;&nbsp;`.osxmavericks`
-> 1. [ ] Finish `.osxmavericks.`
->   - [ ] Login items
->     - [ ] ...
->   - [x] Dock items
->     - [ ] ...
->   - [ ] Menu bar items
->     - [ ] ...
->   - [ ] Notification center items
->     - [ ] ...
->   - [ ] Bright orange highlighting
->   - [ ] ...
-> 2. [ ] Clean `.osxmavericks` up
->   - [ ] List what doesn't work (like trashed legacy content)
->     - [ ] Either fix it if possible or remove it
->   - [ ] Change abbreviations (`bool` becomes `boolean`)
->   - [ ] Arrange global scope
->   - [ ] Either rewrite commentaries as more human-readable or use better commenting
->   - [ ] ...
-> 
-> ##### &nbsp;&nbsp;`.osxyosemite`
-> 1. [ ] Compare `.osxmavericks` and `.osxyosemite`
-> 2. [ ] Rewrite `.osxyosemite`
->   1. [ ] Copy `.osxmavericks`
->   2. [ ] Add `.osxyosemite`' exclusive content to the `.osxmavericks` copy
->   3. [ ] Delete `.osxyosemite`
->   4. [ ] Rename the edited `.osxmavericks` copy as `.osxyosemite`
->   5. [ ] Clean `.osxyosemite` up the same way as before
-> 3. [ ] Same story for `.osxelcapitan`
-> 4. [ ] Do it for `.macosxsnowleopard` also, just removing anachronic stuff
-
+&nbsp;&nbsp;**Note:** Thank me or not but please give credit to the people I took code from. There's no ‘I've got things to do now, I'll do it later’ excuse.
