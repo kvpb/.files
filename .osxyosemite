@@ -137,7 +137,8 @@ echo  'Keyboard (NSGlobalDomain, ApplePressAndHoldEnabled, com.apple.universalac
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3 # Enable full keyboard access for all controls.
 
 defaults write ApplePressAndHoldEnabled -bool false # Disable press-and-hold for keys.
-defaults write NSGlobalDomain InitialKeyRepeat -int 5 # Set key repeat triggering delay to even shorter.
+#defaults write NSGlobalDomain InitialKeyRepeat -int 5 # /!\ ≤10 is too fast for 2012- MacBook due to their less precise keyboards. (i) 15: GUI shortest.
+defaults write NSGlobalDomain InitialKeyRepeat -int 10 # Set key repeat triggering delay to even shorter.
 defaults write NSGlobalDomain KeyRepeat -int 0 # Set key repeat rate to fastest. [i] Enables key repeat.
 
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
