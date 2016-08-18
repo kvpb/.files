@@ -749,6 +749,12 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false # Hide quit prompt
 
 #brew install git
 
+echo  'SizeUp'
+
+defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true # Launch SizeUp at login.
+
+defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false # Hide the preferences window at launch.
+
 echo  'Chrome'
 
 defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false # Disable trackpad backswipe gesture.
