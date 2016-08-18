@@ -58,7 +58,7 @@ alias	.t='cd ~/.Trash/' # Change the working dir to current user's trash's.
 
 # 		git		the stupid content tracker
 
-alias	git='/usr/local/git/bin/git' # Get fucked, Apple. /i\ Requires Git for Mac OS X from the official Git website (http://git-scm.com/).
+#alias	git='/usr/local/git/bin/git' # Get fucked, Apple. /i\ Requires Git for Mac OS X from the official Git website (http://git-scm.com/).
 
 alias	ga='git add ' # Add file contents to the index.
 
@@ -105,6 +105,10 @@ alias	tgz='tar -czvf ' # Create a new archive containing the specified items the
 #		defaults	access the Mac OS X user defaults system
 
 alias	rlp='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
+
+#		open		open files and directories
+
+alias	owte='open -a /Applications/TextEdit.app ' # Open file with TextEdit.app.
 
 # 		kvpb's		user-specific aliases
 
