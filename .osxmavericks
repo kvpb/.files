@@ -360,11 +360,25 @@ sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Vol
 
 echo  '‘Screenshooter’ (com.apple.screencapture)'
 
+defaults write com.apple.screencapture type -string 'png' # Set screenshots format to PNG. (i) Other options are `bmp` for Windows Bitmap, `gif` for GIF, `jpg` for JPEG, `jp2` for JPEG2000, `tif` for TIFF, `pict` for Macintosh PICT and `tga` for TARGA.
+
+defaults write com.apple.screencapture name -string 'Screenshot' # Set screenshots filename as 'Screenshot { YYYY }-{ MM }-{ DD } at { h }.{ mn }.{ s }.{ ext }'. (i) default option: 'Screen Shot'; custom options: '' and '\b' lead to a whitespace at the filename start [that the latter cannot erase]. [Note: I didn't find any delete escape character or how to send hex code with `-data`.]
+#sudo cp /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings ~/Desktop/ScreenCapture.strings
+#sudo plutil -convert xml1 /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings
+#sed -i -e \
+#          's/<string>%@\ %@<\/string>/<string>%@%@<\/string>/g' \
+#          's/<string>%@\ %@\ at\ %@<\/string>/<string>%@%@%@<\/string>/g' \
+#          's/<string>%@\ %@\(%@\)<\/string>/<string>%@%@%@<\/string>/g' \
+#          's/<string>%@\ \(%@\)<\/string>/<string>%@%@<\/string>/g' \
+#          /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings ~/Desktop/ScreenCapture.strings
+# sudo plutil -convert binary1 /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings ~/Desktop/ScreenCapture.strings
+# Copy ScreenCapture.strings to Desktop/, convert ScreenCapture.strings to XML plist version 1, edit content then convert ScreenCapture.strings back to binary plist version 1. /!\ Bad practice: XML editing with sed & System/ content editing [probably prevented by OS X El Capitan's SIP].
+
+#defaults write com.apple.screencapture include-date -bool false # Disable date in screenshot filename.
+
+#defaults write com.apple.screencapture location -string "${HOME}/Desktop" # Set screenshot writing location to Desktop/.
+
 #defaults write com.apple.screencapture disable-shadow -bool true # Disable shadows in screenshots.
-
-defaults write com.apple.screencapture location -string "${HOME}/Desktop" # Set screenshot saving location to desktop.
-
-defaults write com.apple.screencapture type -string "png" # Save screenshots in PNG format. (i) Other options include BMP, GIF, JPEG, PDF and TIFF.
 
 echo  'QuickLook (com.apple.finder)'
 
