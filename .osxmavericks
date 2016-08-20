@@ -125,7 +125,14 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow autoLoginUser "" 
 
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName # Display IP address, hostname, OS version etc when clicking the clock in the login window.
 
-sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Karl Bertin's Mac.\nPlease contact +33670832664 or kvpb@dn.sx if found." # Display set lock message.
+#echo "What is this Mac's owner's phone number, with country code?"
+#echo "[eg '+336XXXXXXXX' for french mobile phone numbers]"
+#read phonenumber
+#echo "What is this Mac's owner's email address?"
+#read emailaddress
+#sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "${fullname}'s Mac${computername}.\nPlease contact ${phonenumber} or ${emailaddress} if found."
+# Display set lock message. (i) `fullname` and `computername` variables have been set earlier, at Network: Computer name.
+sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Karl Bertin's Mac${computername}.\nPlease contact +33670832664 or kvpb@dn.sx if found." # Display set lock message. (i) `computername` variable has been set earlier, at Network: Computer name.
 
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
