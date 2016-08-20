@@ -253,6 +253,7 @@ defaults write com.apple.systemuiserver menuExtras -array \
                                                           "/System/Library/CoreServices/Menu Extras/Battery.menu" \
                                                           "/System/Library/CoreServices/Menu Extras/Clock.menu"
 # Display Time machine, Bluetooth, AirPort (Wi-Fi), volume, battery and clock icons in the menu bar.
+defaults write com.apple.menuextra.clock IsAnalog -bool true # Display clock as analog.
 
 defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true # Display ASCII control characters using caret notation in plain text view.
 
