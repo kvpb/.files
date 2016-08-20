@@ -90,6 +90,10 @@ alias	gpf='git push --force' # Update remote refs that are not ancestors of the 
 
 alias	gpo='git push origin ' # Update remote refs along with associated objects, pushing "matching" branches to origin.
 
+#		killall		kill processes by name
+
+alias	ka='killall ' # Kill processes by name. (i) Useful to both save some keyboard use and when debugging macOS user defaults.
+
 #		python		an interpreted, interactive, object-oriented programming language
 
 alias	py='python '
