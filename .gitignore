@@ -1,6 +1,4 @@
-# OS-generated files
-
-## Mac OS, Mac OS X & OS X
+# Mac OS, Mac OS X, OS X & macOS
 
 .apdisk
 .AppleDB
@@ -13,21 +11,20 @@ Network Trash Folder
 .Spotlight-V100
 Temporary Items
 .Trashes
+._*
 
-## Windows
+# Windows
 
+Desktop.ini
 ehthumbs.db
 Thumbs.db
 
-# Computer programs-generated files
-
-## EMACS
+# EMACS
 
 #*#
 *~
 
-## VIm
-
+# VIM
 *.swp
 *.swo
 *.swn
