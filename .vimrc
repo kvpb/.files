@@ -21,6 +21,8 @@ set noendofline
 
 " Input: Keyboard & mouse
 
+set clipboard=unnamed " Set clipboard to the OS'.
+
 set mouse=a " Enable mouse in all modes.
 set ttymouse=xterm2 " Set the terminal type for which mouse codes are to be recognized.
 
