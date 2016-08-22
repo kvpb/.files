@@ -7,4 +7,3 @@ tara ()
 
 	find * -maxdepth 0 -type d -exec tar cvf $PREFIX{}$SUFFIX.tar {} \;
 } # tara	- create a new tape archive for each of the working directory's subdirectories
-

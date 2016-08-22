@@ -125,4 +125,3 @@ alias	emptrash='cd ~/.Trash && rm -rf {,.}*' # Erase items in the trash.
 alias	ccaches='cd ~/Library/Caches && rm -rf {,.}*' # Clear current user's cache.
 
 #alias	csvdstt='cd ~/Library/Saved\ Application\ State && rm -rf {,.}*' # Clear current user's saved application state.
-
