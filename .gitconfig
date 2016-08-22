@@ -2,6 +2,17 @@
 	name = Karl Bertin
 	email = kvpb@dn.sx
 
+[core]
+	editor = vim
+	trustctime = false # Make git-rebase safer on macOS. (i) http://www.git-tower.com/blog/make-git-rebase-safe-on-osx
+	precomposeunicode = false # Hide files which filenames contain umlauts as unversioned. (i) http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+
+[color]
+	ui = true
+
+[github]
+	user = kvpb
+
 [push]
 	default = simple
 
