@@ -173,9 +173,11 @@ defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # Enable trackpad tap to click for current user and login screen.
 
-defaults write NSGlobalDomain com.apple.mouse.scaling 2.5 # Set mouse tracking speed to fastest. (i) 0: slow; 3: fast.
+defaults write NSGlobalDomain com.apple.mouse.scaling -int 3 # Set mouse tracking speed to fast. (i) 0: slow; 3: fast.
+defaults write NSGlobalDomain com.apple.scrollwheel.scaling -float 1.7 # Set mouse scroll wheel scrolling speed to fast. (i) 0: slow; 1.7: fast.
+defaults write NSGlobalDomain com.apple.mouse.doubleClickThreshold -float 3.8625 # Set mouse double click needed speed to 75%.
 
-defaults write NSGlobalDomain com.apple.trackpad.scaling -float 3 # Set trackpad tracking speed to fastest. (i) 0: slow; 3: fast.
+defaults write NSGlobalDomain com.apple.trackpad.scaling -int 3 # Set trackpad tracking speed to fast. (i) 0: slow; 3: fast.
 
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true # Enable natural (OS X Lion-style) scroll direction. (i) Enable System preferences: TrackPad: Scroll & zoom: Scroll direction: natural.
 
@@ -446,7 +448,7 @@ defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data
 defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Users/kvpb/Downloads</string><key>_CFURLStringType</key><integer>0</integer></dict><key>file-label</key><string>Downloads</string><key>file-type</key><integer>18</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
 defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Users/kvpb/misc</string><key>_CFURLStringType</key><integer>0</integer></dict><key>file-label</key><string>Miscellaneous</string><key>file-type</key><integer>18</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
 defaults delete com.apple.dock mod-count
-# Add Activity Monitor, App Store, Calendar, Chrome, Contacts, Dropbox, Evernote, iTerm, iTunes, Magnet, Mail, Pixelmator, Preview, Shazam, Sketch, TextEdit, VLC, a Recent items stack and the Applications, Downloads and Miscellaneous folders.
+# Add Activity Monitor, App Store, Calendar, Chrome, Contacts, Dropbox, Evernote, iTerm, iTunes, Mail, Pixelmator, Preview, Shazam, SizeUp, Sketch, TextEdit, VLC, a Recent items stack and the Applications, Downloads and Miscellaneous folders.
 
 defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Add a spacer to the app items area.
 #defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}' # Add a spacer to the folders items area.
@@ -722,7 +724,7 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 cecho 'Second-party: Userspec filesystem customs' $yellow
 
 #cd && git clone https://github.com/kvpb/.files.git
-# Change working directory to user home and clone .files directory from my GitHub.
+# Change working directory to ~/ and clone my .files/ from GitHub.
 
 if [ -d "~/{kbs,misc,ops}" ]; then # if [ -d "~/{kbs,.files,misc,ops}" ]; then
 	if [ -L "~/{kbs,misc,ops}" ]; then # if [ -L "~/{kbs,.files,misc,ops}" ]; then
@@ -732,21 +734,49 @@ if [ -d "~/{kbs,misc,ops}" ]; then # if [ -d "~/{kbs,.files,misc,ops}" ]; then
 else
 	mkdir -p ~/{kbs,misc,ops} # mkdir -p ~/{kbs,.files,misc,ops}
 fi
-# If kbs/, .files/, misc/ and ops/ aren't directories in ~/ then substitute symlinks by or add these directories.
+# If kbs, .files, misc and ops aren't directories in ~/ then substitute symlinks by or add these directories.
+if [ -d "~/Downloads/{misc,doc,pic,mus,mov}" ]; then
+	if [ -L "~/Downloads/{misc,doc,pic,mus,mov}" ]; then
+		mv ~/Downloads/{misc,doc,pic,mus,mov} ~/.Trash
+		mkdir ~/Downloads/{misc,doc,pic,mus,mov}
+	fi
+else
+	mkdir -p ~/Downloads/{misc,doc,pic,mus,mov}
+fi
+# If misc, doc, pic, mus and mov aren't directories in ~/Downloads/ then substitute symlinks by or add these directories.
+if [ -d "~/{DCIM,Camera}" ]; then
+	if [ -L "~/{DCIM,Camera}" ]; then
+		mv ~/{DCIM,Camera} ~/.Trash
+		mkdir ~/{DCIM,Camera}
+	fi
+else
+	mkdir -p ~/{DCIM,Camera}
+fi
+# If DCIM and Camera aren't directories in ~/ then substitute symlinks by or add these directories.
 
-ln -s ~/.files/.bash_profile ~/.bash_profile
 ln -s ~/.files/.bashrc ~/.bashrc
+#ln -s ~/.files/.bash_profile ~/.bash_profile
 ln -s ~/.files/.zshrc ~/.zshrc
 ln -s ~/.files/.zprofile ~/.zprofile
+#ln -s ~/.files/.zsh_history ~/.zsh_history
 ln -s ~/.files/.zhistory ~/.zhistory
-ln -s ~/.files/.ssh/.config ~/.ssh/config
-ln -s ~/.files/.vim/ ~/.vim/
+ln -s ~/.files/.ssh ~/.ssh # ln -s ~/.files/.ssh/config ~/.ssh/config
 ln -s ~/.files/.vimrc ~/.vimrc
+ln -s ~/.files/.vim/ ~/.vim
 ln -s ~/.files/.gitconfig ~/.gitconfig
 ln -s ~/.files/.gitignore_global ~/.gitignore_global
+ln -s ~/.files/lib/AppleScripts/Applications/TextEdit ~/Library/Scripts/Applications/TextEdit
+ln -s ~/Downloads/misc ~/misc/dld
+ln -s ~/Downloads/doc ~/Documents/dld
+ln -s ~/Downloads/pic ~/Pictures/dld
+ln -s ~/Downloads/mov ~/Movies/dld
+ln -s ~/Downloads/mus ~/Music/dld
+ln -s ~/DCIM ~/Pictures/DCIM
+ln -s ~/Camera ~/Pictures/Camera
 # Add user-specific custom symlinks.
 
-#chflags nohidden ~/Library/ # Display the hidden ~/Library/ folder. (i) This script also enables hidden files display, which overrides this one.
+#chflags nohidden ~/Library/ # Display the hidden ~/Library/. (i) This script also enables hidden files display, which overrides this.
+
 
 cecho 'Third-party: Syswide & userspec xenogenetic software & prefs' $yellow
 
