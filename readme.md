@@ -7,12 +7,12 @@
 
 &nbsp;&nbsp;Apple computers operating systems configuration scripts family.
 
-#### How-to [eg OS X 10.9 Mavericks]
+#### How-to [eg OS X 10.9.5 Mavericks]
 
-&nbsp;&nbsp;Launch a terminal emulator (eg Terminal.app) then enter this:
+&nbsp;&nbsp;Launch a terminal emulator (eg Terminal) then enter this:
 
 ```sh
-cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osxmavericks # Replace '.osxmavericks' by the one you need!
+cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx1095
 ```
 
 **Note:** Don't hesitate to help me finding new hidden preferences with `defaults read`! (You'll get full credits for that, of course.)
