@@ -1,8 +1,4 @@
-# 	sudo,	sudoedit	execute a command as another user
-
-alias	sudo="sudo "
-
-# 		ls		list directory contents
+# 		ls			list directory contents
 
 alias	la='ls -ap' # List directory contents including directory entries whose names begin with a dot ('.'). [Note : The -p option might be useless since I wrote another alias for ls to extend its behavior the way I want it that includes the option — still, if the other alias is disabled, it wouldn't work anymore.]
 
@@ -14,57 +10,57 @@ alias	ls='pwd && ls -lp' # Print working directory then list directory contents 
 
 alias	lg='la && gs' # List directory contents then show the working tree status.
 
-#		du		display disk usage statistics
+#		du			display disk usage statistics
 
 alias	du='du -hc ' # Display humanly disk usage statistics and a grand total.
 
-# 		cd		change the working directory
+# 		cd			change the working directory
 
-alias	..='cd ../' # Change the working dir to current user's parent one.
+alias	..='cd ..' # Change the working dir to current user's parent one.
 
-alias	...='cd ../../' # Change the working dir to current's grand-parent one.
+alias	...='cd ../..' # Change the working dir to current's grand-parent one.
 
-alias	....='cd ../../../' # Change the working dir to current's grand-grand-parent one.
+alias	....='cd ../../..' # Change the working dir to current's grand-grand-parent one.
 
-alias	.....='cd ../../../../' # Change the working dir to current's grand-grand-grand-parent one.
+alias	.....='cd ../../../..' # Change the working dir to current's grand-grand-grand-parent one.
 
 #alias	rt='cd /' # Change the working dir to root's.
 
-alias	.f='cd ~/.files/' # Change the working dir to cur user's dotfiles'.
+alias	.f='cd ~/.files' # Change the working dir to cur user's dotfiles'.
 
-alias	de='cd ~/Desktop/' # Change the working dir to cur user's desktop'.
+alias	de='cd ~/Desktop' # Change the working dir to cur user's desktop'.
 
-alias	dc='cd ~/Documents/' # Change the working dir to cur user's documents'.
+alias	dc='cd ~/Documents' # Change the working dir to cur user's documents'.
 
-alias	dl='cd ~/Downloads/' # Change the working dir to cur user's downloads'.
+alias	dl='cd ~/Downloads' # Change the working dir to cur user's downloads'.
 
-alias	db='cd ~/Dropbox/' # Change the working directory to current user's Dropbox's.
+alias	db='cd ~/Dropbox' # Change the working directory to current user's Dropbox's.
 
-alias	kb='cd ~/kbs/' # Change the working dir to my personal one.
+alias	kb='cd ~/kbs' # Change the working dir to my personal one.
 
-alias	li='cd ~/Library/' # Change the working directory to current user's library's.
+alias	li='cd ~/Library' # Change the working directory to current user's library's.
 
-alias	mi='cd ~/misc/' # Change the working dir to current user's misc files'.
+alias	mi='cd ~/misc' # Change the working dir to current user's misc files'.
 
-alias	mo='cd ~/Movies/' # Change the working dir to current user's movies'.
+alias	mo='cd ~/Movies' # Change the working dir to current user's movies'.
 
-alias	mu='cd ~/Music/' # Change the working dir to current user's music's.
+alias	mu='cd ~/Music' # Change the working dir to current user's music's.
 
-alias	op='cd ~/ops/' # Change the working dir to my ongoing operations'.
+alias	op='cd ~/ops' # Change the working dir to my ongoing operations'.
 
-alias	pi='cd ~/Pictures/' # Change the working dir to current user's pictures'.
+alias	pi='cd ~/Pictures' # Change the working dir to current user's pictures'.
 
-alias	.t='cd ~/.Trash/' # Change the working dir to current user's trash's.
+alias	.t='cd ~/.Trash' # Change the working dir to current user's trash's.
 
-# 		git		the stupid content tracker
+# 		git			the stupid content tracker
 
 #alias	git='/usr/local/git/bin/git' # Get fucked, Apple. /i\ Requires Git for Mac OS X from the official Git website (http://git-scm.com/).
 
-alias	ga='git add ' # Add file contents to the index.
+alias	ga='git add '
 
 alias	gaa='git add --all' # Add file contents to the index, updating the index to match the working tree.
 
-#alias	gc='git clone ' # Clone a repository into a new direction.
+#alias	gc='git clone '
 
 #alias	gcb='git clone --bare ' # Create a bare clone of a repository into a new directory.
 
@@ -74,15 +70,15 @@ alias	gcem="git commit -a --allow-empty-message -m ''" # Record changes to the r
 
 alias	gqp='gaa && gcem && gp' # 'git-quick-push' -- Add all files, commit without commenting and push.
 
-alias	gr='git rm ' # Remove files from the working tree and from the index.
+alias	gr='git rm '
 
 alias	gri='git rebase -i ' # Reapply commits on top of another base tip making a list of the commits which are about to be rebased.
 
-alias	gs='git status ' # Show the working tree status.
+alias	gs='git status '
 
-#alias	gp='git pull ' # Fetch from and integrate with another repository or a local branch.
+#alias	gp='git pull '
 
-alias	gp='git push ' # Update remote refs along with associated objects.
+alias	gp='git push '
 
 alias	gpch="git push --force --tags origin 'refs/heads/*'" # Push corrected history.
 
@@ -92,7 +88,7 @@ alias	gpo='git push origin ' # Update remote refs along with associated objects,
 
 #		killall		kill processes by name
 
-alias	ka='killall ' # Kill processes by name. (i) Useful to both save some keyboard use and when debugging macOS user defaults.
+alias	ka='killall '
 
 #		python		an interpreted, interactive, object-oriented programming language
 
@@ -102,7 +98,7 @@ alias	py='python '
 
 alias	rb='ruby '
 
-#		tar		manipulate tape archives
+#		tar			manipulate tape archives
 
 alias	tgz='tar -czvf ' # Create a new archive containing the specified items then compress the resulting archive with gzip, listing each file name as it is read written to the archive.
 
@@ -119,9 +115,3 @@ alias	owvlc='open -a /Applications/VLC.app ' # Open file with VLC.app.
 # 		kvpb's		user-specific aliases
 
 alias	dcal='date | grep -C6 --color "\b$(date +%e)\b" && cal | sed -n "1!p" | grep -C6 --color "\b$(date +%e)\b"' # Dated calendar -- Display a calendar, substitute month of year with current date in full format and highlight current day of month.
-
-alias	emptrash='cd ~/.Trash && rm -rf {,.}*' # Erase items in the trash.
-
-alias	ccaches='cd ~/Library/Caches && rm -rf {,.}*' # Clear current user's cache.
-
-#alias	csvdstt='cd ~/Library/Saved\ Application\ State && rm -rf {,.}*' # Clear current user's saved application state.
