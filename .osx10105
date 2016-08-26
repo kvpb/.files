@@ -51,7 +51,7 @@ cecho ' OF ANY KIND.  WE MAKE NO WARRANTIES,  EXPRESS  OR IMPLIED,  THAT THEY AR
 cecho ' OF ERROR,  OR ARE CONSISTENT WITH ANY PARTICULAR STANDARD OF MERCHANTABILITY,'  $litred
 cecho ' OR THAT THEY WILL MEET YOUR REQUIREMENTS FOR ANY PARTICULAR APPLICATION.  THEY' $litred
 cecho ' SHOULD NOT BE  RELIED ON FOR SOLVING A PROBLEM  WHOSE INCORRECT SOLUTION COULD' $litred
-cecho ' RESULT  IN  INJURY  TO  A  PERSON  OR  LOSS  OF  PROPERTY.  IF YOU DO USE THEM' $litred
+cecho ' RESULT  IN  INJURY  TO  A  PERSON  OR  LOSS  OF  PROPERTY.  IF YOU DO USE THEM' $litred
 cecho ' IN SUCH A MANNER,  IT IS AT YOUR OWN RISK.  THE AUTHOR  AND PUBLISHER DISCLAIM' $litred
 cecho ' ALL LIABILITY FOR  DIRECT,  INDIRECT,  OR CONSEQUENTIAL DAMAGES RESULTING FROM' $litred
 cecho ' YOUR USE OF THE PROGRAMS.'                                                      $litred
@@ -175,8 +175,8 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # Enable trackpad tap to click for current user and login screen.
 
 defaults write NSGlobalDomain com.apple.mouse.scaling -int 3 # Set mouse tracking speed to fast. (i) 0: slow; 3: fast.
-defaults write NSGlobalDomain com.apple.scrollwheel.scaling -float 1.7 # Set mouse scroll wheel scrolling speed to fast. (i) 0: slow; 1.7: fast.
-defaults write NSGlobalDomain com.apple.mouse.doubleClickThreshold -float 3.8625 # Set mouse double click needed speed to 75%.
+#defaults write NSGlobalDomain com.apple.scrollwheel.scaling -float 1.7 # Set mouse scroll wheel scrolling speed to fast. (i) 0: slow; 1.7: fast. /!\ This seems to cause drag and drop in Finder to become slow to unresponsive.
+#defaults write NSGlobalDomain com.apple.mouse.doubleClickThreshold -float 3.8625 # Set mouse double click needed speed to 75%. /!\ This seems to cause drag and drop in Finder to become slow to unresponsive.
 
 defaults write NSGlobalDomain com.apple.trackpad.scaling -int 3 # Set trackpad tracking speed to fast. (i) 0: slow; 3: fast.
 
@@ -243,19 +243,20 @@ defaults write com.apple.helpviewer DevMode -bool true # (i) Set Help viewer to 
 
 defaults write NSGlobalDomain NSWindowResizeTime -float 0.001 # Increase window resizing and fullscreen mode animation speed.
 
-# Remove menu bar defaults.
-defaults write \~/Library/Preferences/ByHost/com.apple.systemuiserver.* dontAutoLoad -array \
-                                                                                            "/System/Library/CoreServices/Menu Extras/Volume.menu" \
-                                                                                            "/System/Library/CoreServices/Menu Extras/User.menu" \
-                                                                                            "/System/Library/CoreServices/Menu Extras/UniversalAccess.menu"
-# Hide volume, fast user switching and universal access in the menu bar.
+for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
+	defaults write "${domain}" dontAutoLoad -array \
+                                                   "/System/Library/CoreServices/Menu Extras/Volume.menu" \
+                                                   "/System/Library/CoreServices/Menu Extras/User.menu" \
+#                                                   "/System/Library/CoreServices/Menu Extras/UniversalAccess.menu"
+done
+# Hide volume and fast user switching menu bar items.
 defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
                                                           "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-                                                          "/System/Library/CoreServices/Menu Extras/Time Machine.menu" \
+#                                                          "/System/Library/CoreServices/Menu Extras/Time Machine.menu" \
                                                           "/System/Library/CoreServices/Menu Extras/Script Menu.menu" \
                                                           "/System/Library/CoreServices/Menu Extras/Clock.menu" \
                                                           "/System/Library/CoreServices/Menu Extras/Battery.menu"
-# Display Bluetooth, AirPort (Wi-Fi), Time Machine, AppleScript, clock and battery in the menu bar.
+# Display Bluetooth, AirPort (Wi-Fi), Time Machine, AppleScript, clock and battery menu bar items.
 defaults write com.apple.menuextra.clock IsAnalog -bool true
 defaults write com.apple.menuextra.battery ShowPercent -bool true
 # Display clock analog and battery as percentageless.
@@ -428,9 +429,8 @@ defaults write com.apple.dock pinning -string start # Set position to the left o
 
 defaults write com.apple.dock orientation left # Set alignment to the left or top.
 
-#defaults write com.apple.dock persistent-apps -array
-defaults delete com.apple.dock persistent-apps
-defaults delete com.apple.dock persistent-others
+defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock persistent-others -array
 # Remove any and all item.
 
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Activity Monitor.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
@@ -777,7 +777,7 @@ ln -s ~/.files/.vimrc ~/.vimrc
 ln -s ~/.files/.vim/ ~/.vim
 ln -s ~/.files/.gitconfig ~/.gitconfig
 ln -s ~/.files/.gitignore_global ~/.gitignore_global
-ln -s ~/.files/lib/AppleScripts/Applications/TextEdit ~/Library/Scripts/Applications/TextEdit
+ln -s ~/.files/lib/AppleScripts ~/Library/Scripts
 ln -s ~/Downloads/misc ~/misc/dld
 ln -s ~/Downloads/doc ~/Documents/dld
 ln -s ~/Downloads/pic ~/Pictures/dld
@@ -810,6 +810,13 @@ defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true # Launch Si
 defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false # Hide the preferences window at launch.
 
 echo  'Chrome'
+
+#defaults write com.apple.LaunchServices LSHandlers -array-add \
+#                                                              '{LSHandlerRoleAll=com.google.chrome;LSHandlerURLScheme=http;}'
+#                                                              '{LSHandlerRoleAll=com.google.chrome;LSHandlerURLScheme=https;}'
+#                                                              '{LSHandlerContentType=public.html;LSHandlerRoleViewer=com.google.chrome;}'
+#                                                              '{LSHandlerContentType=public.url;LSHandlerRoleViewer=com.google.chrome;}'
+# Set default web browser to Chrome.
 
 defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false # Disable trackpad backswipe gesture.
 
@@ -863,7 +870,7 @@ defaults write com.twitter.twitter-mac ShowFullNames -bool true # Display full n
 
 defaults write com.twitter.twitter-mac ShowDevelopMenu -bool true # Display develop menu. (i) Enable Show developer menu.
 
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" "Disk Utility" "Dock" "Evernote" "EvernoteHelper" "Finder" "iCal" "iTerm" "Mail" "Messages" "Safari" "SizeUp" "System Preferences" "SystemUIServer" "Terminal" "TextEdit" "Transmission" "Twitter" "VMware Fusion" "Xcode"; do
+for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" "Disk Utility" "Dock" "Evernote" "EvernoteHelper" "Finder" "iCal" "iTerm" "Mail" "Messages" "Safari" "SizeUp" "System Preferences" "SystemUIServer" "TextEdit" "Transmission" "Twitter" "VMware Fusion" "Xcode"; do
 	killall "${app}" > /dev/null 2>&1
 done
 # Kill all affected applications.
@@ -873,8 +880,9 @@ cecho 'Some changes require a reboot to take effect. Reboot?' $litgreen
 cecho "['y', 'yes', 'yeah', 'n', 'no', 'reboot', 'ok' or 'okay'.]" $litgreen
 read -r answer
 if [[ $answer =~ ^([yY]|[yY][eE][sS]|[yY][eE][aA][hH]|[rR][eE][bB][oO][oO][tT]|[oO][kK]|[oO][kK][aA][yY])$ ]]; then
+	killall Terminal
 	osascript -e 'tell app "System Events" to restart' # restart without showing a confirmation dialog
 else
-	cecho 'OS X 10.9 Mavericks has been configured.' $lityellow
+	cecho 'OS X 10.10.5 Yosemite has been configured.' $lityellow
 	exit
 fi
