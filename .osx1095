@@ -344,6 +344,8 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true # Display filena
 
 defaults write com.apple.finder AppleShowAllFiles -bool true # Display hidden files.
 
+defaults write com.apple.finder DisableAllAnimations -bool true # Disable Finder window & Get info pane animations.
+
 echo  'Spotlight (com.apple.spotlight)'
 
 defaults write com.apple.spotlight orderedItems -array \
@@ -781,15 +783,13 @@ cecho 'Third-party: Syswide & userspec xenogenetic software & prefs' $yellow
 
 echo  'Homebrew'
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" # Download & install Homebrew.
+
+brew tap Homebrew/bundle # Download & install homebrew-bundle.
 
 echo  'iTerm2'
 
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false # Hide quit prompt.
-
-#echo  'Git (Homebrew)'
-
-#brew install git
 
 echo  'SizeUp'
 
