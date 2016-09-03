@@ -326,7 +326,11 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 #rm -rf ~/Library/Application\ Support/Dock/desktoppicture.db
 #sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
 #sudo ln -s { Path to picture } /System/Library/CoreServices/DefaultDesktop.jpg
-# Set a custom wallpaper. (i) `DefaultDesktop.jpg` is a symlink. (i) Wallpapers are at `/Library/Desktop Pictures`, default wallpaper is `Wave.jpg`.
+# Set wallpaper. (i) `DefaultDesktop.jpg` is a symlink. (i) Wallpapers are at `/Library/Desktop Pictures`, default wallpaper is `Wave.jpg`.
+#defaults write /Library/Preferences/com.apple.loginwindow DesktopPicture "{ /path/to/picture.jpg }"
+#defaults write com.apple.desktop Background '{default = {ImageFilePath = "{ /path/to/picture.jpg }"; };}'
+# Set wallpaper. /!\ Deprecated from OS X 10.9.5 Mavericks onwards.
+#osascript -e 'tell application "Finder" to set desktop picture to "{ /full/path/to/picture.jpg }" as POSIX file' # Set Desktop wallpaper.
 
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv" # Set default view to columns. (i) Other viewing modes are 'icnv' for icons, 'Nlsv' for newlines and 'Flwv' for Cover flow.
 
