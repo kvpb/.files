@@ -445,7 +445,6 @@ defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Google Chrome.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Contacts.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Dropbox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Evernote.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iTerm.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iTunes.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
@@ -465,7 +464,7 @@ defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data
 defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Users/kvpb/Downloads</string><key>_CFURLStringType</key><integer>0</integer></dict><key>file-label</key><string>Downloads</string><key>file-type</key><integer>18</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
 defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Users/kvpb/misc</string><key>_CFURLStringType</key><integer>0</integer></dict><key>file-label</key><string>Miscellaneous</string><key>file-type</key><integer>18</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
 defaults delete com.apple.dock mod-count
-# Add Activity Monitor, App Store, Calendar, Chrome, Contacts, Dropbox, Evernote, iTerm, iTunes, Mail, Pixelmator, Preview, Shazam, SizeUp, Sketch, TextEdit, VLC, a Recent items stack and the Applications, Downloads and Miscellaneous folders.
+# Add Activity Monitor, App Store, Calendar, Chrome, Contacts, Dropbox, iTerm, iTunes, Mail, Pixelmator, Preview, Shazam, SizeUp, Sketch, TextEdit, VLC, a Recent items stack and the Applications, Downloads and Miscellaneous folders.
 
 defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 #defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
@@ -851,12 +850,6 @@ defaults write org.m0k.transmission BlocklistAutoUpdate -bool true # Enable IP b
 echo  'VMware Fusion 8'
 
 defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (i) Set VMware Fusion 8: Preferences: General: Applications menu: Show in menu bar to Never.
-
-echo  'Evernote'
-
-defaults write com.evernote.Evernote StartAtLogin -bool true
-defaults write com.evernote.EvernoteHelper StartAtLogin -bool true
-# Start Evernote at login.
 
 echo  'just setting up my twttr'
 
