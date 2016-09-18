@@ -48,6 +48,8 @@ alias	mu='cd ~/Music' # Change the working dir to current user's music's.
 
 alias	op='cd ~/ops' # Change the working dir to my ongoing operations'.
 
+alias	pd='cd ~/ops/parisdescartes' # Change the working dir to my current unversity-dedicated one.
+
 alias	pi='cd ~/Pictures' # Change the working dir to current user's pictures'.
 
 alias	.t='cd ~/.Trash' # Change the working dir to current user's trash's.
