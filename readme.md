@@ -21,6 +21,7 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx1095
 
 ```sh
 cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
+```
 
 **Note:** Don't hesitate to help me finding new hidden preferences with `defaults read`! (You'll get full credits for that, of course.)
 
@@ -53,6 +54,6 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
 
 <p align="center"><a href="http://kvpb.co"><img src="https://rawgit.com/kvpb/b9c0737f2941542ae22b2806b66a3c19/raw/2352bb5c55f1f6246872a796b32980ea5e816412/quickresponsecode.svg"></a><br>
 <b>Karl Bertin (kvpb)</b><br>
-<a href="https://www.linkedin.com/in/karlbertin">LinkedIn</a> | <a href="https://www.facebook.com/karlbertin">Facebook</a> | <s>Twitter</s></p>
+<s><a href="https://www.linkedin.com/in/karlbertin">LinkedIn</a></s> | <a href="https://www.facebook.com/karlbertin">Facebook</a>
 
 &nbsp;&nbsp;**Note:** Thank me or not but please give credit to the people I took code from. There's no ‘I've got things to do now, I'll do it later’ excuse.
