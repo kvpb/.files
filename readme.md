@@ -27,6 +27,20 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
 
 - - -
 
+# &nbsp;&nbsp;`uenctyyyymmdd.docx`, `flashcardstructures.docx`, `First_Last_UEN_GN_Memoire.docx`, `notetakingstructures.docx` & `notetakingsystem.docx`
+
+<p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://rawgit.com/kvpb/126a8d90426df8ade0d29bf7abf9b208/raw/4037a20b8a0be0c143d2808d9171c9de855faa71/karlbertinsnotetakingsystemfrontcover.svg'></a>
+
+#### What-is
+
+&nbsp;&nbsp;I's scratching system I built at university for better faster cleaner notetaking. And in case you wonder, yes, even this read-me has been written following these guidelines.
+
+#### How-to
+
+&nbsp;&nbsp;Launch a word processor (eg Word for Mac 2011 or TextEdit) then… No, really. I mean, seriously. Please, don't even tell me you need a walkthrough to use these.
+
+- - -
+
 #### To-do
 
 ####&nbsp;&nbsp;`.macosx`, `.osx` & `.macos`
@@ -52,8 +66,8 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
 
 #### Author
 
-<p align="center"><a href="http://kvpb.co"><img src="https://rawgit.com/kvpb/b9c0737f2941542ae22b2806b66a3c19/raw/2352bb5c55f1f6246872a796b32980ea5e816412/quickresponsecode.svg"></a><br>
+<p align='center'><a href='http://kvpb.co'><img src='https://rawgit.com/kvpb/b9c0737f2941542ae22b2806b66a3c19/raw/2352bb5c55f1f6246872a796b32980ea5e816412/quickresponsecode.svg'></a><br>
 <b>Karl Bertin (kvpb)</b><br>
-<s><a href="https://www.linkedin.com/in/karlbertin">LinkedIn</a></s> | <a href="https://www.facebook.com/karlbertin">Facebook</a>
+<s><a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a></s> | <a href='https://www.facebook.com/karlbertin'>Facebook</a>
 
 &nbsp;&nbsp;**Note:** Thank me or not but please give credit to the people I took code from. There's no ‘I've got things to do now, I'll do it later’ excuse.
