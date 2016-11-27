@@ -20,6 +20,30 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>affectif</string>
+		<key>shortcut</key>
+		<string>aff</string>
+		<key>timestamp</key>
+		<integer>1480266425</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>affection</string>
+		<key>shortcut</key>
+		<string>aff°</string>
+		<key>timestamp</key>
+		<integer>1480266429</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>affections</string>
+		<key>shortcut</key>
+		<string>affs°</string>
+		<key>timestamp</key>
+		<integer>1480266434</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>altération</string>
 		<key>shortcut</key>
 		<string>alt°</string>
@@ -886,9 +910,9 @@
 		<key>phrase</key>
 		<string>neuropsychologie</string>
 		<key>shortcut</key>
-		<string>neuro</string>
+		<string>npsy</string>
 		<key>timestamp</key>
-		<integer>1480266354</integer>
+		<integer>1480266641</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1156,6 +1180,22 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>psychodynamique</string>
+		<key>shortcut</key>
+		<string>psdyq</string>
+		<key>timestamp</key>
+		<integer>1480266734</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>psychodynamiques</string>
+		<key>shortcut</key>
+		<string>psdyqs</string>
+		<key>timestamp</key>
+		<integer>1480266743</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>psychologie</string>
 		<key>shortcut</key>
 		<string>psy</string>
@@ -1201,14 +1241,6 @@
 		<string>dif</string>
 		<key>timestamp</key>
 		<integer>1479803471</integer>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>psychologie gérontologique</string>
-		<key>shortcut</key>
-		<string>geronto</string>
-		<key>timestamp</key>
-		<integer>1479803814</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
