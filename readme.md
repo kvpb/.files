@@ -27,6 +27,26 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
 
 - - -
 
+# &nbsp;&nbsp;[`.files/lib/plist/`] `Text Substitutions.plist`
+
+### What-is
+
+&nbsp;&nbsp;macOS text substitutions (list of abbreviations to automatically replace by words).
+
+### How-to
+
+&nbsp;&nbsp;1.&nbsp;&nbsp;[Download `Text Substitutions.plist`.](https://rawgit.com/kvpb/.files/master/lib/plist/Text%20Substitutions.plist)
+
+&nbsp;&nbsp;2.&nbsp;&nbsp;Launch Finder then go to current user's `Downloads` folder.
+
+&nbsp;&nbsp;3.&nbsp;&nbsp;Launch System preferences then go to Keyboard and then Text.
+
+&nbsp;&nbsp;4.&nbsp;&nbsp;Drag `Text Substitutions.plist` from Finder window and drop it to System preferences window's table-like list.
+
+&nbsp;&nbsp;**NB:** This works with macOS software that use it. I know it works with TextEdit, but I don't know if it works with Word for Mac 2011.
+
+- - -
+
 # &nbsp;&nbsp;`uenctyyyymmdd.docx`, `flashcardstructures.docx`, `First_Last_UEN_GN_Memoire.docx`, `notetakingstructures.docx` & `notetakingsystem.docx`
 
 <p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://rawgit.com/kvpb/126a8d90426df8ade0d29bf7abf9b208/raw/4037a20b8a0be0c143d2808d9171c9de855faa71/karlbertinsnotetakingsystemfrontcover.svg'></a>
