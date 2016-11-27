@@ -860,6 +860,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>psychanalytiques</string>
+		<key>shortcut</key>
+		<string>psaqs</string>
+		<key>timestamp</key>
+		<integer>1480261292</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>psychologie cognitive</string>
 		<key>shortcut</key>
 		<string>pscog</string>
@@ -881,6 +889,30 @@
 		<string>psiq</string>
 		<key>timestamp</key>
 		<integer>1480260911</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>psychiatriques</string>
+		<key>shortcut</key>
+		<string>psiqs</string>
+		<key>timestamp</key>
+		<integer>1480261263</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>psychologique</string>
+		<key>shortcut</key>
+		<string>psoq</string>
+		<key>timestamp</key>
+		<integer>1480261253</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>psychologiques</string>
+		<key>shortcut</key>
+		<string>psoqs</string>
+		<key>timestamp</key>
+		<integer>1480261249</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -908,19 +940,19 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>psychologique</string>
+		<string>psychique</string>
 		<key>shortcut</key>
 		<string>psyq</string>
 		<key>timestamp</key>
-		<integer>1480259356</integer>
+		<integer>1480261240</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>psychologiques</string>
+		<string>psychiques</string>
 		<key>shortcut</key>
 		<string>psyqs</string>
 		<key>timestamp</key>
-		<integer>1480259361</integer>
+		<integer>1480261270</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
