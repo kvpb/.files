@@ -204,6 +204,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>complètement</string>
+		<key>shortcut</key>
+		<string>clt</string>
+		<key>timestamp</key>
+		<integer>1480259395</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>communication</string>
 		<key>shortcut</key>
 		<string>comm°</string>
@@ -260,11 +268,27 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>comportemental</string>
+		<key>shortcut</key>
+		<string>cptl</string>
+		<key>timestamp</key>
+		<integer>1480257529</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>comportements</string>
 		<key>shortcut</key>
 		<string>cpts</string>
 		<key>timestamp</key>
 		<integer>1478368878</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>comportementaux</string>
+		<key>shortcut</key>
+		<string>cptx</string>
+		<key>timestamp</key>
+		<integer>1480257535</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -460,6 +484,22 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>événement</string>
+		<key>shortcut</key>
+		<string>evt</string>
+		<key>timestamp</key>
+		<integer>1480260847</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>événements</string>
+		<key>shortcut</key>
+		<string>evts</string>
+		<key>timestamp</key>
+		<integer>1480260863</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>exclusion</string>
 		<key>shortcut</key>
 		<string>exc°</string>
@@ -569,6 +609,14 @@
 		<string>int</string>
 		<key>timestamp</key>
 		<integer>1478369035</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>international</string>
+		<key>shortcut</key>
+		<string>intal</string>
+		<key>timestamp</key>
+		<integer>1480097447</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -700,6 +748,22 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>observe</string>
+		<key>shortcut</key>
+		<string>obs</string>
+		<key>timestamp</key>
+		<integer>1480002143</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>observation</string>
+		<key>shortcut</key>
+		<string>obs°</string>
+		<key>timestamp</key>
+		<integer>1480002148</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>option</string>
 		<key>shortcut</key>
 		<string>opt°</string>
@@ -788,11 +852,35 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>psychanalytique</string>
+		<key>shortcut</key>
+		<string>psaq</string>
+		<key>timestamp</key>
+		<integer>1480260905</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>psychologie cognitive</string>
 		<key>shortcut</key>
 		<string>pscog</string>
 		<key>timestamp</key>
 		<integer>1479803378</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>psychiatrie</string>
+		<key>shortcut</key>
+		<string>psi</string>
+		<key>timestamp</key>
+		<integer>1480260686</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>psychiatrique</string>
+		<key>shortcut</key>
+		<string>psiq</string>
+		<key>timestamp</key>
+		<integer>1480260911</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -816,7 +904,23 @@
 		<key>shortcut</key>
 		<string>psy</string>
 		<key>timestamp</key>
-		<integer>1479306987</integer>
+		<integer>1480260672</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>psychologique</string>
+		<key>shortcut</key>
+		<string>psyq</string>
+		<key>timestamp</key>
+		<integer>1480259356</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>psychologiques</string>
+		<key>shortcut</key>
+		<string>psyqs</string>
+		<key>timestamp</key>
+		<integer>1480259361</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -900,6 +1004,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>reconnaissance</string>
+		<key>shortcut</key>
+		<string>recon</string>
+		<key>timestamp</key>
+		<integer>1480001882</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>rééducation</string>
 		<key>shortcut</key>
 		<string>ree°</string>
@@ -921,6 +1033,22 @@
 		<string>sig°</string>
 		<key>timestamp</key>
 		<integer>1479802970</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>situation</string>
+		<key>shortcut</key>
+		<string>sit°</string>
+		<key>timestamp</key>
+		<integer>1480002268</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>situations</string>
+		<key>shortcut</key>
+		<string>sits°</string>
+		<key>timestamp</key>
+		<integer>1480002273</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -977,6 +1105,14 @@
 		<string>sys</string>
 		<key>timestamp</key>
 		<integer>1479051018</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>systèmes</string>
+		<key>shortcut</key>
+		<string>syss</string>
+		<key>timestamp</key>
+		<integer>1480260869</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
