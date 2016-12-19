@@ -8,7 +8,7 @@
 		<key>shortcut</key>
 		<string>%age</string>
 		<key>timestamp</key>
-		<integer>1480280428</integer>
+		<integer>1482082050</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -764,11 +764,59 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>diagnostic</string>
+		<key>shortcut</key>
+		<string>diac</string>
+		<key>timestamp</key>
+		<integer>1482082085</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>diagnostique</string>
+		<key>shortcut</key>
+		<string>diaq</string>
+		<key>timestamp</key>
+		<integer>1482082072</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>psychologie différentielle</string>
 		<key>shortcut</key>
 		<string>dif</string>
 		<key>timestamp</key>
 		<integer>1480280428</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>différentiel</string>
+		<key>shortcut</key>
+		<string>difl</string>
+		<key>timestamp</key>
+		<integer>1482082100</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>différentielle</string>
+		<key>shortcut</key>
+		<string>difle</string>
+		<key>timestamp</key>
+		<integer>1482082105</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>différentielles</string>
+		<key>shortcut</key>
+		<string>difles</string>
+		<key>timestamp</key>
+		<integer>1482082116</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>différentiels</string>
+		<key>shortcut</key>
+		<string>difls</string>
+		<key>timestamp</key>
+		<integer>1482082110</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1073,6 +1121,14 @@
 		<string>ftls</string>
 		<key>timestamp</key>
 		<integer>1481545115</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>fonctionner</string>
+		<key>shortcut</key>
+		<string>ftr</string>
+		<key>timestamp</key>
+		<integer>1482151581</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1676,6 +1732,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>prise en charge</string>
+		<key>shortcut</key>
+		<string>pec</string>
+		<key>timestamp</key>
+		<integer>1482083408</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>perturbation</string>
 		<key>shortcut</key>
 		<string>per°</string>
@@ -1865,6 +1929,14 @@
 		<string>qcq</string>
 		<key>timestamp</key>
 		<integer>1480280428</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>quelconques</string>
+		<key>shortcut</key>
+		<string>qcqs</string>
+		<key>timestamp</key>
+		<integer>1482081544</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -2124,6 +2196,22 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>stéréotypé</string>
+		<key>shortcut</key>
+		<string>styp</string>
+		<key>timestamp</key>
+		<integer>1482083571</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>souvent</string>
+		<key>shortcut</key>
+		<string>svt</string>
+		<key>timestamp</key>
+		<integer>1482082055</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>symbole</string>
 		<key>shortcut</key>
 		<string>sym</string>
@@ -2169,6 +2257,22 @@
 		<string>sypg</string>
 		<key>timestamp</key>
 		<integer>1482076931</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>symptomatologique</string>
+		<key>shortcut</key>
+		<string>sypgq</string>
+		<key>timestamp</key>
+		<integer>1482083336</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>symptomatologiques</string>
+		<key>shortcut</key>
+		<string>sypgqs</string>
+		<key>timestamp</key>
+		<integer>1482083340</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
