@@ -47,7 +47,7 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
 
 - - -
 
-# &nbsp;&nbsp;`uenctyyyymmdd.docx`, `flashcardstructures.docx`, `First_Last_UEN_GN_Memoire.docx`, `notetakingstructures.docx` & `notetakingsystem.docx`
+# &nbsp;&nbsp;`uenctcnyyyymmdd.docx`, `flashcardstructures.docx`, `First_Last_UEN_GN_Memoire.docx`, `notetakingstructures.docx` & `notetakingsystem.docx`
 
 <p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://rawgit.com/kvpb/126a8d90426df8ade0d29bf7abf9b208/raw/4037a20b8a0be0c143d2808d9171c9de855faa71/karlbertinsnotetakingsystemfrontcover.svg'></a>
 
@@ -58,6 +58,8 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
 #### How-to
 
 &nbsp;&nbsp;Launch a word processor (eg Word for Mac 2011 or TextEdit) then… No, really. I mean, seriously. Please, don't even tell me you need a walkthrough to use these.
+
+&nbsp;&nbsp;**Note:** Be confident with these, they're self-explicit as possible. It's built to be easy and fast to learn, use and understand. If you've got any suggestion to improve it, feel free to jump in, express yourself, let loose — open an issue or contact me via Facebook. You're always welcome.
 
 - - -
 
