@@ -437,8 +437,11 @@ defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Contacts.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Dropbox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Microsoft Office 2011/Microsoft Excel.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Adobe Illustrator CS6/Adobe Illustrator CS6.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iTerm.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Logic Pro X.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Adobe Photoshop CS6/Adobe Photoshop CS6.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Preview.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Server.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/SizeUp.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
@@ -450,9 +453,10 @@ defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</
 defaults write com.apple.dock persistent-others -array-add '{ "tile-data" = { "list-type" = 1; }; "tile-type" = "recents-tile"; }'
 defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications</string><key>_CFURLStringType</key><integer>0</integer></dict><key>file-label</key><string>Applications</string><key>file-type</key><integer>18</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
 defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Users/kvpb/Downloads</string><key>_CFURLStringType</key><integer>0</integer></dict><key>file-label</key><string>Downloads</string><key>file-type</key><integer>18</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
+defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Users/kvpb/Dropbox</string><key>_CFURLStringType</key><integer>0</integer></dict><key>file-label</key><string>Dropbox</string><key>file-type</key><integer>18</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
 defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Users/kvpb/misc</string><key>_CFURLStringType</key><integer>0</integer></dict><key>file-label</key><string>Miscellaneous</string><key>file-type</key><integer>18</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
 defaults delete com.apple.dock mod-count
-# Add Activity Monitor, App Store, Calendar, Chrome, Contacts, Dropbox, iTerm, iTunes, Mail, Pixelmator, Preview, Shazam, SizeUp, Sketch, TextEdit, VLC, a Recent items stack and the Applications, Downloads and Miscellaneous folders.
+# Add Activity Monitor, Aperture, App Store, Calendar, Chrome, Contacts, Dropbox, Excel, Illustrator, iTerm, Logic Pro, Mail, Photoshop, Preview, Server, SizeUp, Sketch, TextEdit, VLC, VMware Fusion, a Recent items stack and the Applications, Downloads, Dropbox and Miscellaneous folders.
 
 defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Add a spacer to the app items area.
 #defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}' # Add a spacer to the folders items area.
@@ -789,17 +793,17 @@ echo  'Homebrew'
 
 brew tap Homebrew/bundle # Download & install homebrew-bundle.
 
-echo  'iTerm2'
+echo  'iTerm2 (com.googlecode.iterm2)'
 
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false # Hide quit prompt.
 
-echo  'SizeUp'
+echo  'SizeUp (com.irradiatedsoftware.SizeUp)'
 
 defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true # Launch SizeUp at login.
 
 defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false # Hide the preferences window at launch.
 
-echo  'Chrome'
+echo  'Chrome (com.google.Chrome)'
 
 #defaults write com.apple.LaunchServices LSHandlers -array-add \
 #                                                              '{LSHandlerRoleAll=com.google.chrome;LSHandlerURLScheme=http;}'
@@ -816,7 +820,7 @@ defaults write com.google.Chrome DisablePrintPreview -bool true # Disable Chrome
 
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true # Set print preview dialog expanding to expanded.
 
-echo  'Transmission'
+echo  'Transmission (org.m0k.transmission)'
 
 defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
 defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Transmission/"
@@ -834,27 +838,11 @@ defaults write org.m0k.transmission WarningLegal -bool false # Hide the legal di
 defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz" # Enable IP blocking and set IP blocklist to John Tyree's.
 defaults write org.m0k.transmission BlocklistAutoUpdate -bool true # Enable IP blocklist autoupdate.
 
-echo  'VMware Fusion 8'
+echo  'VMware Fusion 8 (com.vmware.fusion)'
 
 defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (i) Set VMware Fusion 8: Preferences: General: Applications menu: Show in menu bar to Never.
 
-echo  'just setting up my twttr'
-
-defaults write com.twitter.twitter-mac AutomaticQuoteSubstitutionEnabled -bool false # Disable smart quotes.
-
-defaults write com.twitter.twitter-mac ESCClosesComposeWindow -bool true # Enable [Esc] to close New tweet window.
-
-defaults write com.twitter.twitter-mac openLinksInBackground -bool true # Enable links opening in background.
-
-defaults write com.twitter.twitter-mac MenuItemBehavior -int 0 # Display app menu when clicking menu bar icon.
-
-defaults write com.twitter.twitter-mac HideInBackground -bool true # Hide the app in the background if it's not the frontmost window.
-
-defaults write com.twitter.twitter-mac ShowFullNames -bool true # Display full names rather than handles.
-
-defaults write com.twitter.twitter-mac ShowDevelopMenu -bool true # Display develop menu. (i) Enable Show developer menu.
-
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" "Disk Utility" "Dock" "Evernote" "EvernoteHelper" "Finder" "iCal" "iTerm" "Mail" "Messages" "Safari" "SizeUp" "System Preferences" "SystemUIServer" "TextEdit" "Transmission" "Twitter" "VMware Fusion" "Xcode"; do
+for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" "Disk Utility" "Dock" "Finder" "iCal" "iTerm" "Mail" "Messages" "Safari" "SizeUp" "System Preferences" "SystemUIServer" "TextEdit" "Transmission" "VMware Fusion" "Xcode"; do
 	killall "${app}" > /dev/null 2>&1
 done
 # Kill all affected applications.
