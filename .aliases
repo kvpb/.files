@@ -54,6 +54,10 @@ alias	pi='cd ~/Pictures' # Change the working dir to current user's pictures'.
 
 alias	.t='cd ~/.Trash' # Change the working dir to current user's trash's.
 
+alias	v1='cd /Volumes/KBSPCMD100R/VOICE/FOLDER01'
+
+alias	v3='cd /Volumes/KBSPCMD100R/VOICE/FOLDER03'
+
 # 		git			the stupid content tracker
 
 #alias	git='/usr/local/git/bin/git' # Get fucked, Apple. /i\ Requires Git for Mac OS X from the official Git website (http://git-scm.com/).
