@@ -1,6 +1,6 @@
 # 		ls			list directory contents
 
-alias	la='ls -aF' # List directory contents including directory entries whose names begin with a dot ('.'). [Note : The -p option might be useless since I wrote another alias for ls to extend its behavior the way I want it that includes the option — still, if the other alias is disabled, it wouldn't work anymore.]
+alias	la='ls -aF' # List directory contents including directory entries whose names begin with a dot ('.'). [The -p option might be useless since I wrote another alias for ls to extend its behavior the way I want it that includes the option --- still, if the other alias is disabled, it wouldn't work anymore.]
 
 #alias	lh='ls -aF | grep '\''^\.'\' # List directory hidden files only.
 
@@ -9,6 +9,8 @@ alias	lh='ls -dF .*' # List directory hidden files only.
 alias	ls='pwd && ls -lp' # Print working directory then list directory contents in long format writing a slash (`/') after each filename if that file is a directory.
 
 alias	lg='la && gs' # List directory contents then show the working tree status.
+
+alias	l@='ls -@' # List directory contents and extended attributes keys and sizes in long (-l) output.
 
 #		du			display disk usage statistics
 
