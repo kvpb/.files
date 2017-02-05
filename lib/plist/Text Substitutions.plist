@@ -564,6 +564,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>autrement dit</string>
+		<key>shortcut</key>
+		<string>atd</string>
+		<key>timestamp</key>
+		<integer>1485788285</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>at the moment</string>
 		<key>shortcut</key>
 		<string>atm</string>
@@ -665,6 +673,22 @@
 		<string>bcp</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>bébé</string>
+		<key>shortcut</key>
+		<string>bebe</string>
+		<key>timestamp</key>
+		<integer>1485954067</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>bébés</string>
+		<key>shortcut</key>
+		<string>bebes</string>
+		<key>timestamp</key>
+		<integer>1485954069</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -777,6 +801,14 @@
 		<string>cmp°</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>comment</string>
+		<key>shortcut</key>
+		<string>cmt</string>
+		<key>timestamp</key>
+		<integer>1486302092</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -948,6 +980,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>d'addiction</string>
+		<key>shortcut</key>
+		<string>d'adc°</string>
+		<key>timestamp</key>
+		<integer>1485626881</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>d'adolescent</string>
 		<key>shortcut</key>
 		<string>d'ado</string>
@@ -1108,11 +1148,27 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>définition</string>
+		<key>shortcut</key>
+		<string>def</string>
+		<key>timestamp</key>
+		<integer>1485623407</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>déformation</string>
 		<key>shortcut</key>
 		<string>def°</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>définitions</string>
+		<key>shortcut</key>
+		<string>defs</string>
+		<key>timestamp</key>
+		<integer>1485623436</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1412,6 +1468,22 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>de temps en temps</string>
+		<key>shortcut</key>
+		<string>dtet</string>
+		<key>timestamp</key>
+		<integer>1485618487</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>développer</string>
+		<key>shortcut</key>
+		<string>dvr</string>
+		<key>timestamp</key>
+		<integer>1485621289</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>développement</string>
 		<key>shortcut</key>
 		<string>dvt</string>
@@ -1561,6 +1633,14 @@
 		<string>etho</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>être</string>
+		<key>shortcut</key>
+		<string>etre</string>
+		<key>timestamp</key>
+		<integer>1485621214</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -2020,6 +2100,22 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>il y a</string>
+		<key>shortcut</key>
+		<string>iya</string>
+		<key>timestamp</key>
+		<integer>1485619737</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>il y en a</string>
+		<key>shortcut</key>
+		<string>iyea</string>
+		<key>timestamp</key>
+		<integer>1485891333</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>cassette</string>
 		<key>shortcut</key>
 		<string>k7</string>
@@ -2364,6 +2460,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>occasionnellement</string>
+		<key>shortcut</key>
+		<string>occt</string>
+		<key>timestamp</key>
+		<integer>1485619073</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>on my way</string>
 		<key>shortcut</key>
 		<string>omw</string>
@@ -2460,19 +2564,19 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>polyaddiction</string>
+		<key>shortcut</key>
+		<string>padc°</string>
+		<key>timestamp</key>
+		<integer>1485604007</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>petit à petit</string>
 		<key>shortcut</key>
 		<string>pap</string>
 		<key>timestamp</key>
 		<integer>1482161457</integer>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>ptc</string>
-		<key>shortcut</key>
-		<string>particulier</string>
-		<key>timestamp</key>
-		<integer>1485536500</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -2540,6 +2644,54 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>parce-qu'elle</string>
+		<key>shortcut</key>
+		<string>pcq'elle</string>
+		<key>timestamp</key>
+		<integer>1485627144</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>parce-qu'elles</string>
+		<key>shortcut</key>
+		<string>pcq'elles</string>
+		<key>timestamp</key>
+		<integer>1485627163</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>parce-qu'il</string>
+		<key>shortcut</key>
+		<string>pcq'il</string>
+		<key>timestamp</key>
+		<integer>1485627137</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>parce-qu'ils</string>
+		<key>shortcut</key>
+		<string>pcq'ils</string>
+		<key>timestamp</key>
+		<integer>1485627156</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>parce-qu'on</string>
+		<key>shortcut</key>
+		<string>pcq'on</string>
+		<key>timestamp</key>
+		<integer>1485627149</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>parce-qu'un</string>
+		<key>shortcut</key>
+		<string>pcq'un</string>
+		<key>timestamp</key>
+		<integer>1485891021</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>production</string>
 		<key>shortcut</key>
 		<string>pd°</string>
@@ -2588,11 +2740,35 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>par exemple</string>
+		<key>shortcut</key>
+		<string>pex</string>
+		<key>timestamp</key>
+		<integer>1485764543</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>plusieurs</string>
 		<key>shortcut</key>
 		<string>plrs</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>plutôt</string>
+		<key>shortcut</key>
+		<string>plutot</string>
+		<key>timestamp</key>
+		<integer>1485621375</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>population</string>
+		<key>shortcut</key>
+		<string>pop°</string>
+		<key>timestamp</key>
+		<integer>1485622943</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -2628,19 +2804,35 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>préfère</string>
+		<key>shortcut</key>
+		<string>prefere</string>
+		<key>timestamp</key>
+		<integer>1485616130</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>préférence</string>
+		<key>shortcut</key>
+		<string>preference</string>
+		<key>timestamp</key>
+		<integer>1485616163</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>préférer</string>
+		<key>shortcut</key>
+		<string>preferer</string>
+		<key>timestamp</key>
+		<integer>1485616137</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>profession</string>
 		<key>shortcut</key>
 		<string>pro°</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>professionnel</string>
-		<key>shortcut</key>
-		<string>prol</string>
-		<key>timestamp</key>
-		<integer>1483726072</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -2804,6 +2996,62 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>puisque</string>
+		<key>shortcut</key>
+		<string>psq</string>
+		<key>timestamp</key>
+		<integer>1485890988</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>puisqu'elle</string>
+		<key>shortcut</key>
+		<string>psq'elle</string>
+		<key>timestamp</key>
+		<integer>1485891009</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>puisqu'elles</string>
+		<key>shortcut</key>
+		<string>psq'elles</string>
+		<key>timestamp</key>
+		<integer>1485891056</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>puisqu'il</string>
+		<key>shortcut</key>
+		<string>psq'il</string>
+		<key>timestamp</key>
+		<integer>1485890994</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>puisqu'ils</string>
+		<key>shortcut</key>
+		<string>psq'ils</string>
+		<key>timestamp</key>
+		<integer>1485891050</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>puisqu'on</string>
+		<key>shortcut</key>
+		<string>psq'on</string>
+		<key>timestamp</key>
+		<integer>1485891015</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>puisqu'un</string>
+		<key>shortcut</key>
+		<string>psq'un</string>
+		<key>timestamp</key>
+		<integer>1485891028</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>psychologue</string>
 		<key>shortcut</key>
 		<string>psy</string>
@@ -2841,6 +3089,14 @@
 		<string>pt</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>particulier</string>
+		<key>shortcut</key>
+		<string>ptc</string>
+		<key>timestamp</key>
+		<integer>1485974461</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -2945,6 +3201,14 @@
 		<string>qte</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>quantités</string>
+		<key>shortcut</key>
+		<string>qtes</string>
+		<key>timestamp</key>
+		<integer>1485626497</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -3060,6 +3324,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>rapidement</string>
+		<key>shortcut</key>
+		<string>rpdt</string>
+		<key>timestamp</key>
+		<integer>1485620260</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>représentation</string>
 		<key>shortcut</key>
 		<string>rps°</string>
@@ -3113,6 +3385,14 @@
 		<string>septante</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>sidération</string>
+		<key>shortcut</key>
+		<string>sid°</string>
+		<key>timestamp</key>
+		<integer>1486302102</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -3468,6 +3748,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>très</string>
+		<key>shortcut</key>
+		<string>tres</string>
+		<key>timestamp</key>
+		<integer>1485614125</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>troubles</string>
 		<key>shortcut</key>
 		<string>trs</string>
@@ -3524,6 +3812,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>tant que</string>
+		<key>shortcut</key>
+		<string>ttq</string>
+		<key>timestamp</key>
+		<integer>1486125163</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>touts</string>
 		<key>shortcut</key>
 		<string>tts</string>
@@ -3577,6 +3873,14 @@
 		<string>vtag</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>vulnérabilité</string>
+		<key>shortcut</key>
+		<string>vulnerabilite</string>
+		<key>timestamp</key>
+		<integer>1485619518</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
