@@ -40,9 +40,9 @@ echo  ''
 cecho '                                 LICENSED BY'                                    $red
 cecho '                                  $LICENSOR'                                     $red
 echo  ''
-cecho '                            K K  A    RRR  L    #   SS'                          $red
-cecho '                           KK   AA   RR   L        S'                            $red
-cecho '                          K K  A A  R R  LLL     SS'                             $red
+cecho '                            K K  V V  PPP  BB   #   SS'                          $red
+cecho '                           KK   V V  PPP  BBB      S'                            $red
+cecho '                          K K   V   P    BBB     SS'                             $red
 echo  ''
 cecho '                 WARNING: USE THIS SCRIPT AT YOUR OWN RISK.'                     $red
 echo  ''
@@ -107,7 +107,7 @@ echo  'Network'
 
 echo "Which Mac is it? [eg ''Mac'', ''Mac' Pro', ''Mac'Book', ''Mac'Book Air',"
 echo "''Mac'Book Pro' or ''Mac'intosh']"
-echo "Note: If 'e'Mac'', 'i'Mac'' or 'Power 'Mac'', enter blank."
+echo "NB If 'e'Mac'', 'i'Mac'' or 'Power 'Mac'', enter blank."
 read computername
 sudo scutil --set ComputerName "Karl Bertin's Mac${computername}"
 sudo scutil --set HostName "Karl Bertin's Mac${computername}"
@@ -119,9 +119,45 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 #sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "kvpb"
 # Set computer name to 'Karl Bertin's Mac-'.
 
-echo  'Login window & screen saver (NSGlobalDomain, com.apple.loginwindow, com.apple.screensaver)'
+echo  'Login window & screen saver (NSGlobalDomain, com.apple.loginwindow, com.apple.HIToolbox.loginwindow, com.apple.screensaver)'
 
 sudo defaults write /Library/Preferences/com.apple.loginwindow autoLoginUser "" # Disable automatic login.
+
+sudo plistbuddy -c "Add :AppleCurrentKeyboardLayoutInputSourceID string com.apple.keylayout.US" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Set :AppleCurrentKeyboardLayoutInputSourceID com.apple.keylayout.US" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox dict" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Delete :com.apple.HIToolbox:AppleDefaultAsciiInputSource" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox:AppleDefaultAsciiInputSource array" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox:AppleDefaultAsciiInputSource:InputSourceKind string Keyboard\ Layout" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Set :com.apple.HIToolbox:AppleDefaultAsciiInputSource:InputSourceKind Keyboard\ Layout" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox:AppleDefaultAsciiInputSource:KeyboardLayout\ ID integer ${keyboardlayoutid}" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Set :com.apple.HIToolbox:AppleDefaultAsciiInputSource:KeyboardLayout\ ID ${keyboardlayoutid}" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox:AppleDefaultAsciiInputSource:KeyboardLayout\ Name string U.S." "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Set :com.apple.HIToolbox:AppleDefaultAsciiInputSource:KeyboardLayout\ Name U.S." "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Delete :com.apple.HIToolbox:AppleEnabledInputSources" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox:AppleEnabledInputSources array" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox:AppleEnabledInputSources:0 dict" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox:AppleEnabledInputSources:0:InputSourceKind string Keyboard\ Layout" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Set :com.apple.HIToolbox:AppleEnabledInputSources:0:InputSourceKind Keyboard\ Layout" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox:AppleEnabledInputSources:0:KeyboardLayout\ ID integer ${keyboardlayoutid}" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Set :com.apple.HIToolbox:AppleEnabledInputSources:0:KeyboardLayout\ ID ${keyboardlayoutid}" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox:AppleEnabledInputSources:0:KeyboardLayout\ Name string U.S." "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Set :com.apple.HIToolbox:AppleEnabledInputSources:0:KeyboardLayout\ Name U.S." "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Delete :com.apple.HIToolbox:AppleSelectedInputSources" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox:AppleSelectedInputSources array" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox:AppleSelectedInputSources:0 dict" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox:AppleSelectedInputSources:0:InputSourceKind string Keyboard\ Layout" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Set :com.apple.HIToolbox:AppleSelectedInputSources:0:InputSourceKind Keyboard\ Layout" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox:AppleSelectedInputSources:0:KeyboardLayout\ ID integer ${keyboardlayoutid}" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Set :com.apple.HIToolbox:AppleSelectedInputSources:0:KeyboardLayout\ ID ${keyboardlayoutid}" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Add :com.apple.HIToolbox:AppleSelectedInputSources:0:KeyboardLayout\ Name string U.S." "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+sudo plistbuddy -c "Set :com.apple.HIToolbox:AppleSelectedInputSources:0:KeyboardLayout\ Name U.S." "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
+# Add and set login window input keyboard layout to US. [I'd rather do this the `defaults` way.]
+
+sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
+sudo defaults write /var/ard/Library/Preferences/com.apple.menuextra.textinput ModeNameVisible -bool true
+sudo chmod 777 /Library/Preferences/com.apple.loginwindow.plist
+# Display Input keyboard layout menu in the login window.
 
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName # Display IP address, hostname, OS version etc when clicking the clock in the login window.
 
@@ -138,11 +174,55 @@ defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 # Require password immediately after sleep or screen saver begins. (i) Enable Require password immediately after sleep or screen saver begins.
 
-echo  'Keyboard (NSGlobalDomain, ApplePressAndHoldEnabled, com.apple.universalaccess)'
+echo  'Keyboard (NSGlobalDomain, com.apple.HIToolbox, com.apple.universalaccess)'
+
+sudo plistbuddy -c "Add :AppleCurrentKeyboardLayoutInputSourceID string com.apple.keylayout.US" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Set :AppleCurrentKeyboardLayoutInputSourceID com.apple.keylayout.US" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Delete :AppleDefaultAsciiInputSource" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleDefaultAsciiInputSource:InputSourceKind string Keyboard\ Layout" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Set :AppleDefaultAsciiInputSource:InputSourceKind Keyboard\ Layout" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleDefaultAsciiInputSource:KeyboardLayout\ ID integer 0" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Set :AppleDefaultAsciiInputSource:KeyboardLayout\ ID 0" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleDefaultAsciiInputSource:KeyboardLayout\ Name string U.S." "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Set :AppleDefaultAsciiInputSource:KeyboardLayout\ Name U.S." "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Delete :AppleEnabledInputSources" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleEnabledInputSources:0 dict" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleEnabledInputSources:0:InputSourceKind string Keyboard\ Layout" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Set :AppleEnabledInputSources:0:InputSourceKind Keyboard\ Layout" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleEnabledInputSources:0:KeyboardLayout\ ID integer 0" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Set :AppleEnabledInputSources:0:KeyboardLayout\ ID 0" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleEnabledInputSources:0:KeyboardLayout\ Name string U.S." "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Set :AppleEnabledInputSources:0:KeyboardLayout\ U.S." "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Delete :AppleSelectedInputSources" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleSelectedInputSources:0 dict" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleSelectedInputSources:0:InputSourceKind string Keyboard\ Layout" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Set :AppleSelectedInputSources:0:InputSourceKind Keyboard\ Layout" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleSelectedInputSources:0:KeyboardLayout\ ID integer 0" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Set :AppleSelectedInputSources:0:KeyboardLayout\ ID 0" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleSelectedInputSources:0:KeyboardLayout\ Name string U.S." "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Set :AppleSelectedInputSources:0:KeyboardLayout\ Name U.S." "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo chown root:admin "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo chmod 644 "/Library/Preferences/com.apple.HIToolbox.plist"
+# Add and set system input keyboard layout to US. [I'd rather do this the `defaults` way.]
+sudo plistbuddy -c "Add :AppleCurrentKeyboardLayoutInputSourceID string com.apple.keylayout.UnicodeHexInput" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleDefaultAsciiInputSource:InputSourceKind string Keyboard\ Layout" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleDefaultAsciiInputSource:KeyboardLayout\ ID integer -1" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleDefaultAsciiInputSource:KeyboardLayout\ Name string Unicode\ Hex\ Input" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleEnabledInputSources:0 dict" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleEnabledInputSources:0:InputSourceKind string Keyboard\ Layout" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleEnabledInputSources:0:KeyboardLayout\ ID integer -1" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleEnabledInputSources:0:KeyboardLayout\ Name string Unicode\ Hex\ Input" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleSelectedInputSources:0 dict" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleSelectedInputSources:0:InputSourceKind string Keyboard\ Layout" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleSelectedInputSources:0:KeyboardLayout\ ID integer -1" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo plistbuddy -c "Add :AppleSelectedInputSources:0:KeyboardLayout\ Name string Unicode\ Hex\ Input" "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo chown root:admin "/Library/Preferences/com.apple.HIToolbox.plist"
+sudo chmod 644 "/Library/Preferences/com.apple.HIToolbox.plist"
+# Add Unicode hex input system input keyboard layout. [I'd rather do this the `defaults` way.]
 
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3 # Enable full keyboard access for all controls.
 
-defaults write ApplePressAndHoldEnabled -bool false # Disable press-and-hold for keys.
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false # Disable press-and-hold for keys.
 #defaults write NSGlobalDomain InitialKeyRepeat -int 5 # /!\ ≤10 is too fast for 2012- MacBook due to their less precise keyboards. (i) 15: GUI shortest.
 defaults write NSGlobalDomain InitialKeyRepeat -int 10 # Set key repeat triggering delay to even shorter.
 defaults write NSGlobalDomain KeyRepeat -int 0 # Set key repeat rate to fastest. [i] Enables key repeat.
@@ -276,7 +356,7 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true # D
 
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true # Enable AirDrop with Ethernet and on unsupported Mac running Mac OS X Lion.
 
-defaults write com.apple.finder QuitMenuItem -bool true # Enable Quit Finder. (i) [⌘] + [Q] shortcut works as usual.
+defaults write com.apple.finder QuitMenuItem -bool true # Enable Quit Finder  ⌘ Q.
 
 #defaults write com.apple.finder WarnOnEmptyTrash -bool false # Disable the trash emptying warning.
 
@@ -291,8 +371,8 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 # Autoopen a new Finder window when a new volume is mounted.
 
 defaults write com.apple.finder NewWindowTarget -string "PfLo"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
-# Set home as new windows directory. (i) Use "PfDe" and "file://${HOME}/Desktop/" for desktop or "PfLo" and "file:///path" for other paths.
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+# Set home as new windows directory. (i) Use "PfDe" and "file://${HOME}/Desktop" for desktop or "PfLo" and "file:///path" for other paths.
 
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true # Enable spring loading for directories.
 defaults write NSGlobalDomain com.apple.springing.delay -float 0 # Set spring loading delay to null.
@@ -322,10 +402,10 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 #sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
 #sudo ln -s { Path to picture } /System/Library/CoreServices/DefaultDesktop.jpg
 # Set wallpaper. (i) `DefaultDesktop.jpg` is a symlink. (i) Wallpapers are at `/Library/Desktop Pictures`, default wallpaper is `Wave.jpg`.
-#defaults write /Library/Preferences/com.apple.loginwindow DesktopPicture "{ /path/to/picture.jpg }"
-#defaults write com.apple.desktop Background '{default = {ImageFilePath = "{ /path/to/picture.jpg }"; };}'
+#defaults write /Library/Preferences/com.apple.loginwindow DesktopPicture "/{ path }/{ to }/{ picture }.jpg"
+#defaults write com.apple.desktop Background '{default = {ImageFilePath = "/{ path }/{ to }/{ picture }.jpg"; };}'
 # Set wallpaper. /!\ Deprecated from OS X 10.9.5 Mavericks onwards.
-#osascript -e 'tell application "Finder" to set desktop picture to "{ /full/path/to/picture.jpg }" as POSIX file' # Set Desktop wallpaper.
+#osascript -e 'tell application "Finder" to set desktop picture to "/{ full }/{ path }/{ to }/{ picture }.jpg" as POSIX file' # Set Desktop wallpaper.
 
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv" # Set default view to columns. (i) Other viewing modes are 'icnv' for icons, 'Nlsv' for newlines and 'Flwv' for Cover flow.
 
@@ -382,7 +462,7 @@ echo  '‘Screenshooter’ (com.apple.screencapture)'
 
 defaults write com.apple.screencapture type -string 'png' # Set screenshots format to PNG. (i) Other options are `bmp` for Windows Bitmap, `gif` for GIF, `jpg` for JPEG, `jp2` for JPEG2000, `tif` for TIFF, `pict` for Macintosh PICT and `tga` for TARGA.
 
-defaults write com.apple.screencapture name -string 'Screenshot' # Set screenshots filename as 'Screenshot { YYYY }-{ MM }-{ DD } at { h }.{ mn }.{ s }.{ ext }'. (i) default option: 'Screen Shot'; custom options: '' and '\b' lead to a whitespace at the filename start [that the latter cannot erase]. [Note: I didn't find any delete escape character or how to send hex code with `-data`.]
+defaults write com.apple.screencapture name -string 'Screenshot' # Set screenshots filename as 'Screenshot { YYYY }-{ MM }-{ DD } at { h }.{ mn }.{ s }.{ ext }'. (i) default option: 'Screen Shot'; custom options: '' and '\b' lead to a whitespace at the filename start [that the latter cannot erase]. [I didn't find any delete escape character or how to send hex code with `-data`.]
 #sudo cp /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings ~/Desktop/ScreenCapture.strings
 #sudo plutil -convert xml1 /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings
 #sed -i -e \
@@ -532,6 +612,8 @@ echo  'Terminal & X11 (com.apple.terminal, org.x.X11, com.apple.x11)'
 
 defaults write com.apple.terminal StringEncodings -array 4 # Set Terminal encoding to UTF-8.
 
+defaults write com.apple.terminal ApplePressAndHoldEnabled -bool false # Disable Terminal press-and-hold for keys.
+
 defaults write com.apple.terminal SecureKeyboardEntry -bool true # Enable Terminal secure keyboard entry.
 
 defaults write com.apple.terminal FocusFollowsMouse -bool true
@@ -615,7 +697,7 @@ echo  'Safari & WebKit (com.apple.safari)'
 defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
 # Enable [Tab] to highlight webpages items. (i) Enable Press Tab to highlight each item on a webpage.
-defaults write com.apple.Safari CommandClickMakesTabs -int 1 # Enable [Command] + [Right click] to open links in new tabs. (i) Enable ⌘-click opens a link in a new tab.
+defaults write com.apple.Safari CommandClickMakesTabs -int 1 # Enable Command + Right click to open links in new tabs. (i) Enable ⌘ -click opens a link in a new tab.
 
 defaults write com.apple.Safari WebKitDefaultTextEncodingName -string "utf-8" # Set default encoding to UTF-8. (i) Set Default encoding to Unicode (UTF-8).
 defaults write com.apple.Safari HistoryAgeInDaysLimit -int 2147483647 # 'Disable' history automatic removal. (i) Set Remove history items to ‘After Int32’.
@@ -680,11 +762,11 @@ defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false # (i) Dis
 # Disable autofill.
 
 defaults write com.apple.Safari IncludeDevelopMenu -bool true # Display develop menu in the menu bar. (i) Enable Show Develop menu in menu bar.
-defaults write com.apple.Safari ShowStatusBar -bool true # Display the status bar. (i) Enable Show status bar  ⌘/.
+defaults write com.apple.Safari ShowStatusBar -bool true # Display the status bar. (i) Enable Show status bar  ⌘ /.
 
 defaults write com.apple.Safari BookmarksMenuIncludesRendezvous -bool false # Disable bookmarks Bonjour menu.
 defaults write com.apple.Safari ProxiesInBookmarksBar "()" # Clear favorite bookmarks bar. (i) Remove Reading list and Top sites from the bookmarks bar.
-defaults write com.apple.Safari ShowFavoritesBar -bool false # Hide favorite bookmarks bar. (i) Hide Favorites bar  ⇧⌘B.
+defaults write com.apple.Safari ShowFavoritesBar -bool false # Hide favorite bookmarks bar. (i) Hide Favorites bar  ⇧ ⌘ B.
 
 defaults write com.apple.Safari SidebarViewModeIdentifier -string "Bookmarks" # Display bookmarks sidebar.
 defaults write com.apple.Safari ShowSidebarInNewWindows -bool false # Hide sidebar in new windows.
@@ -695,7 +777,7 @@ echo  'Mail (com.apple.mail)'
 
 defaults write com.apple.mail DisableInlineAttachmentViewing -bool true # Disable inline attachments. (i) Only show the icons.
 
-defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false # Copy email addresses as `first.last@domain.suffix` instead of 'First Last <first.last@domain.suffix>'. [i] Disable Use smart addresses.
+defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false # Copy email addresses as `{ first }.{ last }@{ domain }.{ sx }` instead of '{ First } { Last } <{ first }.{ last }@{ domain }.{ sx }>'. [i] Disable Use smart addresses.
 
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedAscending" -string "yes"
@@ -770,7 +852,7 @@ ln -s ~/.files/.zprofile ~/.zprofile
 ln -s ~/.files/.zhistory ~/.zhistory
 ln -s ~/.files/.ssh ~/.ssh # ln -s ~/.files/.ssh/config ~/.ssh/config
 ln -s ~/.files/.vimrc ~/.vimrc
-ln -s ~/.files/.vim/ ~/.vim
+ln -s ~/.files/.vim ~/.vim
 ln -s ~/.files/.gitconfig ~/.gitconfig
 ln -s ~/.files/.gitignore_global ~/.gitignore_global
 ln -s ~/.files/lib/AppleScripts ~/Library/Scripts
@@ -783,7 +865,9 @@ ln -s ~/DCIM ~/Pictures/DCIM
 ln -s ~/Camera ~/Pictures/Camera
 # Add user-specific custom symlinks.
 
-#chflags nohidden ~/Library/ # Display the hidden ~/Library/. (i) This script also enables hidden files display, which overrides this.
+cd ~ && touch .hushlogin # Add .hushlogin file to current users' home directory. /?\ Speeds terminal emulator opening up ? (https://news.ycombinator.com/item?id=3879833)
+
+#chflags nohidden ~/Library # Display the hidden ~/Library/. (i) This script also enables hidden files display, which overrides this.
 
 cecho 'Third-party: Syswide & userspec xenogenetic software & prefs' $yellow
 
@@ -823,7 +907,7 @@ defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true # S
 echo  'Transmission (org.m0k.transmission)'
 
 defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
-defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Transmission/"
+defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Transmission"
 # Set incomplete downloads path to `~/Downloads/Transmission/`.
 
 #defaults write org.m0k.transmission DeleteOriginalTorrent -bool true # Move original torrent files to trash.
