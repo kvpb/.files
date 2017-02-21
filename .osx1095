@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 default='\033[0;39m'
 hidefault='\033[0;30;39m'
