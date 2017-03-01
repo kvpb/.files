@@ -49,7 +49,7 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
 
 # &nbsp;&nbsp;`uenctcnyyyymmdd.docx`, `flashcardstructures.docx`, `First_Last_UEN_GN_Memoire.docx`, `notetakingstructures.docx` & `notetakingsystem.docx`
 
-<p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://rawgit.com/kvpb/126a8d90426df8ade0d29bf7abf9b208/raw/4037a20b8a0be0c143d2808d9171c9de855faa71/karlbertinsnotetakingsystemfrontcover.svg'></a>
+<p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://rawgit.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/70fb4831a8aa9884b1f68e7da5794dd763f353cc/karlbertinsscratchingsystemfrontcover.svg'></a>
 
 #### What-is
 
