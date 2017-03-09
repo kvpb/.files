@@ -126,6 +126,8 @@ alias	ofs='open -b com.apple.Safari ' # Open file using Safari.
 
 alias	ofvlc='open -b org.videolan.vlc ' # Open file using VLC.app.
 
+alias	ofmw='open -b com.microsoft.Word' # Open file using Word.app.
+
 alias	rff='open -R ' # Reveal file(s) using Finder.
 
 # 		kvpb's		user-specific aliases
