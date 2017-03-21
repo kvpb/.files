@@ -639,12 +639,26 @@ defaults write com.apple.TextEdit PlainTextEncoding -int 4 # (i) Set TextEdit: P
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4 # (i) Set TextEdit: Preferences: Open and save: Plain text encoding: Saving files to Unicode (UTF-8).
 
 defaults write com.apple.TextEdit NSFixedPitchFont -string "Menlo-Regular"
-defaults write com.apple.TextEdit NSFixedPitchFontSize -int "11"
-# Set plain text font to Menlo regular 11pt.
+defaults write com.apple.TextEdit NSFixedPitchFontSize -int "10"
+# Set plain text font to Apple Menlo 10pt. (i) OS X's default fixed-width font.
+#defaults write com.apple.TextEdit NSFixedPitchFont -string "HelveticaMonospacedPro-Rg"
+#defaults write com.apple.TextEdit NSFixedPitchFontSize -int "11"
+# Set plain text font to Helvetica Monospaced 11pt. [Menlo's close enough to Helvetica to look coherent. I'd rather use Helvetica Monospaced. I may try Pragmata someday.]
+#defaults write com.apple.TextEdit NSFont -string "Times-Roman"
+#defaults write com.apple.TextEdit NSFontSize -int "12"
+# Set rich text font to Linotype Times Roman 12pt. (?) I's 'start small' preferred serif typeface, kinda chosen retrogradually from APA Style's. /!\ Prefer pro to standard fonts versions. [I'm keeping that one 'til L3. I'll ditch it for Times New Roman 12pt from M1 on.]
 #defaults write com.apple.TextEdit NSFont -string "TimesNewRomanPSMT"
-defaults write com.apple.TextEdit NSFont -string "HelveticaNeue"
-defaults write com.apple.TextEdit NSFontSize -int "12"
-# Set rich text font to Helvetica neue 12pt.
+#defaults write com.apple.TextEdit NSFontSize -int "12"
+# Set rich text font to Monotype Times New Roman 12pt. (i) I and APA Style's preferred serif typeface. http://blog.apastyle.org/apastyle/2013/03/fonts-of-knowledge.html /!\ Prefer pro to standard fonts versions.
+#defaults write com.apple.TextEdit NSFont -string "ArialMT"
+#defaults write com.apple.TextEdit NSFontSize -int "11"
+# Set rich text font to Monotype Arial 11pt. (i) APA Style & Paris Descartes University's preferred serif typeface.
+defaults write com.apple.TextEdit NSFont -string "Helvetica"
+defaults write com.apple.TextEdit NSFontSize -int "11"
+# Set rich text font to Linotype Helvetica 11pt. (i) APA Style's preferred sans serif typefaces and I's 'start small' one. /!\ Prefer pro to standard fonts versions. [I intend to ditch it for Helvetica Neue 11pt by the M1 beginning too.]
+#defaults write com.apple.TextEdit NSFont -string "HelveticaNeue"
+#defaults write com.apple.TextEdit NSFontSize -int "11"
+# Set rich text font to Linotype Helvetica Neue 11pt. (i) I's preferred sans serif typeface. /!\ Prefer pro to standard fonts versions. [Fuck Akzidenz Grotesk, long live Neue Haas Grotesk. I'll still keep using that one for personal writings only since Paris 5 asks for Arial.]
 
 defaults write com.apple.TextEdit RichText -int 0 # Set new document text format to plain text.
 defaults write com.apple.TextEdit ShowPageBreaks -bool true # (i) Disable Wrap to page.
