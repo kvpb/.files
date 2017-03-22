@@ -47,7 +47,7 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
 
 - - -
 
-# &nbsp;&nbsp;`uenctcnyyyymmdd.docx`, `flashcardstructures.docx`, `First_Last_UEN_GN_Memoire.docx`, `notetakingstructures.docx` & `notetakingsystem.docx`
+# &nbsp;&nbsp;`flashcardsstructures.docx`, `uenctcnyyyymmdd.docx`, `uenyyyymmdd.docx`, `Forename_Surname_UEN_GN_Fiche_de_lecture.docx`, `Forename_Surname_UEN_GN_Memoire.docx`, `notetakingstructures.docx` & `notetakingsystem.docx`
 
 <p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://rawgit.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/70fb4831a8aa9884b1f68e7da5794dd763f353cc/karlbertinsscratchingsystemfrontcover.svg'></a>
 
@@ -65,7 +65,7 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
 
 #### To-do
 
-####&nbsp;&nbsp;`.macosx`, `.osx` & `.macos`
+#### &nbsp;&nbsp;`.macosx`, `.osx` & `.macos`
 
 - [x] ~~Reorganize the scripts into 3 parts:~~
   - [x] First-party: System-wide & user-specific preferences
