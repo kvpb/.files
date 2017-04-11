@@ -59,7 +59,7 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
 
 &nbsp;&nbsp;Launch a word processor (eg Word for Mac 2011 or TextEdit) then… No, really. I mean, seriously. Please, don't even tell me you need a walkthrough to use these.
 
-&nbsp;&nbsp;**Note:** Be confident with these, they're self-explicit as possible. It's built to be easy and fast to learn, use and understand. If you've got any suggestion to improve it, feel free to jump in, express yourself, let loose — open an issue or contact me via Facebook. You're always welcome.
+&nbsp;&nbsp;**Note:** Be confident with these, they're self-explicit as possible. It's built to be easy and fast to learn, use and understand. If you've got any suggestion to improve it, feel free to jump in, express yourself, let loose --- open an issue or contact me via Facebook. You're always welcome.
 
 - - -
 
@@ -71,7 +71,7 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
   - [x] First-party: System-wide & user-specific preferences
   - [x] Second-party: User-specific filesystem customs
   - [x] Third-party: System-wide & user-specific xenogenetic software & preferences
-- [x] Reorganize the scripts by layers (my 3 parts, from firmware, kernel and drivers to applications, from important to trivial and from open standard to closed proprietary)
+- [x] ~~Reorganize the scripts by layers (my 3 parts, from firmware, kernel and drivers to applications, from important to trivial and from open standard to closed proprietary)~~
 
 - - -
 
@@ -89,8 +89,8 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
 
 #### Author
 
-<p align='center'><a href='http://kvpb.co'><img src='https://rawgit.com/kvpb/b9c0737f2941542ae22b2806b66a3c19/raw/2352bb5c55f1f6246872a796b32980ea5e816412/quickresponsecode.svg'></a><br>
-<b>Karl Bertin (kvpb)</b><br>
-<s><a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a></s> | <a href='https://www.facebook.com/karlbertin'>Facebook</a>
+<p align='center'><a href='http://kvpb.co'><img src='https://rawgit.com/kvpb/b9c0737f2941542ae22b2806b66a3c19/raw/9867dde923550a08d05f3fae3a2b02905ea8345c/quickresponsecode.svg'></a><br>
+<b>Karl 'Kabe' Bertin (kvpb)</b><br>
+<s><a href='https://www.linkedin.com/in/karlbertin' title="Unavailable">LinkedIn</a></s> | <a href='https://www.facebook.com/karlbertin'>Facebook</a>
 
-&nbsp;&nbsp;**Note:** Thank me or not but please give credit to the people I took code from. There's no ‘I've got things to do now, I'll do it later’ excuse.
+&nbsp;&nbsp;**Note:** Thank me or not but please give credit to the people I took code from. There's no 'I've got things to do now, I'll do it later' excuse.
