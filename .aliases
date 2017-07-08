@@ -1,10 +1,124 @@
+# Shells special built-in utilities commands
+
+
+
+# Shells builtin utilities commands
+
+# 		cd			change the working directory
+# (i) Bourne shell (sh) builtin.
+
+alias	..='cd ..' # Change the working dir to current user's parent one.
+
+alias	...='cd ../..' # Change the working dir to current's grand-parent one.
+
+alias	....='cd ../../..' # Change the working dir to current's grand-grand-parent one.
+
+alias	.....='cd ../../../..' # Change the working dir to current's grand-grand-grand-parent one.
+
+alias	.....='cd ../../../../..' # Change the working dir to current's grand-grand-grand-grand-parent one.
+
+alias	rt='cd /' # Change the working dir to root's.
+
+alias	.f='cd ~/.files' # Change the working dir to my dotfiles'.
+
+alias	kb='cd ~/kbs' # Change the working dir to mine.
+
+alias	mi='cd ~/misc' # Change the working dir to my misc files'.
+
+alias	op='cd ~/ops' # Change the working dir to my ongoing operations'.
+
+alias	p5='cd ~/ops/paris5' # Change the working dir to my Paris Descartes University-dedicated one.
+
+alias	v1='cd /Volumes/KBSPCMD100R/VOICE/FOLDER01'
+alias	v2='cd /Volumes/KBSPCMD100R/VOICE/FOLDER02'
+alias	v3='cd /Volumes/KBSPCMD100R/VOICE/FOLDER03'
+alias	v4='cd /Volumes/KBSPCMD100R/VOICE/FOLDER04'
+alias	v5='cd /Volumes/KBSPCMD100R/VOICE/FOLDER05'
+
+alias	de='cd ~/Desktop' # Change the working dir to current macOS user's desktop'.
+
+alias	dc='cd ~/Documents' # Change the working dir to current macOS user's documents'.
+
+alias	dl='cd ~/Downloads' # Change the working dir to current macOS user's downloads'.
+
+alias	li='cd ~/Library' # Change the working dir to current macOS user's library's.
+
+alias	mo='cd ~/Movies' # Change the working dir to current macOS user's movies'.
+
+alias	mu='cd ~/Music' # Change the working dir to current macOS user's music's.
+
+alias	it='cd ~/Music/iTunes' # Change the working dir to current macOS user's iTunes'.
+
+alias	pi='cd ~/Pictures' # Change the working dir to current macOS user's pictures'.
+
+alias	.t='cd ~/.Trash' # Change the working dir to current macOS user's trash's.
+
+alias	db='cd ~/Dropbox' # Change the working dir to current user's Dropbox's.
+
+#		source
+# (i) Bourne-again shell (bash) builtin.
+
+alias	src='source'
+
+#		chdir
+# (i) Z shell (zsh) builtin.
+
+alias	chdir='cd'
+
+# 'Internal' programs commands
+
+#		killall		kill processes by name
+
+alias	ka='killall '
+
+#		ruby		Interpreted object-oriented scripting language
+
+alias	rb='ruby '
+
+#		python		an interpreted, interactive, object-oriented programming language
+
+alias	py='python '
+
+#		find		walk a file hierarchy
+
+alias	rds="find . -name '.DS_Store' -delete -print" # '.DS_Store remover' --- Find from current directory file named '.DS_Store', remove it and display the full file name o the standard output followed by a newline.
+
+#		tar			manipulate tape archives
+
+alias	tgz='tar -czvf ' # Create a new archive containing the specified items then compress the resulting archive with gzip, listing each file name as it is read written to the archive.
+
+#		defaults	access the Mac OS X user defaults system
+
+alias	rlp='defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock'
+
+#		open		open files and directories
+
+alias	o='open '
+
+alias	ofte='open -e ' # Open file using TextEdit.app.
+
+alias	ofp='open -b com.apple.Preview ' # Open file using Preview.
+
+alias	ofqtp='open -b com.apple.QuickTimePlayerX ' # Open file using QuickTime Player.
+
+alias	ofs='open -b com.apple.Safari ' # Open file using Safari.
+
+alias	ofvlc='open -b org.videolan.vlc ' # Open file using VLC.app.
+
+alias	ofmw='open -b com.microsoft.Word ' # Open file using Word.app.
+
+alias	rff='open -R ' # Reveal file(s) using Finder.
+
+#		qlmanage	Quick Look server debug and management tool
+
+alias	ql='qlmanage -p ' # Display the Quick Look generated preview for the specified files.
+
 # 		ls			list directory contents
 
 alias	la='ls -aF' # List directory contents including directory entries whose names begin with a dot ('.'). [The -p option might be useless since I wrote another alias for ls to extend its behavior the way I want it that includes the option --- still, if the other alias is disabled, it wouldn't work anymore.]
 
-#alias	lh='ls -aF | grep '\''^\.'\' # List directory hidden files only.
-
-alias	lh='ls -dF .*' # List directory hidden files only.
+#alias	lh='ls -aF | grep '\''^\.'\' # List directory hidden files.
+alias	lh='ls -dF .*' # List directory hidden files.
 
 alias	ls='pwd && ls -lp' # Print working directory then list directory contents in long format writing a slash (`/') after each filename if that file is a directory.
 
@@ -16,49 +130,16 @@ alias	l@='ls -@' # List directory contents and extended attributes keys and size
 
 alias	du='du -hc ' # Display humanly disk usage statistics and a grand total.
 
-# 		cd			change the working directory
+#		date		display or set date and time
+#		cal			displays a calendar and the date of easter
 
-alias	..='cd ..' # Change the working dir to current user's parent one.
+alias	dcal='date | grep -C6 --color "\b$(date +%e)\b" && cal | sed -n "1!p" | grep -C6 --color "\b$(date +%e)\b"' # 'Dated calendar' --- Display a calendar, substitute month of year with current date in full format and highlight current day of month.
 
-alias	...='cd ../..' # Change the working dir to current's grand-parent one.
+#		clear		clear the terminal screen
 
-alias	....='cd ../../..' # Change the working dir to current's grand-grand-parent one.
+alias	cls="clear && printf '\e[3J'" # Clear the terminal screen if this is possible then write the VT100 escape code for resetting the terminal to the standard output under the control of the format.
 
-alias	.....='cd ../../../..' # Change the working dir to current's grand-grand-grand-parent one.
-
-#alias	rt='cd /' # Change the working dir to root's.
-
-alias	.f='cd ~/.files' # Change the working dir to cur user's dotfiles'.
-
-alias	de='cd ~/Desktop' # Change the working dir to cur user's desktop'.
-
-alias	dc='cd ~/Documents' # Change the working dir to cur user's documents'.
-
-alias	dl='cd ~/Downloads' # Change the working dir to cur user's downloads'.
-
-alias	db='cd ~/Dropbox' # Change the working directory to current user's Dropbox's.
-
-alias	kb='cd ~/kbs' # Change the working dir to my personal one.
-
-alias	li='cd ~/Library' # Change the working directory to current user's library's.
-
-alias	mi='cd ~/misc' # Change the working dir to current user's misc files'.
-
-alias	mo='cd ~/Movies' # Change the working dir to current user's movies'.
-
-alias	mu='cd ~/Music' # Change the working dir to current user's music's.
-
-alias	op='cd ~/ops' # Change the working dir to my ongoing operations'.
-
-alias	p5='cd ~/ops/paris5' # Change the working dir to my current unversity-dedicated one.
-
-alias	pi='cd ~/Pictures' # Change the working dir to current user's pictures'.
-
-alias	.t='cd ~/.Trash' # Change the working dir to current user's trash's.
-
-alias	v1='cd /Volumes/KBSPCMD100R/VOICE/FOLDER01'
-
-alias	v3='cd /Volumes/KBSPCMD100R/VOICE/FOLDER03'
+# External programs commands
 
 # 		git			the stupid content tracker
 
@@ -93,49 +174,3 @@ alias	gpch="git push --force --tags origin 'refs/heads/*'" # Push corrected hist
 alias	gpf='git push --force' # Update remote refs that are not ancestors of the local ref used to overwrite it, along with associated objects.
 
 alias	gpo='git push origin ' # Update remote refs along with associated objects, pushing "matching" branches to origin.
-
-#		killall		kill processes by name
-
-alias	ka='killall '
-
-#		python		an interpreted, interactive, object-oriented programming language
-
-alias	py='python '
-
-#		ruby		Interpreted object-oriented scripting language
-
-alias	rb='ruby '
-
-#		tar			manipulate tape archives
-
-alias	tgz='tar -czvf ' # Create a new archive containing the specified items then compress the resulting archive with gzip, listing each file name as it is read written to the archive.
-
-#		defaults	access the Mac OS X user defaults system
-
-alias	rlp='defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock'
-
-#		open		open files and directories
-
-alias	ofte='open -e ' # Open file using TextEdit.app.
-
-alias	ofp='open -b com.apple.Preview ' # Open file using Preview.
-
-alias	ofqtp='open -b com.apple.QuickTimePlayerX ' # Open file using QuickTime Player.
-
-alias	ofs='open -b com.apple.Safari ' # Open file using Safari.
-
-alias	ofvlc='open -b org.videolan.vlc ' # Open file using VLC.app.
-
-alias	ofmw='open -b com.microsoft.Word' # Open file using Word.app.
-
-alias	rff='open -R ' # Reveal file(s) using Finder.
-
-#		qlmanage	Quick Look server debug and management tool
-
-alias	ql='qlmanage -p' # Display the Quick Look generated preview for the specified files.
-
-# 		kvpb's		user-specific aliases
-
-alias	dcal='date | grep -C6 --color "\b$(date +%e)\b" && cal | sed -n "1!p" | grep -C6 --color "\b$(date +%e)\b"' # Dated calendar -- Display a calendar, substitute month of year with current date in full format and highlight current day of month.
-
-alias	rds="find . -name '.DS_Store' -delete -print" # Find from current directory file named '.DS_Store' and remove it.
