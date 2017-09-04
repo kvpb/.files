@@ -27,13 +27,12 @@ alias	mi='cd ~/misc' # Change the working dir to my misc files'.
 
 alias	op='cd ~/ops' # Change the working dir to my ongoing operations'.
 
-alias	p5='cd ~/ops/paris5' # Change the working dir to my Paris Descartes University-dedicated one.
-
-alias	v1='cd /Volumes/KBSPCMD100R/VOICE/FOLDER01'
-alias	v2='cd /Volumes/KBSPCMD100R/VOICE/FOLDER02'
-alias	v3='cd /Volumes/KBSPCMD100R/VOICE/FOLDER03'
-alias	v4='cd /Volumes/KBSPCMD100R/VOICE/FOLDER04'
-alias	v5='cd /Volumes/KBSPCMD100R/VOICE/FOLDER05'
+alias	r1='cd /Volumes/KBSPCMD100R/VOICE/FOLDER01'
+alias	r2='cd /Volumes/KBSPCMD100R/VOICE/FOLDER02'
+alias	r3='cd /Volumes/KBSPCMD100R/VOICE/FOLDER03'
+alias	r4='cd /Volumes/KBSPCMD100R/VOICE/FOLDER04'
+alias	r5='cd /Volumes/KBSPCMD100R/VOICE/FOLDER05'
+# Change the working dir to one of my recorder's recorded files'.
 
 alias	de='cd ~/Desktop' # Change the working dir to current macOS user's desktop'.
 
@@ -58,12 +57,12 @@ alias	db='cd ~/Dropbox' # Change the working dir to current user's Dropbox's.
 #		source
 # (i) Bourne-again shell (bash) builtin.
 
-alias	src='source'
+alias	src='source '
 
 #		chdir
 # (i) Z shell (zsh) builtin.
 
-alias	chdir='cd'
+alias	chdir='cd '
 
 # 'Internal' programs commands
 
@@ -89,7 +88,7 @@ alias	tgz='tar -czvf ' # Create a new archive containing the specified items the
 
 #		defaults	access the Mac OS X user defaults system
 
-alias	rlp='defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock'
+alias	rlp='defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock' # Reset LaunchPad layout.
 
 #		open		open files and directories
 
