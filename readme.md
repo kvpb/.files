@@ -9,7 +9,7 @@
 
 #### How-to
 
-&nbsp;&nbsp;Launch a terminal emulator (eg Terminal or iTerm2) then enter this:
+&nbsp;&nbsp;Launch a terminal emulator, eg Terminal or iTerm2, then enter this:
 
 &nbsp;&nbsp;**OS X 10.9.5 Mavericks:**
 
@@ -23,7 +23,7 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx1095
 cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
 ```
 
-**Note:** Don't hesitate to help me finding new hidden preferences with `defaults read`! (You'll get full credits for that, of course.)
+**Note:** Don't hesitate to help me finding new hidden preferences with `defaults read`! You'll get full credits for that, of course.
 
 - - -
 
@@ -53,13 +53,9 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
 
 #### What-is
 
-&nbsp;&nbsp;I's scratching system I built at university for better faster cleaner notetaking. And in case you wonder, yes, even this read-me has been written following these guidelines.
+&nbsp;&nbsp;I's scratching system I built at university for better faster cleaner notetaking. This read-me has been written following these guidelines.
 
-#### How-to
-
-&nbsp;&nbsp;Launch a word processor (eg Word for Mac 2011 or TextEdit) then… No, really. I mean, seriously. Please, don't even tell me you need a walkthrough to use these.
-
-&nbsp;&nbsp;**Note:** Be confident with these, they're self-explicit as possible. It's built to be easy and fast to learn, use and understand. If you've got any suggestion to improve it, feel free to jump in, express yourself, let loose --- open an issue or contact me via Facebook. You're always welcome.
+&nbsp;&nbsp;**Note:** If you have any suggestion to improve it, feel free to jump in, express yourself, let loose --- open an issue or contact me via Facebook. You're always welcome.
 
 - - -
 
@@ -89,8 +85,8 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
 
 #### Author
 
-<p align='center'><a href='http://kvpb.co'><img src='https://rawgit.com/kvpb/b9c0737f2941542ae22b2806b66a3c19/raw/9867dde923550a08d05f3fae3a2b02905ea8345c/quickresponsecode.svg'></a><br>
+<p align='center'><a href='http://kvpb.co/'><img src='https://rawgit.com/kvpb/b9c0737f2941542ae22b2806b66a3c19/raw/9867dde923550a08d05f3fae3a2b02905ea8345c/quickresponsecode.svg'></a><br>
 <b>Karl 'Kabe' Bertin (kvpb)</b><br>
-<s><a href='https://www.linkedin.com/in/karlbertin' title="Unavailable">LinkedIn</a></s> | <a href='https://www.facebook.com/karlbertin'>Facebook</a>
+<a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a> | <a href='https://www.facebook.com/karlbertin'>Facebook</a>
 
-&nbsp;&nbsp;**Note:** Thank me or not but please give credit to the people I took code from. There's no 'I've got things to do now, I'll do it later' excuse.
+&nbsp;&nbsp;**Note:** Whether you thank me or not, please give credit to the people I took code from.
