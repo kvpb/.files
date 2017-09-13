@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>plist</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Basic Info</string>
+			<key>preset key-value pairs</key>
+			<dict>
+				<key>iptcProperties.Caption/Abstract</key>
+				<string></string>
+				<key>iptcProperties.City</key>
+				<string></string>
+				<key>iptcProperties.CopyrightNotice</key>
+				<string></string>
+				<key>iptcProperties.Country/PrimaryLocationName</key>
+				<string></string>
+				<key>iptcProperties.Keywords</key>
+				<string></string>
+				<key>iptcProperties.Province/State</key>
+				<string></string>
+			</dict>
+		</dict>
+	</array>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
