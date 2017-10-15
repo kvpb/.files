@@ -104,13 +104,13 @@ alias	ofs='open -b com.apple.Safari ' # Open file using Safari.
 
 alias	ofvlc='open -b org.videolan.vlc ' # Open file using VLC Media Player.
 
-alias	ofaps='open -b com.adobe.Photoshop ' # Open file using Photoshop CS6.
+alias	ofps='open -b com.adobe.Photoshop ' # Open file using Photoshop CS6.
 
-alias	ofapl='open -b com.adobe.Lightroom6 ' # Open file using Photoshop Lightroom 6.
+alias	oflr='open -b com.adobe.Lightroom6 ' # Open file using Photoshop Lightroom 6.
 
-alias	ofmw='open -b com.microsoft.Word ' # Open file using Word.
+alias	ofw='open -b com.microsoft.Word ' # Open file using Word for Mac 2011.
 
-alias	rff='open -R ' # Reveal file(s) using Finder.
+alias	rff='open -R ' # Reveal files using Finder.
 
 #		qlmanage	Quick Look server debug and management tool
 
