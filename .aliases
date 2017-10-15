@@ -110,6 +110,8 @@ alias	oflr='open -b com.adobe.Lightroom6 ' # Open file using Photoshop Lightroom
 
 alias	ofw='open -b com.microsoft.Word ' # Open file using Word for Mac 2011.
 
+alias	ofx='open -b com.microsoft.Excel ' # Open file using Excel for Mac 2011.
+
 alias	rff='open -R ' # Reveal files using Finder.
 
 #		qlmanage	Quick Look server debug and management tool
