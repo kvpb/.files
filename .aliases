@@ -142,7 +142,12 @@ alias	dcal='date | grep -C6 --color "\b$(date +%e)\b" && cal | sed -n "1!p" | gr
 
 #		clear		clear the terminal screen
 
-alias	cls="clear && printf '\e[3J'" # Clear the terminal screen if this is possible then write the VT100 escape code for resetting the terminal to the standard output under the control of the format.
+alias	cls="clear && printf '\e[3J'" # Clear the terminal screen if this is possible then write the VT100 escape code for resetting the terminal to the standard output under the control of the format. (i) MS-DOS, OS/2 & Microsoft Windows CLS --- Clears the screen.
+
+#		ls			list directory contents
+#		clear		clear the terminal screen
+
+alias	lc='cls && ls ' # 'Clean list' --- MS-DOS style clear the terminal screen then list directory contents.
 
 # External programs commands
 
