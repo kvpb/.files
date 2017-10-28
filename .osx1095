@@ -892,6 +892,32 @@ echo  'iTerm2 (com.googlecode.iterm2)'
 
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false # Hide quit prompt.
 
+echo  'Jumpcut (net.sf.Jumpcut)'
+
+defaults write net.sf.Jumpcut SUCheckAtStartup -bool true # Check for updated on launch.
+
+defaults write net.sf.Jumpcut "ShortcutRecorder mainHotkey" -array '{keyCode = 9;modifierFlags = 786432;}' # Set Control-Option-V (⌃⌥V) as main hotkey.
+
+defaults write net.sf.Jumpcut bezelAlpha -float 0.2501524448394775 # Set bezel transparency to default.
+
+defaults write net.sf.Jumpcut displayNum -int 10 # Display 10 clippings in menu.
+
+defaults write net.sf.Jumpcut lastRun -int 0.6
+
+defaults write net.sf.Jumpcut loadOnStartup -bool true # Load Jumpcut on startup?
+
+defaults write net.sf.Jumpcut menuIcon -int 0 # Set Jumpcut icon as menu item icon.
+
+defaults write net.sf.Jumpcut menuSelectionPastes -bool true # Menu selection pastes. ('Selecting a clipping from the menu causes it to be pasted instead of copied back onto the pasteboard.')
+
+defaults write net.sf.Jumpcut rememberNum -int 99 # Remember 99 clippings. ('Controls how many clippings Jumpcut stores in its stack'.)
+
+defaults write net.sf.Jumpcut savePreference -int 2 # Save after each clip.
+
+defaults write net.sf.Jumpcut stickyBezel -bool false # No sticky bezel. ('The bezel must be manually dismissed using the "escape" of "return" keys.')
+
+defaults write net.sf.Jumpcut wraparoundBezel -bool true # Wraparoud bezel. ('In the bezel, moving down from the last item takes you to the top and moving up from the first item takes you to the bottom.')
+
 echo  'SizeUp (com.irradiatedsoftware.SizeUp)'
 
 defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true # Launch SizeUp at login.
