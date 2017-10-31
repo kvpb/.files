@@ -164,7 +164,7 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 #read emailaddress
 #sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "${fullname}'s Mac${computername}.\nPlease contact ${phonenumber} or ${emailaddress} if found."
 # Display set lock message. (i) `fullname` and `computername` variables have been set earlier, at Network: Computer name.
-sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Karl Bertin's Mac${computername}.\nPlease contact +33670832664 or karlvpb@gmail.com if found." # Display set lock message. (i) `computername` variable has been set earlier, at Network: Computer name.
+sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Karl Bertin's Mac${computername}.\nPlease contact +33670832664 or karlvp.bertin@gmail.com if found." # Display set lock message. (i) `computername` variable has been set earlier, at Network: Computer name.
 
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
