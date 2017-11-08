@@ -4,6 +4,14 @@
 <array>
 	<dict>
 		<key>phrase</key>
+		<string>а</string>
+		<key>shortcut</key>
+		<string>\a</string>
+		<key>timestamp</key>
+		<integer>1510159941</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>α</string>
 		<key>shortcut</key>
 		<string>\alpha</string>
@@ -12,11 +20,11 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Α</string>
+		<string>б</string>
 		<key>shortcut</key>
-		<string>\alphac</string>
+		<string>\be</string>
 		<key>timestamp</key>
-		<integer>1483619886</integer>
+		<integer>1510159958</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -28,11 +36,11 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Β</string>
+		<string>ч</string>
 		<key>shortcut</key>
-		<string>\betac</string>
+		<string>\che</string>
 		<key>timestamp</key>
-		<integer>1483620123</integer>
+		<integer>1510160203</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -44,11 +52,27 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Χ</string>
+		<string>ъ</string>
 		<key>shortcut</key>
-		<string>\chic</string>
+		<string>\cyrillichardsign</string>
 		<key>timestamp</key>
-		<integer>1483620264</integer>
+		<integer>1510160248</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ь</string>
+		<key>shortcut</key>
+		<string>\cyrillicsoftsign</string>
+		<key>timestamp</key>
+		<integer>1510160304</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>д</string>
+		<key>shortcut</key>
+		<string>\de</string>
+		<key>timestamp</key>
+		<integer>1510159993</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -60,11 +84,43 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Δ</string>
+		<string>э</string>
 		<key>shortcut</key>
-		<string>\deltac</string>
+		<string>\e</string>
 		<key>timestamp</key>
-		<integer>1483620136</integer>
+		<integer>1510160314</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ф</string>
+		<key>shortcut</key>
+		<string>\ef</string>
+		<key>timestamp</key>
+		<integer>1510160180</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>л</string>
+		<key>shortcut</key>
+		<string>\el</string>
+		<key>timestamp</key>
+		<integer>1510160070</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>м</string>
+		<key>shortcut</key>
+		<string>\em</string>
+		<key>timestamp</key>
+		<integer>1510160117</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>н</string>
+		<key>shortcut</key>
+		<string>\en</string>
+		<key>timestamp</key>
+		<integer>1510160128</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -76,11 +132,19 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Ε</string>
+		<string>р</string>
 		<key>shortcut</key>
-		<string>\epsilonc</string>
+		<string>\er</string>
 		<key>timestamp</key>
-		<integer>1487683613</integer>
+		<integer>1510160151</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>с</string>
+		<key>shortcut</key>
+		<string>\es</string>
+		<key>timestamp</key>
+		<integer>1510160158</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -92,14 +156,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Η</string>
-		<key>shortcut</key>
-		<string>\etac</string>
-		<key>timestamp</key>
-		<integer>1487683572</integer>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>γ</string>
 		<key>shortcut</key>
 		<string>\gamma</string>
@@ -108,11 +164,43 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Γ</string>
+		<string>г</string>
 		<key>shortcut</key>
-		<string>\gammac</string>
+		<string>\ghe</string>
 		<key>timestamp</key>
-		<integer>1483620164</integer>
+		<integer>1510159984</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>х</string>
+		<key>shortcut</key>
+		<string>\ha</string>
+		<key>timestamp</key>
+		<integer>1510160189</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>и</string>
+		<key>shortcut</key>
+		<string>\i</string>
+		<key>timestamp</key>
+		<integer>1510160038</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>е</string>
+		<key>shortcut</key>
+		<string>\ie</string>
+		<key>timestamp</key>
+		<integer>1510160002</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ё</string>
+		<key>shortcut</key>
+		<string>\io</string>
+		<key>timestamp</key>
+		<integer>1510160016</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -124,11 +212,11 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Ι</string>
+		<string>к</string>
 		<key>shortcut</key>
-		<string>\iotac</string>
+		<string>\ka</string>
 		<key>timestamp</key>
-		<integer>1487683648</integer>
+		<integer>1510160061</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -140,27 +228,11 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Κ</string>
-		<key>shortcut</key>
-		<string>\kappac</string>
-		<key>timestamp</key>
-		<integer>1487683665</integer>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>λ</string>
 		<key>shortcut</key>
 		<string>\lambda</string>
 		<key>timestamp</key>
 		<integer>1483620354</integer>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>Λ</string>
-		<key>shortcut</key>
-		<string>\lambdac</string>
-		<key>timestamp</key>
-		<integer>1483620369</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -172,14 +244,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Μ</string>
-		<key>shortcut</key>
-		<string>\muc</string>
-		<key>timestamp</key>
-		<integer>1483620325</integer>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>ν</string>
 		<key>shortcut</key>
 		<string>\nu</string>
@@ -188,11 +252,11 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Ν</string>
+		<string>о</string>
 		<key>shortcut</key>
-		<string>\nuc</string>
+		<string>\o</string>
 		<key>timestamp</key>
-		<integer>1483620411</integer>
+		<integer>1510160136</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -204,14 +268,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Ω</string>
-		<key>shortcut</key>
-		<string>\omegac</string>
-		<key>timestamp</key>
-		<integer>1483620446</integer>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>ο</string>
 		<key>shortcut</key>
 		<string>\omicron</string>
@@ -220,11 +276,11 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Ο</string>
+		<string>п</string>
 		<key>shortcut</key>
-		<string>\omicronc</string>
+		<string>\pe</string>
 		<key>timestamp</key>
-		<integer>1487683723</integer>
+		<integer>1510160143</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -236,27 +292,11 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Φ</string>
-		<key>shortcut</key>
-		<string>\phic</string>
-		<key>timestamp</key>
-		<integer>1483620218</integer>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>π</string>
 		<key>shortcut</key>
 		<string>\pi</string>
 		<key>timestamp</key>
 		<integer>1483620239</integer>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>Π</string>
-		<key>shortcut</key>
-		<string>\pic</string>
-		<key>timestamp</key>
-		<integer>1483620250</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -268,14 +308,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Ψ</string>
-		<key>shortcut</key>
-		<string>\psic</string>
-		<key>timestamp</key>
-		<integer>1483620473</integer>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>ρ</string>
 		<key>shortcut</key>
 		<string>\rho</string>
@@ -284,11 +316,27 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Ρ</string>
+		<string>ш</string>
 		<key>shortcut</key>
-		<string>\rhoc</string>
+		<string>\sha</string>
 		<key>timestamp</key>
-		<integer>1483620334</integer>
+		<integer>1510160215</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>щ</string>
+		<key>shortcut</key>
+		<string>\shcha</string>
+		<key>timestamp</key>
+		<integer>1510160225</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>й</string>
+		<key>shortcut</key>
+		<string>\shorti</string>
+		<key>timestamp</key>
+		<integer>1510160053</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -300,14 +348,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Σ</string>
-		<key>shortcut</key>
-		<string>\sigmac</string>
-		<key>timestamp</key>
-		<integer>1483620195</integer>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>τ</string>
 		<key>shortcut</key>
 		<string>\tau</string>
@@ -316,11 +356,11 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Τ</string>
+		<string>т</string>
 		<key>shortcut</key>
-		<string>\tauc</string>
+		<string>\te</string>
 		<key>timestamp</key>
-		<integer>1483620421</integer>
+		<integer>1510160165</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -332,11 +372,19 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Θ</string>
+		<string>ц</string>
 		<key>shortcut</key>
-		<string>\thetac</string>
+		<string>\tse</string>
 		<key>timestamp</key>
-		<integer>1483620298</integer>
+		<integer>1510160196</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>у</string>
+		<key>shortcut</key>
+		<string>\u</string>
+		<key>timestamp</key>
+		<integer>1510160173</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -348,11 +396,11 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Υ</string>
+		<string>в</string>
 		<key>shortcut</key>
-		<string>\upsilonc</string>
+		<string>\ve</string>
 		<key>timestamp</key>
-		<integer>1487683759</integer>
+		<integer>1510159973</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -364,11 +412,35 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Ξ</string>
+		<string>я</string>
 		<key>shortcut</key>
-		<string>\xic</string>
+		<string>\ya</string>
 		<key>timestamp</key>
-		<integer>1487683702</integer>
+		<integer>1510160332</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ы</string>
+		<key>shortcut</key>
+		<string>\yeru</string>
+		<key>timestamp</key>
+		<integer>1510160275</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ю</string>
+		<key>shortcut</key>
+		<string>\yu</string>
+		<key>timestamp</key>
+		<integer>1510160324</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>з</string>
+		<key>shortcut</key>
+		<string>\ze</string>
+		<key>timestamp</key>
+		<integer>1510160030</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -380,11 +452,11 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Ζ</string>
+		<string>ж</string>
 		<key>shortcut</key>
-		<string>\zetac</string>
+		<string>\zhe</string>
 		<key>timestamp</key>
-		<integer>1487683590</integer>
+		<integer>1510160023</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -425,6 +497,94 @@
 		<string>+o-</string>
 		<key>timestamp</key>
 		<integer>1482161058</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>unidimensionnel</string>
+		<key>shortcut</key>
+		<string>1dl</string>
+		<key>timestamp</key>
+		<integer>1510151651</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>1ère</string>
+		<key>shortcut</key>
+		<string>1ere</string>
+		<key>timestamp</key>
+		<integer>1510058406</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>2ème</string>
+		<key>shortcut</key>
+		<string>2eme</string>
+		<key>timestamp</key>
+		<integer>1510058424</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>tridimensionnel</string>
+		<key>shortcut</key>
+		<string>3dl</string>
+		<key>timestamp</key>
+		<integer>1510151658</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>3ème</string>
+		<key>shortcut</key>
+		<string>3eme</string>
+		<key>timestamp</key>
+		<integer>1510058432</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>4ème</string>
+		<key>shortcut</key>
+		<string>4eme</string>
+		<key>timestamp</key>
+		<integer>1510058437</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>5ème</string>
+		<key>shortcut</key>
+		<string>5eme</string>
+		<key>timestamp</key>
+		<integer>1510058449</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>6ème</string>
+		<key>shortcut</key>
+		<string>6eme</string>
+		<key>timestamp</key>
+		<integer>1510058454</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>7ème</string>
+		<key>shortcut</key>
+		<string>7eme</string>
+		<key>timestamp</key>
+		<integer>1510058458</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>8ème</string>
+		<key>shortcut</key>
+		<string>8eme</string>
+		<key>timestamp</key>
+		<integer>1510058463</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>9ème</string>
+		<key>shortcut</key>
+		<string>9eme</string>
+		<key>timestamp</key>
+		<integer>1510058468</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -569,6 +729,14 @@
 		<string>ali°</string>
 		<key>timestamp</key>
 		<integer>1505311904</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>à la lumière de</string>
+		<key>shortcut</key>
+		<string>alld</string>
+		<key>timestamp</key>
+		<integer>1506691132</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -900,6 +1068,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>catégorisation</string>
+		<key>shortcut</key>
+		<string>cat°</string>
+		<key>timestamp</key>
+		<integer>1510156427</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>cérébrale</string>
 		<key>shortcut</key>
 		<string>cerebrale</string>
@@ -961,6 +1137,14 @@
 		<string>clipa</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>clinique</string>
+		<key>shortcut</key>
+		<string>cliq</string>
+		<key>timestamp</key>
+		<integer>1505584119</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1332,6 +1516,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>d'évolution</string>
+		<key>shortcut</key>
+		<string>d'evo°</string>
+		<key>timestamp</key>
+		<integer>1507038586</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>d'hallucination</string>
 		<key>shortcut</key>
 		<string>d'hal°</string>
@@ -1668,6 +1860,38 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>dimensionnel</string>
+		<key>shortcut</key>
+		<string>diml</string>
+		<key>timestamp</key>
+		<integer>1509974143</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>dimensionnelle</string>
+		<key>shortcut</key>
+		<string>dimle</string>
+		<key>timestamp</key>
+		<integer>1509974139</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>dimensionnelles</string>
+		<key>shortcut</key>
+		<string>dimles</string>
+		<key>timestamp</key>
+		<integer>1509974149</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>dimensionnels</string>
+		<key>shortcut</key>
+		<string>dimls</string>
+		<key>timestamp</key>
+		<integer>1509974154</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>directeur</string>
 		<key>shortcut</key>
 		<string>dir</string>
@@ -1684,11 +1908,27 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>diminution</string>
+		<key>shortcut</key>
+		<string>dmn°</string>
+		<key>timestamp</key>
+		<integer>1509974160</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>dès que possible</string>
 		<key>shortcut</key>
 		<string>dqp</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>down-regulation</string>
+		<key>shortcut</key>
+		<string>dreg</string>
+		<key>timestamp</key>
+		<integer>1506340867</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1825,6 +2065,14 @@
 		<string>edu°</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>en fonction de</string>
+		<key>shortcut</key>
+		<string>eftd</string>
+		<key>timestamp</key>
+		<integer>1508154118</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -2084,11 +2332,51 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>expérimental</string>
+		<key>shortcut</key>
+		<string>expl</string>
+		<key>timestamp</key>
+		<integer>1505584002</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>expérimentale</string>
+		<key>shortcut</key>
+		<string>exple</string>
+		<key>timestamp</key>
+		<integer>1505583995</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>expérimentales</string>
+		<key>shortcut</key>
+		<string>exples</string>
+		<key>timestamp</key>
+		<integer>1505584015</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>expérimentaux</string>
+		<key>shortcut</key>
+		<string>expx</string>
+		<key>timestamp</key>
+		<integer>1505584010</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>face to face</string>
 		<key>shortcut</key>
 		<string>f2f</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>face à face</string>
+		<key>shortcut</key>
+		<string>faf</string>
+		<key>timestamp</key>
+		<integer>1510067724</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -2436,6 +2724,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>intellectuellement</string>
+		<key>shortcut</key>
+		<string>intlt</string>
+		<key>timestamp</key>
+		<integer>1506429756</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>intelligent</string>
 		<key>shortcut</key>
 		<string>intt</string>
@@ -2529,6 +2825,14 @@
 		<string>kb</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>cas par cas</string>
+		<key>shortcut</key>
+		<string>kpk</string>
+		<key>timestamp</key>
+		<integer>1507565806</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -2752,7 +3056,7 @@
 		<key>shortcut</key>
 		<string>lat°</string>
 		<key>timestamp</key>
-		<integer>1482158090</integer>
+		<integer>1506938116</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -3366,9 +3670,9 @@
 		<key>phrase</key>
 		<string>plusieurs</string>
 		<key>shortcut</key>
-		<string>plrs</string>
+		<string>pls</string>
 		<key>timestamp</key>
-		<integer>1482158090</integer>
+		<integer>1505723260</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -3404,11 +3708,27 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>pour</string>
+		<key>shortcut</key>
+		<string>pr</string>
+		<key>timestamp</key>
+		<integer>1507728418</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>par rapport à</string>
 		<key>shortcut</key>
 		<string>pra</string>
 		<key>timestamp</key>
 		<integer>1485340228</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>par rapport aux</string>
+		<key>shortcut</key>
+		<string>prax</string>
+		<key>timestamp</key>
+		<integer>1510133452</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -4052,6 +4372,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>régulation</string>
+		<key>shortcut</key>
+		<string>reg°</string>
+		<key>timestamp</key>
+		<integer>1505492244</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>relation</string>
 		<key>shortcut</key>
 		<string>rel°</string>
@@ -4124,6 +4452,22 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>régression</string>
+		<key>shortcut</key>
+		<string>rgs°</string>
+		<key>timestamp</key>
+		<integer>1509974196</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>rotation</string>
+		<key>shortcut</key>
+		<string>rot°</string>
+		<key>timestamp</key>
+		<integer>1510151588</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>rapidement</string>
 		<key>shortcut</key>
 		<string>rpdt</string>
@@ -4161,6 +4505,14 @@
 		<string>rpz</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>représenter</string>
+		<key>shortcut</key>
+		<string>rpzr</string>
+		<key>timestamp</key>
+		<integer>1510152112</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -4281,6 +4633,22 @@
 		<string>sigf</string>
 		<key>timestamp</key>
 		<integer>1482158090</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>significative</string>
+		<key>shortcut</key>
+		<string>sigv</string>
+		<key>timestamp</key>
+		<integer>1505910475</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>significativement</string>
+		<key>shortcut</key>
+		<string>sigvt</string>
+		<key>timestamp</key>
+		<integer>1507117622</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -4764,6 +5132,14 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>up-regulation</string>
+		<key>shortcut</key>
+		<string>ureg</string>
+		<key>timestamp</key>
+		<integer>1506340856</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>variation</string>
 		<key>shortcut</key>
 		<string>var°</string>
@@ -4825,6 +5201,14 @@
 		<string>xmt</string>
 		<key>timestamp</key>
 		<integer>1485339864</integer>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>y a-t-il</string>
+		<key>shortcut</key>
+		<string>yati</string>
+		<key>timestamp</key>
+		<integer>1507634825</integer>
 	</dict>
 	<dict>
 		<key>phrase</key>
