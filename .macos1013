@@ -1,1 +1,151 @@
+#!/usr/bin/env bash
 
+echo ''
+echo ''
+echo ''
+echo ''
+echo ''
+echo '                                 LICENSED BY'
+echo '                                  $LICENSOR'
+echo ''
+echo '                            K K  V V  PPP  BB   #   SS'
+echo '                           KK   V V  PPP  BBB      S'
+echo '                          K K   V   P    BBB     SS'
+echo ''
+echo '                 WARNING: USE THIS SCRIPT AT YOUR OWN RISK.'
+echo ''
+echo " ALL THE COMPUTER PROGRAMS  AND SOFTWARE ARE PROVIDED 'AS IS'  WITHOUT WARRANTY"
+echo ' OF ANY KIND.  WE MAKE NO WARRANTIES,  EXPRESS  OR IMPLIED,  THAT THEY ARE FREE'
+echo ' OF ERROR,  OR ARE CONSISTENT  WITH ANY PARTICULAR STANDARD OF MERCHANTABILITY,'
+echo ' OR THAT THEY WILL MEET YOUR REQUIREMENTS FOR ANY PARTICULAR APPLICATION.  THEY'
+echo ' SHOULD NOT BE  RELIED ON FOR SOLVING A PROBLEM  WHOSE INCORRECT SOLUTION COULD'
+echo ' RESULT  IN  INJURY  TO  A  PERSON  OR  LOSS  OF  PROPERTY.  IF YOU DO USE THEM'
+echo ' IN SUCH A MANNER,  IT IS AT YOUR OWN RISK.  THE AUTHOR  AND PUBLISHER DISCLAIM'
+echo ' ALL LIABILITY FOR  DIRECT,  INDIRECT,  OR CONSEQUENTIAL DAMAGES RESULTING FROM'
+echo ' YOUR USE OF THE PROGRAMS.'
+echo ''
+# Display the title screen, with disclaimer.
+
+killall System\ Preferences # Kill System Preferences. (i) Prevents System Preferences from overriding changes.
+
+sudo -v # Ask for an administrator password.
+
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & # Update sudo timestamp until the script is over.
+
+echo '1st-party settings: Syswide & userspec prefs'
+
+echo 'Battery (Unnamed)'
+
+defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.battery' -bool true
+defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/Battery.menu'
+# Display Battery menu bar item.
+
+echo 'Clock (Unnamed)'
+
+defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.clock' -bool true
+defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/Clock.menu'
+# Display Clock menu bar item.
+
+echo 'Network'
+
+defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.airport' -bool true
+defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/AirPort.menu'
+# Display Network menu bar item.
+
+#defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.ppp' -bool true
+#defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/PPP.menu'
+# Display PPP menu bar item.
+
+#defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.pppoe' -bool true
+#defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/PPPoE.menu'
+# Display PPPoE menu bar item.
+
+#defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.vpn' -bool true
+#defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/VPN.menu'
+# Display VPN menu bar item.
+
+#echo 'Login window & Screen saver'
+
+echo 'Text Input (Keyboard & Touch Bar)'
+
+#defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.textinput' -bool true
+#defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/TextInput.menu'
+# Displat Text Input menu bar item.
+
+#echo 'Mouse & Trackpad'
+
+echo 'Ink (Inkwell)'
+
+defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.ink' -bool false
+#defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/Ink.menu'
+# Disable Ink menu bar item.
+
+echo 'Airplay ('Displays' & Display server)'
+
+defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.airplay' -bool true
+defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/Displays.menu'
+# Display AirPlay menu bar item.
+
+#echo "'Printers'"
+
+#echo 'Wi-Fi (Network)'
+
+echo 'Bluetooth & Bluetooth Setup Assistant'
+
+defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.bluetooth' -bool true
+defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/Bluetooth.menu'
+# Display Bluetooth menu bar item.
+
+#echo 'Data storage devices'
+
+echo 'Dwell Control (Universal Access)'
+
+defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.dwellcontrol' -bool false
+#defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/DwellControl.menu'
+# Disable Dwell Control menu bar item.
+
+echo 'Universal Access'
+
+defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.universalaccess' -bool false
+#defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/UniversalAccess.menu'
+# Disable Universal Access menu bar item.
+
+echo 'Time Machine'
+
+defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.TimeMachine' -bool true
+defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/TimeMachine.menu'
+# Display Time Machine menu bar item.
+
+echo 'Siri'
+
+defaults write com.apple.Siri StatusMenuVisible -bool false
+defaults write com.apple.systemuiserver 'NSStatusItem Visible Siri' -bool false
+# Disable Siri menu bar item.
+
+echo 'Menu Bar & Touch Bar (UX, Aqua (GUI), SUI & VUI)'
+
+defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.eject' -bool true
+defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/Eject.menu'
+# Display Eject menu bar item.
+
+defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.volume' -bool true
+defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/Volume.menu'
+# Display Volume menu bar item.
+
+echo 'AppleScript & Script Editor'
+
+defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.scriptmenu' -bool true
+defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/Script Menu.menu'
+# Display Script Menu menu bar item.
+
+#echo
+
+echo 'iChat'
+
+defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.iChat' -bool false
+#defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/iChat.menu'
+# Disable iChat menu bar item.
+
+#echo 'Messages'
+
+#echo
