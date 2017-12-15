@@ -4,7 +4,7 @@
 
 # Shells builtin utilities commands
 
-# 		cd			change the working directory
+#	cd	change the working directory
 # (i) Bourne shell (sh) builtin.
 
 alias	..='cd ..' # Change the working dir to current user's parent one.
@@ -17,7 +17,7 @@ alias	.....='cd ../../../..' # Change the working dir to current's grand-grand-g
 
 alias	.....='cd ../../../../..' # Change the working dir to current's grand-grand-grand-grand-parent one.
 
-alias	rt='cd /' # Change the working dir to root's.
+alias	rt='cd /' # Change the working dir to root.
 
 alias	.f='cd ~/.files' # Change the working dir to my dotfiles'.
 
@@ -34,9 +34,9 @@ alias	r4='cd /Volumes/KBSPCMD100R/VOICE/FOLDER04'
 alias	r5='cd /Volumes/KBSPCMD100R/VOICE/FOLDER05'
 # Change the working dir to one of my recorder's recorded files'.
 
-alias	de='cd ~/Desktop' # Change the working dir to current macOS user's desktop'.
+alias	dt='cd ~/Desktop' # Change the working dir to current macOS user's desktop'.
 
-alias	dc='cd ~/Documents' # Change the working dir to current macOS user's documents'.
+alias	dx='cd ~/Documents' # Change the working dir to current macOS user's documents'.
 
 alias	dl='cd ~/Downloads' # Change the working dir to current macOS user's downloads'.
 
@@ -48,49 +48,41 @@ alias	mu='cd ~/Music' # Change the working dir to current macOS user's music's.
 
 alias	it='cd ~/Music/iTunes' # Change the working dir to current macOS user's iTunes'.
 
-alias	pi='cd ~/Pictures' # Change the working dir to current macOS user's pictures'.
+alias	px='cd ~/Pictures' # Change the working dir to current macOS user's pictures'.
 
 alias	.t='cd ~/.Trash' # Change the working dir to current macOS user's trash's.
 
 alias	db='cd ~/Dropbox' # Change the working dir to current user's Dropbox's.
 
-#		source
+#	source
 # (i) Bourne-again shell (bash) builtin.
 
 alias	src='source '
 
-#		chdir
+#	chdir
 # (i) Z shell (zsh) builtin.
 
 alias	chdir='cd '
 
 # 'Internal' programs commands
 
-#		killall		kill processes by name
+#	killall			kill processes by name
 
 alias	ka='killall '
 
-#		ruby		Interpreted object-oriented scripting language
+#	ruby			Interpreted object-oriented scripting language
 
 alias	rb='ruby '
 
-#		python		an interpreted, interactive, object-oriented programming language
+#	python			an interpreted, interactive, object-oriented programming language
 
 alias	py='python '
 
-#		find		walk a file hierarchy
-
-alias	rds="find . -name '.DS_Store' -delete -print" # '.DS_Store remover' --- Find from current directory file named '.DS_Store', remove it and display the full file name o the standard output followed by a newline.
-
-#		tar			manipulate tape archives
+#	tar				manipulate tape archives
 
 alias	tgz='tar -czvf ' # Create a new archive containing the specified items then compress the resulting archive with gzip, listing each file name as it is read written to the archive.
 
-#		defaults	access the Mac OS X user defaults system
-
-alias	rlp='defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock' # Reset LaunchPad layout.
-
-#		open		open files and directories
+#	open			open files and directories
 
 alias	o='open '
 
@@ -114,73 +106,48 @@ alias	ofx='open -b com.microsoft.Excel ' # Open file using Excel for Mac 2011.
 
 alias	rff='open -R ' # Reveal files using Finder.
 
-#		qlmanage	Quick Look server debug and management tool
+#	qlmanage		Quick Look server debug and management tool
 
 alias	ql='qlmanage -p ' # Display the Quick Look generated preview for the specified files.
 
-# 		ls			list directory contents
+# 	ls				list directory contents
 
 alias	la='ls -aF' # List directory contents including directory entries whose names begin with a dot ('.'). [The -p option might be useless since I wrote another alias for ls to extend its behavior the way I want it that includes the option --- still, if the other alias is disabled, it wouldn't work anymore.]
 
-#alias	lh='ls -aF | grep '\''^\.'\' # List directory hidden files.
 alias	lh='ls -dF .*' # List directory hidden files.
 
-alias	ls='pwd && ls -lp' # Print working directory then list directory contents in long format writing a slash (`/') after each filename if that file is a directory.
-
-alias	lg='la && gs' # List directory contents then show the working tree status.
-
-alias	l@='ls -@' # List directory contents and extended attributes keys and sizes in long (-l) output.
-
-#		du			display disk usage statistics
-
-alias	du='du -hc ' # Display humanly disk usage statistics and a grand total.
-
-#		date		display or set date and time
-#		cal			displays a calendar and the date of easter
-
-alias	dcal='date | grep -C6 --color "\b$(date +%e)\b" && cal | sed -n "1!p" | grep -C6 --color "\b$(date +%e)\b"' # 'Dated calendar' --- Display a calendar, substitute month of year with current date in full format and highlight current day of month.
-
-#		clear		clear the terminal screen
-
-alias	cls="clear && printf '\e[3J'" # Clear the terminal screen if this is possible then write the VT100 escape code for resetting the terminal to the standard output under the control of the format. (i) MS-DOS, OS/2 & Microsoft Windows CLS --- Clears the screen.
-
-#		ls			list directory contents
-#		clear		clear the terminal screen
+alias	ls='pwd && ls -lp' # Print working directory then list directory contents in long format writing a slash after each filename if that file is a directory.
 
 alias	lc='cls && ls ' # 'Clean list' --- MS-DOS style clear the terminal screen then list directory contents.
 
+alias	l@='ls -@' # List directory contents and extended attributes keys and sizes in long (-l) output.
+
+#	du				display disk usage statistics
+
+alias	du='du -hc ' # Display humanly disk usage statistics and a grand total.
+
+#	softwareupdate	system software update tool
+
+alias	swu='softwareupdate'
+
+#	airport			get information for 802.11 interface
+
+alias	airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport'
+
 # External programs commands
 
-# 		git			the stupid content tracker
+# 	git				the stupid content tracker
 
 #alias	git='/usr/local/git/bin/git' # Get fucked, Apple. /i\ Requires Git for Mac OS X from the official Git website (http://git-scm.com/).
 
-alias	ga='git add '
+# Shell functions
 
-alias	gaa='git add --all' # Add file contents to the index, updating the index to match the working tree.
+alias	rds='RemoveDSStore'
 
-#alias	gc='git clone '
+alias	rlp='ResetLaunchPad'
 
-#alias	gcb='git clone --bare ' # Create a bare clone of a repository into a new directory.
+alias	tara='tarall'
 
-alias	gc='git commit -m ' # Record changes to the repository.
+#alias	ssu='systemsoftwareupdate'
 
-alias	gcem="git commit -a --allow-empty-message -m ''" # Record changes to the repository, allowing empty commit message.
-
-alias	gqp='gaa && gcem && gp' # 'git-quick-push' -- Add all files, commit without commenting and push.
-
-alias	gr='git rm '
-
-alias	gri='git rebase -i ' # Reapply commits on top of another base tip making a list of the commits which are about to be rebased.
-
-alias	gs='git status '
-
-#alias	gp='git pull '
-
-alias	gp='git push '
-
-alias	gpch="git push --force --tags origin 'refs/heads/*'" # Push corrected history.
-
-alias	gpf='git push --force' # Update remote refs that are not ancestors of the local ref used to overwrite it, along with associated objects.
-
-alias	gpo='git push origin ' # Update remote refs along with associated objects, pushing "matching" branches to origin.
+alias	nleof='add_missing_NL_at_EOF'
