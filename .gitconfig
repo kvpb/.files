@@ -1,20 +1,17 @@
 [alias]
-	lg = !ls -aF && git status # List directory contents then show the working tree status.
-	a = add
-	aa = add --all # Add file contents to the index, updating the index to match the working tree.
-	#c = clone
-	#cb = clone --bare # Create a bare clone of a repository into a new directory.
-	c = commit -m # Record changes to the repository.
-	cem = commit --allow-empty-message -m # Record changes to the repository, allowing empty commit message.
-	gqp = !git add --all && git commit --allow-empty-message && git push # 'git-quick-push' -- Add all files, commit without commenting and push.
-	r = rm
-	ri = rebase -i # Reapply commits on top of another base tip making a list of the commits which are about to be rebased.
-	s = status
-	#p = pull
-	p = push
-	pch = push --force --tags origin 'refs/heads/*' # Push corrected history.
-	pf = push --force # Update remote refs that are not ancestors of the local ref used to overwrite it, along with associated objects.
-	po = push origin # Update remote refs along with associated objects, pushing "matching" branches to origin.
+	lg = !"ls -aF && git status" # List directory contents then show the working tree status.
+	ga = !"git add"
+	gaa = !"git add --all" # Add file contents to the index, updating the index to match the working tree.
+	gc = !"git commit -m" # Record changes to the repository.
+	gcem = !"git commit --allow-empty-message -m ''" # Record changes to the repository, allowing empty commit message.
+	gqp = !"git add --all && git commit --allow-empty-message && git push" # 'git-quick-push' -- Add all files, commit without commenting and push.
+	gr = !"git rm"
+	gri = !"git rebase -i" # Reapply commits on top of another base tip making a list of the commits which are about to be rebased.
+	gs = !"git status"
+	gp = !"git push"
+	gpch = !"git push --force --tags origin 'refs/heads/*'" # Push corrected history.
+	gpf = !"git push --force" # Update remote refs that are not ancestors of the local ref used to overwrite it, along with associated objects.
+	gpo = !"git push origin" # Update remote refs along with associated objects, pushing 'matching' branches to origin.
 
 [user]
 	name = Karl Bertin

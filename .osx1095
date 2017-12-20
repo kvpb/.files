@@ -631,6 +631,17 @@ defaults write com.apple.terminal StartAtLogin -bool true # Launch Terminal at s
 
 echo  'TextEdit (com.apple.TextEdit)'
 
+defaults write com.apple.TextEdit NSUserKeyEquivalents \
+'{ \
+	"\033Format\033Font\033Baseline\033Subscript" = "@$-"; \
+	"\033Format\033Font\033Baseline\033Superscript" = "@$6"; \
+	Justify = "@~$["; \
+}';
+# Add TextEdit keyboard app shortcuts:
+# 	Shift-Command-6 (Command-^ on US Mac keyboard layout) 'Superscript'
+# 	Shift-Command-- (Command-_ on US Mac keyboard layout) 'Subscript'
+# 	Alt-Shift-Command-[ (Option-Command-{ on US Mac keyboard layout) 'Justify'
+
 defaults write com.apple.TextEdit ShowRuler -bool false # Display ruler. (i) Enable Show ruler.
 defaults write com.apple.TextEdit SmartCopyPaste -bool false # (i) Disable Smart copypaste.
 defaults write com.apple.TextEdit SmartQuotes -bool false # (i) Disable Smart quotes.

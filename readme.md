@@ -1,5 +1,5 @@
 # `.files`
-#### Runcoms, configuration files and setups.
+#### Runcoms, configuration files & setups
 
 # &nbsp;&nbsp;`.macosx`, `.osx` & `.macos`
 
@@ -17,10 +17,10 @@
 cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx1095
 ```
 
-&nbsp;&nbsp;**OS X 10.10.5 Yosemite:**
+&nbsp;&nbsp;**macOS 10.12 Sierra:**
 
 ```sh
-cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
+cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macos1012
 ```
 
 **Note:** Don't hesitate to help me finding new hidden preferences with `defaults read`! You'll get full credits for that, of course.
