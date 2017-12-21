@@ -1,5 +1,5 @@
 # `.files`
-#### Runcoms, configuration files & setups
+#### Runcoms, Configuration files & Setups
 
 # &nbsp;&nbsp;`.macosx`, `.osx` & `.macos`
 
@@ -11,19 +11,37 @@
 
 &nbsp;&nbsp;Launch a terminal emulator, eg Terminal or iTerm2, then enter this:
 
+&nbsp;&nbsp;~~**macOS 10.13 High Sierra:**~~
+
+```
+cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macos1013
+```
+
+&nbsp;&nbsp;**OS X 10.10.5 Yosemite:**
+
+```sh
+cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
+```
+
 &nbsp;&nbsp;**OS X 10.9.5 Mavericks:**
 
 ```sh
 cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx1095
 ```
 
-&nbsp;&nbsp;**macOS 10.12 Sierra:**
+&nbsp;&nbsp;~~**Mac OS X 10.6.8 Snow Leopard:**~~
 
-```sh
-cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macos1012
+```
+cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macosx1068
 ```
 
-**Note:** Don't hesitate to help me finding new hidden preferences with `defaults read`! You'll get full credits for that, of course.
+&nbsp;&nbsp;~~**Mac OS X 10.4.11 Tiger:**~~
+
+```
+cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macosx10411
+```
+
+**NB:** Don't hesitate to help me finding new hidden preferences with `defaults read`! You'll get full credits for that, of course.
 
 - - -
 
@@ -32,6 +50,8 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macos1012
 #### What-is
 
 &nbsp;&nbsp;macOS text substitutions (list of abbreviations to automatically replace by words).
+
+&nbsp;&nbsp;**NB:** This works with macOS software that use it. It works with TextEdit, but I don't know if it works with Word for Mac 2011.
 
 #### How-to
 
@@ -43,11 +63,9 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macos1012
 
 &nbsp;&nbsp;4.&nbsp;&nbsp;Drag `Text Substitutions.plist` from Finder window and drop it to System preferences window's table-like list.
 
-&nbsp;&nbsp;**NB:** This works with macOS software that use it. I know it works with TextEdit, but I don't know if it works with Word for Mac 2011.
-
 - - -
 
-# &nbsp;&nbsp;`flashcardsstructures.docx`, `uenctcnyyyymmdd.docx`, `Forename_Surname_UEN_GN_Fiche_de_lecture.docx`, `Forename_Surname_UEN_GN_Memoire.docx`, `notetakingstructures.docx`, `notetakingsystem.docx` & `name.docx`
+# &nbsp;&nbsp;`flashcardsstructures.docx`,<br>&nbsp;&nbsp;`uenctcnyyyymmdd.docx`,<br>&nbsp;&nbsp;`Forename_Surname_UEN_GN_Fiche_de_lecture.docx`,<br>&nbsp;&nbsp;`Forename_Surname_UEN_GN_Memoire.docx`,<br>&nbsp;&nbsp;`notetakingstructures.docx`,<br>&nbsp;&nbsp;`notetakingsystem.docx` &<br>&nbsp;&nbsp;`name.docx`
 
 <p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://rawgit.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/9bada103c3850f17e71d9c6029a3f4927eef6232/karlbertinsscratchingsystemfrontcover.svg'></a>
 
@@ -55,7 +73,7 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macos1012
 
 &nbsp;&nbsp;I's scratching system I built at university for better faster cleaner notetaking. This read-me has been written following these guidelines.
 
-&nbsp;&nbsp;**Note:** If you have any suggestion to improve it, feel free to jump in, express yourself, let loose --- open an issue or contact me via Facebook. You're always welcome.
+**NB:** If you have any suggestion to improve it, feel free to jump in, express yourself, let loose --- open an issue or contact me via Facebook. You're always welcome.
 
 - - -
 
@@ -63,11 +81,11 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macos1012
 
 #### &nbsp;&nbsp;`.macosx`, `.osx` & `.macos`
 
-- [x] ~~Reorganize the scripts into 3 parts:~~
+- [x] Reorganize the scripts into 3 parts:
   - [x] First-party: System-wide & user-specific preferences
   - [x] Second-party: User-specific filesystem customs
   - [x] Third-party: System-wide & user-specific xenogenetic software & preferences
-- [x] ~~Reorganize the scripts by layers (my 3 parts, from firmware, kernel and drivers to applications, from important to trivial and from open standard to closed proprietary)~~
+- [x] Reorganize the scripts by layers (my 3 parts: from firmware, kernel and drivers to applications, from important to trivial and from open standard to closed proprietary).
 
 - - -
 
@@ -90,4 +108,4 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macos1012
 <b>Karl 'Kabe' Bertin (Карл Бэртин) `kvpb`</b><br> <!-- Neither `<span style='font-variant: small-caps;'>Bertin</span>` & `<span style='font-variant: small-caps;'>Бэртин</span>` nor `B<small>ERTIN</small>` & `Б<small>ЭРТИН</small>` work on GitHub. -->
 <a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a> | <a href='https://www.facebook.com/karlbertin'>Facebook</a> | <a href='https://www.instagram.com/karlbertin/'>Instagram</a>
 
-&nbsp;&nbsp;**Note:** Whether you thank me or not, please give credit to the people I took code from.
+**PS:** Whether you thank me or not, please give credit to the people I took code from.

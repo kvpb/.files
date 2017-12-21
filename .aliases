@@ -108,7 +108,9 @@ alias	rff='open -R ' # Reveal files using Finder.
 
 #	qlmanage		Quick Look server debug and management tool
 
-alias	ql='qlmanage -p ' # Display the Quick Look generated preview for the specified files.
+alias	ql='qlmanage '
+
+alias	qlp='qlmanage -p ' # Display the Quick Look generated preview for the specified files.
 
 # 	ls				list directory contents
 
