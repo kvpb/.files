@@ -16,7 +16,6 @@
 [user]
 	name = Karl Bertin
 	email = local-part@domain
-	username = kvpb
 
 [core]
 	editor = vim
