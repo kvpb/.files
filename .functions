@@ -46,3 +46,8 @@ add_missing_NL_at_EOF ()
 	sed -i '' -e '$a\'
 } # `add_missing_NL_at_EOF` 'Add missing newline at end of file', from Victor Engmark `l0b0`'s `empty_line_before_eof` (https://github.com/l0b0/tilde/blob/e7ccc9a6a3aba2b0216c8e5141554e8a729389ec/.bash_aliases#L474)
 # Insert a newline after pre-end of file line if that latter is not empty.
+
+RemoveExtendedAttributes () {
+	xattr -rc .
+} # `RemoveExtendedAttributes`
+# Remove any and all files' extended attributes from current directory.

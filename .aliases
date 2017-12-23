@@ -4,7 +4,7 @@
 
 # Shells builtin utilities commands
 
-#	cd	change the working directory
+#	cd				change the working directory
 # (i) Bourne shell (sh) builtin.
 
 alias	..='cd ..' # Change the working dir to current user's parent one.
@@ -84,6 +84,7 @@ alias	tgz='tar -czvf ' # Create a new archive containing the specified items the
 
 #	open			open files and directories
 
+alias	opn='open '
 alias	o='open '
 
 alias	ofte='open -e ' # Open file using TextEdit.
@@ -108,6 +109,7 @@ alias	rff='open -R ' # Reveal files using Finder.
 
 #	qlmanage		Quick Look server debug and management tool
 
+alias	quicklook='qlmanage '
 alias	ql='qlmanage '
 
 alias	qlp='qlmanage -p ' # Display the Quick Look generated preview for the specified files.
@@ -128,7 +130,7 @@ alias	l@='ls -@ ' # List directory contents and extended attributes keys and siz
 
 alias	du='du -hc ' # Display humanly disk usage statistics and a grand total.
 
-#	clear		clear the terminal screen
+#	clear			clear the terminal screen
 
 alias	clr='clear'
 
@@ -136,9 +138,16 @@ alias	clr='clear'
 
 alias	swu='softwareupdate '
 
+#	PlistBuddy		read and write values to plists
+
+alias	PlistBuddy='/usr/libexec/PlistBuddy '
+alias	plistbuddy='PlistBuddy '
+alias	pb='PlistBuddy '
+
 #	airport			get information for 802.11 interface
 
 alias	airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
+alias	ap='airport '
 
 # External programs commands
 
@@ -157,3 +166,5 @@ alias	tara='tarall '
 #alias	ssu='systemsoftwareupdate'
 
 alias	nleof='add_missing_NL_at_EOF'
+
+alias	rxa='RemoveExtendedAttributes'
