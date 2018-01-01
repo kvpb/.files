@@ -19,9 +19,9 @@ mkdir -p /Users/${USER}/Temporary
 cd /Users/${USER}/Temporary
 #curl --remote-name https://github.com/dropbox/dbxcli/releases/download/v2.1.0/dbxcli-darwin-amd64
 #mv dbxcli-darwin-amd64 dbxcli
-curl -J -L -H "Accept: application/octet-stream" "https://github.com/dropbox/dbxcli/releases/download/v2.1.0/dbxcli-darwin-amd64" --output "dbxcli"
+curl --remote-header-name --location --header "Accept: application/octet-stream" "https://github.com/dropbox/dbxcli/releases/download/v2.1.0/dbxcli-darwin-amd64" --output "dbxcli"
 chmod +x dbxcli
 mv dbxcli /usr/local/bin/
-cd ..
-rm -r Temporary
+cd /Users/${USER}
+rmdir Temporary
 # Download dbxcli, and install it. (i) It's alrighty. I just Kabe'd this shit.
