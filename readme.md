@@ -1,5 +1,5 @@
 # `.files`
-#### Runcoms, Configuration files & Setups
+#### Runcoms, Configuration files, Templates & Setups
 
 # &nbsp;&nbsp;`.macosx`, `.osx` & `.macos`
 
@@ -82,10 +82,11 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macosx1041
 #### &nbsp;&nbsp;`.macosx`, `.osx` & `.macos`
 
 - [x] Reorganize the scripts into 3 parts:
-  - [x] First-party: System-wide & user-specific preferences
+  - [x] First-party: System-wide and user-specific preferences
   - [x] Second-party: User-specific filesystem customs
-  - [x] Third-party: System-wide & user-specific xenogenetic software & preferences
-- [x] Reorganize the scripts by layers (my 3 parts: from firmware, kernel and drivers to applications, from important to trivial and from open standard to closed proprietary).
+  - [x] Third-party: System-wide and user-specific xenogenetic software and preferences
+- [x] Reorganize the scripts by layers (my 3 parts: from firmware, kernel and drivers to applications, from important to trivial and from open standard to closed proprietary)
+- [x] Remove the ACOS conf scripts that don't matter, and add those that do
 
 - - -
 
@@ -108,4 +109,4 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macosx1041
 <b>Karl 'Kabe' Bertin (Карл Бэртин) `kvpb`</b><br> <!-- Neither `<span style='font-variant: small-caps;'>Bertin</span>` & `<span style='font-variant: small-caps;'>Бэртин</span>` nor `B<small>ERTIN</small>` & `Б<small>ЭРТИН</small>` work on GitHub. -->
 <a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a> | <a href='https://www.facebook.com/karlbertin'>Facebook</a> | <a href='https://www.instagram.com/karlbertin/'>Instagram</a>
 
-**PS:** Whether you thank me or not, please give credit to the people I took code from.
+**PS:** Whether you thank me or not, please credit the people I took code from.
