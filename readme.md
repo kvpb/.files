@@ -106,7 +106,7 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macosx1041
 - [ ] Add `InstallSFMono.sh` 'Install SF Mono' shell script
 - [x] Add `InstallSFMonoFromMac.sh` 'Install SF Mono from Mac' Mac shell script
 - [x] Add `InstallSanFrancisco.sh` 'Install San Francisco' Mac shell script
-- [ ] Add `InstallSanFranciscoCompact.sh` 'Install San Francisco Compact' Mac shell script
+- [x] Add `InstallSanFranciscoCompact.sh` 'Install San Francisco Compact' Mac shell script
 - [ ] Add `InstallVMwareFusion8` 'Install VMware Fusion 8' Mac shell script
 - [ ] Add `InstallPsCC.sh` 'Install Photoshop CC (14.0) Mac' shell script
 - [ ] Add `InstallPsCS6.sh` 'Install Photoshop CS6 Extended Mac' shell script
