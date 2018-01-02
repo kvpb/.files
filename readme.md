@@ -88,6 +88,59 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macosx1041
 - [x] Reorganize the scripts by layers (my 3 parts: from firmware, kernel and drivers to applications, from important to trivial and from open standard to closed proprietary)
 - [x] Remove the ACOS conf scripts that don't matter, and add those that do
 
+#### &nbsp;&nbsp;`[.files/lib/]` `scpt/`
+
+- [ ] Add `InstallCommandLineTools.sh` 'Install Command Line Tools' Mac shell script
+- [ ] Add `InstallGitforMac.sh` 'Install Git for Mac' shell script
+- [ ] Add `InstallHomebrew.sh` 'Install Homebrew' Mac shell script
+- [ ] Add `InstallHomebrewBundle.sh` 'Install homebrew-bundle' Mac shell script
+- [ ] Add `InstallJumpcut.sh` 'Install Jumpcut' Mac shell script
+- [ ] Add `InstallSizeUp.sh` 'Install SizeUp' Mac shell script
+- [ ] Add `InstallFlux.sh` 'Install f.lux Mac' shell script
+- [ ] Add `InstallOnyX.sh` 'Install OnyX' Mac shell script
+- [ ] Add `InstallAppZapper.sh` 'Install AppZapper' Mac shell script
+- [ ] Add `InstallGPGSuite.sh` 'Install GPG Suite Mac' shell script
+- [ ] Add `InstallPaparazzi.sh` 'Install Paparazzi!' Mac shell script
+- [ ] Add `InstallTransmission.sh` 'Install Transmission Mac' shell script
+- [ ] Add `InstallJDownloader2.sh` 'Install JDownloader2 Mac' shell script
+- [ ] Add `InstallSFMono.sh` 'Install SF Mono' shell script
+- [x] Add `InstallSFMonoFromMac.sh` 'Install SF Mono from Mac' Mac shell script
+- [ ] Add `InstallSanFrancisco.sh` 'Install San Francisco' Mac shell script
+- [ ] Add `InstallSanFranciscoCompact.sh` 'Install San Francisco Compact' Mac shell script
+- [ ] Add `InstallVMwareFusion8` 'Install VMware Fusion 8' Mac shell script
+- [ ] Add `InstallPsCC.sh` 'Install Photoshop CC (14.0) Mac' shell script
+- [ ] Add `InstallPsCS6.sh` 'Install Photoshop CS6 Extended Mac' shell script
+- [ ] Add `InstallAiCC.sh` 'Install Illustrator CC (17.0) Mac' shell script
+- [ ] Add `InstallAiCS6.sh` 'Install Illustrator CS6 Mac' shell script
+<!--- [ ] Add `InstallMCCS6.sh` 'Install Master Collection Creative Suite 6 Mac' shell script-->
+- [ ] Add `InstallLr7.sh` 'Install Photoshop Lightroom 7 Mac' shell script
+- [ ] Add `InstallLr6.sh` 'Install Photoshop Lightroom 6 (CC 2015) Mac' shell script
+- [ ] Add `InstallOffice2016forMac.sh` 'Install Office 2016 for Mac' shell script
+- [ ] Add `InstallOffice2011forMac.sh` 'Install Office 2011 for Mac' shell script
+- [ ] Add `InstallSketch344.sh` 'Install Sketch 3.4.4 [latest OS X 10.9.5 Mavericks compatible version]' Mac shell script
+- [ ] Add `InstalliTerm2.sh` 'Install iTerm2' Mac shell script
+- [ ] Add `InstallCathode.sh` 'Install Cathode' Mac shell script
+- [ ] Add `InstallCathode203.sh` 'Install Cathode 2.0.3 (Last 10.6.X compatible version)' Mac shell script
+- [ ] Add `InstallCathode094.sh` 'Install Cathode 0.9.4 (Last 10.5.X compatible version)' Mac shell script
+- [ ] Add `InstallPathFinder7.sh` 'Install Path Finder 7' Mac shell script
+- [ ] Add `InstallPathFinder6.sh` 'Install Path Finder 6' Mac shell script
+- [ ] Add `InstallForkLift3.sh` 'Install ForkLift 3' Mac shell script
+- [ ] Add `InstallForkLift2.sh` 'Install ForkLift 2' Mac shell script
+- [ ] Add `InstallVLCMediaPlayer.sh` 'Install VLC Media Player Mac' shell script
+- [x] Add `InstallChrome.sh` 'Install Chrome Mac' shell script
+- [x] Add `InstallDropbox.sh` 'Install Dropbox Mac' shell script
+- [x] Add `Installdbxcli.sh` 'Install dbxcli Mac' shell script
+<!--- [ ] Add `InstallEvernote.sh` 'Install Evernote Mac' shell script-->
+- [x] Add `InstallSpotify.sh` 'Install Spotify Mac' shell script
+- [ ] Add `InstallWhatsApp.sh` 'Install WhatsApp Mac' shell script
+<!--- [ ] Add `InstallMessengerforMac.sh` 'Install Messenger for  Mac' shell script-->
+- [ ] Add `InstallGoofy.sh` 'Install Goofy Mac' shell script
+- [ ] Add `SetKeyboardBrightnessTo100percent.sh` 'Set keyboard brightness to max' Mac shell script
+- [ ] Add `SetVolumeTo50percent.sh` 'Set OS volume to 50%' Mac shell script
+- [ ] Add `SetVolumeToMuted.sh` 'Set OS volume to muted' Mac shell script
+- [ ] Add `GetVolumeMuteStatus.sh` 'Get OS volume mute status' Mac shell script
+- [ ] Add `ClearChromeSuggestions.sh` 'Delete Chrome Mac suggestions' shell script
+
 - - -
 
 #### Thanks to
@@ -102,6 +155,7 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macosx1041
 * [Michael Kühnel](http://michael-kuehnel.de/) for ['Quick tip: Git, Mac OS X and german umlauts (umlaute)'](http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html) *[8.22.2016](https://github.com/mischah/dotfiles/commit/f2ab1a8bb27a6dc944e2abd991f499e7928aef0d)*
 * [Chris Gerke](https://www.linkedin.com/in/chrisgerke) for [`applekeyboard`](https://gist.githubusercontent.com/cgerke/e5500f93cd5edf05084c/raw/18c4513d662ffc636eba56f854b5e3b817c4bf51/applekeyboard) *[2017.2.16 @ 10:52](https://gist.github.com/cgerke/e5500f93cd5edf05084c/18c4513d662ffc636eba56f854b5e3b817c4bf51)*
 * [Chris White](https://github.com/christopherdwhite) for [his 2017.6.26 comment on commit 398496c](https://github.com/mathiasbynens/dotfiles/commit/398496c2372d65c0e6770d02b0c5b49c0d636f31#comments) *[2017.12.2, 15:45:0](https://github.com/mathiasbynens/dotfiles/commit/398496c2372d65c0e6770d02b0c5b49c0d636f31#commitcomment-22753491)*
+* [Simon Fredsted](https://simonfredsted.com/) for ['How to use Apple's SF Mono font in your editor'](https://simonfredsted.com/1438) *[2018.1.2, 13:35:58](https://web.archive.org/save/https://simonfredsted.com/1438)*
 
 #### Author
 
