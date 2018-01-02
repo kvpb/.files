@@ -105,7 +105,7 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macosx1041
 - [ ] Add `InstallJDownloader2.sh` 'Install JDownloader2 Mac' shell script
 - [ ] Add `InstallSFMono.sh` 'Install SF Mono' shell script
 - [x] Add `InstallSFMonoFromMac.sh` 'Install SF Mono from Mac' Mac shell script
-- [ ] Add `InstallSanFrancisco.sh` 'Install San Francisco' Mac shell script
+- [x] Add `InstallSanFrancisco.sh` 'Install San Francisco' Mac shell script
 - [ ] Add `InstallSanFranciscoCompact.sh` 'Install San Francisco Compact' Mac shell script
 - [ ] Add `InstallVMwareFusion8` 'Install VMware Fusion 8' Mac shell script
 - [ ] Add `InstallPsCC.sh` 'Install Photoshop CC (14.0) Mac' shell script
@@ -130,7 +130,7 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macosx1041
 - [x] Add `InstallChrome.sh` 'Install Chrome Mac' shell script
 - [x] Add `InstallDropbox.sh` 'Install Dropbox Mac' shell script
 - [x] Add `Installdbxcli.sh` 'Install dbxcli Mac' shell script
-<!--- [ ] Add `InstallEvernote.sh` 'Install Evernote Mac' shell script-->
+<!--- [ ] Add `InstallEvernote.sh` (*Install Evernote Mac*) shell script-->
 - [x] Add `InstallSpotify.sh` 'Install Spotify Mac' shell script
 - [ ] Add `InstallWhatsApp.sh` 'Install WhatsApp Mac' shell script
 <!--- [ ] Add `InstallMessengerforMac.sh` 'Install Messenger for  Mac' shell script-->
