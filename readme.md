@@ -98,7 +98,7 @@ cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macosx1041
 - [ ] Add `InstallSizeUp.sh` 'Install SizeUp' Mac shell script
 - [ ] Add `InstallFlux.sh` 'Install f.lux Mac' shell script
 - [ ] Add `InstallOnyX.sh` 'Install OnyX' Mac shell script
-- [ ] Add `InstallAppZapper.sh` 'Install AppZapper' Mac shell script
+- [x] Add `InstallAppZapper.sh` 'Install AppZapper' Mac shell script
 - [ ] Add `InstallGPGSuite.sh` 'Install GPG Suite Mac' shell script
 - [ ] Add `InstallPaparazzi.sh` 'Install Paparazzi!' Mac shell script
 - [ ] Add `InstallTransmission.sh` 'Install Transmission Mac' shell script
