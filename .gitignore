@@ -21,10 +21,20 @@ Thumbs.db
 
 # EMACS
 
-#*#
+\#*#
 *~
 
-# VIM
+# VIm
+
 *.swp
 *.swo
 *.swn
+
+# Nano
+
+*.save
+
+# 'Git' (I)
+
+#.gitkeep
+.gitnote
