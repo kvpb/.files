@@ -4,7 +4,7 @@ RemoveDSStore ()
 {
 	find . -name '.DS_Store' -delete -print
 } # `RemoveDSStore` '.DS_Store remover'
-# Find from current directory file named '.DS_Store', remove it and display the full file name of the standard output followed by a newline.
+# Find from current directory file named '.DS_Store', remove it, and display the full file name of the standard output followed by a newline.
 
 ResetLaunchPad ()
 {
@@ -25,13 +25,13 @@ dcal ()
 {
 	date | grep -C6 --color "\b$(date +%e)\b" && cal | sed -n "1!p" | grep -C6 --color "\b$(date +%e)\b"
 } # `dcal` 'Dated calendar'
-# Display a calendar, substitute month of year with current date in full format and highlight current day of month.
+# Display a calendar, substitute month of year with current date in full format, and highlight current day of month.
 
 cls ()
 {
 	clear && printf '\e[3J'
 } # `cls` 'MS-DOS, OS/2 & Microsoft Windows CLS'
-# Clear the terminal screen if this is possible then write the VT100 escape code for resetting the terminal to the standard output under the control of the format.
+# Clear the terminal screen if this is possible, then write the VT100 escape code for resetting the terminal to the standard output under the control of the format.
 
 systemsoftwareupdate ()
 {
