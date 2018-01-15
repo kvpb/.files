@@ -1,15 +1,15 @@
 update # Update Homebrew. (i) Fetch the newest version of Homebrew from GitHub using git(1).
 upgrade # Update Homebrew formulas. (i) Upgrade outdated, unpinned brews.
 
-#install coreutils # Download & install GNU CoreUtils Homebrew.
-#install bash # Download & install BASH Homebrew.
-#install zsh # Download & install ZSH Homebrew.
-#install openssh --with-brewed-openssl --with-keychain-support # Download & install OpenSSH Homebrew.
+#install coreutils # Download GNU CoreUtils Homebrew, and install them.
+#install bash # Download BASh Homebrew, and install it.
+#install zsh # Download ZSh Homebrew, and install it.
+#install openssh --with-brewed-openssl --with-keychain-support # Download OpenSSH Homebrew, and install it.
 
-#install vim # Download & install VIM Homebrew.
-#install git # Download & install Git Homebrew.
-install wget --enable-iri # Download & install Wget Homebrew.
+#install vim # Download VIm Homebrew, and install it.
+#install git # Download Git Homebrew, and install it.
+install wget --enable-iri # Download Wget Homebrew, and install it.
 
-#install rbenv # Download & install RBenv.
-#install ruby-build # Download & install ruby-build.
-#install pyenv # Download & install PYenv.
+#install rbenv # Download RBenv, and install it.
+#install ruby-build # Download ruby-build, and install it.
+#install pyenv # Download PYenv, and install it.
