@@ -14,31 +14,31 @@
 &nbsp;&nbsp;~~**macOS 10.13 High Sierra:**~~
 
 ```
-cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macos1013
+cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos1013)
 ```
 
 &nbsp;&nbsp;**OS X 10.10.5 Yosemite:**
 
 ```sh
-cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx10105
+cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx10105 -o SetOSX.sh && chmod +x SetOSX.sh && /bin/bash SetOSX.sh
 ```
 
 &nbsp;&nbsp;**OS X 10.9.5 Mavericks:**
 
 ```sh
-cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.osx1095
+cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx1095 -o SetOSX.sh && chmod +x SetOSX.sh && /bin/bash SetOSX.sh
 ```
 
 &nbsp;&nbsp;~~**Mac OS X 10.6.8 Snow Leopard:**~~
 
 ```
-cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macosx1068
+cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx1068 -o SetMacOSX.sh && chmod +x SetMacOSX.sh && /bin/bash SetMacOSX.sh
 ```
 
 &nbsp;&nbsp;~~**Mac OS X 10.4.11 Tiger:**~~
 
 ```
-cd && git clone https://github.com/kvpb/.files.git && cd .files && ./.macosx10411
+cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx10411 -o SetMacOSX.sh && chmod +x SetMacOSX.sh && /bin/bash SetMacOSX.sh
 ```
 
 **NB:** Don't hesitate to help me finding new hidden preferences with `defaults read`! You'll get full credits for that, of course.
