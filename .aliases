@@ -19,7 +19,7 @@ alias	.....='cd ../../../../..' # Change the working dir to current's grand-gran
 
 alias	rt='cd /' # Change the working dir to root.
 
-alias	.f='cd ~/.files' # Change the working dir to my dotfiles'.
+alias	.f="cd ~/.files && git status --short && printf '\n' && cat .gitnote && printf '\n'" # Change the working dir to my dot-files', 
 
 alias	kb='cd ~/kbs' # Change the working dir to mine.
 
@@ -63,12 +63,18 @@ alias	src='source '
 # (i) Z shell (zsh) builtin.
 
 alias	chdir='cd '
+#alias	d='cd '
+
+#	exit
+
+#alias	e='exit'
 
 # 'Internal' programs commands
 
 #	killall			kill processes by name
 
 alias	ka='killall '
+#alias	k='killall '
 
 #	ruby			Interpreted object-oriented scripting language
 
@@ -85,7 +91,7 @@ alias	tgz='tar -czvf ' # Create a new archive containing the specified items the
 #	open			open files and directories
 
 alias	opn='open '
-alias	o='open '
+#alias	o='open '
 
 alias	ofte='open -e ' # Open file using TextEdit.
 
@@ -116,23 +122,29 @@ alias	qlp='qlmanage -p ' # Display the Quick Look generated preview for the spec
 
 # 	ls				list directory contents
 
-alias	la='ls -aF ' # List directory contents including directory entries whose names begin with a dot ('.'). [The -p option might be useless since I wrote another alias for ls to extend its behavior the way I want it that includes the option --- still, if the other alias is disabled, it wouldn't work anymore.]
+alias	ls='ls -G '
 
-alias	lh='ls -dF .* ' # List directory hidden files.
+alias	l='ls -1F '
+#alias	ls2='l '
 
-alias	ls='pwd && ls -lp ' # Print working directory then list directory contents in long format writing a slash after each filename if that file is a directory.
+alias	lh='ls -Ad .*' # List directory hidden files.
+#alias	lh2='la -1AdF .*'
 
-alias	lc='cls && ls ' # 'Clean list' --- MS-DOS style clear the terminal screen then list directory contents.
+alias	la='ls -a '
+#alias	la2='ls -1aF '
 
-alias	l@='ls -@ ' # List directory contents and extended attributes keys and sizes in long (-l) output.
+alias	ll='pwd && ls -@aeFGlT '
+
+alias	lc='cls && ls ' # 'List cleanly' --- Clear the terminal screen MS-DOS style, then list directory contents.
 
 #	du				display disk usage statistics
 
-alias	du='du -hc ' # Display humanly disk usage statistics and a grand total.
+alias	du='du -c -d 0 -h '
 
 #	clear			clear the terminal screen
 
 alias	clr='clear'
+#alias	c='clear'
 
 #	softwareupdate	system software update tool
 
@@ -155,6 +167,12 @@ alias	ap='airport '
 
 #alias	git='/usr/local/git/bin/git ' # Get fucked, Apple. /i\ Requires Git for Mac OS X from the official Git website (http://git-scm.com/).
 
+#	dbxcli			A command line tool for Dropbox users and team admins
+
+alias	dbxcli='/usr/local/bin/dbxcli '
+#alias	dropbox='dbxcli '
+alias	dbx='dbxcli '
+
 # Shell functions
 
 alias	rds='RemoveDSStore'
@@ -168,3 +186,8 @@ alias	tara='tarall '
 alias	nleof='add_missing_NL_at_EOF'
 
 alias	rxa='RemoveExtendedAttributes'
+
+# Computer programs
+
+alias	RPwG='ruby ~/ops/RPwG/RPwG.rb'
+alias	rpwg='ruby ~/ops/RPwG/RPwG.rb'
