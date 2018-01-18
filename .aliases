@@ -19,9 +19,11 @@ alias	.....='cd ../../../../..' # Change the working dir to current's grand-gran
 
 alias	rt='cd /' # Change the working dir to root.
 
-alias	.f="cd ~/.files && git status --short && printf '\n' && cat .gitnote && printf '\n'" # Change the working dir to my dot-files', 
+alias	~='cd ~' # Change the working directory to current user's home. (i) `cd` would do the same, and this is what I enter most, but it would break where `~`'s signification changes.
 
-alias	kb='cd ~/kbs' # Change the working dir to mine.
+alias	.f="cd ~/.files && git status --short && printf '\n' && cat .gitnote && printf '\n'" # Change the working dir to my dot-files', show the working tree status, then concatenate and print .gitnote.
+
+alias	kb='cd ~/kbs' # Change the working dir to mine. /!\ Deprecated: Because I never found any real use to this directory, I do not use it anymore, and I might literally remove it from my setup anytime, at least as a way to do things more cleanly pops into I's mind.
 
 alias	mi='cd ~/misc' # Change the working dir to my misc files'.
 
@@ -64,6 +66,10 @@ alias	src='source '
 
 alias	chdir='cd '
 #alias	d='cd '
+
+#	exec
+
+alias	nsh='exec ${SHELL} -l ' # Execute the default login shell as a login shell. (i) Replace the current shell process image with a new one.
 
 #	exit
 
@@ -122,24 +128,22 @@ alias	qlp='qlmanage -p ' # Display the Quick Look generated preview for the spec
 
 # 	ls				list directory contents
 
-alias	ls='ls -G '
+alias	ls='ls -G ' # Colorize ls output.
 
-alias	l='ls -1F '
+alias	l='ls -1F ' # List simply directory contents.
 #alias	ls2='l '
 
 alias	lh='ls -Ad .*' # List directory hidden files.
 #alias	lh2='la -1AdF .*'
 
-alias	la='ls -a '
+alias	la='ls -a ' # List all directory contents.
 #alias	la2='ls -1aF '
 
-alias	ll='pwd && ls -@aeFGlT '
-
-alias	lc='cls && ls ' # 'List cleanly' --- Clear the terminal screen MS-DOS style, then list directory contents.
+alias	ll='pwd && ls -@aeFGlT ' # List extendedly all directory contents.
 
 #	du				display disk usage statistics
 
-alias	du='du -c -d 0 -h '
+alias	du='du -c -d 0 -h ' # Display DU stats with a grand total, an entry for all files and directories 0 directories deep, human-readably.
 
 #	clear			clear the terminal screen
 
@@ -166,6 +170,7 @@ alias	ap='airport '
 # 	git				the stupid content tracker
 
 #alias	git='/usr/local/git/bin/git ' # Get fucked, Apple. /i\ Requires Git for Mac OS X from the official Git website (http://git-scm.com/).
+#alias	g='git '
 
 #	dbxcli			A command line tool for Dropbox users and team admins
 
@@ -189,5 +194,5 @@ alias	rxa='RemoveExtendedAttributes'
 
 # Computer programs
 
-alias	RPwG='ruby ~/ops/RPwG/RPwG.rb'
-alias	rpwg='ruby ~/ops/RPwG/RPwG.rb'
+alias	RPwG='ruby ${HOME}/ops/RPwG/RPwG.rb'
+alias	rpwg='RPwG '
