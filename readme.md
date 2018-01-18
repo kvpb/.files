@@ -1,5 +1,5 @@
 # `.files`
-#### Runcoms, Configuration files, Templates & Setups
+#### Runcoms, Configuration files, Setups, Scripts & Templates
 
 # &nbsp;&nbsp;`.macosx`, `.osx` & `.macos`
 
@@ -92,7 +92,7 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 
 - [ ] Add `InstallCommandLineTools.sh` 'Install Command Line Tools' Mac shell script
 - [ ] Add `InstallGitforMac.sh` 'Install Git for Mac' shell script
-- [ ] Add `InstallHomebrew.sh` 'Install Homebrew' Mac shell script
+- [x] Add `InstallHomebrew.sh` 'Install Homebrew' Mac shell script
 - [ ] Add `InstallHomebrewBundle.sh` 'Install homebrew-bundle' Mac shell script
 - [ ] Add `InstallJumpcut.sh` 'Install Jumpcut' Mac shell script
 - [ ] Add `InstallSizeUp.sh` 'Install SizeUp' Mac shell script
@@ -126,7 +126,7 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 - [ ] Add `InstallPathFinder6.sh` 'Install Path Finder 6' Mac shell script
 - [ ] Add `InstallForkLift3.sh` 'Install ForkLift 3' Mac shell script
 - [ ] Add `InstallForkLift2.sh` 'Install ForkLift 2' Mac shell script
-- [ ] Add `InstallVLCMediaPlayer.sh` 'Install VLC Media Player Mac' shell script
+- [x] Add `InstallVLCMediaPlayer.sh` 'Install VLC Media Player Mac' shell script
 - [x] Add `InstallChrome.sh` 'Install Chrome Mac' shell script
 - [x] Add `InstallDropbox.sh` 'Install Dropbox Mac' shell script
 - [x] Add `Installdbxcli.sh` 'Install dbxcli Mac' shell script
