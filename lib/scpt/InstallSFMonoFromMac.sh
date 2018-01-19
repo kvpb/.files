@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # InstallSHMonoFromMac.sh
 # Install SF Mono from macOS Sierra

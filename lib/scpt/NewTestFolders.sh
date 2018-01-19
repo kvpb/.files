@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # NewTestFolders.sh
 # Make test directories Mac

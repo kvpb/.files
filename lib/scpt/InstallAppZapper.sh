@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # InstallAppZapper.sh
 # Install AppZapper latest macOS Sierra

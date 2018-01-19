@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # InstallDropbox.sh
 # Install Dropbox latest Mac version

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # InstallChrome.sh
 # Install Google Chrome Mac

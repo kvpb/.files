@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # InstallSanFranciscoCompact.sh
 # Install San Francisco Compact Mac

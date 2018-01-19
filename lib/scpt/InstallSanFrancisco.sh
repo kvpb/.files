@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # InstallSanFrancisco.sh
 # Install San Francisco Mac

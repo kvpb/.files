@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Installdbxcli.sh
 # Install dbxcli v2.1.0 Mac OS X pre-compiled binaries
