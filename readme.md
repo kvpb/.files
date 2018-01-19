@@ -126,19 +126,21 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 - [ ] Add `InstallPathFinder6.sh` 'Install Path Finder 6' Mac shell script
 - [ ] Add `InstallForkLift3.sh` 'Install ForkLift 3' Mac shell script
 - [ ] Add `InstallForkLift2.sh` 'Install ForkLift 2' Mac shell script
-- [x] Add `InstallVLCMediaPlayer.sh` 'Install VLC Media Player Mac' shell script
+- [x] Add `InstallVLC.sh` 'Install VLC Mac' shell script
 - [x] Add `InstallChrome.sh` 'Install Chrome Mac' shell script
 - [x] Add `InstallDropbox.sh` 'Install Dropbox Mac' shell script
 - [x] Add `Installdbxcli.sh` 'Install dbxcli Mac' shell script
-<!--- [ ] Add `InstallEvernote.sh` (*Install Evernote Mac*) shell script-->
 - [x] Add `InstallSpotify.sh` 'Install Spotify Mac' shell script
 - [ ] Add `InstallWhatsApp.sh` 'Install WhatsApp Mac' shell script
 <!--- [ ] Add `InstallMessengerforMac.sh` 'Install Messenger for  Mac' shell script-->
 - [ ] Add `InstallGoofy.sh` 'Install Goofy Mac' shell script
-- [ ] Add `SetKeyboardBrightnessTo100percent.sh` 'Set keyboard brightness to max' Mac shell script
-- [ ] Add `SetVolumeTo50percent.sh` 'Set OS volume to 50%' Mac shell script
-- [ ] Add `SetVolumeToMuted.sh` 'Set OS volume to muted' Mac shell script
-- [ ] Add `GetVolumeMuteStatus.sh` 'Get OS volume mute status' Mac shell script
+- [x] Add `SetKeyboardBrightnessTo100percent.sh` 'Set keyboard brightness to max' Mac shell script
+- [x] Add `SetVolumeTo50percent.sh` 'Set OS volume to 50%' Mac shell script
+- [x] Add `SetVolumeToMuted.sh` 'Set OS volume to muted' Mac shell script
+- [x] Add `GetVolumeMuteStatus.sh` 'Get OS volume mute status' Mac shell script
+- [x] Add `NewTestFolders.sh` 'New Test Folders' Mac shell script
+- [x] Add `RemoveDirectoryFromUsersHome.sh` 'Remove directory from user's home' Mac shell script
+- [x] Add `RemoveCreativeCloudFilesFromUsersHome.sh` 'Remove Creative Cloud Files from user's home' Mac shell script
 - [ ] Add `ClearChromeSuggestions.sh` 'Delete Chrome Mac suggestions' shell script
 
 - - -
