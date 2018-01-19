@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# InstallVLCMediaPlayer.sh
+# InstallVLC.sh
 # Install VLC 2.2.8 for Mac OS X
 
 mkdir -p /Users/${USER}/Temporary
