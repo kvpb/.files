@@ -91,7 +91,7 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 #### &nbsp;&nbsp;`[.files/lib/]` `scpt/`
 
 - [ ] Add `InstallCommandLineTools.sh` 'Install Command Line Tools' Mac shell script
-- [ ] Add `InstallGitforMac.sh` 'Install Git for Mac' shell script
+- [x] Add `InstallGitforMac.sh` 'Install Git for Mac' shell script
 - [x] Add `InstallHomebrew.sh` 'Install Homebrew' Mac shell script
 - [ ] Add `InstallHomebrewBundle.sh` 'Install homebrew-bundle' Mac shell script
 - [ ] Add `InstallJumpcut.sh` 'Install Jumpcut' Mac shell script
