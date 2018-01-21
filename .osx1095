@@ -644,7 +644,7 @@ defaults write com.apple.x11 wm_ffm -bool TRUE # (i) Enter `defaults write org.x
 
 defaults write com.apple.terminal StartAtLogin -bool TRUE # Launch Terminal at startup.
 
-echo  'TextEdit (com.apple.TextEdit)'
+echo  'TextEdit (com.apple.TextEdit, com.apple.LaunchServices)'
 
 defaults write com.apple.TextEdit NSUserKeyEquivalents \
 '{ \
@@ -716,6 +716,9 @@ defaults write com.apple.TextEdit UseInlineCSS -bool false
 # Set new HTML document styling to embedded CSS. (i) Both are crossed attributes (eg enter `UseEmbeddedCSS -bool false` and `UseInlineCSS -bool false` to set styling to no CSS).
 
 defaults write com.apple.TextEdit PreserveWhitespace -bool TRUE # (i) Enable Preserve whitespace.
+
+#defaults write com.apple.LaunchServices LSHandlers -array-add '{LSHandlerContentType=org.openxmlformats.wordprocessingml.document;LSHandlerRoleAll=com.apple.textedit;}'
+# Set TextEdit as default Office Open XML Document editor.
 
 echo  'Disk Utility (com.apple.DiskUtility)'
 
