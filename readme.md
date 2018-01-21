@@ -67,7 +67,7 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 
 # &nbsp;&nbsp;`flashcardsstructures.docx`,<br>&nbsp;&nbsp;`uenctcnyyyymmdd.docx`,<br>&nbsp;&nbsp;`Forename_Surname_UEN_GN_Fiche_de_lecture.docx`,<br>&nbsp;&nbsp;`Forename_Surname_UEN_GN_Memoire.docx`,<br>&nbsp;&nbsp;`notetakingstructures.docx`,<br>&nbsp;&nbsp;`notetakingsystem.docx` &<br>&nbsp;&nbsp;`name.docx`
 
-<p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://rawgit.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/9bada103c3850f17e71d9c6029a3f4927eef6232/karlbertinsscratchingsystemfrontcover.svg'></a>
+<p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://rawgit.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/54cdac0b8ffad36d9ade790cfa53d138c6867412/karlbertinsscratchingsystemfrontcover.svg'></a>
 
 #### What-is
 
@@ -141,7 +141,7 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 - [x] Add `NewTestFolders.sh` 'New Test Folders' Mac shell script
 - [x] Add `RemoveDirectoryFromUsersHome.sh` 'Remove directory from user's home' Mac shell script
 - [x] Add `RemoveCreativeCloudFilesFromUsersHome.sh` 'Remove Creative Cloud Files from user's home' Mac shell script
-- [ ] Add `ClearChromeSuggestions.sh` 'Delete Chrome Mac suggestions' shell script
+- [ ] Add `DeleteChromeSuggestions.sh` 'Delete Chrome Mac suggestions' shell script
 
 - - -
 
