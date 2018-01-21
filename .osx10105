@@ -58,6 +58,8 @@ cecho ' YOUR USE OF THE PROGRAMS.'                                              
 echo  ''
 # Display the title screen, with disclaimer.
 
+osascript -e 'tell application "System Preferences" to quit' # Quit any System Preferences pane to prevent them from overriding this script.
+
 sudo -v # Ask for an administrator password.
 
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & # Update sudo timestamp until the script is over.
