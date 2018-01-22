@@ -103,7 +103,7 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 - [ ] Add `InstallPaparazzi.sh` 'Install Paparazzi!' Mac shell script
 - [ ] Add `InstallTransmission.sh` 'Install Transmission Mac' shell script
 - [ ] Add `InstallJDownloader2.sh` 'Install JDownloader2 Mac' shell script
-- [ ] Add `InstallSFMono.sh` 'Install SF Mono' shell script
+- [x] Add `InstallSFMono.sh` 'Install SF Mono' shell script
 - [x] Add `InstallSFMonoFromMac.sh` 'Install SF Mono from Mac' Mac shell script
 - [x] Add `InstallSanFrancisco.sh` 'Install San Francisco' Mac shell script
 - [x] Add `InstallSanFranciscoCompact.sh` 'Install San Francisco Compact' Mac shell script
