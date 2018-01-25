@@ -929,6 +929,12 @@ echo  'iTerm2 (com.googlecode.iterm2)'
 
 defaults write com.googlecode.iterm2 PromptOnQuit -bool FALSE # Hide quit prompt.
 
+echo  'Hyper (co.zeit.hyper, co.zeit.hyper.helper)'
+
+#/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc ~/.files/lib/scpt/InstallHyper.js # Install Hyper.
+
+ln -s ~/.files/.hyper.js ~/.hyper.js # Configure Hyper.
+
 echo  'Jumpcut (net.sf.Jumpcut)'
 
 defaults write net.sf.Jumpcut SUCheckAtStartup -bool TRUE # Check for updated on launch.
