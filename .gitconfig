@@ -1,17 +1,23 @@
 [alias]
-	lg = !"ls -aF && git status" # List directory contents then show the working tree status.
-	ga = !"git add"
-	gaa = !"git add --all" # Add file contents to the index, updating the index to match the working tree.
-	gc = !"git commit -m" # Record changes to the repository.
-	gcem = !"git commit --allow-empty-message -m ''" # Record changes to the repository, allowing empty commit message.
-	gqp = !"git add --all && git commit --allow-empty-message && git push" # 'git-quick-push' -- Add all files, commit without commenting and push.
-	gr = !"git rm"
-	gri = !"git rebase -i" # Reapply commits on top of another base tip making a list of the commits which are about to be rebased.
-	gs = !"git status"
-	gp = !"git push"
-	gpch = !"git push --force --tags origin 'refs/heads/*'" # Push corrected history.
-	gpf = !"git push --force" # Update remote refs that are not ancestors of the local ref used to overwrite it, along with associated objects.
-	gpo = !"git push origin" # Update remote refs along with associated objects, pushing 'matching' branches to origin.
+	lg = !ls -1Ap && git status --short # List directory contents then show the working tree status.
+	ga = !git add 
+	#gaa = !git add --all # Add file contents to the index, updating the index to match the working tree.
+	gc = !git commit -m # Record changes to the repository.
+	#gcnm = !git commit --allow-empty-message -m '' # Record changes to the repository, allowing empty commit message.
+	#gqp = !git add --all && git commit --allow-empty-message && git push # 'git-quick-push' -- Add all files, commit without commenting and push.
+	gr = !git rm
+	gri = !git rebase -i # Reapply commits on top of another base tip making a list of the commits which are about to be rebased.
+	gs = !git status
+	gp = !git push
+	#gpch = !git push --force --tags origin 'refs/heads/*' # Push corrected history.
+	#gpf = !git push --force # Update remote refs that are not ancestors of the local ref used to overwrite it, along with associated objects.
+	#gpo = !git push origin # Update remote refs along with associated objects, pushing 'matching' branches to origin.
+	a = add
+	c = commit -m
+	l = ls-files
+	p = push
+	r = rebase -i
+	s = status --short
 
 [user]
 	name = Karl Bertin
@@ -25,8 +31,15 @@
 [color]
 	ui = true
 
-[github]
-	user = kvpb
+[color "status"]
+	header = normal dim
+	#added = # (i) Cf `updated`.
+	updated = green # (i) Since green symbolizes hope and blue protection, green better fits this case where files are added but not pushed.
+	changed = red # (i) Yellow would fit changed better if there were more options, eg for added and deleted files. [Boy, does Git lack options.]
+	untracked = white dim # (i) To me, `white bold` better fits `git status`' output, and `white dim` better fits `git status --short`'s. Since I use `git-status`' short output more often, let's go for dim white.
+
+#[github]
+#	user = kvpb
 
 [push]
 	default = simple
