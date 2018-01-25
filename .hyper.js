@@ -15,7 +15,7 @@ module.exports = {
     fontFamily: '"SF Mono", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: 'rgba(248,28,229,0.8)', // I failed to set a 45deg from bottom-left to top-right cyan to blue gradient.
+    cursorColor: 'rgba(255,255,255,0)', // 'rgba(248,28,229,0.8)',
 
     // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
     cursorShape: 'BLOCK',
@@ -24,10 +24,10 @@ module.exports = {
     cursorBlink: false, // I tried to set it to `true`, but when I did, I couldn't see the cursor. After waiting a bit, it seems caused by the blinking cycle starting at blinked-out and restarting at each cursor position change.
 
     // color of the text
-    foregroundColor: '#fff',
+    foregroundColor: 'rgb(255,255,255)', // '#fff',
 
     // terminal background color
-    backgroundColor: '#000',
+    backgroundColor: 'rgb(0,0,0)', // '#000',
 
     // border color (window, tabs)
     borderColor: '#333',
@@ -36,26 +36,32 @@ module.exports = {
     css: '',
 
     // custom css to embed in the terminal window
-    termCSS: '',
-//    termCSS: '
-//	cursorColor
-//	{
-//		background: rgba(0,255,255,1);
-//		//background: -moz-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,0,255,1) 100%);
-//		//background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(0,255,255,1)), color-stop(100%, rgba(0,0,255,1)));
-//		//background: -webkit-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,0,255,1) 100%);
-//		//background: -o-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,0,255,1) 100%);
-//		//background: -ms-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,0,255,1) 100%);
-//		background: linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,0,255,1) 100%);
-//		//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffff', endColorstr='#0000ff', GradientType=1 );
-//
-//		//-webkit-background-clip: text;
-//		background-clip: text;
-//
-//		//-webkit-text-fill-color: transparent;
-//		color: rgba(0,0,0,0);
-//	}
-//	',
+    termCSS: `
+	.cursor-node {
+		background: rgba(0,255,255,1);
+		//background: -moz-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,0,255,1) 100%);
+		//background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(0,255,255,1)), color-stop(100%, rgba(0,0,255,1)));
+		//background: -webkit-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,0,255,1) 100%);
+		//background: -o-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,0,255,1) 100%);
+		//background: -ms-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,0,255,1) 100%);
+		background: linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,0,255,1) 100%);
+		//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffff', endColorstr='#0000ff', GradientType=1 );
+	
+		//-webkit-background-clip: text;
+		background-clip: text;
+	
+		//-webkit-text-fill-color: transparent;
+		color: rgba(0,0,0,0);
+	
+		//-moz-text-stroke: 1px white;
+		//-webkit-text-stroke: 1px white;
+		//-o-text-stroke: 1px white;
+		//-ms-text-stroke: 1px white;
+		text-stroke: 1px rgba(255,255,255,1);
+		text-shadow: -1px -1px 0 rgba(255,255,255,1), 1px -1px 0 rgba(255,255,255,1), -1px 1px 0 rgba(255,255,255,1), 1px 1px 0 rgba(255,255,255,1);
+	}
+
+	`,
 
     // set to `true` (without backticks) if you're using a Linux setup that doesn't show native menus
     // default: `false` on Linux, `true` on Windows (ignored on macOS)
@@ -67,7 +73,7 @@ module.exports = {
     showWindowControls: '',
 
     // custom padding (css format, i.e.: `top right bottom left`)
-    padding: '12px 14px',
+    padding: '0 0 0 4px',
 
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
@@ -126,7 +132,12 @@ module.exports = {
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
-  },
+    //hyperBorder: {
+    //  borderColors: ['#fc1da7', '#fba506'],
+    //  borderWidth: '2.69%', // (i) Icon dimensions: 512px^2; Icon pict width stroke incl: 446px; Icon pict stroke width or height: 12px; 12 / 446 * 100 = 2.6905829596412556
+    //  borderAngle: '45deg'
+    //}
+ },
 
   // a list of plugins to fetch and install from npm
   // format: [@org/]project[#version]
@@ -134,7 +145,15 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [],
+  plugins: [
+    //"hyperpower",
+    //'hyperyellow',
+    'hyperborder',
+    'hyper-alt-click',
+    //'hyperterm-crosshair',
+    'hyperterm-cursor',
+    'hyperterm-final-say'
+  ],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
