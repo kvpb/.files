@@ -1,1 +1,1 @@
-
+tar -cf - Group\ Containers/UBF8T346G9.Office/User\ Content.localized/Templates.localized | tar -C ~/.files/lib/ -xf - # Copy file recursively, copying directory structure. (i) I ran this on 2018.1.27 at 19:11:.
