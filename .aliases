@@ -7,6 +7,8 @@
 #	cd				change the working directory
 # (i) Bourne shell (sh) builtin.
 
+alias	d='cd '
+
 alias	..='cd ..' # Change the working dir to current user's parent one.
 
 alias	...='cd ../..' # Change the working dir to current's grand-parent one.
@@ -15,7 +17,7 @@ alias	....='cd ../../..' # Change the working dir to current's grand-grand-paren
 
 alias	.....='cd ../../../..' # Change the working dir to current's grand-grand-grand-parent one.
 
-alias	.....='cd ../../../../..' # Change the working dir to current's grand-grand-grand-grand-parent one.
+alias	......='cd ../../../../..' # Change the working dir to current's grand-grand-grand-grand-parent one.
 
 alias	rt='cd /' # Change the working dir to root.
 
@@ -65,7 +67,7 @@ alias	src='source '
 # (i) Z shell (zsh) builtin.
 
 alias	chdir='cd '
-#alias	d='cd '
+#alias	d='chdir '
 
 #	exec
 
@@ -98,7 +100,7 @@ alias	tgz='tar -czvf ' # Create a new archive containing the specified items the
 #	open			open files and directories
 
 alias	opn='open '
-#alias	o='open '
+alias	o='open '
 
 alias	ofte='open -e ' # Open file using TextEdit.
 
@@ -149,11 +151,7 @@ alias	du='du -c -d 0 -h ' # Display DU stats with a grand total, an entry for al
 #	clear			clear the terminal screen
 
 alias	clr='clear'
-#alias	c='clear'
-
-#	softwareupdate	system software update tool
-
-alias	swu='softwareupdate '
+alias	c='clear'
 
 #	PlistBuddy		read and write values to plists
 
@@ -161,8 +159,17 @@ alias	PlistBuddy='/usr/libexec/PlistBuddy '
 alias	plistbuddy='PlistBuddy '
 alias	pb='PlistBuddy '
 
+#	JSC				https://trac.webkit.org/wiki/JSC
+
+alias	jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc '
+
+#	softwareupdate	system software update tool
+
+alias	swu='softwareupdate '
+
 #	airport			get information for 802.11 interface
 
+alias	AirPort='airport '
 alias	airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
 alias	ap='airport '
 
@@ -171,7 +178,19 @@ alias	ap='airport '
 # 	git				the stupid content tracker
 
 #alias	git='/usr/local/git/bin/git ' # Get fucked, Apple. /i\ Requires Git for Mac OS X from the official Git website (http://git-scm.com/).
-#alias	g='git '
+alias	g='git '
+
+#	fswatch			Ask for notification when the contents of the specified files of directory hierarchies are modified.
+
+alias	fsw='fswatch '
+
+#	mas-cli			A simple command line interface for the Mac App Store. Designed for scripting and automation.
+
+#alias	mas-cli='mas '
+#alias	MacAppStore='mas '
+#alias	macappstore='mas '
+#alias	AppStore='mas '
+#alias	appstore='mas '
 
 #	dbxcli			A command line tool for Dropbox users and team admins
 
