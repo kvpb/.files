@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# .bash_prompt
+# Kabe's BASh prompt
+
+#PS1="\n"
+#PS1+="\n"
+#PS1+="\w"
+#PS1+="\n"
+#PS1+="\u" # at =>
+#PS1+="\h" # in =>
+#PS1+="\W"
+#PS1+="\\$"
+#export PS1

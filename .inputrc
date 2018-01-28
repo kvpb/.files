@@ -1,0 +1,50 @@
+set bell-style audible
+#set bind-tty-special-chars 
+set blink-matching-paren on
+#set colored-completion-prefix 
+set colored-stats on
+#set comment-begin 
+#set completion-display-width 
+set completion-ignore-case on
+set completion-map-case off
+#set completion-prefix-display-length 
+#set completion-query-items 
+#set convert-meta 
+#set disable-completion 
+#set echo-control-characters 
+#set editing-mode 
+#set emacs-mode-string 
+#set enable-bracketed-paste 
+#set enable-keypad 
+#set enable-meta-key 
+set expand-tilde off
+#set history-preserve-point	 
+#set history-size 
+#set horizontal-scroll-mode 
+#set input-meta 
+#set isearch-terminators 
+#set keymap 
+#set keyseq-timeout 
+set mark-directories off
+#set mark-modified-lines 
+#set mark-symlinked-directories 
+#set match-hidden-files 
+#set menu-complete-display-prefix 
+#set output-meta 
+#set page-completions 
+#set print-completions-horizontally 
+#set revert-all-at-newline 
+#set show-all-if-ambiguous 
+#set show-all-if-unmodified 
+#set show-mode-in-prompt 
+#set skip-completed-text 
+#set vi-cmd-mode-string 
+#set vi-ins-mode-string 
+#set visible-stats 
+# (i) Cf https://www.gnu.org/software/bash/manual/bashref.html#Readline-Init-File-Syntax.
+
+"\e[C": forward-char
+"\e[D": backward-char
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+# (i) Cf https://www.gnu.org/software/bash/manual/bashref.html#Function-Index.

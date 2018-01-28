@@ -896,9 +896,20 @@ else
 fi
 # If DCIM and Camera aren't directories in ~/ then substitute symlinks by or add these directories.
 
+ln -s ~/.files/.inputrc ~/.inputrc
+#ln -s ~/.files/.shrc ~/.shrc
+#ln -s ~/.files/.shinit ~/.shinit
+#ln -s ~/.files/.profile ~/.profile
+ln -s ~/.files/.functions ~/.functions
+ln -s ~/.files/.aliases ~/.aliases
 ln -s ~/.files/.bashrc ~/.bashrc
+ln -s ~/.files/.bash_login ~/.bash_login
+ln -s ~/.files/.bash_profile ~/.bash_profile
+ln -s ~/.files/.bash_logout ~/.bash_logout
+ln -s ~/.files/.bash_prompt ~/.bash_prompt
 ln -s ~/.files/.zshrc ~/.zshrc
-ln -s ~/.files/.ssh ~/.ssh # ln -s ~/.files/.ssh/config ~/.ssh/config
+ln -s ~/.files/.zprofile ~/.zprofile
+#ln -s ~/.files/.ssh ~/.ssh # ln -s ~/.files/.ssh/config ~/.ssh/config
 ln -s ~/.files/.vimrc ~/.vimrc
 ln -s ~/.files/.vim ~/.vim
 ln -s ~/.files/.gitconfig ~/.gitconfig
