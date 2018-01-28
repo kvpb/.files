@@ -16,6 +16,8 @@
 
 &nbsp;&nbsp;Apple computers operating systems configuration scripts family.
 
+&nbsp;&nbsp;**NB:** Don't hesitate to help me finding new hidden preferences with `defaults read`! You'll get full credits for that, of course.
+
 #### How-to
 
 &nbsp;&nbsp;Launch a terminal emulator, eg Terminal or iTerm2, then enter this:
@@ -50,7 +52,7 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx10411 -o SetMacOSX.sh && chmod +x SetMacOSX.sh && /bin/bash SetMacOSX.sh
 ```
 
-**NB:** Don't hesitate to help me finding new hidden preferences with `defaults read`! You'll get full credits for that, of course.
+&nbsp;&nbsp;**NB:** Do not run these scripts as root! To still run any of these scripts as root, replace `/Users/${USER}` with `${HOME}`.
 
 - - -
 
@@ -91,62 +93,74 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 
 - - -
 
-#### To-do
+# &nbsp;&nbsp;`[.files/lib/]` `scpt/`
 
-#### &nbsp;&nbsp;`[.files/lib/]` `scpt/`
+<!--
+**`scpt/`**:
+- [ ] `InstallCommandLineTools.sh` 'Install Command Line Tools' Mac shell script
+- [x] ~~`InstallGitforMac.sh` 'Install Git for Mac' shell script~~
+- [x] ~~`InstallHomebrew.sh` 'Install Homebrew' Mac shell script~~
+- [ ] `InstallHomebrewBundle.sh` 'Install homebrew-bundle' Mac shell script
+- [ ] `InstallJumpcut.sh` 'Install Jumpcut' Mac shell script
+- [ ] `InstallSizeUp.sh` 'Install SizeUp' Mac shell script
+- [ ] `InstallFlux.sh` 'Install f.lux Mac' shell script
+- [ ] `InstallOnyX.sh` 'Install OnyX' Mac shell script
+- [x] ~~`InstallAppZapper.sh` 'Install AppZapper' Mac shell script~~
+- [ ] `InstallGPGSuite.sh` 'Install GPG Suite Mac' shell script
+- [ ] `InstallPaparazzi.sh` 'Install Paparazzi!' Mac shell script
+- [ ] `InstallTransmission.sh` 'Install Transmission Mac' shell script
+- [ ] `InstallJDownloader2.sh` 'Install JDownloader2 Mac' shell script
+- [x] ~~`InstallSFMono.sh` 'Install SF Mono' shell script~~
+- [x] ~~`InstallSFMonoFromMac.sh` 'Install SF Mono from Mac' Mac shell script~~
+- [x] ~~`InstallSanFrancisco.sh` 'Install San Francisco' Mac shell script~~
+- [x] ~~`InstallSanFranciscoCompact.sh` 'Install San Francisco Compact' Mac shell script~~
+- [ ] `InstallVMwareFusion8` 'Install VMware Fusion 8' Mac shell script
+- [ ] `InstallPsCC.sh` 'Install Photoshop CC (14.0) Mac' shell script
+- [ ] `InstallPsCS6.sh` 'Install Photoshop CS6 Extended Mac' shell script
+- [ ] `InstallAiCC.sh` 'Install Illustrator CC (17.0) Mac' shell script
+- [ ] `InstallAiCS6.sh` 'Install Illustrator CS6 Mac' shell script
+- [ ] `InstallLr7.sh` 'Install Photoshop Lightroom 7 Mac' shell script
+- [ ] `InstallLr6.sh` 'Install Photoshop Lightroom 6 (CC 2015) Mac' shell script
+- [ ] `InstallOffice2016forMac.sh` 'Install Office 2016 for Mac' shell script
+- [ ] `InstallOffice2011forMac.sh` 'Install Office 2011 for Mac' shell script
+- [ ] `InstallSketch344.sh` 'Install Sketch 3.4.4 [latest OS X 10.9.5 Mavericks compatible version]' Mac shell script
+- [ ] `InstalliTerm2.sh` 'Install iTerm2' Mac shell script
+- [ ] `InstallHyper.js` 'Install Hyper' Mac JavaScript script
+- [ ] `InstallCathode.sh` 'Install Cathode' Mac shell script
+- [ ] `InstallCathode203.sh` 'Install Cathode 2.0.3 (Last 10.6.X compatible version)' Mac shell script
+- [ ] `InstallCathode094.sh` 'Install Cathode 0.9.4 (Last 10.5.X compatible version)' Mac shell script
+- [ ] `InstallPathFinder7.sh` 'Install Path Finder 7' Mac shell script
+- [ ] `InstallPathFinder6.sh` 'Install Path Finder 6' Mac shell script
+- [ ] `InstallForkLift3.sh` 'Install ForkLift 3' Mac shell script
+- [ ] `InstallForkLift2.sh` 'Install ForkLift 2' Mac shell script
+- [x] ~~`InstallVLC.sh` 'Install VLC Mac' shell script~~
+- [x] ~~`InstallChrome.sh` 'Install Chrome Mac' shell script~~
+- [x] ~~`InstallDropbox.sh` 'Install Dropbox Mac' shell script~~
+- [x] ~~`Installdbxcli.sh` 'Install dbxcli Mac' shell script~~
+- [x] ~~`InstallSpotify.sh` 'Install Spotify Mac' shell script~~
+- [ ] `InstallWhatsApp.sh` 'Install WhatsApp Mac' shell script
+- [ ] `InstallMessengerforMac.sh` 'Install Messenger for  Mac' shell script
+- [ ] `InstallGoofy.sh` 'Install Goofy Mac' shell script
+- [x] ~~`RPwG.rb` 'Random Password Generator' Ruby script~~
+- [x] ~~`SetKeyboardBrightnessTo100percent.sh` 'Set keyboard brightness to max' Mac shell script~~
+- [x] ~~`SetVolumeTo50percent.sh` 'Set OS volume to 50%' Mac shell script~~
+- [x] ~~`SetVolumeToMuted.sh` 'Set OS volume to muted' Mac shell script~~
+- [x] ~~`GetVolumeMuteStatus.sh` 'Get OS volume mute status' Mac shell script~~
+- [x] ~~`NewTestFolders.sh` 'New Test Folders' Mac shell script~~
+- [x] ~~`RemoveDirectoryFromUsersHome.sh` 'Remove directory from user's home' Mac shell script~~
+- [x] ~~`RemoveCreativeCloudFilesFromUsersHome.sh` 'Remove Creative Cloud Files from user's home' Mac shell script~~
+- [ ] `DeleteChromeSuggestions.sh` 'Delete Chrome Mac suggestions' shell script
+-->
 
-- [ ] Add `InstallCommandLineTools.sh` 'Install Command Line Tools' Mac shell script
-- [x] ~~Add `InstallGitforMac.sh` 'Install Git for Mac' shell script~~
-- [x] ~~Add `InstallHomebrew.sh` 'Install Homebrew' Mac shell script~~
-- [ ] Add `InstallHomebrewBundle.sh` 'Install homebrew-bundle' Mac shell script
-- [ ] Add `InstallJumpcut.sh` 'Install Jumpcut' Mac shell script
-- [ ] Add `InstallSizeUp.sh` 'Install SizeUp' Mac shell script
-- [ ] Add `InstallFlux.sh` 'Install f.lux Mac' shell script
-- [ ] Add `InstallOnyX.sh` 'Install OnyX' Mac shell script
-- [x] ~~Add `InstallAppZapper.sh` 'Install AppZapper' Mac shell script~~
-- [ ] Add `InstallGPGSuite.sh` 'Install GPG Suite Mac' shell script
-- [ ] Add `InstallPaparazzi.sh` 'Install Paparazzi!' Mac shell script
-- [ ] Add `InstallTransmission.sh` 'Install Transmission Mac' shell script
-- [ ] Add `InstallJDownloader2.sh` 'Install JDownloader2 Mac' shell script
-- [x] ~~Add `InstallSFMono.sh` 'Install SF Mono' shell script~~
-- [x] ~~Add `InstallSFMonoFromMac.sh` 'Install SF Mono from Mac' Mac shell script~~
-- [x] ~~Add `InstallSanFrancisco.sh` 'Install San Francisco' Mac shell script~~
-- [x] ~~Add `InstallSanFranciscoCompact.sh` 'Install San Francisco Compact' Mac shell script~~
-- [ ] Add `InstallVMwareFusion8` 'Install VMware Fusion 8' Mac shell script
-- [ ] Add `InstallPsCC.sh` 'Install Photoshop CC (14.0) Mac' shell script
-- [ ] Add `InstallPsCS6.sh` 'Install Photoshop CS6 Extended Mac' shell script
-- [ ] Add `InstallAiCC.sh` 'Install Illustrator CC (17.0) Mac' shell script
-- [ ] Add `InstallAiCS6.sh` 'Install Illustrator CS6 Mac' shell script
-- [ ] Add `InstallLr7.sh` 'Install Photoshop Lightroom 7 Mac' shell script
-- [ ] Add `InstallLr6.sh` 'Install Photoshop Lightroom 6 (CC 2015) Mac' shell script
-- [ ] Add `InstallOffice2016forMac.sh` 'Install Office 2016 for Mac' shell script
-- [ ] Add `InstallOffice2011forMac.sh` 'Install Office 2011 for Mac' shell script
-- [ ] Add `InstallSketch344.sh` 'Install Sketch 3.4.4 [latest OS X 10.9.5 Mavericks compatible version]' Mac shell script
-- [ ] Add `InstalliTerm2.sh` 'Install iTerm2' Mac shell script
-<!--- [ ] Add `InstallHyper.js` 'Install Hyper' Mac shell script-->
-- [ ] Add `InstallCathode.sh` 'Install Cathode' Mac shell script
-- [ ] Add `InstallCathode203.sh` 'Install Cathode 2.0.3 (Last 10.6.X compatible version)' Mac shell script
-- [ ] Add `InstallCathode094.sh` 'Install Cathode 0.9.4 (Last 10.5.X compatible version)' Mac shell script
-- [ ] Add `InstallPathFinder7.sh` 'Install Path Finder 7' Mac shell script
-- [ ] Add `InstallPathFinder6.sh` 'Install Path Finder 6' Mac shell script
-- [ ] Add `InstallForkLift3.sh` 'Install ForkLift 3' Mac shell script
-- [ ] Add `InstallForkLift2.sh` 'Install ForkLift 2' Mac shell script
-- [x] ~~Add `InstallVLC.sh` 'Install VLC Mac' shell script~~
-- [x] ~~Add `InstallChrome.sh` 'Install Chrome Mac' shell script~~
-- [x] ~~Add `InstallDropbox.sh` 'Install Dropbox Mac' shell script~~
-- [x] ~~Add `Installdbxcli.sh` 'Install dbxcli Mac' shell script~~
-- [x] ~~Add `InstallSpotify.sh` 'Install Spotify Mac' shell script~~
-- [ ] Add `InstallWhatsApp.sh` 'Install WhatsApp Mac' shell script
-<!--- [ ] Add `InstallMessengerforMac.sh` 'Install Messenger for  Mac' shell script-->
-- [ ] Add `InstallGoofy.sh` 'Install Goofy Mac' shell script
-- [x] ~~Add `SetKeyboardBrightnessTo100percent.sh` 'Set keyboard brightness to max' Mac shell script~~
-- [x] ~~Add `SetVolumeTo50percent.sh` 'Set OS volume to 50%' Mac shell script~~
-- [x] ~~Add `SetVolumeToMuted.sh` 'Set OS volume to muted' Mac shell script~~
-- [x] ~~Add `GetVolumeMuteStatus.sh` 'Get OS volume mute status' Mac shell script~~
-- [x] ~~Add `NewTestFolders.sh` 'New Test Folders' Mac shell script~~
-- [x] ~~Add `RemoveDirectoryFromUsersHome.sh` 'Remove directory from user's home' Mac shell script~~
-- [x] ~~Add `RemoveCreativeCloudFilesFromUsersHome.sh` 'Remove Creative Cloud Files from user's home' Mac shell script~~
-- [ ] Add `DeleteChromeSuggestions.sh` 'Delete Chrome Mac suggestions' shell script
+#### What-is
+
+&nbsp;&nbsp;My library of scripts I wrote.
+
+<!--
+#### How-to
+
+&nbsp;&nbsp;
+-->
 
 - - -
 
