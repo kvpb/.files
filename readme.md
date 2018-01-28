@@ -1,7 +1,16 @@
 # `.files`
 #### Runcoms, Configuration files, Setups, Scripts & Templates
 
-# &nbsp;&nbsp;`.macosx`, `.osx` & `.macos`
+- - -
+
+# &nbsp;&nbsp;`.macosx`, `.osx` & `.macos` ('`.acos`')
+
+<!--**'`.acos`':**
+- [ ] `.macosx10411`
+- [ ] `.macosx1068`
+- [x] `.osx1095`
+- [x] `.osx10105`
+- [ ] `.macos1013`-->
 
 #### What-is
 
@@ -47,6 +56,11 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 
 # &nbsp;&nbsp;[`.files/lib/plist/`] `Text Substitutions.plist`
 
+<!--**`Text Substitutions.plist`:**
+| Replace | With |
+| --- | --- |
+|  |  |-->
+
 #### What-is
 
 &nbsp;&nbsp;macOS text substitutions (list of abbreviations to automatically replace by words).
@@ -65,7 +79,7 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 
 - - -
 
-# &nbsp;&nbsp;`flashcardsstructures.docx`,<br>&nbsp;&nbsp;`uenctcnyyyymmdd.docx`,<br>&nbsp;&nbsp;`Forename_Surname_UEN_GN_Fiche_de_lecture.docx`,<br>&nbsp;&nbsp;`Forename_Surname_UEN_GN_Memoire.docx`,<br>&nbsp;&nbsp;`notetakingstructures.docx`,<br>&nbsp;&nbsp;`notetakingsystem.docx` &<br>&nbsp;&nbsp;`name.docx`
+# &nbsp;&nbsp;*Karl Bertin's Scratching System*:<br>&nbsp;&nbsp;`flashcardsstructures.docx`,<br>&nbsp;&nbsp;`uenctcnyyyymmdd.docx`,<br>&nbsp;&nbsp;`Forename_Surname_UEN_GN_Fiche_de_lecture.docx`,<br>&nbsp;&nbsp;`Forename_Surname_UEN_GN_Memoire.docx`,<br>&nbsp;&nbsp;`notetakingstructures.docx`,<br>&nbsp;&nbsp;`notetakingsystem.docx` &<br>&nbsp;&nbsp;`name.docx`
 
 <p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://rawgit.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/54cdac0b8ffad36d9ade790cfa53d138c6867412/karlbertinsscratchingsystemfrontcover.svg'></a>
 
@@ -79,46 +93,37 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 
 #### To-do
 
-#### &nbsp;&nbsp;`.macosx`, `.osx` & `.macos`
-
-- [x] Reorganize the scripts into 3 parts:
-  - [x] First-party: System-wide and user-specific preferences
-  - [x] Second-party: User-specific filesystem customs
-  - [x] Third-party: System-wide and user-specific xenogenetic software and preferences
-- [x] Reorganize the scripts by layers (my 3 parts: from firmware, kernel and drivers to applications, from important to trivial and from open standard to closed proprietary)
-- [x] Remove the ACOS conf scripts that don't matter, and add those that do
-
 #### &nbsp;&nbsp;`[.files/lib/]` `scpt/`
 
 - [ ] Add `InstallCommandLineTools.sh` 'Install Command Line Tools' Mac shell script
-- [x] Add `InstallGitforMac.sh` 'Install Git for Mac' shell script
-- [x] Add `InstallHomebrew.sh` 'Install Homebrew' Mac shell script
+- [x] ~~Add `InstallGitforMac.sh` 'Install Git for Mac' shell script~~
+- [x] ~~Add `InstallHomebrew.sh` 'Install Homebrew' Mac shell script~~
 - [ ] Add `InstallHomebrewBundle.sh` 'Install homebrew-bundle' Mac shell script
 - [ ] Add `InstallJumpcut.sh` 'Install Jumpcut' Mac shell script
 - [ ] Add `InstallSizeUp.sh` 'Install SizeUp' Mac shell script
 - [ ] Add `InstallFlux.sh` 'Install f.lux Mac' shell script
 - [ ] Add `InstallOnyX.sh` 'Install OnyX' Mac shell script
-- [x] Add `InstallAppZapper.sh` 'Install AppZapper' Mac shell script
+- [x] ~~Add `InstallAppZapper.sh` 'Install AppZapper' Mac shell script~~
 - [ ] Add `InstallGPGSuite.sh` 'Install GPG Suite Mac' shell script
 - [ ] Add `InstallPaparazzi.sh` 'Install Paparazzi!' Mac shell script
 - [ ] Add `InstallTransmission.sh` 'Install Transmission Mac' shell script
 - [ ] Add `InstallJDownloader2.sh` 'Install JDownloader2 Mac' shell script
-- [x] Add `InstallSFMono.sh` 'Install SF Mono' shell script
-- [x] Add `InstallSFMonoFromMac.sh` 'Install SF Mono from Mac' Mac shell script
-- [x] Add `InstallSanFrancisco.sh` 'Install San Francisco' Mac shell script
-- [x] Add `InstallSanFranciscoCompact.sh` 'Install San Francisco Compact' Mac shell script
+- [x] ~~Add `InstallSFMono.sh` 'Install SF Mono' shell script~~
+- [x] ~~Add `InstallSFMonoFromMac.sh` 'Install SF Mono from Mac' Mac shell script~~
+- [x] ~~Add `InstallSanFrancisco.sh` 'Install San Francisco' Mac shell script~~
+- [x] ~~Add `InstallSanFranciscoCompact.sh` 'Install San Francisco Compact' Mac shell script~~
 - [ ] Add `InstallVMwareFusion8` 'Install VMware Fusion 8' Mac shell script
 - [ ] Add `InstallPsCC.sh` 'Install Photoshop CC (14.0) Mac' shell script
 - [ ] Add `InstallPsCS6.sh` 'Install Photoshop CS6 Extended Mac' shell script
 - [ ] Add `InstallAiCC.sh` 'Install Illustrator CC (17.0) Mac' shell script
 - [ ] Add `InstallAiCS6.sh` 'Install Illustrator CS6 Mac' shell script
-<!--- [ ] Add `InstallMCCS6.sh` 'Install Master Collection Creative Suite 6 Mac' shell script-->
 - [ ] Add `InstallLr7.sh` 'Install Photoshop Lightroom 7 Mac' shell script
 - [ ] Add `InstallLr6.sh` 'Install Photoshop Lightroom 6 (CC 2015) Mac' shell script
 - [ ] Add `InstallOffice2016forMac.sh` 'Install Office 2016 for Mac' shell script
 - [ ] Add `InstallOffice2011forMac.sh` 'Install Office 2011 for Mac' shell script
 - [ ] Add `InstallSketch344.sh` 'Install Sketch 3.4.4 [latest OS X 10.9.5 Mavericks compatible version]' Mac shell script
 - [ ] Add `InstalliTerm2.sh` 'Install iTerm2' Mac shell script
+<!--- [ ] Add `InstallHyper.js` 'Install Hyper' Mac shell script-->
 - [ ] Add `InstallCathode.sh` 'Install Cathode' Mac shell script
 - [ ] Add `InstallCathode203.sh` 'Install Cathode 2.0.3 (Last 10.6.X compatible version)' Mac shell script
 - [ ] Add `InstallCathode094.sh` 'Install Cathode 0.9.4 (Last 10.5.X compatible version)' Mac shell script
@@ -126,21 +131,21 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 - [ ] Add `InstallPathFinder6.sh` 'Install Path Finder 6' Mac shell script
 - [ ] Add `InstallForkLift3.sh` 'Install ForkLift 3' Mac shell script
 - [ ] Add `InstallForkLift2.sh` 'Install ForkLift 2' Mac shell script
-- [x] Add `InstallVLC.sh` 'Install VLC Mac' shell script
-- [x] Add `InstallChrome.sh` 'Install Chrome Mac' shell script
-- [x] Add `InstallDropbox.sh` 'Install Dropbox Mac' shell script
-- [x] Add `Installdbxcli.sh` 'Install dbxcli Mac' shell script
-- [x] Add `InstallSpotify.sh` 'Install Spotify Mac' shell script
+- [x] ~~Add `InstallVLC.sh` 'Install VLC Mac' shell script~~
+- [x] ~~Add `InstallChrome.sh` 'Install Chrome Mac' shell script~~
+- [x] ~~Add `InstallDropbox.sh` 'Install Dropbox Mac' shell script~~
+- [x] ~~Add `Installdbxcli.sh` 'Install dbxcli Mac' shell script~~
+- [x] ~~Add `InstallSpotify.sh` 'Install Spotify Mac' shell script~~
 - [ ] Add `InstallWhatsApp.sh` 'Install WhatsApp Mac' shell script
 <!--- [ ] Add `InstallMessengerforMac.sh` 'Install Messenger for  Mac' shell script-->
 - [ ] Add `InstallGoofy.sh` 'Install Goofy Mac' shell script
-- [x] Add `SetKeyboardBrightnessTo100percent.sh` 'Set keyboard brightness to max' Mac shell script
-- [x] Add `SetVolumeTo50percent.sh` 'Set OS volume to 50%' Mac shell script
-- [x] Add `SetVolumeToMuted.sh` 'Set OS volume to muted' Mac shell script
-- [x] Add `GetVolumeMuteStatus.sh` 'Get OS volume mute status' Mac shell script
-- [x] Add `NewTestFolders.sh` 'New Test Folders' Mac shell script
-- [x] Add `RemoveDirectoryFromUsersHome.sh` 'Remove directory from user's home' Mac shell script
-- [x] Add `RemoveCreativeCloudFilesFromUsersHome.sh` 'Remove Creative Cloud Files from user's home' Mac shell script
+- [x] ~~Add `SetKeyboardBrightnessTo100percent.sh` 'Set keyboard brightness to max' Mac shell script~~
+- [x] ~~Add `SetVolumeTo50percent.sh` 'Set OS volume to 50%' Mac shell script~~
+- [x] ~~Add `SetVolumeToMuted.sh` 'Set OS volume to muted' Mac shell script~~
+- [x] ~~Add `GetVolumeMuteStatus.sh` 'Get OS volume mute status' Mac shell script~~
+- [x] ~~Add `NewTestFolders.sh` 'New Test Folders' Mac shell script~~
+- [x] ~~Add `RemoveDirectoryFromUsersHome.sh` 'Remove directory from user's home' Mac shell script~~
+- [x] ~~Add `RemoveCreativeCloudFilesFromUsersHome.sh` 'Remove Creative Cloud Files from user's home' Mac shell script~~
 - [ ] Add `DeleteChromeSuggestions.sh` 'Delete Chrome Mac suggestions' shell script
 
 - - -
@@ -163,6 +168,8 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 
 <p align='center'><a href='http://kvpb.co/'><img src='https://rawgit.com/kvpb/b9c0737f2941542ae22b2806b66a3c19/raw/9867dde923550a08d05f3fae3a2b02905ea8345c/quickresponsecode.svg'></a><br>
 <b>Karl 'Kabe' Bertin (Карл Бэртин) `kvpb`</b><br> <!-- Neither `<span style='font-variant: small-caps;'>Bertin</span>` & `<span style='font-variant: small-caps;'>Бэртин</span>` nor `B<small>ERTIN</small>` & `Б<small>ЭРТИН</small>` work on GitHub. -->
-<a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a> | <a href='https://www.facebook.com/karlbertin'>Facebook</a> | <a href='https://www.instagram.com/karlbertin/'>Instagram</a>
+<a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a> | <a href='https://www.facebook.com/karlbertin'>Facebook</a> | <a href='https://www.instagram.com/karlbertin/'>Instagram</a></p>
 
-**PS:** Whether you thank me or not, please credit the people I took code from.
+**Ed:** Whether you thank me or not, please credit the people I took code from.
+
+<!--**PS:** -->
