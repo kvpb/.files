@@ -195,5 +195,5 @@ alias	rxa='RemoveExtendedAttributes'
 
 # Computer programs
 
-alias	RPwG='ruby ${HOME}/.files/lib/scpt/RPwG/RPwG.rb'
+alias	RPwG='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
 alias	rpwg='RPwG '
