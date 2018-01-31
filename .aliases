@@ -23,7 +23,7 @@ alias	rt='cd /' # Change the working dir to root.
 
 alias	~='cd ~' # Change the working directory to current user's home. (i) `cd` would do the same, and this is what I enter most, but it would break where `~`'s signification changes.
 
-alias	.f="cd ~/.files && git status --short && printf '\n' && cat .gitnote && printf '\n'" # Change the working dir to my dot-files', show the working tree status, then concatenate and print .gitnote.
+alias	.f="cd ~/.files && git status --short && printf '\n' && echo '.gitnote:' && cat .gitnote && printf '\n'" # Change the working dir to my dot-files', show the working tree status, then concatenate and print .gitnote.
 
 alias	kb='cd ~/kbs' # Change the working dir to mine. /!\ Deprecated: Because I never found any real use to this directory, I do not use it anymore, and I might literally remove it from my setup anytime, at least as a way to do things more cleanly pops into I's mind.
 
@@ -151,7 +151,7 @@ alias	du='du -c -d 0 -h ' # Display DU stats with a grand total, an entry for al
 #	clear			clear the terminal screen
 
 alias	clr='clear'
-alias	c='clear'
+#alias	c='clear'
 
 #	PlistBuddy		read and write values to plists
 
