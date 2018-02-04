@@ -52,4 +52,4 @@ cd ..
 rm -rf Temporary
 # Go to previous directory, ${currentuser}'s ${HOME} directory, and remove ${UnofficialAppleTemporaryFolder}.
 
-# Download mas-cli, built it, and install it.
+# Download fswatch, built it, and install it.
