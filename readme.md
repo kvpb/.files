@@ -56,6 +56,34 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 
 - - -
 
+# &nbsp;&nbsp;[`.files/lib/scpt/`] `RPwG.rb`
+
+<p align='center'><a href='https://github.com/kvpb/.files/blob/master/lib/scpt/RPwG.rb'><img src='https://rawgit.com/kvpb/543e66fc06e322658f5877e9e2f77cda/raw/08ecb3022f7c7de3c1a16b05e59af04b92e19af5/RPwG.svg'></a></p>
+
+#### What-is
+
+&nbsp;&nbsp;A program, written in Ruby, which pseudorandomly generates passwords.
+
+#### How-to
+
+&nbsp;&nbsp;**UNIX & Linux:**
+
+&nbsp;&nbsp;0.&nbsp;&nbsp;[Download Ruby,](https://www.ruby-lang.org/en/downloads/) and install it.
+
+&nbsp;&nbsp;1.&nbsp;&nbsp;[Download RPwG.](https://github.com/kvpb/.files/blob/master/lib/scpt/RPwG.rb)
+
+&nbsp;&nbsp;2.&nbsp;&nbsp;Launch a terminal emulator, eg Terminal or GNOME Terminal.
+
+&nbsp;&nbsp;3.&nbsp;&nbsp;Type '`ruby `' (with a trailing space after 'ruby'), drag and drop the `RPwG.rb` file, and press Enter.
+
+&nbsp;&nbsp;4.&nbsp;&nbsp;Follow the script's instructions on the terminal, then copy and paste the resulting password.
+
+&nbsp;&nbsp;~~**MS-DOS:**~~
+
+&nbsp;&nbsp;Do yourself a favor: either get a Linux PC or a Mac.
+
+- - -
+
 # &nbsp;&nbsp;[`.files/lib/plist/`] `Text Substitutions.plist`
 
 <!--**`Text Substitutions.plist`:**
@@ -125,6 +153,7 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 - [ ] `InstallOffice2011forMac.sh` 'Install Office 2011 for Mac' shell script
 - [ ] `InstallSketch344.sh` 'Install Sketch 3.4.4 [latest OS X 10.9.5 Mavericks compatible version]' Mac shell script
 - [ ] `InstalliTerm2.sh` 'Install iTerm2' Mac shell script
+- [x] ~~`InstallHyper.sh` 'Install HyperTerm' Mac shell script~~
 - [ ] `InstallHyper.js` 'Install Hyper' Mac JavaScript script
 - [ ] `InstallCathode.sh` 'Install Cathode' Mac shell script
 - [ ] `InstallCathode203.sh` 'Install Cathode 2.0.3 (Last 10.6.X compatible version)' Mac shell script
