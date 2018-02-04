@@ -5434,13 +5434,5 @@
 		<key>timestamp</key>
 		<integer>1482158090</integer>
 	</dict>
-	<dict>
-		<key>entryContainsError</key>
-		<true/>
-		<key>phrase</key>
-		<string>même</string>
-		<key>shortcut</key>
-		<string>^m</string>
-	</dict>
 </array>
 </plist>
