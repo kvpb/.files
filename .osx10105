@@ -1012,7 +1012,26 @@ echo  'VMware Fusion 8 (com.vmware.fusion)'
 
 defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (i) Set VMware Fusion 8: Preferences: General: Applications menu: Show in menu bar to Never.
 
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" "Disk Utility" "Dock" "Finder" "iCal" "iTerm" "Mail" "Messages" "Safari" "SizeUp" "System Preferences" "SystemUIServer" "TextEdit" "Transmission" "VMware Fusion" "Xcode"; do
+echo  'Photoshop Lightroom 6'
+
+defaults write com.adobe.Lightroom6 prefsWindow_currentTab -integer 1
+
+defaults write com.adobe.Lightroom6 AgLibrary_libraryPanel_Enabled -boolean FALSE
+defaults write com.adobe.Lightroom6 AgLibrary_collectionsPanel_Enabled -boolean FALSE
+defaults write com.adobe.Lightroom6 AgLibrary_publishServicesPanel_Enabled -boolean FALSE
+defaults write com.adobe.Lightroom6 AgLibrary_filterBarVisible -boolean FALSE
+
+defaults write com.adobe.Lightroom6 Lightroom_hideAppActivity -boolean YES
+defaults write com.adobe.Lightroom6 Lightroom_userIdentityPlateMode -string "app_version"
+defaults write com.adobe.Lightroom6 HasClickedOnIdentityPlate -boolean YES
+
+defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.layout.book -boolean TRUE
+defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.location -boolean TRUE
+defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.print -boolean TRUE
+defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.slideshow -boolean TRUE
+defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.wpg -boolean TRUE
+
+for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" "Disk Utility" "Dock" "Finder" "iCal" "Mail" "Messages" "Safari" "System Preferences" "SystemUIServer" "TextEdit" "Xcode"; do
 	killall "${app}" > /dev/null 2>&1
 done
 # Kill all affected applications.
