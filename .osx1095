@@ -928,6 +928,10 @@ cd ~ && touch .hushlogin # Add .hushlogin file to current users' home directory.
 
 #chflags nohidden ~/Library # Display the hidden ~/Library/. (i) This script also enables hidden files display, which overrides this.
 
+#dscl . delete /Users/kvpb Picture
+#sudo dscl . create /Users/kvpb Picture "/Users/kvpb/Pictures/usrpic/Kabe.tif"
+# Set kvpb's user picture. (i) Cf https://support.apple.com/kb/PH25797?locale=en_US.
+
 cecho '3rd-party: Syswide and userspec xenogenetic software and prefs' $yellow
 
 echo  'Homebrew'
