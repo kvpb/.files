@@ -937,6 +937,8 @@ brew tap Homebrew/bundle # Download & install homebrew-bundle.
 
 echo  'iTerm2 (com.googlecode.iterm2)'
 
+defaults write com.googlecode.iterm2 HideFromDockAndAppSwitcher -int 1 # Hide app from Dock [but not its shortcut] and Application Switcher, as done via, as of october 2016 v3.1.2, iTerm->Preferences (Command-Comma)->Appearance [tab]->Exclude from Dock and ⌘-Tab Application Switcher [checkbox]. [Finally what I've been waiting for for terminal emulators and important-to-me-like apps! Whoop-dee-doo!]
+
 defaults write com.googlecode.iterm2 PromptOnQuit -bool FALSE # Hide quit prompt.
 
 echo  'Hyper (co.zeit.hyper, co.zeit.hyper.helper)'
