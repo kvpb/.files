@@ -865,7 +865,7 @@ cecho 'Second-Party Settings: User-Specific Filesystem Customs' $yellow
 
 if [ -d "~/{kbs,misc,ops}" ]; then # if [ -d "~/{kbs,.files,misc,ops}" ]; then
 	if [ -L "~/{kbs,misc,ops}" ]; then # if [ -L "~/{kbs,.files,misc,ops}" ]; then
-		mv ~/{kbs,misc,ops} ~/.Trash # rm ~/{kbs,.files,misc,ops}
+		mv ~/{kbs,misc,ops} ~/.Trash/ # rm ~/{kbs,.files,misc,ops}
 		mkdir ~/{kbs,misc,ops} # mkdir ~/{kbs,.files,misc,ops}
 	fi
 else
@@ -874,7 +874,7 @@ fi
 # If kbs, .files, misc and ops aren't directories in ~/ then substitute symlinks by or add these directories.
 if [ -d "~/Downloads/{misc,doc,pic,mus,mov}" ]; then
 	if [ -L "~/Downloads/{misc,doc,pic,mus,mov}" ]; then
-		mv ~/Downloads/{misc,doc,pic,mus,mov} ~/.Trash
+		mv ~/Downloads/{misc,doc,pic,mus,mov} ~/.Trash/
 		mkdir ~/Downloads/{misc,doc,pic,mus,mov}
 	fi
 else
@@ -883,7 +883,7 @@ fi
 # If misc, doc, pic, mus and mov aren't directories in ~/Downloads/ then substitute symlinks by or add these directories.
 if [ -d "~/{DCIM,Camera}" ]; then
 	if [ -L "~/{DCIM,Camera}" ]; then
-		mv ~/{DCIM,Camera} ~/.Trash
+		mv ~/{DCIM,Camera} ~/.Trash/
 		mkdir ~/{DCIM,Camera}
 	fi
 else
