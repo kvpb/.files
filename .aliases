@@ -38,6 +38,9 @@ alias	r4='cd /Volumes/KBSPCMD100R/VOICE/FOLDER04'
 alias	r5='cd /Volumes/KBSPCMD100R/VOICE/FOLDER05'
 # Change the working dir to one of my recorder's recorded files'.
 
+alias	app='cd /Applications' # Change the working directory to system applications'.
+alias	apps='app'
+
 alias	dt='cd ~/Desktop' # Change the working dir to current macOS user's desktop'.
 
 alias	dx='cd ~/Documents' # Change the working dir to current macOS user's documents'.
@@ -55,6 +58,8 @@ alias	it='cd ~/Music/iTunes' # Change the working dir to current macOS user's iT
 alias	px='cd ~/Pictures' # Change the working dir to current macOS user's pictures'.
 
 alias	.t='cd ~/.Trash' # Change the working dir to current macOS user's trash's.
+
+alias	tf='cd ~/Temporary' # Change the working directory to current Apple Computer Operating System's current user's temporary unofficial folder.
 
 alias	db='cd ~/Dropbox' # Change the working dir to current user's Dropbox's.
 
@@ -215,4 +220,19 @@ alias	rxa='RemoveExtendedAttributes'
 # Computer programs
 
 alias	RPwG='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
-alias	rpwg='RPwG '
+alias	rpwg='RPwG'
+
+#alias	addtemp{,orary}dir{,ectory}='~/.files/lib/scpt/addtemporarydirectory.sh'
+#alias	a{tmpdir,td}='addtemporarydirectory'
+#alias	gatd='~/.files/lib/scpt/addtemporarydirectorythengotoit.sh'
+#alias	maketemp{,orary}dir{,ectory}='~/.files/lib/scpt/maketemporarydirectory.sh'
+#alias	mktmp='maketempdir'
+#alias	mkcdtmp='sh ~/.files/lib/scpt/maketemporarydirectoryifitdoesntexistthenchangeworkingdirectorytoit.sh'
+#alias	NewTemp{,orary}Folder='sh ~/.files/lib/scpt/NewTemporaryFolder.sh'
+#alias	NewTempFolder='NewTemporaryFolder' # ...@->~/.files/lib/scpt/NewTemporaryFolder.sh
+#alias	ntf='NewTemporaryFolder'
+#alias	cntf=NewTemporaryFolder && tf'
+
+alias	NewTestFolders='sh ~/.files/lib/scpt/NewTestFolders.sh'
+alias	mktf='NewTestFolders'
+alias	mctf='mktf && tf'
