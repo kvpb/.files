@@ -221,18 +221,12 @@ alias	rxa='RemoveExtendedAttributes'
 
 alias	RPwG='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
 alias	rpwg='RPwG'
+#alias	gp='RPwG'
 
-#alias	addtemp{,orary}dir{,ectory}='~/.files/lib/scpt/addtemporarydirectory.sh'
-#alias	a{tmpdir,td}='addtemporarydirectory'
-#alias	gatd='~/.files/lib/scpt/addtemporarydirectorythengotoit.sh'
-#alias	maketemp{,orary}dir{,ectory}='~/.files/lib/scpt/maketemporarydirectory.sh'
-#alias	mktmp='maketempdir'
-#alias	mkcdtmp='sh ~/.files/lib/scpt/maketemporarydirectoryifitdoesntexistthenchangeworkingdirectorytoit.sh'
-#alias	NewTemp{,orary}Folder='sh ~/.files/lib/scpt/NewTemporaryFolder.sh'
-#alias	NewTempFolder='NewTemporaryFolder' # ...@->~/.files/lib/scpt/NewTemporaryFolder.sh
-#alias	ntf='NewTemporaryFolder'
-#alias	cntf=NewTemporaryFolder && tf'
+alias	NewTemporaryFolder='sh ~/.files/lib/scpt/NewTemporaryFolder.sh'
+alias	ntf='NewTemporaryFolder'
+alias	cntf='NewTemporaryFolder && tf'
 
 alias	NewTestFolders='sh ~/.files/lib/scpt/NewTestFolders.sh'
 alias	mktf='NewTestFolders'
-alias	mctf='mktf && tf'
+alias	mctf='NewTestFolders && tf'
