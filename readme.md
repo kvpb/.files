@@ -1,9 +1,9 @@
-# `.files`
+# `.files` (_Dot-files_)
 #### Runcoms, Configuration files, Setups, Scripts & Templates
 
 - - -
 
-# &nbsp;&nbsp;`.macosx`, `.osx` & `.macos` ('`.acos`')
+# &nbsp;&nbsp;`.macosx`, `.osx` & `.macos` ('_`.acos`_')
 
 <!--**'`.acos`':**
 - [ ] `.macosx10411`
@@ -20,43 +20,43 @@
 
 #### How-to
 
-&nbsp;&nbsp;Launch a terminal emulator, eg Terminal or iTerm2, then enter this:
+&nbsp;&nbsp;Launch a terminal emulator, eg _Terminal_ or _iTerm2_, then enter this:
 
-&nbsp;&nbsp;~~**macOS 10.13 High Sierra:**~~
+&nbsp;&nbsp;~~**_macOS 10.13 High Sierra_:**~~
 
 ```
 cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos1013)
 ```
 
-&nbsp;&nbsp;**OS X 10.10.5 Yosemite:**
+&nbsp;&nbsp;**_OS X 10.10.5 Yosemite_:**
 
 ```sh
-cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx10105 -o SetOSX.sh && chmod +x SetOSX.sh && /bin/bash SetOSX.sh
+cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx10105 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
 ```
 
-&nbsp;&nbsp;**OS X 10.9.5 Mavericks:**
+&nbsp;&nbsp;**_OS X 10.9.5 Mavericks_:**
 
 ```sh
-cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx1095 -o SetOSX.sh && chmod +x SetOSX.sh && /bin/bash SetOSX.sh
+cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx1095 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
 ```
 
-&nbsp;&nbsp;~~**Mac OS X 10.6.8 Snow Leopard:**~~
+&nbsp;&nbsp;~~**_Mac OS X 10.6.8 Snow Leopard_:**~~
 
 ```
-cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx1068 -o SetMacOSX.sh && chmod +x SetMacOSX.sh && /bin/bash SetMacOSX.sh
+cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx1068 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
 ```
 
-&nbsp;&nbsp;~~**Mac OS X 10.4.11 Tiger:**~~
+&nbsp;&nbsp;~~**_Mac OS X 10.4.11 Tiger_:**~~
 
 ```
-cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx10411 -o SetMacOSX.sh && chmod +x SetMacOSX.sh && /bin/bash SetMacOSX.sh
+cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx10411 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
 ```
 
 &nbsp;&nbsp;**NB:** Do not run these scripts as root! To still run any of these scripts as root, replace `/Users/${USER}` with `${HOME}`.
 
 - - -
 
-# &nbsp;&nbsp;[`.files/lib/scpt/`] `RPwG.rb`
+# &nbsp;&nbsp;_Random Password Generator_<br>&nbsp;&nbsp;[`.files/lib/scpt/`] `RPwG.rb`
 
 <p align='center'><a href='https://github.com/kvpb/.files/blob/master/lib/scpt/RPwG.rb'><img src='https://rawgit.com/kvpb/543e66fc06e322658f5877e9e2f77cda/raw/08ecb3022f7c7de3c1a16b05e59af04b92e19af5/RPwG.svg'></a></p>
 
@@ -66,19 +66,19 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 
 #### How-to
 
-&nbsp;&nbsp;**UNIX & Linux:**
+&nbsp;&nbsp;**_UNIX_ & _Linux_:**
 
-&nbsp;&nbsp;0.&nbsp;&nbsp;[Download Ruby,](https://www.ruby-lang.org/en/downloads/) and install it.
+&nbsp;&nbsp;0.&nbsp;&nbsp;[Download _Ruby_,](https://www.ruby-lang.org/en/downloads/) and install it.
 
-&nbsp;&nbsp;1.&nbsp;&nbsp;[Download RPwG.](https://github.com/kvpb/.files/blob/master/lib/scpt/RPwG.rb)
+&nbsp;&nbsp;1.&nbsp;&nbsp;[Download _RPwG_.](https://github.com/kvpb/.files/blob/master/lib/scpt/RPwG.rb)
 
-&nbsp;&nbsp;2.&nbsp;&nbsp;Launch a terminal emulator, eg Terminal or GNOME Terminal.
+&nbsp;&nbsp;2.&nbsp;&nbsp;Launch a terminal emulator, eg _Terminal_ or _GNOME Terminal_.
 
 &nbsp;&nbsp;3.&nbsp;&nbsp;Type '`ruby `' (with a trailing space after 'ruby'), drag and drop the `RPwG.rb` file, and press Enter.
 
 &nbsp;&nbsp;4.&nbsp;&nbsp;Follow the script's instructions on the terminal, then copy and paste the resulting password.
 
-&nbsp;&nbsp;~~**MS-DOS:**~~
+&nbsp;&nbsp;~~**_MS-DOS_:**~~
 
 &nbsp;&nbsp;Do yourself a favor: either get a Linux PC or a Mac.
 
@@ -93,35 +93,35 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 
 #### What-is
 
-&nbsp;&nbsp;macOS text substitutions (list of abbreviations to automatically replace by words).
+&nbsp;&nbsp;_macOS_ text substitutions (list of abbreviations to automatically replace by words).
 
-&nbsp;&nbsp;**NB:** This works with macOS software that use it. It works with TextEdit, but I don't know if it works with Word for Mac 2011.
+&nbsp;&nbsp;**NB:** This works with _macOS_ software that use it, eg _TextEdit_, but I does not with _Word for Mac 2011_.
 
 #### How-to
 
 &nbsp;&nbsp;1.&nbsp;&nbsp;[Download `Text Substitutions.plist`.](https://rawgit.com/kvpb/.files/master/lib/plist/Text%20Substitutions.plist)
 
-&nbsp;&nbsp;2.&nbsp;&nbsp;Launch Finder then go to current user's `Downloads` folder.
+&nbsp;&nbsp;2.&nbsp;&nbsp;Launch _Finder_ then go to the current user's `Downloads` folder.
 
-&nbsp;&nbsp;3.&nbsp;&nbsp;Launch System preferences then go to Keyboard and then Text.
+&nbsp;&nbsp;3.&nbsp;&nbsp;Launch _System Preferences_ then go to Keyboard and then Text.
 
-&nbsp;&nbsp;4.&nbsp;&nbsp;Drag `Text Substitutions.plist` from Finder window and drop it to System preferences window's table-like list.
+&nbsp;&nbsp;4.&nbsp;&nbsp;Drag `Text Substitutions.plist` from the _Finder_ window and drop it to _System Preferences_ window's table-like list.
 
 - - -
 
-# &nbsp;&nbsp;*Karl Bertin's Scratching System*:<br>&nbsp;&nbsp;`flashcardsstructures.docx`,<br>&nbsp;&nbsp;`uenctcnyyyymmdd.docx`,<br>&nbsp;&nbsp;`Forename_Surname_UEN_GN_Fiche_de_lecture.docx`,<br>&nbsp;&nbsp;`Forename_Surname_UEN_GN_Memoire.docx`,<br>&nbsp;&nbsp;`notetakingstructures.docx`,<br>&nbsp;&nbsp;`notetakingsystem.docx` &<br>&nbsp;&nbsp;`name.docx`
+# &nbsp;&nbsp;_Kabe's Scratching System_:<br>&nbsp;&nbsp;`flashcardsstructures.docx`,<br>&nbsp;&nbsp;`uenctcnyyyymmdd.docx`,<br>&nbsp;&nbsp;`Forename_Surname_UEN_GN_Fiche_de_lecture.docx`,<br>&nbsp;&nbsp;`Forename_Surname_UEN_GN_Memoire.docx`,<br>&nbsp;&nbsp;`notetakingstructures.docx`,<br>&nbsp;&nbsp;`notetakingsystem.docx` &<br>&nbsp;&nbsp;`name.docx`
 
 <p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://rawgit.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/54cdac0b8ffad36d9ade790cfa53d138c6867412/karlbertinsscratchingsystemfrontcover.svg'></a>
 
 #### What-is
 
-&nbsp;&nbsp;I's scratching system I built at university for better faster cleaner notetaking. This read-me has been written following these guidelines.
+&nbsp;&nbsp;My scratching system I built at university for better cleaner faster note-taking. This read-me has been written following these guidelines.
 
-**NB:** If you have any suggestion to improve it, feel free to jump in, express yourself, let loose --- open an issue or contact me via Facebook. You're always welcome.
+**NB:** If you have any suggestion to improve it, feel free to jump in, express yourself, let loose --- open an issue or contact me via _Facebook_. You're always welcome.
 
 - - -
 
-# &nbsp;&nbsp;`[.files/lib/]` `scpt/`
+# &nbsp;&nbsp;_Scripts_<br>&nbsp;&nbsp;[`.files/lib/`] `scpt/`
 
 <!--
 **`scpt/`**:
@@ -195,17 +195,17 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 
 #### Thanks to
 
-* [Mathias Bynens](https://mathiasbynens.be/) for [~~`dotfiles/.osx`~~](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.osx) [`dotfiles/.macos`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.macos) [~~*NM.ND.2014*~~](https://github.com/mathiasbynens/dotfiles/commit/3b4eb3efb692aa4d19a1e2c30c2ed9a65e9c7d8c) [*7.21.2016*](https://github.com/mathiasbynens/dotfiles/commit/47268d92afbec69e3a7243a144a126bbd25bcf2c) and [`dotfiles/.gitconfig`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.gitconfig) *[8.22.2016](https://github.com/mathiasbynens/dotfiles/commit/47268d92afbec69e3a7243a144a126bbd25bcf2c)*
-* [Michael Kaiser-Nyman](http://www.epicodus.com/) *NM.ND.2015*
-* [Matt Butcher](http://technosophos.com/) *NM.ND.2015*
-* [Mark Nichols](http://zanshin.net/) for [`dotfiles/README.markdown`](https://raw.githubusercontent.com/zanshin/dotfiles/master/README.markdown) [*NM.ND.2016*](https://github.com/zanshin/dotfiles/commit/02ec428566e893b765e1c34c31f330bb6531dd51)
-* [Brandon Brown](https://brandonb.io/) for [`osx-for-hackers.sh`](https://gist.githubusercontent.com/brandonb927/3195465/raw/f9aa762705e6cf86cc8f3ce74b43a89eecab6f36/osx-for-hackers.sh) [*6.5.2016*](https://gist.github.com/brandonb927/3195465/06fe593551bc778a232584593aa462a1ce635a70)
-* [Hannes Juutilainen](https://obsoletesysadmin.wordpress.com/) for [`dotfiles/bin/osx-system-defaults.sh`](https://raw.githubusercontent.com/hjuutilainen/dotfiles/master/bin/osx-system-defaults.sh) and [`dotfiles/bin/osx-user-defaults.sh`](https://raw.githubusercontent.com/hjuutilainen/dotfiles/master/bin/osx-user-defaults.sh) [*7.24.2016*](https://github.com/hjuutilainen/dotfiles/commit/93f33a7a5954fe63c075f43dbda688d941643d9e)
-* [Andrew Wong](https://andrewwong.id.au/) for [`vim-hybrid/colors/hybrid.vim`](https://raw.githubusercontent.com/w0ng/vim-hybrid/master/colors/hybrid.vim) [*8.22.2016*](https://github.com/w0ng/vim-hybrid/commit/cc58baabeabc7b83768e25b852bf89c34756bf90) and [`dotfiles/osx/defaults.bash`](https://raw.githubusercontent.com/w0ng/dotfiles/master/osx/defaults.bash) *[27.8.2016](https://github.com/w0ng/dotfiles/commit/98bb99e85ff175d213f2199a788411b20f483b01)*
-* [Michael Kühnel](http://michael-kuehnel.de/) for ['Quick tip: Git, Mac OS X and german umlauts (umlaute)'](http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html) *[8.22.2016](https://github.com/mischah/dotfiles/commit/f2ab1a8bb27a6dc944e2abd991f499e7928aef0d)*
-* [Chris Gerke](https://www.linkedin.com/in/chrisgerke) for [`applekeyboard`](https://gist.githubusercontent.com/cgerke/e5500f93cd5edf05084c/raw/18c4513d662ffc636eba56f854b5e3b817c4bf51/applekeyboard) *[2017.2.16 @ 10:52](https://gist.github.com/cgerke/e5500f93cd5edf05084c/18c4513d662ffc636eba56f854b5e3b817c4bf51)*
-* [Chris White](https://github.com/christopherdwhite) for [his 2017.6.26 comment on commit 398496c](https://github.com/mathiasbynens/dotfiles/commit/398496c2372d65c0e6770d02b0c5b49c0d636f31#comments) *[2017.12.2, 15:45:0](https://github.com/mathiasbynens/dotfiles/commit/398496c2372d65c0e6770d02b0c5b49c0d636f31#commitcomment-22753491)*
-* [Simon Fredsted](https://simonfredsted.com/) for ['How to use Apple's SF Mono font in your editor'](https://simonfredsted.com/1438) *[2018.1.2, 13:35:58](https://web.archive.org/save/https://simonfredsted.com/1438)*
+* [Mathias Bynens](https://mathiasbynens.be/) for ~~[`dotfiles/.osx`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.osx)~~ [`dotfiles/.macos`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.macos) ~~_[NM.ND.2014](https://github.com/mathiasbynens/dotfiles/commit/3b4eb3efb692aa4d19a1e2c30c2ed9a65e9c7d8c)_~~ _[7.21.2016](https://github.com/mathiasbynens/dotfiles/commit/47268d92afbec69e3a7243a144a126bbd25bcf2c)_ and [`dotfiles/.gitconfig`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.gitconfig) _[8.22.2016](https://github.com/mathiasbynens/dotfiles/commit/47268d92afbec69e3a7243a144a126bbd25bcf2c)_
+* [Michael Kaiser-Nyman](http://www.epicodus.com/) _NM.ND.2015_
+* [Matt Butcher](http://technosophos.com/) _NM.ND.2015_
+* [Mark Nichols](http://zanshin.net/) for [`dotfiles/README.markdown`](https://raw.githubusercontent.com/zanshin/dotfiles/master/README.markdown) _[NM.ND.2016](https://github.com/zanshin/dotfiles/commit/02ec428566e893b765e1c34c31f330bb6531dd51)_
+* [Brandon Brown](https://brandonb.io/) for [`osx-for-hackers.sh`](https://gist.githubusercontent.com/brandonb927/3195465/raw/f9aa762705e6cf86cc8f3ce74b43a89eecab6f36/osx-for-hackers.sh) _[6.5.2016](https://gist.github.com/brandonb927/3195465/06fe593551bc778a232584593aa462a1ce635a70)_
+* [Hannes Juutilainen](https://obsoletesysadmin.wordpress.com/) for [`dotfiles/bin/osx-system-defaults.sh`](https://raw.githubusercontent.com/hjuutilainen/dotfiles/master/bin/osx-system-defaults.sh) and [`dotfiles/bin/osx-user-defaults.sh`](https://raw.githubusercontent.com/hjuutilainen/dotfiles/master/bin/osx-user-defaults.sh) _[7.24.2016](https://github.com/hjuutilainen/dotfiles/commit/93f33a7a5954fe63c075f43dbda688d941643d9e)_
+* [Andrew Wong](https://andrewwong.id.au/) for [`vim-hybrid/colors/hybrid.vim`](https://raw.githubusercontent.com/w0ng/vim-hybrid/master/colors/hybrid.vim) _[8.22.2016](https://github.com/w0ng/vim-hybrid/commit/cc58baabeabc7b83768e25b852bf89c34756bf90)_ and [`dotfiles/osx/defaults.bash`](https://raw.githubusercontent.com/w0ng/dotfiles/master/osx/defaults.bash) _[27.8.2016](https://github.com/w0ng/dotfiles/commit/98bb99e85ff175d213f2199a788411b20f483b01)_
+* [Michael Kühnel](http://michael-kuehnel.de/) for ['_Quick tip: Git, Mac OS X and german umlauts (umlaute)_'](http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html) _[8.22.2016](https://github.com/mischah/dotfiles/commit/f2ab1a8bb27a6dc944e2abd991f499e7928aef0d)_
+* [Chris Gerke](https://www.linkedin.com/in/chrisgerke) for [`applekeyboard`](https://gist.githubusercontent.com/cgerke/e5500f93cd5edf05084c/raw/18c4513d662ffc636eba56f854b5e3b817c4bf51/applekeyboard) _[2017.2.16 @ 10:52](https://gist.github.com/cgerke/e5500f93cd5edf05084c/18c4513d662ffc636eba56f854b5e3b817c4bf51)_
+* [Chris White](https://github.com/christopherdwhite) for [his 2017.6.26 comment on commit 398496c](https://github.com/mathiasbynens/dotfiles/commit/398496c2372d65c0e6770d02b0c5b49c0d636f31#comments) _[2017.12.2, 15:45:0](https://github.com/mathiasbynens/dotfiles/commit/398496c2372d65c0e6770d02b0c5b49c0d636f31#commitcomment-22753491)_
+* [Simon Fredsted](https://simonfredsted.com/) for ['_How to use Apple's SF Mono font in your editor_'](https://simonfredsted.com/1438) _[2018.1.2, 13:35:58](https://web.archive.org/save/https://simonfredsted.com/1438)_
 
 #### Author
 

@@ -64,7 +64,7 @@ sudo -v # Ask for an administrator password.
 
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & # Update sudo timestamp until the script is over.
 
-cecho '1st-party settings: Syswide and userspec prefs' $yellow
+cecho '1st-party Settings: Syswide And Userspec Prefs' $yellow
 
 echo  'Unnamed'
 
@@ -115,11 +115,6 @@ sudo scutil --set ComputerName "Karl Bertin's Mac${computername}"
 sudo scutil --set HostName "Karl Bertin's Mac${computername}"
 sudo scutil --set LocalHostName "Karl Bertin's Mac${computername}"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Karl Bertin's Mac${computername}"
-#sudo scutil --set ComputerName "kvpb"
-#sudo scutil --set HostName "kvpb"
-#sudo scutil --set LocalHostName "kvpb"
-#sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "kvpb"
-# Set computer name to 'Karl Bertin's Mac-'.
 
 echo  'Login Window & Screen Saver (NSGlobalDomain, com.apple.loginwindow, com.apple.HIToolbox.loginwindow, com.apple.screensaver)'
 
@@ -227,10 +222,11 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3 # Enable full keyboard 
 defaults write -g NSUserKeyEquivalents '{Zoom = "@$m";}'
 # Add Shift-Command-M 'Maximize window' keyboard app shortcut. [It doesn't work so well, eg in Chrome, it fully expands a window resized to 50% of the desktop's width to fill the desktop, but it doesn't just refit the window to Chrome's default size which is a bit larger.]
 
+#defaults write com.apple.universalaccess slowKey -int 0 # Disable Slow Keys. (i) Required from macOS 10.12 Sierra onwards to set faster key repeat rates.
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool FALSE # Disable press-and-hold for keys.
 #defaults write NSGlobalDomain InitialKeyRepeat -int 5 # /!\ ≤10 is too fast for 2012- MacBook due to their less precise keyboards. (i) 15: GUI shortest.
 defaults write NSGlobalDomain InitialKeyRepeat -int 10 # Set key repeat triggering delay to even shorter.
-defaults write NSGlobalDomain KeyRepeat -int 0 # Set key repeat rate to fastest. [i] Enables key repeat.
+defaults write NSGlobalDomain KeyRepeat -int 0 # Set key repeat rate to fastest. [i] Enables key repeat. /i\ From macOS 10.12 Sierra onwards, Apple modified the scales, making 0 too fast, also making 3 a reasonable value.
 
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
@@ -323,14 +319,13 @@ defaults write com.apple.helpviewer DevMode -bool TRUE # (i) Set Help viewer to 
 
 defaults write NSGlobalDomain NSWindowResizeTime -float 0.001 # Increase window resizing and fullscreen mode animation speed.
 
-for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-	defaults write "${domain}" dontAutoLoad -array \
-                                                   "/System/Library/CoreServices/Menu Extras/Volume.menu" \
-                                                   "/System/Library/CoreServices/Menu Extras/User.menu" \
-#                                                   "/System/Library/CoreServices/Menu Extras/UniversalAccess.menu"
-done
+defaults -currentHost write com.apple.systemuiserver dontAutoLoad -array \
+                                                                         "/System/Library/CoreServices/Menu Extras/Volume.menu" \
+                                                                         "/System/Library/CoreServices/Menu Extras/User.menu"# \
+#                                                                        "/System/Library/CoreServices/Menu Extras/UniversalAccess.menu"
 # Hide volume and fast user switching menu bar items.
-defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+defaults write com.apple.systemuiserver menuExtras -array \
+                                                          "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
                                                           "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
 #                                                          "/System/Library/CoreServices/Menu Extras/Time Machine.menu" \
                                                           "/System/Library/CoreServices/Menu Extras/Script Menu.menu" \
@@ -405,12 +400,12 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
 #rm -rf ~/Library/Application\ Support/Dock/desktoppicture.db
 #sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
-#sudo ln -s { Path to picture } /System/Library/CoreServices/DefaultDesktop.jpg
-# Set wallpaper. (i) `DefaultDesktop.jpg` is a symlink. (i) Wallpapers are at `/Library/Desktop Pictures`, default wallpaper is `Wave.jpg`.
-#defaults write /Library/Preferences/com.apple.loginwindow DesktopPicture "/{ path }/{ to }/{ picture }.jpg"
-#defaults write com.apple.desktop Background '{default = {ImageFilePath = "/{ path }/{ to }/{ picture }.jpg"; };}'
+#sudo ln -s ${picturefile} /System/Library/CoreServices/DefaultDesktop.jpg
+# Set wallpaper. (i) `DefaultDesktop.jpg` is a symlink. (i) Wallpapers are at `/Library/Desktop Pictures`; default wallpaper is `Wave.jpg`.
+#defaults write /Library/Preferences/com.apple.loginwindow DesktopPicture "${picturefilepath}.jpg"
+#defaults write com.apple.desktop Background '{default = {ImageFilePath = "${picturefilepath}.jpg"; };}'
 # Set wallpaper. /!\ Deprecated from OS X 10.9.5 Mavericks onwards.
-#osascript -e 'tell application "Finder" to set desktop picture to "/{ full }/{ path }/{ to }/{ picture }.jpg" as POSIX file' # Set Desktop wallpaper.
+#osascript -e 'tell application "Finder" to set desktop picture to "${picturefilepath}.jpg" as POSIX file' # Set Desktop wallpaper.
 
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv" # Set default view to columns. (i) Other viewing modes are 'icnv' for icons, 'Nlsv' for newlines and 'Flwv' for Cover flow.
 
@@ -467,7 +462,7 @@ echo  '‘Screenshooter’ (com.apple.screencapture)'
 
 defaults write com.apple.screencapture type -string 'png' # Set screenshots format to PNG. (i) Other options are `bmp` for Windows Bitmap, `gif` for GIF, `jpg` for JPEG, `jp2` for JPEG2000, `tif` for TIFF, `pict` for Macintosh PICT and `tga` for TARGA.
 
-defaults write com.apple.screencapture name -string 'Screenshot' # Set screenshots filename as 'Screenshot { YYYY }-{ MM }-{ DD } at { h }.{ mn }.{ s }.{ ext }'. (i) default option: 'Screen Shot'; custom options: '' and '\b' lead to a whitespace at the filename start [that the latter cannot erase]. [I didn't find any delete escape character or how to send hex code with `-data`.]
+defaults write com.apple.screencapture name -string 'Screenshot' # Set screenshots filename as 'Screenshot ${YYYY}-${MM}-${DD} at ${h}.${mn}.${s}.${ext}'. (i) default option: 'Screen Shot'; custom options: '', and '\b' lead to a whitespace at the filename start [that the latter cannot erase]. [I didn't find any delete escape character or how to send hex code with `-data`.]
 #sudo cp /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings ~/Desktop/ScreenCapture.strings
 #sudo plutil -convert xml1 /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings
 #sed -i -e \
@@ -605,7 +600,7 @@ defaults write com.apple.dock showLaunchpadGestureEnabled -int 0 # Disable the p
 
 #echo  'Notification Center'
 
-#launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null # Disable the notification center and remove its menu bar.
+#launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null # Disable the notification center and remove its menu bar. [i] 'Fixed' by Apple on macOS 10.13 High Sierra, but hey, 'it's not a bug, it's a feature'.
 
 echo  'Software Update & App Store (com.apple.SoftwareUpdate, com.apple.commerce, com.apple.appstore)'
 
@@ -693,7 +688,7 @@ defaults write com.apple.TextEdit NSFontSize -int "11"
 # Set rich text font to Linotype Helvetica 11pt. (i) APA Style's preferred sans serif typefaces and I's 'start small' one. /!\ Prefer pro to standard fonts versions. [I intend to ditch it for Helvetica Neue 11pt by the M1 beginning too.]
 #defaults write com.apple.TextEdit NSFont -string "HelveticaNeue"
 #defaults write com.apple.TextEdit NSFontSize -int "11"
-# Set rich text font to Linotype Helvetica Neue 11pt. (i) I's preferred sans serif typeface. /!\ Prefer pro to standard fonts versions. [Fuck Akzidenz Grotesk, long live Neue Haas Grotesk. I'll still keep using that one for personal writings only since Paris 5 asks for Arial.]
+# Set rich text font to Linotype Helvetica 11pt. (i) I's preferred sans serif typeface. /!\ Prefer pro to standard fonts versions. [Fuck Akzidenz Grotesk --- long live Neue Haas Grotesk. I'll still keep using that one for personal writings only since Paris 5 asks for Arial.]
 
 defaults write com.apple.TextEdit RichText -int 0 # Set new document text format to plain text.
 defaults write com.apple.TextEdit ShowPageBreaks -bool TRUE # (i) Disable Wrap to page.
@@ -863,7 +858,7 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool FALSE # Disable continuous spell checking.
 
-cecho '2nd-party: Userspec filesys customs' $yellow
+cecho '2nd-party Settings: Userspec Filesys Customs' $yellow
 
 #cd && git clone https://github.com/kvpb/.files.git
 # Change working directory to ~/ and clone my .files/ from GitHub.
@@ -932,7 +927,7 @@ cd ~ && touch .hushlogin # Add .hushlogin file to current users' home directory.
 #sudo dscl . create /Users/kvpb Picture "/Users/kvpb/Pictures/usrpic/Kabe.tif"
 # Set kvpb's user picture. (i) Cf https://support.apple.com/kb/PH25797?locale=en_US.
 
-cecho '3rd-party: Syswide and userspec xenogenetic software and prefs' $yellow
+cecho '3rd-party: Syswide And Userspec Xenogenetic Software And Prefs' $yellow
 
 echo  'Homebrew'
 
@@ -1023,7 +1018,7 @@ echo  'VMware Fusion 8 (com.vmware.fusion)'
 
 defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (i) Set VMware Fusion 8: Preferences: General: Applications menu: Show in menu bar to Never.
 
-echo  'Photoshop Lightroom 6'
+echo  'Photoshop Lightroom 6 (com.adobe.Lightroom6)'
 
 defaults write com.adobe.Lightroom6 prefsWindow_currentTab -integer 1
 
