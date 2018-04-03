@@ -222,15 +222,13 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3 # Enable full keyboard 
 defaults write -g NSUserKeyEquivalents '{Zoom = "@$m";}'
 # Add Shift-Command-M 'Maximize window' keyboard app shortcut. [It doesn't work so well, eg in Chrome, it fully expands a window resized to 50% of the desktop's width to fill the desktop, but it doesn't just refit the window to Chrome's default size which is a bit larger.]
 
-#defaults write com.apple.universalaccess slowKey -int 0 # Disable Slow Keys. (i) Required from macOS 10.12 Sierra onwards to set faster key repeat rates.
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool FALSE # Disable press-and-hold for keys.
-#defaults write NSGlobalDomain InitialKeyRepeat -int 5 # /!\ ≤10 is too fast for 2012- MacBook due to their less precise keyboards. (i) 15: GUI shortest.
-defaults write NSGlobalDomain InitialKeyRepeat -int 10 # Set key repeat triggering delay to even shorter.
-defaults write NSGlobalDomain KeyRepeat -int 0 # Set key repeat rate to fastest. [i] Enables key repeat. /i\ From macOS 10.12 Sierra onwards, Apple modified the scales, making 0 too fast, also making 3 a reasonable value.
+defaults write NSGlobalDomain InitialKeyRepeat -int 10 # Set key repeat triggering delay to even shorter. /!\ 15: GUI fastest; ≤10: Too fast; 0: NS SOM PARTY MN BRAV MYLOO
+defaults write NSGlobalDomain KeyRepeat -int 0 # Set key repeat rate to fastest. [i] Enables key repeat.
 
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
-# Use scroll gesture with [Strg] ([⌃]) modifier key to zoom.
+# Use scroll gesture with Strg (⌃) modifier key to zoom.
 defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool TRUE # Follow the keyboard focus while zoomed in.
 
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool FALSE # Disable automatic spell correction.
