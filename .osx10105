@@ -106,6 +106,19 @@ sudo systemsetup -setusingnetworktime on # Enable network time use.
 
 sudo systemsetup -setnetworktimeserver "time.euro.apple.com" # Set network time server.
 
+echo  'Directory layout'
+
+sudo ln -s /usr/libexec/PlistBuddy /usr/bin/PlistBuddy
+sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/bin/airport
+sudo ln -s /System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc /usr/bin/jsc
+# Write system-wide custom symbolic links.
+
+sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Applications/Directory Utility.app") at (POSIX file "/Applications")'
+sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Applications/Network Utility.app") at (POSIX file "/Applications")'
+sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Finder.app") at (POSIX file "/Applications")'
+sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Applications/Archive Utility.app") at (POSIX file "/Applications")'
+# Write system-wide custom aliases. (i) From OS X 10.11 El Capitan onwards, macOS' SIP prevents writing to /usr/.
+
 echo  'Network'
 
 echo "Which Mac is it? [eg ''Mac'', ''Mac' Pro', ''Mac'Book', ''Mac'Book Air',"
@@ -914,7 +927,7 @@ ln -s ~/DCIM ~/Pictures/DCIM
 ln -s ~/Camera ~/Pictures/Camera
 # Add user-specific custom symlinks.
 
-cd ~ && touch .hushlogin # Add .hushlogin file to current users' home directory. /?\ Speeds terminal emulator opening up ? (https://news.ycombinator.com/item?id=3879833)
+cd ~ && touch .hushlogin # Add .hushlogin file to current user's home directory. /?\ Speeds terminal emulator opening up ? (https://news.ycombinator.com/item?id=3879833)
 
 #chflags nohidden ~/Library # Display the hidden ~/Library/. (i) This script also enables hidden files display, which overrides this.
 
