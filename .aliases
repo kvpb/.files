@@ -127,6 +127,12 @@ alias	ofx='open -b com.microsoft.Excel ' # Open file using Excel for Mac 2011.
 
 alias	rff='open -R ' # Reveal files using Finder.
 
+#	xattr			display and manipulate extended attributes
+
+alias	ClearExtendedAttributes='xattr -rc .' # Remove every file's all extended attributes of the current directory recursively.
+alias	cxa='ClearExtendedAttributes'
+alias	xac='ClearExtendedAttributes'
+
 #	qlmanage		Quick Look server debug and management tool
 
 alias	quicklook='qlmanage '
@@ -205,25 +211,23 @@ alias	dbx='dbxcli '
 
 # Shell functions
 
-alias	rds='RemoveDSStore'
+alias	dds='DeleteDSStore'
 
 alias	rlp='ResetLaunchPad'
 
-alias	tara='tarall '
+alias	tarqdlc='tapearchiveQobuzdownloadedcontent'
 
-#alias	ssu='systemsoftwareupdate'
+#alias	uss='updatesystemsoftware'
 
-alias	nleof='add_missing_NL_at_EOF'
+alias	eofnl='writemissingNLatEOF'
 
-alias	rxa='RemoveExtendedAttributes'
-
-#alias	mkas='MakeFinderAlias'
+alias	mkas='MakeFinderAlias'
 
 # Computer programs
 
 alias	RPwG='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
 alias	rpwg='RPwG'
-#alias	gp='RPwG'
+alias	gp='RPwG'
 
 alias	NewTemporaryFolder='sh ~/.files/lib/scpt/NewTemporaryFolder.sh'
 alias	ntf='NewTemporaryFolder'
