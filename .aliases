@@ -174,7 +174,7 @@ alias	swu='softwareupdate '
 
 #	airport			get information for 802.11 interface
 
-alias	AirPort='airport '
+#alias	AirPort='airport '
 alias	airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
 alias	ap='airport '
 
@@ -216,6 +216,8 @@ alias	tara='tarall '
 alias	nleof='add_missing_NL_at_EOF'
 
 alias	rxa='RemoveExtendedAttributes'
+
+#alias	mkas='MakeFinderAlias'
 
 # Computer programs
 

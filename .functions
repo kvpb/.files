@@ -41,6 +41,7 @@ systemsoftwareupdate ()
 } # `systemsoftwareupdate` 'System software update'
 # List all available updates, and install them ; fetch the newest version of Homebrew, upgrade outdated, unpinned brews, and remove any installed formulae older version from the cellar ; update installed gems to the latest versions, and clean up old versions of installed gems.
 
+#addmissingNLatEOF ()
 add_missing_NL_at_EOF ()
 {
 	sed -i '' -e '$a\'
@@ -51,3 +52,38 @@ RemoveExtendedAttributes () {
 	xattr -rc .
 } # `RemoveExtendedAttributes`
 # Remove any and all files' extended attributes from current directory.
+
+#alias
+#as ()
+#FinderAlias
+#MakeAlias
+#mkalias
+#aka ()
+mkas ()
+{
+	Location=$(\pwd)
+	#$source=$1
+	#$file=S1
+	File=$1
+	#$destination=$2
+	#$target=$2
+	#$directory=$2
+	Folder=$2
+
+	#osascript -e "tell application \"Finder\" to make alias file to (POSIX file \"${File//\"/\\\"}\") at (POSIX file \"${Folder//\"/\\\"}\")" # (i) This requires two absolute paths.
+	#osascript -e "tell application \"Finder\" to make alias file to (POSIX file \"${Location}/${File//\"/\\\"}\") at (POSIX file \"${Location}/${Folder//\"/\\\"}\")" # (i) This requires two short relative from current working directory paths.
+	if [[ "${File}" == /* ]] && [[ "${Folder}" == /* ]]
+	then
+		osascript -e "tell application \"Finder\" to make alias file to (POSIX file \"${File//\"/\\\"}\") at (POSIX file \"${Folder//\"/\\\"}\")" -e 'return'
+	elif [[ "${File}" == /* ]] && [[ ! "${Folder}" == /* ]]
+	then
+		osascript -e "tell application \"Finder\" to make alias file to (POSIX file \"${File//\"/\\\"}\") at (POSIX file \"${Location}/${Folder//\"/\\\"}\")" -e 'return'
+	elif [[ ! "${File}" == /* ]] && [[ "${Folder}" == /* ]]
+	then
+		osascript -e "tell application \"Finder\" to make alias file to (POSIX file \"${Location}/${File//\"/\\\"}\") at (POSIX file \"${Folder//\"/\\\"}\")" -e 'return'
+	elif [[ ! "${File}" == /* ]] && [[ ! "${Folder}" == /* ]]
+	then
+		osascript -e "tell application \"Finder\" to make alias file to (POSIX file \"${Location}/${File//\"/\\\"}\") at (POSIX file \"${Location}/${Folder//\"/\\\"}\")" -e 'return'
+	fi
+} # `MakeFinderAlias`
+# Make Finder aliases [2018.04.18, 17:04:00 : Ça doit être la shell function la plus dégueulasse que j'ai écrit. It doesn't handle any and all relative paths. I don't care anyway. I've been jacking with this stuff almost all afternoon.]
