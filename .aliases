@@ -143,15 +143,24 @@ alias	qlp='qlmanage -p ' # Display the Quick Look generated preview for the spec
 # 	ls				list directory contents
 
 alias	ls='ls -G ' # Colorize ls output.
-
-alias	l='ls -1F ' # List simply directory contents.
-#alias	ls2='l '
+#alias	ls='lf -F ' # Type ls output.
 
 alias	lh='ls -Ad .*' # List directory hidden files.
 #alias	lh2='la -1AdF .*'
 
+#alias	lf='ls -AF | grep -v -e / -e \* -e @ -e = -e % -e \| -e \>' # List directory's regular files.
+
+#alias	lhf='ls -AdF .* | grep -v -e / -e \* -e @ -e = -e % -e \| -e \>' # List directory's hidden regular files.
+
+alias	ld='ls -d */' # List directory's subdirectories.
+
+#alias	lhd='ls -d .*/ | tail -n +3' # List directory's hidden subdirectories.
+
 alias	la='ls -a ' # List all directory contents.
 #alias	la2='ls -1aF '
+
+alias	l='ls -1F ' # List simply directory contents.
+#alias	ls2='l '
 
 alias	ll='pwd && ls -@aeFGlT ' # List extendedly all directory contents.
 
