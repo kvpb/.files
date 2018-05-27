@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DeleteDSStore ()
 {
@@ -67,4 +67,34 @@ MakeFinderAlias ()
 		osascript -e "tell application \"Finder\" to make alias file to (POSIX file \"${Location}/${File//\"/\\\"}\") at (POSIX file \"${Location}/${Folder//\"/\\\"}\")" -e 'return'
 	fi
 } # `MakeFinderAlias`
-# Make Finder aliases [2018.04.18, 17:04:00 : Ça doit être la shell function la plus dégueulasse que j'ai écrit. It doesn't handle any and all relative paths. I don't care anyway. I've been jacking with this stuff almost all afternoon.]
+# Make Finder aliases. [2018.04.18, 17:04:00 : Ça doit être la shell function la plus dégueulasse que j'ai écrit. It doesn't handle any and all relative paths. I don't care anyway. I've been jacking with this stuff almost all afternoon.]
+
+computerandomnumber ()
+{
+	number=$RANDOM;
+	index=$[RANDOM%3+1];
+#	operator=( "arithmetic" "in-de-crement" "relational" "logical" "conditional" "assignment" "bitwise" "miscellaneous" );
+#		operator[1]=( "" "+" "-" "*" "/" "%" 0 );
+	operator[0]="";
+	operator[1]="+";
+	operator[2]="-";
+	operator[3]="*";
+	operator[4]="/";
+	operator[5]="%";
+	expression="$number ${operator[$index]} $number";
+
+#	number=$RANDOM; character="+"; string="$number ${character} $number"; echo $number && echo ${character} && expr $(echo ${string}) # V [It works, but I want it to randomly pick an operator.]
+#	n=$RANDOM; c=( "" "+" "-" "*" "/" "%" ); s="${n} ${c[$[RANDOM%5+1]]} ${n}"; echo $n && echo ${c} && expr ${s} # X [It fucks up. Apparently, the curly braces around number variables in the string variable cause it to fail. I guess I should understand how brace expansion works.]
+#	n=$RANDOM; i=$[RANDOM%5+1]; c=( "" "+" "-" "*" "/" "%" ); s="$n ${c[$i]} $n"; echo $n && echo $i && echo ${c} && expr ${s} # x [It works better, but it does not work well when it picks the multiplicator, the divider or the modulo. ..just l qualiter]
+#	n=$RANDOM; i=$[RANDOM%3+1]; c=( "" "+" "-" "*" "/" "%" ); s="$n ${c[$i]} $n"; echo $n && echo $i && echo ${c} && expr ${s} # v [It still shits up when it picks the multiplication operator, saying 'expr: syntax error'. If I entered it manually, I would escape the multiplication operator. Unfortunately, whether I escape it in the operators array or in the string variable, I still get that error.]
+	expr $(echo ${expression});
+}
+
+generaterandomusername ()
+{
+	username='usr'
+	number=$[RANDOM%9999+1]
+
+	echo "${username}${number}"
+} # `GenerateRandomUsername`
+# Generate a random username.
