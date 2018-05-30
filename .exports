@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+export	DOTF=${HOME}/.files
+export	DLIB=${HOME}/.files/lib
+export	SCPT=${HOME}/.files/lib/scpt
+export	APST=${HOME}/.files/lib/AppleScripts
