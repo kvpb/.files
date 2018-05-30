@@ -409,7 +409,7 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 # Expand save pane by default.
 
-#rm -rf ~/Library/Application\ Support/Dock/desktoppicture.db
+#rm -rf ${HOME}/Library/Application\ Support/Dock/desktoppicture.db
 #sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
 #sudo ln -s ${picturefile} /System/Library/CoreServices/DefaultDesktop.jpg
 # Set wallpaper. (i) `DefaultDesktop.jpg` is a symlink. (i) Wallpapers are at `/Library/Desktop Pictures`; default wallpaper is `Wave.jpg`.
@@ -420,12 +420,12 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv" # Set default view to columns. (i) Other viewing modes are 'icnv' for icons, 'Nlsv' for newlines and 'Flwv' for Cover flow.
 
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ${HOME}/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ${HOME}/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ${HOME}/Library/Preferences/com.apple.finder.plist
 # Show item info near icons on the desktop and in other icon views.
 
-/usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist # Display desktop items infos to their icons' right.
+/usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ${HOME}/Library/Preferences/com.apple.finder.plist # Display desktop items infos to their icons' right.
 
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool TRUE # Display internal drives on the desktop. [i] Enable Hard disks.
 
@@ -474,15 +474,15 @@ echo  '‘Screenshooter’ (com.apple.screencapture)'
 defaults write com.apple.screencapture type -string 'png' # Set screenshots format to PNG. (i) Other options are `bmp` for Windows Bitmap, `gif` for GIF, `jpg` for JPEG, `jp2` for JPEG2000, `tif` for TIFF, `pict` for Macintosh PICT and `tga` for TARGA.
 
 defaults write com.apple.screencapture name -string 'Screenshot' # Set screenshots filename as 'Screenshot ${YYYY}-${MM}-${DD} at ${h}.${mn}.${s}.${ext}'. (i) default option: 'Screen Shot'; custom options: '', and '\b' lead to a whitespace at the filename start [that the latter cannot erase]. [I didn't find any delete escape character or how to send hex code with `-data`.]
-#sudo cp /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings ~/Desktop/ScreenCapture.strings
+#sudo cp /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings ${HOME}/Desktop/ScreenCapture.strings
 #sudo plutil -convert xml1 /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings
 #sed -i -e \
 #          's/<string>%@\ %@<\/string>/<string>%@%@<\/string>/g' \
 #          's/<string>%@\ %@\ at\ %@<\/string>/<string>%@%@%@<\/string>/g' \
 #          's/<string>%@\ %@\(%@\)<\/string>/<string>%@%@%@<\/string>/g' \
 #          's/<string>%@\ \(%@\)<\/string>/<string>%@%@<\/string>/g' \
-#          /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings ~/Desktop/ScreenCapture.strings
-# sudo plutil -convert binary1 /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings ~/Desktop/ScreenCapture.strings
+#          /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings ${HOME}/Desktop/ScreenCapture.strings
+# sudo plutil -convert binary1 /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings ${HOME}/Desktop/ScreenCapture.strings
 # Copy ScreenCapture.strings to Desktop/, convert ScreenCapture.strings to XML plist version 1, edit content then convert ScreenCapture.strings back to binary plist version 1. /!\ Bad practice: XML editing with sed & System/ content editing [probably prevented by OS X El Capitan's SIP].
 
 #defaults write com.apple.screencapture include-date -bool FALSE # Disable date in screenshot filename.
@@ -493,7 +493,7 @@ defaults write com.apple.screencapture name -string 'Screenshot' # Set screensho
 
 echo  'QuickLook (com.apple.finder)'
 
-#echo -n "0x08000100:0x0" > ~/.CFUserTextEncoding # Fix the ancient UTF-8 bug in QuickLook. /!\ Causes issues with Adobe Illustrator CS5.
+#echo -n "0x08000100:0x0" > ${HOME}/.CFUserTextEncoding # Fix the ancient UTF-8 bug in QuickLook. /!\ Causes issues with Adobe Illustrator CS5.
 
 defaults write com.apple.finder QLEnableTextSelection -bool TRUE # Enable text selection in QuickLook.
 
@@ -771,7 +771,7 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Disable font sizes smaller than 9 use. (i) Enable Never use font sizes smaller than N. Set Never use font sizes smaller than to 9.
 defaults write com.apple.Safari UserStyleSheetEnabled -int 0 # (i) Set Style sheet to None selected.
 
-defaults write com.apple.Safari DownloadsPath -string "~/Downloads" # Set downloads storage path to `~/Downloads`. (i) Set Save downloaded files to to Downloads/.
+defaults write com.apple.Safari DownloadsPath -string "${HOME}/Downloads" # Set downloads storage path to `${HOME}/Downloads`. (i) Set Save downloaded files to to Downloads/.
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool FALSE # Disable downloaded 'safe' files automatic opening. (i) Disable Open “safe” files after downloading.
 
 defaults write com.apple.Safari HomePage -string "about:blank" # Set homepage URL to `about:blank`. (i) Set Homepage to `about:blank`.
@@ -872,67 +872,68 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 cecho '2nd-party Settings: Userspec Filesys Customs' $yellow
 
 #cd && git clone https://github.com/kvpb/.files.git
-# Change working directory to ~/ and clone my .files/ from GitHub.
+# Change working directory to ${HOME}/ and clone my .files/ from GitHub.
 
-if [ -d "~/{kbs,misc,ops}" ]; then # if [ -d "~/{kbs,.files,misc,ops}" ]; then
-	if [ -L "~/{kbs,misc,ops}" ]; then # if [ -L "~/{kbs,.files,misc,ops}" ]; then
-		mv ~/{kbs,misc,ops} ~/.Trash/ # rm ~/{kbs,.files,misc,ops}
-		mkdir ~/{kbs,misc,ops} # mkdir ~/{kbs,.files,misc,ops}
+if [ -d "${HOME}/{kbs,misc,ops}" ]; then # if [ -d "${HOME}/{kbs,.files,misc,ops}" ]; then
+	if [ -L "${HOME}/{kbs,misc,ops}" ]; then # if [ -L "${HOME}/{kbs,.files,misc,ops}" ]; then
+		mv ${HOME}/{kbs,misc,ops} ${HOME}/.Trash/ # rm ${HOME}/{kbs,.files,misc,ops}
+		mkdir ${HOME}/{kbs,misc,ops} # mkdir ${HOME}/{kbs,.files,misc,ops}
 	fi
 else
-	mkdir -p ~/{kbs,misc,ops} # mkdir -p ~/{kbs,.files,misc,ops}
+	mkdir -p ${HOME}/{kbs,misc,ops} # mkdir -p ${HOME}/{kbs,.files,misc,ops}
 fi
-# If kbs, .files, misc and ops aren't directories in ~/ then substitute symlinks by or add these directories.
-if [ -d "~/Downloads/{misc,doc,pic,mus,mov}" ]; then
-	if [ -L "~/Downloads/{misc,doc,pic,mus,mov}" ]; then
-		mv ~/Downloads/{misc,doc,pic,mus,mov} ~/.Trash/
-		mkdir ~/Downloads/{misc,doc,pic,mus,mov}
+# If kbs, .files, misc and ops aren't directories in ${HOME}/ then substitute symlinks by or add these directories.
+if [ -d "${HOME}/Downloads/{misc,doc,pic,mus,mov}" ]; then
+	if [ -L "${HOME}/Downloads/{misc,doc,pic,mus,mov}" ]; then
+		mv ${HOME}/Downloads/{misc,doc,pic,mus,mov} ${HOME}/.Trash/
+		mkdir ${HOME}/Downloads/{misc,doc,pic,mus,mov}
 	fi
 else
-	mkdir -p ~/Downloads/{misc,doc,pic,mus,mov}
+	mkdir -p ${HOME}/Downloads/{misc,doc,pic,mus,mov}
 fi
-# If misc, doc, pic, mus and mov aren't directories in ~/Downloads/ then substitute symlinks by or add these directories.
-if [ -d "~/{DCIM,Camera}" ]; then
-	if [ -L "~/{DCIM,Camera}" ]; then
-		mv ~/{DCIM,Camera} ~/.Trash/
-		mkdir ~/{DCIM,Camera}
+# If misc, doc, pic, mus and mov aren't directories in ${HOME}/Downloads/ then substitute symlinks by or add these directories.
+if [ -d "${HOME}/{DCIM,Camera}" ]; then
+	if [ -L "${HOME}/{DCIM,Camera}" ]; then
+		mv ${HOME}/{DCIM,Camera} ${HOME}/.Trash/
+		mkdir ${HOME}/{DCIM,Camera}
 	fi
 else
-	mkdir -p ~/{DCIM,Camera}
+	mkdir -p ${HOME}/{DCIM,Camera}
 fi
-# If DCIM and Camera aren't directories in ~/ then substitute symlinks by or add these directories.
+# If DCIM and Camera aren't directories in ${HOME}/ then substitute symlinks by or add these directories.
 
-ln -s ~/.files/.inputrc ~/.inputrc
-#ln -s ~/.files/.shrc ~/.shrc
-#ln -s ~/.files/.shinit ~/.shinit
-#ln -s ~/.files/.profile ~/.profile
-ln -s ~/.files/.functions ~/.functions
-ln -s ~/.files/.aliases ~/.aliases
-ln -s ~/.files/.bashrc ~/.bashrc
-ln -s ~/.files/.bash_login ~/.bash_login
-ln -s ~/.files/.bash_profile ~/.bash_profile
-ln -s ~/.files/.bash_logout ~/.bash_logout
-ln -s ~/.files/.bash_prompt ~/.bash_prompt
-ln -s ~/.files/.zshrc ~/.zshrc
-ln -s ~/.files/.zprofile ~/.zprofile
-#ln -s ~/.files/.ssh ~/.ssh # ln -s ~/.files/.ssh/config ~/.ssh/config
-ln -s ~/.files/.vimrc ~/.vimrc
-ln -s ~/.files/.vim ~/.vim
-ln -s ~/.files/.gitconfig ~/.gitconfig
-ln -s ~/.files/.gitignore_global ~/.gitignore_global
-ln -s ~/.files/lib/AppleScripts ~/Library/Scripts
-ln -s ~/Downloads/misc ~/misc/dld
-ln -s ~/Downloads/doc ~/Documents/dld
-ln -s ~/Downloads/pic ~/Pictures/dld
-ln -s ~/Downloads/mov ~/Movies/dld
-ln -s ~/Downloads/mus ~/Music/dld
-ln -s ~/DCIM ~/Pictures/DCIM
-ln -s ~/Camera ~/Pictures/Camera
+ln -s ${HOME}/.files/.inputrc ${HOME}/.inputrc
+#ln -s ${HOME}/.files/.shrc ${HOME}/.shrc
+#ln -s ${HOME}/.files/.shinit ${HOME}/.shinit
+#ln -s ${HOME}/.files/.profile ${HOME}/.profile
+ln -s ${HOME}/.files/.exports ${HOME}/.exports
+ln -s ${HOME}/.files/.functions ${HOME}/.functions
+ln -s ${HOME}/.files/.aliases ${HOME}/.aliases
+ln -s ${HOME}/.files/.bashrc ${HOME}/.bashrc
+ln -s ${HOME}/.files/.bash_login ${HOME}/.bash_login
+ln -s ${HOME}/.files/.bash_profile ${HOME}/.bash_profile
+ln -s ${HOME}/.files/.bash_logout ${HOME}/.bash_logout
+ln -s ${HOME}/.files/.bash_prompt ${HOME}/.bash_prompt
+ln -s ${HOME}/.files/.zshrc ${HOME}/.zshrc
+ln -s ${HOME}/.files/.zprofile ${HOME}/.zprofile
+#ln -s ${HOME}/.files/.ssh ${HOME}/.ssh # ln -s ${HOME}/.files/.ssh/config ${HOME}/.ssh/config
+ln -s ${HOME}/.files/.vimrc ${HOME}/.vimrc
+ln -s ${HOME}/.files/.vim ${HOME}/.vim
+ln -s ${HOME}/.files/.gitconfig ${HOME}/.gitconfig
+ln -s ${HOME}/.files/.gitignore_global ${HOME}/.gitignore_global
+ln -s ${HOME}/.files/lib/AppleScripts ${HOME}/Library/Scripts
+ln -s ${HOME}/Downloads/misc ${HOME}/misc/dld
+ln -s ${HOME}/Downloads/doc ${HOME}/Documents/dld
+ln -s ${HOME}/Downloads/pic ${HOME}/Pictures/dld
+ln -s ${HOME}/Downloads/mov ${HOME}/Movies/dld
+ln -s ${HOME}/Downloads/mus ${HOME}/Music/dld
+ln -s ${HOME}/DCIM ${HOME}/Pictures/DCIM
+ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
 # Add user-specific custom symlinks.
 
 cd ~ && touch .hushlogin # Add .hushlogin file to current user's home directory. /?\ Speeds terminal emulator opening up ? (https://news.ycombinator.com/item?id=3879833)
 
-#chflags nohidden ~/Library # Display the hidden ~/Library/. (i) This script also enables hidden files display, which overrides this.
+#chflags nohidden ${HOME}/Library # Display the hidden ${HOME}/Library/. (i) This script also enables hidden files display, which overrides this.
 
 #dscl . delete /Users/kvpb Picture
 #sudo dscl . create /Users/kvpb Picture "/Users/kvpb/Pictures/usrpic/Kabe.tif"
@@ -954,9 +955,9 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool FALSE # Hide quit prompt
 
 echo  'Hyper (co.zeit.hyper, co.zeit.hyper.helper)'
 
-#/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc ~/.files/lib/scpt/InstallHyper.js # Install Hyper.
+#/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc ${HOME}/.files/lib/scpt/InstallHyper.js # Install Hyper.
 
-ln -s ~/.files/.hyper.js ~/.hyper.js # Configure Hyper.
+ln -s ${HOME}/.files/.hyper.js ${HOME}/.hyper.js # Configure Hyper.
 
 echo  'Jumpcut (net.sf.Jumpcut)'
 
@@ -1011,7 +1012,7 @@ echo  'Transmission (org.m0k.transmission)'
 
 defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
 defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Transmission"
-# Set incomplete downloads path to `~/Downloads/Transmission/`.
+# Set incomplete downloads path to `${HOME}/Downloads/Transmission/`.
 
 #defaults write org.m0k.transmission DeleteOriginalTorrent -bool TRUE # Move original torrent files to trash.
 
