@@ -31,6 +31,10 @@ alias	mi='cd ~/misc' # Change the working dir to my misc files'.
 
 alias	op='cd ~/ops' # Change the working dir to my ongoing operations'.
 
+alias	e16s='cd /Volumes/KBS16GBFD'
+alias	e64s='cd /Volumes/KBS64GBFD'
+# Change the working directory to one of my USB flash drives' or other external storage's.
+
 alias	r1='cd /Volumes/KBSPCMD100R/VOICE/FOLDER01'
 alias	r2='cd /Volumes/KBSPCMD100R/VOICE/FOLDER02'
 alias	r3='cd /Volumes/KBSPCMD100R/VOICE/FOLDER03'
@@ -38,8 +42,9 @@ alias	r4='cd /Volumes/KBSPCMD100R/VOICE/FOLDER04'
 alias	r5='cd /Volumes/KBSPCMD100R/VOICE/FOLDER05'
 # Change the working dir to one of my recorder's recorded files'.
 
-alias	app='cd /Applications' # Change the working directory to system applications'.
-alias	apps='app'
+alias	vol='cd /Volumes' # Change the working directory to the mounted volumes'.
+
+alias	app='cd /Applications' # Change the working directory to the system applications'.
 
 alias	dt='cd ~/Desktop' # Change the working dir to current macOS user's desktop'.
 
@@ -82,6 +87,12 @@ alias	nsh2='cd && cls && nsh '
 #	exit
 
 #alias	e='exit'
+
+#	echo
+
+#alias	gn='echo $RANDOM' # Output a number up to 32767.
+#alias	gn2='var=$RANDOM; expr $var \* $var' #output a number up to 32767**2.
+alias	gn='echo $[RANDOM%9999+1]' # Generate a random number from 0 to 9999.
 
 # 'Internal' programs commands
 
@@ -185,7 +196,7 @@ alias	jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resour
 
 #	softwareupdate	system software update tool
 
-alias	swu='softwareupdate '
+alias	swu='updatesystemsoftware '
 
 #	airport			get information for 802.11 interface
 
@@ -231,6 +242,10 @@ alias	tarqdlc='tapearchiveQobuzdownloadedcontent'
 alias	eofnl='writemissingNLatEOF'
 
 alias	mkas='MakeFinderAlias'
+
+#alias	gn='computerandomnumber'
+
+alias	gu='generaterandomusername'
 
 # Computer programs
 
