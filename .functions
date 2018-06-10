@@ -33,12 +33,12 @@ cls ()
 } # `cls` 'MS-DOS, OS/2 & Microsoft Windows CLS'
 # Clear the terminal screen if this is possible, then write the VT100 escape code for resetting the terminal to the standard output under the control of the format.
 
-updatesystemsoftware ()
+updatesoftware ()
 {
-	sudo softwareupdate -i -a
+	softwareupdate --download -all
 	brew update && brew upgrade && brew cleanup
-	sudo gem update --system && sudo gem update && sudo gem cleanup
-} # `updatesystemsoftware` 'Sony System Software Update'
+	gem update && gem update && gem cleanup
+} # `updatesoftware` 'Sony System Software Update'
 # List all available updates, and install them ; fetch the newest version of Homebrew, upgrade outdated, unpinned brews, and remove any installed formulae older version from the cellar ; update installed gems to the latest versions, and clean up old versions of installed gems.
 
 writemissingNLatEOF ()
