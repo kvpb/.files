@@ -4,3 +4,9 @@ export	DOTF=${HOME}/.files
 export	DLIB=${HOME}/.files/lib
 export	SCPT=${HOME}/.files/lib/scpt
 export	APST=${HOME}/.files/lib/AppleScripts
+
+export	CLICOLOR=1
+export	LSCOLORS=egfxxxxxdxxxxxdxdxegeg # (i) default value: exfxcxdxbxegedabagacad
+#                EgXxxxxxxxxxxxxxxEgEg # OS X Yosemite Finder & Path Finder 7-themed ls output.
+#                egfxxxxxxxxxxxxxxxegeg # OS X Yosemite Finder & Sketch 3-themed ls output.
+#export	LS_COLORS='di=7;0;0:fi=0;0;0:ln=0;37;0:pi=0;0;0:so=0;0;0:bd=0;0;0:cd=0;0;0:or=5;37;0:mi=5;0;0:ex=0;93;0'
