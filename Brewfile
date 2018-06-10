@@ -17,3 +17,5 @@ install pyenv # Download PYenv, and install it.
 
 install fswatch # Download fswatch, and install it.
 install mas # Download mas-cli, and install it.
+
+cleanup # Delete any installed formulae's older version from the cellar.
