@@ -23,9 +23,9 @@ Apple computers operating systems configuration scripts family.
 
 Launch a terminal emulator, eg _Terminal_ or _iTerm2_, then enter this:
 
-&nbsp;&nbsp;~~**_macOS 10.13 High Sierra_:**~~
+&nbsp;&nbsp;**_macOS 10.13 High Sierra_:**
 
-```
+```sh
 cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos1013)
 ```
 
