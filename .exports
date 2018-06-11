@@ -1,12 +1,34 @@
 #!/usr/bin/env bash
 
-export	DOTF=${HOME}/.files
-export	DLIB=${HOME}/.files/lib
-export	SCPT=${HOME}/.files/lib/scpt
-export	APST=${HOME}/.files/lib/AppleScripts
+#export	LIBRARY=${HOME}/lib #        export        LIBRARY=${HOME}/library
+#export	DOTFILES=${HOME}/.fl #       export       DOTFILES=${HOME}/.files
+#export BINARIES=${HOME}/bin #       export       BINARIES=${HOME}/binary
+#export	DESKTOP=${HOME}/dsk #        export        DESKTOP=${HOME}/desktop
+#export	WORKINPROGRESS=${HOME}/wip # export WORKINPROGRESS=${HOME}/work
+#export	DOCUMENTS=${HOME}/dox #      export      DOCUMENTS=${HOME}/documents
+#export	IMAGE=${HOME}/img #          export          IMAGE=${HOME}/image     # export PHOTO=${HOME}/pht
+#export	AUDIO=${HOME}/aud #          export          AUDIO=${HOME}/audio     # export MUSIC=${HOME}/mus
+#export	VIDEO=${HOME}/vdo #          export          VIDEO=${HOME}/video
+#export	MISCELLANEOUS=${HOME}/msc #  export  MISCELLANEOUS=${HOME}/misc
+#export	DOWNLOADS=${HOME}/dlc #      export      DOWNLOADS=${HOME}/downloads
+#export	TRASH=${HOME}/tsh #          export          TRASH=${HOME}/trash
+#export	TEMPORARY=${HOME}/tmp #      export      TEMPORARY=${HOME}/temp
+
+#export	DOTFILES=${HOME}/.files
+export	APPLICATIONS=/Applications
+export	LIBRARY=${HOME}/Library
+export	DESKTOP=${HOME}/Desktop
+export	DOCUMENTS=${HOME}/Documents
+export	DOWNLOADS=${HOME}/Downloads
+export	DROPBOX=${HOME}/Dropbox
+#export	MISCELLANEOUS=${HOME}/Miscellaneous
+export	MOVIES=${HOME}/Movies
+export	MUSIC=${HOME}/Music
+export	PICTURES=${HOME}/Pictures
+export	PUBLIC=${HOME}/Public
+#export	TEMPORARY=${HOME}/Temporary
+export	TRASH=${HOME}/.Trash
+#export	WORK=${HOME}/Work
 
 export	CLICOLOR=1
-export	LSCOLORS=egfxxxxxdxxxxxdxdxegeg # (i) default value: exfxcxdxbxegedabagacad
-#                EgXxxxxxxxxxxxxxxEgEg # OS X Yosemite Finder & Path Finder 7-themed ls output.
-#                egfxxxxxxxxxxxxxxxegeg # OS X Yosemite Finder & Sketch 3-themed ls output.
-#export	LS_COLORS='di=7;0;0:fi=0;0;0:ln=0;37;0:pi=0;0;0:so=0;0;0:bd=0;0;0:cd=0;0;0:or=5;37;0:mi=5;0;0:ex=0;93;0'
+export	LSCOLORS=egfxcxdxbxegedabagacad # default value: exfxcxdxbxegedabagacad
