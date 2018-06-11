@@ -68,7 +68,7 @@ cecho '1st-party Settings: Syswide And Userspec Prefs' $yellow
 
 echo  'Unnamed'
 
-chsh -s /bin/zsh # Change the default login shell to Zsh.
+chsh -s /bin/bash # Change the default login shell to BASH.
 
 sudo defaults write /var/db/SystemPolicy-prefs.plist enabled -string no
 sudo spctl --master-disable
@@ -120,14 +120,12 @@ sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "
 
 echo  'Network'
 
-echo "Which Mac is it? [eg ''Mac'', ''Mac' Pro', ''Mac'Book', ''Mac'Book Air',"
-echo "''Mac'Book Pro' or ''Mac'intosh']"
-echo "NB: If 'e'Mac'', 'i'Mac'' or 'Power 'Mac'', enter blank."
-read computername
-sudo scutil --set ComputerName "Karl Bertin's Mac${computername}"
-sudo scutil --set HostName "Karl Bertin's Mac${computername}"
-sudo scutil --set LocalHostName "Karl Bertin's Mac${computername}"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Karl Bertin's Mac${computername}"
+modelname=$(system_profiler SPHardwareDataType | grep 'Model Name' | sed 's/.*: //')
+sudo scutil --set ComputerName "Karl Bertin's ${modelname}"
+sudo scutil --set HostName "Karl Bertin's ${modelname}"
+modelname2=$(echo ${modelname} | sed 's/ //')
+sudo scutil --set LocalHostName "KarlBertins${modelname2}"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Karl Bertin's ${modelname}"
 
 echo  'Login Window & Screen Saver (NSGlobalDomain, com.apple.loginwindow, com.apple.HIToolbox.loginwindow, com.apple.screensaver)'
 
@@ -176,9 +174,9 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 #read phonenumber
 #echo "What is this Mac's owner's email address?"
 #read emailaddress
-#sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "${fullname}'s Mac${computername}.\nPlease contact ${phonenumber} or ${emailaddress} if found."
-# Display set lock message. (i) `fullname` and `computername` variables have been set earlier, at Network: Computer name.
-sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Karl Bertin's Mac${computername}.\nPlease contact +33670832664 or karlvp.bertin@gmail.com if found." # Display set lock message. (i) `computername` variable has been set earlier, at Network: Computer name.
+#sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "${fullname}'s ${modelname}\nPlease contact ${phonenumber} or ${emailaddress} if found."
+# Display set lock message. (i) `fullname` and `modelname` variables have been set earlier, at Network: Computer name.
+sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Karl Bertin's ${modelname}\nPlease contact +33633784893 or karlvp.bertin@gmail.com if found." # Display set lock message. (i) `modelname` variable has been set earlier, at Network: Computer name.
 
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
@@ -874,31 +872,31 @@ cecho '2nd-party Settings: Userspec Filesys Customs' $yellow
 #cd && git clone https://github.com/kvpb/.files.git
 # Change working directory to ${HOME}/ and clone my .files/ from GitHub.
 
-if [ -d "${HOME}/{kbs,misc,ops}" ]; then # if [ -d "${HOME}/{kbs,.files,misc,ops}" ]; then
-	if [ -L "${HOME}/{kbs,misc,ops}" ]; then # if [ -L "${HOME}/{kbs,.files,misc,ops}" ]; then
-		mv ${HOME}/{kbs,misc,ops} ${HOME}/.Trash/ # rm ${HOME}/{kbs,.files,misc,ops}
-		mkdir ${HOME}/{kbs,misc,ops} # mkdir ${HOME}/{kbs,.files,misc,ops}
+if [ -d "${HOME}/{misc,wip}" ]; then # if [ -d "${HOME}/{kbs,.files,misc,ops}" ]; then
+	if [ -L "${HOME}/{misc,wip}" ]; then # if [ -L "${HOME}/{kbs,.files,misc,ops}" ]; then
+		mv ${HOME}/{misc,wip} ${HOME}/.Trash/ # rm ${HOME}/{kbs,.files,misc,ops}
+		mkdir ${HOME}/{misc,wip} # mkdir ${HOME}/{kbs,.files,misc,ops}
 	fi
 else
-	mkdir -p ${HOME}/{kbs,misc,ops} # mkdir -p ${HOME}/{kbs,.files,misc,ops}
+	mkdir -p ${HOME}/{misc,wip} # mkdir -p ${HOME}/{kbs,.files,misc,ops}
 fi
 # If kbs, .files, misc and ops aren't directories in ${HOME}/ then substitute symlinks by or add these directories.
-if [ -d "${HOME}/Downloads/{misc,doc,pic,mus,mov}" ]; then
-	if [ -L "${HOME}/Downloads/{misc,doc,pic,mus,mov}" ]; then
-		mv ${HOME}/Downloads/{misc,doc,pic,mus,mov} ${HOME}/.Trash/
-		mkdir ${HOME}/Downloads/{misc,doc,pic,mus,mov}
+if [ -d "${HOME}/Downloads/{doc,pic,mus,mov,misc}" ]; then
+	if [ -L "${HOME}/Downloads/{doc,pic,mus,mov,misc}" ]; then
+		mv ${HOME}/Downloads/{doc,pic,mus,mov,misc} ${HOME}/.Trash/
+		mkdir ${HOME}/Downloads/{doc,pic,mus,mov,misc}
 	fi
 else
-	mkdir -p ${HOME}/Downloads/{misc,doc,pic,mus,mov}
+	mkdir -p ${HOME}/Downloads/{doc,pic,mus,mov,misc}
 fi
 # If misc, doc, pic, mus and mov aren't directories in ${HOME}/Downloads/ then substitute symlinks by or add these directories.
-if [ -d "${HOME}/{DCIM,Camera}" ]; then
-	if [ -L "${HOME}/{DCIM,Camera}" ]; then
-		mv ${HOME}/{DCIM,Camera} ${HOME}/.Trash/
-		mkdir ${HOME}/{DCIM,Camera}
+if [ -d "${HOME}/{DCIM,FCIM,Camera}" ]; then
+	if [ -L "${HOME}/{DCIM,FCIM,Camera}" ]; then
+		mv ${HOME}/{DCIM,FCIM,Camera} ${HOME}/.Trash/
+		mkdir ${HOME}/{DCIM,FCIM,Camera}
 	fi
 else
-	mkdir -p ${HOME}/{DCIM,Camera}
+	mkdir -p ${HOME}/{DCIM,FCIM,Camera}
 fi
 # If DCIM and Camera aren't directories in ${HOME}/ then substitute symlinks by or add these directories.
 
@@ -916,7 +914,7 @@ ln -s ${HOME}/.files/.bash_logout ${HOME}/.bash_logout
 ln -s ${HOME}/.files/.bash_prompt ${HOME}/.bash_prompt
 ln -s ${HOME}/.files/.zshrc ${HOME}/.zshrc
 ln -s ${HOME}/.files/.zprofile ${HOME}/.zprofile
-#ln -s ${HOME}/.files/.ssh ${HOME}/.ssh # ln -s ${HOME}/.files/.ssh/config ${HOME}/.ssh/config
+#ln -s ${HOME}/.files/.ssh ${HOME}/.ssh/config
 ln -s ${HOME}/.files/.vimrc ${HOME}/.vimrc
 ln -s ${HOME}/.files/.vim ${HOME}/.vim
 ln -s ${HOME}/.files/.gitconfig ${HOME}/.gitconfig
