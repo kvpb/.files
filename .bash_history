@@ -8,3 +8,4 @@ ls -AF | grep -v -e / -e \* -e @ -e = -e % -e \| -e \> # List simply directory's
 ls -AdF .* | grep -v -e / -e \* -e @ -e = -e % -e \| -e \> # List simply directory's hidden regular files. (i) I ran this on 2018.04.20 at about 16:05:00.
 ls -d .*/ | tail -n +3 # List simply directory's hidden subdirectories. (i) I ran this on 2018.04.20 at about 16:10:00.
 var="${RANDOM}"; tar -c -f "tmpcp${var}.tar" Services ; tar -x -f "tmpcp${var}.tar" -C ~/.files/lib/ # Copy file preserving directory structure. /i\ Requires to be at the file to copy's parent directory because it copies the entire given path. [i] This does not clear the temporary archive. To remove it, append `; mv -R "tmpcp${var}.tar" ~/.Trash/`. (i) I ran this on 2018.05.12 at 14:50:00.
+iconv -f iso-8859-1 -t utf-8 < file > file.txt # Convert an ISO-8859-1-encoded file to UTF-8. (i) I ran this on 2019.02.13 at 08:54:30.
