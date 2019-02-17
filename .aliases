@@ -9,42 +9,40 @@
 
 alias	d='cd '
 
-alias	..='cd ..' # Change the working dir to current user's parent one.
+alias	..='cd ..' # Change the working directory to the current user's parent one.
 
-alias	...='cd ../..' # Change the working dir to current's grand-parent one.
+alias	...='cd ../..' # Change the working directory to the current's grand-parent one.
 
-alias	....='cd ../../..' # Change the working dir to current's grand-grand-parent one.
+alias	....='cd ../../..' # Change the working direcrory to the current's grand-grand-parent one.
 
-alias	.....='cd ../../../..' # Change the working dir to current's grand-grand-grand-parent one.
+alias	.....='cd ../../../..' # Change the working directory to the current's grand-grand-grand-parent one.
 
-alias	......='cd ../../../../..' # Change the working dir to current's grand-grand-grand-grand-parent one.
+alias	......='cd ../../../../..' # Change the working directory to the current's grand-grand-grand-grand-parent one.
 
-alias	rt='cd /' # Change the working dir to root.
+alias	.......='cd ../../../../../..' # Change the working directory to the current's fossilized ancestor one.
+
+alias	........='cd ../../../../../../..' # Change the working directory to the current's Big Bang original matter particles one.'
+
+alias	r='cd /' # Change the working dir to root.
 
 alias	~='cd ~' # Change the working directory to current user's home. (i) `cd` would do the same, and this is what I enter most, but it would break where `~`'s signification changes.
 
 alias	.f="cd ~/.files && git status --short && printf '\n' && echo '.gitnote:' && cat .gitnote && printf '\n'" # Change the working dir to my dot-files', show the working tree status, then concatenate and print .gitnote.
 
-alias	kb='cd ~/kbs' # Change the working dir to mine. /!\ Deprecated: Because I never found any real use to this directory, I do not use it anymore, and I might literally remove it from my setup anytime, at least as a way to do things more cleanly pops into I's mind.
+alias	ms='cd ~/misc' # Change the working directory to the one of my miscellaneous files.
 
-alias	mi='cd ~/misc' # Change the working dir to my misc files'.
-
-alias	op='cd ~/ops' # Change the working dir to my ongoing operations'.
+alias	wk='cd ~/wip' # Change the working directory to the one of my work in progress.
 
 alias	e16s='cd /Volumes/KBS16GBFD'
 alias	e64s='cd /Volumes/KBS64GBFD'
 # Change the working directory to one of my USB flash drives' or other external storage's.
 
-alias	r1='cd /Volumes/KBSPCMD100R/VOICE/FOLDER01'
-alias	r2='cd /Volumes/KBSPCMD100R/VOICE/FOLDER02'
-alias	r3='cd /Volumes/KBSPCMD100R/VOICE/FOLDER03'
-alias	r4='cd /Volumes/KBSPCMD100R/VOICE/FOLDER04'
-alias	r5='cd /Volumes/KBSPCMD100R/VOICE/FOLDER05'
-# Change the working dir to one of my recorder's recorded files'.
-
-alias	vol='cd /Volumes' # Change the working directory to the mounted volumes'.
-
-alias	app='cd /Applications' # Change the working directory to the system applications'.
+alias	r1='cd /Volumes/KBSPCMD100/VOICE/FOLDER01'
+alias	r2='cd /Volumes/KBSPCMD100/VOICE/FOLDER02'
+alias	r3='cd /Volumes/KBSPCMD100/VOICE/FOLDER03'
+alias	r4='cd /Volumes/KBSPCMD100/VOICE/FOLDER04'
+alias	r5='cd /Volumes/KBSPCMD100/VOICE/FOLDER05'
+# Change the working directory to one of my recorder's recorded files'.
 
 alias	dt='cd ~/Desktop' # Change the working dir to current macOS user's desktop'.
 
@@ -52,17 +50,15 @@ alias	dx='cd ~/Documents' # Change the working dir to current macOS user's docum
 
 alias	dl='cd ~/Downloads' # Change the working dir to current macOS user's downloads'.
 
-alias	li='cd ~/Library' # Change the working dir to current macOS user's library's.
+alias	ly='cd ~/Library' # Change the working dir to current macOS user's library's.
 
-alias	mo='cd ~/Movies' # Change the working dir to current macOS user's movies'.
+alias	mz='cd ~/Movies' # Change the working dir to current macOS user's movies'.
 
-alias	mu='cd ~/Music' # Change the working dir to current macOS user's music's.
-
-alias	it='cd ~/Music/iTunes' # Change the working dir to current macOS user's iTunes'.
+alias	mc='cd ~/Music' # Change the working dir to current macOS user's music's.
 
 alias	px='cd ~/Pictures' # Change the working dir to current macOS user's pictures'.
 
-alias	.t='cd ~/.Trash' # Change the working dir to current macOS user's trash's.
+alias	th='cd ~/.Trash' # Change the working dir to current macOS user's trash's.
 
 alias	tf='cd ~/Temporary' # Change the working directory to current Apple Computer Operating System's current user's temporary unofficial folder.
 
@@ -72,6 +68,7 @@ alias	db='cd ~/Dropbox' # Change the working dir to current user's Dropbox's.
 # (i) Bourne-again shell (bash) builtin.
 
 alias	src='source '
+alias	s='source '
 
 #	chdir
 # (i) Z shell (zsh) builtin.
@@ -83,6 +80,7 @@ alias	chdir='cd '
 
 alias	nsh='exec ${SHELL} -l ' # Execute the default login shell as a login shell. (i) Replace the current shell process image with a new one.
 alias	nsh2='cd && cls && nsh '
+alias	ns='cd && cls && nsh '
 
 #	exit
 
@@ -90,16 +88,22 @@ alias	nsh2='cd && cls && nsh '
 
 #	echo
 
+alias	shl='echo $SHELL' # Output the current shell.
+
 #alias	gn='echo $RANDOM' # Output a number up to 32767.
 #alias	gn2='var=$RANDOM; expr $var \* $var' #output a number up to 32767**2.
 alias	gn='echo $[RANDOM%9999+1]' # Generate a random number from 0 to 9999.
 
 # 'Internal' programs commands
 
+#	mkdir			make directories
+
+alias	md='mkdir '
+
 #	killall			kill processes by name
 
 alias	ka='killall '
-#alias	k='killall '
+alias	k='killall '
 
 #	ruby			Interpreted object-oriented scripting language
 
@@ -136,6 +140,8 @@ alias	ofw='open -b com.microsoft.Word ' # Open file using Word for Mac 2011.
 
 alias	ofx='open -b com.microsoft.Excel ' # Open file using Excel for Mac 2011.
 
+alias	gvi='open -b org.vim.MacVim ' # Open file using MacVim.
+
 alias	rff='open -R ' # Reveal files using Finder.
 
 #	xattr			display and manipulate extended attributes
@@ -146,6 +152,7 @@ alias	xac='ClearExtendedAttributes'
 
 #	qlmanage		Quick Look server debug and management tool
 
+alias	QuickLook='qlmanage '
 alias	quicklook='qlmanage '
 alias	ql='qlmanage '
 
@@ -155,6 +162,7 @@ alias	qlp='qlmanage -p ' # Display the Quick Look generated preview for the spec
 
 alias	ls='ls -G ' # Colorize ls output.
 #alias	ls='lf -F ' # Type ls output.
+alias	l='ls '
 
 alias	lh='ls -Ad .*' # List directory hidden files.
 #alias	lh2='la -1AdF .*'
@@ -170,7 +178,7 @@ alias	ld='ls -d */' # List directory's subdirectories.
 alias	la='ls -a ' # List all directory contents.
 #alias	la2='ls -1aF '
 
-alias	l='ls -1F ' # List simply directory contents.
+#alias	l='ls -1F ' # List simply directory contents.
 #alias	ls2='l '
 
 alias	ll='pwd && ls -@aeFGlT ' # List extendedly all directory contents.
@@ -203,6 +211,12 @@ alias	swu='updatesystemsoftware '
 #alias	AirPort='airport '
 alias	airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
 alias	ap='airport '
+
+#	man				format and display the on-line manual pages
+
+alias	m='man '
+
+alias	ascii='man ascii' # Output the man page of the ASCII character sets.
 
 # External programs commands
 
@@ -247,16 +261,19 @@ alias	mkas='MakeFinderAlias'
 
 alias	gu='generaterandomusername'
 
+alias	cs='cls'
+alias	c='cls'
+
 # Computer programs
 
 alias	RPwG='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
 alias	rpwg='RPwG'
 alias	gp='RPwG'
 
-alias	NewTemporaryFolder='sh ~/.files/lib/scpt/NewTemporaryFolder.sh'
-alias	ntf='NewTemporaryFolder'
-alias	cntf='NewTemporaryFolder && tf'
+alias	MakeTemporaryFolder='sh ~/.files/lib/scpt/NewTemporaryFolder.sh'
+alias	maketemporaryfolder='MakeTemporaryFolder'
+alias	mktf='MakeTemporaryFolder && tf'
 
-alias	NewTestFolders='sh ~/.files/lib/scpt/NewTestFolders.sh'
-alias	mktf='NewTestFolders'
-alias	mctf='NewTestFolders && tf'
+alias	CreateTestFolders='sh ~/.files/lib/scpt/NewTestFolders.sh'
+alias	createtestfolders='CreateTestFolders'
+alias	ctf='CreateTestFolders && tf'
