@@ -10,7 +10,7 @@
 #export	AUDIO=${HOME}/aud #          export          AUDIO=${HOME}/audio     # export MUSIC=${HOME}/mus
 #export	VIDEO=${HOME}/vdo #          export          VIDEO=${HOME}/video
 #export	MISCELLANEOUS=${HOME}/msc #  export  MISCELLANEOUS=${HOME}/misc
-#export	DOWNLOADS=${HOME}/dlc #      export      DOWNLOADS=${HOME}/downloads
+#export	DOWNLOADS=${HOME}/dls #      export      DOWNLOADS=${HOME}/downloads
 #export	TRASH=${HOME}/tsh #          export          TRASH=${HOME}/trash
 #export	TEMPORARY=${HOME}/tmp #      export      TEMPORARY=${HOME}/temp
 
