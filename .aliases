@@ -1,3 +1,5 @@
+if [ -f "${HOME}/.aliases.pvt" ]; then source "${HOME}/.aliases.pvt"; fi
+
 # Shells special built-in utilities commands
 
 
