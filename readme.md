@@ -21,6 +21,8 @@ Apple computers operating systems configuration scripts family.
 
 #### How-to
 
+**NB:** Do not execute these scripts as root! To still run any of these scripts as root, replace `/Users/${USER}` with `${HOME}`.
+
 Launch a terminal emulator, eg _Terminal_ or _iTerm2_, then enter this:
 
 &nbsp;&nbsp;**_macOS 10.13 High Sierra_:**
@@ -53,13 +55,11 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx10411 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
 ```
 
-**NB:** Do not run these scripts as root! To still run any of these scripts as root, replace `/Users/${USER}` with `${HOME}`.
-
 - - -
 
 # _Random Password Generator_<br>`RPwG.rb`
 
-<p align='center'><a href='https://github.com/kvpb/.files/blob/master/lib/scpt/RPwG.rb'><img src='https://rawgit.com/kvpb/543e66fc06e322658f5877e9e2f77cda/raw/08ecb3022f7c7de3c1a16b05e59af04b92e19af5/RPwG.svg'></a></p>
+<p align='center'><a href='https://github.com/kvpb/.files/blob/master/lib/scpt/RPwG.rb'><img src='https://gist.githack.com/kvpb/543e66fc06e322658f5877e9e2f77cda/raw/08ecb3022f7c7de3c1a16b05e59af04b92e19af5/RPwG.svg'></a></p>
 
 #### What-is
 
@@ -94,7 +94,7 @@ _macOS_ text substitutions (list of abbreviations to automatically replace by wo
 
 #### How-to
 
-1. [Download `Text Substitutions.plist`.](https://rawgit.com/kvpb/.files/master/lib/plist/Text%20Substitutions.plist)  
+1. [Download `Text Substitutions.plist`.](https://raw.githack.com/kvpb/.files/master/lib/plist/Text%20Substitutions.plist)  
 2. Launch _Finder_ then go to the current user's `Downloads` folder.  
 3. Launch _System Preferences_ then go to Keyboard and then Text.  
 4. Drag `Text Substitutions.plist` from the _Finder_ window and drop it to _System Preferences_ window's table-like list.
@@ -103,11 +103,11 @@ _macOS_ text substitutions (list of abbreviations to automatically replace by wo
 
 # _Kabe's Scratching System_<br>`flashcardsstructures.docx`,<br>`uenctcnyyyymmdd.docx`,<br>`Forename_Surname_UEN_GN_Fiche_de_lecture.docx`,<br>`Forename_Surname_UEN_GN_Memoire.docx`,<br>`notetakingstructures.docx`,<br>`notetakingsystem.docx` &<br>`name.docx`
 
-<p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://rawgit.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/54cdac0b8ffad36d9ade790cfa53d138c6867412/karlbertinsscratchingsystemfrontcover.svg'></a>
+<p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://gist.githack.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/54cdac0b8ffad36d9ade790cfa53d138c6867412/karlbertinsscratchingsystemfrontcover.svg'></a>
 
 #### What-is
 
-My scratching system I built at university for better cleaner faster note-taking. This read-me has been written following these guidelines.
+The scratching system I built at university for better cleaner faster note-taking. This read-me has been written following these guidelines.
 
 **NB:** If you have any suggestion to improve it, feel free to jump in, express yourself, let loose --- open an issue or contact me via _Facebook_. You're always welcome.
 
@@ -119,12 +119,21 @@ My scratching system I built at university for better cleaner faster note-taking
 **`scpt/`**:
 - [ ] `InstallCommandLineTools.sh` 'Install Command Line Tools' Mac shell script
 - [x] ~~`InstallGitforMac.sh` 'Install Git for Mac' shell script~~
+- [x] ~~`Installfswatch.sh` 'Install fswatch' Mac shell script~~
+- [x] ~~`Installmas-cli.sh` 'Install mas-cli' Mac shell script~~
+- [x] ~~`InstallRAR550forMacOSX.sh` 'Install RAR 5.50 for Mac OS X' shell script~~
 - [x] ~~`InstallHomebrew.sh` 'Install Homebrew' Mac shell script~~
 - [ ] `InstallHomebrewBundle.sh` 'Install homebrew-bundle' Mac shell script
+- [ ] `InstallrbenvHomebrew.sh` 'Install rbenv Homebrew' Mac shell script
+- [ ] `InstallpyenvHomebrew.sh` 'Install pyenv Homebrew' Mac shell script
+- [ ] `InstallhtopHomebrew.sh` 'Install htop Homebrew' Mac shell script
+- [x] ~~`InstallUnRarX22.sh` 'Install UnRARX 2.2' Mac shell script~~
+- [x] ~~`InstallXLD.sh` 'Install XLD' Mac shell script~~
 - [ ] `InstallJumpcut.sh` 'Install Jumpcut' Mac shell script
 - [ ] `InstallSizeUp.sh` 'Install SizeUp' Mac shell script
 - [ ] `InstallFlux.sh` 'Install f.lux Mac' shell script
 - [ ] `InstallOnyX.sh` 'Install OnyX' Mac shell script
+- [x] ~~`InstalliTunes1264.sh` 'Install iTunes 12.6.4' Mac shell script~~
 - [x] ~~`InstallAppZapper.sh` 'Install AppZapper' Mac shell script~~
 - [ ] `InstallGPGSuite.sh` 'Install GPG Suite Mac' shell script
 - [ ] `InstallPaparazzi.sh` 'Install Paparazzi!' Mac shell script
@@ -143,8 +152,9 @@ My scratching system I built at university for better cleaner faster note-taking
 - [ ] `InstallLr6.sh` 'Install Photoshop Lightroom 6 (CC 2015) Mac' shell script
 - [ ] `InstallOffice2016forMac.sh` 'Install Office 2016 for Mac' shell script
 - [ ] `InstallOffice2011forMac.sh` 'Install Office 2011 for Mac' shell script
-- [ ] `InstallSketch344.sh` 'Install Sketch 3.4.4 [latest OS X 10.9.5 Mavericks compatible version]' Mac shell script
-- [ ] `InstalliTerm2.sh` 'Install iTerm2' Mac shell script
+- [ ] `InstallSketch.sh` 'Install Sketch' Mac shell script
+- [x] ~~`InstallSketch344.sh` 'Install Sketch 3.4.4 [latest OS X 10.9.5 Mavericks compatible version]' Mac shell script~~
+- [x] ~~`InstalliTerm2.sh` 'Install iTerm2' Mac shell script~~
 - [x] ~~`InstallHyper.sh` 'Install HyperTerm' Mac shell script~~
 - [ ] `InstallHyper.js` 'Install Hyper' Mac JavaScript script
 - [ ] `InstallCathode.sh` 'Install Cathode' Mac shell script
@@ -155,8 +165,10 @@ My scratching system I built at university for better cleaner faster note-taking
 - [ ] `InstallForkLift3.sh` 'Install ForkLift 3' Mac shell script
 - [ ] `InstallForkLift2.sh` 'Install ForkLift 2' Mac shell script
 - [x] ~~`InstallVLC.sh` 'Install VLC Mac' shell script~~
+- [x] ~~`InstallSoulver.sh` 'Install Soulver' Mac shell script~~
 - [x] ~~`InstallChrome.sh` 'Install Chrome Mac' shell script~~
 - [x] ~~`InstallDropbox.sh` 'Install Dropbox Mac' shell script~~
+- [ ] `UninstallDropbox.sh` 'Uninstall Dropbox Mac' shell script
 - [x] ~~`Installdbxcli.sh` 'Install dbxcli Mac' shell script~~
 - [x] ~~`InstallSpotify.sh` 'Install Spotify Mac' shell script~~
 - [ ] `InstallWhatsApp.sh` 'Install WhatsApp Mac' shell script
@@ -171,11 +183,14 @@ My scratching system I built at university for better cleaner faster note-taking
 - [x] ~~`RemoveDirectoryFromUsersHome.sh` 'Remove directory from user's home' Mac shell script~~
 - [x] ~~`RemoveCreativeCloudFilesFromUsersHome.sh` 'Remove Creative Cloud Files from user's home' Mac shell script~~
 - [ ] `DeleteChromeSuggestions.sh` 'Delete Chrome Mac suggestions' shell script
+- [x] ~~`InstallGunGodzMac.sh` 'Install Gun Godz Mac' shell script~~
+- [x] ~~`InstallSuperCrateBoxOSX.sh` 'Install Super Crate Box OS X' shell script~~
+- [ ] `SaveSHSH2Blobs.sh` 'Save SHSH2 blobs' Mac shell script
 -->
 
 #### What-is
 
-My library of scripts I wrote.
+A library of scripts I wrote.
 
 <!--
 #### How-to
@@ -201,8 +216,8 @@ My library of scripts I wrote.
 
 #### Author
 
-<p align='center'><a href='http://kvpb.co/'><img src='https://rawgit.com/kvpb/b9c0737f2941542ae22b2806b66a3c19/raw/9867dde923550a08d05f3fae3a2b02905ea8345c/quickresponsecode.svg'></a><br>
-<b>Karl 'Kabe' Bertin (Карл Бэртин) `kvpb`</b><br> <!-- Neither `<span style='font-variant: small-caps;'>Bertin</span>` & `<span style='font-variant: small-caps;'>Бэртин</span>` nor `B<small>ERTIN</small>` & `Б<small>ЭРТИН</small>` work on GitHub. -->
+<p align='center'><a href='http://karlbertin.com/'><img src='https://gist.githack.com/kvpb/bfed748ac5c509985c89ea613a2bfd02/raw/8c0b311b7c848fabddf61672ba6bb72c8754fed9/karlbertinssymbol.svg'></a><br>
+<b>Karl 'Kabe' Bertin `kvpb`</b><br> <!-- Neither `<span style='font-variant: small-caps;'>Bertin</span>` nor `B<small>ERTIN</small>` work on GitHub. -->
 <a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a> | <a href='https://www.facebook.com/karlbertin'>Facebook</a> | <a href='https://www.instagram.com/karlbertin/'>Instagram</a></p>
 
 **Ed:** Whether you thank me or not, please credit the people I took code from.
