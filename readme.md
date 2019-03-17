@@ -4,14 +4,17 @@
 
 - - -
 
-# `.macosx`, `.osx` & `.macos` ('_`.acos`_')
+# `.macosx`, `.osx` & `.macos` ('_`.acos`_') ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
 
-<!--**'`.acos`':**
-- [ ] `.macosx10411`
-- [ ] `.macosx1068`
-- [x] `.osx1095`
-- [x] `.osx10105`
-- [ ] `.macos1013`-->
+#### Where-is
+<details><summary><b><code>.files/</code></b></summary>
+
+- [ ] `.macosx104`
+- [ ] `.macosx106`
+- [x] `.osx109`
+- [x] `.osx1010`
+- [x] `.macos1013`
+</details>
 
 #### What-is
 
@@ -61,6 +64,12 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 
 <p align='center'><a href='https://github.com/kvpb/.files/blob/master/lib/scpt/RPwG.rb'><img src='https://gist.githack.com/kvpb/543e66fc06e322658f5877e9e2f77cda/raw/08ecb3022f7c7de3c1a16b05e59af04b92e19af5/RPwG.svg'></a></p>
 
+#### Where-is
+<details><summary><b><code>.files/lib/scpt/</code></b></summary>
+
+- [x] `RPwG.rb`
+</details>
+
 #### What-is
 
 A program, written in Ruby, which pseudorandomly generates passwords.
@@ -79,12 +88,18 @@ A program, written in Ruby, which pseudorandomly generates passwords.
 
 - - -
 
-# `Text Substitutions.plist`
+# `Text Substitutions.plist` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
 
 <!--**`Text Substitutions.plist`:**
 | Replace | With |
 | --- | --- |
 |  |  |-->
+
+#### Where-is
+<details><summary><b><code>.files/lib/plist/</code></b></summary>
+
+- [x] `Text Substitutions.plist`
+</details>
 
 #### What-is
 
@@ -101,92 +116,115 @@ _macOS_ text substitutions (list of abbreviations to automatically replace by wo
 
 - - -
 
-# _Kabe's Scratching System_<br>`flashcardsstructures.docx`,<br>`uenctcnyyyymmdd.docx`,<br>`Forename_Surname_UEN_GN_Fiche_de_lecture.docx`,<br>`Forename_Surname_UEN_GN_Memoire.docx`,<br>`notetakingstructures.docx`,<br>`notetakingsystem.docx` &<br>`name.docx`
+# _Karl Bertin's Notetaking System_
 
-<p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://gist.githack.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/54cdac0b8ffad36d9ade790cfa53d138c6867412/karlbertinsscratchingsystemfrontcover.svg'></a>
+<!--<p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://gist.githack.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/54cdac0b8ffad36d9ade790cfa53d138c6867412/karlbertinsscratchingsystemfrontcover.svg'></a>-->
+
+#### Where-is
+<details><summary><b><code>.files/</code></b></summary>
+
+- [x] `flashcardsstructures.docx`
+- [x] `uenctcnyyyymmdd.docx`
+- [x] `Forename_Surname_UEN_GN_Fiche_de_lecture.docx`
+- [x] `Forename_Surname_UEN_GN_Memoire.docx`
+- [x] `notetakingstructures.docx`
+- [x] `notetakingsystem.docx`
+- [x] `name.docx`
+</details>
 
 #### What-is
 
 The scratching system I built at university for better cleaner faster note-taking. This read-me has been written following these guidelines.
 
-**NB:** If you have any suggestion to improve it, feel free to jump in, express yourself, let loose --- open an issue or contact me via _Facebook_. You're always welcome.
+**NB:** If you have any suggestion to improve it, feel free to jump in, express yourself, let loose --- open an issue or contact me. You're always welcome.
 
 - - -
 
 # _Scripts_<br>`scpt/`
 
-<!--
-**`scpt/`**:
-- [ ] `InstallCommandLineTools.sh` 'Install Command Line Tools' Mac shell script
-- [x] ~~`InstallGitforMac.sh` 'Install Git for Mac' shell script~~
-- [x] ~~`Installfswatch.sh` 'Install fswatch' Mac shell script~~
-- [x] ~~`Installmas-cli.sh` 'Install mas-cli' Mac shell script~~
-- [x] ~~`InstallRAR550forMacOSX.sh` 'Install RAR 5.50 for Mac OS X' shell script~~
-- [x] ~~`InstallHomebrew.sh` 'Install Homebrew' Mac shell script~~
-- [ ] `InstallHomebrewBundle.sh` 'Install homebrew-bundle' Mac shell script
-- [ ] `InstallrbenvHomebrew.sh` 'Install rbenv Homebrew' Mac shell script
-- [ ] `InstallpyenvHomebrew.sh` 'Install pyenv Homebrew' Mac shell script
-- [ ] `InstallhtopHomebrew.sh` 'Install htop Homebrew' Mac shell script
-- [x] ~~`InstallUnRarX22.sh` 'Install UnRARX 2.2' Mac shell script~~
-- [x] ~~`InstallXLD.sh` 'Install XLD' Mac shell script~~
-- [ ] `InstallJumpcut.sh` 'Install Jumpcut' Mac shell script
-- [ ] `InstallSizeUp.sh` 'Install SizeUp' Mac shell script
-- [ ] `InstallFlux.sh` 'Install f.lux Mac' shell script
-- [ ] `InstallOnyX.sh` 'Install OnyX' Mac shell script
-- [x] ~~`InstalliTunes1264.sh` 'Install iTunes 12.6.4' Mac shell script~~
-- [x] ~~`InstallAppZapper.sh` 'Install AppZapper' Mac shell script~~
-- [ ] `InstallGPGSuite.sh` 'Install GPG Suite Mac' shell script
-- [ ] `InstallPaparazzi.sh` 'Install Paparazzi!' Mac shell script
-- [ ] `InstallTransmission.sh` 'Install Transmission Mac' shell script
-- [ ] `InstallJDownloader2.sh` 'Install JDownloader2 Mac' shell script
-- [x] ~~`InstallSFMono.sh` 'Install SF Mono' shell script~~
-- [x] ~~`InstallSFMonoFromMac.sh` 'Install SF Mono from Mac' Mac shell script~~
-- [x] ~~`InstallSanFrancisco.sh` 'Install San Francisco' Mac shell script~~
-- [x] ~~`InstallSanFranciscoCompact.sh` 'Install San Francisco Compact' Mac shell script~~
-- [ ] `InstallVMwareFusion8` 'Install VMware Fusion 8' Mac shell script
-- [ ] `InstallPsCC.sh` 'Install Photoshop CC (14.0) Mac' shell script
-- [ ] `InstallPsCS6.sh` 'Install Photoshop CS6 Extended Mac' shell script
-- [ ] `InstallAiCC.sh` 'Install Illustrator CC (17.0) Mac' shell script
-- [ ] `InstallAiCS6.sh` 'Install Illustrator CS6 Mac' shell script
-- [ ] `InstallLr7.sh` 'Install Photoshop Lightroom 7 Mac' shell script
-- [ ] `InstallLr6.sh` 'Install Photoshop Lightroom 6 (CC 2015) Mac' shell script
-- [ ] `InstallOffice2016forMac.sh` 'Install Office 2016 for Mac' shell script
-- [ ] `InstallOffice2011forMac.sh` 'Install Office 2011 for Mac' shell script
-- [ ] `InstallSketch.sh` 'Install Sketch' Mac shell script
-- [x] ~~`InstallSketch344.sh` 'Install Sketch 3.4.4 [latest OS X 10.9.5 Mavericks compatible version]' Mac shell script~~
-- [x] ~~`InstalliTerm2.sh` 'Install iTerm2' Mac shell script~~
-- [x] ~~`InstallHyper.sh` 'Install HyperTerm' Mac shell script~~
-- [ ] `InstallHyper.js` 'Install Hyper' Mac JavaScript script
-- [ ] `InstallCathode.sh` 'Install Cathode' Mac shell script
-- [ ] `InstallCathode203.sh` 'Install Cathode 2.0.3 (Last 10.6.X compatible version)' Mac shell script
-- [ ] `InstallCathode094.sh` 'Install Cathode 0.9.4 (Last 10.5.X compatible version)' Mac shell script
-- [ ] `InstallPathFinder7.sh` 'Install Path Finder 7' Mac shell script
-- [ ] `InstallPathFinder6.sh` 'Install Path Finder 6' Mac shell script
-- [ ] `InstallForkLift3.sh` 'Install ForkLift 3' Mac shell script
-- [ ] `InstallForkLift2.sh` 'Install ForkLift 2' Mac shell script
-- [x] ~~`InstallVLC.sh` 'Install VLC Mac' shell script~~
-- [x] ~~`InstallSoulver.sh` 'Install Soulver' Mac shell script~~
-- [x] ~~`InstallChrome.sh` 'Install Chrome Mac' shell script~~
-- [x] ~~`InstallDropbox.sh` 'Install Dropbox Mac' shell script~~
-- [ ] `UninstallDropbox.sh` 'Uninstall Dropbox Mac' shell script
-- [x] ~~`Installdbxcli.sh` 'Install dbxcli Mac' shell script~~
-- [x] ~~`InstallSpotify.sh` 'Install Spotify Mac' shell script~~
-- [ ] `InstallWhatsApp.sh` 'Install WhatsApp Mac' shell script
-- [ ] `InstallMessengerforMac.sh` 'Install Messenger for  Mac' shell script
-- [ ] `InstallGoofy.sh` 'Install Goofy Mac' shell script
-- [x] ~~`RPwG.rb` 'Random Password Generator' Ruby script~~
-- [x] ~~`SetKeyboardBrightnessTo100percent.sh` 'Set keyboard brightness to max' Mac shell script~~
-- [x] ~~`SetVolumeTo50percent.sh` 'Set OS volume to 50%' Mac shell script~~
-- [x] ~~`SetVolumeToMuted.sh` 'Set OS volume to muted' Mac shell script~~
-- [x] ~~`GetVolumeMuteStatus.sh` 'Get OS volume mute status' Mac shell script~~
-- [x] ~~`NewTestFolders.sh` 'New Test Folders' Mac shell script~~
-- [x] ~~`RemoveDirectoryFromUsersHome.sh` 'Remove directory from user's home' Mac shell script~~
-- [x] ~~`RemoveCreativeCloudFilesFromUsersHome.sh` 'Remove Creative Cloud Files from user's home' Mac shell script~~
-- [ ] `DeleteChromeSuggestions.sh` 'Delete Chrome Mac suggestions' shell script
-- [x] ~~`InstallGunGodzMac.sh` 'Install Gun Godz Mac' shell script~~
-- [x] ~~`InstallSuperCrateBoxOSX.sh` 'Install Super Crate Box OS X' shell script~~
-- [ ] `SaveSHSH2Blobs.sh` 'Save SHSH2 blobs' Mac shell script
--->
+#### Where-is
+<details><summary><b><code>.files/lib/scpt/</code></b></summary>
+
+- [ ] `InstallCommandLineTools.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [x] `InstallGitforMac.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `Installfswatch.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `Installmas-cli.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [ ] ~~`InstallRAR.sh`~~
+  - [x] `InstallRAR550forMacOSX.sh` ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `InstallHomebrew.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) <!--![firmware](https://img.shields.io/badge/firmware-Linux-black.svg)--> ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [ ] `InstallHomebrewBundle.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] `InstallrbenvHomebrew.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] `InstallpyenvHomebrew.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] `InstallhtopHomebrew.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] `InstallUnRARX.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+  - [x] `InstallUnRarX22.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `InstallXLD.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [ ] `InstallJumpcut.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] `InstallSizeUp.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] `InstallFlux.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] `InstallOnyX.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [x] `InstalliTunes1264.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `InstallAppZapper.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [ ] `InstallGPGSuite.sh`
+- [ ] `InstallPaparazzi.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] `InstallTransmission.sh`
+- [ ] `InstallJDownloader2.sh`
+- [ ] `InstallSanFranciscoFontFamily.sh`
+  - [x] `InstallSanFrancisco.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+  - [x] `InstallSanFranciscoCompact.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+  - [x] `InstallSFMonoFromMac.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+  - [x] `InstallSFMono.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [ ] `InstallVMwareFusion8` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] ~~`InstallPhotoshop.sh`~~
+  - [ ] `InstallPsCC.sh`
+  - [ ] `InstallPsCS6.sh`
+- [ ] ~~`InstallIllustrator.sh`~~
+  - [ ] `InstallAiCC.sh`
+  - [ ] `InstallAiCS6.sh`
+- [ ] ~~`InstallPhotoshopLightroom.sh`~~
+  - [ ] `InstallLr7.sh`
+  - [ ] `InstallLr6.sh`
+- [ ] `InstallOfficeforMac.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+  - [ ] `InstallOffice2016forMac.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.10%20Yosemite-white.svg)
+  - [ ] `InstallOffice2011forMac.sh` ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X-white.svg)
+- [ ] `InstallSketch.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+  - [x] `InstallSketch344.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [ ] `InstalliTerm2.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+  - [x] `InstalliTerm2OS108Plus.sh` ![hardware](https://img.shields.io/badge/hardware-Mac-1AD5FD.svg) ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.8%20Mountain%20Lion-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `InstallHyperterm.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+  - [ ] `InstallHyper.js` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-JavaScript-yellow.svg)
+- [ ] `InstallCathode.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+  - [ ] `InstallCathode203.sh`
+  - [ ] `InstallCathode094.sh`
+- [ ] ~~`InstallPathFinder.sh`~~
+  - [ ] `InstallPathFinder7.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+  - [ ] `InstallPathFinder6.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] `InstallForkLift.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+  - [ ] `InstallForkLift3.sh`
+  - [ ] `InstallForkLift2.sh`
+- [x] `InstallVLC.sh` ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `InstallSoulver.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `InstallChrome.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `InstallDropbox.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [ ] `UninstallDropbox.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg)
+- [x] `Installdbxcli.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `InstallSpotify.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [ ] `InstallWhatsApp.sh`
+- [ ] ~~`InstallMessengerforMac.sh`~~ ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] `InstallGoofy.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [x] `RPwG.rb` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![firmware](https://img.shields.io/badge/-Linux-black.svg) ![language](https://img.shields.io/badge/language-Ruby-red.svg)
+- [x] `SetKeyboardBrightnessTo100percent.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
+- [x] `SetVolumeTo50percent.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
+- [x] `SetVolumeToMuted.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
+- [x] `GetVolumeMuteStatus.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
+- [x] `NewTestFolders.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `RemoveDirectoryFromUsersHome.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `RemoveCreativeCloudFilesFromUsersHome.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [ ] `DeleteChromeSuggestions.sh`
+- [ ] `SaveSHSH2Blobs.sh`
+- [x] `InstallGunGodzMac.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `InstallSuperCrateBoxOSX.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+</details>
 
 #### What-is
 
