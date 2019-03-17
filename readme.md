@@ -163,7 +163,7 @@ The scratching system I built at university for better cleaner faster note-takin
 - [ ] `InstallSizeUp.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
 - [ ] `InstallFlux.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
 - [ ] `InstallOnyX.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-- [x] `InstalliTunes1264.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `InstalliTunes1265.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallAppZapper.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `InstallGPGSuite.sh`
 - [ ] `InstallPaparazzi.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
