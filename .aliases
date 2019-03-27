@@ -23,11 +23,11 @@ alias	......='cd ../../../../..' # Change the working directory to the current's
 
 alias	.......='cd ../../../../../..' # Change the working directory to the current's fossilized ancestor one.
 
-alias	........='cd ../../../../../../..' # Change the working directory to the current's Big Bang original matter particles one.'
+alias	........='cd ../../../../../../..' # Change the working directory to the current's Big Bang original matter particles one.
 
 alias	r='cd /' # Change the working dir to root.
 
-alias	~='cd ~' # Change the working directory to current user's home. (i) `cd` would do the same, and this is what I enter most, but it would break where `~`'s signification changes.
+alias	~='cd ~' # Change the working directory to current user's home. (i) cd would do the same, and this is what I enter most, but it would break where the meaning of ~ changes.
 
 alias	.f="cd ~/.files && git status --short && printf '\n' && echo '.gitnote:' && cat .gitnote && printf '\n'" # Change the working dir to my dot-files', show the working tree status, then concatenate and print .gitnote.
 
@@ -70,7 +70,7 @@ alias	db='cd ~/Dropbox' # Change the working dir to current user's Dropbox's.
 # (i) Bourne-again shell (bash) builtin.
 
 alias	src='source '
-alias	s='source '
+#alias	s='source '
 
 #	chdir
 # (i) Z shell (zsh) builtin.
@@ -80,9 +80,8 @@ alias	chdir='cd '
 
 #	exec
 
-alias	nsh='exec ${SHELL} -l ' # Execute the default login shell as a login shell. (i) Replace the current shell process image with a new one.
-alias	nsh2='cd && cls && nsh '
-alias	ns='cd && cls && nsh '
+alias	nh='exec ${SHELL} -l ' # Execute the default login shell as a login shell. (i) Replace the current shell process image with a new one.
+alias	ns='cd && cls && nh '
 
 #	exit
 
@@ -90,13 +89,19 @@ alias	ns='cd && cls && nsh '
 
 #	echo
 
-alias	shl='echo $SHELL' # Output the current shell.
+alias	?sh='echo $SHELL' # Output the current shell.
 
-#alias	gn='echo $RANDOM' # Output a number up to 32767.
-#alias	gn2='var=$RANDOM; expr $var \* $var' #output a number up to 32767**2.
-alias	gn='echo $[RANDOM%9999+1]' # Generate a random number from 0 to 9999.
+alias	?n='echo $RANDOM' # Output a number up to 32767.
+alias	?n2='var=$RANDOM; expr $var \* $var' #output a number up to 32767**2.
 
 # 'Internal' programs commands
+
+#	vi				Vi IMproved, a programmer's text editor
+#	vim
+
+alias	vi='vim +star'
+alias	vim='vim +startinsert'
+alias	v='vi'
 
 #	mkdir			make directories
 
@@ -148,9 +153,7 @@ alias	rff='open -R ' # Reveal files using Finder.
 
 #	xattr			display and manipulate extended attributes
 
-alias	ClearExtendedAttributes='xattr -rc .' # Remove every file's all extended attributes of the current directory recursively.
-alias	cxa='ClearExtendedAttributes'
-alias	xac='ClearExtendedAttributes'
+alias	dxa='xattr -rc .' # Remove every file's all extended attributes of the current directory recursively.
 
 #	qlmanage		Quick Look server debug and management tool
 
@@ -162,8 +165,8 @@ alias	qlp='qlmanage -p ' # Display the Quick Look generated preview for the spec
 
 # 	ls				list directory contents
 
-alias	ls='ls -G ' # Colorize ls output.
-#alias	ls='lf -F ' # Type ls output.
+alias	ls='ls -G ' # Colorize ls' output.
+#alias	ls='lf -F ' # Type ls' output.
 alias	l='ls '
 
 alias	lh='ls -Ad .*' # List directory hidden files.
@@ -183,16 +186,14 @@ alias	la='ls -a ' # List all directory contents.
 #alias	l='ls -1F ' # List simply directory contents.
 #alias	ls2='l '
 
-alias	ll='pwd && ls -@aeFGlT ' # List extendedly all directory contents.
-
 #	du				display disk usage statistics
 
 alias	du='du -c -d 0 -h ' # Display DU stats with a grand total, an entry for all files and directories 0 directories deep, human-readably.
 
 #	clear			clear the terminal screen
 
-alias	clr='clear'
-#alias	c='clear'
+alias	clr='clear '
+#alias	c='clear '
 
 #	PlistBuddy		read and write values to plists
 
@@ -206,11 +207,11 @@ alias	jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resour
 
 #	softwareupdate	system software update tool
 
-alias	swu='updatesystemsoftware '
+#alias	swud=''
 
 #	airport			get information for 802.11 interface
 
-#alias	AirPort='airport '
+alias	AirPort='airport '
 alias	airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
 alias	ap='airport '
 
@@ -238,6 +239,7 @@ alias	fsw='fswatch '
 #alias	macappstore='mas '
 #alias	AppStore='mas '
 #alias	appstore='mas '
+#alias	as='mas '
 
 #	dbxcli			A command line tool for Dropbox users and team admins
 
@@ -247,35 +249,25 @@ alias	dbx='dbxcli '
 
 # Shell functions
 
+#alias	cs='cls'
+alias	c='cls'
+
+alias	mfa='MakeFinderAlias'
+
 alias	dds='DeleteDSStore'
 
 alias	rlp='ResetLaunchPad'
-
-alias	tarqdlc='tapearchiveQobuzdownloadedcontent'
-
-#alias	uss='updatesystemsoftware'
-
-alias	eofnl='writemissingNLatEOF'
-
-alias	mkas='MakeFinderAlias'
-
-#alias	gn='computerandomnumber'
-
-alias	gu='generaterandomusername'
-
-alias	cs='cls'
-alias	c='cls'
 
 # Computer programs
 
 alias	RPwG='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
 alias	rpwg='RPwG'
-alias	gp='RPwG'
+alias	rp='RPwG'
 
-alias	MakeTemporaryFolder='sh ~/.files/lib/scpt/NewTemporaryFolder.sh'
+alias	MakeTemporaryFolder='sh ${HOME}/.files/lib/scpt/NewTemporaryFolder.sh'
 alias	maketemporaryfolder='MakeTemporaryFolder'
-alias	mktf='MakeTemporaryFolder && tf'
+alias	mtf='MakeTemporaryFolder && tf'
 
-alias	CreateTestFolders='sh ~/.files/lib/scpt/NewTestFolders.sh'
+alias	CreateTestFolders='sh ${HOME}/.files/lib/scpt/NewTestFolders.sh'
 alias	createtestfolders='CreateTestFolders'
 alias	ctf='CreateTestFolders && tf'
