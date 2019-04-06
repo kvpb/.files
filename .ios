@@ -1,0 +1,48 @@
+#!/bin/sh
+
+mf () {
+	for var in "${@}";
+	do
+		if [ -e "${var}" ];
+		then
+			printf "${var}: file exists\n";
+		else
+			> "${var}";
+		fi;
+	done;
+} # https://github.com/kvpb/.files/blob/241cc9b3148c61c942627b55b4f89ec1551e1c42/.functions#L3-L15
+
+mf ${HOME}/.{profile,sh_history,shrc,exports,aliases,functions}
+ln -s ${HOME}/.shrc ${HOME}/.shinit
+
+echo ". ${HOME}/.shrc
+
+for i in /etc/profile.d/*.sh;
+do
+	if [ -r "${i}" ];
+	then
+		. ${i};
+	fi;
+done;" >> ${HOME}/.profile
+
+echo ". ${HOME}/.exports
+. ${HOME}/.aliases
+. ${HOME}/.functions" >> ${HOME}/.shrc
+
+echo "alias respring='killall SpringBoard'
+alias d='cd'
+alias l='ls'
+alias md='mkdir'
+alias c='cls'
+alias e='exit'
+alias g='git'
+alias f='find'
+alias s='exec ${SHELL} -l'
+alias ..='cd ..'" >> ${HOME}/.aliases
+
+echo "cls () {
+	clear && printf '\e[3J';
+} " >> ${HOME}/.functions # https://github.com/kvpb/.files/blob/241cc9b3148c61c942627b55b4f89ec1551e1c42/.functions#L35-L39
+
+echo 'iOS has been set up.'
+exec ${SHELL} -l
