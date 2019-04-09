@@ -4,7 +4,7 @@ mf ()
 {
 	for var in "$@"; do
 		if [ -e "${var}" ]; then
-		    printf "${var}: file exists\n";
+			printf "${var}: file exists\n";
 		else
 			> "${var}";
 			#printf "${var}\n"; # To do for version 2.0: Write a verbose mode called by inputting {,-,--}v{,erbose} as the first argument, grouping files by created files or existing ones, separating files of the same type by tabs and types of files by newlines and writing a newline at the end of the script.
@@ -27,6 +27,11 @@ mcd ()
 # del	delete file or directory
 # The del function deletes any file of any type.
 
+lt ()
+{
+	echo *;
+} # lt	builtin-only ls, the ls substitute from built-in commands
+
 ll ()
 {
 	pwd && ls -@aeFGlT;
@@ -34,9 +39,9 @@ ll ()
 
 cls ()
 {
-	clear && printf '\e[3J';
+	printf '\033[2J\033[3J\033[1;1H';
 }
-# cls	MS-DOS, OS/2 & Microsoft Windows CLS: Clear the terminal screen if this is possible, then write the VT100 escape code for resetting the terminal to the standard output under the control of the format.
+# cls	builtin-only MS-DOS, OS/2 & Microsoft Windows CLS: Clear the terminal screen if this is possible, then write the VT100 escape code for resetting the terminal to the standard output under the control of the format.
 
 dcal ()
 {
