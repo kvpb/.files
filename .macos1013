@@ -75,7 +75,7 @@ sudo spctl --master-disable
 # (i) Set Allow apps downloaded from to anywhere. [i] Disables GateKeeper.
 defaults write /Library/Preferences/com.apple.security GKAutoRearm -bool FALSE # No, really, fuck you, Apple. (i) Disable GateKeeper autorearm.
 
-chsh -s /bin/zsh # Change the default login shell to Zsh.
+chsh -s /bin/bash # Change the default login shell to BASH.
 
 defaults write com.apple.LaunchServices LSQuarantine -bool FALSE # Don't warn when opening an application.
 
