@@ -241,12 +241,6 @@ alias	fsw='fswatch '
 #alias	appstore='mas '
 #alias	as='mas '
 
-#	dbxcli			A command line tool for Dropbox users and team admins
-
-alias	dbxcli='/usr/local/bin/dbxcli '
-#alias	dropbox='dbxcli '
-alias	dbx='dbxcli '
-
 # Shell functions
 
 #alias	cs='cls'
