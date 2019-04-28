@@ -14,6 +14,7 @@
 - [x] `.osx109`
 - [x] `.osx1010`
 - [x] `.macos1013`
+- [ ] `.ios`
 </details>
 
 #### What-is
@@ -150,7 +151,7 @@ The scratching system I built at university for better cleaner faster note-takin
 #### Where-is
 <details><summary><b><code>.files/lib/scpt/</code></b></summary>
 
-- [ ] `InstallCommandLineTools.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [x] `InstallXcodeCommandLineTools.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
 - [x] `InstallGitforMac.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `Installfswatch.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `Installmas-cli.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
