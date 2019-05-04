@@ -257,6 +257,7 @@ A library of scripts I wrote.
 * [Chris Gerke](https://www.linkedin.com/in/chrisgerke) for [`applekeyboard`](https://gist.githubusercontent.com/cgerke/e5500f93cd5edf05084c/raw/18c4513d662ffc636eba56f854b5e3b817c4bf51/applekeyboard) [2017.2.16 @ 10:52](https://gist.github.com/cgerke/e5500f93cd5edf05084c/18c4513d662ffc636eba56f854b5e3b817c4bf51)
 * [Chris White](https://github.com/christopherdwhite) for [his 2017.6.26 comment on commit 398496c](https://github.com/mathiasbynens/dotfiles/commit/398496c2372d65c0e6770d02b0c5b49c0d636f31#comments) [2017.12.2, 15:45:0](https://github.com/mathiasbynens/dotfiles/commit/398496c2372d65c0e6770d02b0c5b49c0d636f31#commitcomment-22753491)
 * [Simon Fredsted](https://simonfredsted.com/) for ['_How to use Apple's SF Mono font in your editor_'](https://web.archive.org/web/20190317135558/https://simonfredsted.com/1438) [2018.1.2, 13:35:58](https://web.archive.org/save/https://simonfredsted.com/1438)
+* [Paul `MrP` Dickson](https://web.archive.org/web/20180921074452/https://www.jamf.com/jamf-nation/users/9931/mrp) for [his script to deny websites to access the camera, microphone, location and notifications](https://www.jamf.com/jamf-nation/discussions/26028/programatic-configuration-of-safari-11-websites-preferences-tab#responseChild157039) [2019.05.04, 15:30:00](https://web.archive.org/web/20190504131334/https://www.jamf.com/jamf-nation/discussions/26028/programatic-configuration-of-safari-11-websites-preferences-tab#responseChild157039)
 
 #### Author
 
