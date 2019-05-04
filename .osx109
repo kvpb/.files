@@ -744,7 +744,7 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 
 defaults write com.apple.ActivityMonitor IconType -int 5 # Display CPU usage icon in the Dock.
 
-echo  'Safari & WebKit (com.apple.safari)'
+echo  'Safari & WebKit (com.apple.Safari)'
 # This section is experimental. I wrote Safari settings all by myself, based on
 # my research. Basically, this section is the example of how I want this script
 # to configure ACOS: in case of emergency on a clean install, what would I need
@@ -772,7 +772,7 @@ defaults write com.apple.Safari UserStyleSheetEnabled -int 0 # (i) Set Style she
 defaults write com.apple.Safari DownloadsPath -string "${HOME}/Downloads" # Set downloads storage path to `${HOME}/Downloads`. (i) Set Save downloaded files to to Downloads/.
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool FALSE # Disable downloaded 'safe' files automatic opening. (i) Disable Open “safe” files after downloading.
 
-defaults write com.apple.Safari HomePage -string "about:blank" # Set homepage URL to `about:blank`. (i) Set Homepage to `about:blank`.
+defaults write com.apple.Safari HomePage -string "https://www.perdu.com" # Set homepage URL to `about:blank`. (i) Set Homepage to `about:blank`.
 defaults write com.apple.Safari NewWindowBehavior -int 0 # Set new windows to open at homepage. (i) Set New windows open with to Homepage.
 defaults write com.apple.Safari NewTabBehavior -int 0 # Set new tabs to open at homepage. (i) Set New tabs open with to Homepage.
 

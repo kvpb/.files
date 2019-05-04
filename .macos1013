@@ -800,7 +800,7 @@ defaults write com.apple.Safari UserStyleSheetEnabled -int 0 # (i) Set Style she
 defaults write com.apple.Safari DownloadsPath -string "${HOME}/Downloads" # Set downloads storage path to `${HOME}/Downloads`. (i) Set Save downloaded files to to Downloads/.
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool FALSE # Disable downloaded 'safe' files automatic opening. (i) Disable Open “safe” files after downloading.
 
-defaults write com.apple.Safari HomePage -string "about:blank" # Set homepage URL to `about:blank`. (i) Set Homepage to `about:blank`.
+defaults write com.apple.Safari HomePage -string "https://www.perdu.com" # Set homepage URL to `about:blank`. (i) Set Homepage to `about:blank`.
 defaults write com.apple.Safari NewWindowBehavior -int 0 # Set new windows to open at homepage. (i) Set New windows open with to Homepage.
 defaults write com.apple.Safari NewTabBehavior -int 0 # Set new tabs to open at homepage. (i) Set New tabs open with to Homepage.
 
@@ -815,11 +815,66 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 defaults write com.apple.Safari WebKitStorageBlockingPolicy -int 1
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2StorageBlockingPolicy -int 1
 # Block cookies and other website data from third parties and advertisers. (i) Set Block cookies and other website data to From third parties and advertisers.
+defaults write com.apple.Safari WebKitPreferences.applePayCapabilityDisclosureAllowed -bool FALSE
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2ApplePayEnabled -bool FALSE
+# Deny websites to check whether Apple Pay is set up.
 
 defaults write com.apple.Safari SafariGeolocationPermissionPolicy -int 0 # 'Disable' location services access. (i) Set Limit website access to location services to Deny without prompting.
 defaults write com.apple.Safari SuppressSearchSuggestions -bool TRUE # Block search engines suggestions providing. (i) Enable Prevent search engine from providing suggestions.
 defaults write com.apple.Safari PreloadTopHit -bool FALSE # Disable top hit preloading. (i) Enable Do not preload Top hit in the background.
-defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool TRUE # Enable Do not track. (i) Enable Ask websites not to track me.
+defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool TRUE # Enable Do Not Track. (i) Enable Ask websites not to track me.
+
+defaults write com.apple.Safari WebKitPreferences.invisibleMediaAutoplayNotPermitted -bool TRUE
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2InvisibleAutoplayNotPermitted -bool TRUE
+# Disable media autoplay. 
+defaults write com.apple.Safari WebKitPreferences.allowsPictureInPictureMediaPlayback -bool FALSE
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2AllowsPictureInPictureMediaPlayback -bool FALSE
+# Disable PIP media playback.
+# [For fuck's sake. I can't even believe that kind of crap was ever implemented in the first place. Who in the world's the shitmop who came out with these fabulous ideas?]
+
+	user=`ls -l /dev/console | cut -d " " -f 4`
+
+	database="/Users/${user}/Library/Safari/PerSitePreferences.db"
+
+	sudo -u ${user} sqlite3 ${database} "INSERT INTO default_preferences ( preference, default_value ) values ( 'PerSitePreferencesAutoplay','1');" 2> /dev/null
+	sudo -u ${user} sqlite3 ${database} "INSERT INTO default_preferences ( preference, default_value ) values ( 'PerSitePreferencesMicrophone','1');" 2> /dev/null
+	sudo -u ${user} sqlite3 ${database} "INSERT INTO default_preferences ( preference, default_value ) values ( 'PerSitePreferencesCamera','1');" 2> /dev/null
+	# Set all to Deny.
+
+	currentsettings=`sqlite3 ${database} 'select * from default_preferences;' 2> /dev/null`
+	for line in $currentsettings; do
+		if [[ $line != *"|1" ]]; then
+			line=`echo "$line" | awk -F "|" '{print $2}'`
+			sudo -u ${user} sqlite3 ${database} "update default_preferences set default_value = '1' where preference = '$line';"
+			sqlite3 $database 'select * from default_preferences;' | grep ${line}
+		fi; # If the current setting is not 1 (Deny), then set to Deny.
+	done;
+	# Find current entries in the database which are not set to Deny, and set them to Deny as needed.
+	propertylist="/Users/${user}/Library/Safari/UserMediaPermissions.plist" # (i) The UserMediaPermissions.plist file contains any permission for remote websites to interact with the camera, microphone, location services etc that deviate from the default Deny permission.
+	if [ -e $propertylist ]; then rm -f ${propertylist}; fi; # Delete the UserMediaPermissions.plist file to deny websites to access the camera, microphone, location etc.
+	# Set per-site preferences to deny Mopshit-Man & Wasteyard Woman to access everything by default.
+
+	sudo -u ${user} defaults write com.apple.Safari CanPromptForPushNotifications -bool FALSE # (i) The preferences file could just be deleted. However, should the user view the settings, this provides indication to them that it is not wanted to receive push notifications.
+	propertylist="/Users/${user}/Library/Safari/RemoteNotifications/Permissions.plist" # (i) The location of the Safari Notifications Preferences file.
+	# Deny permission to show alerts in Notification Center to any-and-all websites.
+	notifications=`/usr/libexec/PlistBuddy -c "Print" "${propertylist}" | grep "= Dict" | awk -F = '{print $1}' | perl -pe "s/\s*//"| perl -pe "s/ \$//"`
+	for i in $notifications; do
+		enabled=`/usr/libexec/PlistBuddy -c "Print ${i}:Remote\ Notifications\ Allowed" "${propertylist}"`
+		if [ $enabled != 'false' ]; then
+			sudo -u ${user} /usr/libexec/PlistBuddy -c "Set ${i}:Remote\ Notifications\ Allowed false" "${propertylist}"
+		fi;
+	done;
+	propertylist="/Users/${user}/Library/Safari/UserNotificationPermissions.plist"
+	notifications=`/usr/libexec/PlistBuddy -c "Print" "${propertylist}" | grep "= Dict" | awk -F = '{print $1}' | perl -pe "s/\s*//"| perl -pe "s/ \$//"`
+	for i in $notifications; do
+		a=`echo "$i"| perl -pe "s/\:/\\\\\:/"` # escaping ':' so PlistBuddy interprets it correctly
+		enabled=`/usr/libexec/PlistBuddy -c "Print ${a}:Permission" "${propertylist}"`
+		if [ $enabled != '0' ]; then
+			sudo -u ${user} /usr/libexec/PlistBuddy -c "Set ${a}:Permission 0" "${propertylist}"
+		fi;
+	done;
+	# Disable per-site push notifications.
+# Script by `MrP` on 2017.05.12 at 22:12:00 https://web.archive.org/web/20190504131334/https://www.jamf.com/jamf-nation/discussions/26028/programatic-configuration-of-safari-11-websites-preferences-tab#responseChild157039
 
 defaults write com.apple.Safari CanPromptForPushNotifications -bool FALSE # 'Disable' push notifications for websites. (i) Disable Allow websites to ask for permission to send push notifications.
 
@@ -845,7 +900,9 @@ defaults write com.apple.Safari AutoFillFromAddressBook -bool FALSE # (i) Disabl
 defaults write com.apple.Safari AutoFillMiscellaneousForms -bool FALSE # (i) Disable Other forms.
 # Disable autofill.
 
-defaults write com.apple.Safari IncludeDevelopMenu -bool TRUE # Display develop menu in the menu bar. (i) Enable Show Develop menu in menu bar.
+defaults write com.apple.Safari DefaultPageZoom -float 1.000000 # Set the default page zoom level to 100%.
+
+defaults write com.apple.Safari IncludeDevelopMenu -bool TRUE # Display the developer menu in the menu bar. (i) Enable Show Develop menu in menu bar.
 defaults write com.apple.Safari ShowStatusBar -bool TRUE # Display the status bar. (i) Enable Show status bar  ⌘ /.
 
 defaults write com.apple.Safari BookmarksMenuIncludesRendezvous -bool FALSE # Disable bookmarks Bonjour menu.
