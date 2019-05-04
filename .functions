@@ -14,6 +14,11 @@ mf ()
 # mf	make files
 # touch tempers with the timestamps. mkfile does not create empty files. Sometimes, that's all you need.
 
+#md ()
+#{
+#} # md, mkdr, mkdire
+# md	make directories
+
 mcd ()
 {
 	mkdir -p "$@" && cd "$_";
@@ -27,9 +32,16 @@ mcd ()
 # del	delete file or directory
 # The del function deletes any file of any type.
 
+#te ()
+#{
+#	
+#} # te, tef, tedir, tedev
+# te	there exists
+# The te function checks whether a file exists.
+
 lt ()
 {
-	echo *;
+	printf '%s\n' {,.}*;
 } # lt	builtin-only ls, the ls substitute from built-in commands
 
 ll ()
