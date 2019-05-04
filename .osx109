@@ -929,7 +929,7 @@ ln -s ${HOME}/DCIM ${HOME}/Pictures/DCIM
 ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
 # Add user-specific custom symlinks.
 
-cd ~ && touch .hushlogin # Add .hushlogin file to current user's home directory. /?\ Speeds terminal emulator opening up ? (https://news.ycombinator.com/item?id=3879833)
+> ${HOME}/.hushlogin # Write .hushlogin file to current user's home directory. /?\ Speeds terminal emulator opening up ? (https://news.ycombinator.com/item?id=3879833)
 
 #chflags nohidden ${HOME}/Library # Display the hidden ${HOME}/Library/. (i) This script also enables hidden files display, which overrides this.
 

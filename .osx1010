@@ -912,7 +912,7 @@ ln -s ${HOME}/FCIM ${HOME}/Pictures/FCIM
 ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
 # Create user-specific custom symbolic links.
 
-mkfile -nv 0 ${HOME}/.hushlogin # Create the .hushlogin file in the current user's home folder.
+> ${HOME}/.hushlogin # Write the .hushlogin file in the current user's home folder.
 
 #chflags nohidden ${HOME}/Library # Display the hidden ${HOME}/Library/. (i) This script also enables hidden files display, which overrides this.
 
