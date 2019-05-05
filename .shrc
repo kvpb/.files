@@ -1,2 +1,3 @@
-. ${HOME}/.files/.aliases
-. ${HOME}/.files/.functions
+#. ${HOME}/.exports
+. ${HOME}/.functions
+. ${HOME}/.aliases
