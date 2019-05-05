@@ -84,7 +84,7 @@ A program, written in Ruby, which pseudorandomly generates passwords.
 
 **_UNIX_ & _Linux_:**  
 &nbsp;&nbsp;0.&nbsp;&nbsp;[Download _Ruby_,](https://www.ruby-lang.org/en/downloads/) and install it.  
-&nbsp;&nbsp;1.&nbsp;&nbsp;[Download _RPwG_.](https://github.com/kvpb/.files/blob/master/lib/scpt/RPwG.rb)  
+&nbsp;&nbsp;1.&nbsp;&nbsp;[Download _RPwG_.](https://github.com/kvpb/RPwG/releases/tag/1.10)  
 &nbsp;&nbsp;2.&nbsp;&nbsp;Launch a terminal emulator, eg _Terminal_ or _GNOME Terminal_.  
 &nbsp;&nbsp;3.&nbsp;&nbsp;Type '`ruby `' (with a trailing space after 'ruby'), drag and drop the `RPwG.rb` file, and press Enter.  
 &nbsp;&nbsp;4.&nbsp;&nbsp;Follow the script's instructions on the terminal, then copy and paste the resulting password.
@@ -102,7 +102,7 @@ A program, written in Ruby, which pseudorandomly generates passwords.
 |  |  |-->
 
 #### Where-is
-<details><summary><b><code>.files/lib/plist/</code></b></summary>
+<details><summary><b><code>.files/</code></b></summary>
 
 - [x] `Text Substitutions.plist`
 </details>
@@ -115,7 +115,7 @@ _macOS_ text substitutions (list of abbreviations to automatically replace by wo
 
 #### How-to
 
-1. [Download `Text Substitutions.plist`.](https://raw.githack.com/kvpb/.files/master/lib/plist/Text%20Substitutions.plist)  
+1. [Download `Text Substitutions.plist`.](https://rawcdn.githack.com/kvpb/.files/844adc9321a218f5b0089f6d1e2303ef272f271e/Text%20Substitutions.plist)  
 2. Launch _Finder_ then go to the current user's `Downloads` folder.  
 3. Launch _System Preferences_ then go to Keyboard and then Text.  
 4. Drag `Text Substitutions.plist` from the _Finder_ window and drop it to _System Preferences_ window's table-like list.
