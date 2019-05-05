@@ -1,4 +1,4 @@
-if [ -f "${HOME}/.aliases.pvt" ]; then source "${HOME}/.aliases.pvt"; fi
+if [ -f "${HOME}/.aliases.pvt" ]; then source "${HOME}/.aliases.pvt"; fi; # [The brace expansion requires double quotes. For the sake of simplicity, I write single quotes, unless it breaks what I make. According to the BASH manual, quotes enforce literalization of text except '\', yet double quotes spare '$', '`', '\' and possibly '!'. Grosso-modo, an alias is a variable typed as a string, so no expansion may occur to it, no matter what, and so it is its definition that will be read and interpreted by the shell. Hence double quoting the definition of an alias doesn't matter, unless there are single quotes in the definition. This is why that works.]
 
 # Shells special built-in utilities commands
 
@@ -7,7 +7,7 @@ if [ -f "${HOME}/.aliases.pvt" ]; then source "${HOME}/.aliases.pvt"; fi
 # Shells builtin utilities commands
 
 #	cd				change the working directory
-# (i) Bourne shell (sh) builtin.
+# (i) Bourne Shell (sh) builtin.
 
 alias	d='cd '
 
@@ -27,13 +27,13 @@ alias	........='cd ../../../../../../..' # Change the working directory to the c
 
 alias	r='cd /' # Change the working dir to root.
 
-alias	~='cd ~' # Change the working directory to current user's home. (i) cd would do the same, and this is what I enter most, but it would break where the meaning of ~ changes.
+alias	~='cd ${HOME}' # Change the working directory to current user's home. (i) cd would do the same, and this is what I enter most, but it would break where the meaning of ~ changes.
 
-alias	.f="cd ~/.files && git status --short && printf '\n' && echo '.gitnote:' && cat .gitnote && printf '\n'" # Change the working dir to my dot-files', show the working tree status, then concatenate and print .gitnote.
+alias	.f='cd ${HOME}/.files && git status --short && printf "\n" && echo ".gitnote:" && cat .gitnote && printf "\n"' # Change the working dir to my dot-files', show the working tree status, then concatenate and print .gitnote.
 
-alias	ms='cd ~/misc' # Change the working directory to the one of my miscellaneous files.
+alias	ms='cd ${HOME}/misc' # Change the working directory to the one of my miscellaneous files.
 
-alias	wk='cd ~/wip' # Change the working directory to the one of my work in progress.
+alias	wk='cd ${HOME}/wip' # Change the working directory to the one of my work in progress.
 
 alias	e16s='cd /Volumes/KBS16GBFD'
 alias	e64s='cd /Volumes/KBS64GBFD'
@@ -46,34 +46,34 @@ alias	r4='cd /Volumes/KBSPCMD100/VOICE/FOLDER04'
 alias	r5='cd /Volumes/KBSPCMD100/VOICE/FOLDER05'
 # Change the working directory to one of my recorder's recorded files'.
 
-alias	dt='cd ~/Desktop' # Change the working dir to current macOS user's desktop'.
+alias	dt='cd ${HOME}/Desktop' # Change the working dir to current macOS user's desktop'.
 
-alias	dx='cd ~/Documents' # Change the working dir to current macOS user's documents'.
+alias	dx='cd ${HOME}/Documents' # Change the working dir to current macOS user's documents'.
 
-alias	dl='cd ~/Downloads' # Change the working dir to current macOS user's downloads'.
+alias	dl='cd ${HOME}/Downloads' # Change the working dir to current macOS user's downloads'.
 
-alias	ly='cd ~/Library' # Change the working dir to current macOS user's library's.
+alias	ly='cd ${HOME}/Library' # Change the working dir to current macOS user's library's.
 
-alias	mz='cd ~/Movies' # Change the working dir to current macOS user's movies'.
+alias	mz='cd ${HOME}/Movies' # Change the working dir to current macOS user's movies'.
 
-alias	mc='cd ~/Music' # Change the working dir to current macOS user's music's.
+alias	mc='cd ${HOME}/Music' # Change the working dir to current macOS user's music's.
 
-alias	px='cd ~/Pictures' # Change the working dir to current macOS user's pictures'.
+alias	px='cd ${HOME}/Pictures' # Change the working dir to current macOS user's pictures'.
 
-alias	th='cd ~/.Trash' # Change the working dir to current macOS user's trash's.
+alias	th='cd ${HOME}/.Trash' # Change the working dir to current macOS user's trash's.
 
-alias	tf='cd ~/Temporary' # Change the working directory to current Apple Computer Operating System's current user's temporary unofficial folder.
+alias	tf='cd ${HOME}/Temporary' # Change the working directory to current Apple Computer Operating System's current user's temporary unofficial folder.
 
-alias	db='cd ~/Dropbox' # Change the working dir to current user's Dropbox's.
+alias	db='cd ${HOME}/Dropbox' # Change the working dir to current user's Dropbox's.
 
 #	source
-# (i) Bourne-again shell (bash) builtin.
+# (i) Bourne-Again Shell (bash) builtin.
 
 alias	src='source '
 #alias	s='source '
 
 #	chdir
-# (i) Z shell (zsh) builtin.
+# (i) Z Shell (zsh) builtin.
 
 alias	chdir='cd '
 #alias	d='chdir '
@@ -86,13 +86,6 @@ alias	ns='cd && cls && nh '
 #	exit
 
 #alias	e='exit'
-
-#	echo
-
-alias	?sh='echo $SHELL' # Output the current shell.
-
-alias	?n='echo $RANDOM' # Output a number up to 32767.
-alias	?n2='var=$RANDOM; expr $var \* $var' #output a number up to 32767**2.
 
 # 'Internal' programs commands
 
@@ -189,6 +182,13 @@ alias	la='ls -a ' # List all directory contents.
 #	du				display disk usage statistics
 
 alias	du='du -c -d 0 -h ' # Display DU stats with a grand total, an entry for all files and directories 0 directories deep, human-readably.
+
+#	printf			formatted output
+
+alias	_sh='printf "${SHELL}\n"' # Output the current shell.
+
+alias	_n='printf "${RANDOM}\n"' # Output a number up to 32767.
+alias	_n2='var=${RANDOM}; expr ${var} \* ${var}' # Output a number up to 32767**2.
 
 #	clear			clear the terminal screen
 
