@@ -263,7 +263,7 @@ A library of scripts I wrote.
 
 <p align='center'><a href='http://karlbertin.com/'><img src='https://gist.githack.com/kvpb/bfed748ac5c509985c89ea613a2bfd02/raw/8c0b311b7c848fabddf61672ba6bb72c8754fed9/karlbertinssymbol.svg'></a><br>
 <b>Karl 'Kabe' Bertin `<code>kvpb</code>`</b><br> <!-- Neither `<span style='font-variant: small-caps;'>Bertin</span>` nor `B<small>ERTIN</small>` work on GitHub. -->
-<a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a> | <a href='https://www.facebook.com/karlbertin'>Facebook</a> | <a href='https://www.instagram.com/karlbertin/'>Instagram</a></p>
+<a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a> | <s><a href=''>Facebook</a></s> | <a href='https://www.instagram.com/karlbertin/'>Instagram</a> | <a href='https://www.snapchat.com/add/karlbertin'>Snapchat</a></p>
 
 **Ed:** Whether you thank me or not, please credit the people I took code from.
 
