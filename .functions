@@ -2,11 +2,14 @@
 
 mf ()
 {
-	for var in "$@"; do
-		if [ -e "${var}" ]; then
+	for var in "$@";
+	do
+		if [ -e "${var}" ];
+		then
 			printf "${var}: file exists\n";
 		else
 			> "${var}";
+			printf '\n' >> ${var};
 			#printf "${var}\n"; # To do for version 2.0: Write a verbose mode called by inputting {,-,--}v{,erbose} as the first argument, grouping files by created files or existing ones, separating files of the same type by tabs and types of files by newlines and writing a newline at the end of the script.
 		fi;
 	done;
@@ -61,14 +64,6 @@ dcal ()
 }
 # dcal	dated calendar: Display a calendar, substitute month of year with current date in full format, and highlight current day of month.
 
-us ()
-{
-	softwareupdate --download -all;
-	brew update && brew upgrade && brew cleanup;
-	gem update && gem update && gem cleanup;
-} # us, updatesoftware
-# us	Sony System Software Update: List all available updates, and install them; fetch the newest version of Homebrew, upgrade outdated, unpinned brews, and remove any installed formulae older version from the cellar; update installed gems to the latest versions, and clean up old versions of installed gems.
-
 nae ()
 {
 	sed -i '' -e '$a\';
@@ -78,7 +73,7 @@ nae ()
 
 rn ()
 {
-	number=$RANDOM;
+	number=${RANDOM};
 	index=$[RANDOM%3+1];
 #	operator=( "arithmetic" "in-de-crement" "relational" "logical" "conditional" "assignment" "bitwise" "miscellaneous" );
 #		operator[1]=( "" "+" "-" "*" "/" "%" 0 );
@@ -88,7 +83,7 @@ rn ()
 	operator[3]="*";
 	operator[4]="/";
 	operator[5]="%";
-	expression="$number ${operator[$index]} $number";
+	expression="${number} ${operator[$index]} ${number}";
 
 #	number=$RANDOM; character="+"; string="$number ${character} $number"; echo $number && echo ${character} && expr $(echo ${string}) # V [It works, but I want it to randomly pick an operator.]
 #	n=$RANDOM; c=( "" "+" "-" "*" "/" "%" ); s="${n} ${c[$[RANDOM%5+1]]} ${n}"; echo $n && echo ${c} && expr ${s} # X [It fucks up. Apparently, the curly braces around number variables in the string variable cause it to fail. I guess I should understand how brace expansion works.]
