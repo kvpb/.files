@@ -4,14 +4,15 @@
 # RPwG.rb, rpwg.rb
 # Version 1.2
 # 
-# Karl 'Kabe' Bertin (Карл Бэртин) `kvpb`
+# Karl 'Kabe' Bertin `kvpb`
 # Email: local-part@domain
 # LinkedIn: https://www.linkedin.com/in/karlbertin
-# Facebook: https://www.facebook.com/karlbertin
+# Facebook: 
 # Instagram: https://www.instagram.com/karlbertin/
+# Snapchat: https://www.snapchat.com/add/karlbertin
 # 
-# Last updated on 2018.1.28 at 2:59:0...
-# At I's, 15th arrondissement, Paris, Ile-de-France, France, Europe
+# 2019.05.13, 14:00:00
+# 5th Arrondissement, Paris, Ile-de-France, France, Europe
 
 character_set = [ "!", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ":", ";", "<", "=", ">", "?", "@", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "[", "]", "^", "_", "`", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "{", "|", "}", "~" ] # ASCII order, no 032, """, "\" or "#".
 qwazerty_character_set = [ "!", "$", "%", "&", "'", "(", ")", "*", ",", "-", ".", "/", ":", ";", "?", "@", "A", "M", "Q", "W", "Z", "[", "]", "^", "`", "a", "m", "q", "w", "z", "{", "|", "}", "~" ]

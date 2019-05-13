@@ -7,7 +7,7 @@
 # Karl 'Kabe' Bertin `kvpb`
 # Email: local-part@domain
 # LinkedIn: https://www.linkedin.com/in/karlbertin
-# Facebook: https://www.facebook.com/karlbertin
+# Facebook: 
 # Instagram: https://www.instagram.com/karlbertin/
 # Snapchat: https://www.snapchat.com/add/karlbertin
 
