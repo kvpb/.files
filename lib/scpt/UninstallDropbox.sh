@@ -3,13 +3,6 @@
 # UninstallDropbox.sh
 # Uninstall Dropbox Mac
 # https://web.archive.org/web/20190511131358/https://help.dropbox.com/en-us/desktop-web/uninstall-dropbox
-#
-# Karl 'Kabe' Bertin `kvpb`
-# Email: local-part@domain
-# LinkedIn: https://www.linkedin.com/in/karlbertin
-# Facebook: 
-# Instagram: https://www.instagram.com/karlbertin/
-# Snapchat: https://www.snapchat.com/add/karlbertin
 
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
