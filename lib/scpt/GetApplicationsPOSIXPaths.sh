@@ -5,7 +5,7 @@ do
 
 osascript -- - "${var}" <<'EOF'
 	on run({var})
-		tell application "System Events" to POSIX path of (file of process var as alias)
+		POSIX path of (path to application var)
 	end
 EOF
 
