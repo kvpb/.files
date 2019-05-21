@@ -1,4 +1,4 @@
-if [ -f "${HOME}/.aliases.pvt" ]; then source "${HOME}/.aliases.pvt"; fi; # [The brace expansion requires double quotes. For the sake of simplicity, I write single quotes, unless it breaks what I make. According to the BASH manual, quotes enforce literalization of text except '\', yet double quotes spare '$', '`', '\' and possibly '!'. Grosso-modo, an alias is a variable typed as a string, so no expansion may occur to it, no matter what, and so it is its definition that will be read and interpreted by the shell. Hence double quoting the definition of an alias doesn't matter, unless there are single quotes in the definition. This is why that works.]
+if [ -f "${HOME}/.aliases.pvt" ]; then source "${HOME}/.aliases.pvt"; fi;
 
 # Shells special built-in utilities commands
 
@@ -113,6 +113,11 @@ alias	rb='ruby '
 
 alias	py='python '
 
+#	osascript		execute OSA scripts (AppleScript, JavaScript, etc)
+
+alias	osa='osascript '
+alias	os='osascript '
+
 #	tar				manipulate tape archives
 
 alias	tgz='tar -czvf ' # Create a new archive containing the specified items then compress the resulting archive with gzip, listing each file name as it is read written to the archive.
@@ -217,7 +222,7 @@ alias	ap='airport '
 
 #	man				format and display the on-line manual pages
 
-alias	m='man '
+alias	mn='man '
 
 alias	ascii='man ascii' # Output the man page of the ASCII character sets.
 
@@ -234,9 +239,9 @@ alias	fsw='fswatch '
 
 #	mas-cli			A simple command line interface for the Mac App Store. Designed for scripting and automation.
 
-#alias	mas-cli='mas '
-#alias	MacAppStore='mas '
-#alias	macappstore='mas '
+alias	mas='mas-cli '
+alias	MacAppStore='mas '
+alias	macappstore='mas '
 #alias	AppStore='mas '
 #alias	appstore='mas '
 #alias	as='mas '
@@ -255,13 +260,13 @@ alias	rlp='ResetLaunchPad'
 # Computer programs
 
 alias	RPwG='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
-alias	rpwg='RPwG'
-alias	rp='RPwG'
+alias	rpwg='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
+alias	rp='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
 
 alias	MakeTemporaryFolder='sh ${HOME}/.files/lib/scpt/NewTemporaryFolder.sh'
-alias	maketemporaryfolder='MakeTemporaryFolder'
+alias	maketemporaryfolder='sh ${HOME}/.files/lib/scpt/NewTemporaryFolder.sh'
 alias	mtf='MakeTemporaryFolder && tf'
 
 alias	CreateTestFolders='sh ${HOME}/.files/lib/scpt/NewTestFolders.sh'
-alias	createtestfolders='CreateTestFolders'
+alias	createtestfolders='sh ${HOME}/.files/lib/scpt/NewTestFolders.sh'
 alias	ctf='CreateTestFolders && tf'
