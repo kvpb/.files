@@ -10,7 +10,6 @@ mf ()
 		else
 			> "${var}";
 			printf '\n' >> ${var};
-			#printf "${var}\n"; # To do for version 2.0: Write a verbose mode called by inputting {,-,--}v{,erbose} as the first argument, grouping files by created files or existing ones, separating files of the same type by tabs and types of files by newlines and writing a newline at the end of the script.
 		fi;
 	done;
 } # mf, mkfl, mkfil
@@ -92,27 +91,20 @@ rn ()
 	number=${RANDOM};
 	nombre=${RANDOM};
 	index=$[RANDOM%5+1];
-#	operator=( "arithmetic" "in-de-crement" "relational" "logical" "conditional" "assignment" "bitwise" "miscellaneous" );
-#		operator[1]=( "" "+" "-" "*" "/" "%" 0 );
 	operator[0]='';
 	operator[1]='+';
 	operator[2]='-';
 	operator[3]='\*';
 	operator[4]='/';
 	operator[5]='%%'; # `%%` is a printf-only percent sign escaping.
-	expression="${number} ${operator[${index}]} ${nombre}"; #printf "${index}\tdebug\n${expression}\tdebug\n";
+	expression="${number} ${operator[${index}]} ${nombre}"; #printf "${index}\tdebug\n" && printf "${expression}\tdebug\n";
 
-#	number=$RANDOM; character="+"; string="$number ${character} $number"; echo $number && echo ${character} && expr $(echo ${string}) # V [It works, but I want it to randomly pick an operator.]
-#	n=$RANDOM; c=( "" "+" "-" "*" "/" "%" ); s="${n} ${c[$[RANDOM%5+1]]} ${n}"; echo $n && echo ${c} && expr ${s} # X [It fucks up. Apparently, the curly braces around number variables in the string variable cause it to fail. I guess I should understand how brace expansion works.]
-#	n=$RANDOM; i=$[RANDOM%5+1]; c=( "" "+" "-" "*" "/" "%" ); s="$n ${c[$i]} $n"; echo $n && echo $i && echo ${c} && expr ${s} # x [It works better, but it does not work well when it picks the multiplicator, the divider or the modulo. ..just l qualiter]
-#	n=$RANDOM; i=$[RANDOM%3+1]; c=( "" "+" "-" "*" "/" "%" ); s="$n ${c[$i]} $n"; echo $n && echo $i && echo ${c} && expr ${s} # v [It still shits up when it picks the multiplication operator, saying 'expr: syntax error'. If I entered it manually, I would escape the multiplication operator. Unfortunately, whether I escape it in the operators array or in the string variable, I still get that error.]
 	if [ ${index} -eq 0 -o ${index} -eq 3 ];
 	then
 		expr ${number} \* ${nombre};
 	else
 		expr $(printf "${expression}");
 	fi;
-#	expr ${number} ${operator[${index}]} ${nombre}; # [... Which, I recall, is exactly what I tried first back in the days. The multiplication and modulo operators keep failing no matter what. I still wonder why I limited the selection to the three first operators... According to printf's output, I was right all along since the beginning: it does not select the first of the array, it chooses one of the five operators, and it fails to work with the multiplicator and the modulo. You'd shit twenty bucks of Quick, it'd still look fabulous next to this mess. Lord almighty.]
 } # rn, randomnumber
 # rn	output random numbers
 # The rn function computes a pseudorandom number then prints it.
@@ -148,7 +140,7 @@ MakeFinderAlias ()
 		osascript -e "tell application \"Finder\" to make alias file to (POSIX file \"${Location}/${File//\"/\\\"}\") at (POSIX file \"${Location}/${Folder//\"/\\\"}\")" -e 'return';
 	fi;
 } # mfa, mkfras, MakeFinderAlias
-# 2018.04.18, 17:04:00 : Ça doit être la shell function la plus dégueulasse que j'ai écrit. It doesn't handle any and all relative paths. I don't care anyway. I've been jacking with this stuff almost all afternoon.
+# MakeFinderAlias	make Finder aliases
 
 DeleteDSStore ()
 {
