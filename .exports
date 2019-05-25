@@ -42,6 +42,7 @@ export	HISTFILESIZE=${HISTSIZE}
 export	HISTFILE=${HOME}/.bash_history
 export	HISTCONTROL=ignoredups:erasedups
 export	HISTIGNORE=ls:pwd:cd:history
+export	HISTTIMEFORMAT="$(printf '\r\e[K')$(tput setaf 0)$(tput setab 7)%F %T$(tput sgr0)  "
 export	PROMPT_COMMAND='history -a; history -n'
 
 export	CLICOLOR=1
