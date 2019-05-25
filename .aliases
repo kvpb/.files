@@ -83,6 +83,10 @@ alias	chdir='cd '
 alias	nh='exec ${SHELL} -l ' # Execute the default login shell as a login shell. (i) Replace the current shell process image with a new one.
 alias	ns='cd && cls && nh '
 
+#	history
+
+alias	h='history '
+
 #	exit
 
 #alias	e='exit'
