@@ -66,91 +66,42 @@ cd ${HOME} && /bin/sh <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files
 
 - - -
 
-# _Random Password Generator_<br>`RPwG.rb`
-
-<p align='center'><a href='https://github.com/kvpb/.files/blob/master/lib/scpt/RPwG.rb'><img src='https://gist.githack.com/kvpb/543e66fc06e322658f5877e9e2f77cda/raw/08ecb3022f7c7de3c1a16b05e59af04b92e19af5/RPwG.svg'></a></p>
-
-#### Where-is
-<details><summary><b><code>.files/lib/scpt/</code></b></summary>
-
-- [x] `RPwG.rb`
-</details>
-
-#### What-is
-
-A program, written in Ruby, which pseudorandomly generates passwords.
-
-#### How-to
-
-**_UNIX_ & _Linux_:**  
-&nbsp;&nbsp;0.&nbsp;&nbsp;[Download _Ruby_,](https://www.ruby-lang.org/en/downloads/) and install it.  
-&nbsp;&nbsp;1.&nbsp;&nbsp;[Download _RPwG_.](https://github.com/kvpb/RPwG/releases/tag/1.10)  
-&nbsp;&nbsp;2.&nbsp;&nbsp;Launch a terminal emulator, eg _Terminal_ or _GNOME Terminal_.  
-&nbsp;&nbsp;3.&nbsp;&nbsp;Type '`ruby `' (with a trailing space after 'ruby'), drag and drop the `RPwG.rb` file, and press Enter.  
-&nbsp;&nbsp;4.&nbsp;&nbsp;Follow the script's instructions on the terminal, then copy and paste the resulting password.
-
-~~**_MS-DOS_:**~~  
-&nbsp;&nbsp;Do yourself a favor: either get a Linux PC or a Mac.
-
-- - -
-
-# `Text Substitutions.plist` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-
-<!--**`Text Substitutions.plist`:**
-| Replace | With |
-| --- | --- |
-|  |  |-->
+# `.vimrc` & `.vim/`
 
 #### Where-is
 <details><summary><b><code>.files/</code></b></summary>
 
-- [x] `Text Substitutions.plist`
+- [x] `.vim/`
+- [x] `.vimrc`
+<!--
+- [x] `.bashrc` required as dependency
+- [x] `.aliases` required as dependency
+-->
 </details>
 
 #### What-is
 
-_macOS_ text substitutions (list of abbreviations to automatically replace by words).
+My VIM setup, featuring a true TextEdit-like key mapping, including a smart hack for the FR AZERTY layout's numeric keys row from Emmanuel Longeau \``elongeau`\`.
 
-**NB:** This works with _macOS_ software that use it, eg _TextEdit_, but I does not with _Word for Mac 2011_.
+#### To-do
 
-#### How-to
-
-1. [Download `Text Substitutions.plist`.](https://rawcdn.githack.com/kvpb/.files/844adc9321a218f5b0089f6d1e2303ef272f271e/Text%20Substitutions.plist)  
-2. Launch _Finder_ then go to the current user's `Downloads` folder.  
-3. Launch _System Preferences_ then go to Keyboard and then Text.  
-4. Drag `Text Substitutions.plist` from the _Finder_ window and drop it to _System Preferences_ window's table-like list.
-
-- - -
-
-# _Karl Bertin's Notetaking System_
-
-<!--<p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://gist.githack.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/54cdac0b8ffad36d9ade790cfa53d138c6867412/karlbertinsscratchingsystemfrontcover.svg'></a>-->
-
-#### Where-is
-<details><summary><b><code>.files/</code></b></summary>
-
-- [x] `flashcardsstructures.docx`
-- [x] `uenctcnyyyymmdd.docx`
-- [x] `Forename_Surname_UEN_GN_Fiche_de_lecture.docx`
-- [x] `Forename_Surname_UEN_GN_Memoire.docx`
-- [x] `notetakingstructures.docx`
-- [x] `notetakingsystem.docx`
-- [x] `name.docx`
-</details>
-
-#### What-is
-
-The scratching system I built at university for better cleaner faster note-taking. This read-me has been written following these guidelines.
-
-**NB:** If you have any suggestion to improve it, feel free to jump in, express yourself, let loose --- open an issue or contact me. You're always welcome.
+- [ ] Write a 'minimaximal' VIM color scheme which uses as few colors as efficiently as possible.
+  - [ ] Write or rewrite an up-to-date true GitHub color scheme with a dark mode.
 
 - - -
 
 # _Scripts_<br>`scpt/`
 
 #### Where-is
-<details><summary><b><code>.files/lib/scpt/</code></b></summary>
+<details><summary><b><code>.files/</code><code>lib/</code><code>scpt/</code></b></summary>
 
+- [x] `AddLoginItems.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `GetLoginItemsList.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `GetApplicationsPOSIXPaths.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `SetKeyboardBrightnessTo100percent.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
+- [x] `SetVolumeTo50percent.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
+- [x] `SetVolumeToMuted.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
+- [x] `GetVolumeMuteStatus.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
 - [x] `InstallXcodeCommandLineTools.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
 - [x] `InstallGitforMac.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `Installfswatch.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
@@ -212,22 +163,21 @@ The scratching system I built at university for better cleaner faster note-takin
 - [x] `InstallSoulver.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallChrome.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallDropbox.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [ ] `UninstallDropbox.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg)
+- [x] `UninstallDropbox.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg)
 - [x] `Installdbxcli.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallSpotify.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `InstallWhatsApp.sh`
-- [ ] ~~`InstallMessengerforMac.sh`~~ ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-- [ ] `InstallGoofy.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] `InstallGoofy.sh`
 - [x] `RPwG.rb` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![firmware](https://img.shields.io/badge/-Linux-black.svg) ![language](https://img.shields.io/badge/language-Ruby-red.svg)
-- [x] `SetKeyboardBrightnessTo100percent.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
-- [x] `SetVolumeTo50percent.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
-- [x] `SetVolumeToMuted.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
-- [x] `GetVolumeMuteStatus.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
+- [x] `CharacterCount.rb` ![firmware](https://img.shields.io/badge/-Linux-black.svg) ![language](https://img.shields.io/badge/language-Ruby-red.svg)
 - [x] `NewTestFolders.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `RemoveDirectoryFromUsersHome.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `RemoveCreativeCloudFilesFromUsersHome.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [ ] `DeleteDirectoryFromUserHome.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `DeleteCreativeCloudFilesFromUserHome.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `DeleteChromeSuggestions.sh`
+- [x] `ListMacAppStoreApplications.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `ListNonMacAppStoreApplications.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `SaveSHSH2Blobs.sh`
+- [x] `SaveLatestSHSH2Blobs.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallGunGodzMac.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallSuperCrateBoxOSX.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 </details>
@@ -244,6 +194,86 @@ A library of scripts I wrote.
 
 - - -
 
+# `Text Substitutions.plist` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+
+<!--**`Text Substitutions.plist`:**
+| Replace | With |
+| --- | --- |
+|  |  |-->
+
+#### Where-is
+<details><summary><b><code>.files/</code></b></summary>
+
+- [x] `Text Substitutions.plist`
+</details>
+
+#### What-is
+
+_macOS_ text substitutions (list of abbreviations to automatically replace by words).
+
+**NB:** This works with _macOS_ software that use it, eg _TextEdit_, but I does not with _Word for Mac 2011_.
+
+#### How-to
+
+1. [Download `Text Substitutions.plist`.](https://rawcdn.githack.com/kvpb/.files/844adc9321a218f5b0089f6d1e2303ef272f271e/Text%20Substitutions.plist)  
+2. Launch _Finder_ then go to the current user's `Downloads` folder.  
+3. Launch _System Preferences_ then go to Keyboard and then Text.  
+4. Drag `Text Substitutions.plist` from the _Finder_ window and drop it to _System Preferences_ window's table-like list.
+
+- - -
+
+# _Random Password Generator_<br>`RPwG.rb`
+
+<p align='center'><a href='https://github.com/kvpb/.files/blob/master/lib/scpt/RPwG.rb'><img src='https://gist.githack.com/kvpb/543e66fc06e322658f5877e9e2f77cda/raw/08ecb3022f7c7de3c1a16b05e59af04b92e19af5/RPwG.svg'></a></p>
+
+#### Where-is
+<details><summary><b><code>.files/</code><code>lib/</code><code>scpt/</code></b></summary>
+
+- [x] `RPwG.rb`
+</details>
+
+#### What-is
+
+A program, written in Ruby, which pseudorandomly generates passwords.
+
+#### How-to
+
+**_UNIX_ & _Linux_:**  
+&nbsp;&nbsp;0.&nbsp;&nbsp;[Download _Ruby_,](https://www.ruby-lang.org/en/downloads/) and install it.  
+&nbsp;&nbsp;1.&nbsp;&nbsp;[Download _RPwG_.](https://github.com/kvpb/RPwG/releases/tag/1.10)  
+&nbsp;&nbsp;2.&nbsp;&nbsp;Launch a terminal emulator, eg _Terminal_ or _GNOME Terminal_.  
+&nbsp;&nbsp;3.&nbsp;&nbsp;Type '`ruby `' (with a trailing space after 'ruby'), drag and drop the `RPwG.rb` file, and press Enter.  
+&nbsp;&nbsp;4.&nbsp;&nbsp;Follow the script's instructions on the terminal, then copy and paste the resulting password.
+
+~~**_MS-DOS_:**~~  
+&nbsp;&nbsp;Do yourself a favor: either get a Linux PC or a Mac.
+
+- - -
+
+# _Karl Bertin's Notetaking System_
+
+<!--<p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://gist.githack.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/54cdac0b8ffad36d9ade790cfa53d138c6867412/karlbertinsscratchingsystemfrontcover.svg'></a>-->
+
+#### Where-is
+<details><summary><b><code>.files/</code></b></summary>
+
+- [x] `flashcardsstructures.docx`
+- [x] `uenctcnyyyymmdd.docx`
+- [x] `Forename_Surname_UEN_GN_Fiche_de_lecture.docx`
+- [x] `Forename_Surname_UEN_GN_Memoire.docx`
+- [x] `notetakingstructures.docx`
+- [x] `notetakingsystem.docx`
+- [x] `name.docx`
+</details>
+
+#### What-is
+
+The scratching system I built at university for better cleaner faster note-taking. This read-me has been written following these guidelines.
+
+**NB:** If you have any suggestion to improve it, feel free to jump in, express yourself, let loose --- open an issue or contact me. You're always welcome.
+
+- - -
+
 #### Thanks to
 
 * [Mathias Bynens](https://mathiasbynens.be/) for ~~[`dotfiles/.osx`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.osx)~~ [`dotfiles/.macos`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.macos) ~~[NM.ND.2014](https://github.com/mathiasbynens/dotfiles/commit/3b4eb3efb692aa4d19a1e2c30c2ed9a65e9c7d8c)~~ [7.21.2016](https://github.com/mathiasbynens/dotfiles/commit/47268d92afbec69e3a7243a144a126bbd25bcf2c) and [`dotfiles/.gitconfig`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.gitconfig) [8.22.2016](https://github.com/mathiasbynens/dotfiles/commit/47268d92afbec69e3a7243a144a126bbd25bcf2c)
@@ -257,7 +287,8 @@ A library of scripts I wrote.
 * [Chris Gerke](https://www.linkedin.com/in/chrisgerke) for [`applekeyboard`](https://gist.githubusercontent.com/cgerke/e5500f93cd5edf05084c/raw/18c4513d662ffc636eba56f854b5e3b817c4bf51/applekeyboard) [2017.2.16 @ 10:52](https://gist.github.com/cgerke/e5500f93cd5edf05084c/18c4513d662ffc636eba56f854b5e3b817c4bf51)
 * [Chris White](https://github.com/christopherdwhite) for [his 2017.6.26 comment on commit 398496c](https://github.com/mathiasbynens/dotfiles/commit/398496c2372d65c0e6770d02b0c5b49c0d636f31#comments) [2017.12.2, 15:45:0](https://github.com/mathiasbynens/dotfiles/commit/398496c2372d65c0e6770d02b0c5b49c0d636f31#commitcomment-22753491)
 * [Simon Fredsted](https://simonfredsted.com/) for ['_How to use Apple's SF Mono font in your editor_'](https://web.archive.org/web/20190317135558/https://simonfredsted.com/1438) [2018.1.2, 13:35:58](https://web.archive.org/save/https://simonfredsted.com/1438)
-* [Paul `MrP` Dickson](https://web.archive.org/web/20180921074452/https://www.jamf.com/jamf-nation/users/9931/mrp) for [his script to deny websites to access the camera, microphone, location and notifications](https://www.jamf.com/jamf-nation/discussions/26028/programatic-configuration-of-safari-11-websites-preferences-tab#responseChild157039) [2019.05.04, 15:30:00](https://web.archive.org/web/20190504131334/https://www.jamf.com/jamf-nation/discussions/26028/programatic-configuration-of-safari-11-websites-preferences-tab#responseChild157039)
+* [Paul Dickson \``MrP`\`](https://web.archive.org/web/20180921074452/https://www.jamf.com/jamf-nation/users/9931/mrp) for [his script to deny websites to access the camera, microphone, location and notifications](https://www.jamf.com/jamf-nation/discussions/26028/programatic-configuration-of-safari-11-websites-preferences-tab#responseChild157039) [2019.05.04, 15:30:00](https://web.archive.org/web/20190504131334/https://www.jamf.com/jamf-nation/discussions/26028/programatic-configuration-of-safari-11-websites-preferences-tab#responseChild157039)
+* [Emmanuel Longeau \``elongeau`\`](https://github.com/elongeau) for [his FR AZERTY keyboard layout numeric key maps](https://github.com/elongeau/dotfiles2/blob/fccda38130c519ed8daba12c2c85f9f222ea4d02/.vimrc#L11-L22) [2019.06.03, 18:30:00](https://github.com/elongeau/dotfiles2/commit/cbe6235d34c4bde6f303619e4ce8eb518b44dadb#diff-4e12c6a37ff2cbb2c93d1b33324a6051)
 
 #### Author
 
