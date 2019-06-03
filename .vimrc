@@ -31,59 +31,69 @@ set clipboard=unnamed " Set clipboard to the OS'.
 set mouse=a " Enable the mouse in all modes.
 set ttymouse=xterm2 " Set the terminal type for which mouse codes are to be recognized.
 
-nnoremap <C-q> :qa!<cr>
-inoremap <C-q> <esc>:qa!<cr>
-":map <C-W> :q!<Enter>
-":map! <C-W> :q!<Enter>
+nnoremap <C-q> :qa!<CR>
+inoremap <C-q> <Esc>:qa!<CR>
+":map <C-W> :q!<CR>
+":map! <C-W> :q!<CR>
  " Quit Without Saving
-nnoremap <C-w> :wq!<cr>
-inoremap <C-w> <esc>:wq!<cr>
+nnoremap <C-w> :wq!<CR>
+inoremap <C-w> <Esc>:wq!<CR>
  " Save & Quit
-
-:map <C-n> :enew<cr>
-:map! <C-n> <esc>:enew<cr>
+:map <C-n> :enew<CR>
+:map! <C-n> <Esc>:enew<CR>
  " New
-:map <C-t> :tabnew<Enter>
-:map! <C-t> <esc>:tabnew<Enter>
+:map <C-t> :tabnew<CR>
+:map! <C-t> <Esc>:tabnew<CR>
  " New Tab
-:map <C-o> :e.<Enter>
-:map! <C-o> :e.<Enter>
+:map <C-o> :e.<CR>
+:map! <C-o> :e.<CR>
  " Open...
-
-":map <C-w> :close<Enter>
+":map <C-w> :close<CR>
  " Close (Tab)
-nnoremap <C-s> :w<cr>
-inoremap <C-s> <esc>:w<cr>
-":map <C-s> :w<Enter>
-":map! <C-s> <esc>:w<Enter>
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>
+":map <C-s> :w<CR>
+":map! <C-s> <Esc>:w<CR>
  " Save
-
 :map <C-z> u
-:map! <C-z> u
+:map! <C-z> <Esc>u<CR>
  " Undo
 ":map <C-r> 
+":map! <C-r> 
  " Redo
 :map <C-c> y
-:map! <C-c> <esc>y<cr>
+:map! <C-c> <Esc>y<CR>
  " Copy
 :map <C-x> d
-:map! <C-x> <esc>d<cr>
+:map! <C-x> <Esc>d<CR>
  " Cut
 :map <C-v> p
 :map! <C-v> <C-r>"
  " Paste
-:map <C-a> GVgg
-:map! <C-a> <esc>GVgg<cr>
+:map <C-a> ggVG
+:map! <C-a> <Esc>ggVG<CR>
  " Select All
 :map <C-f> /\c
-:map! <C-f> <esc>/\c
+:map! <C-f> <Esc>/\c
  " Find...
 :map <F3> n
-:map! <F3> n
+:map! <F3> <Esc>n<CR><Insert>
  " Find Next
-:map <C-h> :%s/
-:map! <C-h> <esc>:%s/
+":map <C-h> :%s/
+":map! <C-h> <Esc>:%s/
  " Replace All
+" Set the key maps to a Macintosh-like key mapping.
+"nnoremap & 1
+"nnoremap é 2
+"nnoremap " 3
+"nnoremap ' 4
+"nnoremap ( 5
+"nnoremap § 6
+"nnoremap è 7
+"nnoremap ! 8
+"nnoremap ç 9
+"nnoremap à 0
+" Make the FR AZERTY keyboard numeric keys function like the US QWERTY's.
 
 " Output: UX, GUI & SUI
 
