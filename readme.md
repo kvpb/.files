@@ -109,10 +109,6 @@ My VIM setup, featuring a true TextEdit-like key mapping, including a smart hack
 - [ ] ~~`InstallRAR.sh`~~
   - [x] `InstallRAR550forMacOSX.sh` ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallHomebrew.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) <!--![firmware](https://img.shields.io/badge/firmware-Linux-black.svg)--> ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [ ] `InstallHomebrewBundle.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-- [ ] `InstallrbenvHomebrew.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-- [ ] `InstallpyenvHomebrew.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-- [ ] `InstallhtopHomebrew.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
 - [ ] `InstallUnRARX.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
   - [x] `InstallUnRarX22.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallXLD.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
@@ -129,8 +125,7 @@ My VIM setup, featuring a true TextEdit-like key mapping, including a smart hack
 - [ ] `InstallSanFranciscoFontFamily.sh`
   - [x] `InstallSanFrancisco.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
   - [x] `InstallSanFranciscoCompact.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-  - [x] `InstallSFMonoFromMac.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-  - [x] `InstallSFMono.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+  - [x] `InstallSFMono.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![firmware](https://img.shields.io/badge/-Linux-black.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `InstallVMwareFusion8` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
 - [ ] ~~`InstallPhotoshop.sh`~~
   - [ ] `InstallPsCC.sh`
