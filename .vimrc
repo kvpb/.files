@@ -36,8 +36,8 @@ inoremap <C-q> <Esc>:qa!<CR>
 ":map <C-W> :q!<CR>
 ":map! <C-W> :q!<CR>
  " Quit Without Saving
-nnoremap <C-w> :wq!<CR>
-inoremap <C-w> <Esc>:wq!<CR>
+nnoremap <C-w> :wq<CR>
+inoremap <C-w> <Esc>:wq<CR>
  " Save & Quit
 :map <C-n> :enew<CR>
 :map! <C-n> <Esc>:enew<CR>
@@ -46,26 +46,26 @@ inoremap <C-w> <Esc>:wq!<CR>
 :map! <C-t> <Esc>:tabnew<CR>
  " New Tab
 :map <C-o> :e.<CR>
-:map! <C-o> :e.<CR>
+:map! <C-o> <Esc>:e.<CR>
  " Open...
 ":map <C-w> :close<CR>
  " Close (Tab)
 nnoremap <C-s> :w<CR>
-inoremap <C-s> <Esc>:w<CR>
+inoremap <C-s> <Esc>:w<CR><Insert><Right>
 ":map <C-s> :w<CR>
 ":map! <C-s> <Esc>:w<CR>
  " Save
 :map <C-z> u
-:map! <C-z> <Esc>u<CR>
+:map! <C-z> <Esc>u<CR><Insert><Right>
  " Undo
 ":map <C-r> 
 ":map! <C-r> 
  " Redo
 :map <C-c> y
-:map! <C-c> <Esc>y<CR>
+:map! <C-c> <Esc>y<CR><Insert>
  " Copy
 :map <C-x> d
-:map! <C-x> <Esc>d<CR>
+:map! <C-x> <Esc>d<CR><Insert>
  " Cut
 :map <C-v> p
 :map! <C-v> <C-r>"
@@ -110,7 +110,6 @@ set tabstop=4 " Set tab stop length to 2 columns.
 
 set listchars=eol:␤,tab:␉\ ,trail:␠,nbsp:␢ " Display special characters.
 "set listchars=eol:⏎,tab:⇥\ ,trail:␣,nbsp:⍽
-"set listchars=tab:│─,trail:╎
 set list
 
 set laststatus=2 " Display the status line.
