@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# InstallUnRarX22.sh
-# Install UnRarX 2.2
-
 mkdir -p ${HOME}/Temporary # Write the current user's unofficial temporary folder.
 cd ${HOME}/Temporary # Set the current working directory to the current user's unofficial temporary folder.
 curl --remote-name --location --insecure https://web.archive.org/web/20060814154224/http://www.unrarx.com/files/UnRarX_2.2.zip # Download the UnRARX zip archive.
