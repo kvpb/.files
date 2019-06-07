@@ -1,5 +1,5 @@
 <p align='center'><b>Karl Bertin's</b></p>
-<h1 align='center'><code>.files</code> (<i>DOT-FILES</i>)</h1>
+<h1 align='center'><code>.files</code> (<b>DOTFILES</b>)</h1>
 <p align='center'><b>Runcoms, Configuration files, Setups, Scripts & Templates</b></p>
 
 - - -
@@ -7,7 +7,7 @@
 # `.macosx`, `.osx`, `.macos` & `.ios` ('_`.acos`_') ![platform](https://gistcdn.githack.com/kvpb/e55c254ded3bc5eac9bc4f29c78ec75c/raw/3ed1cca704de2cb968baa5fabaf3eec5921d3a01/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
 
 #### Where-is
-<details><summary><b><code>.files/</code></b></summary>
+<details><summary><code>.files/</code></summary>
 
 - [ ] `.macosx104`
 - [ ] `.macosx106`
@@ -27,49 +27,49 @@ Apple computers operating systems configuration scripts family.
 
 **NB:** Do not execute these scripts as root! To still run any of these scripts as root, replace `/Users/${USER}` with `${HOME}`.
 
-Launch a terminal emulator, eg _Terminal_ or _iTerm2_, then enter this:
+Launch a terminal emulator, eg [Terminal](https://web.archive.org/web/20190326164259/https://support.apple.com/guide/terminal/welcome/mac) or [MTerminal](https://web.archive.org/web/20141020160524/http://cydia.saurik.com/package/com.officialscheduler.mterminal/), then enter this:
 
-&nbsp;&nbsp;**_macOS 10.13 High Sierra_:**
+&nbsp;&nbsp;**macOS 10.13 High Sierra:**
 
 ```sh
 cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos1013)
 ```
 
-&nbsp;&nbsp;**_OS X 10.10.5 Yosemite_:**
+&nbsp;&nbsp;**OS X 10.10.5 Yosemite:**
 
 ```sh
 cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx10105 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
 ```
 
-&nbsp;&nbsp;**_OS X 10.9.5 Mavericks_:**
+&nbsp;&nbsp;**OS X 10.9.5 Mavericks:**
 
 ```sh
 cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx1095 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
 ```
 
-&nbsp;&nbsp;~~**_Mac OS X 10.6.8 Snow Leopard_:**~~
+&nbsp;&nbsp;~~**Mac OS X 10.6.8 Snow Leopard:**~~
 
 ```
 cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx1068 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
 ```
 
-&nbsp;&nbsp;~~**_Mac OS X 10.4.11 Tiger_:**~~
+&nbsp;&nbsp;~~**Mac OS X 10.4.11 Tiger:**~~
 
 ```
 cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx10411 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
 ```
 
-&nbsp;&nbsp;~~**_iOS_:**~~
+&nbsp;&nbsp;**iOS:**
 ```
-cd ${HOME} && /bin/sh <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.ios)
+cd ${HOME} && /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.ios)"
 ```
 
 - - -
 
-# `.vimrc` & `.vim/`
+# **VIM Initializations**<br>`.vimrc` & `.vim/`
 
 #### Where-is
-<details><summary><b><code>.files/</code></b></summary>
+<details><summary><code>.files/</code></summary>
 
 - [x] `.vim/`
 - [x] `.vimrc`
@@ -90,33 +90,34 @@ My VIM setup, featuring a true TextEdit-like key mapping, including a smart hack
 
 - - -
 
-# _Scripts_<br>`scpt/`
+# **Scripts**<br>`scpt/`
 
 #### Where-is
-<details><summary><b><code>.files/</code><code>lib/</code><code>scpt/</code></b></summary>
+<details><summary><code>.files/</code><code>lib/</code><code>scpt/</code></summary>
 
-- [x] `AddLoginItems.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `GetLoginItemsList.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `GetApplicationsPOSIXPaths.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `SetKeyboardBrightnessTo100percent.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
-- [x] `SetVolumeTo50percent.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
-- [x] `SetVolumeToMuted.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
-- [x] `GetVolumeMuteStatus.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-AppleScript-gray.svg)
-- [x] `InstallXcodeCommandLineTools.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-- [x] `InstallGitforMac.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `Installfswatch.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `AddLoginItems.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg) <!-- What's almost dumber than Apple's PLIST in binaries in SQLite3 DB? AaappllleScriiipt iiin BAAASH Scriiipt! -->
+- [x] `GetLoginItemsList.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
+- [x] `GetApplicationsPOSIXPaths.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
+- [x] `SetKeyboardBrightnessTo100percent.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
+- [x] `SetVolumeTo50percent.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
+- [x] `SetVolumeToMuted.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
+- [x] `GetVolumeMuteStatus.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
+- [x] `InstallXcodeCommandLineTools.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `InstallGit.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `Installfswatch.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `Installmas-cli.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [ ] ~~`InstallRAR.sh`~~
-  - [x] `InstallRAR550forMacOSX.sh` ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [ ] `InstallRAR.sh`
+  - [x] `InstallRAR550.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallHomebrew.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) <!--![firmware](https://img.shields.io/badge/firmware-Linux-black.svg)--> ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `InstallUnRARX.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
   - [x] `InstallUnRarX22.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallXLD.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `InstallJumpcut.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
 - [ ] `InstallSizeUp.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-- [ ] `InstallFlux.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] `InstallFlux.sh`
 - [ ] `InstallOnyX.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-- [x] `InstalliTunes1265.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [ ] `InstalliTunes.sh`
+	- [x] `InstalliTunes1265.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallAppZapper.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `InstallGPGSuite.sh`
 - [ ] `InstallPaparazzi.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
@@ -125,8 +126,8 @@ My VIM setup, featuring a true TextEdit-like key mapping, including a smart hack
 - [ ] `InstallSanFranciscoFontFamily.sh`
   - [x] `InstallSanFrancisco.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
   - [x] `InstallSanFranciscoCompact.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-  - [x] `InstallSFMono.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![firmware](https://img.shields.io/badge/-Linux-black.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [ ] `InstallVMwareFusion8` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+  - [x] `InstallSFMono.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![firmware](https://img.shields.io/badge/-Ubuntu-orange.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [ ] `InstallVMwareFusion8.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
 - [ ] ~~`InstallPhotoshop.sh`~~
   - [ ] `InstallPsCC.sh`
   - [ ] `InstallPsCS6.sh`
@@ -136,21 +137,21 @@ My VIM setup, featuring a true TextEdit-like key mapping, including a smart hack
 - [ ] ~~`InstallPhotoshopLightroom.sh`~~
   - [ ] `InstallLr7.sh`
   - [ ] `InstallLr6.sh`
-- [ ] `InstallOfficeforMac.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] `InstallOffice.sh`
   - [ ] `InstallOffice2016forMac.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.10%20Yosemite-white.svg)
   - [ ] `InstallOffice2011forMac.sh` ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X-white.svg)
 - [ ] `InstallSketch.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
   - [x] `InstallSketch344.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `InstalliTerm2.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-  - [x] `InstalliTerm2OS108Plus.sh` ![hardware](https://img.shields.io/badge/hardware-Mac-1AD5FD.svg) ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.8%20Mountain%20Lion-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `InstallHyperterm.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+  - [x] `InstalliTerm2OS108Plus.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.8%20Mountain%20Lion-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `InstallHyper.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
   - [ ] `InstallHyper.js` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-JavaScript-yellow.svg)
 - [ ] `InstallCathode.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
   - [ ] `InstallCathode203.sh`
   - [ ] `InstallCathode094.sh`
-- [ ] ~~`InstallPathFinder.sh`~~
-  - [ ] `InstallPathFinder7.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-  - [ ] `InstallPathFinder6.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+- [ ] `InstallPathFinder.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+  - [ ] `InstallPathFinder7.sh`
+  - [ ] `InstallPathFinder6.sh`
 - [ ] `InstallForkLift.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
   - [ ] `InstallForkLift3.sh`
   - [ ] `InstallForkLift2.sh`
@@ -163,8 +164,8 @@ My VIM setup, featuring a true TextEdit-like key mapping, including a smart hack
 - [x] `InstallSpotify.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `InstallWhatsApp.sh`
 - [ ] `InstallGoofy.sh`
-- [x] `RPwG.rb` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![firmware](https://img.shields.io/badge/-Linux-black.svg) ![language](https://img.shields.io/badge/language-Ruby-red.svg)
-- [x] `CharacterCount.rb` ![firmware](https://img.shields.io/badge/-Linux-black.svg) ![language](https://img.shields.io/badge/language-Ruby-red.svg)
+- [x] `RPwG.rb` ![language](https://img.shields.io/badge/language-Ruby-red.svg)
+- [x] `CharacterCount.rb` ![language](https://img.shields.io/badge/language-Ruby-red.svg)
 - [x] `NewTestFolders.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `DeleteDirectoryFromUserHome.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `DeleteCreativeCloudFilesFromUserHome.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
@@ -172,9 +173,9 @@ My VIM setup, featuring a true TextEdit-like key mapping, including a smart hack
 - [x] `ListMacAppStoreApplications.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `ListNonMacAppStoreApplications.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `SaveSHSH2Blobs.sh`
-- [x] `SaveLatestSHSH2Blobs.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `InstallGunGodzMac.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `InstallSuperCrateBoxOSX.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `SaveLatestSHSH2Blobs.sh` ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `InstallGunGodz.sh` ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `InstallSuperCrateBox.sh` ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 </details>
 
 #### What-is
@@ -197,35 +198,43 @@ A library of scripts I wrote.
 |  |  |-->
 
 #### Where-is
-<details><summary><b><code>.files/</code></b></summary>
+<details><summary><code>.files/</code></summary>
 
 - [x] `Text Substitutions.plist`
 </details>
 
 #### What-is
 
-_macOS_ text substitutions (list of abbreviations to automatically replace by words).
+macOS text substitutions (list of abbreviations to automatically replace by words).
 
-**NB:** This works with _macOS_ software that use it, eg _TextEdit_, but I does not with _Word for Mac 2011_.
+**NB:** This works with macOS software that use it, eg TextEdit, but I does not with Word for Mac 2011.
 
 #### How-to
 
 1. [Download `Text Substitutions.plist`.](https://rawcdn.githack.com/kvpb/.files/844adc9321a218f5b0089f6d1e2303ef272f271e/Text%20Substitutions.plist)  
-2. Launch _Finder_ then go to the current user's `Downloads` folder.  
-3. Launch _System Preferences_ then go to Keyboard and then Text.  
-4. Drag `Text Substitutions.plist` from the _Finder_ window and drop it to _System Preferences_ window's table-like list.
+2. Launch Finder then go to the current user's `Downloads` folder.  
+3. Launch System Preferences then go to Keyboard and then Text.  
+4. Drag `Text Substitutions.plist` from the Finder window and drop it to System Preferences window's table-like list.
 
 - - -
 
-# _Random Password Generator_<br>`RPwG.rb`
+# **Random Password Generator**<br>`RPwG.rb`
 
 <p align='center'><a href='https://github.com/kvpb/.files/blob/master/lib/scpt/RPwG.rb'><img src='https://gist.githack.com/kvpb/543e66fc06e322658f5877e9e2f77cda/raw/08ecb3022f7c7de3c1a16b05e59af04b92e19af5/RPwG.svg'></a></p>
 
 #### Where-is
-<details><summary><b><code>.files/</code><code>lib/</code><code>scpt/</code></b></summary>
+<details><summary><code>.files/</code><code>lib/</code><code>scpt/</code></summary>
 
 - [x] `RPwG.rb`
 </details>
+<!--<details><summary><code>.files/</code></summary>
+<details><summary open='open'>&nbsp;&nbsp;<code>lib/</code></summary>
+<details><summary open='open'>&nbsp;&nbsp;&nbsp;&nbsp;<code>scpt/</code></summary>
+
+- [x] `RPwG.rb`
+</details>
+</details>
+</details>-->
 
 #### What-is
 
@@ -233,24 +242,24 @@ A program, written in Ruby, which pseudorandomly generates passwords.
 
 #### How-to
 
-**_UNIX_ & _Linux_:**  
-&nbsp;&nbsp;0.&nbsp;&nbsp;[Download _Ruby_,](https://www.ruby-lang.org/en/downloads/) and install it.  
-&nbsp;&nbsp;1.&nbsp;&nbsp;[Download _RPwG_.](https://github.com/kvpb/RPwG/releases/tag/1.10)  
-&nbsp;&nbsp;2.&nbsp;&nbsp;Launch a terminal emulator, eg _Terminal_ or _GNOME Terminal_.  
+**UNIX & Linux:**  
+&nbsp;&nbsp;0.&nbsp;&nbsp;[Download Ruby,](https://www.ruby-lang.org/en/downloads/) and install it.  
+&nbsp;&nbsp;1.&nbsp;&nbsp;[Download RPwG.](https://github.com/kvpb/RPwG/releases/tag/1.10)  
+&nbsp;&nbsp;2.&nbsp;&nbsp;Launch a terminal emulator, eg [Terminal](https://web.archive.org/web/20190326164259/https://support.apple.com/guide/terminal/welcome/mac) or [GNOME Terminal](https://web.archive.org/web/20130207013917/http://help.gnome.org/users/gnome-terminal/stable/).  
 &nbsp;&nbsp;3.&nbsp;&nbsp;Type '`ruby `' (with a trailing space after 'ruby'), drag and drop the `RPwG.rb` file, and press Enter.  
 &nbsp;&nbsp;4.&nbsp;&nbsp;Follow the script's instructions on the terminal, then copy and paste the resulting password.
 
-~~**_MS-DOS_:**~~  
+~~**MS-DOS:**~~  
 &nbsp;&nbsp;Do yourself a favor: either get a Linux PC or a Mac.
 
 - - -
 
-# _Karl Bertin's Notetaking System_
+# **Karl Bertin's Notetaking System**
 
 <!--<p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://gist.githack.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/54cdac0b8ffad36d9ade790cfa53d138c6867412/karlbertinsscratchingsystemfrontcover.svg'></a>-->
 
 #### Where-is
-<details><summary><b><code>.files/</code></b></summary>
+<details><summary><code>.files/</code></summary>
 
 - [x] `flashcardsstructures.docx`
 - [x] `uenctcnyyyymmdd.docx`
