@@ -152,7 +152,10 @@ module.exports = {
     'hyper-alt-click',
     //'hyperterm-crosshair',
     'hyperterm-cursor',
-    'hyperterm-final-say'
+    //'hyperterm-final-say',
+	//'hypercwd',
+	//'hyper-search',
+	//'hyper-pane',
   ],
 
   // in development, you can create a directory under
