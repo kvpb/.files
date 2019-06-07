@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# InstallSuperCrateBoxOSX.sh
-# Install Super Crate Box Mac
-
 cd ${HOME}
 mkdir Temporary
 cd Temporary
