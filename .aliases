@@ -31,9 +31,9 @@ alias	~='cd ${HOME}' # Change the working directory to current user's home. (i) 
 
 alias	.f='cd ${HOME}/.files && git status --short && printf "\n" && echo ".gitnote:" && cat .gitnote && printf "\n"' # Change the working dir to my dot-files', show the working tree status, then concatenate and print .gitnote.
 
-alias	ms='cd ${HOME}/misc' # Change the working directory to the one of my miscellaneous files.
+alias	ms='cd ${HOME}/Miscellaneous' # Change the working directory to the one of my miscellaneous files.
 
-alias	wk='cd ${HOME}/wip' # Change the working directory to the one of my work in progress.
+alias	wk='cd ${HOME}/Work' # Change the working directory to the one of my work in progress.
 
 alias	e16s='cd /Volumes/KBS16GBFD'
 alias	e64s='cd /Volumes/KBS64GBFD'
@@ -116,6 +116,7 @@ alias	rb='ruby '
 #	python			an interpreted, interactive, object-oriented programming language
 
 alias	py='python '
+alias	py3='python3 '
 
 #	osascript		execute OSA scripts (AppleScript, JavaScript, etc)
 
