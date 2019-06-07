@@ -1,3 +1,7 @@
-59 23 * * 7 find ~/Library/{Caches,Saved\ Application\ State}/* -mindepth 0 -exec rm -rf {} \;
-0 0 * * MON /bin/bash ${HOME}/.files/lib/scpt/RemoveCreativeCloudFilesFromUsersHome.sh
-0 0 * * 1 brew update && brew upgrade; gem update && gem cleanup
+59 23          *  * 06,00 find ~/Library/{Caches,Saved\ Application\ State}/* -mindepth 0 -exec rm -rf {} \; 1>/tmp/stdout.log 2>&1
+00 00          *  * 06,00 sh ${HOME}/.files/lib/scpt/RemoveCreativeCloudFilesFromUsersHome.sh
+00 00          *  * 01    brew update && brew upgrade && brew cleanup 1>/tmp/stdout.log 2>&1; gem update && gem cleanup 1>>/tmp/stdout.log 2>&1
+00 8,12,16,23  *  *  *    /usr/local/bin/python3 /Users/kvpb/bin/autotss/autotss.py 1>/tmp/stdout.log 2>&1
+@reboot                   /usr/local/bin/python3 /Users/kvpb/bin/autotss/autotss.py 1>/tmp/stdout.log 2>&1
+00,* 00,* 01,* 01,* 00,* cd /Users/kvpb/bin/autotss && /usr/local/bin/python3 /Users/kvpb/bin/autotss/autotss.py 1>/tmp/stdout.log 2>&1 && echo $(date +\%H:\%M:\%S && printf 'debug') >> /tmp/stdout.log
+00,* 00,* 01,* 01,* 00,* wd=$(pwd) && cd /Users/kvpb/bin/autotss && python3 autotss.py && cd ${wd} 1>/tmp/stdout.log 2>&1 && echo $(date +\%H:\%M:\%S && printf 'debug') >> /tmp/stdout.log
