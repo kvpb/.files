@@ -118,6 +118,14 @@ ru ()
 } # ru, run, randomusername
 # ru	output random usernames
 
+sql ()
+{
+	local pathname=${1}
+
+	sqlite3 "${pathname}" -cmd ".dump" ""
+} # sql, sqld, sqlite3-dump
+# sqlite3-dump	dump the database in an SQL text format
+
 # Mac Shell Functions
 
 MakeFinderAlias ()
