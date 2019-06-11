@@ -10,6 +10,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 mkdir -p ${HOME}/.Trash/DropboxUninstallation
 
 killall Dropbox
+# Quit Dropbox.
 
 mv ${HOME}/.dropbox/ ${HOME}/.dropbox.old
 #kill Dropbox
@@ -43,15 +44,18 @@ mv ${HOME}/Library/Caches/com.dropbox.DropboxMacUpdate ${HOME}/.Trash/
 mv ${HOME}/Library/Caches/com.plausiblelabs.crashreporter.data/com.dropbox.DropboxMacUpdate ${HOME}/.Trash/DropboxUninstallation/
 # Move  to the trash.
 
+sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "DELETE FROM access WHERE client='com.getdropbox.dropbox';"
+# Delete Dropbox from the Accessibility list.
+
 printf 'Delete the uninstallation files, yes ("y") or no ("n")?\n'
 read -r boolean
-if [[ ${boolean} =~ ^([yY]|[yY][eE][sS])$ ]];
+if [[ ${boolean} =~ ^([yY]|[yY][eE][sS])$ ]]
 then
 	wd=$(pwd)
 	cd ${HOME}/.Trash
 	rm -rf DropboxUninstallation
 	cd ${wd}
-elif [[ ${boolean} =~ ^([nN]|[nN][oO])$ ]];
+elif [[ ${boolean} =~ ^([nN]|[nN][oO])$ ]]
 then
 	:
 else
