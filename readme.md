@@ -1,6 +1,6 @@
 <p align='center'><b>Karl Bertin's</b></p>
 <h1 align='center'><code>.files</code> (<b>DOTFILES</b>)</h1>
-<p align='center'><b>Runcoms, Configuration files, Setups, Scripts & Templates</b></p>
+<p align='center'><b>Runcoms, Configuration Files, Setups, Scripts, Templates & Hacks</b></p>
 
 - - -
 
@@ -159,6 +159,7 @@ My VIM setup, featuring a true TextEdit-like key mapping, including a smart hack
 - [x] `InstallSoulver.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallChrome.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallDropbox.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] `PatchDropboxHackedOSXAccessibility.sh` ![hardware](https://img.shields.io/badge/hardware-Mac-1AD5FD.svg) ![firmware](https://img.shields.io/badge/firmware-OS%20X-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `UninstallDropbox.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg)
 - [x] `Installdbxcli.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallSpotify.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
