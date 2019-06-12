@@ -20,18 +20,17 @@ lityellow='\033[0;93m'
 hilityellow='\033[0;30;93m'
 key='\033[0;30m'
 hikey='\033[0;97;40m'
-#osxyosemitephotoansinearestmeancolor='' # (i) OS X 10.10 Yosemite icon photo mean color, uncropped, filling the square: rgb(, , ), # or hsl(, %, %); nearest HTML color: ; nearest ANSI color: .
 # Set graphics mode. (i) ANSI escape sequences format: `\033[${textattribute};${foregroundcolor};${backgroundcolor}m` (or `esc[${value};...;${value}m`).
+clearedstyleandformatting=`tput sgr0` #${capname} = 'sgr0' # Turn off _all_ attribute modes.
 
-reset=`tput sgr0` # Reset the style.
-
-# 1=message
-# 2=color
-cecho()
+function cecho ()
 {
-	echo "${2}${1}${reset}"
+	local string="${1}"
+	local color="${2}"
+
+	echo "${color}${style}${clearedstyleandformatting}"
 	return
-} # Color echo (João Cunha `joaocunha`) improved (Brandon Brown `brandonb927`)
+} # Color echo (João Cunha `joaocunha`) improved (Brandon Brown `brandonb927`) custom (by Karl Bertin `kvpb`)
 
 echo  ''
 cecho '                   O   SS X X Y Y  O   SS EEE MMM  I  TTT EEE'                   $litred
@@ -39,10 +38,10 @@ cecho '                  O O  S   X   Y  O O  S  EE  MMM  I   T  EE'            
 cecho '               .   O  SS  X X  Y   O  SS  EEE M M  I   T  EEE'                   $litred
 echo  ''
 cecho '                                 LICENSED BY'                                    $litred
-cecho '                                  $LICENSOR'                                     $litred
+cecho '                                 ${LICENSOR}'                                    $litred
 echo  ''
 cecho "                            K K  V V  PPP  BB   '   SS"                          $litred
-cecho "                           KK   V V  PPP  BBB  '   S"                            $litred
+cecho '                           KK   V V  PPP  BBB      S'                            $litred
 cecho '                          K K   V   P    BBB     SS'                             $litred
 echo  ''
 cecho '                 WARNING: USE THIS SCRIPT AT YOUR OWN RISK.'                     $litred
@@ -68,10 +67,10 @@ cecho 'First-Party Settings: Systemwide & User-specific Preferences' $yellow
 
 echo 'Unnamed'
 
-sudo defaults write /var/db/SystemPolicy-prefs.plist enabled -string no
+sudo defaults write /var/db/SystemPolicy-prefs.plist enabled -string NO
 sudo spctl --master-disable
 # Set allowed downloaded apps source to anywhere, and disable GateKeeper.
-defaults write /Library/Preferences/com.apple.security GKAutoRearm -bool FALSE # Disable GateKeeper autorearm.
+defaults write /Library/Preferences/com.apple.security GKAutoRearm -bool FALSE # Disable GateKeeper Autorearm.
 
 chsh -s /bin/bash # Set BASH as the default login shell.
 
@@ -360,7 +359,7 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic" # Display 
 
 defaults write com.apple.universalaccess reduceTransparency -bool FALSE # Set menu bar translucent.
 
-defaults write NSGlobalDomain AppleHighlightColor -string "1.000000 0.749020 0.823529" # Set highlight color to pink. (i) This highlight color has been introduced in OS X 10.10 Yosemite.
+defaults write NSGlobalDomain AppleHighlightColor -string '1.000000 0.937255 0.690196' # (i) Set Highlight color to OS X 10.10 Yosemite's yellow.
 
 sudo nvram SystemAudioVolume=" " # Disable the startup sound. (i) Enter `sudo nvram -d SystemAudioVolume` to reenable the startup sound.
 
@@ -420,12 +419,12 @@ sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set v
 
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv" # Set the default view to the columns one. (i) Other viewing modes are 'icnv' for icons, 'Nlsv' for newlines and 'Flwv' for Cover flow.
 
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ${HOME}/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ${HOME}/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ${HOME}/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo TRUE" ${HOME}/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo TRUE" ${HOME}/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo TRUE" ${HOME}/Library/Preferences/com.apple.finder.plist
 # Show item info near icons on the desktop and in other icon views.
 
-/usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ${HOME}/Library/Preferences/com.apple.finder.plist # Display desktop items infos to their icons' right.
+/usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom FALSE" ${HOME}/Library/Preferences/com.apple.finder.plist # Display desktop items infos to their icons' right.
 
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool TRUE # Display internal drives on the desktop. (i) Enable Hard disks.
 
@@ -537,6 +536,7 @@ defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-ty
 defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Calendar.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Calendar app item.
 defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Contacts.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Contacts app item.
 defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/ProtonMail Bridge.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a ProtonMail Bridge app item.
 defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Mail app item.
 defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/WhatsApp.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a WhatsApp app item.
 defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Goofy.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Goofy app item.
@@ -845,42 +845,45 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 
 cecho 'Second-Party Settings: User-specific Filesystem Customs' $yellow
 
-cd ${HOME} && git clone https://github.com/kvpb/.files.git
-# Change working directory to ${HOME}/ and clone my .files/ from GitHub.
+#git clone git:github.com/kvpb/.files.git ${HOME}/.files
+# Clone my .files/ from my GitHub remote repo to ${HOME}/.
 
-if [ -d "${HOME}/{misc,wip}" ];
+if [ -d "${HOME}/{Miscellaneous,Work}" ]
 then
-	if [ -L "${HOME}/{misc,wip}" ];
+	if [ -L "${HOME}/{Miscellaneous,Work}" ]
 	then
-		mv ${HOME}/{misc,wip} ${HOME}/.Trash/
-		mkdir ${HOME}/{misc,wip}
+		mv ${HOME}/{Miscellaneous,Work} ${HOME}/.Trash/
+		open -R ${HOME}/.Trash
+		mkdir ${HOME}/{Miscellaneous,Work}
 	fi
 else
-	mkdir ${HOME}/{misc,wip}
+	mkdir -p ${HOME}/{Miscellaneous,Work}
 fi
-# If misc and wip are not directories in ${HOME}/ then substitute symbolic links by or create these directories.
-if [ -d "${HOME}/Downloads/{doc,pic,mus,mov,misc}" ];
+# If Miscellaneous and Work aren't directories in ${HOME}/ then substitute symbolic links by or add these directories.
+if [ -d "${HOME}/Downloads/{Documents,Pictures,Music,Movies,Miscellaneous}" ]
 then
-	if [ -L "${HOME}/Downloads/{doc,pic,mus,mov,misc}" ];
+	if [ -L "${HOME}/Downloads/{Documents,Pictures,Music,Movies,Miscellaneous}" ]
 	then
-		mv ${HOME}/Downloads/{doc,pic,mus,mov,misc} ${HOME}/.Trash/
-		mkdir ${HOME}/Downloads/{doc,pic,mus,mov,misc}
+		mv ${HOME}/Downloads/{Documents,Pictures,Music,Movies,Miscellaneous} ${HOME}/.Trash/
+		open -R ${HOME}/.Trash
+		mkdir ${HOME}/Downloads/{Documents,Pictures,Music,Movies,Miscellaneous}
 	fi
 else
-	mkdir ${HOME}/Downloads/{doc,pic,mus,mov,misc}
+	mkdir -p ${HOME}/Downloads/{Documents,Pictures,Music,Movies,Miscellaneous}
 fi
-# If doc, pic, mus, mov and misc are not directories in ${HOME}/Downloads/ then substitute symbolic links by or create these directories.
-if [ -d "${HOME}/{DCIM,FCIM,Camera}" ];
+# If Documents, Pictures, Music, Movies and Miscellaneous aren't directories in ${HOME}/Downloads/ then substitute symbolic links by or add these directories.
+if [ -d "${HOME}/{DCIM,FCIM,Camera}" ]
 then
-	if [ -L "${HOME}/{DCIM,FCIM,Camera}" ];
+	if [ -L "${HOME}/{DCIM,FCIM,Camera}" ]
 	then
 		mv ${HOME}/{DCIM,FCIM,Camera} ${HOME}/.Trash/
+		open -R ${HOME}/.Trash
 		mkdir ${HOME}/{DCIM,FCIM,Camera}
 	fi
 else
-	mkdir ${HOME}/{DCIM,FCIM,Camera}
+	mkdir -p ${HOME}/{DCIM,FCIM,Camera}
 fi
-# If DCIM, FCIM and Camera are not directories in ${HOME}/ then substitute symbolic links by or create these directories.
+# If DCIM and Camera aren't directories in ${HOME}/ then substitute symbolic links by or add these directories.
 
 ln -s ${HOME}/.files/.inputrc ${HOME}/.inputrc
 #ln -s ${HOME}/.files/.shrc ${HOME}/.shrc
@@ -901,12 +904,13 @@ ln -s ${HOME}/.files/.vimrc ${HOME}/.vimrc
 ln -s ${HOME}/.files/.vim ${HOME}/.vim
 ln -s ${HOME}/.files/.gitconfig ${HOME}/.gitconfig
 ln -s ${HOME}/.files/.gitignore_global ${HOME}/.gitignore_global
-ln -s ${HOME}/.files/lib/AppleScripts ${HOME}/Library/Scripts
-ln -s ${HOME}/Downloads/misc ${HOME}/misc/dls
-ln -s ${HOME}/Downloads/doc ${HOME}/Documents/dls
-ln -s ${HOME}/Downloads/pic ${HOME}/Pictures/dls
-ln -s ${HOME}/Downloads/mov ${HOME}/Movies/dls
-ln -s ${HOME}/Downloads/mus ${HOME}/Music/dls
+sudo rmdir ${HOME}/Library/Scripts && ln -s ${HOME}/.files/Library/Scripts ${HOME}/Library/Scripts && chmod -h 700 ${HOME}/Library/Scripts
+#sudo rmdir ${HOME}/Library/Services && ln -s ${HOME}/.files/Library/Services ${HOME}/Library/Services && chmod -h 700 ${HOME}/Library/Services
+ln -s ${HOME}/Downloads/Miscellaneous ${HOME}/Miscellaneous/Downloads
+ln -s ${HOME}/Downloads/Documents ${HOME}/Documents/Downloads
+ln -s ${HOME}/Downloads/Pictures ${HOME}/Pictures/Downloads
+ln -s ${HOME}/Downloads/Movies ${HOME}/Movies/Downloads
+ln -s ${HOME}/Downloads/Music ${HOME}/Music/Downloads
 ln -s ${HOME}/DCIM ${HOME}/Pictures/DCIM
 ln -s ${HOME}/FCIM ${HOME}/Pictures/FCIM
 ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
@@ -917,7 +921,7 @@ ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
 #chflags nohidden ${HOME}/Library # Display the hidden ${HOME}/Library/. (i) This script also enables hidden files display, which overrides this.
 
 #dscl . delete /Users/kvpb Picture
-#sudo dscl . create /Users/kvpb Picture "/Users/kvpb/Pictures/usrpic/Kabe.tif"
+#sudo dscl . create /Users/kvpb Picture "/Users/${HOME}/Pictures/UserPictures/Kabe.tif"
 # Set kvpb's user picture. https://support.apple.com/kb/PH25797
 
 cecho 'Third-Party: System-wide & User-specific Xenogenetic Software & Preferences' $yellow
@@ -942,7 +946,7 @@ ln -s ${HOME}/.files/.hyper.js ${HOME}/.hyper.js # Configure Hyper.
 
 echo 'Jumpcut (net.sf.Jumpcut)'
 
-defaults write net.sf.Jumpcut SUCheckAtStartup -bool TRUE # Check for updated on launch.
+defaults write net.sf.Jumpcut SUCheckAtStartup -bool TRUE # Check for update on launch.
 
 defaults write net.sf.Jumpcut "ShortcutRecorder mainHotkey" -array '{keyCode = 9;modifierFlags = 786432;}' # Set Control-Option-V (⌃⌥V) as main hotkey.
 
@@ -964,7 +968,7 @@ defaults write net.sf.Jumpcut savePreference -int 2 # Save after each clip.
 
 defaults write net.sf.Jumpcut stickyBezel -bool FALSE # No sticky bezel. ('The bezel must be manually dismissed using the "escape" of "return" keys.')
 
-defaults write net.sf.Jumpcut wraparoundBezel -bool TRUE # Wraparoud bezel. ('In the bezel, moving down from the last item takes you to the top and moving up from the first item takes you to the bottom.')
+defaults write net.sf.Jumpcut wraparoundBezel -bool TRUE # Wraparound bezel. ('In the bezel, moving down from the last item takes you to the top and moving up from the first item takes you to the bottom.')
 
 echo 'SizeUp (com.irradiatedsoftware.SizeUp)'
 
@@ -1030,15 +1034,20 @@ defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.print -
 defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.slideshow -boolean TRUE
 defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.wpg -boolean TRUE
 
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" "Disk Utility" "Dock" "Finder" "iCal" "Mail" "Messages" "Safari" "System Preferences" "SystemUIServer" "TextEdit" "Xcode"; do killall "${app}" > /dev/null 2>&1; done # Kill all affected applications except Terminal or iTerm.
+for i in 'Activity Monitor' 'Address Book' 'Calendar' 'Contacts' 'cfprefsd' 'Disk Utility' 'Dock' 'Finder' 'iCal' 'Mail' 'Messages' 'Safari' 'System Preferences' 'SystemUIServer' 'TextEdit' 'Xcode'
+do
+	killall "${i}" > /dev/null 2>&1
+done
+# Kill all affected applications except terminal emulators.
 
 echo ''
-cecho 'Some changes require a reboot to take effect. Reboot?' $litgreen
-cecho "Answers: 'y', 'yes', 'yeah', 'n', 'no', 'reboot', 'ok' or 'okay'" $litgreen
-read -r answer
-if [[ $answer =~ ^([yY]|[yY][eE][sS]|[yY][eE][aA][hH]|[rR][eE][bB][oO][oO][tT]|[oO][kK]|[oO][kK][aA][yY])$ ]]; then
-	osascript -e 'tell app "System Events" to restart' # Restart without showing a confirmation dialog.
+cecho 'OS X 10.10 Yosemite has been configured.' $lityellow
+
+cecho 'A restart is required for some of these changes to take effect. Restart...?, \e[4my\e[0mes or \e[4mn\e[0mo?' $litgreen
+read -r input
+if [[ ${input} =~ ^([Yy]|[Yy][Ee][Ss]|[Yy][Ee][Aa][Hh])$ ]]
+then
+	osascript -e 'tell app "System Events" to restart' # restart without showing a confirmation dialog
 else
-	echo 'OS X 10.10 Yosemite has been configured.'
 	exit
 fi
