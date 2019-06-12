@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-local kernel=$(uname -s)
-if [ "${kernel}" = 'Darwin' ]; then local firmwareversion=$(defaults read loginwindow SystemVersionStampAsString | cut -d. -f2- | cut -f1,1 -d'.'); fi
-local wd=$(pwd)
-local n=$[RANDOM%9999+1]
+kernel=$(uname -s)
+[ "${kernel}" = 'Darwin' ] && firmwareversion=$(defaults read loginwindow SystemVersionStampAsString | cut -d. -f2- | cut -f1,1 -d'.')
+wd=$(pwd)
+n=$[RANDOM%9999+1]
 
 if [ "${kernel}" = 'Darwin' -a ${firmwareversion} -ge 12 ]
 then
