@@ -2,12 +2,12 @@
 
 # function() # 'Download artifacts from a latest GitHub release with bash and PowerShell' by Mark Vincze on july 9, 2016 (https://web.archive.org/web/20180131223312/https://blog.markvincze.com/download-artifacts-from-a-latest-github-release-in-sh-and-powershell/), custom by Karl Bertin on 2018.1.31, 22:30:00
 #{
-	local latestrelease=$(curl -L -s -H 'Accept: application/json' https://github.com/emcrisostomo/fswatch/releases/latest)
+	latestrelease=$(curl -L -s -H 'Accept: application/json' https://github.com/emcrisostomo/fswatch/releases/latest)
 
 	# The releases are returned in the format {"id":3622206,"tag_name":"hello-1.0.0.11",...}, we have to extract the tag_name.
-	local latestversion=$(echo $latestrelease | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+	latestversion=$(echo $latestrelease | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
 
-	local GitHubtagname=$(echo ${latestrelease} | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/') # sed two addresses and regular expression explanation, cf http://www.rexegg.com/regex-quickstart.html:
+	GitHubtagname=$(echo ${latestrelease} | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/') # sed two addresses and regular expression explanation, cf http://www.rexegg.com/regex-quickstart.html:
 #            `s` : 'Substitute', cf 
 #            `/` : A delimiter, cf 
 #            `.` : 'Any character except line break'.
@@ -26,7 +26,7 @@
 #            `/` : A delimiter, cf
 # [2018.02.01, 00:03:57: Boy, it took me an hour to write this variable from scratch without ever spotting that it is exactly the same as Vincze's.
 
-	local latestreleaseURL="https://github.com/emcrisostomo/fswatch/releases/download/${latestversion}/fswatch-${GitHubtagname}.tar.gz"
+	latestreleaseURL="https://github.com/emcrisostomo/fswatch/releases/download/${latestversion}/fswatch-${GitHubtagname}.tar.gz"
 #}
 
 mkdir -p ${HOME}/Temporary
