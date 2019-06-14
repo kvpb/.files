@@ -1,0 +1,4 @@
+{
+	"~*" = (insertText:, "×");
+	"~t" = (insertText:, "×");
+}
