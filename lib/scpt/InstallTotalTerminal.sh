@@ -8,12 +8,12 @@ filenameextension='pkg';
 [ ${firmwareversion} -eq 7 ] && softwarelatestversion='1.4.11';
 [ ${firmwareversion} -eq 8 ] && softwarelatestversion='1.5.4';
 [ ${firmwareversion} -ge 9 -a ${firmwareversion} -le 12 ] && softwarelatestversion='1.6';
-n=$[RANDOM%99+1] && while [ -e /Users/${USER}/Temporary/Folder${n} ]; do n=$[RANDOM%99+1]; done # so there's no risk that the temporary directory exists and has contents, thus it spares from theneed to check this.
+n=$[RANDOM%99+1] && while [ -e /Users/${USER}/Temporary/Folder${n} ]; do n=$[RANDOM%99+1]; done; # so there's no risk that the temporary directory exists and has contents, thus it spares from theneed to check this.
 workingdirectory=$(pwd);
 
 if [ "${SIPstatus}" = ' enabled' ]
 then
-	'Error: System Integrity Protection enabled.\nOn OS X 10.11 El Capitan and later, TotalTerminal needs a system tweak. To disable the SIP for TotalTerminal, restart to the Recovery OS partition by pressing Power then holding Command-R, launch Terminal, and enter `csrutil enable --without debug`. See https://totalterminal.binaryage.com/#sip for more information.\n'
+	'Error: System Integrity Protection enabled.\nOn OS X 10.11 El Capitan and later, TotalTerminal needs a system tweak. To partially disable the SIP for TotalTerminal, restart to the Recovery OS partition by pressing Power then holding Command-R, launch Terminal, enter `csrutil enable --without debug`, and restart again. See https://totalterminal.binaryage.com/#sip for more information.\n'
 	exit 1
 fi
 sudo -v
