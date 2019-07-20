@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+printf '\n'
+printf '                         '; printf '\033[48:2:255:165:0m\033[48;2;255;255;255;0#m%s\033[m\n' '     | / | ) | / | | `|` | / '
+printf '                         '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '     |/  |<  |/  |\|  |  |/  '
+printf '                         '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '  .  |   |_) |   | |  |  |   '
+printf '\n'
+printf '                                 LICENSED BY\n'
+printf '                                 ${LICENSOR}\n'
+printf '\n'
+printf "                            K K  V V  PPP  BB   '   SS\n"
+printf '                           KK   V V  PPP  BBB      S\n'
+printf '                          K K   V   P    BBB     SS\n'
+printf '\n'
+printf '                 WARNING: USE THIS SCRIPT AT YOUR OWN RISK.\n'
+printf '\n'
+printf '\033[48;2;255;165;255;0#m%s\033[m\n' " ALL THE COMPUTER PROGRAMS  AND SOFTWARE ARE PROVIDED 'AS IS'  WITHOUT WARRANTY"
+printf ' OF ANY KIND.  WE MAKE NO WARRANTIES,  EXPRESS  OR IMPLIED,  THAT THEY ARE FREE\n'
+printf ' OF ERROR,  OR ARE CONSISTENT  WITH ANY PARTICULAR STANDARD OF MERCHANTABILITY,\n'
+printf ' OR THAT THEY WILL MEET YOUR REQUIREMENTS FOR ANY PARTICULAR APPLICATION.  THEY\n'
+printf ' SHOULD NOT BE  RELIED ON FOR SOLVING A PROBLEM  WHOSE INCORRECT SOLUTION COULD\n'
+printf ' RESULT  IN  INJURY  TO  A  PERSON  OR  LOSS  OF  PROPERTY.  IF YOU DO USE THEM\n'
+printf ' IN SUCH A MANNER,  IT IS AT YOUR OWN RISK.  THE AUTHOR  AND PUBLISHER DISCLAIM\n'
+printf ' ALL LIABILITY FOR  DIRECT,  INDIRECT,  OR CONSEQUENTIAL DAMAGES RESULTING FROM\n'
+printf ' YOUR USE OF THE PROGRAMS.\n'
+printf '\n'
+# Display the title screen with disclaimer.
+
+
+
+gsettings set org.gnome.shell favorite-apps "[
+	'org.gnome.Terminal.desktop',
+	'org.gnome.Nautilus.desktop',
+	'firefox.desktop',
+	'ProtonMail_Bridge.desktop',
+	'org.gnome.Geary.desktop',
+	'libreoffice-writer.desktop',
+	'gimp.desktop',
+	'inkscape.desktop',
+	'transmission-gtk.desktop',
+	'vlc.desktop'
+]" # 
+
+gsettings set org.gnome.desktop.background picture-uri 'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png' # 
