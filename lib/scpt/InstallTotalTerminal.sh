@@ -13,7 +13,7 @@ workingdirectory=$(pwd);
 
 if [ "${SIPstatus}" = ' enabled' ]
 then
-	'Error: System Integrity Protection enabled.\nOn OS X 10.11 El Capitan and later, TotalTerminal needs a system tweak. To partially disable the SIP for TotalTerminal, restart to the Recovery OS partition by pressing Power then holding Command-R, launch Terminal, enter `csrutil enable --without debug`, and restart again. See https://totalterminal.binaryage.com/#sip for more information.\n'
+	printf 'Error: System Integrity Protection enabled.\nOn OS X 10.11 El Capitan and later, TotalTerminal needs a system tweak. To partially disable the SIP for TotalTerminal, restart to the Recovery OS partition by pressing Power then holding Command-R, launch Terminal, enter `csrutil enable --without debug`, and restart again. See https://totalterminal.binaryage.com/#sip for more information.\n'
 	exit 1
 fi
 sudo -v

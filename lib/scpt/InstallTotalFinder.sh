@@ -15,11 +15,11 @@ workingdirectory=$(pwd);
 
 if [ ${firmwareversion} -ge 11 -a ${firmwareversion} -le 13 -a "${SIPstatus}" = ' enabled' ]
 then
-	'Error: System Integrity Protection enabled.\nOn OS X 10.11 El Capitan and later, TotalFinder needs a system tweak. To partially disable the SIP for TotalFinder, restart to the Recovery OS partition by pressing Power then holding Command-R, launch Terminal there, enter `csrutil disable --without debug`, and restart again. See https://totalfinder.binaryage.com/sip for more information.\n'
+	printf 'Error: System Integrity Protection enabled.\nOn OS X 10.11 El Capitan and later, TotalFinder needs a system tweak. To partially disable the SIP for TotalFinder, restart to the Recovery OS partition by pressing Power then holding Command-R, launch Terminal there, enter `csrutil disable --without debug`, and restart again. See https://totalfinder.binaryage.com/sip for more information.\n'
 	exit 1
 elif [ ${firmwareversion} -ge 14 -a "${SIPstatus}" = ' enabled' ]
 then
-	'Error: System Integrity Protection enabled.\nOn OS X 10.11 El Capitan and later, TotalFinder needs a system tweak. To disable the SIP, restart to the Recovery OS partition by pressing Power then holding Command-R, launch Terminal there, enter `csrutil disable`, and restart again. See https://totalfinder.binaryage.com/sip for more information.\n'
+	printf 'Error: System Integrity Protection enabled.\nOn OS X 10.11 El Capitan and later, TotalFinder needs a system tweak. To disable the SIP, restart to the Recovery OS partition by pressing Power then holding Command-R, launch Terminal there, enter `csrutil disable`, and restart again. See https://totalfinder.binaryage.com/sip for more information.\n'
 	exit 1
 fi
 sudo -v
