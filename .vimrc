@@ -112,8 +112,8 @@ set listchars=eol:␤,tab:␉\ ,trail:␠,nbsp:␢ " Display special characters.
 "set listchars=eol:⏎,tab:⇥\ ,trail:␣,nbsp:⍽
 set list
 
+set statusline=%f\ %{strftime(\"%Y.%m.%d@%H:%M:%S\",getftime(expand(\"%:p\")))}\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P " Set the status line format to the defaults with a last modified timestamp.
 set laststatus=2 " Display the status line.
-"set statusline= " Set the status line format.
 
 set ruler " Display current line-column numbers.
 set number " Display line numbers.
