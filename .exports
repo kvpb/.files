@@ -1,40 +1,24 @@
 #!/usr/bin/env bash
 
+# System Environment Variables (eg EDITOR, HOME, LOGNAME, MAIL, MANPATH, PAGER, PATH, SHELL, USER, VISUAL)
+
+export	PATH=/usr/local/opt/ruby/bin:${PATH}
+
 export	LANG=en_US.UTF-8
 export	LC_ALL=en_US.UTF-8
 
-#export	LIBRARY=${HOME}/lib #        export        LIBRARY=${HOME}/library
-#export	DOTFILES=${HOME}/.fl #       export       DOTFILES=${HOME}/.files
-#export BINARIES=${HOME}/bin #       export       BINARIES=${HOME}/binary
-#export	DESKTOP=${HOME}/dsk #        export        DESKTOP=${HOME}/desktop
-#export	WORKINPROGRESS=${HOME}/wip # export WORKINPROGRESS=${HOME}/work
-#export	DOCUMENTS=${HOME}/dox #      export      DOCUMENTS=${HOME}/documents
-#export	IMAGE=${HOME}/img #          export          IMAGE=${HOME}/image     # export PHOTO=${HOME}/pht
-#export	AUDIO=${HOME}/aud #          export          AUDIO=${HOME}/audio     # export MUSIC=${HOME}/mus
-#export	VIDEO=${HOME}/vdo #          export          VIDEO=${HOME}/video
-#export	MISCELLANEOUS=${HOME}/msc #  export  MISCELLANEOUS=${HOME}/misc
-#export	DOWNLOADS=${HOME}/dls #      export      DOWNLOADS=${HOME}/downloads
-#export	TRASH=${HOME}/tsh #          export          TRASH=${HOME}/trash
-#export	TEMPORARY=${HOME}/tmp #      export      TEMPORARY=${HOME}/temp
-
-export	DOTFILES=${HOME}/.files
-export	APPLICATIONS=/Applications
-export	LIBRARY=${HOME}/Library
-export	DESKTOP=${HOME}/Desktop
-export	DOCUMENTS=${HOME}/Documents
-export	DOWNLOADS=${HOME}/Downloads
-export	DROPBOX=${HOME}/Dropbox
-export	MISCELLANEOUS=${HOME}/Miscellaneous
-export	MOVIES=${HOME}/Movies
-export	MUSIC=${HOME}/Music
-export	PICTURES=${HOME}/Pictures
-export	PUBLIC=${HOME}/Public
-export	TEMPORARY=${HOME}/Temporary
-export	TRASH=${HOME}/.Trash
-export	WORK=${HOME}/Work
-
 export	VISUAL=vim
 export	EDITOR=${VISUAL}
+
+export	CLICOLOR=1
+if ls --color > /dev/null 2>&1 # If this silenced command evaluates to true,
+then # then the implemented LS is GNU LS,
+	: #export	LS_COLORS='' # so set LS' colors,
+else # else the implemented LS is BSD LS, so
+	export	LSCOLORS=egfxcxdxbxegedabagacad # 'Finder Color Scheme' for LS; default value: exfxcxdxbxegedabagacad
+fi # Set LS' colors.
+
+# Shell Environment Variables (eg MAILCHECK, PS1, PS2)
 
 #shopt -s histappend # (i) should be run here first; is already ran in .bashrc.
 export	HISTSIZE=32767
@@ -45,5 +29,33 @@ export	HISTIGNORE=ls:pwd:cd:history
 export	HISTTIMEFORMAT="$(printf '\r\e[K')$(tput setaf 0)$(tput setab 7)%F %T$(tput sgr0)  "
 export	PROMPT_COMMAND='history -a; history -n'
 
-export	CLICOLOR=1
-export	LSCOLORS=egfxcxdxbxegedabagacad # 'Finder Color Scheme' for ls; default value: exfxcxdxbxegedabagacad
+# User Environment Variables (eg PATH)
+
+#export	LIBRARY=${HOME}/lib        #export        LIBRARY=${HOME}/library
+#export	DOTFILES=${HOME}/.fl       #export       DOTFILES=${HOME}/.files
+#export	BINARIES=${HOME}/bin       #export       BINARIES=${HOME}/binary
+#export	DESKTOP=${HOME}/dsk        #export        DESKTOP=${HOME}/desktop
+#export	WORKINPROGRESS=${HOME}/wip #export WORKINPROGRESS=${HOME}/work
+#export	DOCUMENTS=${HOME}/dox      #export      DOCUMENTS=${HOME}/documents
+#export	IMAGE=${HOME}/img          #export          IMAGE=${HOME}/image     #export PHOTO=${HOME}/pht
+#export	AUDIO=${HOME}/aud          #export          AUDIO=${HOME}/audio     #export MUSIC=${HOME}/mus
+#export	VIDEO=${HOME}/vdo          #export          VIDEO=${HOME}/video
+#export	MISCELLANEOUS=${HOME}/msc  #export  MISCELLANEOUS=${HOME}/misc
+#export	DOWNLOADS=${HOME}/dls      #export      DOWNLOADS=${HOME}/downloads
+#export	TRASH=${HOME}/tsh          #export          TRASH=${HOME}/trash
+#export	TEMPORARY=${HOME}/tmp      #export      TEMPORARY=${HOME}/temp
+#export	DOTFILES=${HOME}/.files
+#export	APPLICATIONS=/Applications
+#export	LIBRARY=${HOME}/Library
+#export	DESKTOP=${HOME}/Desktop
+#export	DOCUMENTS=${HOME}/Documents
+#export	DOWNLOADS=${HOME}/Downloads
+#export	DROPBOX=${HOME}/Dropbox
+#export	MISCELLANEOUS=${HOME}/Miscellaneous
+#export	MOVIES=${HOME}/Movies
+#export	MUSIC=${HOME}/Music
+#export	PICTURES=${HOME}/Pictures
+#export	PUBLIC=${HOME}/Public
+#export	TEMPORARY=${HOME}/Temporary
+#export	TRASH=${HOME}/.Trash
+#export	WORK=${HOME}/Work
