@@ -1,14 +1,16 @@
-history_control ("ignoredups");
+setenv("GNUTERM","qt");
 
-set (0, "DefaultAxesFontName", "Times New Roman") # Set the default axes font to Times New Roman.
-set(0, 'DefaultAxesFontSize', 12) # Set the default axes font size to 12.
+history_control("ignoredups");
+
+#set(0, "DefaultAxesFontName", "Times New Roman"); # Set the default axes font to Times New Roman.
+#set(0, "DefaultAxesFontSize", 12); # Set the default axes font size to 12.
 
 # '.functions'
 
 function cls
 	mlock ();
 	clc, system("printf '\033[2J\033[3J\033[1;1H';");
-endfunction
+endfunction;
 # cls	MS-DOS, OS/2 & Microsoft Windows CLS: Clear the terminal screen, and move the cursor to the upper left corner, then write the VT100 escape code for resetting the terminal to the standard output under the control of the format.
 
 # '.prompt'
