@@ -85,7 +85,8 @@ alias	ns='cd && cls && nh '
 
 #	history
 
-alias	h='history '
+alias	hy='history'
+alias	h='history | tail -n 20'
 
 #	exit
 
@@ -168,8 +169,13 @@ alias	qlp='qlmanage -p ' # Display the Quick Look generated preview for the spec
 
 # 	ls				list directory contents
 
-alias	ls='ls -G ' # Colorize ls' output.
-#alias	ls='lf -F ' # Type ls' output.
+if ls --color > /dev/null 2>&1 # If this silenced command evaluates to true,
+then # then the implemented LS is GNU LS,
+	alias	ls='ls --color' # so colorize GNU LS' output,
+else # else the implemented LS is BSD LS, so
+	alias	ls='ls -G'
+fi # Colorize LS' output.
+#alias	ls='lf -F ' # Type LS' output.
 alias	l='ls '
 
 alias	lh='ls -Ad .*' # List directory hidden files.
@@ -199,6 +205,10 @@ alias	_sh='printf "${SHELL}\n"' # Output the current shell.
 
 alias	_n='printf "${RANDOM}\n"' # Output a number up to 32767.
 alias	_n2='var=${RANDOM}; expr ${var} \* ${var}' # Output a number up to 32767**2.
+
+#	less				opposite of more
+
+alias	les='less '
 
 #	clear			clear the terminal screen
 
@@ -241,6 +251,11 @@ alias	g='git '
 #	fswatch			Ask for notification when the contents of the specified files of directory hierarchies are modified.
 
 alias	fsw='fswatch '
+
+#	octave
+
+alias	oct='octave '
+alias	otv='octave '
 
 #	mas-cli			A simple command line interface for the Mac App Store. Designed for scripting and automation.
 
