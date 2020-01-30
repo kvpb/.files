@@ -26,61 +26,63 @@ set noendofline
 
 " Input: Keyboard & Mouse
 
-set clipboard=unnamed " Set clipboard to the OS'.
+set timeoutlen=1000 ttimeoutlen=-1 " Set the time in milliseconds that is waited for a key code or mapped key sequence to complete to 1000.
+
+set clipboard=unnamed " Set the clipboard to the OS'.
 
 set mouse=a " Enable the mouse in all modes.
 set ttymouse=xterm2 " Set the terminal type for which mouse codes are to be recognized.
 
 nnoremap <C-q> :qa!<CR>
 inoremap <C-q> <Esc>:qa!<CR>
-":map <C-W> :q!<CR>
-":map! <C-W> :q!<CR>
+"map <C-W> :q!<CR>
+"map! <C-W> :q!<CR>
  " Quit Without Saving
 nnoremap <C-w> :wq<CR>
 inoremap <C-w> <Esc>:wq<CR>
  " Save & Quit
-:map <C-n> :enew<CR>
-:map! <C-n> <Esc>:enew<CR>
+map <C-n> :enew<CR>
+map! <C-n> <Esc>:enew<CR>
  " New
-:map <C-t> :tabnew<CR>
-:map! <C-t> <Esc>:tabnew<CR>
+map <C-t> :tabnew<CR>
+map! <C-t> <Esc>:tabnew<CR>
  " New Tab
-:map <C-o> :e.<CR>
-:map! <C-o> <Esc>:e.<CR>
+map <C-o> :e.<CR>
+map! <C-o> <Esc>:e.<CR>
  " Open...
-":map <C-w> :close<CR>
+"map <C-w> :close<CR>
  " Close (Tab)
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR><Insert><Right>
-":map <C-s> :w<CR>
-":map! <C-s> <Esc>:w<CR>
+"map <C-s> :w<CR>
+"map! <C-s> <Esc>:w<CR>
  " Save
-:map <C-z> u
-:map! <C-z> <Esc>u<CR><Insert><Right>
+map <C-z> u
+map! <C-z> <Esc>u<CR><Insert><Right>
  " Undo
-":map <C-r> 
-":map! <C-r> 
+"map <C-r> 
+"map! <C-r> 
  " Redo
-:map <C-c> y
-:map! <C-c> <Esc>y<CR><Insert>
+map <C-c> y
+map! <C-c> <Esc>y<CR><Insert>
  " Copy
-:map <C-x> d
-:map! <C-x> <Esc>d<CR><Insert>
+map <C-x> d
+map! <C-x> <Esc>d<CR><Insert>
  " Cut
-:map <C-v> p
-:map! <C-v> <C-r>"
+map <C-v> p
+map! <C-v> <C-r>"
  " Paste
-:map <C-a> ggVG
-:map! <C-a> <Esc>ggVG<CR>
+map <C-a> ggVG
+map! <C-a> <Esc>ggVG<CR>
  " Select All
-:map <C-f> /\c
-:map! <C-f> <Esc>/\c
+map <C-f> /\c
+map! <C-f> <Esc>/\c
  " Find...
-:map <F3> n
-:map! <F3> <Esc>n<CR><Insert>
+map <F3> n
+map! <F3> <Esc>n<CR><Insert>
  " Find Next
-":map <C-h> :%s/
-":map! <C-h> <Esc>:%s/
+"map <C-h> :%s/
+"map! <C-h> <Esc>:%s/
  " Replace All
 " Set the key maps to a Macintosh-like key mapping.
 "nnoremap & 1
@@ -99,7 +101,7 @@ inoremap <C-s> <Esc>:w<CR><Insert><Right>
 
 set shortmess=I " Hide the VIM launch intro message.
 
-set scrolloff=2 " Set scrolling to start 2 lines before the horizontal window border.
+set scrolloff=2 " Set the scrolling to start 2 lines before the horizontal window border.
 
 set cmdheight=2 " Set command bar height to 2 lines.
 
@@ -112,8 +114,8 @@ set listchars=eol:␤,tab:␉\ ,trail:␠,nbsp:␢ " Display special characters.
 "set listchars=eol:⏎,tab:⇥\ ,trail:␣,nbsp:⍽
 set list
 
-set statusline=%f\ %{strftime(\"%Y.%m.%d@%H:%M:%S\",getftime(expand(\"%:p\")))}\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P " Set the status line format to the defaults with a last modified timestamp.
 set laststatus=2 " Display the status line.
+set statusline=%f\ %{strftime(\"%Y.%m.%d@%H:%M:%S\",getftime(expand(\"%:p\")))}\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P " Set the status line format to the defaults with a last modified timestamp.
 
 set ruler " Display current line-column numbers.
 set number " Display line numbers.
@@ -123,8 +125,18 @@ syntax enable " Enable syntax highlighting.
 
 set cursorline " Enable current line highlighting.
 
-set background=dark " 
-colorscheme hybrid " Set color scheme to hybrid.
+"set background=dark " Set the dark background.
+if strftime("%H") < 19
+	set background=light
+else
+	set background=dark
+endif " Set the brightness on which try to use colors that look good based on the time of day.
+"colorscheme hybrid " Set the color scheme to hybrid.
+if strftime("%H") < 19
+	colorscheme github
+else
+	colorscheme hybrid
+endif " Set the color scheme according to the time of day.
 
 set noerrorbells " Disable error bells.
 set novisualbell " Disable error visual bell.
