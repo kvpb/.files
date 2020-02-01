@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-print "Characters string: "
-input = gets.chomp.length.to_i
-output = input.to_s
-print "Characters number: " + output + "\n"
+print "Character string: "
+var = gets.chomp.length.to_i.to_s
+print "Character number: " + var + "\n"
