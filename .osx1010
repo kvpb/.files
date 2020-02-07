@@ -63,7 +63,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & 
 
 osascript -e 'tell application "System Preferences" to quit' # Quit any System Preferences pane to prevent them from overriding this script.
 
-cecho 'First-Party Settings: Systemwide & User-specific Preferences' $yellow
+cecho 'First-Party Settings: Systemwide And User-Specific Preferences' $yellow
 
 echo 'Unnamed'
 
@@ -247,6 +247,42 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool FALSE #
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool FALSE
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool FALSE
 # Disable smart quotes and dashes; set smart double and single quotes to defaults.
+
+defaults write ${HOME}/Library/Preferences/.GlobalPreferences.plist NSUserDictionaryReplacementItems -array \
+                                                                                                            '{ on = 1; replace = "\\llrda"; with = "\U27fa"; }' \
+                                                                                                            '{ on = 1; replace = "\\fa"; with = "\U2200"; }' \
+                                                                                                            '{ on = 1; replace = "\\eo"; with = "\U2208"; }' \
+                                                                                                            '{ on = 1; replace = "\\naeo"; with = "\U2209"; }' \
+                                                                                                            '{ on = 1; replace = "\\N"; with = "\U2115"; }' \
+                                                                                                            '{ on = 1; replace = "\\Z"; with = "\U2124"; }' \
+                                                                                                            '{ on = 1; replace = "\\R"; with = "\U211d"; }' \
+                                                                                                            '{ on = 1; replace = "\\C"; with = "\U2102"; }' \
+                                                                                                            '{ on = 1; replace = "\\lamda"; with = "\U03bb"; }' \
+                                                                                                            '{ on = 1; replace = "\\times"; with = "\U00d7"; }' \
+                                                                                                            '{ on = 1; replace = "\\omega"; with = "\\U03c9"; }' \
+                                                                                                            '{ on = 1; replace = "\\psi"; with = "\U03c8"; }' \
+                                                                                                            '{ on = 1; replace = "\\chi"; with = "\U03c7"; }' \
+                                                                                                            '{ on = 1; replace = "\\phi"; with = "\U03c6"; }' \
+                                                                                                            '{ on = 1; replace = "\\upsilon"; with = "\U03c5"; }' \
+                                                                                                            '{ on = 1; replace = "\\tau"; with = "\U03c4"; }' \
+                                                                                                            '{ on = 1; replace = "\\sigma"; with = "\U03c3"; }' \
+                                                                                                            '{ on = 1; replace = "\\rho"; with = "\U03c1"; }' \
+                                                                                                            '{ on = 1; replace = "\\pi"; with = "\U03c0"; }' \
+                                                                                                            '{ on = 1; replace = "\\omicron"; with = "\U03bf"; }' \
+                                                                                                            '{ on = 1; replace = "\\zi"; with = "\U03be"; }' \
+                                                                                                            '{ on = 1; replace = "\\nu"; with = "\U03bd"; }' \
+                                                                                                            '{ on = 1; replace = "\\mu"; with = "\U03bc"; }' \
+                                                                                                            '{ on = 1; replace = "\\kappa"; with = "\U03ba"; }' \
+                                                                                                            '{ on = 1; replace = "\\iota"; with = "\U03b9"; }' \
+                                                                                                            '{ on = 1; replace = "\\theta"; with = "\U03b8"; }' \
+                                                                                                            '{ on = 1; replace = "\\eta"; with = "\U03b7"; }' \
+                                                                                                            '{ on = 1; replace = "\\zeta"; with = "\U03b6"; }' \
+                                                                                                            '{ on = 1; replace = "\\epsilon"; with = "\U03b5"; }' \
+                                                                                                            '{ on = 1; replace = "\\delta"; with = "\U03b4"; }' \
+                                                                                                            '{ on = 1; replace = "\\gamma"; with = "\U03b3"; }' \
+                                                                                                            '{ on = 1; replace = "\\beta"; with = "\U03b2"; }' \
+                                                                                                            '{ on = 1; replace = "\\alpha"; with = "\U03b1"; }'
+# Set the text substitutions.
 
 echo 'Mouse & Trackpad (NSGlobalDomain, com.apple.driver.AppleHIDMouse, com.apple.driver.AppleBluetoothMultitouch.trackpad, com.apple.dock)'
 
@@ -638,11 +674,17 @@ echo 'TextEdit (com.apple.TextEdit, com.apple.LaunchServices)'
 
 defaults write com.apple.TextEdit NSUserKeyEquivalents \
 '{ \
-	"\033Format\033Font\033Baseline\033Subscript" = "@$-"; \
+	"\033Edit\033Transformations\033Capitalize" = "@~$u"; \
+	"\033Edit\033Transformations\033Make Lower Case" = "@$l"; \
+	"\033Edit\033Transformations\033Make Upper Case" = "@$u"; \
+	"\033Format\033Font\033Baseline\033Subscript" = "@~$-"; \
 	"\033Format\033Font\033Baseline\033Superscript" = "@$6"; \
 	Justify = "@~$["; \
 }';
 # Add TextEdit keyboard app shortcuts:
+# 	-  Alt-Shift-U 'Capitalize'
+# 	-  Shift-L 'Make Lower Case'
+# 	-  Shift-U 'Make Upper Case'
 # 	-  Shift-Command-6 (Command-^ on US Mac keyboard layout) 'Superscript'
 # 	-  Shift-Command-- (Command-_ on US Mac keyboard layout) 'Subscript'
 # 	-  Alt-Shift-Command-[ (Option-Command-{ on US Mac keyboard layout) 'Justify'
@@ -843,7 +885,7 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool FALSE # Disable continuous spell checking.
 
-cecho 'Second-Party Settings: User-specific Filesystem Customs' $yellow
+cecho 'Second-Party Settings: User-Specific Filesystem Customs' $yellow
 
 #git clone git:github.com/kvpb/.files.git ${HOME}/.files
 # Clone my .files/ from my GitHub remote repo to ${HOME}/.
@@ -899,13 +941,13 @@ ln -s ${HOME}/.files/.bash_logout ${HOME}/.bash_logout
 ln -s ${HOME}/.files/.bash_prompt ${HOME}/.bash_prompt
 ln -s ${HOME}/.files/.zshrc ${HOME}/.zshrc
 ln -s ${HOME}/.files/.zprofile ${HOME}/.zprofile
-#ln -s ${HOME}/.files/.ssh ${HOME}/.ssh ${HOME}/.ssh/config
+#ln -s ${HOME}/.files/.ssh ${HOME}/.ssh
 ln -s ${HOME}/.files/.vimrc ${HOME}/.vimrc
 ln -s ${HOME}/.files/.vim ${HOME}/.vim
 ln -s ${HOME}/.files/.gitconfig ${HOME}/.gitconfig
 ln -s ${HOME}/.files/.gitignore_global ${HOME}/.gitignore_global
-sudo rmdir ${HOME}/Library/Scripts && ln -s ${HOME}/.files/Library/Scripts ${HOME}/Library/Scripts && chmod -h 700 ${HOME}/Library/Scripts
-#sudo rmdir ${HOME}/Library/Services && ln -s ${HOME}/.files/Library/Services ${HOME}/Library/Services && chmod -h 700 ${HOME}/Library/Services
+cp -R ${HOME}/.files/Library/Scripts/. ${HOME}/Library/Scripts/ #sudo rmdir ${HOME}/Library/Scripts && ln -s ${HOME}/.files/Library/Scripts ${HOME}/Library/Scripts && chmod -h 700 ${HOME}/Library/Scripts
+cp -R ${HOME}/.files/Library/Services/. ${HOME}/Library/Services/ #sudo rmdir ${HOME}/Library/Services && ln -s ${HOME}/.files/Library/Services ${HOME}/Library/Services && chmod -h 700 ${HOME}/Library/Services
 ln -s ${HOME}/Downloads/Miscellaneous ${HOME}/Miscellaneous/Downloads
 ln -s ${HOME}/Downloads/Documents ${HOME}/Documents/Downloads
 ln -s ${HOME}/Downloads/Pictures ${HOME}/Pictures/Downloads
@@ -924,7 +966,7 @@ ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
 #sudo dscl . create /Users/kvpb Picture "/Users/${HOME}/Pictures/UserPictures/Kabe.tif"
 # Set kvpb's user picture. https://support.apple.com/kb/PH25797
 
-cecho 'Third-Party: System-wide & User-specific Xenogenetic Software & Preferences' $yellow
+cecho 'Third-Party: System-Wide & User-Specific Xenogenetic Software & Preferences' $yellow
 
 echo 'Homebrew'
 
@@ -1034,7 +1076,7 @@ defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.print -
 defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.slideshow -boolean TRUE
 defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.wpg -boolean TRUE
 
-for i in 'Activity Monitor' 'Address Book' 'Calendar' 'Contacts' 'cfprefsd' 'Disk Utility' 'Dock' 'Finder' 'iCal' 'Mail' 'Messages' 'Safari' 'System Preferences' 'SystemUIServer' 'TextEdit' 'Xcode'
+for i in 'Activity Monitor' 'Calendar' 'Contacts' 'cfprefsd' 'Disk Utility' 'Dock' 'Finder' 'Mail' 'Messages' 'Safari' 'System Preferences' 'SystemUIServer' 'TextEdit' 'Xcode'
 do
 	killall "${i}" > /dev/null 2>&1
 done
