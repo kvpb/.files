@@ -33,6 +33,19 @@ set clipboard=unnamed " Set the clipboard to the OS'.
 set mouse=a " Enable the mouse in all modes.
 set ttymouse=xterm2 " Set the terminal type for which mouse codes are to be recognized.
 
+nnoremap <C-Up> gg
+inoremap <C-Up> <Esc>gg<Insert>
+" 
+nnoremap <C-Down> G
+inoremap <C-Down> <Esc>G<Insert>
+" 
+silent! unmap <C-Left>
+nnoremap <C-Left> 0
+inoremap <C-Left> <Esc>0<Insert>
+" 
+noremap <C-Right> $
+noremap! <C-Right> <Esc>$<Insert>
+" 
 nnoremap <C-q> :qa!<CR>
 inoremap <C-q> <Esc>:qa!<CR>
 "map <C-W> :q!<CR>
@@ -41,14 +54,14 @@ inoremap <C-q> <Esc>:qa!<CR>
 nnoremap <C-w> :wq<CR>
 inoremap <C-w> <Esc>:wq<CR>
  " Save & Quit
-map <C-n> :enew<CR>
-map! <C-n> <Esc>:enew<CR>
+noremap <C-n> :enew<CR>
+noremap! <C-n> <Esc>:enew<CR>
  " New
-map <C-t> :tabnew<CR>
-map! <C-t> <Esc>:tabnew<CR>
+noremap <C-t> :tabnew<CR>
+noremap! <C-t> <Esc>:tabnew<CR>
  " New Tab
-map <C-o> :e.<CR>
-map! <C-o> <Esc>:e.<CR>
+noremap <C-o> :e.<CR>
+noremap! <C-o> <Esc>:e.<CR>
  " Open...
 "map <C-w> :close<CR>
  " Close (Tab)
@@ -57,29 +70,29 @@ inoremap <C-s> <Esc>:w<CR><Insert><Right>
 "map <C-s> :w<CR>
 "map! <C-s> <Esc>:w<CR>
  " Save
-map <C-z> u
-map! <C-z> <Esc>u<CR><Insert><Right>
+noremap <C-z> u
+noremap! <C-z> <Esc>u<CR><Insert><Right>
  " Undo
 "map <C-r> 
 "map! <C-r> 
  " Redo
-map <C-c> y
-map! <C-c> <Esc>y<CR><Insert>
+noremap <C-c> y
+noremap! <C-c> <Esc>y<CR><Insert>
  " Copy
-map <C-x> d
-map! <C-x> <Esc>d<CR><Insert>
+noremap <C-x> d
+noremap! <C-x> <Esc>d<CR><Insert>
  " Cut
-map <C-v> p
-map! <C-v> <C-r>"
+noremap <C-v> p
+noremap! <C-v> <C-r>"
  " Paste
-map <C-a> ggVG
-map! <C-a> <Esc>ggVG<CR>
+noremap <C-a> ggVG
+noremap! <C-a> <Esc>ggVG<CR>
  " Select All
-map <C-f> /\c
-map! <C-f> <Esc>/\c
+noremap <C-f> /\c
+noremap! <C-f> <Esc>/\c
  " Find...
-map <F3> n
-map! <F3> <Esc>n<CR><Insert>
+noremap <F3> n
+noremap! <F3> <Esc>n<CR><Insert>
  " Find Next
 "map <C-h> :%s/
 "map! <C-h> <Esc>:%s/
