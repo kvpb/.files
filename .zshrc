@@ -19,7 +19,7 @@ export KEYTIMEOUT=1
 export HISTSIZE=32767
 export HISTFILESIZE=${HISTSIZE}
 export HISTFILE=${HOME}/.zsh_history
-export PROMPT='%D{%Y.%m.%d}@%* %n%# ' #PROMPT='%n@%m%# ' && RPROMPT='%D{%Y.%m.%d}@%*'
+export PROMPT='%S%n@%m%s %S%D{%Y.%m.%d}@%*%s %S%#%s ' #PROMPT='%n@%m%# ' && RPROMPT='%D{%Y.%m.%d}@%*'
 
 #stty stop '' -ixoff
 #stty start undef
