@@ -139,7 +139,7 @@ syntax enable " Enable syntax highlighting.
 set cursorline " Enable current line highlighting.
 
 "set background=dark " Set the dark background.
-if strftime("%H") < 19
+if strftime("%H") > 7 && strftime("%H") < 19
 	set background=light
 else
 	set background=dark
