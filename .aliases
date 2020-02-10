@@ -1,10 +1,10 @@
 if [ -f "${HOME}/.aliases.pvt" ]; then source "${HOME}/.aliases.pvt"; fi;
 
-# Shells special built-in utilities commands
+# Shell Special Built-In Utilities (Commands)
 
 
 
-# Shells builtin utilities commands
+# Shell Builtin Utilities (Commands)
 
 #	cd				change the working directory
 # (i) Bourne Shell (sh) builtin.
@@ -29,7 +29,7 @@ alias	r='cd /' # Change the working dir to root.
 
 alias	~='cd ${HOME}' # Change the working directory to current user's home. (i) cd would do the same, and this is what I enter most, but it would break where the meaning of ~ changes.
 
-alias	.f='cd ${HOME}/.files && git status --short && printf "\n" && echo ".gitnote:" && cat .gitnote && printf "\n"' # Change the working dir to my dot-files', show the working tree status, then concatenate and print .gitnote.
+alias	.f='cd ${HOME}/.files && git status --short && printf "\n" && printf ".gitnote:\n" && cat .gitnote && printf "\n"' # Change the working dir to my dot-files', show the working tree status, then concatenate and print .gitnote.
 
 alias	ms='cd ${HOME}/Miscellaneous' # Change the working directory to the one of my miscellaneous files.
 
@@ -92,14 +92,14 @@ alias	h='history | tail -n 20'
 
 #alias	e='exit'
 
-# 'Internal' programs commands
+# 'Internal' Programs (Commands)
 
 #	vi				Vi IMproved, a programmer's text editor
 #	vim
 
-alias	vi='vim +star'
-alias	vim='vim +startinsert'
-alias	v='vi'
+alias	vi='vim +star '
+alias	vim='vim +startinsert '
+alias	v='vi '
 
 #	mkdir			make directories
 
@@ -122,7 +122,6 @@ alias	py3='python3 '
 #	osascript		execute OSA scripts (AppleScript, JavaScript, etc)
 
 alias	osa='osascript '
-alias	os='osascript '
 
 #	tar				manipulate tape archives
 
@@ -225,10 +224,6 @@ alias	pb='PlistBuddy '
 
 alias	jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc '
 
-#	softwareupdate	system software update tool
-
-#alias	swud=''
-
 #	airport			get information for 802.11 interface
 
 alias	AirPort='airport '
@@ -241,7 +236,7 @@ alias	mn='man '
 
 alias	ascii='man ascii' # Output the man page of the ASCII character sets.
 
-# External programs commands
+# External Programs (Commands)
 
 # 	git				the stupid content tracker
 
@@ -255,31 +250,27 @@ alias	fsw='fswatch '
 #	octave
 
 alias	oct='octave '
-alias	otv='octave '
 
 #	mas-cli			A simple command line interface for the Mac App Store. Designed for scripting and automation.
 
+alias	MacAppStore='mas-cli '
+alias	macappstore='mas-cli '
 alias	mas='mas-cli '
-alias	MacAppStore='mas '
-alias	macappstore='mas '
-#alias	AppStore='mas '
-#alias	appstore='mas '
-#alias	as='mas '
 
-# Shell functions
+# Shell Functions
 
 #alias	cs='cls'
 alias	c='cls'
 
-alias	mfa='MakeFinderAlias'
+alias	mfa='MakeFinderAlias '
 
 alias	dds='DeleteDSStore'
 
 alias	rlp='ResetLaunchPad'
 
-# Computer programs
+# Computer Programs
 
-alias	RPwG='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
+#alias	RPwG='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
 alias	rpwg='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
 alias	rp='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
 
