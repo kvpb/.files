@@ -131,6 +131,7 @@ set laststatus=2 " Display the status line.
 set statusline=%f\ %{strftime(\"%Y.%m.%d@%H:%M:%S\",getftime(expand(\"%:p\")))}\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P " Set the status line format to the defaults with a last modified timestamp.
 
 set ruler " Display current line-column numbers.
+set numberwidth=1 " Set the line numbers gutter width.
 set number " Display line numbers.
 
 set showmatch " Enable matching brackets highlighting.
