@@ -6,7 +6,7 @@
 	precomposeunicode = false ; Hide files which filenames contain umlauts as unversioned. (i) http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
 
 [user]
-	name = Karl Bertin
+	name = Karl
 	email = local-part@domain
 
 #[github]
@@ -37,15 +37,18 @@
 	#gpo = !git push origin ; Update remote refs along with associated objects, pushing 'matching' branches to origin.
 	a = add
 	cm = commit -m
-	cn = commit -a --allow-empty-message -m ''
-	l = ls-files
+	cn = commit --allow-empty-message --message=''
 	p = push
 	pf = push --force
 	pl = push --force-with-lease
-	ri = rebase -i
-	s = status --short
+	h = stash
+	ha = stash apply
+	hp = stash pop
+	hl = stash list
+	r = rebase --interactive
 	d = diff
-	b = log --pretty=fuller
+	l = log --max-count=10 --reverse --pretty=oneline
+	s = status --short
 
 [color]
 	ui = true
