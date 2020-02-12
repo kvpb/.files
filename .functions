@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 mf ()
 {
-	for var in "$@";
+	for var in "${@}";
 	do
 		if [ -e "${var}" ];
 		then
@@ -12,68 +12,59 @@ mf ()
 			printf '\n' >> ${var};
 		fi;
 	done;
-} # mf, mkfl, mkfil
+}; # mf, mkfl, mkfil
 # mf	make files
 # touch tempers with the timestamps. mkfile does not create empty files. Sometimes, that's all you need.
 
 #md ()
 #{
-#} # md, mkdr, mkdire
+#}; # md, mkdr, mkdire
 # md	make directories
 
 mcd ()
 {
-	mkdir -p "$@" && cd "$_";
-}
+	mkdir -p "${@}" && cd "${_}";
+};
 # mcd	make directories, and change the shell working directory to it
 
 #dl ()
 #{
 #	;
-#} # dl, del, delete
+#}; # dl, del, delete
 # del	delete file or directory
 # The del function deletes any file of any type.
 
-te ()
+pfp ()
 {
-	for var in "$@";
-	do
-		if [ -e "${var}" ];
-		then
-			return 1;
-		else
-			return 0;
-		fi;
-	done;
-} # te, tef, tedir, tedev
-# te	there exists
-# The te function checks whether files exist.
+	#echo $(cd "$(/usr/bin/dirname "${1}")" && pwd -P)/$(/usr/bin/basename "${1}");
+	printf $(cd "$(dirname "${1}")" && pwd -P)/$(basename "${1}")"\n";
+}; # pfp	print file's pathname
 
 lt ()
 {
 	printf '%s  ' {,.}*;
-} # lt	builtin-only ls, the ls substitute from built-in commands
+}; # lt	builtin-only ls, the ls substitute from built-in commands
 
 ll ()
 {
 	pwd && ls -@aeFGlT;
-} # ll	locate, and extendedly list all directory contents
+}; # ll	locate, and extendedly list all directory contents
 
 cls ()
 {
 	printf '\033[2J\033[3J\033[1;1H';
-}
+};
 # cls	builtin-only MS-DOS, OS/2 & Microsoft Windows CLS: Clear the terminal screen if this is possible, then write the VT100 escape code for resetting the terminal to the standard output under the control of the format.
 
 dcal ()
 {
 	date | grep -C6 --color "\b$(date +%e)\b" && cal | sed -n "1!p" | grep -C6 --color "\b$(date +%e)\b";
-}
+};
 # dcal	dated calendar: Display a calendar, substitute month of year with current date in full format, and highlight current day of month.
 
 ne ()
 {
-	for file in "$@";
+	for file in "${@}";
 	do
 		if [ "$(tail -c 1 "${file}" | wc -l)" -eq 0 ];
 		then
@@ -82,7 +73,7 @@ ne ()
 			:
 		fi;
 	done;
-} # ne, nfeol, writemissingnlateof
+}; # ne, nfeol, writemissingnlateof
 # ne	write NL at EOF
 # The nae function inserts a newline after the pre-end-of-file line if that latter is not empty.
 
@@ -105,7 +96,7 @@ rn ()
 	else
 		expr $(printf "${expression}");
 	fi;
-} # rn, randomnumber
+}; # rn, randomnumber
 # rn	output random numbers
 # The rn function computes a pseudorandom number then prints it.
 
@@ -115,15 +106,15 @@ ru ()
 	number=$[RANDOM%9999+1];
 
 	printf "${username}${number}\n";
-} # ru, run, randomusername
+}; # ru, run, randomusername
 # ru	output random usernames
 
-sql ()
+sqlite3-dump ()
 {
-	local pathname=${1}
+	local pathname=${1};
 
-	sqlite3 "${pathname}" -cmd ".dump" ""
-} # sql, sqld, sqlite3-dump
+	sqlite3 "${pathname}" -cmd ".dump" "";
+}; # sql, sqld, sqlite3-dump
 # sqlite3-dump	dump the database in an SQL text format
 
 # Mac Shell Functions
@@ -131,8 +122,8 @@ sql ()
 MakeFinderAlias ()
 {
 	local Location=$(\pwd);
-	local File=$1;
-	local Folder=$2;
+	local File=${1};
+	local Folder=${2};
 
 	if [[ "${File}" == /* ]] && [[ "${Folder}" == /* ]];
 	then
@@ -147,19 +138,19 @@ MakeFinderAlias ()
 	then
 		osascript -e "tell application \"Finder\" to make alias file to (POSIX file \"${Location}/${File//\"/\\\"}\") at (POSIX file \"${Location}/${Folder//\"/\\\"}\")" -e 'return';
 	fi;
-} # mfa, mkfras, MakeFinderAlias
+}; # mfa, mkfras, MakeFinderAlias
 # MakeFinderAlias	make Finder aliases
 
 DeleteDSStore ()
 {
-	find . -name '.DS_Store' -delete -print
-} # ds, dds, ddss, deletedsstore, DeleteDSStore
+	find . -name '.DS_Store' -delete -print;
+}; # ds, dds, ddss, deletedsstore, DeleteDSStore
 # DeleteDSStore	.DS_Store Files Deletion: Find from the current directory any file named .DS_Store, remove it, and display the full file name of the standard output followed by a newline.
 
 ResetLaunchPad ()
 {
 	defaults write com.apple.dock ResetLaunchPad -boolean TRUE && killall Dock;
-} # rlp, resetlaunchpad, ResetLaunchPad
+}; # rlp, resetlaunchpad, ResetLaunchPad
 # ResetLaunchPad	LaunchPad Reset
 # The ResetLaunchPad function resets the LaunchPad's layout.
 
@@ -167,18 +158,16 @@ ResetLaunchPad ()
 
 tqdc ()
 {
-	local prefix=$1;
-	local suffix=$2;
+	local prefix=${1};
+	local suffix=${2};
 
-	find * -maxdepth 0 -type d -exec tar cvf $prefix{}$suffix.tar {} \;
-} # tqdc, tarqdlc, tapearchiveQobuzdownloadedcontent
+	find * -maxdepth 0 -type d -exec tar cvf ${prefix}{}${suffix}.tar {} \;
+}; # tqdc, tarqdlc, tapearchiveQobuzdownloadedcontent
 # tqdc	Qobuz downloaded content tape-archival: Create a new tape archive for each of the working directory's subdirectories.
-
-
 
 # function () {
 # 	;
-# } # FUNCTIONNAME, FUNCTIONNAMEn
+# }; # FUNCTIONNAME, FUNCTIONNAMEn
 # # MANPAGENAME
 # # MANPAGESYNOPSIS
 # # MANPAGEDESCRIPTION
