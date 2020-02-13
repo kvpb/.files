@@ -1,44 +1,402 @@
 #!/usr/bin/env bash
+#exec 2>> ${HOME}/Temporary/log
+#set -xv
 
-printf '\n'
-printf '                         '; printf '\033[48:2:255:165:0m\033[48;2;255;255;255;0#m%s\033[m\n' '     | / | ) | / | | `|` | / '
-printf '                         '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '     |/  |<  |/  |\|  |  |/  '
-printf '                         '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '  .  |   |_) |   | |  |  |   '
-printf '\n'
+#n=$[RANDOM%99+1] && while [ -e ${HOME}/Temporary/Folder${n} ]; do n=$[RANDOM%99+1]; done;
+workingdirectory=$(pwd;);
+
+printf '%s\n' 'P A R T Y S T A R T E R'
+printf '                         '; printf '\033[48:2:255:165:0m\033[48;2;255;255;255;0#m%s\033[m\n' '     | | |           .'
+printf '                         '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '     | | |-, | | |^\ |-  | |'
+printf '                         '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '  .  |/  |_/ |/  | | \__ |/'
+printf '%s\n' ''
 printf '                                 LICENSED BY\n'
 printf '                                 ${LICENSOR}\n'
-printf '\n'
-printf "                            K K  V V  PPP  BB   '   SS\n"
-printf '                           KK   V V  PPP  BBB      S\n'
-printf '                          K K   V   P    BBB     SS\n'
-printf '\n'
-printf '                 WARNING: USE THIS SCRIPT AT YOUR OWN RISK.\n'
-printf '\n'
+printf '%s\n' ''
+printf '%s\n' "                            K K  V V  PPP  BB   '   SS"
+printf '%s\n' '                           KK   V V  PPP  BBB      S'
+printf '%s\n' '                          K K   V   P    BBB     SS'
+printf '%s\n' ''
+printf '%s\n' '                 WARNING: USE THIS SCRIPT AT YOUR OWN RISK.'
+printf '%s\n' ''
 printf '\033[48;2;255;165;255;0#m%s\033[m\n' " ALL THE COMPUTER PROGRAMS  AND SOFTWARE ARE PROVIDED 'AS IS'  WITHOUT WARRANTY"
-printf ' OF ANY KIND.  WE MAKE NO WARRANTIES,  EXPRESS  OR IMPLIED,  THAT THEY ARE FREE\n'
-printf ' OF ERROR,  OR ARE CONSISTENT  WITH ANY PARTICULAR STANDARD OF MERCHANTABILITY,\n'
-printf ' OR THAT THEY WILL MEET YOUR REQUIREMENTS FOR ANY PARTICULAR APPLICATION.  THEY\n'
-printf ' SHOULD NOT BE  RELIED ON FOR SOLVING A PROBLEM  WHOSE INCORRECT SOLUTION COULD\n'
-printf ' RESULT  IN  INJURY  TO  A  PERSON  OR  LOSS  OF  PROPERTY.  IF YOU DO USE THEM\n'
-printf ' IN SUCH A MANNER,  IT IS AT YOUR OWN RISK.  THE AUTHOR  AND PUBLISHER DISCLAIM\n'
-printf ' ALL LIABILITY FOR  DIRECT,  INDIRECT,  OR CONSEQUENTIAL DAMAGES RESULTING FROM\n'
-printf ' YOUR USE OF THE PROGRAMS.\n'
-printf '\n'
+printf '%s\n' ' OF ANY KIND.  WE MAKE NO WARRANTIES,  EXPRESS  OR IMPLIED,  THAT THEY ARE FREE'
+printf '%s\n' ' OF ERROR,  OR ARE CONSISTENT  WITH ANY PARTICULAR STANDARD OF MERCHANTABILITY,'
+printf '%s\n' ' OR THAT THEY WILL MEET YOUR REQUIREMENTS FOR ANY PARTICULAR APPLICATION.  THEY'
+printf '%s\n' ' SHOULD NOT BE  RELIED ON FOR SOLVING A PROBLEM  WHOSE INCORRECT SOLUTION COULD'
+printf '%s\n' ' RESULT  IN  INJURY  TO  A  PERSON  OR  LOSS  OF  PROPERTY.  IF YOU DO USE THEM'
+printf '%s\n' ' IN SUCH A MANNER,  IT IS AT YOUR OWN RISK.  THE AUTHOR  AND PUBLISHER DISCLAIM'
+printf '%s\n' ' ALL LIABILITY FOR  DIRECT,  INDIRECT,  OR CONSEQUENTIAL DAMAGES RESULTING FROM'
+printf '%s\n' ' YOUR USE OF THE PROGRAMS.'
+printf '%s\n' ''
 # Display the title screen with disclaimer.
+
+sudo -v # Ask for an administrator password.
+#while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & # Update the sudo timestamp until the script is over.
+
+printf '\033[48;2;255;255;0;0#m%s\033[m\n' 'First-Party Settings: Systemwide And User-Specific Preferences'
+
+printf '%s\n' 'Keyboard'
+
+gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 20 # 
+gsettings set org.gnome.desktop.peripherals.keyboard delay 200 # 
 
 
 
 gsettings set org.gnome.shell favorite-apps "[
+	'terminator.desktop',
 	'org.gnome.Terminal.desktop',
 	'org.gnome.Nautilus.desktop',
 	'firefox.desktop',
-	'ProtonMail_Bridge.desktop',
-	'org.gnome.Geary.desktop',
+	'gnome-system-monitor_gnome-system-monitor.desktop',
+	'xpad.desktop',
+	'code.desktop',
+	'org.gnome.gedit.desktop',
 	'libreoffice-writer.desktop',
 	'gimp.desktop',
 	'inkscape.desktop',
-	'transmission-gtk.desktop',
-	'vlc.desktop'
+	'vlc.desktop',
+	'ProtonMail_Bridge.desktop',
+	'org.gnome.Geary.desktop',
+	'signal-desktop.desktop',
+	'org.kde.kaddressbook.desktop',
+	'transmission-gtk.desktop'
 ]" # 
 
+
+
 gsettings set org.gnome.desktop.background picture-uri 'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png' # 
+
+
+
+gsettings set org.gnome.nautilus.preferences search-filter-time-type 'last_modified'
+gsettings set org.gnome.nautilus.preferences default-sort-order 'name'
+gsettings set org.gnome.nautilus.preferences recursive-search 'always'
+gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false
+gsettings set org.gnome.nautilus.preferences default-sort-in-reverse-order false
+gsettings set org.gnome.nautilus.preferences show-hidden-files false
+gsettings set org.gnome.nautilus.preferences tabs-open-position 'after-current-tab'
+gsettings set org.gnome.nautilus.preferences always-use-location-entry false
+gsettings set org.gnome.nautilus.preferences show-image-thumbnails 'never'
+gsettings set org.gnome.nautilus.preferences confirm-trash true
+gsettings set org.gnome.nautilus.preferences search-view 'list-view'
+gsettings set org.gnome.nautilus.preferences thumbnail-limit uint64 10
+gsettings set org.gnome.nautilus.preferences mouse-back-button 8
+gsettings set org.gnome.nautilus.preferences click-policy 'double'
+gsettings set org.gnome.nautilus.preferences mouse-forward-button 9
+gsettings set org.gnome.nautilus.preferences show-create-link true
+gsettings set org.gnome.nautilus.preferences show-directory-item-counts 'always'
+gsettings set org.gnome.nautilus.preferences mouse-use-extra-buttons true
+gsettings set org.gnome.nautilus.preferences executable-text-activation 'display'
+gsettings set org.gnome.nautilus.preferences show-delete-permanently true
+gsettings set org.gnome.nautilus.preferences fts-enabled true
+gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
+gsettings set org.gnome.nautilus.preferences use-experimental-views false
+gsettings set org.gnome.nautilus.preferences install-mime-activation true
+
+
+
+printf '\033[48;2;255;255;0;0#m%s\033[m\n' 'Second-Party Settings: User-Specific Filesystem Customs'
+
+cd \
+&& mkdir -p ${HOME}/Temporary \
+&& wget https://github.com/kvpb/.files/archive/master.zip --directory-prefix=${HOME}/Temporary \
+&& unzip ${HOME}/Temporary/master.zip -d ${HOME}/Temporary \
+&& mv ${HOME}/Temporary/.files-master ${HOME}/Temporary/.files \
+&& mv ${HOME}/Temporary/.files ${HOME}/.files \
+&& rm -rf ${HOME}/Temporary/master.zip
+&& cd ${workingdirectory}
+# Download .files/ from GitHub to ${HOME}/.
+
+if [ -d "${HOME}/{Miscellaneous,Work}" ]
+then
+	if [ -L "${HOME}/{Miscellaneous,Work}" ]
+	then
+		mv "${HOME}/{Miscellaneous,Work}" ${HOME}/.Trash/
+		mkdir "${HOME}/{Miscellaneous,Work}"
+	fi
+else
+	mkdir -p "${HOME}/{Miscellaneous,Work}"
+fi
+# If Miscellaneous and Work aren't directories in ${HOME}/, substitute symbolic links by or add these directories.
+if [ -d "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}" ]
+then
+	if [ -L "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}" ]
+	then
+		mv "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}" ${HOME}/.Trash/
+		mkdir "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}"
+	fi
+else
+	mkdir -p "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}"
+fi
+# If Documents, Pictures, Music, Movies and Miscellaneous aren't directories in ${HOME}/Downloads/, substitute symbolic links by or add these directories.
+if [ -d "${HOME}/{Camera,DCIM}" ]
+then
+	if [ -L "${HOME}/{Camera,DCIM}" ]
+	then
+		mv "${HOME}/{Camera,DCIM}" ${HOME}/.Trash/
+		mkdir "${HOME}/{Camera,DCIM}"
+	fi
+else
+	mkdir -p "${HOME}/{Camera,DCIM}"
+fi
+# If DCIM and Camera aren't directories in ${HOME}/, substitute symbolic links by or add these directories.
+
+ln -s ${HOME}/.files/.inputrc ${HOME}/.inputrc
+#ln -s ${HOME}/.files/.shrc ${HOME}/.shrc
+#ln -s ${HOME}/.files/.shinit ${HOME}/.shinit
+#ln -s ${HOME}/.files/.profile ${HOME}/.profile
+ln -s ${HOME}/.files/.exports ${HOME}/.exports
+ln -s ${HOME}/.files/.functions ${HOME}/.functions
+ln -s ${HOME}/.files/.aliases ${HOME}/.aliases
+ln -s ${HOME}/.files/.bashrc ${HOME}/.bashrc
+ln -s ${HOME}/.files/.bash_login ${HOME}/.bash_login
+ln -s ${HOME}/.files/.bash_profile ${HOME}/.bash_profile
+ln -s ${HOME}/.files/.bash_logout ${HOME}/.bash_logout
+ln -s ${HOME}/.files/.bash_prompt ${HOME}/.bash_prompt
+ln -s ${HOME}/.files/.zshrc ${HOME}/.zshrc
+ln -s ${HOME}/.files/.zprofile ${HOME}/.zprofile
+#ln -s ${HOME}/.files/.ssh ${HOME}/.ssh ${HOME}/.ssh
+ln -s ${HOME}/.files/.vimrc ${HOME}/.vimrc
+ln -s ${HOME}/.files/.vim ${HOME}/.vim
+ln -s ${HOME}/.files/.gitconfig ${HOME}/.gitconfig
+ln -s ${HOME}/.files/.gitignore_global ${HOME}/.gitignore_global
+ln -s ${HOME}/Downloads/Miscellaneous ${HOME}/Miscellaneous/Downloads
+ln -s ${HOME}/Downloads/Documents ${HOME}/Documents/Downloads
+ln -s ${HOME}/Downloads/Pictures ${HOME}/Pictures/Downloads
+ln -s ${HOME}/Downloads/Movies ${HOME}/Movies/Downloads
+ln -s ${HOME}/Downloads/Music ${HOME}/Music/Downloads
+ln -s ${HOME}/DCIM ${HOME}/Pictures/DCIM
+ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
+# Create user-specific custom symbolic links.
+
+> ${HOME}/.hushlogin # Write the .hushlogin file in the current user's home folder.
+
+#sed -i '/Icon/d' "/var/lib/AccountsService/${USER}"
+#find ${HOME} -mindepth 0 -type f -name Screen\ Shot\ 2015-11-04\ at\ 5.18.34\ PM.png -exec rsync -aHAX {} /home/kvpb/.face/ \;
+# Set my user picture.
+
+
+
+printf '\033[48;2;255;255;0;0#m%s\033[m\n' 'Third-Party: Systemwide And User-Specific Xenogenetic Software & Preferences'
+
+printf '%s\n' 'BASH'
+
+sudo apt upgrade -y bash
+
+printf '%s\n' 'ZSH'
+
+sudo apt install -y zsh
+
+printf '%s\n' 'Python'
+
+sudo apt install -y python3
+sudo apt install -y python
+# Download and install Python 3.9 and 2.7.
+
+printf '%s\n' 'Ruby'
+
+sudo apt install -y ruby
+
+printf '%s\n' 'Node.js & NPM'
+
+#sudo apt install -y nodejs npm # Download and install Node.js & NPM.
+wget -qO- https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs
+# Download and install Node.js 14.x LTS & NPM
+
+printf '%s\n' 'Octave'
+
+sudo apt install -y octave # Download and install Octave.
+
+printf '%s\n' 'KVM'
+
+sudo apt install -y kvm
+
+printf '%s\n' 'QEMU'
+
+sudo apt install -y qemu
+
+printf '%s\n' 'OpenSSH'
+
+sudo apt install -y ssh
+
+printf '%s\n' 'OpenSSL'
+
+sudo apt install -y openssl
+
+printf '%s\n' 'MOSH'
+
+sudo apt install -y mosh
+
+printf '%s\n' 'Git'
+
+sudo apt upgrade -y git # Download and update Git.
+
+printf '%s\n' 'Wget'
+
+sudo apt upgrade -y wget # Download and update Wget.
+
+printf '%s\n' 'CURL'
+
+sudo apt install -y curl # Download and install CURL.
+
+printf '%s\n' 'XATTR'
+
+sudo apt install -y xattr # Download and install XATTR.
+
+printf '%s\n' 'Vi Improved'
+
+sudo apt install -y vim # Download and install VIM.
+
+printf '%s\n' 'FSWatch'
+
+sudo apt install -y fswatch # Download and install FSWatch.
+
+printf '%s\n' 'Tree'
+
+sudo apt install -y tree # Download and install Tree.
+
+printf '%s\n' 'HTOP'
+
+sudo apt install -y htop # Download and install HTOP.
+
+printf '%s\n' 'The Fuck'
+
+sudo apt install -y thefuck # Download and install The Fuck.
+
+printf '%s\n' 'TMUX'
+
+sudo apt install -y tmux # Download and install TMUX.
+
+printf '%s\n' 'FFMPEG'
+
+sudo apt install -y ffmpeg # Download and install FFMPEG.  
+
+printf '%s\n' 'Terminator'
+
+sudo apt install -y terminator # Download and install Terminator.
+
+#printf '%s\n' 'VMware Workstation Player'
+#
+#sudo apt install gcc build-essential -y
+#chmod +x VMware-Player-14.0.0-6661328.x86_64.bundle
+#gksudo bash VMware-Player-14.0.0-6661328.x86_64.bundle
+# Download and install VMware Workstation Player. https://help.ubuntu.com/community/VMware/Player
+
+printf '%s\n' 'Visual Studio Code'
+
+sudo snap install --classic code # Download and install VS Code. https://code.visualstudio.com/docs/setup/linux
+
+printf '%s\n' 'Xpad'
+
+sudo apt install -y xpad # Download and install Xpad.
+
+printf '%s\n' 'LibreOffice'
+
+sudo apt install -y libreoffice # Download and install LibreOffice.
+
+printf '%s\n' 'GIMP'
+
+sudo apt install -y gimp # Download and install GIMP.
+
+printf '%s\n' 'Inkscape'
+
+sudo apt install -y inkscape # Download and install Inkscape.
+
+printf '%s\n' 'Handbrake'
+
+sudo apt install -qq handbrake
+
+printf '%s\n' 'ProtonMail Bridge'
+
+wget https://protonmail.com/download/protonmail-bridge_1.2.1-1_amd64.deb # 'Download the file to the current working directory.'
+sudo apt-get install debsig-verify debian-keyring # 'Install debsigs to be able to verify the package.'
+gpg --dearmor --output debsig.gpg bridge_pubkey.gpg
+sudo mkdir -p /usr/share/debsig/keyrings/E2C75D68E6234B07
+sudo mv debsig.gpg /usr/share/debsig/keyrings/E2C75D68E6234B07
+# 'Import the public key into the keyring.'
+sudo mkdir -p /etc/debsig/policies/E2C75D68E6234B07
+sudo cp bridge.pol /etc/debsig/policies/E2C75D68E6234B07
+# 'Install the policy file.'
+if [ $(debsig-verify protonmail-bridge_1.1.6-1_amd64.deb) = "debsig: Verified package from 'Proton Technologies AG (ProtonMail Bridge developers) <bridge@protonmail.ch>' (Proton Technologies AG)" ] # 'Check the DEB file.'
+then
+	sudo apt-get install ./protonmail-bridge_1.1.6-1_amd64.deb
+fi # 'Install the package using [my] package manager.'
+mv ./protonmail-bridge_1.1.6-1_amd64.deb ${HOME}/Downloads/
+# Download and install ProtonMail Bridge.
+
+printf '%s\n' 'Geary'
+
+sudo apt install -y geary # Download and install Geary.
+
+printf '%s\n' 'Signal'
+
+wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
+sudo mv signal-desktop-keyring.gpg /usr/share/keyrings/
+# '1. Install our official public software signing key'
+echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |\
+	sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
+# '2. Add our repository to your list of repositories'
+sudo apt update && sudo apt install signal-desktop # '3. Update your package database and install signal'
+# 'Linux (Debian-based) Install Instructions' https://signal.org/en/download/
+
+#printf '%s\n' 'California'
+#
+#sudo add-apt-repository -y ppa:yorba/daily-builds
+#sudo apt-get update --allow-insecure-repositories
+#sudo apt-get install california -y
+# Download and install California.
+
+printf '%s\n' 'KAddressBook'
+
+sudo apt-get install -qq akonadi*
+sudo apt install -y kaddressbook
+# Download and install KAddressBook.
+
+printf '%s\n' 'Transmission'
+
+sudo apt install -qq transmission
+
+#printf '%s\n' 'Dropbox'
+#
+#if [ "$(uname -m;)" = 'i386' -o "$(uname -m;)" = 'i686' ];
+#then
+#	cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
+#	~/.dropbox-dist/dropboxd
+#elif [ "$(uname -m;)" = 'x86_64' ];
+#then
+#	cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+#	~/.dropbox-dist/dropboxd
+#else
+#	:
+#fi;
+# Download and install Dropbox. https://www.dropbox.com/fr/install-linux
+
+#printf '%s\n' ''
+#
+#sudo apt install -y  # Download and install .
+
+
+
+printf '%s\n' ''
+printf '%s\n' 'Ubuntu has been configured.'# ${litcyan}
+
+printf '%s\n' 'A reboot is required for some of these changes to take effect. Reboot...?, \e[4my\e[0mes or \e[4mn\e[0mo?'# ${litgreen}
+read -r input
+if [[ ${input} =~ ^([Yy]|[Yy][Ee][Ss]|[Yy][Ee][Aa][Hh])$ ]]
+then
+	sudo shutdown -r now # Reboot without confirmation.
+else
+	:
+fi
+exit 0
+
+# .ubuntu
+# Ubuntu Configuration Script
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain
+#
+# 
