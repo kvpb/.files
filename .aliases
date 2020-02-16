@@ -127,6 +127,14 @@ alias	osa='osascript '
 
 alias	tgz='tar -czvf ' # Create a new archive containing the specified items then compress the resulting archive with gzip, listing each file name as it is read written to the archive.
 
+#	rsync			faster, flexible replacement for rcp
+
+alias	rsync-copy='rsync -avz --progress -h '
+alias	rsync-move='rsync -avz --progress -h --remove-source-files '
+alias	rsync-synchronize='rsync -avzu --delete --progress -h '
+alias	rsync-update='rsync -avzu --progress -h '
+# Florent Carre `colundrum`'s rsync aliases
+
 #	open			open files and directories
 
 alias	opn='open '
