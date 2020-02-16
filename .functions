@@ -8,17 +8,17 @@ mf ()
 		then
 			printf "${var}: file exists\n";
 		else
-			> "${var}";
+			:> "${var}";
 			printf '\n' >> ${var};
 		fi;
 	done;
-}; # mf, mkfl, mkfil
+}; # mf
 # mf	make files
 # touch tempers with the timestamps. mkfile does not create empty files. Sometimes, that's all you need.
 
 #md ()
 #{
-#}; # md, mkdr, mkdire
+#}; # md, mkdr
 # md	make directories
 
 mcd ()
@@ -42,7 +42,7 @@ pfp ()
 
 lt ()
 {
-	printf '%s  ' {,.}*;
+	printf '%s\n' {.{.?,[^.]},}*; #{..?*,.[^.]*,*};
 }; # lt	builtin-only ls, the ls substitute from built-in commands
 
 ll ()
