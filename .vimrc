@@ -35,16 +35,42 @@ set ttymouse=xterm2 " Set the terminal type for which mouse codes are to be reco
 
 nnoremap <C-Up> gg
 inoremap <C-Up> <Esc>gg<Insert>
-" 
 nnoremap <C-Down> G
 inoremap <C-Down> <Esc>G<Insert>
-" 
 silent! unmap <C-Left>
 nnoremap <C-Left> 0
 inoremap <C-Left> <Esc>0<Insert>
-" 
 noremap <C-Right> $
 noremap! <C-Right> <Esc>$<Insert>
+"map <A-Up> 
+"map <A-Down> 
+"map <A-Left> 
+"map <A-Right> 
+" 
+nnoremap <S-Up> v<Up>
+inoremap <S-Up> <Esc>v<Up>
+vnoremap <S-Up> <Up>
+nnoremap <S-Down> v<Down>
+inoremap <S-Down> <Esc>v<Down>
+vnoremap <S-Down> <Down>
+nnoremap <S-Left> v<Left>
+inoremap <S-Left> <Esc>v<Left>
+vnoremap <S-Left> <Left>
+nnoremap <S-Right> v<Right>
+inoremap <S-Right> <Esc>v<Right>
+vnoremap <S-Right> <Right>
+"inoremap <C-S-Up> 
+"inoremap <C-S-Down> 
+inoremap <C-S-Left> <S-Left><C-Left>
+inoremap <C-S-Right> <S-Right><C-Right>
+"map <A-S-Up> 
+"map <A-S-Down> 
+"map <A-S-Left> 
+"map <A-S-Right> 
+vnoremap <Left> <Esc><Left><Left>
+vnoremap <Right> <Esc>
+vnoremap <Up> <Esc><Up>
+vnoremap <Down> <Esc><Down>
 " 
 nnoremap <C-q> :qa!<CR>
 inoremap <C-q> <Esc>:qa!<CR>
