@@ -474,18 +474,18 @@ defaults write com.apple.finder AppleShowAllFiles -bool TRUE # Display hidden fi
 
 defaults write com.apple.finder DisableAllAnimations -bool TRUE # Disable Finder window & Get info pane animations.
 
-echo  'Spotlight (com.apple.spotlight)'
+echo  'Spotlight (com.apple.Spotlight)'
 
-defaults write com.apple.spotlight orderedItems -array \
+defaults write com.apple.Spotlight orderedItems -array \
                                                        '{"enabled" = 1;"name" = "APPLICATIONS";}' \
                                                        '{"enabled" = 0;"name" = "SYSTEM_PREFS";}' \
-                                                       '{"enabled" = 0;"name" = "DIRECTORIES";}' \
                                                        '{"enabled" = 0;"name" = "DOCUMENTS";}' \
+                                                       '{"enabled" = 0;"name" = "DIRECTORIES";}' \
                                                        '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
                                                        '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
                                                        '{"enabled" = 0;"name" = "PDF";}' \
                                                        '{"enabled" = 0;"name" = "MESSAGES";}' \
-                                                       '{"enabled" = 0;"name" = "CONTACT";}' \
+                                                       '{"enabled" = 1;"name" = "CONTACT";}' \
                                                        '{"enabled" = 0;"name" = "EVENT_TODO";}' \
                                                        '{"enabled" = 0;"name" = "IMAGES";}' \
                                                        '{"enabled" = 0;"name" = "BOOKMARKS";}' \
@@ -493,12 +493,14 @@ defaults write com.apple.spotlight orderedItems -array \
                                                        '{"enabled" = 0;"name" = "MOVIES";}' \
                                                        '{"enabled" = 0;"name" = "FONTS";}' \
                                                        '{"enabled" = 0;"name" = "SOURCE";}' \
-# Change indexing order and disable some Spotlight search results.
+# Change indexing order, and set search results.
 killall mds > /dev/null 2>&1 # Load new settings before rebuilding the index.
 sudo mdutil -i on / > /dev/null # Ensure indexing is enabled for the main volume.
 sudo mdutil -E / > /dev/null # Rebuild index from scratch.
 
 sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes" # Disable Spotlight indexing for never indexed mounted volumes.
+
+plutil -convert binary1 ${HOME}/.files/Library/Application\ Support/com.apple.spotlight.Shortcuts.plist -o ${HOME}/Library/Application\ Support/com.apple.spotlight.Shortcuts # Set Top Hits.
 
 #sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search # Disable Spotlight menu bar icon.
 

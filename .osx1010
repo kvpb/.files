@@ -476,37 +476,39 @@ defaults write com.apple.finder AppleShowAllFiles -bool TRUE # Display hidden fi
 
 defaults write com.apple.finder DisableAllAnimations -bool TRUE # Disable Finder window & Get info pane animations.
 
-echo 'Spotlight (com.apple.spotlight)'
+echo 'Spotlight (com.apple.Spotlight)'
 
-defaults write com.apple.spotlight orderedItems -array \
+defaults write com.apple.Spotlight orderedItems -array \
                                                        '{"enabled" = 1;"name" = "APPLICATIONS";}' \
+                                                       '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}' \ # (i) This sends search queries to Apple. (i) This search result has been introduced in OS X 10.10 Yosemite.
+                                                       '{"enabled" = 0;"name" = "MENU_CONVERSION";}' \ # (i) This search result has been introduced in OS X 10.10 Yosemite.
+                                                       '{"enabled" = 1;"name" = "MENU_EXPRESSION";}' \ # (i) This search result has been introduced in OS X 10.10 Yosemite.
+                                                       '{"enabled" = 0;"name" = "MENU_DEFINITION";}' \ # (i) This search result has been introduced in OS X 10.10 Yosemite.
                                                        '{"enabled" = 0;"name" = "SYSTEM_PREFS";}' \
-                                                       '{"enabled" = 0;"name" = "DIRECTORIES";}' \
                                                        '{"enabled" = 0;"name" = "DOCUMENTS";}' \
+                                                       '{"enabled" = 0;"name" = "DIRECTORIES";}' \
                                                        '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
                                                        '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
                                                        '{"enabled" = 0;"name" = "PDF";}' \
                                                        '{"enabled" = 0;"name" = "MESSAGES";}' \
-                                                       '{"enabled" = 0;"name" = "CONTACT";}' \
+                                                       '{"enabled" = 1;"name" = "CONTACT";}' \
                                                        '{"enabled" = 0;"name" = "EVENT_TODO";}' \
                                                        '{"enabled" = 0;"name" = "IMAGES";}' \
                                                        '{"enabled" = 0;"name" = "BOOKMARKS";}' \
                                                        '{"enabled" = 0;"name" = "MUSIC";}' \
                                                        '{"enabled" = 0;"name" = "MOVIES";}' \
                                                        '{"enabled" = 0;"name" = "FONTS";}' \
-                                                       '{"enabled" = 0;"name" = "SOURCE";}' \
-                                                       '{"enabled" = 0;"name" = "MENU_DEFINITION";}' \ # (i) This search result has been introduced in OS X 10.10 Yosemite.
                                                        '{"enabled" = 0;"name" = "MENU_OTHER";}' \ # (i) This search result has been introduced in OS X 10.10 Yosemite.
-                                                       '{"enabled" = 0;"name" = "MENU_CONVERSION";}' \ # (i) This search result has been introduced in OS X 10.10 Yosemite.
-                                                       '{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \ # (i) This search result has been introduced in OS X 10.10 Yosemite.
-                                                       '{"enabled" = 1;"name" = "MENU_WEBSEARCH";}' \ # (i) This sends search queries to Apple. (i) This search result has been introduced in OS X 10.10 Yosemite.
-                                                       '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}' # (i) This sends search queries to Apple. (i) This search result has been introduced in OS X 10.10 Yosemite.
-# Change indexing order, and set Spotlight search results. 
+                                                       '{"enabled" = 0;"name" = "SOURCE";}' \
+                                                       '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' # (i) This sends search queries to Apple. (i) This search result has been introduced in OS X 10.10 Yosemite. (?) I haven't been able to find this setting anywhere. plutil -p ${HOME}/Library/Preferences/com.apple.Spotlight.plist > 0;  > 1; diff 0 1; doesn't give anything. defaults read ${HOME}/Library/Preferences/com.apple.Spotlight orderedItems | grep -B1 "MENU_WEBSEARCH" | awk '/enabled/{print $NF}' | sed 's/;$//'; neither.
+# Change indexing order, and set search results.
 killall mds > /dev/null 2>&1 # Load new settings before rebuilding the index.
 sudo mdutil -i on / > /dev/null # Ensure indexing is enabled for the main volume.
 sudo mdutil -E / > /dev/null # Rebuild index from scratch.
 
 sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes" # Disable Spotlight indexing for never indexed mounted volumes.
+
+plutil -convert binary1 ${HOME}/.files/Library/Application\ Support/com.apple.spotlight.Shortcuts.plist -o ${HOME}/Library/Application\ Support/com.apple.spotlight.Shortcuts # Set Top Hits.
 
 #sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search # Disable Spotlight menu bar icon.
 
