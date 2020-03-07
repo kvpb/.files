@@ -54,7 +54,7 @@
 		<key>LAST_USED</key>
 		<date>2019-05-26T13:49:59Z</date>
 		<key>URL</key>
-		<string>file:///.file/id=6571367.12844944</string>
+		<string>file:///Applications/ProtonMail%20Bridge.app</string>
 	</dict>
 	<key>br</key>
 	<dict>
@@ -63,7 +63,7 @@
 		<key>LAST_USED</key>
 		<date>2019-10-06T21:59:41Z</date>
 		<key>URL</key>
-		<string>file:///.file/id=6571367.12844944</string>
+		<string>file:///Applications/ProtonMail%20Bridge.app</string>
 	</dict>
 	<key>ca</key>
 	<dict>
@@ -153,7 +153,7 @@
 		<key>LAST_USED</key>
 		<date>2019-06-10T09:01:35Z</date>
 		<key>URL</key>
-		<string>file:///.file/id=6571367.13207010</string>
+		<string>file:///Applications/Microsoft%20Excel.app</string>
 	</dict>
 	<key>f</key>
 	<dict>
@@ -189,7 +189,7 @@
 		<key>LAST_USED</key>
 		<date>2019-10-20T21:17:20Z</date>
 		<key>URL</key>
-		<string>file:///.file/id=6571367.15004466</string>
+		<string>/Applications/GIMP-2.10.app</string>
 	</dict>
 	<key>gimp</key>
 	<dict>
@@ -270,7 +270,7 @@
 		<key>LAST_USED</key>
 		<date>2017-12-30T15:59:50Z</date>
 		<key>URL</key>
-		<string>file:///.file/id=6571367.1717619</string>
+		<string>file:///Applications/JDownloader2.app</string>
 	</dict>
 	<key>jd</key>
 	<dict>
@@ -360,7 +360,7 @@
 		<key>LAST_USED</key>
 		<date>2020-02-27T12:19:18Z</date>
 		<key>URL</key>
-		<string>file:///.file/id=6571367.375</string>
+		<string>file:///Applications/App%20Store.app</string>
 	</dict>
 	<key>p</key>
 	<dict>
@@ -432,7 +432,7 @@
 		<key>LAST_USED</key>
 		<date>2019-11-08T09:13:46Z</date>
 		<key>URL</key>
-		<string>file:///.file/id=6571367.59224</string>
+		<string>file:///Applications/QuickTime%20Player.app</string>
 	</dict>
 	<key>qtp</key>
 	<dict>
@@ -441,7 +441,7 @@
 		<key>LAST_USED</key>
 		<date>2019-11-08T09:13:46Z</date>
 		<key>URL</key>
-		<string>file:///.file/id=6571367.59224</string>
+		<string>file:///Applications/QuickTime%20Player.app</string>
 	</dict>
 	<key>sa</key>
 	<dict>
@@ -585,7 +585,7 @@
 		<key>LAST_USED</key>
 		<date>2020-02-26T15:27:30Z</date>
 		<key>URL</key>
-		<string>file:///.file/id=6571367.15792520</string>
+		<string>file:///Applications/VMware%20Fusion.app/</string>
 	</dict>
 	<key>vmwf</key>
 	<dict>
@@ -621,7 +621,7 @@
 		<key>LAST_USED</key>
 		<date>2019-06-01T14:46:45Z</date>
 		<key>URL</key>
-		<string>file:///.file/id=6571367.13273542</string>
+		<string>file:///Applications/Microsoft%20Word.app</string>
 	</dict>
 </dict>
 </plist>
