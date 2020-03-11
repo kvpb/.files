@@ -88,6 +88,10 @@ alias	ns='cd && cls && nh '
 alias	hy='history'
 alias	h='history | tail -n 20'
 
+#	printenv		print out the environment
+
+alias	pe='( set -o posix; set ) | cat'
+
 #	exit
 
 #alias	e='exit'
@@ -281,6 +285,8 @@ alias	rlp='ResetLaunchPad'
 #alias	RPwG='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
 alias	rpwg='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
 alias	rp='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
+
+alias	ct='ruby ${HOME}/.files/lib/scpt/CharacterCount.rb'
 
 alias	MakeTemporaryFolder='sh ${HOME}/.files/lib/scpt/NewTemporaryFolder.sh'
 alias	maketemporaryfolder='sh ${HOME}/.files/lib/scpt/NewTemporaryFolder.sh'
