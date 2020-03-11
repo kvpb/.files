@@ -16,3 +16,6 @@ iconv -f iso-8859-1 -t utf-8 < file > file.txt # Convert an ISO-8859-1-encoded f
 2019-06-10 15:20:38  defaults write com.apple.LaunchServices LSHandlers -array-add '{ LSHandlerContentType = "com.microsoft.word.doc"; LSHandlerRoleAll = "com.apple.TextEdit"; }'
 2019-06-11 11:11:03  plutil -replace NSHighResolutionCapable -bool true /Applications/LibreOffice.app/Contents/Info.plist && /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -v -f /Applications/LibreOffice.app
 2020-01-10 14:43:07  sudo defaults write /Library/Preferences/com.apple.Bluetooth CoreBluetoothCache -dict && sudo launchctl unload /System/Library/LaunchDaemons/com.apple.bluetoothd.plist && sudo launchctl load /System/Library/LaunchDaemons/com.apple.bluetoothd.plist
+2020-03-11 15:09:05  git rebase --committer-date-is-author-date --root; git push --force-with-lease;
+2020-03-11 15:25:43  git filter-branch --env-filter 'export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"'; g pl;
+2020-03-11 15:25:50  git filter-branch -f --env-filter 'export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"' $SHA1..HEAD
