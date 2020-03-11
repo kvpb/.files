@@ -1,1 +1,16 @@
+#!/usr/bin/env zsh
 
+mf ()
+{
+	for var in "${@}";
+	do
+		if [ -e "${var}" ];
+		then
+			printf "${var}: file exists\n";
+		else
+			zsh <<< "> ${var} <<< ''";
+		fi;
+	done;
+}; # mf
+# mf	make files
+# touch tempers with the timestamps. mkfile does not create empty files. Sometimes, that's all you need.
