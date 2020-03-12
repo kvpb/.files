@@ -1,0 +1,170 @@
+load('ex3weights.mat')
+a1 = [ones(m, 1) X]; size(a1), z2 = Theta1 * a1'; size(z2), a2 = sigmoid( [ ones(m, 1) z2' ] ); size(a2), z3 = Theta2 * a2'; size(z3), a3 = sigmoid( z3' ); size(a3), h = a3; size(h), p1 = max(h, [], 2); [ var, p2 ] = max(h, [], 2); p1 == p2
+a1 = [ones(m, 1) X]; size(a1), z2 = Theta1 * a1'; size(z2), a2 = sigmoid( [ ones(m, 1) z2' ] ); size(a2), z3 = Theta2 * a2'; size(z3), a3 = sigmoid( z3' ); size(a3), h = a3; size(h), [ var, p ] = max(h, [], 2); size(p)
+# Octave 3.8.0, Wed Feb 19 12:53:43 2020 CET <kvpb@Karl Bertin's MacBook>
+X
+x = [ X X.^p ];
+x = [ X X.^p ]
+x = [ X X.^p-- ];
+x = [ X X.^p-- ]
+x = [ X X.^p ]
+X
+X(:, 1)
+A = X(:, 1).^1:9
+A = X(:, 1).^1:9'
+A = X(:, 1).^(1:9)'
+A = X(:, 1).^(1:9)
+A = X.^(1:9)
+# Octave 3.8.0, Thu Feb 20 16:54:27 2020 CET <kvpb@Karl Bertin's MacBook>
+[0.01 0.03 0.1 0.3 1 3 10 30] == [ 0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30; ]
+for p = [ 0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30 ], C = C{:}, sigma = sigma{:}, end
+for p = [ 0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30 ], C = p{:}, sigma = p{:}, end
+for p = [ 0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30 ], C = p(:), sigma = p(:), end
+var = svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma)), var
+[var] = svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma)), var
+[ var ] = svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma)), var
+var0 = svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma)), var0
+[var1] = svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma)), var1
+[ var2 ] = svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma)), var2
+var0 == var1
+var1 == var2
+# Octave 3.8.0, Wed Feb 26 15:38:24 2020 CET <kvpb@Karl Bertin's MacBook>
+||a||
+# Octave 3.8.0, Tue Mar 03 15:26:39 2020 CET <kvpb@Karl Bertin's MacBook>
+|-1|
+| -1 |
+abs( -1 )
+x(:, 10) = X(10, :)'
+# Octave 3.8.0, Thu Mar 05 16:32:08 2020 CET <kvpb@Karl Bertin's MacBook>
+centroids
+ex7
+centroids
+initial_centroids
+ex7
+size(mu)
+size(centrpods)
+size(centroids)
+ex7
+centroids
+whos
+centroids
+ex7
+centroids
+ex7
+~
+ex7
+centroids
+ex7
+centroids = [ 3 3; 6 2; 8 5 ]
+ex7
+idx
+ex7
+load("_X.txt"), load("_idx.txt"), load("_K.txt"), load("_centroids.txt"), load("_m.txt"), load("_n.txt")
+whos
+load("_X"), load("_idx"), load("_K"), load("_centroids"), load("_m"), load("_n")
+whos
+load("_X"); load("_idx"); load("_K"); load("_centroids"); load("_m"); load("_n");
+whos
+load("_X"); load("_idx"); load("_centroids"); load("_m"); load("_n");
+load("_X"); load("_idx"); load("_centroids");
+whos
+size(X)
+size(centroids)
+size(idx)
+ex7
+load("_X"); load("_idx"); load("_centroids");
+whos
+X
+centroids
+repelem(X, 3)
+repelems(X, 3)
+repelem
+r = repmat(x, n, 1);
+r = repmat(X, n, 1);
+r = repmat(X, 3, 1);
+r = repmat(X, 3, 1)
+r = repmat(X, 3, 3)
+r = repmat(X, 3, 1)
+r = repmat(X, 2, 1)
+r = repmat(X, 3, 1)
+X'
+X' * 2
+X * 2
+repmat(X) * 3
+repmat(X)
+repmat(X, 1)
+repmat(X, 1, 3)
+repmat(X, 2, 3)
+A = [1,2; 3, 4; 5, 6];
+B = kron(A, [1;1]);
+B = kron(A, [1;1])
+A = [1,2; 3, 4; 5, 6], B = kron(A, [1;1])
+kron(X, [1;1])
+kron(X, [1; 1])
+kron(X, [1; 1; 1])
+kron(X, [1; 1; 1]) * centroids
+kron(X, [1; 1; 1]) - centroids
+kron(X, [ 1; 1; 1; ]) - kron(centroids, [ 1 * 900; ])
+kron(centroids, [ 1 * 900; ])
+kron(centroids, [ 1; ] * 900)
+kron(centroids, [ 1; ] .* 900)
+A2 = reshape(kron(reshape(X', 3 * 2, []), ones(1, 3)), 2, [])';
+A2 = reshape(kron(reshape(X', 3 * 2, []), ones(1, 3)), 2, [])'
+A = reshape(kron(reshape(centroids, 3 * 2, []), ones(1, 3)), 2, [])'
+A = reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 3)), 2, [])'
+centroids
+A = reshape(kron(reshape(centroids', 900 * 2, []), ones(1, 3)), 2, [])'
+A = reshape(kron(reshape(centroids', 900 * 2, []), ones(1, 900)), 2, [])'
+A = reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 3)), 2, [])'
+A = reshape(kron(reshape(centroids', 900 * 2, []), ones(1, 3)), 2, [])'
+A = reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 3)), 2, [])'
+A = reshape(kron(reshape(centroids', 900 * 2, []), ones(1, 900)), 2, [])'
+A = reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 900)), 2, [])'
+kron(X, [1; 1; 1]) - reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 900)), 2, [])'
+kron(X, [1; 1; 1]) - reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 3)), 2, [])'
+size(kron(X, [1; 1; 1]))
+size(reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 3)), 2, [])')
+size(reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 100)), 2, [])')
+size(reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 300)), 2, [])')
+kron(X, [1; 1; 1]) - reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 300)), 2, [])'
+ex7
+kron(X, [1; 1; 1]) - reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 300)), 2, [])'
+load("_X"); load("_idx"); load("_centroids");
+kron(X, [1; 1; 1]) - reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 300)), 2, [])'
+A = kron(X, [1; 1; 1]) - reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 300)), 2, [])'
+size(A)
+size(idx)
+centroids
+X
+kron(X, [1; 1; 1]) - reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 300)), 2, [])'
+A = kron(X, [1; 1; 1]) - reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 300)), 2, [])'
+size(A)
+B = sqrt( A.^2 )
+size(B)
+A(1:10)
+B(1:10)
+size(centroids)
+A == kron(X, [1; 1; 1]) - reshape(kron(reshape(centroids', 3 * 2, []), ones(1, length(centroids) * 100)), 2, [])'
+[ m, n; ] = size(A)
+[ m, n; ] = size(centroids)
+[ size(centroids) ]
+[ size(centroids) ](1)
+[ size(centroids) ](2)
+size(centroids)(1)
+A == kron(X, [1; 1; 1]) - reshape(kron(reshape(centroids', size(centroids)(1) * size(centroids)(2), []), ones(1, size(centroids)(1) * 100)), 2, [])'
+A == kron(X, [1; 1; 1]) - reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 300)), 2, [])'
+A = kron(X, [1; 1; 1]) - reshape(kron(reshape(centroids', 3 * 2, []), ones(1, 300)), 2, [])'
+min(A, [], 2)
+min(A,, 2)
+min(A, 2)
+min(A, [], 2)
+min(A, [], 1)
+min(A, [], [ 1 2 ])
+min(A, [])
+min(A)
+min(A, [])
+min(A, [], 1)
+min(A, [], 3)
+size(min(A, [], 3))
+min(A, [], 3) == A
+ex7
