@@ -19,3 +19,4 @@ iconv -f iso-8859-1 -t utf-8 < file > file.txt # Convert an ISO-8859-1-encoded f
 2020-03-11 15:09:05  git rebase --committer-date-is-author-date --root; git push --force-with-lease;
 2020-03-11 15:25:43  git filter-branch --env-filter 'export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"'; g pl;
 2020-03-11 15:25:50  git filter-branch -f --env-filter 'export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"' $SHA1..HEAD
+2020-09-13 12:55:29  awk -F, '$3 ~ /^Timid/' method1.csv | awk -F, '$11 ~ /^Fire/' > file1.csv;
