@@ -20,7 +20,8 @@ yellow='\033[0;33m'
 hiyellow='\033[0;30;33m'
 key='\033[0;30m'
 hikey='\033[0;97;40m'
-# Set graphics modes. (i) ANSI escape sequences, formatted as `\033[${textattribute};${foregroundcolor};${backgroundcolor}m` (or `esc[${value};...;${value}m`).
+#osxmavericksphotoansinearestmeancolor='\033[0;180m' # (i) OS X 10.9 Mavericks icon photo mean color, uncropped, filling the square: rgb(, , ), # or hsl(, %, %); nearest HTML color:  or #; nearest ANSI color:  or #.
+# Set graphics mode. (i) ANSI escape sequences format: \033[${textattribute};${foregroundcolor};${backgroundcolor}m (or esc[${value};...;${value}m).
 clearedstyleandformatting=`tput sgr0` #${capname} = 'sgr0' # Turn off _all_ attribute modes.
 
 function cecho ()
@@ -30,22 +31,22 @@ function cecho ()
 
 	echo "${color}${string}${clearedstyleandformatting}"
 	return
-} # color echo (by João Cunha `joaocunha`) improved (by Brandon Brown `brandonb927`) custom (by Karl Bertin `kvpb`)
+} # color echo (João Cunha `joaocunha`) improved (Brandon Brown `brandonb927`) custom (by Karl Bertin `kvpb`)
 
-echo  ''
-cecho '                   ^   |\ \ / | |  ^  | | |   | \  |  / \ | /  |\'               $red
-cecho '                  ( )  |   X  |V| |-| | | |-  |<   |  |   |<   |'                $red
-cecho '               .   V  \|  / \ | | | |  V  |__ | \  |  \_/ | \ \|'                $red
-echo  ''
-cecho '                                 LICENSED BY'                                    $red
-cecho '                                 ${LICENSOR}'                                    $red
-echo  ''
-cecho "                            K K  V V  PPP  BB   '   SS"                          $red
-cecho '                           KK   V V  PPP  BBB      S'                            $red
-cecho '                          K K   V   P    BBB     SS'                             $red
-echo  ''
-cecho '                 WARNING: USE THIS SCRIPT AT YOUR OWN RISK.'                     $red
-echo  ''
+echo ''
+cecho '                   ^   |\ \ / | |  ^  | | |`` |`\  |  /`\ | /  |\' $red
+cecho '                  ( )  |   X  |V| |-| | | |-  |<   |  |   |<   |' $red
+cecho '               .   V  \|  / \ | | | |  V  |__ | \  |  \_/ | \ \|' $red
+echo ''
+cecho '                                 LICENSED BY' $red
+cecho '                                 ${LICENSOR}' $red
+echo ''
+cecho "                            K K  V V  PPP  BB   '" $red
+cecho '                           KK   V V  PPP  BBB     SS' $red
+cecho '                          K K   V   P    BBB     SS' $red
+echo ''
+cecho '                 WARNING: USE THIS SCRIPT AT YOUR OWN RISK.' $red
+echo ''
 cecho " ALL THE COMPUTER PROGRAMS  AND SOFTWARE ARE PROVIDED 'AS IS'  WITHOUT WARRANTY" $red
 cecho ' OF ANY KIND.  WE MAKE NO WARRANTIES,  EXPRESS  OR IMPLIED,  THAT THEY ARE FREE' $red
 cecho ' OF ERROR,  OR ARE CONSISTENT  WITH ANY PARTICULAR STANDARD OF MERCHANTABILITY,' $red
@@ -54,49 +55,49 @@ cecho ' SHOULD NOT BE  RELIED ON FOR SOLVING A PROBLEM  WHOSE INCORRECT SOLUTION
 cecho ' RESULT  IN  INJURY  TO  A  PERSON  OR  LOSS  OF  PROPERTY.  IF YOU DO USE THEM' $red
 cecho ' IN SUCH A MANNER,  IT IS AT YOUR OWN RISK.  THE AUTHOR  AND PUBLISHER DISCLAIM' $red
 cecho ' ALL LIABILITY FOR  DIRECT,  INDIRECT,  OR CONSEQUENTIAL DAMAGES RESULTING FROM' $red
-cecho ' YOUR USE OF THE PROGRAMS.'                                                      $red
-echo  ''
-# Display the title screen with disclaimer.
+cecho ' YOUR USE OF THE PROGRAMS.' $red
+echo ''
+# Display the title screen with the disclaimer.
 
 sudo -v # Ask for an administrator password.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & # Update the sudo timestamp until the script is over.
 
 osascript -e 'tell application "System Preferences" to quit' # Quit any System Preferences pane to prevent them from overriding this script.
 
-cecho '1st-Party Settings: Syswide & Userspec Prefs' $yellow
+cecho 'First-Party Settings: Systemwide And User-Specific Preferences' $yellow
 
-echo  'Unnamed'
-
-chsh -s /bin/bash # Change the default login shell to BASH.
+echo 'Unnamed'
 
 sudo defaults write /var/db/SystemPolicy-prefs.plist enabled -string NO
 sudo spctl --master-disable
-# (i) Set Allow apps downloaded from to anywhere. [i] Disables GateKeeper.
+# Allow apps downloaded from anywhere. (Disable GateKeeper.)
 
-defaults write com.apple.LaunchServices LSQuarantine -bool FALSE # Don't warn when opening an application.
+chsh -s /bin/bash # Set BASH as login shell.
 
-#sudo pmset -a hibernatemode 0 # Disable hibernation mode. /!\ Apple laptop with SSD trick.
+defaults write com.apple.LaunchServices LSQuarantine -bool FALSE # Do not warn when opening an application.
 
-#sudo pmset -a standbydelay 86400 # Set standby delay to 24h.
+#sudo pmset -a hibernatemode 0 # Disable hibernation mode. (i) A trick for Apple laptops with SSD.
 
-sudo pmset -a sleep 0 # Disable sleep mode.
-sudo systemsetup -setcomputersleep off > /dev/null # Disable computer sleep mode.
-sudo rm /private/var/vm/sleepimage
-sudo touch /private/var/vm/sleepimage
-sudo chflags uchg /private/var/vm/sleepimage
-# Remove the sleep image file, add zero-byte file instead and make it unrewritable. /!\ Apple computer with SSD trick.
+#sudo pmset -a standbydelay 86400 # Set standby delay to 24 hours.
 
-sudo pmset -a disksleep 0 # Disable automatic HDD sleep. /!\ Apple computer without HDD trick. (i) Disable Put hard disks to sleep when possible.
+#sudo pmset -a sleep 0 # Disable sleep mode.
+#sudo systemsetup -setcomputersleep off > /dev/null # Disable computer sleep mode.
+#sudo rm /private/var/vm/sleepimage
+#sudo touch /private/var/vm/sleepimage
+#sudo chflags uchg /private/var/vm/sleepimage
+# Delete the sleep image file, create a zero-byte file instead, and make it unrewritable. (i) A trick for Apple laptops with SSD. /!\ seems to cause sleep wake failure. better leave the sleep image.
 
-#sudo pmset -a sms 0 # Disable the sudden motion sensor. /!\ Apple laptop without HDD trick.
+sudo pmset -a disksleep 0 # Do not put hard disks to sleep when possible. (i) A trick for Apple computers without HDD.
+
+#sudo pmset -a sms 0 # Disable the sudden motion sensor. (i) A trick for Apple laptops without HDD.
 
 sudo systemsetup -setrestartfreeze on # Restart automatically if the computer freezes.
 
-defaults write NSGlobalDomain AppleLanguages -array "en" "fr"
-defaults write NSGlobalDomain AppleLocale -string "en_US@currency=EUR"
-defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+defaults write NSGlobalDomain AppleLanguages -array "en" "fr" # Set US english and FR french as preferred languages.
+defaults write NSGlobalDomain AppleLocale -string "en_US@currency=EUR" # Set US english as format language and euro as currency.
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters" # Set centimeters as measurement unit.
 defaults write NSGlobalDomain AppleMetricUnits -bool TRUE
-# Set language and text formats. [i] Sets format language as NA english and currency as euro.
+# Set the language and text formats.
 
 systemsetup -settimezone "Europe/Paris" > /dev/null # Set the timezone. (i) See `sudo systemsetup -listtimezones` for other values.
 
@@ -104,29 +105,43 @@ sudo systemsetup -setusingnetworktime on # Enable network time use.
 
 sudo systemsetup -setnetworktimeserver "time.euro.apple.com" # Set network time server.
 
-echo  'Directory Layout'
+echo 'Directory Layout'
 
 sudo ln -s /usr/libexec/PlistBuddy /usr/bin/PlistBuddy
 sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/bin/airport
 sudo ln -s /System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc /usr/bin/jsc
-# Write system-wide custom symlinks.
+# Write system-wide custom symbolic links.
 
-sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Applications/Directory Utility.app") at (POSIX file "/Applications")'
-sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Applications/Network Utility.app") at (POSIX file "/Applications")'
-sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Finder.app") at (POSIX file "/Applications")'
-sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Applications/Archive Utility.app") at (POSIX file "/Applications")'
+if [ -e "/Applications/{Directory Utility,Network Utility,Finder,Archive Utility}.app" ];
+then
+	mv /Applications/Directory\ Utility.app ${HOME}/.Trash/
+	mv /Applications/Network\ Utility.app ${HOME}/.Trash/
+	mv /Applications/Finder.app ${HOME}/.Trash/
+	mv /Applications/Archive\ Utility.app ${HOME}/.Trash/
+	sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Applications/Directory Utility.app") at (POSIX file "/Applications")'
+	sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Applications/Network Utility.app") at (POSIX file "/Applications")'
+	sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Finder.app") at (POSIX file "/Applications")'
+	sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Applications/Archive Utility.app") at (POSIX file "/Applications")'
+else
+	sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Applications/Directory Utility.app") at (POSIX file "/Applications")'
+	sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Applications/Network Utility.app") at (POSIX file "/Applications")'
+	sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Finder.app") at (POSIX file "/Applications")'
+	sudo osascript -e 'tell application "Finder" to make alias file to (POSIX file "/System/Library/CoreServices/Applications/Archive Utility.app") at (POSIX file "/Applications")'
+fi
 # Write system-wide custom aliases.
 
-echo  'Network'
+echo 'Network'
 
-modelname=$(system_profiler SPHardwareDataType | grep 'Model Name' | sed 's/.*: //')
-sudo scutil --set ComputerName "Karl Bertin's ${modelname}"
-sudo scutil --set HostName "Karl Bertin's ${modelname}"
-modelname2=$(echo ${modelname} | sed 's/ //')
-sudo scutil --set LocalHostName "KarlBertins${modelname2}"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Karl Bertin's ${modelname}"
+macmodelname=$(system_profiler SPHardwareDataType | grep "Model Name" | cut -c19-)
+echo "What is your name?"
+read userfullname
+sudo scutil --set ComputerName "${userfullname}'s ${macmodelname}"
+sudo scutil --set HostName "${userfullname}'s ${macmodelname}"
+macmodelname2=$(echo ${macmodelname} | sed 's/ //')
+sudo scutil --set LocalHostName "KVPBs${macmodelname2}"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "${userfullname}'s ${macmodelname}"
 
-echo  'Login Window & Screen Saver (NSGlobalDomain, com.apple.loginwindow, com.apple.HIToolbox.loginwindow, com.apple.screensaver)'
+echo 'Login Window & Screen Saver (NSGlobalDomain, com.apple.loginwindow, com.apple.HIToolbox.loginwindow, com.apple.screensaver)'
 
 sudo defaults write /Library/Preferences/com.apple.loginwindow autoLoginUser "" # Disable automatic login.
 
@@ -159,7 +174,7 @@ sudo /usr/libexec/PlistBuddy -c "Add :com.apple.HIToolbox:AppleSelectedInputSour
 sudo /usr/libexec/PlistBuddy -c "Set :com.apple.HIToolbox:AppleSelectedInputSources:0:KeyboardLayout\ ID ${keyboardlayoutid}" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
 sudo /usr/libexec/PlistBuddy -c "Add :com.apple.HIToolbox:AppleSelectedInputSources:0:KeyboardLayout\ Name string U.S." "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
 sudo /usr/libexec/PlistBuddy -c "Set :com.apple.HIToolbox:AppleSelectedInputSources:0:KeyboardLayout\ Name U.S." "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
-# Add and set login window input keyboard layout to US. [I'd rather do this the `defaults` way.]
+# Add login window input keyboard layout, and set it to US.
 
 sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool TRUE
 #sudo defaults write /var/ard/Library/Preferences/com.apple.menuextra.textinput ModeNameVisible -bool TRUE
@@ -168,20 +183,20 @@ sudo chmod 777 /Library/Preferences/com.apple.loginwindow.plist
 
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName # Display IP address, hostname, OS version etc when clicking the clock in the login window.
 
-#echo "What is this Mac's owner's phone number, with country code?"
-#echo "[eg '+336XXXXXXXX' for french mobile phone numbers]"
+#echo "What is the phone number with country code of the owner of this Mac?"
+#echo "(E.g. '+33 6 XX XX XX XX' for french mobile phone numbers.)"
 #read phonenumber
-#echo "What is this Mac's owner's email address?"
+#echo "What is the email address of the owner of this Mac?"
 #read emailaddress
-#sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "${fullname}'s ${modelname}\nPlease contact ${phonenumber} or ${emailaddress} if found."
-# Display set lock message. (i) `fullname` and `modelname` variables have been set earlier, at Network: Computer name.
-sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Karl Bertin's ${modelname}\nPlease contact +33633784893 or karlvp.bertin@gmail.com if found." # Display set lock message. (i) `modelname` variable has been set earlier, at Network: Computer name.
+#sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "${userfullname}'s ${macmodelname}.\nPlease contact ${phonenumber} or ${emailaddress} if found."
+# Display set lock message. (i) userfullname and macmodelname variables have been set earlier, at Network: Computer name.
+sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Karl V. P. Bertin's Mac${macmodelname}.\nPlease contact +33 6 70 83 26 64 and karlvp.bertin@gmail.com if found." # Display set lock message. (i) computername variable has been set earlier, at Network: Computer name.
 
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 # Require password immediately after sleep or screen saver begins. (i) Enable Require password immediately after sleep or screen saver begins.
 
-echo  'Keyboard (NSGlobalDomain, com.apple.HIToolbox, com.apple.universalaccess)'
+echo 'Keyboard (NSGlobalDomain, com.apple.HIToolbox, com.apple.universalaccess)'
 
 sudo /usr/libexec/PlistBuddy -c "Add :AppleCurrentKeyboardLayoutInputSourceID string com.apple.keylayout.US" "/Library/Preferences/com.apple.HIToolbox.plist"
 sudo /usr/libexec/PlistBuddy -c "Set :AppleCurrentKeyboardLayoutInputSourceID com.apple.keylayout.US" "/Library/Preferences/com.apple.HIToolbox.plist"
@@ -210,7 +225,7 @@ sudo /usr/libexec/PlistBuddy -c "Add :AppleSelectedInputSources:0:KeyboardLayout
 sudo /usr/libexec/PlistBuddy -c "Set :AppleSelectedInputSources:0:KeyboardLayout\ Name U.S." "/Library/Preferences/com.apple.HIToolbox.plist"
 sudo chown root:admin "/Library/Preferences/com.apple.HIToolbox.plist"
 sudo chmod 644 "/Library/Preferences/com.apple.HIToolbox.plist"
-# Add and set system input keyboard layout to US. [I'd rather do this the `defaults` way.]
+# Add system input keyboard layout, and set it to US.
 sudo /usr/libexec/PlistBuddy -c "Add :AppleCurrentKeyboardLayoutInputSourceID string com.apple.keylayout.UnicodeHexInput" "/Library/Preferences/com.apple.HIToolbox.plist"
 sudo /usr/libexec/PlistBuddy -c "Add :AppleDefaultAsciiInputSource:InputSourceKind string Keyboard\ Layout" "/Library/Preferences/com.apple.HIToolbox.plist"
 sudo /usr/libexec/PlistBuddy -c "Add :AppleDefaultAsciiInputSource:KeyboardLayout\ ID integer -1" "/Library/Preferences/com.apple.HIToolbox.plist"
@@ -225,16 +240,16 @@ sudo /usr/libexec/PlistBuddy -c "Add :AppleSelectedInputSources:0:KeyboardLayout
 sudo /usr/libexec/PlistBuddy -c "Add :AppleSelectedInputSources:0:KeyboardLayout\ Name string Unicode\ Hex\ Input" "/Library/Preferences/com.apple.HIToolbox.plist"
 sudo chown root:admin "/Library/Preferences/com.apple.HIToolbox.plist"
 sudo chmod 644 "/Library/Preferences/com.apple.HIToolbox.plist"
-# Add Unicode hex input system input keyboard layout. [I'd rather do this the `defaults` way.]
+# Add Unicode hex input system input keyboard layout.
 
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3 # Enable full keyboard access for all controls.
 
-defaults write -g NSUserKeyEquivalents '{ Zoom = "@$m"; }'
-# Add Shift-Command-M 'Maximize window' keyboard app shortcut. [It doesn't work so well, eg in Chrome, it fully expands a window resized to 50% of the desktop's width to fill the desktop, but it doesn't just refit the window to Chrome's default size which is a bit larger.]
+defaults write -g NSUserKeyEquivalents '{Zoom = "@$m";}'
+# Add Shift-Command-M 'Maximize window' keyboard app shortcut. [It doesn't work so well, e.g. in Chrome, it fully expands a window resized to 50% of the desktop's width to fill the desktop, but it doesn't just refit the window to Chrome's default size which is a bit larger.]
 
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool FALSE # Disable press-and-hold for keys.
-defaults write NSGlobalDomain InitialKeyRepeat -int 10 # Set key repeat triggering delay to even shorter. /!\ 15: GUI fastest; ≤10: Too fast; 0: NS SOM PARTY MN BRAV MYLOO
-defaults write NSGlobalDomain KeyRepeat -int 0 # Set key repeat rate to fastest. [i] Enables key repeat.
+defaults write NSGlobalDomain InitialKeyRepeat -int 10 # Set even shorter key repeat triggering delay. /!\ ≤10: too fast; 0: NS SOM PARTY MN BRAV MYLOO (i) 15: GUI fastest
+defaults write NSGlobalDomain KeyRepeat -int 0 # Set fastest key repeat rate. (Enable key repeat.)
 
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool TRUE
 defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
@@ -283,7 +298,7 @@ defaults write ${HOME}/Library/Preferences/.GlobalPreferences.plist NSUserDictio
                                                                                                             '{ on = 1; replace = "\\alpha"; with = "\U03b1"; }'
 # Set the text substitutions.
 
-echo  'Mouse & Trackpad (NSGlobalDomain, com.apple.driver.AppleHIDMouse, com.apple.driver.AppleBluetoothMultitouch.trackpad, com.apple.dock)'
+echo 'Mouse & Trackpad (NSGlobalDomain, com.apple.driver.AppleHIDMouse, com.apple.driver.AppleBluetoothMultitouch.trackpad, com.apple.dock)'
 
 defaults write com.apple.driver.AppleHIDMouse.plist Button2 -int 2 # Enable mouse secondary click.
 
@@ -291,7 +306,7 @@ defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClic
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool TRUE
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 1
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool TRUE
-# Enable trackpad secondary click and set it as click or tap with two fingers. (i) `defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2` to map bottom-right click to secondary click.
+# Enable trackpad secondary click, and set it as click or tap with two fingers. (i) `defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2` to map bottom-right click to secondary click.
 
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool TRUE
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
@@ -299,12 +314,12 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # Enable trackpad tap to click for current user and login screen.
 
 defaults write NSGlobalDomain com.apple.mouse.scaling -int 3 # Set mouse tracking speed to fast. (i) 0: slow; 3: fast.
-#defaults write NSGlobalDomain com.apple.scrollwheel.scaling -float 1.7 # Set mouse scroll wheel scrolling speed to fast. (i) 0: slow; 1.7: fast. /!\ This seems to cause drag and drop in Finder to become slow to unresponsive.
-#defaults write NSGlobalDomain com.apple.mouse.doubleClickThreshold -float 3.8625 # Set mouse double click needed speed to 75%. /!\ This seems to cause drag and drop in Finder to become slow to unresponsive.
+#defaults write NSGlobalDomain com.apple.scrollwheel.scaling -float 1.7 # Set mouse scroll wheel scrolling speed to fast. (i) 0: slow; 1.7: fast. /!\ seems to cause drag and drop in Finder to become slow to unresponsive.
+#defaults write NSGlobalDomain com.apple.mouse.doubleClickThreshold -float 3.8625 # Set mouse double click needed speed to 75%. /!\ seems to cause drag and drop in Finder to become slow to unresponsive.
 
 defaults write NSGlobalDomain com.apple.trackpad.scaling -int 3 # Set trackpad tracking speed to fast. (i) 0: slow; 3: fast.
 
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool TRUE # Enable natural (OS X Lion-style) scroll direction. (i) Enable System preferences: TrackPad: Scroll & zoom: Scroll direction: natural.
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool TRUE # Enable natural (OS X 10.7 Lion-style) scroll direction. (Enable System Preferences: TrackPad: Scroll & Zoom: Scroll Direction: natural.)
 
 defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool TRUE
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerHorizSwipeGesture -int 0
@@ -313,21 +328,21 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeF
 
 defaults write com.apple.dock showLaunchpadGestureEnabled -int 0 # Disable trackpad Launchpad gesture (pinch with thumb and three fingers).
 
-echo  '‘Displays’ & Display Server (NSGlobalDomain, com.apple.windowserver)'
+echo "'Displays' & Display Server (NSGlobalDomain, com.apple.windowserver)"
 
-sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool TRUE # Enable Hi-DPI display modes. /!\ Restart required.
+sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool TRUE # Enable Hi-DPI display modes. /!\ requires a restart.
 
-defaults write NSGlobalDomain AppleFontSmoothing -int 2 # Enable medium subpixel font rendering on non-Apple LCD displays. (i) Enable Use LCD font smoothing when available.
+defaults write NSGlobalDomain AppleFontSmoothing -int 2 # Enable medium subpixel font rendering on non-Apple LCD displays. (Enable Use LCD Font Smoothing When Available.)
 
-echo  '‘Printers’ (com.apple.print.PrintingPrefs)'
+echo "'Printers' (com.apple.print.PrintingPrefs)"
 
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool TRUE # Automatically quit printer app when printing is over.
 
-echo  'Wi-Fi'
+echo 'Wi-Fi'
 
 networksetup -setairportpower en0 on # Enable Wi-Fi.
 
-echo  'Bluetooth & Bluetooth Setup Assistant (com.apple.Bluetooth, com.apple.BluetoothAudioAgent)'
+echo 'Bluetooth & Bluetooth Setup Assistant (com.apple.Bluetooth, com.apple.BluetoothAudioAgent)'
 
 defaults write /Library/Preferences/com.apple.Bluetooth BluetoothAutoSeekKeyboard '1' # Launch Bluetooth setup assistant at startup if no keyboard is detected.
 
@@ -335,19 +350,23 @@ sudo defaults write /Library/Preferences/com.apple.Bluetooth BluetoothAutoSeekPo
 
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40 # Improve overall bluetooth headphones or headsets sound quality.
 
-osascript -e 'tell application "System Events" to tell process "SystemUIServer" to tell (menu bar item 1 of menu bar 1 whose description is "bluetooth") to {click, click (menu item 2 of menu 1)}' # Enable Bluetooth. [?] I'd prefer a non AppleScript & non kext unload way to do this, with defaults instead.
+osascript -e 'tell application "System Events" to tell process "SystemUIServer" to tell (menu bar item 1 of menu bar 1 whose description is "bluetooth") to {click, click (menu item 2 of menu 1)}' # Turn on Bluetooth.
 
-echo  'Data Storage Devices'
+echo 'Data Storage Devices'
 
 sudo nvram boot-args="mbasd=1" # Enable the MacBook Air SuperDrive on any Mac.
 
-echo  'Time Machine'
+echo 'Time Machine'
 
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool TRUE # Disable local Time Machine prompting to use new drives as backup volumes.
 
-hash tmutil &> /dev/null && sudo tmutil disablelocal # Disable local Time Machine snapshots. [i] Apple laptop with SSD trick. (i) Enter `sudo tmutil enablelocal` to reenable local Time Machine snapshots.
+hash tmutil &> /dev/null && sudo tmutil disablelocal # Disable local Time Machine snapshots. (i) A trick for Apple laptops with SSD. [Enter `sudo tmutil enablelocal` to reenable local Time Machine snapshots.]
 
-echo  'UX, Aqua (GUI), SUI & VUI (NSGlobalDomain, com.apple.systempreferences, com.apple.CrashReporter, com.apple.helpviewer, com.apple.systemuiserver)'
+#sudo tmutil setdestination /Volumes/KVPBs
+
+sudo tmutil enable # Turn on Time Machine.
+
+echo 'UX, Aqua (GUI), SUI & VUI (NSGlobalDomain, com.apple.systempreferences, com.apple.CrashReporter, com.apple.helpviewer, com.apple.systemuiserver)'
 
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool FALSE # Disable save to iCloud by default.
 
@@ -382,25 +401,25 @@ defaults write com.apple.menuextra.battery ShowPercent -bool TRUE
 
 defaults write NSGlobalDomain NSTextShowsControlCharacters -bool TRUE # Display ASCII control characters using caret notation in plain text view.
 
-defaults write NSGlobalDomain AppleICUForce12HourTime -bool FALSE # Enable 24h time format. (i) Enable System preferences: Date & time: Clock: Time options: Use a 24-hour clock.
+defaults write NSGlobalDomain AppleICUForce12HourTime -bool FALSE # Set 24-hour time format. (Enable System Preferences: Date & Time: Clock: Time Options: Use a 24-hour clock.)
 
-#defaults write NSGlobalDomain NSScrollAnimationEnabled -bool FALSE # Disable smooth scrolling. [i] Old-Mac-that-mess-the-animation-up trick.
+#defaults write NSGlobalDomain NSScrollAnimationEnabled -bool FALSE # Disable smooth scrolling. (i) A trick for old Mac that mess up the animation.
 
-defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic" # Display scroll bars automatically. (i) Other values are `WhenScrolling` and `Always`.
+defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic" # Display scroll bars automatically. [Other values are WhenScrolling and Always.]
 
-defaults write com.apple.universalaccess reduceTransparency -bool FALSE # (i) Enable Translucent menu bar.
+defaults write com.apple.universalaccess reduceTransparency -bool FALSE # Set translucent menu bar (Enable Translucent Menu Bar.)
 
 defaults write NSGlobalDomain AppleHighlightColor -string '1.000000 0.937255 0.690196' # (i) Set Highlight color to OS X 10.10 Yosemite's yellow.
 
-sudo nvram SystemAudioVolume=" " # Disable the startup sound. [i] Enter `sudo nvram -d SystemAudioVolume` to reenable the startup sound.
+sudo nvram SystemAudioVolume=" " # Disable the startup sound. [Enter `sudo nvram -d SystemAudioVolume` to reenable the startup sound.]
 
-echo  'Finder & AirDrop (NSGlobalDomain, com.apple.desktopservices, com.apple.finder, com.apple.frameworks.diskimages, com.apple.NetworkBrowser)'
+echo 'Finder & AirDrop (NSGlobalDomain, com.apple.desktopservices, com.apple.finder, com.apple.frameworks.diskimages, com.apple.NetworkBrowser)'
 
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE # Disable .DS_Store files writing on network volumes.
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE # Disable .DS_Store file writing on network volumes.
 
-defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool TRUE # Enable AirDrop with Ethernet and on unsupported Mac running Mac OS X Lion.
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool TRUE # Enable AirDrop with Ethernet and on unsupported Mac running Mac OS X Lion. (i) introduced in Mac OS X 10.7 Lion.
 
-defaults write com.apple.finder QuitMenuItem -bool TRUE # Enable Quit Finder  ⌘ Q.
+defaults write com.apple.finder QuitMenuItem -bool TRUE # Enable Quit Finder  ⌘Q.
 
 #defaults write com.apple.finder WarnOnEmptyTrash -bool FALSE # Disable the trash emptying warning.
 
@@ -416,7 +435,7 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool TRUE
 
 defaults write com.apple.finder NewWindowTarget -string "PfLo"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
-# Set home as new windows directory. (i) Use "PfDe" and "file://${HOME}/Desktop" for desktop or "PfLo" and "file:///path" for other paths.
+# Set home as new windows directory. [Use "PfDe" and "file://${HOME}/Desktop" for desktop or "PfLo" and "file:///path" for other paths.]
 
 defaults write NSGlobalDomain com.apple.springing.enabled -bool TRUE # Enable spring loading for directories.
 defaults write NSGlobalDomain com.apple.springing.delay -float 0 # Set spring loading delay to null.
@@ -435,23 +454,53 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
                                                           General -bool TRUE \
                                                           OpenWith -bool TRUE \
                                                           Privileges -bool TRUE
-# Expand General, Open with and Sharing & permissions file info panes by default.
+# Expand General, Open With and Sharing & Permissions file info panes by default.
 
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool TRUE
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool TRUE
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool TRUE
-# Expand save pane by default.
+# Expand the save pane by default.
 
 #rm -rf ${HOME}/Library/Application\ Support/Dock/desktoppicture.db
 #sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
 #sudo ln -s ${picturefile} /System/Library/CoreServices/DefaultDesktop.jpg
-# Set wallpaper. (i) `DefaultDesktop.jpg` is a symlink. (i) Wallpapers are at `/Library/Desktop Pictures`; default wallpaper is `Wave.jpg`.
+# Set wallpaper. /!\ destructive. (i) DefaultDesktop.jpg is a symlink. (i) Wallpapers are at /Library/Desktop Pictures; the default wallpaper is Wave.jpg.
 #defaults write /Library/Preferences/com.apple.loginwindow DesktopPicture "${picturefilepath}.jpg"
-#defaults write com.apple.desktop Background '{default = {ImageFilePath = "${picturefilepath}.jpg"; };}'
+#defaults write com.apple.desktop Background '{default = {ImageFilePath = "${picturefilepath}.jpg";};}'
 # Set wallpaper. /!\ Deprecated from OS X 10.9.5 Mavericks onwards.
-#osascript -e 'tell application "Finder" to set desktop picture to "${picturefilepath}.jpg" as POSIX file' # Set Desktop wallpaper.
+#osascript -e 'tell application "Finder" to set desktop picture to "${filepath}.jpg" as POSIX file' # Set the wallpaper of the desktop.
+rm -rf ${HOME}/Library/Application\ Support/Dock/desktoppicture.db && killall Dock
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(15,2,3)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(1,3,3)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(3,4,3)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(4,4,3)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(5,4,3)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(10,1,3)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(10,1,4)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(15,2,4)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(1,3,4)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(3,4,4)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(4,4,4)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(5,4,4)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(10,1,2)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(15,2,2)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(1,3,2)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(3,4,2)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(4,4,2)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(5,4,2)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(10,1,1)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(15,2,1)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(1,3,1)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(3,4,1)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(4,4,1)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(5,4,1)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"data\" VALUES('/Library/Desktop Pictures/Solid Colors')"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"data\" VALUES(1)"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"data\" VALUES('/System/Library/PreferencePanes/DesktopScreenEffectsPref.prefPane/Contents/Resources/DesktopPictures.prefPane/Contents/Resources/Transparent.tiff')"
+sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"data\" VALUES(0.0)"
+# Set the wallpaper.
 
-defaults write com.apple.finder FXPreferredViewStyle -string "clmv" # Set default view to columns. (i) Other viewing modes are 'icnv' for icons, 'Nlsv' for newlines and 'Flwv' for Cover flow.
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv" # Set the default view to the columns one. (i) Other viewing modes are icnv for icons, Nlsv for newlines and Flwv for Cover flow.
 
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo TRUE" ${HOME}/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo TRUE" ${HOME}/Library/Preferences/com.apple.finder.plist
@@ -460,21 +509,21 @@ defaults write com.apple.finder FXPreferredViewStyle -string "clmv" # Set defaul
 
 /usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom FALSE" ${HOME}/Library/Preferences/com.apple.finder.plist # Display desktop items infos to their icons' right.
 
-defaults write com.apple.finder ShowHardDrivesOnDesktop -bool TRUE # Display internal drives on the desktop. [i] Enable Hard disks.
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool TRUE # Display internal drives on the desktop. (Enable Hard Disks.)
 
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool TRUE # Display external drives on the desktop. [i] Enable External disks.
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool TRUE # Display external drives on the desktop. (Enable External Disks.)
 
-defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool TRUE # Display removable media on the desktop. [i] Enable CD, DVD and iPod.
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool TRUE # Display removable media (CD, DVD and iPod) on the desktop. (Enable CD, DVD and iPod.)
 
-defaults write com.apple.finder ShowMountedServersOnDesktop -bool TRUE # Display mounted servers on the desktop. [i] Enable Connected servers.
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool TRUE # Display mounted servers on the desktop. (Enable Connected Servers.)
 
-defaults write NSGlobalDomain AppleShowAllExtensions -bool TRUE # Display filename extensions. [i] Enable Show all filename extensions.
+defaults write NSGlobalDomain AppleShowAllExtensions -bool TRUE # Show all filename extensions. (Enable Show All Filename Extensions.)
 
 defaults write com.apple.finder AppleShowAllFiles -bool TRUE # Display hidden files.
 
-defaults write com.apple.finder DisableAllAnimations -bool TRUE # Disable Finder window & Get info pane animations.
+defaults write com.apple.finder DisableAllAnimations -bool TRUE # Disable Finder window & Get Info pane animations.
 
-echo  'Spotlight (com.apple.Spotlight)'
+echo 'Spotlight (com.apple.Spotlight)'
 
 defaults write com.apple.Spotlight orderedItems -array \
                                                        '{"enabled" = 1;"name" = "APPLICATIONS";}' \
@@ -504,11 +553,11 @@ plutil -convert binary1 ${HOME}/.files/Library/Application\ Support/com.apple.sp
 
 #sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search # Disable Spotlight menu bar icon.
 
-echo  '‘Screenshooter’ (com.apple.screencapture)'
+echo "'Screenshooter' (com.apple.screencapture)"
 
-defaults write com.apple.screencapture type -string 'png' # Set screenshots format to PNG. (i) Other options are `bmp` for Windows Bitmap, `gif` for GIF, `jpg` for JPEG, `jp2` for JPEG2000, `tif` for TIFF, `pict` for Macintosh PICT and `tga` for TARGA.
+defaults write com.apple.screencapture type -string 'png' # Set the screenshot format to PNG. [Other options are bmp for Windows Bitmap, gif for GIF, jpg for JPEG, jp2 for JPEG2000, tif for TIFF, pict for Macintosh PICT and tga for TARGA.]
 
-defaults write com.apple.screencapture name -string 'Screenshot' # Set screenshots filename as 'Screenshot ${YYYY}-${MM}-${DD} at ${h}.${mn}.${s}.${ext}'. (i) default option: 'Screen Shot'; custom options: '', and '\b' lead to a whitespace at the filename start [that the latter cannot erase]. [I didn't find any delete escape character or how to send hex code with `-data`.]
+defaults write com.apple.screencapture name -string 'Screenshot' # Set screenshot filename to 'Screenshot ${YYYY}-${MM}-${DD} at ${h}.${mn}.${s}.${ext}'. [default option: 'Screen Shot'; custom options: '', and '\b' lead to a whitespace at the beginning of the filename that the latter cannot erase.]
 #sudo cp /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings ${HOME}/Desktop/ScreenCapture.strings
 #sudo plutil -convert xml1 /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings
 #sed -i -e \
@@ -518,7 +567,7 @@ defaults write com.apple.screencapture name -string 'Screenshot' # Set screensho
 #          's/<string>%@\ \(%@\)<\/string>/<string>%@%@<\/string>/g' \
 #          /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings ${HOME}/Desktop/ScreenCapture.strings
 # sudo plutil -convert binary1 /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/English.lproj/ScreenCapture.strings ${HOME}/Desktop/ScreenCapture.strings
-# Copy ScreenCapture.strings to Desktop/, convert ScreenCapture.strings to XML plist version 1, edit content then convert ScreenCapture.strings back to binary plist version 1. /!\ Bad practice: XML editing with sed & System/ content editing [probably prevented by OS X El Capitan's SIP].
+# Copy ScreenCapture.strings to Desktop/, convert ScreenCapture.strings to XML plist version 1, edit content then convert ScreenCapture.strings back to binary plist version 1. /!\ bad practice: XML editing with sed & System/ content editing, probably prevented by OS X El Capitan's SIP.
 
 #defaults write com.apple.screencapture include-date -bool FALSE # Disable date in screenshot filename.
 
@@ -526,13 +575,13 @@ defaults write com.apple.screencapture name -string 'Screenshot' # Set screensho
 
 #defaults write com.apple.screencapture disable-shadow -bool TRUE # Disable shadows in screenshots.
 
-echo  'QuickLook (com.apple.finder)'
+echo 'QuickLook (com.apple.finder)'
 
-#echo -n "0x08000100:0x0" > ${HOME}/.CFUserTextEncoding # Fix the ancient UTF-8 bug in QuickLook. /!\ Causes issues with Adobe Illustrator CS5.
+#echo -n "0x08000100:0x0" > ${HOME}/.CFUserTextEncoding # Fix the UTF-8 bug of QuickLook. /!\ causes issues with Adobe Illustrator CS5.
 
 defaults write com.apple.finder QLEnableTextSelection -bool TRUE # Enable text selection in QuickLook.
 
-echo  'Dock (com.apple.dock)'
+echo 'Dock (com.apple.dock)'
 
 #defaults write com.apple.dock single-app -bool FALSE # Disable Single app mode.
 
@@ -554,51 +603,52 @@ defaults write com.apple.dock orientation left # Set alignment to the left or to
 
 defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.dock persistent-others -array
-# Remove any and all item.
+# Delete Dock items.
 
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Firefox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iTerm.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/VMware Fusion.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Server.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iTunes.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Activity Monitor.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Stickies.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/TextEdit.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Microsoft Office 2011/Microsoft Word.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Microsoft Office 2011/Microsoft Excel.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Adobe Photoshop CS6/Adobe Photoshop CS6.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Adobe Lightroom/Adobe Lightroom.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Adobe Illustrator CS6/Adobe Illustrator CS6.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Sketch.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Preview.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/VLC.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Calendar.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Contacts.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/ProtonMail Bridge.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Signal.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/AppleScript Editor.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # (i) AppleScript Editor is named Script Editor from OS X Yosemite onwards.
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Xcode.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Jumpcut.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/SizeUp.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Dropbox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
-defaults write com.apple.dock persistent-others -array-add '{ "tile-data" = { "list-type" = 1; }; "tile-type" = "recents-tile"; }'
-defaults write com.apple.dock persistent-others -array-add '<dict><key>tile-data</key><dict><key>arrangement</key><integer>1</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Applications</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>'
-defaults write com.apple.dock persistent-others -array-add '<dict><key>tile-data</key><dict><key>arrangement</key><integer>2</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/kvpb/Downloads/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Downloads</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>'
-#defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>arrangement</key><integer>5</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/kvpb/Dropbox/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Dropbox</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"#defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Users/kvpb/misc</string><key>_CFURLStringType</key><integer>0</integer></dict><key>file-label</key><string>Miscellaneous</string><key>file-type</key><integer>18</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Firefox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Firefox app item.
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iTerm.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create an iTerm2 app item.
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/VMware Fusion.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a WMware Fusion app item.
+#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Server.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Server app item.
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iTunes.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create an iTunes app item.
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Activity Monitor.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create an Activity Monitor app item.
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Stickies.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Stickies app item.
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/TextEdit.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a TextEdit app item.
+#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Microsoft Office 2011/Microsoft Word.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Word app item.
+#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Microsoft Office 2011/Microsoft Excel.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create an Excel app item.
+#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Adobe Photoshop CS6/Adobe Photoshop CS6.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Photoshop CS6 app item.
+#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Pixelmator.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Pixelmator app item.
+#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/GIMP-2.10.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a GIMP app item.
+#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Adobe Lightroom/Adobe Lightroom.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Photoshop Lightroom app item.
+#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Adobe Illustrator CS6/Adobe Illustrator CS6.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create an Illustrator CS6 app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Sketch.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Sketch app item.
+#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Inkscape.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create an Inscape app item.
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Preview.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Preview app item.
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/VLC.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a VLC Media Player app item.
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Calendar.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Calendar app item.
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Contacts.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Contacts app item.
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/ProtonMail Bridge.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a ProtonMail Bridge app item.
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Mail app item.
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Signal.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Signal app item.
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/AppleScript Editor.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an AppleScript Editor app item. (i) AppleScript Editor is named Script Editor from OS X Yosemite onwards.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Xcode.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Xcode app item.
+#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Jumpcut.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Jumpcut app item.
+#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/SizeUp.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a SizeUp app item.
+#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Dropbox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Dropbox app item.
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+defaults write com.apple.dock persistent-others -array-add '{ "tile-data" = { "list-type" = 1; }; "tile-type" = "recents-tile"; }' # Create a recent items stack others item.
+defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>arrangement</key><integer>1</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Applications</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>" # Create an Applications others item.
+defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>arrangement</key><integer>2</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/kvpb/Downloads/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Downloads</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>" # Create a Downloads others item.
+#defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>arrangement</key><integer>5</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/kvpb/Dropbox/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Dropbox</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"#defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Users/kvpb/misc</string><key>_CFURLStringType</key><integer>0</integer></dict><key>file-label</key><string>Miscellaneous</string><key>file-type</key><integer>18</integer></dict><key>tile-type</key><string>directory-tile</string></dict>" # Create a Dropbox others item.
 defaults delete com.apple.dock mod-count
-# Add Firefox, iTerm2, VMware Fusion, iTunes, Activity Monitor, Stickies, TextEdit, Preview, VLC, Calendar, Contacts, ProtonMail Bridge, Mail & Signal app items, a Recent Items stack and the Applications & Downloads folders to the Dock.
+defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create an app item area spacer item.
+#defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create an other items area spacer item.
 
-defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Add a spacer to the app items area.
-#defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}' # Add a spacer to the folders items area.
-
-defaults write com.apple.dock mineffect -string "scale" # Set window minimaximazation effect to scale. /!\ Do not set to hidden 'suck' which, you know, sucks.
+defaults write com.apple.dock mineffect -string "scale" # Set window minimaximazation effect to scale. [Do not set to hidden 'suck' which, y'know, sucks.]
 
 defaults write com.apple.dock hide-mirror -bool TRUE # Disable mirror effect.
 
@@ -611,15 +661,15 @@ defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0
 # Speed autohiding animation up.
 
-echo  'Mission Control (com.apple.dock)' # (i) Mission Control has been substituted to Exposé.
+echo 'Mission Control (com.apple.dock)' # (i) Mission Control has been substituted for Exposé.
 
 defaults write com.apple.dock mru-spaces -bool FALSE # Disable automatic spaces rearranging based on most recent use.
 
-#defaults write com.apple.dock expose-group-by-app -bool FALSE # Set Mission control's behavior as Exposé's. [i] Disable Group windows by application.
+#defaults write com.apple.dock expose-group-by-app -bool FALSE # Do not group windows by application. (Set the behavior of Mission Control behavior to that of Exposé.) (Disable Group Windows By Application.)
 
 defaults write com.apple.dock expose-animation-duration -float 0.1 # Speed animations up.
 
-echo  'Dashboard (com.apple.dock, com.apple.dashboard)'
+echo 'Dashboard (com.apple.dock, com.apple.dashboard)'
 
 defaults write com.apple.dock dashboard-in-overlay -bool TRUE # Hide dashboard as a space.
 
@@ -627,20 +677,19 @@ defaults write com.apple.dashboard mcx-disabled -bool TRUE # Disable the dashboa
 
 defaults write com.apple.dashboard devmode -bool TRUE # Enable dashboard dev mode. (i) Allows to keep widgets on the desktop.
 
-echo  'Launchpad (com.apple.dock)'
+echo 'Launchpad (com.apple.dock)'
 
-#find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete # Reset Launchpad keeping the desktop wallpaper intact.
 defaults write com.apple.dock ResetLaunchPad -bool TRUE # Reset Launchpad organization to defaults.
 
 sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app" "/Applications/iOS Simulator.app" # Add iOS simulator to Launchpad.
 
-defaults write com.apple.dock showLaunchpadGestureEnabled -int 0 # Disable the pinch with thumb and three fingers trackpad gesture. (i) Launchpad: Trackpad -> System preferences: TrackPad: More gestures.
+defaults write com.apple.dock showLaunchpadGestureEnabled -int 0 # Disable the pinch-with-thumb-and-three-fingers trackpad gesture. (Launchpad: Trackpad -> System preferences: TrackPad: More gestures.)
 
-#echo  'Notification Center'
+#echo 'Notification Center'
+#
+#launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null # Disable the notification center, and remove its menu bar item. (i) 'Fixed' by Apple on macOS 10.13 High Sierra. [But hey, 'It's not a bug; it's a feature'.]
 
-#launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null # Disable the notification center and remove its menu bar. [i] 'Fixed' by Apple on macOS 10.13 High Sierra, but hey, 'it's not a bug, it's a feature'.
-
-echo  'Software Update & App Store (com.apple.SoftwareUpdate, com.apple.commerce, com.apple.appstore)'
+echo 'Software Update & App Store (com.apple.SoftwareUpdate, com.apple.commerce, com.apple.appstore)'
 
 defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool TRUE # Enable the automatic update check.
 
@@ -659,13 +708,13 @@ defaults write com.apple.commerce AutoUpdateRestartRequired -bool TRUE # Block t
 defaults write com.apple.appstore ShowDebugMenu -bool TRUE # Enable the App store's debug menu.
 defaults write com.apple.appstore WebKitDeveloperExtras -bool TRUE # Enable the App store's WebKit dev tools.
 
-#echo  'Xcode'
+#echo 'Xcode'
 
 #xcode-select --install
 #xcodebuild -license accept
 # Install Xcode and accept the Xcode EULA.
 
-echo  'Terminal & X11 (com.apple.terminal, org.x.X11, com.apple.x11)'
+echo 'Terminal & X11 (com.apple.terminal, org.x.X11, com.apple.x11)'
 
 defaults write com.apple.terminal StringEncodings -array 4 # Set Terminal encoding to UTF-8.
 
@@ -674,12 +723,12 @@ defaults write com.apple.terminal ApplePressAndHoldEnabled -bool FALSE # Disable
 defaults write com.apple.terminal SecureKeyboardEntry -bool TRUE # Enable Terminal secure keyboard entry.
 
 defaults write com.apple.terminal FocusFollowsMouse -bool TRUE
-defaults write com.apple.x11 wm_ffm -bool TRUE # (i) Enter `defaults write org.x.X11 wm_ffm -bool TRUE` on Mac OS X Snow Leopard.
+defaults write com.apple.x11 wm_ffm -bool TRUE # [Enter `defaults write org.x.X11 wm_ffm -bool TRUE` for Mac OS X Snow Leopard.]
 # Enable focus follows mouse (point-to-focus) for Terminal and X11 apps.
 
 defaults write com.apple.terminal StartAtLogin -bool TRUE # Launch Terminal at startup.
 
-echo  'TextEdit (com.apple.TextEdit, com.apple.LaunchServices)'
+echo 'TextEdit (com.apple.TextEdit, com.apple.LaunchServices)'
 
 defaults write com.apple.TextEdit NSUserKeyEquivalents \
 '{ \
@@ -714,16 +763,10 @@ defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4 # (i) Set Tex
 
 defaults write com.apple.TextEdit NSFixedPitchFont -string "Menlo-Regular"
 defaults write com.apple.TextEdit NSFixedPitchFontSize -int "10"
-# Set plain text font to Apple Menlo 10pt. (i) OS X's default fixed-width font.
-#defaults write com.apple.TextEdit NSFixedPitchFont -string "HelveticaMonospacedPro-Rg"
-#defaults write com.apple.TextEdit NSFixedPitchFontSize -int "11"
-# Set plain text font to Helvetica Monospaced 11pt.
-#defaults write com.apple.TextEdit NSFont -string "Times-Roman"
-#defaults write com.apple.TextEdit NSFontSize -int "12"
+# Set Apple Menlo 10pt as plain text font. (i) The default fixed-width font of OS X.
+defaults write com.apple.TextEdit NSFont -string "Times-Roman"
+defaults write com.apple.TextEdit NSFontSize -int "12"
 # Set rich text font to Linotype Times Roman 12pt.
-defaults write com.apple.TextEdit NSFont -string "Helvetica"
-defaults write com.apple.TextEdit NSFontSize -int "11"
-# Set rich text font to Linotype Helvetica 11pt.
 
 defaults write com.apple.TextEdit RichText -int 0 # Set new document text format to plain text.
 defaults write com.apple.TextEdit ShowPageBreaks -bool TRUE # (i) Disable Wrap to page.
@@ -732,7 +775,7 @@ defaults write com.apple.TextEdit HeightInChars -int 24 # Set new document windo
 defaults write com.apple.TextEdit TabWidth -int 4 # Set tab width to 4 chars.
 defaults write com.apple.TextEdit AddExtensionToNewPlainTextFiles -bool FALSE # Disable .txt extension autoadding at save to extensionless new plain text files. (i) Disable Add '.txt' extension to plain text files.
 
-defaults write com.apple.TextEdit author -string "Karl V.P. Bertin" # Set new document author name to KVPB's.
+defaults write com.apple.TextEdit author -string "Karl V. P. Bertin" # Set new document author name to KVPB's.
 defaults write com.apple.TextEdit company -string "" # Set new document company name.
 defaults write com.apple.TextEdit copyright -string "" # Set new document copyright.
 
@@ -742,23 +785,23 @@ defaults write com.apple.TextEdit IgnoreRichText -bool FALSE # Display RTF files
 defaults write com.apple.TextEdit HTMLEncoding -int 20 # (i) Set TextEdit: Preferences: Open and save: HTML saving options: Encoding to Unicode (UTF-8).
 defaults write com.apple.TextEdit UseXHTMLDocType -bool FALSE
 defaults write com.apple.TextEdit UseTransitionalDocType -bool TRUE
-# Set new HTML document type to HTML 4.01 transitional. (i) Both are crossed attributes (eg enter `UseXHTMLDocType -bool FALSE` and `UseTransitionalDocType -bool FALSE` to set document type to HTML 4.01 strict).
+# Set new HTML document type to HTML 4.01 transitional. (i) Both are crossed attributes, e.g. enter `UseXHTMLDocType -bool FALSE` and `UseTransitionalDocType -bool FALSE` to set document type to HTML 4.01 strict.
 defaults write com.apple.TextEdit UseEmbeddedCSS -bool FALSE
 defaults write com.apple.TextEdit UseInlineCSS -bool FALSE
-# Set new HTML document styling to embedded CSS. (i) Both are crossed attributes (eg enter `UseEmbeddedCSS -bool FALSE` and `UseInlineCSS -bool FALSE` to set styling to no CSS).
+# Set new HTML document styling to embedded CSS. (i) Both are crossed attributes, e.g. enter `UseEmbeddedCSS -bool FALSE` and `UseInlineCSS -bool FALSE` to set styling to no CSS.
 
 defaults write com.apple.TextEdit PreserveWhitespace -bool TRUE # (i) Enable Preserve whitespace.
 
 #defaults write com.apple.LaunchServices LSHandlers -array-add '{LSHandlerContentType=org.openxmlformats.wordprocessingml.document;LSHandlerRoleAll=com.apple.textedit;}'
 # Set TextEdit as default Office Open XML Document editor.
 
-echo  'Disk Utility (com.apple.DiskUtility)'
+echo 'Disk Utility (com.apple.DiskUtility)'
 
 defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool TRUE
 defaults write com.apple.DiskUtility advanced-image-options -bool TRUE
 # Enable the debug menu.
 
-echo  'Activity Monitor (com.apple.ActivityMonitor)'
+echo 'Activity Monitor (com.apple.ActivityMonitor)'
 
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool TRUE # Display the main window when launching.
 
@@ -770,21 +813,17 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 
 defaults write com.apple.ActivityMonitor IconType -int 5 # Display CPU usage icon in the Dock.
 
-echo  'Safari & WebKit (com.apple.Safari)'
-# This section is experimental. I wrote Safari settings all by myself, based on
-# my research. Basically, this section is the example of how I want this script
-# to configure ACOS: in case of emergency on a clean install, what would I need
-# most [or what I hold close to my heart] is set first.
+echo 'Safari & WebKit (com.apple.Safari)' # [This section has been the first example of how I want such scripts to configure OS: in case of emergency on a clean install, what is needed the most is set first.]
 
 defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool TRUE
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool TRUE
 # Enable [Tab] to highlight webpages items. (i) Enable Press Tab to highlight each item on a webpage.
 defaults write com.apple.Safari CommandClickMakesTabs -int 1 # Enable Command + Right click to open links in new tabs. (i) Enable ⌘ -click opens a link in a new tab.
 
-defaults write com.apple.Safari WebKitDefaultTextEncodingName -string "utf-8" # Set default encoding to UTF-8. (i) Set Default encoding to Unicode (UTF-8).
-defaults write com.apple.Safari HistoryAgeInDaysLimit -int 2147483647 # 'Disable' history automatic removal. (i) Set Remove history items to ‘After Int32’.
-defaults write com.apple.Safari LocalFileRestrictionsEnabled -bool TRUE # Disable local files access. (i) Disable Disable local file restrictions.
-defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool TRUE # (i) Enable Warn when visiting a fraudulent website.
+defaults write com.apple.Safari WebKitDefaultTextEncodingName -string "utf-8" # Set UTF-8 as default encoding. (Set Default Encoding to Unicode (UTF-8).)
+defaults write com.apple.Safari HistoryAgeInDaysLimit -int 2147483647 # Remove history items after Int32. ('Disable' history automatic removal.) (Set Remove History Items to After Int32.)
+defaults write com.apple.Safari LocalFileRestrictionsEnabled -bool TRUE # Disable local files access. (Disable Disable Local File Restrictions.)
+defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool TRUE # Warn when visiting a fraudulent website.
 
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool TRUE
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool TRUE
@@ -795,10 +834,10 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Disable font sizes smaller than 9 use. (i) Enable Never use font sizes smaller than N. Set Never use font sizes smaller than to 9.
 defaults write com.apple.Safari UserStyleSheetEnabled -int 0 # (i) Set Style sheet to None selected.
 
-defaults write com.apple.Safari DownloadsPath -string "${HOME}/Downloads" # Set downloads storage path to `${HOME}/Downloads`. (i) Set Save downloaded files to to Downloads/.
-defaults write com.apple.Safari AutoOpenSafeDownloads -bool FALSE # Disable downloaded 'safe' files automatic opening. (i) Disable Open “safe” files after downloading.
+defaults write com.apple.Safari DownloadsPath -string "${HOME}/Downloads" # Set ${HOME}/Downloads/ as downloads storage path. (Set Save Downloaded Files to To Downloads/.)
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool FALSE # Do not open 'safe' files after downloading. (Disable Open “Safe” Files After Downloading.)
 
-defaults write com.apple.Safari HomePage -string "https://www.perdu.com" # Set homepage URL to `about:blank`. (i) Set Homepage to `about:blank`.
+defaults write com.apple.Safari HomePage -string "https://www.perdu.com" # Set homepage URL to about:blank.
 defaults write com.apple.Safari NewWindowBehavior -int 0 # Set new windows to open at homepage. (i) Set New windows open with to Homepage.
 defaults write com.apple.Safari NewTabBehavior -int 0 # Set new tabs to open at homepage. (i) Set New tabs open with to Homepage.
 
@@ -830,7 +869,7 @@ defaults write com.apple.Safari WebKitJavaEnabled -bool FALSE
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool FALSE
 # Disable Java.
 
-defaults write com.apple.Safari WebKitJavaScriptEnabled -bool true
+defaults write com.apple.Safari WebKitJavaScriptEnabled -bool TRUE
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptEnabled -bool TRUE
 # Enable JavaScript.
 
@@ -855,45 +894,45 @@ defaults write com.apple.Safari ShowSidebarInNewWindows -bool FALSE # Hide sideb
 
 defaults write com.apple.Safari TopSitesGridArrangement -int 0 # Display as few top sites as possible. (i) Set Top sites show to 6 sites.
 
-echo  'Mail (com.apple.mail)'
+echo 'Mail (com.apple.mail)'
 
 defaults write com.apple.mail DisableInlineAttachmentViewing -bool TRUE # Disable inline attachments. (i) Only show the icons.
 
-defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool FALSE # Copy email addresses as `${firstname}.${lastname}@${domain}.${sx}` instead of '${Forename} ${Surname} <${firstname}.${lastname}@${domain}.${sx}>'. [i] Disable Use smart addresses.
+defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool FALSE # Copy email addresses as ${firstname}.${lastname}@${domain}.${sx} instead of '${Firstname} ${Lastname} <${firstname}.${lastname}@${domain}.${sx}>'. (i) Disable Use smart addresses.
 
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "YES"
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedAscending" -string "YES"
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
 # Display emails in threaded mode and sort them as newest at the top. (i) Enable Show most recent message at the top.
 
-defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnabled" # Disable automatic spell checking. [i] Set Check spelling to Never.
+defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnabled" # Never check spelling. (Set Check Spelling to Never.) (Disable automatic spell checking.)
 
-echo  'Calendar (com.apple.iCal)' # (i) Calendar was formerly iCal.
+echo 'Calendar (com.apple.iCal)' # (i) Calendar was formerly iCal.
 
-#defaults write com.apple.iCal IncludeDebugMenu -bool TRUE # Enable the debug menu. /!\ Deprecated from OS X 10.8 Mountain Lion onwards.
+#defaults write com.apple.iCal IncludeDebugMenu -bool TRUE # Enable the debug menu. /!\ deprecated from OS X 10.8 Mountain Lion onwards.
 
 defaults write com.apple.iCal "scroll by weeks in week view" -int 2 # (i) Set Scroll in week view by to Week, stop on today.
 
 defaults write com.apple.iCal "first day of week" -int 1 # Set week start to monday.
 
-defaults write com.apple.iCal "Show Week Numbers" -bool TRUE # Display week numbers. /!\ OS X 10.8 Mountain Lion trick.
+defaults write com.apple.iCal "Show Week Numbers" -bool TRUE # Display week numbers. (i) introduced in OS X 10.8 Mountain Lion.
 
 defaults write com.apple.iCal "Show time in Month View" -bool TRUE # Display events time in month view.
 
 defaults write com.apple.iCal "n days of week" -int 7 # Display 7 days.
 
-echo  'Contacts (com.apple.addressbook)' # (i) Contacts was formerly named Address Book.
+echo 'Contacts (com.apple.addressbook)' # (i) Contacts was formerly named Address Book.
 
-#defaults write com.apple.addressbook ABShowDebugMenu -bool TRUE # Enable the debug menu in Address Book. [i] Deprecated from OS X 10.9 Mavericks onwards.
+#defaults write com.apple.addressbook ABShowDebugMenu -bool TRUE # Enable the debug menu in Address Book. /!\ deprecated from OS X 10.9 Mavericks onwards.
 
-echo  'Messages (com.apple.messageshelper.MessageController)'
+echo 'Messages (com.apple.messageshelper.MessageController)'
 
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool FALSE # Disable automatic emoji substitution.
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool FALSE # Disable smart quotes.
 
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool FALSE # Disable continuous spell checking.
 
-cecho '2nd-Party Settings: Userspec Filesys Customs' $yellow
+cecho 'Second-Party Settings: User-Specific Filesystem Customs' $yellow
 
 #git clone git:github.com/kvpb/.files.git ${HOME}/.files
 # Clone my .files/ from my GitHub remote repo to ${HOME}/.
@@ -909,7 +948,7 @@ then
 else
 	mkdir -p ${HOME}/{Miscellaneous,Work}
 fi
-# If Miscellaneous and Work aren't directories in ${HOME}/ then substitute symlinks by or add these directories.
+# If Miscellaneous and Work aren't directories in ${HOME}/, then substitute symbolic links by or add these directories.
 if [ -d "${HOME}/Downloads/{Documents,Pictures,Music,Movies,Miscellaneous}" ]
 then
 	if [ -L "${HOME}/Downloads/{Documents,Pictures,Music,Movies,Miscellaneous}" ]
@@ -921,7 +960,7 @@ then
 else
 	mkdir -p ${HOME}/Downloads/{Documents,Pictures,Music,Movies,Miscellaneous}
 fi
-# If Documents, Pictures, Music, Movies and Miscellaneous aren't directories in ${HOME}/Downloads/ then substitute symlinks by or add these directories.
+# If Documents, Pictures, Music, Movies and Miscellaneous aren't directories in ${HOME}/Downloads/, then substitute symbolic links by or add these directories.
 if [ -d "${HOME}/{DCIM,FCIM,Camera}" ]
 then
 	if [ -L "${HOME}/{DCIM,FCIM,Camera}" ]
@@ -933,7 +972,7 @@ then
 else
 	mkdir -p ${HOME}/{DCIM,FCIM,Camera}
 fi
-# If DCIM and Camera aren't directories in ${HOME}/ then substitute symlinks by or add these directories.
+# If DCIM and Camera aren't directories in ${HOME}/ then substitute symbolic links by or add these directories.
 
 ln -s ${HOME}/.files/.inputrc ${HOME}/.inputrc
 #ln -s ${HOME}/.files/.shrc ${HOME}/.shrc
@@ -964,37 +1003,37 @@ ln -s ${HOME}/Downloads/Music ${HOME}/Music/Downloads
 ln -s ${HOME}/DCIM ${HOME}/Pictures/DCIM
 ln -s ${HOME}/FCIM ${HOME}/Pictures/FCIM
 ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
-# Write user-specific custom symlinks.
+# Create user-specific custom symbolic links.
 
-> ${HOME}/.hushlogin # Write .hushlogin file to current user's home directory. /?\ Speeds terminal emulator opening up ? (https://news.ycombinator.com/item?id=3879833)
+> ${HOME}/.hushlogin # Write .hushlogin file to current user's home directory.
 
-#chflags nohidden ${HOME}/Library # Display the hidden ${HOME}/Library/. (i) This script also enables hidden files display, which overrides this.
+#chflags nohidden ${HOME}/Library # Display hidden ${HOME}/Library/. (i) This script also enables hidden files display which overrides this.
 
 #dscl . delete /Users/kvpb Picture
-#sudo dscl . create /Users/kvpb Picture "/Users/${HOME}/Pictures/UserPictures/Kabe.tif"
-# Set kvpb's user picture. (i) Cf https://support.apple.com/kb/PH25797?locale=en_US.
+#sudo dscl . create /Users/kvpb Picture "/Users/${HOME}/Pictures/UserPictures/KVPB.tif"
+# Set KVPB's user picture, cf https://support.apple.com/kb/PH25797?locale=en_US.
 
-cecho '3rd-Party: Syswide & Userspec Xenogenetic Software & Prefs' $yellow
+cecho 'Third-Party: System-Wide & User-Specific Xenogenetic Software & Preferences' $yellow
 
-echo  'Homebrew'
+#echo 'Homebrew'
+#
+#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" # Download and install Homebrew.
+#
+#brew tap Homebrew/bundle # Download and install homebrew-bundle.
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" # Download and install Homebrew.
+echo 'iTerm2 (com.googlecode.iterm2)'
 
-brew tap Homebrew/bundle # Download and install homebrew-bundle.
-
-echo  'iTerm2 (com.googlecode.iterm2)'
-
-defaults write com.googlecode.iterm2 HideFromDockAndAppSwitcher -int 1 # Hide app from Dock [but not its shortcut] and Application Switcher, as done via, as of october 2016 v3.1.2, iTerm->Preferences (Command-Comma)->Appearance [tab]->Exclude from Dock and ⌘-Tab Application Switcher [checkbox]. [Finally what I've been waiting for terminal emulators and important-to-me-like apps! Whoop-dee-doo!]
+#defaults write com.googlecode.iterm2 HideFromDockAndAppSwitcher -int 1 # Hide app (but not shortcut) from Dock and Application Switcher. (iTerm->Preferences (Command-Comma)->Appearance [tab]->Exclude from Dock and ⌘-Tab Application Switcher [checkbox])
 
 defaults write com.googlecode.iterm2 PromptOnQuit -bool FALSE # Hide quit prompt.
 
-echo  'Hyper (co.zeit.hyper, co.zeit.hyper.helper)'
-
+#echo 'Hyper (co.zeit.hyper, co.zeit.hyper.helper)'
+#
 #/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc ${HOME}/.files/lib/scpt/InstallHyper.js # Install Hyper.
+#
+#ln -s ${HOME}/.files/.hyper.js ${HOME}/.hyper.js # Configure Hyper.
 
-ln -s ${HOME}/.files/.hyper.js ${HOME}/.hyper.js # Configure Hyper.
-
-echo  'Jumpcut (net.sf.Jumpcut)'
+echo 'Jumpcut (net.sf.Jumpcut)'
 
 defaults write net.sf.Jumpcut SUCheckAtStartup -bool TRUE # Check for updates on launch.
 
@@ -1020,34 +1059,34 @@ defaults write net.sf.Jumpcut stickyBezel -bool FALSE # No sticky bezel. ('The b
 
 defaults write net.sf.Jumpcut wraparoundBezel -bool TRUE # Wraparound bezel. ('In the bezel, moving down from the last item takes you to the top and moving up from the first item takes you to the bottom.')
 
-echo  'SizeUp (com.irradiatedsoftware.SizeUp)'
+echo 'SizeUp (com.irradiatedsoftware.SizeUp)'
 
 defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool TRUE # Launch SizeUp at login.
 
 defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool FALSE # Hide the preferences window at launch.
 
-echo  'Chrome (com.google.Chrome)'
+echo 'Firefox (org.mozilla.firefox)'
 
-#defaults write com.apple.LaunchServices LSHandlers -array-add \
-#                                                              '{LSHandlerRoleAll=com.google.chrome;LSHandlerURLScheme=http;}'
-#                                                              '{LSHandlerRoleAll=com.google.chrome;LSHandlerURLScheme=https;}'
-#                                                              '{LSHandlerContentType=public.html;LSHandlerRoleViewer=com.google.chrome;}'
-#                                                              '{LSHandlerContentType=public.url;LSHandlerRoleViewer=com.google.chrome;}'
-# Set default web browser to Chrome.
+defaults write com.apple.LaunchServices LSHandlers -array-add \
+                                                              '{LSHandlerRoleAll=org.mozilla.firefox;LSHandlerURLScheme=http;}' \
+                                                              '{LSHandlerRoleAll=org.mozilla.firefox;LSHandlerURLScheme=https;}' \
+                                                              '{LSHandlerContentType=public.html;LSHandlerRoleViewer=org.mozilla.firefox;}' \
+                                                              '{LSHandlerContentType=public.url;LSHandlerRoleViewer=org.mozilla.firefox;}'
+# Set Firefox as default web browser.
 
-defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool FALSE # Disable trackpad backswipe gesture.
+#defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool FALSE # Disable trackpad backswipe gesture.
 
-defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool FALSE # Disable magic mouse backswipe gesture.
+#defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool FALSE # Disable magic mouse backswipe gesture.
 
-defaults write com.google.Chrome DisablePrintPreview -bool TRUE # Disable Chrome print preview dialog. [i] Enables operating system native print preview dialog.
+#defaults write com.google.Chrome DisablePrintPreview -bool TRUE # Disable Chrome print preview dialog. (i) enables operating system native print preview dialog.
 
-defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool TRUE # Set print preview dialog expanding to expanded.
+#defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool TRUE # Expand the print preview dialog.
 
-echo  'Transmission (org.m0k.transmission)'
+echo 'Transmission (org.m0k.transmission)'
 
 defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool TRUE
 defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Transmission"
-# Set incomplete downloads path to `${HOME}/Downloads/Transmission/`.
+# Set incomplete download path to ${HOME}/Downloads/Transmission.
 
 #defaults write org.m0k.transmission DeleteOriginalTorrent -bool TRUE # Move original torrent files to trash.
 
@@ -1058,14 +1097,14 @@ defaults write org.m0k.transmission MagnetOpenAsk -bool FALSE
 defaults write org.m0k.transmission WarningDonate -bool FALSE # Hide the donate message.
 defaults write org.m0k.transmission WarningLegal -bool FALSE # Hide the legal disclaimer.
 
-defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz" # Enable IP blocking and set IP blocklist to John Tyree's.
+defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz" # Enable IP blocking, and set IP blocklist to John Tyree's.
 defaults write org.m0k.transmission BlocklistAutoUpdate -bool TRUE # Enable IP blocklist autoupdate.
 
-echo  'VMware Fusion 8 (com.vmware.fusion)'
+echo 'VMware Fusion 8 (com.vmware.fusion)'
 
 defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (i) Set VMware Fusion 8: Preferences: General: Applications menu: Show in menu bar to Never.
 
-echo  'Photoshop Lightroom 6 (com.adobe.Lightroom6)'
+echo 'Photoshop Lightroom 6 (com.adobe.Lightroom6)'
 
 defaults write com.adobe.Lightroom6 prefsWindow_currentTab -integer 1
 
@@ -1090,14 +1129,15 @@ do
 done
 # Kill all affected applications except terminal emulators.
 
-echo  ''
+echo ''
 cecho 'OS X 10.9 Mavericks has been configured.' $yellow
 
 cecho 'A restart is required for some of these changes to take effect. Restart...?, \e[4my\e[0mes or \e[4mn\e[0mo?' $green
 read -r input
 if [[ ${input} =~ ^([Yy]|[Yy][Ee][Ss]|[Yy][Ee][Aa][Hh])$ ]]
 then
-	osascript -e 'tell app "System Events" to restart' # restart without showing a confirmation dialog
+	osascript -e 'tell app "System Events" to restart' # Restart without confirmation.
 else
+	cecho 'OS X 10.9 Mavericks has been configured.'# $osxmavericksphotoansinearestmeancolor
 	exit
 fi
