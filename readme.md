@@ -1,5 +1,5 @@
 <p align='center'><b>Karl Bertin's</b></p>
-<h1 align='center'><code>.files</code> (<b>DOTFILES</b>)</h1>
+<h1 align='center'><code>.files</code> (<b><i>DOTFILES</i></b>)</h1>
 <p align='center'><b>Runcoms, Configuration Files, Setups, Scripts, Templates & Hacks</b></p>
 
 - - -
@@ -27,7 +27,7 @@ Apple computers operating systems configuration scripts family.
 
 **NB:** Do not execute these scripts as root! To still run any of these scripts as root, replace `/Users/${USER}` with `${HOME}`.
 
-Launch a terminal emulator, eg [Terminal](https://web.archive.org/web/20190326164259/https://support.apple.com/guide/terminal/welcome/mac) or [MTerminal](https://web.archive.org/web/20141020160524/http://cydia.saurik.com/package/com.officialscheduler.mterminal/), then enter this:
+Launch a terminal emulator, e.g. [Terminal](https://web.archive.org/web/20190326164259/https://support.apple.com/guide/terminal/welcome/mac) or [MTerminal](https://web.archive.org/web/20141020160524/http://cydia.saurik.com/package/com.officialscheduler.mterminal/), then enter this:
 
 &nbsp;&nbsp;**macOS 10.13 High Sierra:**
 
@@ -38,28 +38,28 @@ cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kv
 &nbsp;&nbsp;**OS X 10.10.5 Yosemite:**
 
 ```sh
-cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx10105 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
+cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx1010 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
 ```
 
 &nbsp;&nbsp;**OS X 10.9.5 Mavericks:**
 
 ```sh
-cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx1095 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
+cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx109 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
 ```
 
 &nbsp;&nbsp;~~**Mac OS X 10.6.8 Snow Leopard:**~~
 
 ```
-cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx1068 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
+cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx106 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
 ```
 
 &nbsp;&nbsp;~~**Mac OS X 10.4.11 Tiger:**~~
 
 ```
-cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx10411 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
+cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx104 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
 ```
 
-&nbsp;&nbsp;**iOS:**
+&nbsp;&nbsp;~~**iOS:**~~
 ```
 cd ${HOME} && /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.ios)"
 ```
@@ -85,8 +85,8 @@ My VIM setup, featuring a true TextEdit-like key mapping, including a smart hack
 
 #### To-do
 
-- [ ] Write a 'minimaximal' VIM color scheme which uses as few colors as efficiently as possible.
-  - [ ] Write or rewrite an up-to-date true GitHub color scheme with a dark mode.
+- ~~[ ] Write a 'minimaximal' VIM color scheme which uses as few colors as efficiently as possible.~~
+  - ~~[ ] Write or rewrite an up-to-date true GitHub color scheme with a dark mode.~~
 
 - - -
 
@@ -104,15 +104,15 @@ My VIM setup, featuring a true TextEdit-like key mapping, including a smart hack
 - [x] `GetVolumeMuteStatus.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
 - [ ] `InstallBASH.sh`
   - [x] `InstallBASH3257.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `InstallFISH.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] ~~`InstallFISH.sh`~~ ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallXQuartz.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X%2010.5%2B-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallXcodeCommandLineTools.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallGit.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `Installfswatch.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `Installmas-cli.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] ~~`Installmas-cli.sh`~~ ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `InstallRAR.sh`
   - [x] `InstallRAR550.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `InstallHomebrew.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) <!--![firmware](https://img.shields.io/badge/firmware-Linux-black.svg)--> ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] ~~`InstallHomebrew.sh`~~ ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) <!--![firmware](https://img.shields.io/badge/firmware-Linux-black.svg)--> ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `InstallUnRARX.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
   - [x] `InstallUnRarX22.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallXLD.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
@@ -133,22 +133,22 @@ My VIM setup, featuring a true TextEdit-like key mapping, including a smart hack
   - [x] `InstallSFMono.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![firmware](https://img.shields.io/badge/-Ubuntu-orange.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `InstallVMwareFusion8.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
 - [ ] ~~`InstallPhotoshop.sh`~~
-  - [ ] `InstallPsCS6.sh`
+  - [ ] ~~`InstallPsCS6.sh`~~
 - [ ] ~~`InstallIllustrator.sh`~~
-  - [ ] `InstallAiCS6.sh`
+  - [ ] ~~`InstallAiCS6.sh`~~
 - [ ] ~~`InstallPhotoshopLightroom.sh`~~
-  - [ ] `InstallLr7.sh`
-  - [ ] `InstallLr6.sh`
-- [ ] `InstallOffice.sh`
-  - [ ] `InstallOffice2016forMac.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.10%20Yosemite-white.svg)
-  - [ ] `InstallOffice2011forMac.sh` ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X-white.svg)
+  - [ ] ~~`InstallLr7.sh`~~
+  - [ ] ~~`InstallLr6.sh`~~
+- [ ] ~~`InstallOffice.sh`~~
+  - [ ] ~~`InstallOffice2016forMac.sh`~~ ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.10%20Yosemite-white.svg)
+  - [ ] ~~`InstallOffice2011forMac.sh`~~ ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X-white.svg)
 - [ ] `InstallSketch.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
   - [x] `InstallSketch344.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallInkscape.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `InstalliTerm2.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
   - [x] `InstalliTerm2OS108Plus.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.8%20Mountain%20Lion-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `InstallHyper.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-  - [ ] `InstallHyper.js` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-JavaScript-yellow.svg)
+- [x] ~~`InstallHyper.sh`~~ ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+  - [ ] ~~`InstallHyper.js`~~ ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-JavaScript-yellow.svg)
 - [ ] `InstallCathode.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
   - [ ] `InstallCathode203.sh`
   - [ ] `InstallCathode094.sh`
@@ -160,19 +160,19 @@ My VIM setup, featuring a true TextEdit-like key mapping, including a smart hack
   - [ ] `InstallForkLift2.sh`
 - [x] `InstallVLC.sh` ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallSoulver.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `InstallChrome.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+- [x] ~~`InstallChrome.sh`~~ ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallDropbox.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `PatchDropboxHackedOSXAccessibility.sh` ![hardware](https://img.shields.io/badge/hardware-Mac-1AD5FD.svg) ![firmware](https://img.shields.io/badge/firmware-OS%20X-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `UninstallDropbox.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg)
 - [x] `Installdbxcli.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallSpotify.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [ ] `InstallWhatsApp.sh`
-- [ ] `InstallGoofy.sh`
+- [ ] ~~`InstallWhatsApp.sh`~~
+- [ ] ~~`InstallGoofy.sh`~~
 - [x] `RPwG.rb` ![language](https://img.shields.io/badge/language-Ruby-red.svg)
 - [x] `CharacterCount.rb` ![language](https://img.shields.io/badge/language-Ruby-red.svg)
 - [x] `NewTestFolders.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `DeleteCreativeCloudFilesFromUserHome.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [ ] `DeleteChromeSuggestions.sh`
+- [ ] ~~`DeleteChromeSuggestions.sh`~~
 - [x] `ListMacAppStoreApplications.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `ListNonMacAppStoreApplications.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `SaveSHSH2Blobs.sh`
@@ -210,14 +210,14 @@ A library of scripts I wrote.
 
 macOS text substitutions (list of abbreviations to automatically replace by words).
 
-**NB:** This works with macOS software that use it, eg TextEdit, but I does not with Word for Mac 2011.
+**NB:** This works with macOS software that use it, e.g. TextEdit, but I does not with Word for Mac 2011.
 
 #### How-to
 
 1. [Download `Text Substitutions.plist`.](https://rawcdn.githack.com/kvpb/.files/844adc9321a218f5b0089f6d1e2303ef272f271e/Text%20Substitutions.plist)  
-2. Launch Finder then go to the current user's `Downloads` folder.  
-3. Launch System Preferences then go to Keyboard and then Text.  
-4. Drag `Text Substitutions.plist` from the Finder window and drop it to System Preferences window's table-like list.
+2. Launch Finder, then go to the current user's `Downloads` folder.  
+3. Launch System Preferences, then go to Keyboard and then Text.  
+4. Drag `Text Substitutions.plist` from the Finder window, and drop it to the table-like list of the window of System Preferences.
 
 - - -
 
@@ -248,7 +248,7 @@ A program, written in Ruby, which pseudorandomly generates passwords.
 **UNIX & Linux:**  
 &nbsp;&nbsp;0.&nbsp;&nbsp;[Download Ruby,](https://www.ruby-lang.org/en/downloads/) and install it.  
 &nbsp;&nbsp;1.&nbsp;&nbsp;[Download RPwG.](https://github.com/kvpb/RPwG/releases/tag/1.10)  
-&nbsp;&nbsp;2.&nbsp;&nbsp;Launch a terminal emulator, eg [Terminal](https://web.archive.org/web/20190326164259/https://support.apple.com/guide/terminal/welcome/mac) or [GNOME Terminal](https://web.archive.org/web/20130207013917/http://help.gnome.org/users/gnome-terminal/stable/).  
+&nbsp;&nbsp;2.&nbsp;&nbsp;Launch a terminal emulator, e.g. [Terminal](https://web.archive.org/web/20190326164259/https://support.apple.com/guide/terminal/welcome/mac) or [GNOME Terminal](https://web.archive.org/web/20130207013917/http://help.gnome.org/users/gnome-terminal/stable/).  
 &nbsp;&nbsp;3.&nbsp;&nbsp;Type '`ruby `' (with a trailing space after 'ruby'), drag and drop the `RPwG.rb` file, and press Enter.  
 &nbsp;&nbsp;4.&nbsp;&nbsp;Follow the script's instructions on the terminal, then copy and paste the resulting password.
 
@@ -277,7 +277,7 @@ A program, written in Ruby, which pseudorandomly generates passwords.
 
 The scratching system I built at university for better cleaner faster note-taking. This read-me has been written following these guidelines.
 
-**NB:** If you have any suggestion to improve it, feel free to jump in, express yourself, let loose --- open an issue or contact me. You're always welcome.
+**NB:** If you have any suggestion to improve it, feel free to jump in, express yourself, let loose--- open an issue or contact me. You're always welcome.
 
 - - -
 
@@ -301,7 +301,7 @@ The scratching system I built at university for better cleaner faster note-takin
 * [Lauri 'Lri' Ranta](http://lri.me/) for [their answer about Mac custom key bindings](https://web.archive.org/web/20130203125715/https://superuser.com/questions/463456/how-to-configure-keyboard-shortcuts-for-special-characters-on-os-x#463517) [2019.06.14, 14:30:00](https://web.archive.org/web/20190614130455/https://superuser.com/questions/463456/how-to-configure-keyboard-shortcuts-for-special-characters-on-os-x#463517)
 * [Jacob Rus](https://www.hcs.harvard.edu/~jrus/) for [_Customizing The Cocoa Text System_](https://web.archive.org/web/20060412153805/http://www.hcs.harvard.edu/~jrus/Site/Cocoa%20Text%20System.html) [2019.06.14, 14:31:00](https://web.archive.org/web/20190614131351/http://www.hcs.harvard.edu/~jrus/Site/Cocoa%20Text%20System.html)
 * [André Pang](http://algorithm.com.au) for [`DefaultKetBinding.dict`](https://web.archive.org/web/20041104054838/http://www.algorithm.com.au/files/mac_os_x/DefaultKeyBinding.dict) [2019.06.14, 14:33:00](https://web.archive.org/web/20190614132419/http://algorithm.com.au/blog/files/54a269e385916faedf9560b7fd97a50c-279.html)
-* [Ryan P.C. McQuen](https://ryanpcmcquen.org/) for [`true-monochrome_vim/colors/true-monochrome.vim`](https://raw.githubusercontent.com/ryanpcmcquen/true-monochrome_vim/master/colors/true-monochrome.vim) [2020.01.24](https://github.com/ryanpcmcquen/true-monochrome_vim/commit/e1bcbcf9deca4527ed19bb5cb1ed10fe1cd6b9e8#diff-9fb420887ac445c338b9ea01e7d7ed4b)
+* [Ryan P. C. McQuen](https://ryanpcmcquen.org/) for [`true-monochrome_vim/colors/true-monochrome.vim`](https://raw.githubusercontent.com/ryanpcmcquen/true-monochrome_vim/master/colors/true-monochrome.vim) [2020.01.24](https://github.com/ryanpcmcquen/true-monochrome_vim/commit/e1bcbcf9deca4527ed19bb5cb1ed10fe1cd6b9e8#diff-9fb420887ac445c338b9ea01e7d7ed4b)
 * [Julien Castelain](http://julien.js.org/) for [`vim-colors-green/colors/green.vim`](https://raw.githubusercontent.com/julien/vim-colors-green/master/colors/green.vim) [2020.01.24](https://github.com/julien/vim-colors-green/commit/c2ab216a1f8e9d15ddf25135200048326a76394b#diff-d8165931f5472490634f50524de08eca)
 * [Charlie Gunyon](http://charlieg.net/) for [`amber/colors/amber.vim`](https://raw.githubusercontent.com/camgunz/amber/master/colors/amber.vim) [2020.01.24](https://github.com/camgunz/amber/commit/23d8e7a53e39e31c01c4fc1e353d95781fa08e49#diff-b3098a38cdf626efc0cc5ddbb858c1c4)
 * [Cormac Relf](https://github.com/cormacrelf) for [`vim-colors-github/colors/github.vim`](https://raw.githubusercontent.com/cormacrelf/vim-colors-github/master/colors/github.vim) [2020.01.24](https://github.com/cormacrelf/vim-colors-github/commit/acb712c76bb73c20eb3d7e625a48b5ff59f150d0#diff-451fb194f8486978732fecc575e54723)
@@ -309,9 +309,7 @@ The scratching system I built at university for better cleaner faster note-takin
 #### Author
 
 <p align='center'><a href='http://karlbertin.com/'><img src='https://gist.githack.com/kvpb/bfed748ac5c509985c89ea613a2bfd02/raw/8c0b311b7c848fabddf61672ba6bb72c8754fed9/karlbertinssymbol.svg'></a><br>
-<b>Karl 'Kabe' Bertin `<code>kvpb</code>`</b><br> <!-- Neither `<span style='font-variant: small-caps;'>Bertin</span>` nor `B<small>ERTIN</small>` work on GitHub. -->
-<a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a> | <s><a href=''>Facebook</a></s> | <a href='https://www.instagram.com/karlbertin/'>Instagram</a> | <a href='https://www.snapchat.com/add/karlbertin'>Snapchat</a></p>
+<b>Karl V. P. Bertin `<code>kvpb</code>`</b><br> <!-- Neither `<span style='font-variant: small-caps;'>Bertin</span>` nor `B<small>ERTIN</small>` work on GitHub. -->
+<a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a> | <a href='https://www.instagram.com/karlbertin/'>Instagram</a> | <a href='https://vm.tiktok.com/ZSwAmcFh/'>TikTok</a></p>
 
-**Ed:** Whether you thank me or not, please credit the people I took code from.
-
-<!--**PS:** -->
+<!--**Ed:** --><!--**PS:** -->
