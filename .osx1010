@@ -77,16 +77,11 @@ chsh -s /bin/bash # Set BASH as login shell.
 
 defaults write com.apple.LaunchServices LSQuarantine -bool FALSE # Do not warn when opening an application.
 
-#sudo pmset -a hibernatemode 0 # Disable hibernation mode. (i) A trick for Apple laptops with SSD.
-
-#sudo pmset -a standbydelay 86400 # Set standby delay to 24 hours.
-
-#sudo pmset -a sleep 0 # Disable sleep mode.
-#sudo systemsetup -setcomputersleep off > /dev/null # Disable computer sleep mode.
-#sudo rm /private/var/vm/sleepimage
-#sudo touch /private/var/vm/sleepimage
-#sudo chflags uchg /private/var/vm/sleepimage
-# Delete the sleep image file, create a zero-byte file instead, and make it unrewritable. (i) A trick for Apple laptops with SSD. /!\ seems to cause sleep wake failure. better leave the sleep image.
+#sudo pmset standby 0
+#sudo pmset autopoweroff 0
+#sudo pmset -a hibernatemode 0
+#sudo pmset -a autopoweroff 0
+# Disable hibernation mode. [At first, it seemed to have fixed the sleep wake failure. However, after a few days, these crashes occurred again, just less frequently. I have never been able to identify or isolate the cause. Finally, once I could back up my data, I formatted the Fusion Drive, I reinstalled Yosemite from scratch, and the error never occurred ever again. Since the iMac stopped crashing, and because it didn't fix the problem, I'm commenting this out. By the way, I may have actually found the sole way to fix this goddamned error. Time will tell. Anyways, this is just one more reason to build a PC from that G5 case and move to a Linux distro. Apple has gone down the drain. Obviously, they aren't planning to get back on track, so let's not waste time waiting for them to do, you know, their job.]
 
 sudo pmset -a disksleep 0 # Do not put hard disks to sleep when possible. (i) A trick for Apple computers without HDD.
 
@@ -190,12 +185,12 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 #echo "What is the email address of the owner of this Mac?"
 #read emailaddress
 #sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "${userfullname}'s ${macmodelname}.\nPlease contact ${phonenumber} or ${emailaddress} if found."
-# Display set lock message. (i) userfullname and macmodelname variables have been set earlier, at Network: Computer name.
+# Set and display lock message. (i) userfullname and macmodelname variables have been set earlier, at Network: Computer name.
 sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Karl V. P. Bertin's Mac${macmodelname}.\nPlease contact +33 6 70 83 26 64 and karlvp.bertin@gmail.com if found." # Display set lock message. (i) computername variable has been set earlier, at Network: Computer name.
 
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
-# Require password immediately after sleep or screen saver begins. (i) Enable Require password immediately after sleep or screen saver begins.
+# Require password immediately after sleep or screen saver begins. (Enable Require Password Immediately After Sleep Or Screen Saver Begins.)
 
 echo 'Keyboard (NSGlobalDomain, com.apple.HIToolbox, com.apple.universalaccess)'
 
@@ -307,7 +302,7 @@ defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClic
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool TRUE
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 1
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool TRUE
-# Enable trackpad secondary click, and set it as click or tap with two fingers. (i) `defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2` to map bottom-right click to secondary click.
+# Enable trackpad secondary click, and set it as click or tap with two fingers. [Enter `defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2` to map bottom-right click to secondary click.]
 
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool TRUE
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
@@ -325,7 +320,7 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool TRUE # Enable
 defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool TRUE
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerHorizSwipeGesture -int 0
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 1
-# (i) Enable System preferences: TrackPad: More gestures: Swipe between pages. Set Swipe between pages to Scroll left or right with two fingers.
+# Scroll left or right with two fingers to swipe between pages. (Enable System preferences: TrackPad: More gestures: Swipe between pages: Scroll left or right with two fingers.)
 
 defaults write com.apple.dock showLaunchpadGestureEnabled -int 0 # Disable trackpad Launchpad gesture (pinch with thumb and three fingers).
 
@@ -375,13 +370,13 @@ sudo defaults write /Library/Preferences/.GlobalPreferences.plist _HIEnableTheme
 
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool FALSE # Disable save to iCloud by default.
 
-defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool FALSE # Disable resume on restart. (i) Disable Reopen windows when logging back in (Resume).
+defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool FALSE # Do not reopen windows when logging back in. (Disable resume on restart.) (Disable Reopen windows when logging back in (Resume).)
 
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool TRUE # Disable automatic termination of inactive applications.
 
 #defaults write com.apple.CrashReporter DialogType -string "none" # Disable the crash reporter.
 
-defaults write com.apple.helpviewer DevMode -bool TRUE # (i) Set Help viewer to non floating mode.
+defaults write com.apple.helpviewer DevMode -bool TRUE # Set Help viewer in non-floating mode.
 
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user # Remove duplicates in Open with menu.
 
@@ -414,7 +409,7 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic" # Display 
 
 defaults write com.apple.universalaccess reduceTransparency -bool FALSE # Set translucent menu bar (Enable Translucent Menu Bar.)
 
-defaults write NSGlobalDomain AppleHighlightColor -string '1.000000 0.937255 0.690196' # (i) Set Highlight color to OS X 10.10 Yosemite's yellow.
+defaults write NSGlobalDomain AppleHighlightColor -string '1.000000 0.937255 0.690196' # Set Highlight color to OS X 10.10 Yosemite's yellow.
 
 sudo nvram SystemAudioVolume=" " # Disable the startup sound. [Enter `sudo nvram -d SystemAudioVolume` to reenable the startup sound.]
 
@@ -466,10 +461,6 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool TRUE
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool TRUE
 # Expand the save pane by default.
 
-#sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
-#sudo ln -s ${picturefile} /System/Library/CoreServices/DefaultDesktop.jpg
-# Set the default wallpaper of the desktop. /!\ destructive. (i) DefaultDesktop.jpg is a symlink. (i) Wallpapers are at /Library/Desktop Pictures; the default wallpaper is Wave.jpg.
-#osascript -e 'tell application "Finder" to set desktop picture to "${filepath}.jpg" as POSIX file' # Set the wallpaper of the desktop.
 rm -rf ${HOME}/Library/Application\ Support/Dock/desktoppicture.db && killall Dock
 sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(15,2,3)"
 sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db "INSERT INTO \"preferences\" VALUES(1,3,3)"
@@ -518,7 +509,7 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool TRUE # Display
 
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool TRUE # Display mounted servers on the desktop. (Enable Connected Servers.)
 
-defaults write NSGlobalDomain AppleShowAllExtensions -bool TRUE # Display filename extensions.
+defaults write NSGlobalDomain AppleShowAllExtensions -bool TRUE # Show all filename extensions. (Enable Show All Filename Extensions.)
 
 defaults write com.apple.finder AppleShowAllFiles -bool TRUE # Display hidden files.
 
@@ -600,7 +591,7 @@ defaults write com.apple.dock orientation left # Set alignment to the left or to
 
 defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.dock persistent-others -array
-# Delete any and all Dock items.
+# Delete Dock items.
 
 defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Firefox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Firefox app item.
 defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iTerm.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create an iTerm2 app item.
@@ -658,7 +649,7 @@ defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0
 # Speed autohiding animation up.
 
-echo 'Mission Control (com.apple.dock)'
+echo 'Mission Control (com.apple.dock)' # (i) has been substituted for Exposé.
 
 defaults write com.apple.dock mru-spaces -bool FALSE # Disable automatic spaces rearranging based on most recent use.
 
@@ -672,7 +663,7 @@ defaults write com.apple.dock dashboard-in-overlay -bool TRUE # Hide dashboard a
 
 defaults write com.apple.dashboard mcx-disabled -bool TRUE # Disable the dashboard.
 
-defaults write com.apple.dashboard devmode -bool TRUE # Enable dashboard dev mode. (i) Allows to keep widgets on the desktop.
+#defaults write com.apple.dashboard devmode -bool TRUE # Enable dashboard dev mode. (i) allows to keep widgets on the desktop.
 
 echo 'Launchpad (com.apple.dock)'
 
@@ -684,7 +675,7 @@ defaults write com.apple.dock showLaunchpadGestureEnabled -int 0 # Disable the p
 
 #echo 'Notification Center'
 #
-#launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null # Disable the notification center, and remove its menu bar item. (i) 'Fixed' by Apple on macOS 10.13 High Sierra. [But hey, 'It's not a bug; it's a feature'.]
+#launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null # Disable the notification center, and remove its menu bar item. (i) 'fixed' by Apple on macOS 10.13 High Sierra. [But hey, 'It's not a bug; it's a feature'.]
 
 echo 'Software Update & App Store (com.apple.SoftwareUpdate, com.apple.commerce, com.apple.appstore)'
 
@@ -744,50 +735,50 @@ defaults write com.apple.TextEdit NSUserKeyEquivalents \
 # 	-  Shift-Command-- (Command-_ on US Mac keyboard layout) 'Subscript'
 # 	-  Alt-Shift-Command-[ (Option-Command-{ on US Mac keyboard layout) 'Justify'
 
-defaults write com.apple.TextEdit ShowRuler -bool FALSE # Display ruler. (i) Enable Show ruler.
-defaults write com.apple.TextEdit SmartCopyPaste -bool FALSE # (i) Disable Smart copypaste.
-defaults write com.apple.TextEdit SmartQuotes -bool FALSE # (i) Disable Smart quotes.
-defaults write com.apple.TextEdit SmartDashes -bool FALSE # (i) Disable Smart dashes.
-defaults write com.apple.TextEdit SmartLinks -bool FALSE # (i) Disable Smart links.
-defaults write com.apple.TextEdit TextReplacement -bool FALSE # (i) Disable Text replacement.
-defaults write com.apple.TextEdit CorrectSpellingAutomatically -bool FALSE # (i) Disable Correct spelling automatically.
-defaults write com.apple.TextEdit CheckSpellingWhileTyping -bool FALSE # (i) Disable Check spelling as you type.
-defaults write com.apple.TextEdit CheckGrammarWithSpelling -bool FALSE # (i) Disable Check grammar with spelling.
-defaults write com.apple.TextEdit DataDetectors -bool FALSE # (i) Disable Data detectors.
+defaults write com.apple.TextEdit ShowRuler -bool FALSE # Show ruler.
+defaults write com.apple.TextEdit SmartCopyPaste -bool FALSE # Disable smart copypaste.
+defaults write com.apple.TextEdit SmartQuotes -bool FALSE # Disable smart quotes.
+defaults write com.apple.TextEdit SmartDashes -bool FALSE # Disable smart dashes.
+defaults write com.apple.TextEdit SmartLinks -bool FALSE # Disable smart links.
+defaults write com.apple.TextEdit TextReplacement -bool FALSE # Disable text replacement.
+defaults write com.apple.TextEdit CorrectSpellingAutomatically -bool FALSE # Disable Correct spelling automatically.
+defaults write com.apple.TextEdit CheckSpellingWhileTyping -bool FALSE # Do not check spelling as you type.
+defaults write com.apple.TextEdit CheckGrammarWithSpelling -bool FALSE # Do not check grammar with spelling.
+defaults write com.apple.TextEdit DataDetectors -bool FALSE # Disable data detectors.
 
-defaults write com.apple.TextEdit PlainTextEncoding -int 4 # (i) Set TextEdit: Preferences: Open and save: Plain text encoding: Opening files to Unicode (UTF-8).
-defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4 # (i) Set TextEdit: Preferences: Open and save: Plain text encoding: Saving files to Unicode (UTF-8).
+defaults write com.apple.TextEdit PlainTextEncoding -int 4 # Set UTF-8 as plain text file opening encoding. (Set TextEdit: Preferences: Open and save: Plain text encoding: Opening files to Unicode (UTF-8).)
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4 # Set UTF-8 as plain text file saving encoding. (Set TextEdit: Preferences: Open and save: Plain text encoding: Saving files to Unicode (UTF-8).)
 
 defaults write com.apple.TextEdit NSFixedPitchFont -string "Menlo-Regular"
 defaults write com.apple.TextEdit NSFixedPitchFontSize -int "10"
-# Set Apple Menlo 10pt as plain text font. (i) The default fixed-width font of OS X.
+# Set Apple Menlo 10pt as plain text font. (i) Apple Menlo 10pt is the default fixed-width font of OS X.
 defaults write com.apple.TextEdit NSFont -string "TimesNewRomanPSMT"
 defaults write com.apple.TextEdit NSFontSize -int "12"
 # Set rich text font to Monotype Times New Roman 12pt.
 
-defaults write com.apple.TextEdit RichText -int 0 # Set new document text format to plain text.
-defaults write com.apple.TextEdit ShowPageBreaks -bool TRUE # (i) Disable Wrap to page.
-defaults write com.apple.TextEdit WidthInChars -int 80 # Set new document window width to 80 chars (or columns).
-defaults write com.apple.TextEdit HeightInChars -int 24 # Set new document window height to 24 chars (or lines).
+defaults write com.apple.TextEdit RichText -int 0 # Set plain text as new document text format.
+defaults write com.apple.TextEdit ShowPageBreaks -bool TRUE # Do not wrap to page.
+defaults write com.apple.TextEdit WidthInChars -int 80 # Set new document window width to 80 characters (or columns).
+defaults write com.apple.TextEdit HeightInChars -int 24 # Set new document window height to 24 characters (or lines).
 defaults write com.apple.TextEdit TabWidth -int 4 # Set tab width to 4 chars.
-defaults write com.apple.TextEdit AddExtensionToNewPlainTextFiles -bool FALSE # Disable .txt extension autoadding at save to extensionless new plain text files. (i) Disable Add '.txt' extension to plain text files.
+defaults write com.apple.TextEdit AddExtensionToNewPlainTextFiles -bool FALSE # Do not add .txt extension plain text files at save. (Disable Add '.txt' extension to plain text files.)
 
 defaults write com.apple.TextEdit author -string "Karl V. P. Bertin" # Set new document author name to KVPB's.
 defaults write com.apple.TextEdit company -string "" # Set new document company name.
 defaults write com.apple.TextEdit copyright -string "" # Set new document copyright.
 
-defaults write com.apple.TextEdit IgnoreHTML -bool TRUE # Display HTML files as code. (i) Enable Display HTML files as HTML code instead of formatted text.
-defaults write com.apple.TextEdit IgnoreRichText -bool FALSE # Display RTF files as formatted text. (i) Disable Display RTF files as RTF code instead of formatted text.
+defaults write com.apple.TextEdit IgnoreHTML -bool TRUE # Display HTML files as code. (Enable Display HTML files as HTML code instead of formatted text.)
+defaults write com.apple.TextEdit IgnoreRichText -bool FALSE # Display RTF files as formatted text. (Disable Display RTF files as RTF code instead of formatted text.)
 
-defaults write com.apple.TextEdit HTMLEncoding -int 20 # (i) Set TextEdit: Preferences: Open and save: HTML saving options: Encoding to Unicode (UTF-8).
+defaults write com.apple.TextEdit HTMLEncoding -int 20 # Set UTF-8 as HTML file encoding. (Set TextEdit: Preferences: Open And Save: HTML Saving Options: Encoding to Unicode (UTF-8).)
 defaults write com.apple.TextEdit UseXHTMLDocType -bool FALSE
 defaults write com.apple.TextEdit UseTransitionalDocType -bool TRUE
-# Set new HTML document type to HTML 4.01 transitional. (i) Both are crossed attributes, e.g. enter `UseXHTMLDocType -bool FALSE` and `UseTransitionalDocType -bool FALSE` to set document type to HTML 4.01 strict.
+# Set new HTML document type to HTML 4.01 transitional. [Both are crossed attributes, e.g. enter `UseXHTMLDocType -bool FALSE` and `UseTransitionalDocType -bool FALSE` to set document type to HTML 4.01 strict.]
 defaults write com.apple.TextEdit UseEmbeddedCSS -bool FALSE
 defaults write com.apple.TextEdit UseInlineCSS -bool FALSE
-# Set new HTML document styling to embedded CSS. (i) Both are crossed attributes, e.g. enter `UseEmbeddedCSS -bool FALSE` and `UseInlineCSS -bool FALSE` to set styling to no CSS.
+# Set new HTML document styling to embedded CSS. [Both are crossed attributes, e.g. enter `UseEmbeddedCSS -bool FALSE` and `UseInlineCSS -bool FALSE` to set styling to no CSS.]
 
-defaults write com.apple.TextEdit PreserveWhitespace -bool TRUE # (i) Enable Preserve whitespace.
+defaults write com.apple.TextEdit PreserveWhitespace -bool TRUE # Preserve white space.
 
 #defaults write com.apple.LaunchServices LSHandlers -array-add '{LSHandlerContentType=org.openxmlformats.wordprocessingml.document;LSHandlerRoleAll=com.apple.textedit;}'
 # Set TextEdit as default Office Open XML Document editor.
@@ -810,12 +801,12 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 
 defaults write com.apple.ActivityMonitor IconType -int 5 # Display CPU usage icon in the Dock.
 
-echo 'Safari & WebKit (com.apple.Safari)'
+echo 'Safari & WebKit (com.apple.Safari)' # [This section has been the first example of how I want such scripts to configure OS: in case of emergency on a clean install, what is needed the most is set first.]
 
 defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool TRUE
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool TRUE
-# Enable [Tab] to highlight webpages items. (i) Enable Press Tab to highlight each item on a webpage.
-defaults write com.apple.Safari CommandClickMakesTabs -int 1 # Enable Command + Right click to open links in new tabs. (i) Enable ⌘ -click opens a link in a new tab.
+# Bind Tab to highlight webpage items. (Enable Press Tab to highlight each item on a webpage.)
+defaults write com.apple.Safari CommandClickMakesTabs -int 1 # Bind command-right click to open links in new tabs. (Enable ⌘-click opens a link in a new tab.)
 
 defaults write com.apple.Safari WebKitDefaultTextEncodingName -string "utf-8" # Set UTF-8 as default encoding. (Set Default Encoding to Unicode (UTF-8).)
 defaults write com.apple.Safari HistoryAgeInDaysLimit -int 2147483647 # Remove history items after Int32. ('Disable' history automatic removal.) (Set Remove History Items to After Int32.)
@@ -828,19 +819,19 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 
 defaults write com.apple.Safari WebKitMinimumFontSize -int 0
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2MinimumFontSize -int 0
-# Disable font sizes smaller than 9 use. (i) Enable Never use font sizes smaller than N. Set Never use font sizes smaller than to 9.
-defaults write com.apple.Safari UserStyleSheetEnabled -int 0 # (i) Set Style sheet to None selected.
+# Never use font sizes smaller than 9. (Enable Never use font sizes smaller than N.) (Set Never use font sizes smaller than to 9.)
+defaults write com.apple.Safari UserStyleSheetEnabled -int 0 # Set Style sheet to None selected.
 
 defaults write com.apple.Safari DownloadsPath -string "${HOME}/Downloads" # Set ${HOME}/Downloads/ as downloads storage path. (Set Save Downloaded Files to To Downloads/.)
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool FALSE # Do not open 'safe' files after downloading. (Disable Open “Safe” Files After Downloading.)
 
-defaults write com.apple.Safari HomePage -string "https://www.perdu.com" # (Set Homepage to about:blank.)
-defaults write com.apple.Safari NewWindowBehavior -int 0 # Set new windows to open at homepage. (i) Set New windows open with to Homepage.
-defaults write com.apple.Safari NewTabBehavior -int 0 # Set new tabs to open at homepage. (i) Set New tabs open with to Homepage.
+defaults write com.apple.Safari HomePage -string "https://www.perdu.com" # Set homepage URL to about:blank.
+defaults write com.apple.Safari NewWindowBehavior -int 0 # New windows open with homepage. (Set New windows open with to Homepage.)
+defaults write com.apple.Safari NewTabBehavior -int 0 # New tabs open with homepage. (Set New tabs open with to Homepage.)
 
-defaults write com.apple.Safari AlwaysRestoreSessionAtLaunch -bool TRUE # Enable Safari sessions restoration at launch. (i) Set Safari opens with to All windows from last session.
-defaults write com.apple.Safari OpenNewTabsInFront -bool FALSE # Disable new tabs automatic activation. (i) 'Activation' is when a window is brought to foreground.
-defaults write com.apple.Safari TabCreationPolicy -int 1 # Set pages to automatically open in tabs instead of windows. (i) Set Open pages in tabs instead of windows to Automatically.
+defaults write com.apple.Safari AlwaysRestoreSessionAtLaunch -bool TRUE # Safari opens with all windows from last session. (Enable Safari sessions restoration at launch.) (Set Safari opens with to All windows from last session.)
+defaults write com.apple.Safari OpenNewTabsInFront -bool FALSE # Do not make a new tab or window active when it opens. (Disable new tabs automatic activation.) ['Activation' is when a window is brought to foreground.]
+defaults write com.apple.Safari TabCreationPolicy -int 1 # Automatically open pages in tabs instead of windows. (Set pages to automatically open in tabs instead of windows.) (Set Open pages in tabs instead of windows to Automatically.)
 
 defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically -bool FALSE
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool FALSE
@@ -848,16 +839,16 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 
 defaults write com.apple.Safari WebKitStorageBlockingPolicy -int 1
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2StorageBlockingPolicy -int 1
-# Block cookies and other website data from third parties and advertisers. (i) Set Block cookies and other website data to From third parties and advertisers.
+# Block cookies and other website data from third parties and advertisers. (Set Block cookies and other website data to From third parties and advertisers.)
 
-defaults write com.apple.Safari SafariGeolocationPermissionPolicy -int 0 # 'Disable' location services access. (i) Set Limit website access to location services to Deny without prompting.
-defaults write com.apple.Safari SuppressSearchSuggestions -bool TRUE # Block search engines suggestions providing. (i) Enable Prevent search engine from providing suggestions.
-defaults write com.apple.Safari PreloadTopHit -bool FALSE # Disable top hit preloading. (i) Enable Do not preload Top hit in the background.
-defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool TRUE # Enable Do not track. (i) Enable Ask websites not to track me.
+defaults write com.apple.Safari SafariGeolocationPermissionPolicy -int 0 # Deny without prompting website use of location services. ('Disable' location services access.) (Set Limit website access to location services to Deny without prompting.)
+defaults write com.apple.Safari SuppressSearchSuggestions -bool TRUE # Prevent search engine from providing suggestions. (Block search engines suggestions providing.) (Enable Prevent search engine from providing suggestions.)
+defaults write com.apple.Safari PreloadTopHit -bool FALSE # Do not preload Top hit in the background. (Disable top hit preloading.) (Enable Do not preload Top hit in the background.)
+defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool TRUE # Ask websites not to track me. (Enable Do not track.) (Enable Ask websites not to track me.)
 
-defaults write com.apple.Safari CanPromptForPushNotifications -bool FALSE # 'Disable' push notifications for websites. (i) Disable Allow websites to ask for permission to send push notifications.
+defaults write com.apple.Safari CanPromptForPushNotifications -bool FALSE # Do not allow websites to ask for permission to send push notifications. ('Disable' push notifications for websites.) (Disable Allow websites to ask for permission to send push notifications.)
 
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PlugInSnapshottingEnabled -bool FALSE # (i) Enable Stop plugins to save power.
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PlugInSnapshottingEnabled -bool FALSE # Stop plug-ins to save power. (Enable Stop plugins to save power.)
 defaults write com.apple.Safari WebKitPluginsEnabled -bool FALSE
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled -bool FALSE
 # Disable plugins.
@@ -870,43 +861,43 @@ defaults write com.apple.Safari WebKitJavaScriptEnabled -bool TRUE
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptEnabled -bool TRUE
 # Enable JavaScript.
 
-defaults write com.apple.Safari ExtensionsEnabled -bool FALSE # Enable Safari extensions. (i) Enable Extensions.
-defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool TRUE # Enable automatic extensions updates. (i) Enable Install updates automatically.
+defaults write com.apple.Safari ExtensionsEnabled -bool FALSE # Enable Safari extensions. (Enable Extensions.)
+defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool TRUE # Install updates automatically. (Enable automatic extensions updates.) (Enable Install updates automatically.)
 
-defaults write com.apple.Safari AutoFillPasswords -bool FALSE # (i) Disable AutoFill user names and passwords.
-defaults write com.apple.Safari AutoFillCreditCardData -bool FALSE # (i) Disable Credit cards.
-defaults write com.apple.Safari AutoFillFromAddressBook -bool FALSE # (i) Disable Using info from my Contacts card.
-defaults write com.apple.Safari AutoFillMiscellaneousForms -bool FALSE # (i) Disable Other forms.
-# Disable autofill.
+defaults write com.apple.Safari AutoFillPasswords -bool FALSE # Do not AutoFill using names and passwords. (Disable AutoFill user names and passwords.)
+defaults write com.apple.Safari AutoFillCreditCardData -bool FALSE # Do not AutoFill credit cards. (Disable Credit cards.)
+defaults write com.apple.Safari AutoFillFromAddressBook -bool FALSE # Do not AutoFill using info from my Contacts card. (Disable Using info from my Contacts card.)
+defaults write com.apple.Safari AutoFillMiscellaneousForms -bool FALSE # Do not AutoFill other forms. (Disable Other forms.)
+# Do not AutoFill web forms. (Disable AutoFill.)
 
-defaults write com.apple.Safari IncludeDevelopMenu -bool TRUE # Display develop menu in the menu bar. (i) Enable Show Develop menu in menu bar.
-defaults write com.apple.Safari ShowStatusBar -bool TRUE # Display the status bar. (i) Enable Show status bar  ⌘ /.
+defaults write com.apple.Safari IncludeDevelopMenu -bool TRUE # Show Develop menu in menu bar. (Display develop menu in the menu bar.) (Enable Show Develop menu in menu bar.)
+defaults write com.apple.Safari ShowStatusBar -bool TRUE # Show status bar  ⌘/. (Display the status bar.) (Enable Show status bar  ⌘/.)
 
 defaults write com.apple.Safari BookmarksMenuIncludesRendezvous -bool FALSE # Disable bookmarks Bonjour menu.
-defaults write com.apple.Safari ProxiesInBookmarksBar "()" # Clear favorite bookmarks bar. (i) Remove Reading list and Top sites from the bookmarks bar.
-defaults write com.apple.Safari ShowFavoritesBar -bool FALSE # Hide favorite bookmarks bar. (i) Hide Favorites bar  ⇧ ⌘ B.
+defaults write com.apple.Safari ProxiesInBookmarksBar "()" # Clear favorite bookmarks bar. (Remove Reading list and Top sites from the bookmarks bar.)
+defaults write com.apple.Safari ShowFavoritesBar -bool FALSE # Hide favorite bookmarks bar. (Hide Favorites bar  ⇧⌘B.)
 
 defaults write com.apple.Safari SidebarViewModeIdentifier -string "Bookmarks" # Display bookmarks sidebar.
 defaults write com.apple.Safari ShowSidebarInNewWindows -bool FALSE # Hide sidebar in new windows.
 
-defaults write com.apple.Safari TopSitesGridArrangement -int 0 # Display as few top sites as possible. (i) Set Top sites show to 6 sites.
+defaults write com.apple.Safari TopSitesGridArrangement -int 0 # Top Sites shows 6 sites. (Display as few top sites as possible.) (Set Top sites shows to 6 sites.)
 
 echo 'Mail (com.apple.mail)'
 
-defaults write com.apple.mail DisableInlineAttachmentViewing -bool TRUE # Disable inline attachments. (i) Only show the icons.
+defaults write com.apple.mail DisableInlineAttachmentViewing -bool TRUE # Disable inline attachments. (Only show the icons.)
 
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool FALSE # Copy email addresses as ${firstname}.${lastname}@${domain}.${sx} instead of '${Firstname} ${Lastname} <${firstname}.${lastname}@${domain}.${sx}>'. (i) Disable Use smart addresses.
 
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "YES"
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedAscending" -string "YES"
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
-# Display emails in threaded mode and sort them as newest at the top. (i) Enable Show most recent message at the top.
+# Show most recent message at the top. (Display emails in threaded mode, and sort them as newest at the top.) (Enable Show most recent message at the top.)
 
 defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnabled" # Never check spelling. (Set Check Spelling to Never.) (Disable automatic spell checking.)
 
-echo 'Calendar (com.apple.iCal)'
+echo 'Calendar (com.apple.iCal)' # (i) was formerly iCal.
 
-defaults write com.apple.iCal "scroll by weeks in week view" -int 2 # (i) Set Scroll in week view by to Week, stop on today.
+defaults write com.apple.iCal "scroll by weeks in week view" -int 2 # Scroll in week view by week, stop on today. (Set Scroll in week view by to Week, stop on today.)
 
 defaults write com.apple.iCal "first day of week" -int 1 # Set week start to monday.
 
@@ -916,7 +907,7 @@ defaults write com.apple.iCal "Show time in Month View" -bool TRUE # Display eve
 
 defaults write com.apple.iCal "n days of week" -int 7 # Display 7 days.
 
-echo 'Contacts (com.apple.addressbook)'
+echo 'Contacts (com.apple.addressbook)' # (i) formerly named Address Book.
 
 echo 'Messages (com.apple.messageshelper.MessageController)'
 
@@ -1000,11 +991,11 @@ ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
 
 > ${HOME}/.hushlogin # Create the .hushlogin file in the current user's home folder. /!\ speeds up terminal emulator opening? https://news.ycombinator.com/item?id=3879833
 
-#chflags nohidden ${HOME}/Library # Show the hidden Library folder. (i) This script also enables hidden files display which overrides this.
+#chflags nohidden ${HOME}/Library # Show the hidden Library folder. [This script also enables hidden files display which overrides this.]
 
 #dscl . delete /Users/kvpb Picture
 #sudo dscl . create /Users/kvpb Picture "/Users/${HOME}/Pictures/UserPictures/KVPB.tif"
-# Set KVPB's user picture. https://support.apple.com/kb/PH25797
+# Set user picture. https://support.apple.com/kb/PH25797
 
 cecho 'Third-Party: System-Wide & User-Specific Xenogenetic Software & Preferences' $lityellow
 
@@ -1067,14 +1058,6 @@ defaults write com.apple.LaunchServices LSHandlers -array-add \
                                                               '{LSHandlerContentType=public.url;LSHandlerRoleViewer=org.mozilla.firefox;}'
 # Set Firefox as default web browser.
 
-#defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool FALSE # Disable trackpad backswipe gesture.
-
-#defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool FALSE # Disable magic mouse backswipe gesture.
-
-#defaults write com.google.Chrome DisablePrintPreview -bool TRUE # Disable Chrome print preview dialog. (i) enables operating system native print preview dialog.
-
-#defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool TRUE # Expand the print preview dialog.
-
 echo 'Transmission (org.m0k.transmission)'
 
 defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool TRUE
@@ -1095,7 +1078,7 @@ defaults write org.m0k.transmission BlocklistAutoUpdate -bool TRUE # Enable IP b
 
 echo 'VMware Fusion 8 (com.vmware.fusion)'
 
-defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (i) Set VMware Fusion 8: Preferences: General: Applications menu: Show in menu bar to Never.
+defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (Set VMware Fusion 8: Preferences: General: Applications menu: Show in menu bar to Never.)
 
 echo 'Photoshop Lightroom 6 (com.adobe.Lightroom6)'
 
@@ -1129,7 +1112,7 @@ cecho 'A restart is required for some of these changes to take effect. Restart..
 read -r input
 if [[ ${input} =~ ^([Yy]|[Yy][Ee][Ss]|[Yy][Ee][Aa][Hh])$ ]]
 then
-	osascript -e 'tell app "System Events" to restart' # Restart without showing a confirmation dialog.
+	osascript -e 'tell app "System Events" to restart' # Restart without confirmation.
 else
 	cecho 'OS X 10.10 Yosemite has been configured.'# $osxyosemitephotoansinearestmeancolor
 	exit
