@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+kernel=$(uname -s;)
+[ "${kernel}" = 'Darwin' ] && systemsoftwareversion=$(defaults read loginwindow SystemVersionStampAsString;)
+[ ! -z ${systemsoftwareversion} ] && systemsoftwareminorversion=$(printf "${systemsoftwareversion}" | cut -d. -f2- | cut -f1,1 -d'.';)
+[ ${systemsoftwareminorversion} -ge 11 ] && SIPstatus=$(csrutil status | sed -E 's/.*(...abled).*/\1/g';)
+[ ${systemsoftwareminorversion} -ge 12 ] && systemsoftware="${systemsoftwareversion/#/macOS }"
+[ ${systemsoftwareminorversion} -ge 8 -a ${systemsoftwareminorversion} -le 11 ] && systemsoftware="${systemsoftwareversion/#/OS X }"
+[ ${systemsoftwareminorversion} -ge 0 -a ${systemsoftwareminorversion} -le 7 ] && systemsoftware="${systemsoftwareversion/#/Mac OS X }"
+
+printf 'Do not execute these scripts as root! To still do it, replace /Users/${USER} with ${HOME}.\n'
+
+if [ "${systemsoftware:0:5}" = 'macOS' -o "${systemsoftware:0:4}" = 'OS X' -o "${systemsoftware:0:8}" = 'Mac OS X' ]; #  does this even work  yes if and only if the variables are quoted bc it may contain breaking spaces
+then
+	if [ ${systemsoftwareminorversion} -eq 13 ];
+	then
+		cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos1013)
+		exit 0
+	elif [ ${systemsoftwareminorversion} -eq 10 ];
+	then
+		cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx1010 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
+		exit 0
+	elif [ ${systemsoftwareminorversion} -eq 9 ];
+	then
+		cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx109 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
+		exit 0
+#	elif [ ${systemsoftwareminorversion} -eq 6 ];
+#	then
+#		cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx106 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
+#		exit 0
+#	elif [ ${systemsoftwareminorversion} -eq 4 ];
+#	then
+#		cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx104 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
+#		exit 0
+	fi
+#elif [ "${systemsoftware}" = 'iOS' ];
+#then
+#	cd ${HOME} && /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.ios)"
+#	exit 0
+elif [ ${systemsoftwareminorversion} -ge 0 -a ${systemsoftwareminorversion} -le 3 -o ${systemsoftwareminorversion} -eq 5 -o ${systemsoftwareminorversion} -ge 7 -a ${systemsoftwareminorversion} -le 8 -o ${systemsoftwareminorversion} -ge 11 ]; #  won't work for sure  gotta use the BASH-only conditionals with || between each test maybe
+then
+	printf "Warning: Software Incompatibility\nThis Mac runs ${systemsoftware}. .acos does not explicitly support ${systemsoftware}. Execution of incompatible runcoms with root privileges may result in permanent damage to the system software. Run the \e[9m~~closest~~\e[0m latest ACOS configuration script anyway, \e[4m_y_\e[0mes or \e[4m_n_\e[0mo?\n"
+	read -r input
+	case ${input} in
+		[Yy]* ) cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos1013)
+		exit 0;;
+		[Nn]* ) printf '\n'
+		exit 1;;
+		* ) printf 'QVIS TACET CONSENTIRE VIDETVR'
+		exit 1;;
+	esac
+else
+	printf 'Error: Software Incompatibility\n.acos could not identify this operating system. Thus .acos is not compatible with it.\n'
+	exit 1
+fi
+
+# .acos
+# Apple Computer Operating System Configuration Script
+# 
+# Karl V. P. Bertin `kvpb`
+# Telephone: +33 A BB BB BB BB
+# Email: local-part@domain
+# LinkedIn: https://www.linkedin.com/in/karlbertin
+# Instagram: https://www.instagram.com/add/karlbertin
+# TikTok: https://vm.tiktok.com/ZSwAmcFh/
