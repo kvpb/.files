@@ -1,20 +1,20 @@
 #!/usr/bin/env zsh
 
-firmwareversion=$(defaults read loginwindow SystemVersionStampAsString)
-firmwareversionmajorrelease=$(printf "${firmwareversion}" | cut -d. -f2- | cut -f1,1 -d'.')
-[ ${firmwareversionmajorrelease} -ge 0 -a ${firmwareversionmajorrelease} -le 7 ] && firmwarename="${firmwareversion/#/Mac OS X }"
-[ ${firmwareversionmajorrelease} -ge 8 -a ${firmwareversionmajorrelease} -le 11 ] && firmwarename="${firmwareversion/#/OS X }"
-[ ${firmwareversionmajorrelease} -ge 12 ] && firmwarename="${firmwareversion/#/macOS }"
-workingdirectory=$(pwd)
+systemsoftwareversion=$(defaults read loginwindow SystemVersionStampAsString;)
+systemsoftwareversionminorversion=$(printf "${systemsoftwareversion}" | cut -d. -f2- | cut -f1,1 -d'.';)
+[ ${systemsoftwareversionminorversion} -ge 0 -a ${systemsoftwareversionminorversion} -le 7 ] && systemsoftware="${systemsoftwareversion/#/Mac OS X }"
+[ ${systemsoftwareversionminorversion} -ge 8 -a ${systemsoftwareversionminorversion} -le 11 ] && systemsoftware="${systemsoftwareversion/#/OS X }"
+[ ${systemsoftwareversionminorversion} -ge 12 ] && systemsoftware="${systemsoftwareversion/#/macOS }"
+workingdirectory=$(pwd;)
 n=$[RANDOM%9999+1]
 
-if [ ${firmwareversion} -ge 15 ]
+if [ ${systemsoftwareversion} -ge 15 ]
 then
 	printf 'Installing BASH 3.2.57...'
 	:
-elif [ ${firmwareversion} -ge 2 -a ${firmwareversion} -le 14 ]
+elif [ ${systemsoftwareversion} -ge 2 -a ${systemsoftwareversion} -le 14 ]
 then
-	printf "Warning: Software Incompatibility\nThis Mac runs ${firmwarename}. In Mac OS X 10.2 Jaguar to macOS 10.14 Mojave, BASH was shipped with the OS as the default shell. Install BASH 3.2.57 from the Free Software Foundation anyway?, \e[4m_y_\e[0mes or \e[4m_n_\e[0mo?\n"
+	printf "Warning: Software Incompatibility\nThis Mac runs ${systemsoftware}. In Mac OS X 10.2 Jaguar to macOS 10.14 Mojave, BASH was shipped with the OS as the default shell. Install BASH 3.2.57 from the Free Software Foundation anyway?, \e[4m_y_\e[0mes or \e[4m_n_\e[0mo?\n"
 	read -r input
 	case ${input} in
 		[YyOo]* ) :;;
@@ -75,12 +75,8 @@ fi
 # Install BASH 3.2.57
 # Cf https://web.archive.org/web/20190604031607/https://support.apple.com/en-us/HT208050
 # 
-# Karl V.P. Bertin `kvpb`
+# Karl V. P. Bertin `kvpb`
 # Telephone: +33 A BB BB BB BB
 # Email: local-part@domain
-# LinkedIn: https://www.linkedin.com/in/karlbertin
-# Facebook: 
-# Instagram: https://www.instagram.com/karlbertin/
-# Snapchat: https://www.snapchat.com/add/karlbertin
 # 
-# On june 4th, Apple announced that they stop setting BASH as the default login shell with macOS 10.15 Catalina, defaulting to ZSH. IE Apple deprecated BASH, and eventually, they won't ship it with macOS anymore. I never quite used ZSH, and I'm surely not intending to rewrite all my BASH scripts as ZSH ones, especially given that I'm making a macOS-Ubuntu cross-platform setup. This script installs BASH 3.2.57, the last version to be shipped with macOS. A script to fetch and install the latest BASH version is still planned.
+# On june 4th, Apple announced that they stop setting BASH as the default login shell with macOS 10.15 Catalina, defaulting to ZSH. I.e. Apple deprecated BASH, and eventually, they won't ship it with macOS anymore. I never quite used ZSH, and I'm surely not intending to rewrite all my BASH scripts as ZSH ones, especially given that I'm making a macOS-Ubuntu cross-platform setup. This script installs BASH 3.2.57, the last version to be shipped with macOS. A script to fetch and install the latest BASH version is still planned.

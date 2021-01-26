@@ -37,13 +37,9 @@ cd ${workingdirectory}
 # Save Firefox Data
 # Cf https://support.mozilla.org/en-US/kb/back-and-restore-information-firefox-profiles
 # 
-# Karl Bertin `kvpb`
+# Karl V. P. Bertin `kvpb`
 # Telephone: +33 A BB BB BB BB
 # Email: local-part@domain
-# LinkedIn: https://www.linkedin.com/in/karlbertin
-# Facebook: https://www.facebook.com/profile.php?id=
-# Instagram: https://www.instagram.com/karlbertin/
-# Snapchat: https://www.snapchat.com/add/karlbertin
 # 
 # To-do:
 #   -  Condition a variable path according to the OS.

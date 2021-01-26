@@ -47,7 +47,7 @@ mv ${HOME}/Library/Caches/com.plausiblelabs.crashreporter.data/com.dropbox.Dropb
 sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "DELETE FROM access WHERE client='com.getdropbox.dropbox';"
 # Delete Dropbox from the Accessibility list.
 
-printf 'Delete the uninstallation files, yes ("y") or no ("n")?\n'
+printf 'Delete uninstallation files, yes ("y") or no ("n")?\n'
 read -r boolean
 if [[ ${boolean} =~ ^([yY]|[yY][eE][sS])$ ]]
 then
@@ -62,3 +62,10 @@ else
 	printf 'Qui ne dit mot consent ? Pas de nouvelle, bonnes nouvelles ?\n'
 fi
 printf 'Dropbox has been uninstalled.\n'
+
+# UninstallDropbox.sh
+# Uninstall Dropbox
+# 
+# Karl V. P. Bertin `kvpb`
+# Telephone: +33 A BB BB BB BB
+# Email: local-part@domain

@@ -22,14 +22,9 @@ rmdir Temporary
 # Installdbxcli.sh
 # Install dbxcli v2.1.0 Mac OS X pre-compiled binaries
 # 
-# Karl 'Kabe' Bertin `kvpb`
+# Karl V. P. Bertin `kvpb`
 # Telephone: +33 A BB BB BB BB
 # Email: local-part@domain
-# LinkedIn: https://www.linkedin.com/in/karlbertin
-# Facebook: 
-# Instagram: https://www.instagram.com/karlbertin/
-# Snapchat: https://www.snapchat.com/add/karlbertin
 # 
-# On 2018.1.1 at 17:30:0, Dropbox recommends to place the binary in ~/bin (/Users/${USER}/bin/). https://web.archive.org/web/20180101163836/https://github.com/dropbox/dbxcli
-# 	On macOS, like apps should be installed in /Applications, it is recommended to install 'command-line app-grade' binaries in /usr/local/bin. https://web.archive.org/web/20180101190051/https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html
-# 	For a single-user, I would recommend placing the binary in ~/Dropbox/bin --- why have this without Dropbox installed?
+# On 2018.01.01 at 17:30:00, Dropbox recommends to place the binary in ~/bin (/Users/${USER}/bin/). https://web.archive.org/web/20180101163836/https://github.com/dropbox/dbxcli
+# 	On macOS, since apps should be installed in /Applications, it is recommended to install 'command-line app-grade' binaries in /usr/local/bin. https://web.archive.org/web/20180101190051/https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html

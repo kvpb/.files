@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-firmwareversion=$(defaults read loginwindow SystemVersionStampAsString | cut -d. -f2- | cut -f1,1 -d'.';);
-[ ${firmwareversion} -ge 11 ] && SIPstatus=$(csrutil status | sed -E 's/.*(...abled).*/\1/g';);
+systemsoftwareversion=$(defaults read loginwindow SystemVersionStampAsString | cut -d. -f2- | cut -f1,1 -d'.';);
+[ ${systemsoftwareversion} -ge 11 ] && SIPstatus=$(csrutil status | sed -E 's/.*(...abled).*/\1/g';);
 filenameextension='pkg';
-[ ${firmwareversion} -eq 5 ] && softwarelatestversion='1.1' && filenameextension="${filenameextension/#/m}";
-[ ${firmwareversion} -eq 6 ] && softwarelatestversion='1.3';
-[ ${firmwareversion} -eq 7 ] && softwarelatestversion='1.4.11';
-[ ${firmwareversion} -eq 8 ] && softwarelatestversion='1.5.4';
-[ ${firmwareversion} -ge 9 -a ${firmwareversion} -le 12 ] && softwarelatestversion='1.6';
+[ ${systemsoftwareversion} -eq 5 ] && softwarelatestversion='1.1' && filenameextension="${filenameextension/#/m}";
+[ ${systemsoftwareversion} -eq 6 ] && softwarelatestversion='1.3';
+[ ${systemsoftwareversion} -eq 7 ] && softwarelatestversion='1.4.11';
+[ ${systemsoftwareversion} -eq 8 ] && softwarelatestversion='1.5.4';
+[ ${systemsoftwareversion} -ge 9 -a ${systemsoftwareversion} -le 12 ] && softwarelatestversion='1.6';
 n=$[RANDOM%99+1] && while [ -e /Users/${USER}/Temporary/Folder${n} ]; do n=$[RANDOM%99+1]; done; # so there's no risk that the temporary directory exists and has contents, thus it spares from theneed to check this.
 workingdirectory=$(pwd);
 
@@ -43,10 +43,6 @@ rm -d /Users/${USER}/Temporary/Folder${n}
 # Install TotalTerminal latest compatible version
 # Cf https://totalterminal.binaryage.com/#compatibility, https://totalterminal.binaryage.com/#sip
 #
-# Karl 'Kabe' Bertin `kvpb`
+# Karl V. P. Bertin `kvpb`
 # Telephone: +33 A BB BB BB BB
 # Email: local-part@domain
-# LinkedIn: https://www.linkedin.com/in/karlbertin
-# Facebook: https://www.facebook.com/profile.php?id=
-# Instagram: https://www.instagram.com/karlbertin/
-# Snapchat: https://www.snapchat.com/add/karlbertin

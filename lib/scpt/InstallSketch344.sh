@@ -11,10 +11,6 @@ rmdir Temporary # Delete the current user's unofficial temporary folder.
 # InstallSketch344.sh
 # Install Sketch 3.4.4 (latest OS X 10.9 Mavericks-compatible version)
 #
-# Karl 'Kabe' Bertin `kvpb`
+# Karl V. P. Bertin `kvpb`
 # Telephone: +33 A BB BB BB BB
 # Email: local-part@domain
-# LinkedIn: https://www.linkedin.com/in/karlbertin
-# Facebook: 
-# Instagram: https://www.instagram.com/karlbertin/
-# Snapchat: https://www.snapchat.com/add/karlbertin

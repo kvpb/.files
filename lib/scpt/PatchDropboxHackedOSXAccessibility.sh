@@ -44,6 +44,3 @@ fi;
 # Karl Bertin `kvpb`
 # Telephone: +33 A BB BB BB BB
 # Email: local-part@domain
-# LinkedIn: https://www.linkedin.com/in/karlbertin
-# Facebook: https://www.facebook.com/profile.php?id=
-# Instagram: https://www.instagram.com/karlbertin/
