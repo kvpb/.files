@@ -4,16 +4,17 @@
 
 - - -
 
-# `.macosx`, `.osx`, `.macos` & `.ios` ('_`.acos`_') ![platform](https://gistcdn.githack.com/kvpb/e55c254ded3bc5eac9bc4f29c78ec75c/raw/3ed1cca704de2cb968baa5fabaf3eec5921d3a01/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
+# `.macosx`, `.osx`, `.macos` & `.ios` (`.acos`) ![platform](https://gistcdn.githack.com/kvpb/e55c254ded3bc5eac9bc4f29c78ec75c/raw/3ed1cca704de2cb968baa5fabaf3eec5921d3a01/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
 
 #### Where-is
 <details><summary><code>.files/</code></summary>
 
+- [x] `.acos`
 - [ ] `.macosx104`
 - [ ] `.macosx106`
 - [x] `.osx109`
 - [x] `.osx1010`
-- [x] `.macos1013`
+- [x] ~~`.macos1013`~~
 - [ ] `.ios`
 </details>
 
@@ -29,7 +30,10 @@ Apple computers operating systems configuration scripts family.
 
 Launch a terminal emulator, e.g. [Terminal](https://web.archive.org/web/20190326164259/https://support.apple.com/guide/terminal/welcome/mac) or [MTerminal](https://web.archive.org/web/20141020160524/http://cydia.saurik.com/package/com.officialscheduler.mterminal/), then enter this:
 
-&nbsp;&nbsp;**macOS 10.13 High Sierra:**
+```sh
+cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.acos)
+```
+<!--&nbsp;&nbsp;**macOS 10.13 High Sierra:**
 
 ```sh
 cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos1013)
@@ -62,7 +66,7 @@ cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https
 &nbsp;&nbsp;~~**iOS:**~~
 ```
 cd ${HOME} && /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.ios)"
-```
+```-->
 
 - - -
 
@@ -143,21 +147,21 @@ My VIM setup, featuring a true TextEdit-like key mapping, including a smart hack
   - [ ] ~~`InstallOffice2016forMac.sh`~~ ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.10%20Yosemite-white.svg)
   - [ ] ~~`InstallOffice2011forMac.sh`~~ ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X-white.svg)
 - [ ] `InstallSketch.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-  - [x] `InstallSketch344.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
+  - [x] ~~`InstallSketch344.sh`~~ ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallInkscape.sh` ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [ ] `InstalliTerm2.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
   - [x] `InstalliTerm2OS108Plus.sh` ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.8%20Mountain%20Lion-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] ~~`InstallHyper.sh`~~ ![firmware](https://img.shields.io/badge/firmware-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
   - [ ] ~~`InstallHyper.js`~~ ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-JavaScript-yellow.svg)
 - [ ] `InstallCathode.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-  - [ ] `InstallCathode203.sh`
-  - [ ] `InstallCathode094.sh`
+  - [ ] ~~`InstallCathode203.sh`~~
+  - [ ] ~~`InstallCathode094.sh`~~
 - [ ] `InstallPathFinder.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-  - [ ] `InstallPathFinder7.sh`
-  - [ ] `InstallPathFinder6.sh`
+  - [ ] ~~`InstallPathFinder7.sh`~~
+  - [ ] ~~`InstallPathFinder6.sh`~~
 - [ ] `InstallForkLift.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
-  - [ ] `InstallForkLift3.sh`
-  - [ ] `InstallForkLift2.sh`
+  - [ ] ~~`InstallForkLift3.sh`~~
+  - [ ] ~~`InstallForkLift2.sh`~~
 - [x] `InstallVLC.sh` ![firmware](https://img.shields.io/badge/firmware-Mac%20OS%20X-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] `InstallSoulver.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
 - [x] ~~`InstallChrome.sh`~~ ![firmware](https://img.shields.io/badge/firmware-OS%20X%2010.9%20Mavericks-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
