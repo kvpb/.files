@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for i in "$@";
+for i in "${@}";
 do
 	var=$(osascript -e "on run({i})" -e "set variable to POSIX path of (path to application i)" -e "end" -- "${i}"); # -e "on run(argv)"
 	until [ ! -z "$(pgrep ${i})" ];

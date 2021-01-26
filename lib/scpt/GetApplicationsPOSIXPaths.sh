@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for var in "$@";
+for var in "${@}";
 do
 
 osascript -- - "${var}" <<'EOF'

@@ -54,10 +54,6 @@ rm -rf Temporary
 # Installfswatch.sh
 # Install fswatch latest version
 # 
-# Karl 'Kabe' Bertin `kvpb`
+# Karl V. P. Bertin `kvpb`
 # Telephone: +33 A BB BB BB BB
 # Email: local-part@domain
-# LinkedIn: https://www.linkedin.com/in/karlbertin
-# Facebook: 
-# Instagram: https://www.instagram.com/karlbertin/
-# Snapchat: https://www.snapchat.com/add/karlbertin
