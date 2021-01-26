@@ -8,9 +8,9 @@ kernel=$(uname -s;)
 [ ${systemsoftwareminorversion} -ge 8 -a ${systemsoftwareminorversion} -le 11 ] && systemsoftware="${systemsoftwareversion/#/OS X }"
 [ ${systemsoftwareminorversion} -ge 0 -a ${systemsoftwareminorversion} -le 7 ] && systemsoftware="${systemsoftwareversion/#/Mac OS X }"
 
-printf 'Do not execute these scripts as root! To still do it, replace /Users/${USER} with ${HOME}.\n'
+printf 'Do not execute these scripts as root! To still do it at your own risk, replace /Users/${USER} with ${HOME}.\n'
 
-if [ "${systemsoftware:0:5}" = 'macOS' -o "${systemsoftware:0:4}" = 'OS X' -o "${systemsoftware:0:8}" = 'Mac OS X' ]; #  does this even work  yes if and only if the variables are quoted bc it may contain breaking spaces
+if [ "${systemsoftware:0:5}" = 'macOS' -o "${systemsoftware:0:4}" = 'OS X' -o "${systemsoftware:0:8}" = 'Mac OS X' ];
 then
 	if [ ${systemsoftwareminorversion} -eq 13 ];
 	then
@@ -37,9 +37,9 @@ then
 #then
 #	cd ${HOME} && /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.ios)"
 #	exit 0
-elif [ ${systemsoftwareminorversion} -ge 0 -a ${systemsoftwareminorversion} -le 3 -o ${systemsoftwareminorversion} -eq 5 -o ${systemsoftwareminorversion} -ge 7 -a ${systemsoftwareminorversion} -le 8 -o ${systemsoftwareminorversion} -ge 11 ]; #  won't work for sure  gotta use the BASH-only conditionals with || between each test maybe
+elif [ ${systemsoftwareminorversion} -ge 0 -a ${systemsoftwareminorversion} -le 3 -o ${systemsoftwareminorversion} -eq 5 -o ${systemsoftwareminorversion} -ge 7 -a ${systemsoftwareminorversion} -le 8 -o ${systemsoftwareminorversion} -ge 11 -a ${systemsoftwareminorversion} -le 12 -o ${systemsoftwareminorversion} -ge 14 ]; #elif [ ${systemsoftwareminorversion} -ge 0 -a ${systemsoftwareminorversion} -le 3 ] || [ ${systemsoftwareminorversion} -eq 5 ] || [ ${systemsoftwareminorversion} -ge 7 -a ${systemsoftwareminorversion} -le 8 ] || [ ${systemsoftwareminorversion} -ge 11 -a ${systemsoftwareminorversion} -le 12 ] || [ ${systemsoftwareminorversion} -ge 14 ];
 then
-	printf "Warning: Software Incompatibility\nThis Mac runs ${systemsoftware}. .acos does not explicitly support ${systemsoftware}. Execution of incompatible runcoms with root privileges may result in permanent damage to the system software. Run the \e[9m~~closest~~\e[0m latest ACOS configuration script anyway, \e[4m_y_\e[0mes or \e[4m_n_\e[0mo?\n"
+	printf "Warning: Software Incompatibility\nThis Mac runs ${systemsoftware}. .acos does not explicitly support ${systemsoftware}. The execution of incompatible setup scripts with root privileges may result in permanent damage to the system software. Run the latest ACOS configuration script anyway, \e[4my\e[0mes (`y`) or \e[4mn\e[0mo (`n`)?\n"
 	read -r input
 	case ${input} in
 		[Yy]* ) cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos1013)
@@ -61,5 +61,3 @@ fi
 # Telephone: +33 A BB BB BB BB
 # Email: local-part@domain
 # LinkedIn: https://www.linkedin.com/in/karlbertin
-# Instagram: https://www.instagram.com/add/karlbertin
-# TikTok: https://vm.tiktok.com/ZSwAmcFh/
