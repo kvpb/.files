@@ -76,6 +76,12 @@ ll ()
 }; # ll, listlongly
 # ll	locate, and extendedly list all directory contents
 
+pv ()
+{
+	( set -o posix && set ); #( set -o posix; set ) | less; # '(list)    list  is  executed  in  a  subshell  environment (see COMMAND EXECUTION ENVIRONMENT below).' man bash
+}; # pv, printvar, printvariables
+# pv	print variables
+
 function ae
 {
 	local array=("${@}");
@@ -166,6 +172,16 @@ ResetLaunchPad ()
 }; # rlp, ResetLaunchPad
 # ResetLaunchPad	LaunchPad Reset
 # The ResetLaunchPad function resets LaunchPad's layout.
+
+GetBundleID ()
+{
+	for i in ${#@}; do local A[${i}]=$(find /{,System/,/Users/${USER}/}Applications -mindepth 1 -maxdepth 1 -type d -iname ${i}); done;
+
+	for i in ${A};
+	do
+		/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' ${i}/Contents/Info.plist;
+	done;
+};
 
 # Specific-Use Functions
 
