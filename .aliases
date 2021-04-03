@@ -295,3 +295,7 @@ alias	mtf='MakeTemporaryFolder && tf'
 alias	CreateTestFolders='sh ${HOME}/.files/lib/scpt/NewTestFolders.sh'
 alias	createtestfolders='sh ${HOME}/.files/lib/scpt/NewTestFolders.sh'
 alias	ctf='CreateTestFolders && tf'
+
+alias	SetVolume='sh ${HOME}/.files/lib/scpt/SetVol.sh'
+alias	setvol='sh ${HOME}/.files/lib/scpt/SetVol.sh'
+alias	sv='sh ${HOME}/.files/lib/scpt/SetVol.sh'
