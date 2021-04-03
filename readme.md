@@ -1,10 +1,10 @@
-<p align='center'><b>KARL BERTIN'S</b></p>
-<h1 align='center'><code>.files</code> (<b>DOTFILES</b>)</h1>
-<p align='center'><b>Runcoms, Configuration Files, Setups, Scripts, Templates & Hacks</b></p>
+<h3 align='center'><b>Karl's</b></h3>
+<h1 align='center'><b>DOTFILES</b></h1>
+<h3 align='center'><b>Runcoms, Configuration Files, Setups, Scripts, Templates & Hacks</b></h3>
 
 - - -
 
-# **Apple Computer Operating System Setups**<br>`.macosx`, `.osx`, `.macos` & `.ios` (`.acos`) ![platform](https://gistcdn.githack.com/kvpb/e55c254ded3bc5eac9bc4f29c78ec75c/raw/3ed1cca704de2cb968baa5fabaf3eec5921d3a01/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
+## **Apple Computer Operating System Setups**<br>`.acos` (`.macosx`, `.osx`, `.macos` & `.ios`) ![platform](https://gistcdn.githack.com/kvpb/e55c254ded3bc5eac9bc4f29c78ec75c/raw/3ed1cca704de2cb968baa5fabaf3eec5921d3a01/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
 
 #### Where-is
 <details><summary><code>.files/</code></summary>
@@ -14,7 +14,7 @@
 - [ ] `.macosx106`
 - [x] `.osx109`
 - [x] `.osx1010`
-- [x] ~~`.macos1013`~~
+- [ ] `.macos11`
 - [ ] `.ios`
 </details>
 
@@ -26,39 +26,35 @@ Apple computers operating systems configuration scripts family.
 
 #### How-to
 
-**NB:** Do not execute these scripts as root! To still run any of these scripts as root, replace `/Users/${USER}` with `${HOME}`.
+**NB:** Do not execute these scripts as root! To run any of these scripts as root anyway, replace `/Users/${USER}` with `${HOME}`.
 
 Launch a terminal emulator, e.g. [Terminal](https://web.archive.org/web/20190326164259/https://support.apple.com/guide/terminal/welcome/mac) or [MTerminal](https://web.archive.org/web/20141020160524/http://cydia.saurik.com/package/com.officialscheduler.mterminal/), then enter this:
 
 ```sh
 cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.acos)
 ```
-<!--&nbsp;&nbsp;**macOS 10.13 High Sierra:**
-
-```sh
-cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos1013)
+<!--
+&nbsp;&nbsp;**macOS 11 Big Sur:**
+```
+cd /Users/${USER} && /bin/sh <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos)
 ```
 
-&nbsp;&nbsp;**OS X 10.10.5 Yosemite:**
-
+&nbsp;&nbsp;**OS X 10.10 Yosemite:**
 ```sh
 cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx1010 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
 ```
 
-&nbsp;&nbsp;**OS X 10.9.5 Mavericks:**
-
+&nbsp;&nbsp;**OS X 10.9 Mavericks:**
 ```sh
 cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx109 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
 ```
 
-&nbsp;&nbsp;~~**Mac OS X 10.6.8 Snow Leopard:**~~
-
+&nbsp;&nbsp;~~**Mac OS X 10.6 Snow Leopard:**~~
 ```
 cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx106 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
 ```
 
-&nbsp;&nbsp;~~**Mac OS X 10.4.11 Tiger:**~~
-
+&nbsp;&nbsp;~~**Mac OS X 10.4 Tiger:**~~
 ```
 cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx104 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
 ```
@@ -70,7 +66,7 @@ cd ${HOME} && /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/kvpb/.f
 
 - - -
 
-# **VIM Initializations**<br>`.vimrc` & `.vim/`
+## **VIM Initializations**<br>`.vimrc` & `.vim/`
 
 #### Where-is
 <details><summary><code>.files/</code></summary>
@@ -78,8 +74,8 @@ cd ${HOME} && /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/kvpb/.f
 - [x] `.vim/`
 - [x] `.vimrc`
 <!--
-- [x] `.bashrc` required as dependency
-- [x] `.aliases` required as dependency
+- [x] `.bashrc` required as 'dependency'
+- [x] `.aliases` required as 'dependency'
 -->
 </details>
 
@@ -90,11 +86,11 @@ My VIM setup featuring a true TextEdit-like key mapping.
 #### To-do
 
 - [ ] Write a 'minimaximal' VIM color scheme which uses as few colors as efficiently as possible.
-  - ~~[ ] Write or rewrite an up-to-date true GitHub color scheme with a dark mode.~~
+  - [ ] Write or rewrite an up-to-date true GitHub color scheme with a dark mode.
 
 - - -
 
-# **Scripts**<br>`scpt/`
+## **Scripts**<br>`scpt/`
 
 #### Where-is
 <details><summary><code>.files/</code><code>lib/</code><code>scpt/</code></summary>
@@ -103,8 +99,7 @@ My VIM setup featuring a true TextEdit-like key mapping.
 - [x] `GetLoginItemsList.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
 - [x] `GetApplicationsPOSIXPaths.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
 - [x] `SetKeyboardBrightnessTo100percent.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
-- [x] `SetVolumeTo50percent.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
-- [x] `SetVolumeToMuted.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
+- [x] `SetVol.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
 - [x] `GetVolumeMuteStatus.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
 - [ ] `InstallBASH.sh`
   - [x] `InstallBASH3257.sh` ![system software](https://img.shields.io/badge/system%20software-macOS%2010.15+-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
@@ -183,17 +178,15 @@ My VIM setup featuring a true TextEdit-like key mapping.
 
 #### What-is
 
-A library of scripts that I wrote.
+A library of home-made scripts.
 
-<!--
-#### How-to
-
+<!--#### How-to
 
 -->
 
 - - -
 
-<!--# `Text Substitutions.plist` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
+<!--## macOS Key Bindings & Text Replacements<br>`DefaultKeyBinding.dict` & `Text Substitutions.plist` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
 -->
 <!--**`Text Substitutions.plist`:**
 | Replace | With |
@@ -202,15 +195,19 @@ A library of scripts that I wrote.
 <!--
 #### Where-is
 <details><summary><code>.files/</code></summary>
+<details><summary><code>Library/</code><code>KeyBindings/</code></summary>
+
+- [x] `DefaultKeyBinding.dict`
+</details>
 
 - [x] `Text Substitutions.plist`
 </details>
 
 #### What-is
 
-macOS text substitutions (list of abbreviations to automatically replace by words).
+macOS key bindings (key-value pairs with the key being a string that specifies a physical key and the value identifying an action method to be invoked when the key is pressed) and text substitutions (list of abbreviations to automatically replace by words).
 
-**NB:** This works with macOS software that use it, e.g. TextEdit, but it does not with Word for Mac 2011.
+**NB:** Text replacements work with macOS software, e.g. TextEdit.
 
 #### How-to
 
@@ -220,8 +217,8 @@ macOS text substitutions (list of abbreviations to automatically replace by word
 4. Drag `Text Substitutions.plist` from the Finder window, and drop it to the table-like list of the window of System Preferences.
 
 - - -
--->
-# **Random Password Generator**<br>`RPwG.rb`
+
+## **Random Password Generator**<br>`RPwG.rb`
 
 <p align='center'><a href='https://github.com/kvpb/.files/blob/master/lib/scpt/RPwG.rb'><img src='https://gist.githack.com/kvpb/543e66fc06e322658f5877e9e2f77cda/raw/08ecb3022f7c7de3c1a16b05e59af04b92e19af5/RPwG.svg'></a></p>
 
@@ -250,14 +247,14 @@ A program, written in Ruby, which pseudorandomly generates passwords.
 &nbsp;&nbsp;1.&nbsp;&nbsp;[Download RPwG.](https://github.com/kvpb/RPwG/releases/tag/1.10)  
 &nbsp;&nbsp;2.&nbsp;&nbsp;Launch a terminal emulator, e.g. [Terminal](https://web.archive.org/web/20190326164259/https://support.apple.com/guide/terminal/welcome/mac) or [GNOME Terminal](https://web.archive.org/web/20130207013917/http://help.gnome.org/users/gnome-terminal/stable/).  
 &nbsp;&nbsp;3.&nbsp;&nbsp;Type '`ruby `' (with a trailing space after 'ruby'), drag and drop the `RPwG.rb` file, and press Enter.  
-&nbsp;&nbsp;4.&nbsp;&nbsp;Follow the script's instructions on the terminal, then copy and paste the resulting password.
+&nbsp;&nbsp;4.&nbsp;&nbsp;Follow the instructions of the script on the terminal, then copy and paste the resulting password.
 
 ~~**MS-DOS:**~~  
-&nbsp;&nbsp;Do yourself a favor: either get a Linux PC or a Mac.
+&nbsp;&nbsp;Do yourself a favor: get either a Linux PC or a Mac.
 
 - - -
 
-<!--# **Karl Bertin's Notetaking System**
+<!--## **Karl's Notetaking System**
 -->
 <!--<p align='center'><a=href='https://github.com/kvpb/.files/raw/master/notetakingsystem.docx'><img src='https://gist.githack.com/kvpb/d09c287b1d3c8e77bb9897db657938d4/raw/54cdac0b8ffad36d9ade790cfa53d138c6867412/karlbertinsscratchingsystemfrontcover.svg'></a>-->
 <!--
@@ -305,11 +302,13 @@ The scratching system I built at university for better cleaner faster note-takin
 * [Julien Castelain](http://julien.js.org/) for [`vim-colors-green/colors/green.vim`](https://raw.githubusercontent.com/julien/vim-colors-green/master/colors/green.vim) [2020.01.24](https://github.com/julien/vim-colors-green/commit/c2ab216a1f8e9d15ddf25135200048326a76394b#diff-d8165931f5472490634f50524de08eca)
 * [Charlie Gunyon](http://charlieg.net/) for [`amber/colors/amber.vim`](https://raw.githubusercontent.com/camgunz/amber/master/colors/amber.vim) [2020.01.24](https://github.com/camgunz/amber/commit/23d8e7a53e39e31c01c4fc1e353d95781fa08e49#diff-b3098a38cdf626efc0cc5ddbb858c1c4)
 * [Cormac Relf](https://github.com/cormacrelf) for [`vim-colors-github/colors/github.vim`](https://raw.githubusercontent.com/cormacrelf/vim-colors-github/master/colors/github.vim) [2020.01.24](https://github.com/cormacrelf/vim-colors-github/commit/acb712c76bb73c20eb3d7e625a48b5ff59f150d0#diff-451fb194f8486978732fecc575e54723)
+* [Columbia University in the City of New York](https://www.columbia.edu/) for [_Headlines_](https://web.archive.org/web/20041108032317/http://www.columbia.edu/itc/journalism/isaacs/client_edit/Headlines.html) [2020.02.20](http://www.columbia.edu/itc/journalism/isaacs/client_edit/Headlines.html)
+* [University of Kansas](https://www.ku.edu/) for [_Making an impact--- accurately_](https://web.archive.org/web/20060904173706/https://web.ku.edu/~edit/heads.html) [2020.02.20](https://web.ku.edu/~edit/heads.html)
 
 #### Author
 
 <p align='center'><a href='http://karlbertin.com/'><img src='https://gist.githack.com/kvpb/bfed748ac5c509985c89ea613a2bfd02/raw/8c0b311b7c848fabddf61672ba6bb72c8754fed9/karlbertinssymbol.svg'></a><br>
-<b>Karl V. P. Bertin `<code>kvpb</code>`</b><br> <!-- Neither `<span style='font-variant: small-caps;'>Bertin</span>` nor `B<small>ERTIN</small>` work on GitHub. -->
-<a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a> | <a href='https://www.instagram.com/karlbertin/'>Instagram</a> | <a href='https://vm.tiktok.com/ZSwAmcFh/'>TikTok</a></p>
+<b>Karl V. P. B. `<code>kvpb</code>`</b><br> <!-- Neither `<span style='font-variant: small-caps;'>Bertin</span>` nor `B<small>ERTIN</small>` work on GitHub. -->
+<a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a>&nbsp;&nbsp;<a href='https://www.instagram.com/karlbertin/'>Instagram</a>&nbsp;&nbsp;<a href='https://vm.tiktok.com/ZSwAmcFh/'>TikTok</a></p>
 
-<!--**Ed:** --><!--**PS:** -->
+<!--**PS:** -->
