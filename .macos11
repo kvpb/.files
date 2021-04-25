@@ -995,9 +995,9 @@ ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
 
 cecho 'Third-Party: System-wide & User-specific Xenogenetic Software & Preferences' $yellow
 
-echo 'Homebrew'
-
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" # Download and install Homebrew.
+#echo 'MacPorts'
+#
+# # Download and install MacPorts.
 
 brew tap Homebrew/bundle # Download and install homebrew-bundle.
 

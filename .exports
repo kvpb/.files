@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
-# System Environment Variables (eg EDITOR, HOME, LOGNAME, MAIL, MANPATH, PAGER, PATH, SHELL, USER, VISUAL)
+# System Environment Variables (e.g. EDITOR, HOME, LOGNAME, MAIL, MANPATH, PAGER, PATH, SHELL, USER, VISUAL)
 
-export	PATH=/usr/local/opt/ruby/bin:${PATH}
+#export	PATH=/usr/local/bin:${PATH} # Python (https://docs.python.org/3/using/mac.html)
+export	PATH=/usr/local/opt/ruby/bin:${PATH} # Ruby
+export	PATH=/usr/local/bin:${PATH} # Node.js & NPM (node-v14.16.1.pkg)
+export	PATH=/usr/local/octave/3.8.0/bin:${PATH} # Octave 3.8.0 (GNU_Octave_3.8.0-6.dmg/README.txt)
+export	PATH=/opt/local/bin:/opt/local/sbin:${PATH} #export	PATH=${PATH}:/opt/local/bin # MacPorts (https://guide.macports.org/chunked/installing.shell.html)
+export	MANPATH=/opt/local/share/man:${MANPATH} # MacPorts (https://guide.macports.org/chunked/installing.shell.html)
 
 export	LANG=en_US.UTF-8
 export	LC_ALL=en_US.UTF-8
@@ -12,13 +17,13 @@ export	EDITOR=${VISUAL}
 
 export	CLICOLOR=1
 if ls --color > /dev/null 2>&1 # If this silenced command evaluates to true,
-then # then the implemented LS is GNU LS,
-	export	LS_COLORS='di=34;46:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43' # so set LS' colors,
-else # else the implemented LS is BSD LS, so
-	export	LSCOLORS=egfxcxdxbxegedabagacad # 'Finder Color Scheme' for LS; default value: exfxcxdxbxegedabagacad
-fi # Set LS' colors.
+then # the implemented LS is the GNU LS,
+	export	LS_COLORS='di=34;46:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43' # so set the colors of LS,
+else # or else the implemented LS is the BSD LS, so
+	export	LSCOLORS=egfxcxdxbxegedabagacad # Finder color scheme for LS; default value: exfxcxdxbxegedabagacad
+fi # Set colors of LS.
 
-# Shell Environment Variables (eg MAILCHECK, PS1, PS2)
+# Shell Environment Variables (e.g. MAILCHECK, PS1, PS2)
 
 #shopt -s histappend # (i) should be run here first; is already ran in .bashrc.
 export	HISTSIZE=32767
@@ -30,33 +35,37 @@ export	HISTTIMEFORMAT="$(printf '\r\e[K')$(tput setaf 0)$(tput setab 7)%F %T$(tp
 export	PROMPT_COMMAND='history -a; history -n'
 export	PS1='\[\033[7m\]\u@\h:\[\033[00m\]\[\033[4m\]\w\[\033[00m\]\n\[\033[7m\]\D{%Y.%m.%d}@\t\[\033[00m\] \[\033[7m\]\$\[\033[00m\] ' #PS1='\[\033[7m\]\u@\h\[\033[00m\] \[\033[7m\]\D{%Y.%m.%d}@\t\[\033[00m\] \[\033[7m\]\$\[\033[00m\] ' #PS1='\[\033[7m\]\D{%Y.%m.%d}@\t\[\033[00m\] \[\033[7m\]\u@\h\$\[\033[00m\] '
 
-# User Environment Variables (eg PATH)
+# User Environment Variables (e.g. PATH)
 
-#export	LIBRARY=${HOME}/lib        #export        LIBRARY=${HOME}/library
-#export	DOTFILES=${HOME}/.fl       #export       DOTFILES=${HOME}/.files
-#export	BINARIES=${HOME}/bin       #export       BINARIES=${HOME}/binary
-#export	DESKTOP=${HOME}/dsk        #export        DESKTOP=${HOME}/desktop
-#export	WORKINPROGRESS=${HOME}/wip #export WORKINPROGRESS=${HOME}/work
-#export	DOCUMENTS=${HOME}/dox      #export      DOCUMENTS=${HOME}/documents
-#export	IMAGE=${HOME}/img          #export          IMAGE=${HOME}/image     #export PHOTO=${HOME}/pht
-#export	AUDIO=${HOME}/aud          #export          AUDIO=${HOME}/audio     #export MUSIC=${HOME}/mus
-#export	VIDEO=${HOME}/vdo          #export          VIDEO=${HOME}/video
-#export	MISCELLANEOUS=${HOME}/msc  #export  MISCELLANEOUS=${HOME}/misc
-#export	DOWNLOADS=${HOME}/dls      #export      DOWNLOADS=${HOME}/downloads
-#export	TRASH=${HOME}/tsh          #export          TRASH=${HOME}/trash
-#export	TEMPORARY=${HOME}/tmp      #export      TEMPORARY=${HOME}/temp
-#export	DOTFILES=${HOME}/.files
-#export	APPLICATIONS=/Applications
-#export	LIBRARY=${HOME}/Library
-#export	DESKTOP=${HOME}/Desktop
-#export	DOCUMENTS=${HOME}/Documents
-#export	DOWNLOADS=${HOME}/Downloads
-#export	DROPBOX=${HOME}/Dropbox
-#export	MISCELLANEOUS=${HOME}/Miscellaneous
-#export	MOVIES=${HOME}/Movies
-#export	MUSIC=${HOME}/Music
-#export	PICTURES=${HOME}/Pictures
-#export	PUBLIC=${HOME}/Public
-#export	TEMPORARY=${HOME}/Temporary
-#export	TRASH=${HOME}/.Trash
-#export	WORK=${HOME}/Work
+if [ $(uname) = 'Darwin' ];
+then
+	export	DOTF=/Users/${USER}/.files
+	#export	DOTFILES=/Users/${USER}/.files
+	export	LIBR=/Users/${USER}/Library
+	#export	LIBRARY=/Users/${USER}/Library
+	export	BINA=/Users/${USER}/bin
+	#export	BINARIES=/Users/${USER}/bin
+	export	APPL=/Users/${USER}/Applications
+	#export	APPLICATIONS=/Users/${USER}/Applications
+	export	WORK=/Users/${USER}/Work
+	export	MISC=/Users/${USER}/Miscellaneous
+	#export	MISCELLANEOUS=/Users/${USER}/Miscellaneous
+	export	DOCU=/Users/${USER}/Documents
+	#export	DOCUMENTS=/Users/${USER}/Documents
+	export	PICT=/Users/${USER}/Pictures
+	#export	PICTURES=/Users/${USER}/Pictures
+	export	MUSI=/Users/${USER}/Music
+	#export	MUSIC=/Users/${USER}/Music
+	export	MOVI=/Users/${USER}/Movies
+	#export	MOVIES=/Users/${USER}/Movies
+	export	DOWN=/Users/${USER}/Downloads
+	#export	DOWNLOADS=/Users/${USER}/Downloads
+	export	DESK=/Users/${USER}/Desktop
+	#export	DESKTOP=/Users/${USER}/Desktop
+	export	PUBL=/Users/${USER}/Public
+	#export	PUBLIC=/Users/${USER}/Public
+	export	TEMP=/Users/${USER}/Temporary
+	#export	TEMPORARY=/Users/${USER}/Temporary
+	export	TRAS=/Users/${USER}/.Trash
+	#export	TRASH=/Users/${USER}/.Trash
+fi;

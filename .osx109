@@ -988,11 +988,9 @@ ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
 
 cecho 'Third-Party: System-Wide & User-Specific Xenogenetic Software & Preferences' $yellow
 
-#echo 'Homebrew'
+#echo 'MacPorts'
 #
-#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" # Download and install Homebrew.
-#
-#brew tap Homebrew/bundle # Download and install homebrew-bundle.
+# # Download and install MacPorts.
 
 echo 'iTerm2 (com.googlecode.iterm2)'
 
