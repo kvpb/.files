@@ -1,96 +1,103 @@
-if [ -f "${HOME}/.aliases.pvt" ]; then source "${HOME}/.aliases.pvt"; fi;
-
 # Shell Special Built-In Utilities (Commands)
 
 
 
 # Shell Builtin Utilities (Commands)
 
+#	sudo			execute a command as another user
+
+#alias	ffs='sudo $(!-1)'
+alias	ffs='sudo $(history -p \!\!)'
+#alias	ffs='sudo $(fc -ln -1)'
+
 #	cd				change the working directory
 # (i) Bourne Shell (sh) builtin.
 
 alias	d='cd '
 
-alias	..='cd ..' # Change the working directory to the current user's parent one.
+alias	..='cd ..' # Change the working directory to the parent of the current one.
 
-alias	...='cd ../..' # Change the working directory to the current's grand-parent one.
+alias	...='cd ../..' # Change the working directory to the grand-parent of the current one.
 
-alias	....='cd ../../..' # Change the working direcrory to the current's grand-grand-parent one.
+alias	....='cd ../../..' # Change the working direcrory to the grand-grand-parent of the current one.
 
-alias	.....='cd ../../../..' # Change the working directory to the current's grand-grand-grand-parent one.
+alias	.....='cd ../../../..' # Change the working directory to the grand-grand-grand-parent of the current one.
 
-alias	......='cd ../../../../..' # Change the working directory to the current's grand-grand-grand-grand-parent one.
+alias	......='cd ../../../../..' # Change the working directory to the grand-grand-grand-grand-parent of the current one.
 
-alias	.......='cd ../../../../../..' # Change the working directory to the current's fossilized ancestor one.
+alias	.......='cd ../../../../../..' # Change the working directory to the fossilized ancestor of the current one.
 
-alias	........='cd ../../../../../../..' # Change the working directory to the current's Big Bang original matter particles one.
+alias	........='cd ../../../../../../..' # dude
 
-alias	r='cd /' # Change the working dir to root.
+alias	r='cd /' # Change the working directory to the root.
 
-alias	~='cd ${HOME}' # Change the working directory to current user's home. (i) cd would do the same, and this is what I enter most, but it would break where the meaning of ~ changes.
+alias	~='cd ${HOME}' # Change the working directory to the current user's home. # cd would do the same, and this is what I enter most, but it would break where the meaning of ~ changes.
 
-alias	.f='cd ${HOME}/.files && git status --short && printf "\n" && printf ".gitnote:\n" && cat .gitnote && printf "\n"' # Change the working dir to my dot-files', show the working tree status, then concatenate and print .gitnote.
+alias	.f='cd ${HOME}/.files && git status --short && printf "\n" && printf ".gitnote:\n" && cat .gitnote && printf "\n"' # Change the working directory to that of my dot-files, show the working tree status, then concatenate and print .gitnote.
 
 alias	ms='cd ${HOME}/Miscellaneous' # Change the working directory to the one of my miscellaneous files.
 
 alias	wk='cd ${HOME}/Work' # Change the working directory to the one of my work in progress.
 
-alias	e16s='cd /Volumes/KBS16GBFD'
-alias	e64s='cd /Volumes/KBS64GBFD'
-# Change the working directory to one of my USB flash drives' or other external storage's.
+alias	fd16='cd /Volumes/KBS16GBFD'
+alias	fd64='cd /Volumes/KBS64GBFD'
+#alias	hd2='cd /Volumes/'
+#alias	hd4='cd /Volumes/'
+# Change the working directory to one of my USB flash drives or other external storage.
 
-alias	r1='cd /Volumes/KBSPCMD100/VOICE/FOLDER01'
-alias	r2='cd /Volumes/KBSPCMD100/VOICE/FOLDER02'
-alias	r3='cd /Volumes/KBSPCMD100/VOICE/FOLDER03'
-alias	r4='cd /Volumes/KBSPCMD100/VOICE/FOLDER04'
-alias	r5='cd /Volumes/KBSPCMD100/VOICE/FOLDER05'
-# Change the working directory to one of my recorder's recorded files'.
+#alias	r1='cd /Volumes/KBSPCMD100/VOICE/FOLDER01'
+#alias	r2='cd /Volumes/KBSPCMD100/VOICE/FOLDER02'
+#alias	r3='cd /Volumes/KBSPCMD100/VOICE/FOLDER03'
+#alias	r4='cd /Volumes/KBSPCMD100/VOICE/FOLDER04'
+#alias	r5='cd /Volumes/KBSPCMD100/VOICE/FOLDER05'
+# Change the working directory to that of the recorded files of my audio recorder.
 
-alias	dt='cd ${HOME}/Desktop' # Change the working dir to current macOS user's desktop'.
+alias	dt='cd ${HOME}/Desktop' # Change the working directory to that of the current user's desktop.
 
-alias	dx='cd ${HOME}/Documents' # Change the working dir to current macOS user's documents'.
+alias	dx='cd ${HOME}/Documents' # Change the working directory to that of the current user's documents.
 
-alias	dl='cd ${HOME}/Downloads' # Change the working dir to current macOS user's downloads'.
+alias	dl='cd ${HOME}/Downloads' # Change the working directory to that of the current user's downloads.
 
-alias	ly='cd ${HOME}/Library' # Change the working dir to current macOS user's library's.
+alias	ly='cd ${HOME}/Library' # Change the working directory to that of the current user's library.
 
-alias	mz='cd ${HOME}/Movies' # Change the working dir to current macOS user's movies'.
+alias	mz='cd ${HOME}/Movies' # Change the working directory to that of the current user's movies.
 
-alias	mc='cd ${HOME}/Music' # Change the working dir to current macOS user's music's.
+alias	mc='cd ${HOME}/Music' # Change the working directory to the one of the current user's music.
 
-alias	px='cd ${HOME}/Pictures' # Change the working dir to current macOS user's pictures'.
+alias	px='cd ${HOME}/Pictures' # Change the working directory to the one of the current user's pictures.
 
-alias	th='cd ${HOME}/.Trash' # Change the working dir to current macOS user's trash's.
+alias	th='cd ${HOME}/.Trash' # Change the working directory to the one of the current user's trash.
 
-alias	tf='cd ${HOME}/Temporary' # Change the working directory to current Apple Computer Operating System's current user's temporary unofficial folder.
+alias	tf='cd ${HOME}/Temporary' # Change the working directory to the one of the current user's temporary files.
 
-alias	db='cd ${HOME}/Dropbox' # Change the working dir to current user's Dropbox's.
+alias	db='cd ${HOME}/Dropbox' # Change the working directory to the one of the current user's Dropbox.
 
 #	source
 # (i) Bourne-Again Shell (bash) builtin.
 
-alias	src='source '
+#alias	src='source '
 #alias	s='source '
 
 #	chdir
 # (i) Z Shell (zsh) builtin.
 
-alias	chdir='cd '
+#alias	chdir='cd '
 #alias	d='chdir '
 
 #	exec
 
-alias	nh='exec ${SHELL} -l ' # Execute the default login shell as a login shell. (i) Replace the current shell process image with a new one.
+alias	nh='exec ${SHELL} -l ' # Execute the default login shell as a login shell. (Replace the current shell process image with a new one.)
 alias	ns='cd && cls && nh '
 
 #	history
 
 alias	hy='history'
 alias	h='history | tail -n 20'
+alias	_='!-2'
 
 #	printenv		print out the environment
 
-alias	pe='( set -o posix; set ) | cat'
+alias	pe='(set -o posix; set) | cat'
 
 #	exit
 
@@ -120,11 +127,22 @@ alias	rb='ruby '
 
 #	python			an interpreted, interactive, object-oriented programming language
 
-alias	py='python '
-alias	py3='python3 '
+alias	py2='python '
+alias	py='python3 '
+
+#	JSC				https://trac.webkit.org/wiki/JSC
+
+alias	jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc '
+
+#	node			server-side JavaScript runtime
+
+alias	njs='node '
+alias	nj='node '
+alias	js='node '
 
 #	osascript		execute OSA scripts (AppleScript, JavaScript, etc)
 
+alias	osas='osascript '
 alias	osa='osascript '
 
 #	tar				manipulate tape archives
@@ -133,38 +151,38 @@ alias	tgz='tar -czvf ' # Create a new archive containing the specified items the
 
 #	rsync			faster, flexible replacement for rcp
 
-alias	rsync-copy='rsync -avz --progress -h '
-alias	rsync-move='rsync -avz --progress -h --remove-source-files '
-alias	rsync-synchronize='rsync -avzu --delete --progress -h '
-alias	rsync-update='rsync -avzu --progress -h '
-# Florent Carre `colundrum`'s rsync aliases
+#alias	rsync-copy='rsync -avz --progress -h '
+#alias	rsync-move='rsync -avz --progress -h --remove-source-files '
+#alias	rsync-synchronize='rsync -avzu --delete --progress -h '
+#alias	rsync-update='rsync -avzu --progress -h '
+# Someone's rsync aliases
 
 #	open			open files and directories
 
 alias	opn='open '
 alias	o='open '
 
-alias	ofte='open -e ' # Open file using TextEdit.
+alias	te='open -e ' # Open file using TextEdit.
 
-alias	ofp='open -b com.apple.Preview ' # Open file using Preview.
+alias	pw='open -b com.apple.Preview ' # Open file using Preview.
 
-alias	ofqtp='open -b com.apple.QuickTimePlayerX ' # Open file using QuickTime Player.
+alias	qtp='open -b com.apple.QuickTimePlayerX ' # Open file using QuickTime Player.
 
-alias	ofs='open -b com.apple.Safari ' # Open file using Safari.
+alias	si='open -b com.apple.Safari ' # Open file using Safari.
 
-alias	ofvlc='open -b org.videolan.vlc ' # Open file using VLC Media Player.
+alias	vlc='open -b org.videolan.vlc ' # Open file using VLC Media Player.
 
-alias	ofps='open -b com.adobe.Photoshop ' # Open file using Photoshop CS6.
+#alias	aps='open -b com.adobe.Photoshop ' # Open file using Photoshop CS6.
 
-alias	oflr='open -b com.adobe.Lightroom6 ' # Open file using Photoshop Lightroom 6.
+#alias	pslr='open -b com.adobe.Lightroom6 ' # Open file using Photoshop Lightroom 6.
 
-alias	ofw='open -b com.microsoft.Word ' # Open file using Word for Mac 2011.
+#alias	mwd='open -b com.microsoft.Word ' # Open file using Word for Mac 2011.
 
-alias	ofx='open -b com.microsoft.Excel ' # Open file using Excel for Mac 2011.
+#alias	mxl='open -b com.microsoft.Excel ' # Open file using Excel for Mac 2011.
 
 alias	gvi='open -b org.vim.MacVim ' # Open file using MacVim.
 
-alias	rff='open -R ' # Reveal files using Finder.
+alias	rf='open -R ' # Reveal files using Finder.
 
 #	xattr			display and manipulate extended attributes
 
@@ -181,24 +199,24 @@ alias	qlp='qlmanage -p ' # Display the Quick Look generated preview for the spec
 # 	ls				list directory contents
 
 if ls --color > /dev/null 2>&1 # If this silenced command evaluates to true,
-then # then the implemented LS is GNU LS,
-	alias	ls='ls --color' # so colorize GNU LS' output,
-else # else the implemented LS is BSD LS, so
-	alias	ls='ls -G'
-fi # Colorize LS' output.
-#alias	ls='lf -F ' # Type LS' output.
+then # the implemented LS is the GNU LS,
+	alias	ls='ls --color ' # so colorize the output of GNU LS,
+else # or else the implemented LS is the BSD LS, so
+	alias	ls='ls -G '
+fi # Colorize the output of LS.
+#alias	ls='lf -F ' # Type the output of LS.
 alias	l='ls '
 
 alias	lh='ls -Ad .*' # List directory hidden files.
 #alias	lh2='la -1AdF .*'
 
-#alias	lf='ls -AF | grep -v -e / -e \* -e @ -e = -e % -e \| -e \>' # List directory's regular files.
+alias	lf='ls -AF | grep -v -e / -e \* -e @ -e = -e % -e \| -e \>' # List the regular files of the directory.
 
-#alias	lhf='ls -AdF .* | grep -v -e / -e \* -e @ -e = -e % -e \| -e \>' # List directory's hidden regular files.
+alias	lhf='ls -AdF .* | grep -v -e / -e \* -e @ -e = -e % -e \| -e \>' # List the hidden regular files of the directory.
 
-alias	ld='ls -d */' # List directory's subdirectories.
+alias	ld='ls -d */' # List the subdirectories of the directory.
 
-#alias	lhd='ls -d .*/ | tail -n +3' # List directory's hidden subdirectories.
+alias	lhd='ls -d .*/ | tail -n +3' # List the hidden subdirectories of the directory.
 
 alias	la='ls -a ' # List all directory contents.
 #alias	la2='ls -1aF '
@@ -212,12 +230,9 @@ alias	du='du -c -d 0 -h ' # Display DU stats with a grand total, an entry for al
 
 #	printf			formatted output
 
-alias	_sh='printf "${SHELL}\n"' # Output the current shell.
 
-alias	_n='printf "${RANDOM}\n"' # Output a number up to 32767.
-alias	_n2='var=${RANDOM}; expr ${var} \* ${var}' # Output a number up to 32767**2.
 
-#	less				opposite of more
+#	less			opposite of more
 
 alias	les='less '
 
@@ -229,18 +244,18 @@ alias	clr='clear '
 #	PlistBuddy		read and write values to plists
 
 alias	PlistBuddy='/usr/libexec/PlistBuddy '
-alias	plistbuddy='PlistBuddy '
-alias	pb='PlistBuddy '
+alias	plistbuddy='/usr/libexec/PlistBuddy '
+alias	pb='/usr/libexec/PlistBuddy '
 
-#	JSC				https://trac.webkit.org/wiki/JSC
+#	softwareupdate	system software update tool
 
-alias	jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc '
+alias	swu='softwareupdate '
 
 #	airport			get information for 802.11 interface
 
-alias	AirPort='airport '
+alias	AirPort='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
 alias	airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
-alias	ap='airport '
+alias	ap='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
 
 #	man				format and display the on-line manual pages
 
@@ -252,7 +267,7 @@ alias	ascii='man ascii' # Output the man page of the ASCII character sets.
 
 # 	git				the stupid content tracker
 
-#alias	git='/usr/local/git/bin/git ' # Get fucked, Apple. /i\ Requires Git for Mac OS X from the official Git website (http://git-scm.com/).
+#alias	git='/usr/local/git/bin/git ' # Get fucked, Apple. /i\ requires Git for macOS from the official Git website. http://git-scm.com/
 alias	g='git '
 
 #	fswatch			Ask for notification when the contents of the specified files of directory hierarchies are modified.
@@ -265,9 +280,7 @@ alias	oct='octave '
 
 #	mas-cli			A simple command line interface for the Mac App Store. Designed for scripting and automation.
 
-alias	MacAppStore='mas-cli '
-alias	macappstore='mas-cli '
-alias	mas='mas-cli '
+#alias	mas='mas-cli '
 
 # Shell Functions
 
@@ -282,7 +295,7 @@ alias	rlp='ResetLaunchPad'
 
 # Computer Programs
 
-#alias	RPwG='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
+alias	RPwG='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
 alias	rpwg='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
 alias	rp='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
 
