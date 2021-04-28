@@ -1,6 +1,8 @@
 @reboot        sh -c '[ -e /tmp/stdout.log ] && > /tmp/stdout.log'
-00 00  *  * 01 brew update && brew upgrade && brew cleanup 1>>/tmp/stdout.log 2>&1
-00 00  *  * 01 gem update && gem cleanup 1>>/tmp/stdout.log 2>&1
+00 00  *  * 01 sudo port -d sync 1>>/tmp/stdout.log 2>&1
+       @reboot sudo port -d sync 1>>/tmp/stdout.log 2>&1
+00 00  *  * 01 sudo port upgrade outdated 1>>/tmp/stdout.log 2>&1
+       @reboot sudo port upgrade outdated 1>>/tmp/stdout.log 2>&1
 00 12  *  *  * /usr/local/bin/python3 /Users/kvpb/bin/autotss/autotss.py 1>>/tmp/stdout.log 2>&1
        @reboot /usr/local/bin/python3 /Users/kvpb/bin/autotss/autotss.py 1>>/tmp/stdout.log 2>&1
 59 23  *  * 00 find ${HOME}/Library/{Caches,Saved\ Application\ State}/* -mindepth 0 -delete 1>>/tmp/stdout.log 2>&1

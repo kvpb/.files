@@ -15,3 +15,10 @@ mv mas /usr/local/bin/
 mv mas-cli.zip ../Downloads/
 cd ..
 rmdir Temporary
+exit 0
+
+# Installmas-cli.sh
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

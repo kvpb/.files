@@ -38,11 +38,12 @@ elif [ -f /Users/${USER}/Temporary/Folder${n}/TotalTerminal-${softwarelatestvers
 fi
 cd ${workingdirectory}
 rm -d /Users/${USER}/Temporary/Folder${n}
+exit 0
 
 # InstallTotalTerminal.sh
 # Install TotalTerminal latest compatible version
 # Cf https://totalterminal.binaryage.com/#compatibility, https://totalterminal.binaryage.com/#sip
 #
-# Karl V. P. Bertin `kvpb`
-# Telephone: +33 A BB BB BB BB
-# Email: local-part@domain
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

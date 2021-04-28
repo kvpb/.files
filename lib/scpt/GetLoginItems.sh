@@ -6,7 +6,7 @@ osascript -e 'tell application "System Events" to get the name of every login it
 exit 0;
 
 # GetLoginItems.sh
-# 
-# Karl `kvpb`
-# Telephone: +33 A BB BB BB BB
-# Email: local-part@domain
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

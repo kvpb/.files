@@ -23,3 +23,9 @@ then
 else
 	exit
 fi
+
+# DeleteCreativeCloudFilesFromUserHome.sh
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

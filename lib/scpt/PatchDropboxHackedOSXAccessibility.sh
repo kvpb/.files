@@ -36,11 +36,12 @@ then
 else
 	:;
 fi;
+exit 0;
 
 # PatchDropboxHackedOSXAccessibility.sh
 # Patch Dropbox-Hacked OS X Accessibility
 # Cf https://web.archive.org/web/20160923023858/http://www.gnu.org:80/proprietary/proprietary-back-doors.html, https://web.archive.org/web/20160811180723/http://applehelpwriter.com/2016/07/28/revealing-dropboxs-dirty-little-security-hack/#comment-27348, https://web.archive.org/web/20160909174627/https://applehelpwriter.com/2016/08/29/discovering-how-dropbox-hacks-your-mac/, https://web.archive.org/web/20140502070140/https://apple.stackexchange.com/questions/111903/allow-application-to-control-computer-assistive-devices-on-mavericks-via-termi
-# 
-# Karl Bertin `kvpb`
-# Telephone: +33 A BB BB BB BB
-# Email: local-part@domain
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

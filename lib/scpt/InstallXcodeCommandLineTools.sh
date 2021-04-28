@@ -25,10 +25,11 @@ hdiutil unmount /Volumes/Command\ Line\ Developer\ Tools
 mv *.dmg /Users/${USER}/Downloads/
 cd ${workingdirectory}
 rmdir /Users/${USER}/Temporary/Folder${n}
+exit 0
 
 # InstallXcodeCommandLineTools.sh
 # Install Xcode Command Line Tools latest compatible version
-# 
-# Karl V. P. Bertin `kvpb`
-# Telephone: +33 A BB BB BB BB
-# Email: local-part@domain
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

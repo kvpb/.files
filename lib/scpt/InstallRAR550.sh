@@ -7,3 +7,10 @@ tar --extract --verbose --directory /usr/local/bin --strip-components 1 --file=r
 mv -v rarosx-5.5.0.tar.gz ${HOME}/Downloads/ # Move the RAR 5.5.0 GNU zip archive to the current user's downloads folder.
 cd ${HOME} # Set the current working directory back to the current user's home folder.
 rmdir Temporary # Delete the current user's unofficial temporary folder.
+exit 0
+
+# InstallRAR550.sh
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

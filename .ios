@@ -46,3 +46,10 @@ echo "cls () {
 
 echo 'iOS has been set up.'
 exec ${SHELL} -l
+
+# .ios
+# iOS Configuration Script
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

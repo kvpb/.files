@@ -28,19 +28,19 @@ do
 	tar -czf "${j%%.default*}_${dateandtime}.tgz" "${j}"
 	mv "${j%%.default*}_${dateandtime}.tgz" ${HOME}/Desktop/FirefoxSavedata/
 done
-exit 0
 
 cd ${workingdirectory}
 #rm -d ${HOME}/Temporary/Folder${n}
+exit 0
 
 # SaveFirefoxData.sh
 # Save Firefox Data
 # Cf https://support.mozilla.org/en-US/kb/back-and-restore-information-firefox-profiles
-# 
-# Karl V. P. Bertin `kvpb`
-# Telephone: +33 A BB BB BB BB
-# Email: local-part@domain
-# 
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain
+#
 # To-do:
 #   -  Condition a variable path according to the OS.
 #   -  Improve the script, AKA make it clean as it should've been released.

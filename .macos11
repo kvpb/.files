@@ -542,7 +542,7 @@ defaults write com.apple.screencapture name -string 'Screenshot' # Set screensho
 
 echo 'QuickLook (com.apple.finder)'
 
-#echo -n "0x08000100:0x0" > ${HOME}/.CFUserTextEncoding # Fix the ancient UTF-8 bug in QuickLook. /!\ Causes issues with Adobe Illustrator CS5.
+#echo -n "0x08000100:0x0" > ${HOME}/.CFUserTextEncoding # Fix the ancient UTF-8 bug in QuickLook. /!\ causes issues with Adobe Illustrator CS5.
 
 defaults write com.apple.finder QLEnableTextSelection -bool TRUE # Enable text selection in QuickLook.
 
@@ -573,7 +573,8 @@ defaults write com.apple.dock persistent-others -array
 defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Add a spacer to the app items area.
 defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>arrangement</key><integer>1</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Applications</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>" # Create an Applications others item.
 defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>arrangement</key><integer>2</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/kvpb/Downloads/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Downloads</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>" # Create a Downloads others item.
-defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>arrangement</key><integer>5</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/kvpb/Dropbox/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Dropbox</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"#defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Users/kvpb/misc</string><key>_CFURLStringType</key><integer>0</integer></dict><key>file-label</key><string>Miscellaneous</string><key>file-type</key><integer>18</integer></dict><key>tile-type</key><string>directory-tile</string></dict>" # Create a Dropbox others item.
+defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>arrangement</key><integer>5</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/kvpb/Dropbox/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Dropbox</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
+#defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Users/kvpb/misc</string><key>_CFURLStringType</key><integer>0</integer></dict><key>file-label</key><string>Miscellaneous</string><key>file-type</key><integer>18</integer></dict><key>tile-type</key><string>directory-tile</string></dict>" # Create a Dropbox others item.
 defaults delete com.apple.dock mod-count
 #defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}' # Add a spacer to the other items area.
 
@@ -1084,25 +1085,6 @@ echo 'VMware Fusion 8 (com.vmware.fusion)'
 
 defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (i) Set VMware Fusion 8: Preferences: General: Applications menu: Show in menu bar to Never.
 
-echo 'Photoshop Lightroom 6 (com.adobe.Lightroom6)'
-
-defaults write com.adobe.Lightroom6 prefsWindow_currentTab -integer 1
-
-defaults write com.adobe.Lightroom6 AgLibrary_libraryPanel_Enabled -boolean FALSE
-defaults write com.adobe.Lightroom6 AgLibrary_collectionsPanel_Enabled -boolean FALSE
-defaults write com.adobe.Lightroom6 AgLibrary_publishServicesPanel_Enabled -boolean FALSE
-defaults write com.adobe.Lightroom6 AgLibrary_filterBarVisible -boolean FALSE
-
-defaults write com.adobe.Lightroom6 Lightroom_hideAppActivity -boolean YES
-defaults write com.adobe.Lightroom6 Lightroom_userIdentityPlateMode -string "app_version"
-defaults write com.adobe.Lightroom6 HasClickedOnIdentityPlate -boolean YES
-
-defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.layout.book -boolean TRUE
-defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.location -boolean TRUE
-defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.print -boolean TRUE
-defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.slideshow -boolean TRUE
-defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.wpg -boolean TRUE
-
 # execute the scripts to install some software here
 # then execute the one to add some software as login items
 	# or rather call each script into the software's part
@@ -1130,6 +1112,13 @@ else
         exit
 fi
 
+# .macos11
+# macOS 11 Big Sur Configuration Script
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain
+#
 # a good thing to do would be to make the script incremental
 #   and by that i mean that the script should just check for the version of macos
 #       but actually if i'm to do this well let's just write a .acos which takes care of it

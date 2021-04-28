@@ -602,13 +602,8 @@ defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</
 defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Stickies.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Stickies app item.
 defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/TextEdit.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a TextEdit app item.
-#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Microsoft Office 2011/Microsoft Word.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Word app item.
-#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Microsoft Office 2011/Microsoft Excel.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create an Excel app item.
-#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Adobe Photoshop CS6/Adobe Photoshop CS6.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Photoshop CS6 app item.
-#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Pixelmator.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Pixelmator app item.
+#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/LibreOffice.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a LibreOffice app item.
 #defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/GIMP-2.10.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a GIMP app item.
-#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Adobe Lightroom/Adobe Lightroom.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create a Photoshop Lightroom app item.
-#defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Adobe Illustrator CS6/Adobe Illustrator CS6.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create an Illustrator CS6 app item.
 #defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Sketch.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Sketch app item.
 #defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Inkscape.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>" # Create an Inscape app item.
 defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
@@ -1078,25 +1073,6 @@ echo 'VMware Fusion 8 (com.vmware.fusion)'
 
 defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (Set VMware Fusion 8: Preferences: General: Applications menu: Show in menu bar to Never.)
 
-echo 'Photoshop Lightroom 6 (com.adobe.Lightroom6)'
-
-defaults write com.adobe.Lightroom6 prefsWindow_currentTab -integer 1
-
-defaults write com.adobe.Lightroom6 AgLibrary_libraryPanel_Enabled -boolean FALSE
-defaults write com.adobe.Lightroom6 AgLibrary_collectionsPanel_Enabled -boolean FALSE
-defaults write com.adobe.Lightroom6 AgLibrary_publishServicesPanel_Enabled -boolean FALSE
-defaults write com.adobe.Lightroom6 AgLibrary_filterBarVisible -boolean FALSE
-
-defaults write com.adobe.Lightroom6 Lightroom_hideAppActivity -boolean YES
-defaults write com.adobe.Lightroom6 Lightroom_userIdentityPlateMode -string "app_version"
-defaults write com.adobe.Lightroom6 HasClickedOnIdentityPlate -boolean YES
-
-defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.layout.book -boolean TRUE
-defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.location -boolean TRUE
-defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.print -boolean TRUE
-defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.slideshow -boolean TRUE
-defaults write com.adobe.Lightroom6 ModulePicker_hideModule_com.adobe.ag.wpg -boolean TRUE
-
 for i in 'Activity Monitor' 'Calendar' 'Contacts' 'cfprefsd' 'Disk Utility' 'Dock' 'Finder' 'Mail' 'Messages' 'Safari' 'System Preferences' 'SystemUIServer' 'TextEdit' 'Xcode'
 do
 	killall "${i}" > /dev/null 2>&1
@@ -1113,5 +1089,12 @@ then
 	osascript -e 'tell app "System Events" to restart' # Restart without confirmation.
 else
 	cecho 'OS X 10.10 Yosemite has been configured.'# $osxyosemitephotoansinearestmeancolor
-	exit
+	exit 0
 fi
+
+# .osx1010
+# OS X 10.10 Yosemite Configuration Script
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

@@ -55,5 +55,11 @@ else
 	printf 'Error: Software Incompatibility\n'
 	exit 1
 fi
-
 printf 'Inkscape has been installed.\n'
+exit 0
+
+# InstallInkscape.sh
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

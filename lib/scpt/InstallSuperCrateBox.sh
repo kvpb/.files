@@ -10,3 +10,10 @@ mv "Super Crate Box OS X.tar" ../Downloads/
 rm osx.zip
 cd ..
 rmdir Temporary
+exit 0
+
+# InstallSuperCrateBox.sh
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

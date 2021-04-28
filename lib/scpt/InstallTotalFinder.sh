@@ -44,11 +44,12 @@ elif [ -f /Users/${USER}/Temporary/Folder${n}/TotalFinder-${softwarelatestversio
 fi
 cd ${workingdirectory}
 rm -d /Users/${USER}/Temporary/Folder${n}
+exit 0
 
 # InstallTotalFinder.sh
 # Install TotalFinder latest compatible version
 # Cf https://totalfinder.binaryage.com/compatibility, https://totalfinder.binaryage.com/sip
 #
-# Karl V. P. Bertin `kvpb`
-# Telephone: +33 A BB BB BB BB
-# Email: local-part@domain
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

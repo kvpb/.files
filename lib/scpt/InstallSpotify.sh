@@ -9,3 +9,10 @@ hdiutil unmount /Volumes/Spotify
 mv Spotify.dmg ${HOME}/Downloads/
 cd /Users/${HOME}
 rmdir Temporary
+exit 0
+
+# InstallSpotify.sh
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

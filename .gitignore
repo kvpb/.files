@@ -24,7 +24,7 @@ Thumbs.db
 \#*#
 *~
 
-# VIm
+# VIM
 
 *.swp
 *.swo
@@ -34,7 +34,7 @@ Thumbs.db
 
 *.save
 
-# 'Git' (I)
+# 'Git'
 
 #.gitkeep
 .gitnote

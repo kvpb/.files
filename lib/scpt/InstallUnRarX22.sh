@@ -7,3 +7,10 @@ unzip UnRarX_2.2.zip -d /Applications # Unzip the UnRARX zip archive to the syst
 mv -v UnRarX_2.2.zip ${HOME}/Downloads/ # Move the UnRARX zip archive to the current user's downloads folder.
 cd ${HOME} # Set the current working directory back to the current user's home folder.
 rmdir Temporary # Delete the current user's unofficial temporary folder.
+exit 0
+
+# InstallUnRarX22.sh
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain
