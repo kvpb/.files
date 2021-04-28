@@ -9,3 +9,10 @@ hdiutil unmount /Volumes/VLC\ media\ player
 mv vlc-3.0.0.dmg ${HOME}/Downloads/
 cd ${HOME}
 rmdir Temporary
+exit 0
+
+# InstallVLC.sh
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

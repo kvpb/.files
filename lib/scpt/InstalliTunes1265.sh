@@ -12,3 +12,10 @@ hdiutil unmount /Volumes/iTunes # Unmount the disk image of iTunes 12.6.5.
 cd ${HOME}/Temporary # Go back to the current user's temporary folder.
 mv iTunes12.6.5.dmg ${HOME}/Downloads/ # Move the disk image of iTunes 12.6.5 to the current user's downloads folder.
 cd ${HOME} && rmdir Temporary # Go to the user's home directory, and delete his temporary folder.
+exit 0
+
+# InstalliTunes1265.sh
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

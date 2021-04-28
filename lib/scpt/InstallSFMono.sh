@@ -29,6 +29,13 @@ then
 	rm -r tmp${n}
 	cd "${wd}"
 else
-	printf "InstallSFMono.sh is incompatible with this operating system.\n" #printf 'error: unsupported OS\n'
-	:
+	printf "Error: InstallSFMono.sh is not compatible with this operating system.\n" #printf 'error: unsupported OS\n'
+	exit 1
 fi
+exit 0
+
+# InstallSFMono.sh
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# NewTestFolders.sh
-# Make test directories Mac
-
 set -e
 
 mkdir /Users/${USER}/Temporary # The script must fail if /Users/ doesn't exist or current user's home isn't in /Users/, so -p option isn't invoked.
@@ -16,3 +13,12 @@ cd /Users/${USER}/Temporary
 pwd -P
 
 ls -lRa
+
+exit 0
+
+# NewTestFolders.sh
+# Make test directories Mac
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

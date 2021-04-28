@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# UninstallDropbox.sh
-# Uninstall Dropbox Mac
-# https://web.archive.org/web/20190511131358/https://help.dropbox.com/en-us/desktop-web/uninstall-dropbox
-
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
@@ -62,10 +58,12 @@ else
 	printf 'Qui ne dit mot consent ? Pas de nouvelle, bonnes nouvelles ?\n'
 fi
 printf 'Dropbox has been uninstalled.\n'
+exit 0
 
 # UninstallDropbox.sh
-# Uninstall Dropbox
-# 
+# Uninstall Dropbox Mac
+# https://web.archive.org/web/20190511131358/https://help.dropbox.com/en-us/desktop-web/uninstall-dropbox
+#
 # Karl V. P. Bertin `kvpb`
-# Telephone: +33 A BB BB BB BB
-# Email: local-part@domain
+# +33 A BB BB BB BB
+# local-part@domain

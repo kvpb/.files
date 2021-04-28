@@ -21,3 +21,10 @@ hdiutil unmount /Volumes/Git\ *\ Intel\ Universal
 mv git-latest-osx-installer.dmg ~/Downloads/
 cd ${HOME}
 rmdir Temporary
+exit 0
+
+# InstallGit.sh
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

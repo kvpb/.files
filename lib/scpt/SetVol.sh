@@ -28,6 +28,8 @@ fi;
 exit 0;
 
 # SetVol.sh
-# 
-# Karl `kvpb`
-# LinkedIn: https://www.linkedin.com/in/karlbertin
+# Set the volume of macOS
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

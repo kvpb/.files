@@ -24,11 +24,8 @@ fi;
 exit 0;
 
 # GetVolume.sh
-# Print the volume of macOS
-# 
+# Output the volume of macOS
+#
 # Karl V. P. B. `kvpb`
-# Telephone: +33 A BB BB BB BB
-# Email: local-part@domain
-# LinkedIn: https://www.linkedin.com/in/karlbertin
-# Instagram: https://www.instagram.com/add/karlbertin
-# TikTok: https://vm.tiktok.com/ZSwAmcFh/
+# +33 A BB BB BB BB
+# local-part@domain

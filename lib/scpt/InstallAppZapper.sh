@@ -21,3 +21,10 @@ mv appzapper*.zip /Users/${USER}/Downloads/ # Move the AppZapper zip archive to 
 cd /Users/${USER} # Change the working directory to the current user's.
 rmdir Temporary # Remove the current user's temporary folder.
 # Remove the user's temporary folder.
+exit 0
+
+# InstallAppZapper.sh
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

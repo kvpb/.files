@@ -28,11 +28,7 @@ exit 0;
 
 # DecToHex.sh
 # BASH-only decimal to hexadecimal conversion
-# 
-# Karl `kvpb`
+#
+# Karl V. P. B. `kvpb`
 # +33 A BB BB BB BB
 # local-part@domain
-# https://www.linkedin.com/in/karlbertin
-# 
-# 
-

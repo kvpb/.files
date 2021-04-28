@@ -24,10 +24,11 @@ then
 fi
 cd ${workingdirectory}
 rmdir /Users/${USER}/Temporary/Folder${n}
+exit 0
 
 # InstallXQuartz.sh
 # Install XQuartz
 #
-# Karl V. P. Bertin `kvpb`
-# Telephone: +33 A BB BB BB BB
-# Email: local-part@domain
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

@@ -70,13 +70,14 @@ then
 	printf 'Error: BASH 3.2.57 has not been installed.\n'
 	exit 1
 fi
+exit 0
 
 # InstallBASH3257.sh
 # Install BASH 3.2.57
 # Cf https://web.archive.org/web/20190604031607/https://support.apple.com/en-us/HT208050
-# 
-# Karl V. P. Bertin `kvpb`
-# Telephone: +33 A BB BB BB BB
-# Email: local-part@domain
-# 
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain
+#
 # On june 4th, Apple announced that they stop setting BASH as the default login shell with macOS 10.15 Catalina, defaulting to ZSH. I.e. Apple deprecated BASH, and eventually, they won't ship it with macOS anymore. I never quite used ZSH, and I'm surely not intending to rewrite all my BASH scripts as ZSH ones, especially given that I'm making a macOS-Ubuntu cross-platform setup. This script installs BASH 3.2.57, the last version to be shipped with macOS. A script to fetch and install the latest BASH version is still planned.

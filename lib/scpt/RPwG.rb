@@ -28,7 +28,7 @@ puts `tput setaf 1` + "Randomly generated password:" + `tput sgr0` + " " + passw
 # RPwG.rb
 # RPwG (Random Password Generator)
 # Version 1.22
-# 
-# Karl V. P. Bertin `kvpb`
-# Telephone: +33 A BB BB BB BB
-# Email: local-part@domain
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

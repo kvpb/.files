@@ -10,3 +10,10 @@ hdiutil unmount /Volumes/Dropbox\ Installer
 mv Dropbox*.dmg ${HOME}/.Trash/
 cd ${HOME}
 rmdir Temporary
+exit 0
+
+# InstallDropbox.sh
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

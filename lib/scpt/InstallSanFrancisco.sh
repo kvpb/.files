@@ -10,3 +10,10 @@ cd ..
 mv SFPro.zip ${HOME}/Downloads/
 cd ..
 rm -r Temporary
+exit 0
+
+# InstallSanFrancisco.sh
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

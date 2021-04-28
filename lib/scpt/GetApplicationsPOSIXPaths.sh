@@ -14,7 +14,7 @@ done;
 exit 0;
 
 # GetApplicationsPOSIXPaths.sh
-# 
-# Karl `kvpb`
-# Telephone: +33 A BB BB BB BB
-# Email: local-part@domain
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain

@@ -28,12 +28,9 @@ exit 0
 
 # SetVSCodium.sh
 # Set VSCodium
-# 
+#
 # Karl V. P. B. `kvpb`
 # +33 A BB BB BB BB
 # local-part@domain
-# https://www.linkedin.com/in/karlbertin
-# https://www.instagram.com/add/karlbertin
-# https://vm.tiktok.com/ZSwAmcFh/
-# 
+#
 # SetVSCodium.sh is a configuration script to set VSCodium to use the VS Code Marketplace.
