@@ -26,6 +26,8 @@ set noendofline
 
 " Input: Keyboard & Mouse
 
+set backspace=indent,eol,start " Set the backspace key to backspace by allowing backspacing over autoindent, line breaks (join lines) and the start of insert.
+
 set timeoutlen=1000 ttimeoutlen=-1 " Set the time in milliseconds that is waited for a key code or mapped key sequence to complete to 1000.
 
 set clipboard=unnamed " Set the clipboard to the OS'.
@@ -124,17 +126,6 @@ noremap! <F3> <Esc>n<CR><Insert>
 "map! <C-h> <Esc>:%s/
  " Replace All
 " Set the key maps to a Macintosh-like key mapping.
-"nnoremap & 1
-"nnoremap é 2
-"nnoremap " 3
-"nnoremap ' 4
-"nnoremap ( 5
-"nnoremap § 6
-"nnoremap è 7
-"nnoremap ! 8
-"nnoremap ç 9
-"nnoremap à 0
-" Make the FR AZERTY keyboard numeric keys function like the US QWERTY's.
 
 " Output: UX, GUI & SUI
 
@@ -171,11 +162,11 @@ if strftime("%H") > 7 && strftime("%H") < 19
 else
 	set background=dark
 endif " Set the brightness on which try to use colors that look good based on the time of day.
-"colorscheme hybrid " Set the color scheme to hybrid.
+"colorscheme onedark " Set the color scheme to One Dark.
 if strftime("%H") < 19
 	colorscheme github
 else
-	colorscheme hybrid
+	colorscheme onedark
 endif " Set the color scheme according to the time of day.
 
 set noerrorbells " Disable error bells.
