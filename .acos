@@ -14,9 +14,6 @@ then
 	if [ ${systemsoftwaremajorversion} -eq 11 ];
 	then
 		cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos11)
-	elif [ ${systemsoftwareminorversion} -eq 10 ];
-	then
-		cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx1010 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
 	elif [ ${systemsoftwareminorversion} -eq 9 ];
 	then
 		cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx109 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
@@ -36,6 +33,7 @@ then
 	read input
 	case ${input} in
 		[Yy]* ) cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos11)
+		exit 0;;
 		[Nn]* ) printf '\n'
 		exit 1;;
 		* ) printf 'QVIS TACET CONSENTIRE VIDETVR'
