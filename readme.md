@@ -219,7 +219,7 @@ The scratching system I built at university for better cleaner faster note-takin
 * [Cormac Relf](https://github.com/cormacrelf) for [`vim-colors-github/colors/github.vim`](https://raw.githubusercontent.com/cormacrelf/vim-colors-github/master/colors/github.vim) [2020.01.24](https://github.com/cormacrelf/vim-colors-github/commit/acb712c76bb73c20eb3d7e625a48b5ff59f150d0#diff-451fb194f8486978732fecc575e54723)
 * [Columbia University in the City of New York](https://www.columbia.edu/) for [_Headlines_](https://web.archive.org/web/20041108032317/http://www.columbia.edu/itc/journalism/isaacs/client_edit/Headlines.html) [2020.02.20](http://www.columbia.edu/itc/journalism/isaacs/client_edit/Headlines.html)
 * [University of Kansas](https://www.ku.edu/) for [_Making an impact--- accurately_](https://web.archive.org/web/20060904173706/https://web.ku.edu/~edit/heads.html) [2020.02.20](https://web.ku.edu/~edit/heads.html)
-* [Josh Dick](https://joshdick.net) for [`onedark.vim`](https://raw.githubusercontent.com/joshdick/onedark.vim/master/colors/onedark.vim) [2021.04.28](https://github.com/joshdick/onedark.vim/commit/b70ed293f3c3adaea23f9fcd84ef942015664756#diff-7551ca24e1ca051e7cafc1ab833bed08777d0fe686e052f76fd97e7a994a1ef0)
+* [Wojciech Kępka](https://wkepka.dev/) for [`ghdark.vim`](https://raw.githubusercontent.com/wojciechkepka/vim-github-dark/master/colors/ghdark.vim) [2021.06.28](https://github.com/wojciechkepka/vim-github-dark/commit/c3eca592f8f6ed9fb7c0cebe1ad8be6c63775571#diff-2abd43c7b1fb004df78d81ffe810b181fba9c88cfcd8ce15403ccb8e4e396e2e)
 
 #### Author
 
