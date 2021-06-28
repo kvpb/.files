@@ -166,7 +166,7 @@ endif " Set the brightness on which try to use colors that look good based on th
 if strftime("%H") < 19
 	colorscheme github
 else
-	colorscheme onedark
+	colorscheme ghdark
 endif " Set the color scheme according to the time of day.
 
 set noerrorbells " Disable error bells.
