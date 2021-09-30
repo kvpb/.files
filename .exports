@@ -5,6 +5,9 @@
 #export	PATH=/usr/local/bin:${PATH} # Python (https://docs.python.org/3/using/mac.html)
 export	PATH=/usr/local/opt/ruby/bin:${PATH} # Ruby
 export	PATH=/usr/local/bin:${PATH} # Node.js & NPM (node-v14.16.1.pkg)
+export	PATH=${HOME}/.npm-global/bin:${PATH}
+#export NPM_CONFIG_PREFIX=${HOME}/.npm-global
+# NPM (https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
 export	PATH=/usr/local/octave/3.8.0/bin:${PATH} # Octave 3.8.0 (GNU_Octave_3.8.0-6.dmg/README.txt)
 export	PATH=/opt/local/bin:/opt/local/sbin:${PATH} #export	PATH=${PATH}:/opt/local/bin # MacPorts (https://guide.macports.org/chunked/installing.shell.html)
 export	MANPATH=/opt/local/share/man:${MANPATH} # MacPorts (https://guide.macports.org/chunked/installing.shell.html)
@@ -18,15 +21,23 @@ export	EDITOR=${VISUAL}
 export	CLICOLOR=1
 if ls --color > /dev/null 2>&1 # If this silenced command evaluates to true,
 then # the implemented LS is the GNU LS,
-	export	LS_COLORS='di=34;46:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43' # so set the colors of LS,
-else # or else the implemented LS is the BSD LS, so
+	export	LS_COLORS='di=34;46:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+else # or else the implemented LS is the BSD LS.
 	export	LSCOLORS=egfxcxdxbxegedabagacad # Finder color scheme for LS; default value: exfxcxdxbxegedabagacad
-fi # Set colors of LS.
+fi # Set the colors of LS.
 
 # Shell Environment Variables (e.g. MAILCHECK, PS1, PS2)
 
 #shopt -s histappend # (i) should be run here first; is already ran in .bashrc.
-export	HISTSIZE=32767
+if [ ${BASH_VERSION::1} -lt 4 ]
+then
+	if [ ${BASH_VERSION:2:1} -lt 3 ] #if [ ${BASH_VERSION::3} -gt 3.2 ]
+	then
+		export	HISTSIZE=10129639 #$(( 2147483647 / ( 80 + 132 ) ))
+	fi
+else
+	export	HISTSIZE=-1 #$(( 9223372036854775807 / ( 80 + 132 ) ))
+fi
 export	HISTFILESIZE=${HISTSIZE}
 export	HISTFILE=${HOME}/.bash_history
 export	HISTCONTROL=ignoredups:erasedups
@@ -37,7 +48,7 @@ export	PS1='\[\033[7m\]\u@\h:\[\033[00m\]\[\033[4m\]\w\[\033[00m\]\n\[\033[7m\]\
 
 # User Environment Variables (e.g. PATH)
 
-if [ $(uname) = 'Darwin' ];
+if [ $(uname -s) = 'Darwin' ];
 then
 	export	DOTF=/Users/${USER}/.files
 	#export	DOTFILES=/Users/${USER}/.files
@@ -68,4 +79,6 @@ then
 	#export	TEMPORARY=/Users/${USER}/Temporary
 	export	TRAS=/Users/${USER}/.Trash
 	#export	TRASH=/Users/${USER}/.Trash
+	#export	EHD1=/Volumes/
+	#export	EXTERNALHARDDISK1=/Volumes/
 fi;
