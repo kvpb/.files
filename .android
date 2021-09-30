@@ -1,0 +1,153 @@
+#!/usr/bin/env bash
+#exec 2>> ${HOME}/Temporary/log
+#set -xv
+
+workingdirectory=$(pwd;);
+
+printf '%s\n' ''
+printf '                         '; printf '\x1B[48;2;61;219;134m\x1B[38;2;0;0;0m%s\033[m\n' '       .                         '
+printf '                         '; printf '\x1B[48;2;61;219;134m\x1B[38;2;0;0;0m%s\033[m\n' '      /|  ,.  _|  ,_  _    o  _| '
+printf '                         '; printf '\x1B[48;2;61;219;134m\x1B[38;2;0;0;0m%s\033[m\n' '  .  /-| / | /_| /   (_)  /  /_| '
+printf '%s\n' ''
+printf '                                 LICENSED BY\n'
+printf '                                 ${LICENSOR}\n'
+printf '%s\n' ''
+printf '%s\n' "                            K K  V V  PPP  BB   '   SS"
+printf '%s\n' '                           KK   V V  PPP  BBB      S'
+printf '%s\n' '                          K K   V   P    BBB     SS'
+printf '%s\n' ''
+printf '%s\n' '                 WARNING: USE THIS SCRIPT AT YOUR OWN RISK.'
+printf '%s\n' ''
+printf '\033[48;2;255;165;255;0#m%s\033[m\n' " ALL THE COMPUTER PROGRAMS  AND SOFTWARE ARE PROVIDED 'AS IS'  WITHOUT WARRANTY"
+printf '%s\n' ' OF ANY KIND.  WE MAKE NO WARRANTIES,  EXPRESS  OR IMPLIED,  THAT THEY ARE FREE'
+printf '%s\n' ' OF ERROR,  OR ARE CONSISTENT  WITH ANY PARTICULAR STANDARD OF MERCHANTABILITY,'
+printf '%s\n' ' OR THAT THEY WILL MEET YOUR REQUIREMENTS FOR ANY PARTICULAR APPLICATION.  THEY'
+printf '%s\n' ' SHOULD NOT BE  RELIED ON FOR SOLVING A PROBLEM  WHOSE INCORRECT SOLUTION COULD'
+printf '%s\n' ' RESULT  IN  INJURY  TO  A  PERSON  OR  LOSS  OF  PROPERTY.  IF YOU DO USE THEM'
+printf '%s\n' ' IN SUCH A MANNER,  IT IS AT YOUR OWN RISK.  THE AUTHOR  AND PUBLISHER DISCLAIM'
+printf '%s\n' ' ALL LIABILITY FOR  DIRECT,  INDIRECT,  OR CONSEQUENTIAL DAMAGES RESULTING FROM'
+printf '%s\n' ' YOUR USE OF THE PROGRAMS.'
+printf '%s\n' ''
+# Display the title screen with disclaimer.
+
+sudo -v # Ask for an administrator password.
+#while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & # Update the sudo timestamp, until the script is over.
+
+printf '\033[48;2;255;255;0;0#m%s\033[m\n' 'First-Party Settings: Systemwide And User-Specific Preferences'
+
+printf '%s\n' ''
+
+
+
+printf '\033[48;2;255;255;0;0#m%s\033[m\n' 'Second-Party Settings: User-Specific Filesystem Customs'
+
+cd \
+&& curl -#L https://github.com/kvpb/.files/tarball/main | tar -xzv --strip-components 1 --exclude={license.md,readme.md,*.docx}
+&& cd ${workingdirectory}
+# Download .files/ from GitHub to ${HOME}/.
+
+if [ -d "${HOME}/.Trash" ]
+then
+	if [ -L "${HOME}/.Trash" ]
+	then
+		rm "${HOME}/.Trash" # DO NOT APPEND A TRAILING SLASH!
+		mkdir "${HOME}/.Trash"
+	fi
+else
+	mkdir "${HOME}/.Trash"
+fi
+# If .Trash is not a directory in ${HOME}/, substitute any symbolic link by or add this directory.
+if [ -d "${HOME}/Misc" ]
+then
+	if [ -L "${HOME}/Misc" ]
+	then
+		mv "${HOME}/Misc" ${HOME}/.Trash/
+		mkdir "${HOME}/Misc"
+	fi
+else
+	mkdir "${HOME}/Misc"
+fi
+# If Misc is not a directory in ${HOME}/, substitute any symbolic link by or add this directory.
+if [ -d "${HOME}/{Documents,Misc,Music,Pictures,Videos}/Downloads" ]
+then
+	if [ -L "${HOME}/{Documents,Misc,Music,Pictures,Videos}/Downloads" ]
+	then
+		mv "${HOME}/{Documents,Misc,Music,Pictures,Videos}/Downloads" ${HOME}/.Trash/
+		mkdir "${HOME}/{Documents,Misc,Music,Pictures,Videos}/Downloads"
+	fi
+else
+	mkdir "${HOME}/{Documents,Misc,Music,Pictures,Videos}/Downloads"
+fi
+# If Downloads is not a directory in ${HOME}/{Documents,Pictures,Music,Movies,Misc}/, substitute symbolic links by or add this directory.
+#if [ -d "${HOME}/Camera" ]
+#then
+#	if [ -L "${HOME}/Camera" ]
+#	then
+#		mv "${HOME}/Camera" ${HOME}/.Trash/
+#		mkdir "${HOME}/Camera"
+#	fi
+#else
+#	mkdir "${HOME}/Camera"
+fi
+# If DCIM and Camera are not directories in ${HOME}/, substitute symbolic links by or add these directories.
+
+ln -s ${HOME}/.files/.inputrc ${HOME}/.inputrc
+#ln -s ${HOME}/.files/.shrc ${HOME}/.shrc
+#ln -s ${HOME}/.files/.shinit ${HOME}/.shinit
+#ln -s ${HOME}/.files/.profile ${HOME}/.profile
+ln -s ${HOME}/.files/.exports ${HOME}/.exports
+ln -s ${HOME}/.files/.functions ${HOME}/.functions
+ln -s ${HOME}/.files/.aliases ${HOME}/.aliases
+ln -s ${HOME}/.files/.bashrc ${HOME}/.bashrc
+ln -s ${HOME}/.files/.bash_login ${HOME}/.bash_login
+ln -s ${HOME}/.files/.bash_profile ${HOME}/.bash_profile
+ln -s ${HOME}/.files/.bash_logout ${HOME}/.bash_logout
+ln -s ${HOME}/.files/.bash_prompt ${HOME}/.bash_prompt
+ln -s ${HOME}/.files/.zshrc ${HOME}/.zshrc
+ln -s ${HOME}/.files/.zprofile ${HOME}/.zprofile
+#ln -s ${HOME}/.files/.ssh ${HOME}/.ssh
+ln -s ${HOME}/.files/.vimrc ${HOME}/.vimrc
+ln -s ${HOME}/.files/.vim ${HOME}/.vim
+ln -s ${HOME}/.files/.gitconfig ${HOME}/.gitconfig
+ln -s ${HOME}/.files/.gitignore_global ${HOME}/.gitignore_global
+ln -s ${HOME}/Misc/Downloads ${HOME}/Downloads/Misc
+ln -s ${HOME}/Documents/Downloads ${HOME}/Downloads/Documents
+ln -s ${HOME}/Pictures/Downloads ${HOME}/Downloads/Pictures
+ln -s ${HOME}/Movies/Downloads ${HOME}/Downloads/Movies
+ln -s ${HOME}/Music/Downloads ${HOME}/Downloads/Music
+ln -s ${HOME}/Pictures/DCIM ${HOME}/DCIM
+#ln -s ${HOME}/Pictures/Camera ${HOME}/Camera
+# Create user-specific custom symbolic links.
+
+:> ${HOME}/.hushlogin # Write the .hushlogin file in the current user's home folder.
+
+printf '\033[48;2;255;255;0;0#m%s\033[m\n' 'Third-Party: Systemwide And User-Specific Xenogenetic Software & Preferences'
+
+printf '%s\n' ''
+
+
+
+printf '%s\n' ''
+printf '%s\n' 'Android has been configured.'# ${litcyan}
+
+printf '%s\n' 'A reboot is required for some of these changes to take effect. Reboot...?, \e[4my\e[0mes or \e[4mn\e[0mo?'# ${litgreen}
+read -r input
+if [[ ${input} =~ ^([Yy]|[Yy][Ee][Ss]|[Yy][Ee][Aa][Hh])$ ]]
+then
+	sudo shutdown -r now # Reboot without confirmation.
+else
+	:
+fi
+exit 0
+
+# .android
+# Android Configuration Script
+#
+# Karl V. P. B. `kvpb`
+# +33 A BB BB BB BB
+# local-part@domain
+#
+# Four years. When a founder departs, this is the time it takes for a company to turn to shit, make its R&D go down the drain. Okay, I got that number out of my ass. Based on my own experience, it is frighteningly accurate. There are numerous examples of that.
+# 	Jobs died in late '11. For the three next years, Apple capitalized on its past successes, innovated less and less, made their product series shittier one after another. The 2013 Mac Pro was basically a viable Power Mac G4 Cube, though it is a great personal workstation. The 2014 15-inch MacBook Pro Retina was not nearly as good as the 2012 15-inch MacBook Pro, although it still was a decent pro-grade laptop. The 2014 27-inch iMac Retina had so many problems... The iPhone 6 was a joke. By 2015, the party was over. What innovations did they release since? The iMac Pro? The T2 chip? The iPhone XS Max? The 2019 Mac Pro? The M1 chip? Please, for fuck's sake. The only exceptions I can think of are the Watch Series 2, through which Apple succeeded where everyone else failed for almost a decade, the 2015 12-inch MacBook, which fit a bunch of particular uses, the AirPods Pro, which are the AirPods that actually hold in your freaking ears, and the iPhone X, by the means of which Apple finally although somewhat clumsily innovated again, and since Apple never did anything grand of their smartwatch, it remained confined to the costly gadget tier of technology, and because they stopped actually innovating, the next iPhone models have been the same lazy shit ever since.
+# 	Apple used to lead the fucking industry, at least innovation-wise. Mac Pro were, with HP's Z PC, some of the best workstations. MacBook were the best laptops--- intelligently designed, ergonomic, simple, sturdy, loaded with appropriate features... iPhone were the shit back in the days. macOS was the most reliable ergonomic UNIX-like operating system. Look what happened. Microsoft-- yes, Microsoft-- succeeded with the Surface, the Xbox and the Xbox Game Pass at what Apple keeps failing to make with the iPad, the Apple TV and Apple Arcade. The years following the release of the iPhone X, Samsung and even OnePlus made better top flagship phones, namely the 8 Pro and the S21 Ultra, that were still not as expensive as their iPhone counterparts. Google came up with Google Assistant, while Siri is a millstone around the neck of Apple. No one really superseded Apple in the laptop market, and you can't buy a decent one anymore, though a few startups may be about to bring some welcome change. There's no cucky 'I mean, come on' to even breathe. The only thing from Apple that skyrocketed is their pricing. Aside from the MacBook, I cannot think of any reason to stay on Apple hardware, and even then, it is solely for the lack of a better option out there. Jobs was what he was, but at least, the fucker had a vision. Apple used to own the game, as Jobs ran it. Cook does wonders for its market value, and he knows how to hire the best, but that's it.
+# 	So this is it. And this is what we've got. Unless some new kid on the block starts the next Apple, we'll be stuck for quite some time using expensive mediocre, un-innovative tools. Press F to pay respects.
