@@ -21,16 +21,16 @@ hilityellow='\033[0;30;93m'
 key='\033[0;30m'
 hikey='\033[0;97;40m'
 # Set graphics mode. (i) ANSI escape sequences format: \033[${textattribute};${foregroundcolor};${backgroundcolor}m (or esc[${value};...;${value}m).
-clearedstyleandformatting=`tput sgr0` #${capname} = 'sgr0' # Turn off _all_ attribute modes.
+off=`tput sgr0` #${capname} = 'sgr0' # Turn off _all_ attribute modes.
 
 function cecho
 {
 	local string="${1}"
-	local color="${2}"
+	local attributemode="${2}"
 
-	echo "${color}${string}${clearedstyleandformatting}"
+	echo "${attributemode}${string}${off}"
 	return
-} # color echo (João Cunha `joaocunha`) improved (Brandon Brown `brandonb927`) custom (Karl Bertin `kvpb`)
+} # Color Echo (João Cunha `joaocunha`) improved (Brandon Brown `brandonb927`) custom (Karl Bertin `kvpb`)
 
 echo ''
 cecho '                             ^  (^)  /|  /| |^)         (^)' ${litred}
@@ -125,13 +125,53 @@ fi
 echo 'Network'
 
 macmodelname=$(system_profiler SPHardwareDataType | grep "Model Name" | cut -c19-)
-echo "What is your name?"
-read userfullname
+#echo "What is the owner of this Mac's name?"
+#read userfullname
+userfullname='KVPB'
 sudo scutil --set ComputerName "${userfullname}'s ${macmodelname}"
 sudo scutil --set HostName "${userfullname}'s ${macmodelname}"
 macmodelname2=$(echo ${macmodelname} | sed 's/ //')
 sudo scutil --set LocalHostName "KVPBs${macmodelname2}"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "${userfullname}'s ${macmodelname}"
+
+#sudo -- sh -c -e 'echo "127.0.0.1	" >> /etc/hosts'
+#sudo -- sh -c -e 'echo "fe80::1%lo0	" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	www.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	m.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	m.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	en-gb.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	fr-fr.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	login.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	login.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	www.login.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	www.login.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	fbcdn.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	fbcdn.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	www.fbcdn.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	www.fbcdn.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	www.fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	www.fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	static.ak.fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	static.ak.fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	connect.facebook.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	connect.facebook.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	www.connect.facebook.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	www.connect.facebook.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	static.ak.connect.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	static.ak.connect.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	apps.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	apps.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	twitter.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	www.twitter.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "#127.0.0.1	youtube.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "#127.0.0.1	www.youtube.com" >> /etc/hosts'
+sudo dscacheutil -flushcache # Clear the DNS cache. # Clear the DNS cache. #lookupd -flushcache # Clear the DNS cache on Mac OS X 10.4 Tiger. #sudo dscacheutil -flushcache # Clear the DNS cache on Mac OS X 10.5 Leopard, 10.6 Snow Leopard. #sudo killall -HUP mDNSResponder # Clear the DNS cache on Mac OS X 10.7 Lion, 10.8 Mountain Lion, macOS 10.12 Sierra, 10.13 High Sierra, 10.14 Mojave, 11 Big Sur. #sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder # Clear the DNS cache on OS X 10.9 Mavericks, 10.11 El Capitan. #sudo discoveryutil mdnsflushcache; sudo discoveryutil udnsflushcaches # Clear the DNS cache on OS X 10.10 Yosemite.
+printf '\xF0\x9F\x9A\xAE\n'
+# Put litter in its place.
 
 echo 'Login Window & Screen Saver (NSGlobalDomain, com.apple.loginwindow, com.apple.HIToolbox.loginwindow, com.apple.screensaver)'
 
@@ -182,7 +222,7 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 #read emailaddress
 #sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "${userfullname}'s ${macmodelname}.\nPlease contact ${phonenumber} or ${emailaddress} if found."
 # Set and display lock message. (i) userfullname and macmodelname variables have been set earlier, at Network: Computer name.
-sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Karl V. P. Bertin's ${macmodelname}.\nPlease contact both +33 6 33 78 48 93 and karlvp.bertin@gmail.com if found. USD10,000.00 reward." # Display set lock message. (i) computername variable has been set earlier, at Network: Computer name.
+sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Karl V. P. Bertin's ${macmodelname}.\nPlease contact both +33 6 33 78 48 93 and karlvp.bertin@gmail.com if found. USD10,000.00 reward." # Display set lock message. (i) computername variable has been set earlier at Network: Computer name.
 
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
@@ -468,9 +508,10 @@ sudo defaults write com.apple.universalaccess reduceTransparency -bool FALSE # S
 #defaults write -g AppleHighlightColor -string "1.000000 0.937255 0.690196" # Set Highlight color to the yellow of OS X 10.10 Yosemite.
 
 #sudo defaults write -g _HIEnableThemeSwitchHotKey -bool TRUE # Enable Control-Option-Command-T theme switch hotkey. (i) introduced in OS X 10.10 Yosemite.
+defaults write -g NSRequiresAquaSystemAppearance -bool FALSE # Opt in to dark mode any app linked against the macOS 10.14 or later SDK. https://web.archive.org/web/20190617025725/https://developer.apple.com/documentation/appkit/nsappearancecustomization/choosing_a_specific_appearance_for_your_macos_app
 defaults write -g AppleInterfaceStyleSwitchesAutomatically -int 1 # Automatically adjust the appearance from light to dark during the day. https://support.apple.com/en-gb/guide/mac-help/mchl52e1c2d2/mac (i) introduced in macOS 11 Big Sur.
 
-sudo nvram SystemAudioVolume=" " # Disable the startup sound. # Enter `sudo nvram -d SystemAudioVolume` to reenable the startup sound.
+#sudo nvram SystemAudioVolume=" " # Disable the startup sound. # Enter `sudo nvram -d SystemAudioVolume` to reenable the startup sound.
 
 echo 'Image Capture (com.apple.imagecapture)'
 
@@ -1093,7 +1134,15 @@ cecho 'Third-Party: System-Wide & User-Specific Xenogenetic Software & Preferenc
 
 #echo 'MacPorts'
 #
-# # Download and install MacPorts.
+#curl -O https://distfiles.macports.org/MacPorts/MacPorts-2.7.1.tar.bz2
+#tar xf MacPorts-2.7.1.tar.bz2
+# '  1.  Download and extract the MacPorts 2.7.1 tarball. Either do so using your browser and the Finder, or use the given commands in a terminal window.'
+#cd MacPorts-2.7.1/
+#./configure
+#make
+#sudo make install
+# '  2.  Afterwards, perform the commands shown in the terminal window. If you wish to use a path other than /opt/local, follow the instructions for installing multiple copies of MacPorts instead.'
+# Download and install MacPorts. https://guide.macports.org/#installing.macports.source
 
 echo 'iTerm2 (com.googlecode.iterm2)'
 
@@ -1127,11 +1176,7 @@ defaults write net.sf.Jumpcut stickyBezel -bool FALSE # No sticky bezel. ('The b
 
 defaults write net.sf.Jumpcut wraparoundBezel -bool TRUE # Wraparound bezel. ('In the bezel, moving down from the last item takes you to the top and moving up from the first item takes you to the bottom.')
 
-echo 'SizeUp (com.irradiatedsoftware.SizeUp)'
-
-defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool TRUE # Launch SizeUp at login.
-
-defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool FALSE # Hide the preferences window at launch.
+#echo 'Rectangle (com.knollsoft.Rectangle)'
 
 echo 'Firefox (org.mozilla.firefox)'
 
@@ -1141,6 +1186,10 @@ defaults write com.apple.LaunchServices LSHandlers -array-add \
                                                               '{LSHandlerContentType=public.html;LSHandlerRoleViewer=org.mozilla.firefox;}' \
                                                               '{LSHandlerContentType=public.url;LSHandlerRoleViewer=org.mozilla.firefox;}'
 # Set Firefox as default web browser.
+
+echo 'Sketch (com.bohemiancoding.sketch3)'
+
+defaults write com.bohemiancoding.sketch3 NSRequiresAquaSystemAppearance FALSE # Force dark mode. (Opt in to dark mode. https://web.archive.org/web/20190617025725/https://developer.apple.com/documentation/appkit/nsappearancecustomization/choosing_a_specific_appearance_for_your_macos_app)
 
 echo 'Transmission (org.m0k.transmission)'
 
@@ -1160,9 +1209,9 @@ defaults write org.m0k.transmission WarningLegal -bool FALSE # Hide the legal di
 defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz" # Enable IP blocking, and set IP blocklist to John Tyree's.
 defaults write org.m0k.transmission BlocklistAutoUpdate -bool TRUE # Enable IP blocklist autoupdate.
 
-echo 'VMware Fusion 8 (com.vmware.fusion)'
+echo 'VMware Fusion (com.vmware.fusion)'
 
-defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (Set VMware Fusion 8: Preferences: General: Applications menu: Show in menu bar to Never.)
+defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (Set VMware Fusion: Preferences: General: Applications menu: Show in menu bar to Never.)
 
 for i in 'Activity Monitor' 'Calendar' 'Contacts' 'cfprefsd' 'Disk Utility' 'Dock' 'Finder' 'Mail' 'Messages' 'Safari' 'System Preferences' 'SystemUIServer' 'TextEdit' 'Xcode'
 do
@@ -1182,12 +1231,12 @@ else
 	exit 0
 fi
 
-# .macos11
-# macOS 11 Big Sur Configuration Script
+#	.macos11
+#	macOS 11 Big Sur Configuration Script
 #
-# Karl V. P. B. `kvpb`
-# +33 A BB BB BB BB
-# local-part@domain
+#	Karl V. P. B. `kvpb`
+#	+33 A BB BB BB BB
+#	local-part@domain
 #
 # at some point, execute the scripts to install software
 # then execute the one to add some software as login items
