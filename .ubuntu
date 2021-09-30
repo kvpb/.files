@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-#exec 2>> ${HOME}/Temporary/log
-#set -xv
+exec 2>> ${HOME}/Temporary/log
+set -xv
 
 #n=$[RANDOM%99+1] && while [ -e ${HOME}/Temporary/Folder${n} ]; do n=$[RANDOM%99+1]; done;
 workingdirectory=$(pwd;);
 
-printf '%s\n' 'P A R T Y S T A R T E R'
+printf '%s\n' ''
 printf '                         '; printf '\033[48:2:255:165:0m\033[48;2;255;255;255;0#m%s\033[m\n' '     | | |           .'
 printf '                         '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '     | | |-, | | |^\ |-  | |'
 printf '                         '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '  .  |/  |_/ |/  | | \__ |/'
@@ -32,9 +32,16 @@ printf '%s\n' ''
 # Display the title screen with disclaimer.
 
 sudo -v # Ask for an administrator password.
-#while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & # Update the sudo timestamp until the script is over.
+#while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & # Update the sudo timestamp, until the script is over.
 
 printf '\033[48;2;255;255;0;0#m%s\033[m\n' 'First-Party Settings: Systemwide And User-Specific Preferences'
+
+printf '%s\n' 'Unnamed'
+
+printf '%s\n' 'dash dash/sh boolean false' | sudo debconf-set-selections
+sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
+printf '%s\n' 'dash dash/sh boolean true' | sudo debconf-set-selections
+# Set the default system shell.
 
 printf '%s\n' 'Keyboard'
 
@@ -42,6 +49,16 @@ gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 20 #
 gsettings set org.gnome.desktop.peripherals.keyboard delay 200 # 
 
 
+
+printf '%s\n' 'Dock'
+
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'LEFT' # 
+
+gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false # 
+
+gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items false # 
+
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 24 # 
 
 gsettings set org.gnome.shell favorite-apps "[
 	'terminator.desktop',
@@ -65,34 +82,39 @@ gsettings set org.gnome.shell favorite-apps "[
 
 
 
-gsettings set org.gnome.desktop.background picture-uri 'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png' # 
+printf '%s\n' 'Files'
 
+gsettings set org.gtk.Settings.FileChooser show-hidden 'true' # 
 
+gsettings set org.gnome.nautilus.preferences search-filter-time-type 'last_modified' # 
+gsettings set org.gnome.nautilus.preferences default-sort-order 'name' # 
+gsettings set org.gnome.nautilus.preferences recursive-search 'always' # 
+gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false # 
+gsettings set org.gnome.nautilus.preferences default-sort-in-reverse-order false # 
+gsettings set org.gnome.nautilus.preferences show-hidden-files false # 
+gsettings set org.gnome.nautilus.preferences tabs-open-position 'after-current-tab' # 
+gsettings set org.gnome.nautilus.preferences always-use-location-entry false # 
+gsettings set org.gnome.nautilus.preferences show-image-thumbnails 'never' # 
+gsettings set org.gnome.nautilus.preferences confirm-trash true # 
+gsettings set org.gnome.nautilus.preferences search-view 'list-view' # 
+gsettings set org.gnome.nautilus.preferences thumbnail-limit uint64 10 # 
+gsettings set org.gnome.nautilus.preferences mouse-back-button 8 # 
+gsettings set org.gnome.nautilus.preferences click-policy 'double' # 
+gsettings set org.gnome.nautilus.preferences mouse-forward-button 9 # 
+gsettings set org.gnome.nautilus.preferences show-create-link true # 
+gsettings set org.gnome.nautilus.preferences show-directory-item-counts 'always' # 
+gsettings set org.gnome.nautilus.preferences mouse-use-extra-buttons true # 
+gsettings set org.gnome.nautilus.preferences executable-text-activation 'display' # 
+gsettings set org.gnome.nautilus.preferences show-delete-permanently true # 
+gsettings set org.gnome.nautilus.preferences fts-enabled true # 
+gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view' # 
+gsettings set org.gnome.nautilus.preferences use-experimental-views false # 
+gsettings set org.gnome.nautilus.preferences install-mime-activation true # 
 
-gsettings set org.gnome.nautilus.preferences search-filter-time-type 'last_modified'
-gsettings set org.gnome.nautilus.preferences default-sort-order 'name'
-gsettings set org.gnome.nautilus.preferences recursive-search 'always'
-gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false
-gsettings set org.gnome.nautilus.preferences default-sort-in-reverse-order false
-gsettings set org.gnome.nautilus.preferences show-hidden-files false
-gsettings set org.gnome.nautilus.preferences tabs-open-position 'after-current-tab'
-gsettings set org.gnome.nautilus.preferences always-use-location-entry false
-gsettings set org.gnome.nautilus.preferences show-image-thumbnails 'never'
-gsettings set org.gnome.nautilus.preferences confirm-trash true
-gsettings set org.gnome.nautilus.preferences search-view 'list-view'
-gsettings set org.gnome.nautilus.preferences thumbnail-limit uint64 10
-gsettings set org.gnome.nautilus.preferences mouse-back-button 8
-gsettings set org.gnome.nautilus.preferences click-policy 'double'
-gsettings set org.gnome.nautilus.preferences mouse-forward-button 9
-gsettings set org.gnome.nautilus.preferences show-create-link true
-gsettings set org.gnome.nautilus.preferences show-directory-item-counts 'always'
-gsettings set org.gnome.nautilus.preferences mouse-use-extra-buttons true
-gsettings set org.gnome.nautilus.preferences executable-text-activation 'display'
-gsettings set org.gnome.nautilus.preferences show-delete-permanently true
-gsettings set org.gnome.nautilus.preferences fts-enabled true
-gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
-gsettings set org.gnome.nautilus.preferences use-experimental-views false
-gsettings set org.gnome.nautilus.preferences install-mime-activation true
+#gsettings set org.gnome.desktop.background picture-uri 'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png' # Set the default desktop background.
+gsettings set org.gnome.desktop.background picture-options 'none'
+gsettings set org.gnome.desktop.background primary-color '#000000'
+# Set the background of the desktop. # I want a permanent terminal emulator as a wallpaper. How do I get that?
 
 
 
@@ -108,40 +130,54 @@ cd \
 && cd ${workingdirectory}
 # Download .files/ from GitHub to ${HOME}/.
 
-if [ -d "${HOME}/{Miscellaneous,Work}" ]
+if [ -d "${HOME}/{Applications,bin,Miscellaneous,Work}" ]
 then
-	if [ -L "${HOME}/{Miscellaneous,Work}" ]
+	if [ -L "${HOME}/{Applications,bin,Miscellaneous,Work}" ]
 	then
-		mv "${HOME}/{Miscellaneous,Work}" ${HOME}/.Trash/
-		mkdir "${HOME}/{Miscellaneous,Work}"
+		mv "${HOME}/{Applications,bin,Miscellaneous,Work}" ${HOME}/.Trash/
+		mkdir "${HOME}/{Applications,bin,Miscellaneous,Work}"
 	fi
 else
-	mkdir -p "${HOME}/{Miscellaneous,Work}"
+	mkdir -p "${HOME}/{Applications,bin,Miscellaneous,Work}"
 fi
-# If Miscellaneous and Work aren't directories in ${HOME}/, substitute symbolic links by or add these directories.
+# If Applications, bin, Miscellaneous and Work are not directories in ${HOME}/, substitute symbolic links by or add these directories.
 if [ -d "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}" ]
 then
 	if [ -L "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}" ]
 	then
-		mv "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}" ${HOME}/.Trash/
+		mv "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}" ${HOME}/.local/share/Trash/files/
 		mkdir "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}"
 	fi
 else
 	mkdir -p "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}"
 fi
-# If Documents, Pictures, Music, Movies and Miscellaneous aren't directories in ${HOME}/Downloads/, substitute symbolic links by or add these directories.
+# If Documents, Pictures, Music, Movies and Miscellaneous are not directories in ${HOME}/Downloads/, substitute symbolic links by or add these directories.
 if [ -d "${HOME}/{Camera,DCIM}" ]
 then
 	if [ -L "${HOME}/{Camera,DCIM}" ]
 	then
-		mv "${HOME}/{Camera,DCIM}" ${HOME}/.Trash/
+		mv "${HOME}/{Camera,DCIM}" ${HOME}/.local/share/Trash/files/
 		mkdir "${HOME}/{Camera,DCIM}"
 	fi
 else
 	mkdir -p "${HOME}/{Camera,DCIM}"
 fi
-# If DCIM and Camera aren't directories in ${HOME}/, substitute symbolic links by or add these directories.
+# If DCIM and Camera are not directories in ${HOME}/, substitute symbolic links by or add these directories.
 
+for i in .inputrc .shrc .shinit .profile .exports .functions .aliases .bashrc .profile .exports .functions .aliases .bashrc .bash_login .bash_profile .bash_logout .bash_prompt .zshrc .zprofile .ssh .vimrc .vim .gitconfig .gitignore_global
+do
+	if [ -e ${i} ]
+	then
+		if [ -f ${i} -o -d ${i} ]
+		then
+			mv ${i} ${HOME}/.local/share/Trash/files/
+			xdg-open ${HOME}/.local/share/Trash/files/
+		elif [ -L ${i} ]
+		then
+			unlink ${i}
+		fi
+	fi
+done
 ln -s ${HOME}/.files/.inputrc ${HOME}/.inputrc
 #ln -s ${HOME}/.files/.shrc ${HOME}/.shrc
 #ln -s ${HOME}/.files/.shinit ${HOME}/.shinit
@@ -156,7 +192,7 @@ ln -s ${HOME}/.files/.bash_logout ${HOME}/.bash_logout
 ln -s ${HOME}/.files/.bash_prompt ${HOME}/.bash_prompt
 ln -s ${HOME}/.files/.zshrc ${HOME}/.zshrc
 ln -s ${HOME}/.files/.zprofile ${HOME}/.zprofile
-#ln -s ${HOME}/.files/.ssh ${HOME}/.ssh ${HOME}/.ssh
+#ln -s ${HOME}/.files/.ssh ${HOME}/.ssh
 ln -s ${HOME}/.files/.vimrc ${HOME}/.vimrc
 ln -s ${HOME}/.files/.vim ${HOME}/.vim
 ln -s ${HOME}/.files/.gitconfig ${HOME}/.gitconfig
@@ -170,7 +206,7 @@ ln -s ${HOME}/DCIM ${HOME}/Pictures/DCIM
 ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
 # Create user-specific custom symbolic links.
 
-> ${HOME}/.hushlogin # Write the .hushlogin file in the current user's home folder.
+:> ${HOME}/.hushlogin # Write the .hushlogin file in the current user's home folder.
 
 #sed -i '/Icon/d' "/var/lib/AccountsService/${USER}"
 #find ${HOME} -mindepth 0 -type f -name Screen\ Shot\ 2015-11-04\ at\ 5.18.34\ PM.png -exec rsync -aHAX {} /home/kvpb/.face/ \;
@@ -182,104 +218,115 @@ printf '\033[48;2;255;255;0;0#m%s\033[m\n' 'Third-Party: Systemwide And User-Spe
 
 printf '%s\n' 'BASH'
 
-sudo apt upgrade -y bash
+sudo apt-get upgrade -qq bash # Download and update BASH.
 
 printf '%s\n' 'ZSH'
 
-sudo apt install -y zsh
+sudo apt-get install -qq zsh # Download and update ZSH.
 
 printf '%s\n' 'Python'
 
-sudo apt install -y python3
-sudo apt install -y python
+sudo apt-get install -qq python3
+sudo apt-get remove -qq python-is-python2
+sudo apt-get install -qq python-is-python3
+sudo apt-get install -qq python2
 # Download and install Python 3.9 and 2.7.
 
-printf '%s\n' 'Ruby'
-
-sudo apt install -y ruby
+#printf '%s\n' 'Ruby'
+#
+#sudo apt-get install -qq ruby # Download and install Ruby.
 
 printf '%s\n' 'Node.js & NPM'
 
-#sudo apt install -y nodejs npm # Download and install Node.js & NPM.
+#sudo apt-get install -y nodejs npm # Download and install Node.js & NPM.
 wget -qO- https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt-get install -qq nodejs
 # Download and install Node.js 14.x LTS & NPM
 
 printf '%s\n' 'Octave'
 
-sudo apt install -y octave # Download and install Octave.
+sudo apt-get install -qq octave # Download and install Octave.
+
+printf '%s\n' 'Media Transfer Protocol (MTP)'
+
+sudo apt-get install -qq go-mtpfs
+sudo apt-get install -qq libmtp
+sudo apt-get install -qq mtpfs
+sudo apt-get install -qq mtp-tools
+sudo apt-get install -qq jmtpfs
+# Download and install MTP.
 
 printf '%s\n' 'KVM'
 
-sudo apt install -y kvm
+sudo apt-get install -qq kvm # Download and install KVM.
 
 printf '%s\n' 'QEMU'
 
-sudo apt install -y qemu
+sudo apt-get install -qq qemu # Download and install QEMU.
 
 printf '%s\n' 'OpenSSH'
 
-sudo apt install -y ssh
+sudo apt-get install -qq ssh # Download and install OpenSSH.
 
 printf '%s\n' 'OpenSSL'
 
-sudo apt install -y openssl
+sudo apt-get install -qq openssl # Download and install OpenSSL.
 
 printf '%s\n' 'MOSH'
 
-sudo apt install -y mosh
+sudo apt-get install -qq mosh # Download and install MOSH.
 
 printf '%s\n' 'Git'
 
-sudo apt upgrade -y git # Download and update Git.
+sudo apt-get upgrade -qq git # Download and update Git.
 
 printf '%s\n' 'Wget'
 
-sudo apt upgrade -y wget # Download and update Wget.
+sudo apt-get upgrade -qq wget # Download and update Wget.
 
 printf '%s\n' 'CURL'
 
-sudo apt install -y curl # Download and install CURL.
+sudo apt-get install -qq curl # Download and install CURL.
 
 printf '%s\n' 'XATTR'
 
-sudo apt install -y xattr # Download and install XATTR.
+sudo apt-get install -qq xattr # Download and install XATTR.
 
 printf '%s\n' 'Vi Improved'
 
-sudo apt install -y vim # Download and install VIM.
+sudo apt-get install -qq vim # Download and install VIM.
 
 printf '%s\n' 'FSWatch'
 
-sudo apt install -y fswatch # Download and install FSWatch.
+sudo apt-get install -qq fswatch # Download and install FSWatch.
 
 printf '%s\n' 'Tree'
 
-sudo apt install -y tree # Download and install Tree.
+sudo apt-get install -qq tree # Download and install Tree.
 
 printf '%s\n' 'HTOP'
 
-sudo apt install -y htop # Download and install HTOP.
+sudo apt-get install -qq htop # Download and install HTOP.
 
 printf '%s\n' 'The Fuck'
 
-sudo apt install -y thefuck # Download and install The Fuck.
+sudo apt-get install -qq thefuck # Download and install The Fuck.
 
 printf '%s\n' 'TMUX'
 
-sudo apt install -y tmux # Download and install TMUX.
+sudo apt-get install -qq tmux # Download and install TMUX.
 
 printf '%s\n' 'FFMPEG'
 
-sudo apt install -y ffmpeg # Download and install FFMPEG.  
+sudo apt-get install -qq ffmpeg # Download and install FFMPEG.
 
 printf '%s\n' 'Terminator'
 
-sudo apt install -y terminator # Download and install Terminator.
+sudo apt-get install -qq terminator # Download and install Terminator.
 
 #printf '%s\n' 'VMware Workstation Player'
 #
-#sudo apt install gcc build-essential -y
+#sudo apt-get install gcc build-essential -y
 #chmod +x VMware-Player-14.0.0-6661328.x86_64.bundle
 #gksudo bash VMware-Player-14.0.0-6661328.x86_64.bundle
 # Download and install VMware Workstation Player. https://help.ubuntu.com/community/VMware/Player
@@ -290,56 +337,78 @@ sudo snap install --classic code # Download and install VS Code. https://code.vi
 
 printf '%s\n' 'Xpad'
 
-sudo apt install -y xpad # Download and install Xpad.
+sudo apt-get install -qq xpad # Download and install Xpad.
+
+printf '%s\n' 'Joplin'
+
+#JoplinAppImage='Joplin-2.4.9.AppImage'
+#JoplinAppImageURL="https://github.com/laurent22/joplin/releases/download/v2.4.9/Joplin-2.4.9.AppImage"
+#wget -q ${JoplinAppImageURL}
+#chmod +x ${JoplinAppImage}
+#mv ${JoplinAppImage} ${HOME}/Applications/
+# 'On Linux, the recommended way is to use the following installation script as it will handle the desktop icon too:' https://joplinapp.org/help/#desktop-applications
+wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
+# 'Important: First, install Node 12+.' https://joplinapp.org/help/#terminal-application
+NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin
+sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin
+# 'By default, the application binary will be installed under ~/.joplin-bin. You may change this directory if needed. Alternatively, if your npm permissions are setup as described here (Option 2) then simply running npm -g install joplin would work.' https://joplinapp.org/help/#terminal-application
+# Download and install ProtonMail Bridge.
 
 printf '%s\n' 'LibreOffice'
 
-sudo apt install -y libreoffice # Download and install LibreOffice.
+sudo apt-get install -qq libreoffice # Download and install LibreOffice.
 
 printf '%s\n' 'GIMP'
 
-sudo apt install -y gimp # Download and install GIMP.
+sudo apt-get install -qq gimp # Download and install GIMP.
 
 printf '%s\n' 'Inkscape'
 
-sudo apt install -y inkscape # Download and install Inkscape.
+sudo apt-get install -qq inkscape # Download and install Inkscape.
 
 printf '%s\n' 'Handbrake'
 
-sudo apt install -qq handbrake
+sudo apt-get install -qq handbrake # Download and install Handbrake.
 
 printf '%s\n' 'ProtonMail Bridge'
 
-wget https://protonmail.com/download/protonmail-bridge_1.2.1-1_amd64.deb # 'Download the file to the current working directory.'
-sudo apt-get install debsig-verify debian-keyring # 'Install debsigs to be able to verify the package.'
-gpg --dearmor --output debsig.gpg bridge_pubkey.gpg
-sudo mkdir -p /usr/share/debsig/keyrings/E2C75D68E6234B07
-sudo mv debsig.gpg /usr/share/debsig/keyrings/E2C75D68E6234B07
+#wget https://protonmail.com/download/protonmail-bridge_1.2.1-1_amd64.deb # 'Download the file to the current working directory.'
+#sudo apt-get install debsig-verify debian-keyring # 'Install debsigs to be able to verify the package.'
+#gpg --dearmor --output debsig.gpg bridge_pubkey.gpg
+#sudo mkdir -p /usr/share/debsig/keyrings/E2C75D68E6234B07
+#sudo mv debsig.gpg /usr/share/debsig/keyrings/E2C75D68E6234B07
 # 'Import the public key into the keyring.'
-sudo mkdir -p /etc/debsig/policies/E2C75D68E6234B07
-sudo cp bridge.pol /etc/debsig/policies/E2C75D68E6234B07
+#sudo mkdir -p /etc/debsig/policies/E2C75D68E6234B07
+#sudo cp bridge.pol /etc/debsig/policies/E2C75D68E6234B07
 # 'Install the policy file.'
-if [ $(debsig-verify protonmail-bridge_1.1.6-1_amd64.deb) = "debsig: Verified package from 'Proton Technologies AG (ProtonMail Bridge developers) <bridge@protonmail.ch>' (Proton Technologies AG)" ] # 'Check the DEB file.'
-then
-	sudo apt-get install ./protonmail-bridge_1.1.6-1_amd64.deb
-fi # 'Install the package using [my] package manager.'
-mv ./protonmail-bridge_1.1.6-1_amd64.deb ${HOME}/Downloads/
+#if [ $(debsig-verify protonmail-bridge_1.1.6-1_amd64.deb) = "debsig: Verified package from 'Proton Technologies AG (ProtonMail Bridge developers) <bridge@protonmail.ch>' (Proton Technologies AG)" ] # 'Check the DEB file.'
+#then
+#	sudo apt-get install ./protonmail-bridge_1.1.6-1_amd64.deb
+#fi # 'Install the package using [my] package manager.'
+#mv ./protonmail-bridge_1.1.6-1_amd64.deb ${HOME}/Downloads/
+# Download and install ProtonMail Bridge.
+pmbdeb='protonmail-bridge_1.8.10-1_amd64.deb'
+pmbdeburl="https://protonmail.com/download/bridge/${pmbdeb}"
+wget -q ${pmbdeburl}
+sudo apt-get install -qq ./${pmbdeb}
+mv ${pmbdeb} ${HOME}/Downloads/
 # Download and install ProtonMail Bridge.
 
 printf '%s\n' 'Geary'
 
-sudo apt install -y geary # Download and install Geary.
+sudo apt-get install -qq geary # Download and install Geary.
 
-printf '%s\n' 'Signal'
-
-wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
-sudo mv signal-desktop-keyring.gpg /usr/share/keyrings/
+#printf '%s\n' 'Signal'
+#
+#wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
+#sudo mv signal-desktop-keyring.gpg /usr/share/keyrings/
 # '1. Install our official public software signing key'
-echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |\
-	sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
+#echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' |\
+#	sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
 # '2. Add our repository to your list of repositories'
-sudo apt update && sudo apt install signal-desktop # '3. Update your package database and install signal'
+#sudo apt-get update && sudo apt-get install signal-desktop # '3. Update your package database and install signal'
 # 'Linux (Debian-based) Install Instructions' https://signal.org/en/download/
+# Download and install Signal.
 
 #printf '%s\n' 'California'
 #
@@ -351,31 +420,31 @@ sudo apt update && sudo apt install signal-desktop # '3. Update your package dat
 printf '%s\n' 'KAddressBook'
 
 sudo apt-get install -qq akonadi*
-sudo apt install -y kaddressbook
+sudo apt-get install -qq kaddressbook
 # Download and install KAddressBook.
 
 printf '%s\n' 'Transmission'
 
-sudo apt install -qq transmission
+sudo apt-get install -qq transmission # Download and install Transmission.
 
 #printf '%s\n' 'Dropbox'
 #
-#if [ "$(uname -m;)" = 'i386' -o "$(uname -m;)" = 'i686' ];
+#if [ "$(uname -m)" = 'i386' -o "$(uname -m)" = 'i686' ]
 #then
 #	cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
 #	~/.dropbox-dist/dropboxd
-#elif [ "$(uname -m;)" = 'x86_64' ];
+#elif [ "$(uname -m)" = 'x86_64' ]
 #then
 #	cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 #	~/.dropbox-dist/dropboxd
 #else
 #	:
-#fi;
-# Download and install Dropbox. https://www.dropbox.com/fr/install-linux
+#fi
+# Download and install Dropbox. https://www.dropbox.com/install-linux
 
 #printf '%s\n' ''
 #
-#sudo apt install -y  # Download and install .
+#sudo apt-get install -qq  # Download and install .
 
 
 
@@ -392,11 +461,11 @@ else
 fi
 exit 0
 
-# .ubuntu
-# Ubuntu Configuration Script
+#	.ubuntu
+#	Ubuntu Configuration Script
 #
-# Karl V. P. B. `kvpb`
-# +33 A BB BB BB BB
-# local-part@domain
+#	Karl V. P. B. `kvpb`
+#	+33 A BB BB BB BB
+#	local-part@domain
 #
-# 
+#	
