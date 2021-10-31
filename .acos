@@ -1,56 +1,74 @@
 #!/usr/bin/env bash
 
-kernel=$(uname -s;)
-[ "${kernel}" = 'Darwin' ] && systemsoftwareversion=$(defaults read loginwindow SystemVersionStampAsString;)
-[ ! -z ${systemsoftwareversion} ] && systemsoftwaremajorversion=$(printf "${systemsoftwareversion}" | cut -f1,1 -d'.';)
-[ ! -z ${systemsoftwareversion} ] && systemsoftwareminorversion=$(printf "${systemsoftwareversion}" | cut -d. -f2- | cut -f1,1 -d'.';)
-[ ${systemsoftwaremajorversion} -ge 11 -o ${systemsoftwareminorversion} -ge 11 ] && SIPstatus=$(csrutil status | sed -E 's/.*(...abled).*/\1/g';)
-[ ${systemsoftwaremajorversion} -ge 11 -o ${systemsoftwareminorversion} -ge 12 ] && systemsoftware="${systemsoftwareversion/#/macOS }"
-[ ${systemsoftwareminorversion} -ge 8 -a ${systemsoftwareminorversion} -le 11 ] && systemsoftware="${systemsoftwareversion/#/OS X }"
-[ ${systemsoftwareminorversion} -ge 0 -a ${systemsoftwareminorversion} -le 7 ] && systemsoftware="${systemsoftwareversion/#/Mac OS X }"
+kernel=$(uname -s;);
+[ "${kernel}" = 'Darwin' ] && systemsoftwareversion=$(defaults read loginwindow SystemVersionStampAsString;);
+[ ! -z ${systemsoftwareversion} ] && systemsoftwaremajorversion=$(printf "${systemsoftwareversion}" | cut -f1,1 -d'.';);
+[ ! -z ${systemsoftwareversion} ] && systemsoftwareminorversion=$(printf "${systemsoftwareversion}" | cut -d. -f2- | cut -f1,1 -d'.';);
+[ ${systemsoftwaremajorversion} -ge 11 -o ${systemsoftwareminorversion} -ge 11 ] && SIPstatus=$(csrutil status | sed -E 's/.*(...abled).*/\1/g';);
+[ ${systemsoftwaremajorversion} -ge 11 -o ${systemsoftwareminorversion} -ge 12 ] && systemsoftware="${systemsoftwareversion/#/macOS }";
+[ ${systemsoftwareminorversion} -ge 8 -a ${systemsoftwareminorversion} -le 11 ] && systemsoftware="${systemsoftwareversion/#/OS X }";
+[ ${systemsoftwareminorversion} -ge 0 -a ${systemsoftwareminorversion} -le 7 ] && systemsoftware="${systemsoftwareversion/#/Mac OS X }";
 
 if [ "${systemsoftware:0:5}" = 'macOS' -o "${systemsoftware:0:4}" = 'OS X' -o "${systemsoftware:0:8}" = 'Mac OS X' ];
 then
-	if [ ${systemsoftwaremajorversion} -eq 11 ];
+	if [ ${systemsoftwaremajorversion} -eq 12 ];
 	then
-		cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos11)
+		cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos12);
+	#elif [ ${systemsoftwaremajorversion} -eq 11 ];
+	#then
+	#	cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos11);
 	elif [ ${systemsoftwareminorversion} -eq 9 ];
 	then
-		cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx109 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
-#	elif [ ${systemsoftwareminorversion} -eq 6 ];
-#	then
-#		cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx106 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
-#	elif [ ${systemsoftwareminorversion} -eq 4 ];
-#	then
-#		cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx104 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
-	fi
+		cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx109 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh;
+	#elif [ ${systemsoftwareminorversion} -eq 6 ];
+	#then
+	#	cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx106 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh;
+	#elif [ ${systemsoftwareminorversion} -eq 4 ];
+	#then
+	#	cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx104 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh;
+	fi;
 #elif [ "${systemsoftware}" = 'iOS' ];
 #then
-#	cd ${HOME} && /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.ios)"
-elif [ ${systemsoftwareminorversion} -ge 0 -a ${systemsoftwareminorversion} -le 5 -o ${systemsoftwareminorversion} -ge 7 -a ${systemsoftwareminorversion} -le 8 -o ${systemsoftwareminorversion} -ge 11 -a ${systemsoftwareminorversion} -le 12 -o ${systemsoftwareminorversion} -ge 14 ]; #elif [ ${systemsoftwareminorversion} -ge 0 -a ${systemsoftwareminorversion} -le 5 ] || [ ${systemsoftwareminorversion} -ge 7 -a ${systemsoftwareminorversion} -le 8 ] || [ ${systemsoftwareminorversion} -ge 11 -a ${systemsoftwareminorversion} -le 12 ] || [ ${systemsoftwareminorversion} -ge 14 ];
+#	cd ${HOME} && /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.ios)";
+elif [ 0 -le ${systemsoftwareminorversion} -a ${systemsoftwareminorversion} -le 5 -o 7 -le ${systemsoftwareminorversion} -a ${systemsoftwareminorversion} -le 8 -o 11 -le ${systemsoftwareminorversion} -a ${systemsoftwareminorversion} -le 12 -o 14 -le ${systemsoftwareminorversion} ]; #elif [ ${systemsoftwareminorversion} -ge 0 -a ${systemsoftwareminorversion} -le 5 ] || [ ${systemsoftwareminorversion} -ge 7 -a ${systemsoftwareminorversion} -le 8 ] || [ ${systemsoftwareminorversion} -ge 11 -a ${systemsoftwareminorversion} -le 12 ] || [ ${systemsoftwareminorversion} -ge 14 ];
 then
-	printf "Warning: Software Incompatibility\nThis Mac runs ${systemsoftware}. .acos does not explicitly support ${systemsoftware}. The execution with root privileges of incompatible setup scripts may result in permanent damage to the system software. Run the latest ACOS configuration script anyway, \e[4my\e[0mes (`y`) or \e[4mn\e[0mo (`n`)?\n"
-	read input
+	printf "Warning: Software Incompatibility\nThis Mac runs ${systemsoftware}. .acos does not explicitly support ${systemsoftware}. The execution with root privileges of incompatible setup scripts may result in permanent damage to the system software. Run the latest ACOS configuration script anyway, \e[4my\e[0mes (`y`) or \e[4mn\e[0mo (`n`)?\n";
+	read input;
 	case ${input} in
-		[Yy]* ) cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos11)
+		[Yy]* ) cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos12);
 		exit 0;;
-		[Nn]* ) printf '\n'
+		[Nn]* ) printf '\n';
 		exit 1;;
-		* ) printf 'QVIS TACET CONSENTIRE VIDETVR'
+		* ) printf 'QVIS TACET CONSENTIRE VIDETVR';
 		exit 1;;
 	esac
 else
-	printf 'Error: Software Incompatibility\n.acos could not identify this operating system. Thus .acos is not compatible with it.\n'
-	exit 1
-fi
-exit 0
+	printf 'Error: Software Incompatibility\n.acos could not identify this operating system. So .acos is not compatible with it.\n';
+	exit 1;
+fi;
+exit 0;
 
-# .acos
-# Apple Computer Operating System Configuration Script
+#	.acos
+#	Apple Computer Operating System Configuration Script
 #
-# Karl V. P. B. `kvpb`
-# +33 A BB BB BB BB
-# local-part@domain
-# https://www.linkedin.com/in/karlbertin
-# https://www.instagram.com/add/karlbertin
-# https://vm.tiktok.com/ZSwAmcFh/
+#	Karl V. P. B. `kvpb`
+#	+1 (DDD) DDD-DDDD
+#	+33 A BB BB BB BB
+#	local-part@domain
+#	local-part@domain
+#	https://www.linkedin.com/in/karlbertin
+#	https://twitter.com/yougotkarld
+#	https://github.com/kvpb
+#	https://vm.tiktok.com/ZSwAmcFh/
+
+#	Copyright 2021 Karl V. P. Bertin
+#
+#	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+#
+#	1.  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#
+#	2.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#
+#	3.  Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+#
+#	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

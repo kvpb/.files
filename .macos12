@@ -33,10 +33,10 @@ function cecho
 } # Color Echo (João Cunha `joaocunha`) improved (Brandon Brown `brandonb927`) custom (Karl Bertin `kvpb`)
 
 echo ''
-cecho '                             ^  (^)  /|  /| |^)         (^)' ${litred}
-cecho '                |v| /\| /^\ ( )  \  / | / | |<   o  /\|  \  | | |^\' ${litred}
-cecho '             .  | | \/| \_   V  (_)   |   | |_)  |  \/| (_) \_/ |' ${litred}
-cecho '                                                    __/' ${litred}
+cecho "                         ^  (^)  /| (^) |V|         ," ${litred}
+cecho "            vV, ,^| ,^' ( )  \  / |  /  | | ,^, |^, |-  ,O. v^. ,O. , ," ${litred}
+cecho "         .  ||| '_| '_.  V  (_)   | /__ | | 'v' | | '_. '_. |   '_. '_|" ${litred}
+cecho "                                                                     _/" ${litred}
 cecho '                                 LICENSED BY' ${litred}
 cecho '                                 ${LICENSOR}' ${litred}
 echo ''
@@ -1213,6 +1213,15 @@ echo 'VMware Fusion (com.vmware.fusion)'
 
 defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (Set VMware Fusion: Preferences: General: Applications menu: Show in menu bar to Never.)
 
+echo 'Tweetbot for Mac (com.tapbots.Tweetbot3Mac)'
+
+defaults write com.tapbots.Tweetbot3Mac "NSSplitView Subview Frames MainSplitView" -array "0.000000, 0.000000, 76.000000, 700.000000, NO, NO" "77.000000, 0.000000, 344.000000, 700.000000, NO, NO" #"77.000000, 0.000000, 369.000000, 700.000000, NO, NO"
+defaults write com.tapbots.Tweetbot3Mac "NSWindow Frame MainWindow" -string "690 266 540 700 0 0 1920 1055 " #"690 266 421 700 0 0 1920 1055 "
+#defaults delete com.tapbots.Tweetbot3Mac "NSWindow Frame PrefsWindow"
+defaults write com.tapbots.Tweetbot3Mac SidebarType -string "compact"
+#defaults delete com.tapbots.Tweetbot3Mac lastUsedColumnWidth
+# Resize the windows and sidebar.
+
 for i in 'Activity Monitor' 'Calendar' 'Contacts' 'cfprefsd' 'Disk Utility' 'Dock' 'Finder' 'Mail' 'Messages' 'Safari' 'System Preferences' 'SystemUIServer' 'TextEdit' 'Xcode'
 do
 	killall "${i}" > /dev/null 2>&1
@@ -1220,7 +1229,7 @@ done
 # Kill all affected applications except terminal emulators.
 
 echo ''
-cecho 'macOS 11 Big Sur has been configured.' ${litcyan}
+cecho 'macOS 12 Monterey has been configured.' ${litcyan}
 
 cecho 'A restart is required for some of these changes to take effect. Restart...?, \e[4my\e[0mes or \e[4mn\e[0mo?' ${litgreen}
 read -r input
@@ -1231,12 +1240,18 @@ else
 	exit 0
 fi
 
-#	.macos11
-#	macOS 11 Big Sur Configuration Script
+#	.macos12
+#	macOS 12 Monterey Configuration Script
 #
 #	Karl V. P. B. `kvpb`
+#	+1 (DDD) DDD-DDDD
 #	+33 A BB BB BB BB
 #	local-part@domain
+#	https://www.linkedin.com/in/karlbertin
+#	https://twitter.com/kvpb777
+#	https://github.com/kvpb
+#	https://www.instagram.com/add/karlbertin
+#	https://vm.tiktok.com/ZSwAmcFh/
 #
 # at some point, execute the scripts to install software
 # then execute the one to add some software as login items
@@ -1266,3 +1281,15 @@ fi
 # but first
 # let's fully finish .osx109, .osx1010 and .macos
 # also as long as i'm not done i must specify 'this command has been introduced in' just to ensure i don't get lost into this later
+
+#	Copyright 2014 Karl V. P. Bertin
+#
+#	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+#
+#	1.  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#
+#	2.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#
+#	3.  Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+#
+#	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
