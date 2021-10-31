@@ -26,6 +26,8 @@ else # or else the implemented LS is the BSD LS.
 	export	LSCOLORS=egfxcxdxbxegedabagacad # Finder color scheme for LS; default value: exfxcxdxbxegedabagacad
 fi # Set the colors of LS.
 
+export	BASH_SILENCE_DEPRECATION_WARNING=1 # https://web.archive.org/web/20190604031607/https://support.apple.com/en-us/HT208050
+
 # Shell Environment Variables (e.g. MAILCHECK, PS1, PS2)
 
 #shopt -s histappend # (i) should be run here first; is already ran in .bashrc.
