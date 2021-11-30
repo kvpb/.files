@@ -20,3 +20,7 @@ iconv -f iso-8859-1 -t utf-8 < file > file.txt # Convert an ISO-8859-1-encoded f
 2020-03-11 15:25:43  git filter-branch --env-filter 'export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"'; g pl;
 2020-03-11 15:25:50  git filter-branch -f --env-filter 'export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"' $SHA1..HEAD
 2020-09-13 12:55:29  awk -F, '$3 ~ /^Timid/' method1.csv | awk -F, '$11 ~ /^Fire/' > file1.csv;
+2021-09-06 16:07:00  printf "\n\x1B[30;43m%s\x1B[33;40m" 'TOUCH'; [ -f 0 ] && rm 0; time touch 0; printf "\n\x1B[30;43m%s\x1B[33;40m" 'MKFILE'; rm 0; time mkfile -n 0 0; printf "\n\x1B[30;43m%s\x1B[33;40m" 'BASH builtin-only MF'; rm 0; bash -c 'mf() { for var in "${@}"; do if [ -e "${var}" ]; then printf "${var}: file exists\n"; else :> "${var}"; printf \\n >> ${var}; fi; done; } && time mf 0;'; printf "\n\x1B[30;43m%s\x1B[33;40m" 'ZSH builtin-only MF'; rm 0; zsh -c "TIMEFMT=$'\nreal\t%*E\nuser\t%U\nsys\t%S\n'"; mf() { for var in "${@}"; do if [ -e "${var}" ]; then printf "${var}: file exists\n"; else :> "${var}"; printf \\n >> ${var}; fi; done; } && time (mf 0); printf '\x1B[0m\n'; rm 0;
+2021-10-08 12:43:16  diskutil list external physical
+2021-10-13 12:00:00  dconf dump / > dconf-dump-1.txt; dconf dump / > dconf-dump-2.txt; diff dconf-dump-1.txt dconf-dump-2.txt;
+2021-10-15 00:00:00  d / && d opt && sudo mkdir Qt && d Qt && sudo mkdir 5.14.2 && d && d Downloads && chmod +x qt-opensource-linux-x64-5.14.2.run && ./qt-opensource-linux-x64-5.14.2.run
