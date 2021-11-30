@@ -2,15 +2,18 @@
 [core]
 	editor = vim
 	pager = cat
-	trustctime = false ; Make git-rebase safer on macOS. (i) http://www.git-tower.com/blog/make-git-rebase-safe-on-osx
-	precomposeunicode = false ; Hide files which filenames contain umlauts as unversioned. (i) http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+	trustctime = false ; http://www.git-tower.com/blog/make-git-rebase-safe-on-osx
+	precomposeunicode = false ; http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
 
 [user]
 	name = Karl
 	email = local-part@domain
 
 #[github]
-	#user = kvpb
+#	user = kvpb
+
+#[qwasar]
+#	user = bertin_k
 
 [push]
 	default = simple
@@ -22,22 +25,22 @@
 
 [alias]
 	git = !git
-	#lg = !ls -1Ap && git status --short ; List directory contents, then show the working tree status.
 	#ga = !git add
 	#gaa = !git add --all ; Add file contents to the index, updating the index to match the working tree.
-	#gc = !git commit -m ; Record changes to the repository.
-	#gcnm = !git commit --allow-empty-message -m '' ; Record changes to the repository, allowing empty commit message.
-	#gqp = !git add --all && git commit --allow-empty-message && git push ; 'git-quick-push' -- Add all files, commit without commenting, and push.
 	#gr = !git rm
-	#gri = !git rebase -i ; Reapply commits on top of another base tip, making a list of the commits which are about to be rebased.
-	#gs = !git status
+	#gc = !git commit -m ; Record changes to the repository.
+	#gcnm = !git commit --allow-empty-message --message='' ; Record changes to the repository, allowing empty commit message.
 	#gp = !git push
 	#gpch = !git push --force --tags origin 'refs/heads/*' ; Push corrected history.
 	#gpf = !git push --force ; Update remote refs that are not ancestors of the local ref used to overwrite it, along with associated objects.
 	#gpo = !git push origin ; Update remote refs along with associated objects, pushing 'matching' branches to origin.
+	#gri = !git rebase --interactive ; Reapply commits on top of another base tip, making a list of the commits which are about to be rebased.
+	#gs = !git status
 	a = add
+	c = commit
 	cm = commit -m
 	cn = commit --allow-empty-message --message=''
+	ca = commit --amend
 	p = push
 	pf = push --force
 	pl = push --force-with-lease
@@ -45,17 +48,24 @@
 	ha = stash apply
 	hp = stash pop
 	hl = stash list
-	r = rebase --interactive
+	r = rebase
+	ri = rebase --interactive
+	rd = rebase --committer-date-is-author-date
+	rda = rebase --committer-date-is-author-date --root
+	rc = rebase --continue
 	d = diff
+	log = log --reverse --pretty=fuller
 	l = log --max-count=10 --reverse --pretty=oneline
-	s = status --short
+	lf = log --reverse --pretty=fuller
+	s = status --short --untracked-files=no
+	sl = status --long
 
 [color]
 	ui = true
 
 [color "status"]
 	header = normal dim
-	#added = ; (i) Cf `updated`.
-	updated = green ; (i) Since green symbolizes hope and blue protection, green better fits this case where files are added but not pushed.
-	changed = red ; (i) Yellow would fit changed better if there were more options, eg for added and deleted files. [Boy, does Git lack options.]
-	untracked = white dim ; (i) To me, `white bold` better fits `git status`' output, and `white dim` better fits `git status --short`'s. Since I use `git-status`' short output more often, let's go for dim white.
+	#added = ; See `updated`.
+	updated = green ; Since green symbolizes hope, and blue, protection, green better fits this case, as files are added but not pushed.
+	changed = red ; Yellow or orange would better fit `changed`, if there were more options, e.g. for added and deleted files.
+	untracked = white dim ; `white bold` better fits the output of git-status, and `white dim` better fits that of git-status --short. Since I more often use the short output of git-status, let's go for dim white.
