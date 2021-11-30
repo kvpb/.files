@@ -295,20 +295,20 @@ alias	rlp='ResetLaunchPad'
 
 # Computer Programs
 
-alias	RPwG='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
-alias	rpwg='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
-alias	rp='ruby ${HOME}/.files/lib/scpt/RPwG.rb'
+alias	RPwG='ruby ${HOME}/.files/bin/RPwG.rb'
+alias	rpwg='ruby ${HOME}/.files/bin/RPwG.rb'
+alias	rp='ruby ${HOME}/.files/bin/RPwG.rb'
 
-alias	ct='ruby ${HOME}/.files/lib/scpt/CharacterCount.rb'
+alias	ct='ruby ${HOME}/.files/bin/CharacterCount.rb'
 
-alias	MakeTemporaryFolder='sh ${HOME}/.files/lib/scpt/NewTemporaryFolder.sh'
-alias	maketemporaryfolder='sh ${HOME}/.files/lib/scpt/NewTemporaryFolder.sh'
+alias	MakeTemporaryFolder='sh ${HOME}/.files/bin/CreateNewTemporaryFolder.sh'
+alias	maketemporaryfolder='sh ${HOME}/.files/bin/CreateNewTemporaryFolder.sh'
 alias	mtf='MakeTemporaryFolder && tf'
 
-alias	CreateTestFolders='sh ${HOME}/.files/lib/scpt/NewTestFolders.sh'
-alias	createtestfolders='sh ${HOME}/.files/lib/scpt/NewTestFolders.sh'
+alias	CreateTestFolders='sh ${HOME}/.files/bin/CreateNewTestFolders.sh'
+alias	createtestfolders='sh ${HOME}/.files/bin/CreateNewTestFolders.sh'
 alias	ctf='CreateTestFolders && tf'
 
-alias	SetVolume='sh ${HOME}/.files/lib/scpt/SetVol.sh'
-alias	setvol='sh ${HOME}/.files/lib/scpt/SetVol.sh'
-alias	sv='sh ${HOME}/.files/lib/scpt/SetVol.sh'
+alias	SetVolume='sh ${HOME}/.files/bin/SetVolume.sh'
+alias	setvol='sh ${HOME}/.files/bin/SetVolume.sh'
+alias	sv='sh ${HOME}/.files/bin/SetVolume.sh'
