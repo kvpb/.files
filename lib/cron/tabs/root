@@ -1,0 +1,5 @@
+00 12  *  *  * sudo port selfupdate > /dev/null 2>&1
+       @reboot sudo port selfupdate > /dev/null 2>&1
+00 12  *  *  * sudo port upgrade outdated > /dev/null 2>&1
+       @reboot sudo port upgrade outdated > /dev/null 2>&1
+00 12  *  * 00 [ ! -L /Volumes/KVPB\'s\ 1big\ Dock -a -d /Volumes/KVPB\'s\ 1big\ Dock -a ! -L /Volumes/KVPB\'s\ My\ Passport\ Pro\ 4TB -a -d /Volumes/KVPB\'s\ My\ Passport\ Pro\ 4TB ] && sudo rsync -av --delete /Volumes/KVPB\'s\ 1big\ Dock/ /Volumes/KVPB\'s\ My\ Passport\ Pro\ 4TB > /dev/null 2>&1
