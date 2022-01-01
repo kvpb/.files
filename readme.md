@@ -2,9 +2,11 @@
 <h1 align='center'><b>DOTFILES</b></h1>
 <h3 align='center'><b>Runcoms, Configuration Files, Setups, Scripts, Templates & Hacks</b></h3>
 
-- - -
+---
 
-## **Apple Computer Operating System Setups**<br>`.acos` (`.macosx`, `.osx`, `.macos` & `.ios`) ![platform](https://gistcdn.githack.com/kvpb/e55c254ded3bc5eac9bc4f29c78ec75c/raw/3ed1cca704de2cb968baa5fabaf3eec5921d3a01/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
+<p align='center'><a href=''><img src='https://gistcdn.githack.com/kvpb/eadd16d889d601adf5646e2ef6370b25/raw/8a3fe18dbd9d86d5d10e7ceeab3ab365e70f3629/macospackagemanager.svg'></a></p>
+
+## **Apple Computer Operating System Setups**<br>`.acos` (`.macosx`, `.osx`, `.macos` & `.ios`) ![platform](https://gistcdn.githack.com/kvpb/e55c254ded3bc5eac9bc4f29c78ec75c/raw/314ede379206cfe49a33e68212af92b85e71866c/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
 
 #### Where-is
 <details><summary><code>.files/</code></summary>
@@ -21,44 +23,44 @@
 
 Apple computers operating systems configuration scripts family.
 
-**NB:** Help me finding hidden preferences with `defaults read`! You'll get full credits for that, of course.
-
 #### How-to
 
-**NB:** Unless you know what you are doing, _do not execute these scripts as root!_ To run any of these scripts as root anyway, replace `/Users/${USER}` with `${HOME}`.
+**NB:** Unless you know what you are doing, _do not execute these scripts as root!_ If you want to do it anyway, replace `/Users/${USER}` with `${HOME}`. Though if you did not know that already, you most likely should not do it.
 
-Launch a terminal emulator, e.g. [Terminal](https://web.archive.org/web/20190326164259/https://support.apple.com/guide/terminal/welcome/mac) or [MTerminal](https://web.archive.org/web/20141020160524/http://cydia.saurik.com/package/com.officialscheduler.mterminal/), then enter this:
+Launch a terminal emulator, e.g. [Terminal](https://web.archive.org/web/20190326164259/https://support.apple.com/guide/terminal/welcome/mac) or [MTerminal](https://web.archive.org/web/20141020160524/http://cydia.saurik.com/package/com.officialscheduler.mterminal/), and enter this:
 
 ```sh
 cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.acos)
 ```
-<!--
-&nbsp;&nbsp;**macOS 11 Big Sur:**
+
+---
+
+## **Linux-Based Operating System Setups**<br>`.lbos` (`.archlinux`, `.ubuntu` & `.android`) ![platform](https://gistcdn.githack.com/kvpb/e55c254ded3bc5eac9bc4f29c78ec75c/raw/314ede379206cfe49a33e68212af92b85e71866c/ubuntu-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-linuxbox-F6F6F6D5E1ED.svg) ![platform](https://gistcdn.githack.com/kvpb/e55c254ded3bc5eac9bc4f29c78ec75c/raw/314ede379206cfe49a33e68212af92b85e71866c/android-F6F6F6D5E1ED1E72F21AD5FD-madeonan-1AD5FD1E72F2-androidphone-F6F6F6D5E1ED.svg)
+
+#### Where-is
+<details><summary><code>.files/</code></summary>
+
+- [ ] `.lbos`
+- [ ] `.archlinux`
+- [x] `.ubuntu`
+- [ ] `.android`
+</details>
+
+#### What-is
+
+Linux-based operating systems configuration scripts family.
+
+<!--#### How-to
+
+**NB:** Unless you know what you are doing, _do not execute these scripts as root!_ If you want to do it anyway, replace `/home/${USER}` with `${HOME}`.
+
+Launch a terminal emulator, e.g. [GNOME Terminal](https://terminator-gtk3.readthedocs.io/en/latest/), [Terminator](https://terminator-gtk3.readthedocs.io/en/latest/) or [Terminal Emulator for Android](https://play.google.com/store/apps/details?id=jackpal.androidterm), and enter this:
+
 ```sh
-cd /Users/${USER} && /bin/sh <(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.macos)
-```
-
-&nbsp;&nbsp;**OS X 10.9 Mavericks:**
-```sh
-cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.osx109 -o SetUpOSX.sh && chmod +x SetUpOSX.sh && /bin/bash SetUpOSX.sh
-```
-
-&nbsp;&nbsp;~~**Mac OS X 10.6 Snow Leopard:**~~
-```
-cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx106 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
-```
-
-&nbsp;&nbsp;~~**Mac OS X 10.4 Tiger:**~~
-```
-cd /Users/${USER} && curl -fsS -J -L -H 'Accept: application/octet-stream' https://raw.githubusercontent.com/kvpb/.files/master/.macosx104 -o SetUpMacOSX.sh && chmod +x SetUpMacOSX.sh && /bin/bash SetUpMacOSX.sh
-```
-
-&nbsp;&nbsp;~~**iOS:**~~
-```
-cd ${HOME} && /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/kvpb/.files/master/.ios)"
+cd /home/${USER} && wget -qO- https://raw.githubusercontent.com/kvpb/.files/master/.lbos | bash -s -- -v -v
 ```
 -->
-- - -
+---
 
 ## **VIM Initializations**<br>`.vimrc` & `.vim/`
 
@@ -75,81 +77,14 @@ cd ${HOME} && /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/kvpb/.f
 
 My VIM setup featuring a true TextEdit-like key mapping.
 
-#### To-do
+---
 
-- [ ] Write a 'minimaximal' VIM color scheme which uses as few colors as efficiently as possible.
-  - [ ] Write or rewrite an up-to-date true GitHub color scheme with a dark mode.
+<p align='center'><a href='https://github.com/kvpb/.files/blob/master/bin/RPwG.rb'><img src='https://gist.githack.com/kvpb/543e66fc06e322658f5877e9e2f77cda/raw/08ecb3022f7c7de3c1a16b05e59af04b92e19af5/RPwG.svg'></a></p>
 
-- - -
-
-## **Scripts**<br>`scpt/`
-
-#### Where-is
-<details><summary><code>.files/</code><code>lib/</code><code>scpt/</code></summary>
-
-- [x] `AddLoginItems.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg) <!-- AppleScript in BASH script... While we're at it, why not Apple's PLIST in binaries in SQLite3 DB? Oh, wait. -->
-- [x] `GetLoginItemsList.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
-- [x] `GetApplicationsPOSIXPaths.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
-- [x] `SetVol.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg) ![language](https://img.shields.io/badge/-AppleScript-gray.svg)
-- [x] `RPwG.rb` ![language](https://img.shields.io/badge/language-Ruby-red.svg)
-- [x] `CharacterCount.rb` ![language](https://img.shields.io/badge/language-Ruby-red.svg)
-- [x] `DeleteCreativeCloudFilesFromUserHome.sh` ![system software](https://img.shields.io/badge/system%20software-OS%20X%2010.9-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `ListMacAppStoreApplications.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [x] `ListNonMacAppStoreApplications.sh` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-- [ ] `SaveSHSH2Blobs.sh`
-  - [x] `SaveLatestSHSH2Blobs.sh` ![system software](https://img.shields.io/badge/system%20software-macOS-white.svg) ![language](https://img.shields.io/badge/language-UNIX%20Shell%20Script-brightgreen.svg)
-</details>
-
-**NB:** For the sake of brevity, only the most useful scripts are listed.
-
-#### What-is
-
-A library of homemade scripts.
-
-<!--#### How-to
-
--->
-
-- - -
-<!--
-## macOS Key Bindings & Text Replacements<br>`DefaultKeyBinding.dict` & `Text Substitutions.plist` ![platform](https://img.shields.io/badge/for-Mac-1AD5FD.svg)
--->
-<!--**`Text Substitutions.plist`:**
-| Replace | With |
-| --- | --- |
-|  |  |-->
-<!--
-#### Where-is
-<details><summary><code>.files/</code></summary>
-<details><summary><code>Library/</code><code>KeyBindings/</code></summary>
-
-- [x] `DefaultKeyBinding.dict`
-</details>
-
-- [x] `Text Substitutions.plist`
-</details>
-
-#### What-is
-
-macOS key bindings (key-value pairs with the key being a string that specifies a physical key and the value identifying an action method to be invoked when the key is pressed) and text substitutions (list of abbreviations to automatically replace by words).
-
-**NB:** Text replacements work with macOS software, e.g. TextEdit.
-
-#### How-to
-
-1. [Download `Text Substitutions.plist`.](https://rawcdn.githack.com/kvpb/.files/844adc9321a218f5b0089f6d1e2303ef272f271e/Text%20Substitutions.plist)  
-2. Launch Finder, then go to the current user's `Downloads` folder.  
-3. Launch System Preferences, then go to Keyboard and then Text.  
-4. Drag `Text Substitutions.plist` from the Finder window, and drop it to the table-like list of the window of System Preferences.
-
-- - -
--->
 ## **Random Password Generator**<br>`RPwG.rb`
 
-<p align='center'><a href='https://github.com/kvpb/.files/blob/master/lib/scpt/RPwG.rb'><img src='https://gist.githack.com/kvpb/543e66fc06e322658f5877e9e2f77cda/raw/08ecb3022f7c7de3c1a16b05e59af04b92e19af5/RPwG.svg'></a></p>
-
 #### Where-is
-<details><summary><code>.files/</code><code>lib/</code><code>scpt/</code></summary>
+<details><summary><code>.files/</code><code>bin/</code></summary>
 
 - [x] `RPwG.rb`
 </details>
@@ -170,7 +105,7 @@ A program, written in Ruby, which pseudorandomly generates passwords.
 ~~**MS-DOS:**~~  
 &nbsp;&nbsp;Do yourself a favor: get either a Linux PC or a Mac.
 
-- - -
+---
 <!--
 ## **Karl's Notetaking System**
 -->
@@ -194,15 +129,10 @@ The scratching system I built at university for better cleaner faster note-takin
 
 **NB:** If you have any suggestion to improve it, feel free to jump in, express yourself, let loose--- open an issue or contact me. You're always welcome.
 
-- - -
+---
 -->
 #### Thanks to
 
-* [Mathias Bynens](https://mathiasbynens.be/) for ~~[`dotfiles/.osx`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.osx)~~ [`dotfiles/.macos`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.macos) ~~[NM.ND.2014](https://github.com/mathiasbynens/dotfiles/commit/3b4eb3efb692aa4d19a1e2c30c2ed9a65e9c7d8c)~~ [7.21.2016](https://github.com/mathiasbynens/dotfiles/commit/47268d92afbec69e3a7243a144a126bbd25bcf2c) and [`dotfiles/.gitconfig`](https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.gitconfig) [8.22.2016](https://github.com/mathiasbynens/dotfiles/commit/47268d92afbec69e3a7243a144a126bbd25bcf2c)
-* [Michael Kaiser-Nyman](http://www.epicodus.com/) NM.ND.2015
-* [Matt Butcher](http://technosophos.com/) NM.ND.2015
-* [Mark Nichols](http://zanshin.net/) for [`dotfiles/README.markdown`](https://raw.githubusercontent.com/zanshin/dotfiles/master/README.markdown) [NM.ND.2016](https://github.com/zanshin/dotfiles/commit/02ec428566e893b765e1c34c31f330bb6531dd51)
-* [Hannes Juutilainen](https://obsoletesysadmin.wordpress.com/) for [`dotfiles/bin/osx-system-defaults.sh`](https://raw.githubusercontent.com/hjuutilainen/dotfiles/master/bin/osx-system-defaults.sh) and [`dotfiles/bin/osx-user-defaults.sh`](https://raw.githubusercontent.com/hjuutilainen/dotfiles/master/bin/osx-user-defaults.sh) [7.24.2016](https://github.com/hjuutilainen/dotfiles/commit/93f33a7a5954fe63c075f43dbda688d941643d9e)
 * [Kamil Stachowski](https://www.vim.org/account/profile.php?user_id=15489) for [`corporation.vim`](https://www.vim.org/scripts/download_script.php?src_id=9465) [2016.NM.ND](https://web.archive.org/web/20200208141740/https://www.vim.org/scripts/download_script.php?src_id=9465)
 * [Michael Kühnel](http://michael-kuehnel.de/) for [_Quick tip: Git, Mac OS X and german umlauts (umlaute)_](https://web.archive.org/web/20141206131949/https://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html) [8.22.2016](https://github.com/mischah/dotfiles/commit/f2ab1a8bb27a6dc944e2abd991f499e7928aef0d)
 * [Chris Gerke](https://www.linkedin.com/in/chrisgerke) for [`applekeyboard`](https://gist.githubusercontent.com/cgerke/e5500f93cd5edf05084c/raw/18c4513d662ffc636eba56f854b5e3b817c4bf51/applekeyboard) [2017.2.16 @ 10:52](https://gist.github.com/cgerke/e5500f93cd5edf05084c/18c4513d662ffc636eba56f854b5e3b817c4bf51)
@@ -225,4 +155,8 @@ The scratching system I built at university for better cleaner faster note-takin
 
 <p align='center'><a href='http://kvpb.co'><img src='https://gist.githack.com/kvpb/bfed748ac5c509985c89ea613a2bfd02/raw/8c0b311b7c848fabddf61672ba6bb72c8754fed9/karlbertinssymbol.svg'></a><br>
 <b>Karl V. P. B. `<code>kvpb</code>`</b><br>
-<sup><a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a>&nbsp;&nbsp;<a href='https://www.instagram.com/karlbertin/'>Instagram</a>&nbsp;&nbsp;<a href='https://vm.tiktok.com/ZSwAmcFh/'>TikTok</a></sup></p>
+<a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a>&nbsp;&nbsp;<a href='https://twitter.com/kvpb777'>Twitter</a>&nbsp;&nbsp;<a href='https://www.instagram.com/karlbertin/'>Instagram</a>&nbsp;&nbsp;<a href='https://vm.tiktok.com/ZSwAmcFh/'>TikTok</a><br>
+<br>
+<br>
+<br>
+<img src='https://gistcdn.githack.com/kvpb/c1ea1f389c9cba6fdcd5ef6c0b931734/raw/7ad080dcc064276a7acbaa33d617e0dc93a3a558/kvpbsesrbrating.svg'></p>
