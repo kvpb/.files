@@ -1,39 +1,39 @@
 " Unnamed
 
-set nocompatible " 'Make VIM more useful.' [i] Breaks VI backwards compatibility. /!\ Must be first.
+set nocompatible " Make VIM behave in a more useful way. (i) breaks VI backwards compatibility. /!\ must be first.
 
-scriptencoding utf8 " Set the character encoding used in the script to UTF-8.
+scriptencoding utf8 " Use the UTF-8 character encoding in the script.
 
 au BufRead,BufNewFile * startinsert " Start VIM in insert mode.
 
-set ttyfast " Set indicated terminal connection to fast.
+set ttyfast " Indicate a fast terminal connection.
 
-set encoding=utf8 " Set encoding to UTF-8.
-set fileformats=unix,mac,dos " Set standard file format to UNIX.
+set encoding=utf8 " Use character encoding UTF-8 inside VIM.
+set fileformats=unix,mac,dos " First try UNIX, then, macOS and then, DOS end-of-line formats.
 
-set nobackup " Disable backup before file overwriting.
-set writebackup " Enable temporary backup before file overwriting.
-set noswapfile " Disable swapfile use for the buffer.
+set nobackup " Before VIM overwrites a file, do not back it up.
+set writebackup " Back up a file, while VIM overwrites it, but discard the backup file.
+set noswapfile " Do not create a swapfile for a new buffer.
 
-set viminfo="" " Disable .viminfo file writing.
+set viminfo="" " Do not read or store command-line hitory, search string history, input-line history, contents of non-empty registers, marks for several files, file marks pointing to locations in files, last search or substitute pattern, the buffer list or global variables from or into the viminfo file.
 
-let g:netrw_dirhistmax=0 " Set the history size to 0, suppressing the history, disabling writing to the history file.
-set history=20 " Set history capacity to 20 lines.
+let g:netrw_dirhistmax=0 " Suppress history.
+set history=30 " Remember 30 command lines in a history table.
 
 set binary
 set noendofline
-" Disable NL autoadding at EOF.
+" Do not write EOL for the last line in the file.
 
 " Input: Keyboard & Mouse
 
 set backspace=indent,eol,start " Set the backspace key to backspace by allowing backspacing over autoindent, line breaks (join lines) and the start of insert.
 
-set timeoutlen=1000 ttimeoutlen=-1 " Set the time in milliseconds that is waited for a key code or mapped key sequence to complete to 1000.
+set timeoutlen=1000 ttimeoutlen=-1 " Until VIM receives the complete mapping or key sequence, wait 1000 milliseconds for a key code or mapped key sequence, and time out.
 
-set clipboard=unnamed " Set the clipboard to the OS'.
+set clipboard^=unnamed,unnamedplus " Use clipboard registers + or *. (i) The * and + registers point to the system clipboard on macOS and Windows; register + points to the system clipboard on Linux-based operating systems, and *, the selection clipboard.
 
-set mouse=a " Enable the mouse in all modes.
-set ttymouse=xterm2 " Set the terminal type for which mouse codes are to be recognized.
+set mouse=a " Use the mouse in almost all modes.
+set ttymouse=xterm2 " Recognize mouse codes for this terminal type.
 
 nnoremap <C-Up> gg
 inoremap <C-Up> <Esc>gg<Insert>
@@ -129,45 +129,50 @@ noremap! <F3> <Esc>n<CR><Insert>
 
 " Output: UX, GUI & SUI
 
-set shortmess=I " Hide the VIM launch intro message.
+set shortmess=I " When VIM starts, do not give the intro message.
 
-set scrolloff=2 " Set the scrolling to start 2 lines before the horizontal window border.
+set scrolloff=2 " Keep (force-display) at least 2 screen lines above and below the cursor.
 
-set cmdheight=2 " Set command bar height to 2 lines.
+set cmdheight=2 " Use 2 lines for the command line.
 
-set noexpandtab " Disable hard tabs to soft tabs converting.
-set smarttab " Set tab stops according to shift width.
-set shiftwidth=4 " Set each step of autoindent number of spaces to 2.
-set tabstop=4 " Set tab stop length to 2 columns.
+set noexpandtab " Do not convert hard tabs to soft tabs.
+set smarttab " Press tab in front of a line, insert blanks according to shiftwidth.
+set shiftwidth=4 " Use 2 spaces for each step of (auto)indent.
+set tabstop=4 " Make a tab in the file count for that much spaces.
 
-set listchars=eol:␤,tab:␉\ ,trail:␠,nbsp:␢ " Display special characters.
+set listchars=eol:␤,tab:␉\ ,trail:␠,nbsp:␢
 "set listchars=eol:⏎,tab:⇥\ ,trail:␣,nbsp:⍽
-set list
+" Use these strings in list mode and for the list command.
+set list " Enable list mode.
 
-set laststatus=2 " Display the status line.
-set statusline=%f\ %{strftime(\"%Y.%m.%d@%H:%M:%S\",getftime(expand(\"%:p\")))}\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P " Set the status line format to the defaults with a last modified timestamp.
+set laststatus=2 " Make the last window always have a status line.
+set statusline=%f\ %{strftime(\"%Y.%m.%d@%H:%M:%S\",getftime(expand(\"%:p\")))}\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P " Determine the contents of the status line: defaults with last modified timestamp.
 
-set ruler " Display current line-column numbers.
-set numberwidth=1 " Set the line numbers gutter width.
-set number " Display line numbers.
+set ruler " Show the line and column number of the cursor position separated by a comma.
+set numberwidth=1 " Use that minimum of columns for the line number.
+set number " Precede each line with its line number.
 
-set showmatch " Enable matching brackets highlighting.
-syntax enable " Enable syntax highlighting.
+set showmatch " When a bracket is inserted, briefly jump to the matching one.
+syntax enable " Switch on syntax highlighting. Show parts of the text in another font or color.
 
-set cursorline " Enable current line highlighting.
+"execute "set colorcolumn=72,79,80".join( range( 79, 334 ), ',')
+set colorcolumn=72,79,80
+" Highlight columns 72, 79 for Python and 80 for C. Optionally highlight 'all' columns, every column from column j_n + 1 to column ( j_n + 1 ) + ( 256 - n ), as VIM supports highlighting a maximum of 255 columns.
+" Color column 72 off-white, 79 yellow and 80 orange.
+set cursorline " Highlight the text line of the cursor.
 
-"set background=dark " Set the dark background.
-if strftime("%H") > 7 && strftime("%H") < 19
+"set background=dark " Try to use good-looking colors for this type of background.
+if 7 < strftime("%H") && strftime("%H") < 19
 	set background=light
 else
 	set background=dark
-endif " Set the brightness on which try to use colors that look good based on the time of day.
-"colorscheme onedark " Set the color scheme to One Dark.
-if strftime("%H") < 19
+endif " Try to use good-looking colors for those types of background based on the time of day.
+"colorscheme onedark " Load color scheme One Dark.
+if 7 < strftime("%H") && strftime("%H") < 19
 	colorscheme github
 else
 	colorscheme ghdark
-endif " Set the color scheme according to the time of day.
+endif " Use those color schemes according to the time of day.
 
-set noerrorbells " Disable error bells.
-set novisualbell " Disable error visual bell.
+set noerrorbells " Do not ring the bell (beep or flash screen) for error messages.
+set novisualbell " Do not use a visual bell instead.
