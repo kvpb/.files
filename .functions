@@ -58,6 +58,16 @@ mcd()
 # del	delete file or directory
 # The del function deletes any file of any type.
 
+function st
+{
+	A=(${@})
+	s=${IFS}
+	IFS=' ' #IFS=$'\n'
+	S=($(sort <<< "${A[*]}"))
+	IFS=${s}; #unset IFS;
+	printf '%s\n' "${S}"
+} # st	sort
+
 sqlite3-dump()
 {
 	pathname=${1};
@@ -66,11 +76,11 @@ sqlite3-dump()
 }; # sql, sqld, sqlite3-dump
 # sqlite3-dump	dump the database in an SQL text format
 
-pfp()
+pn()
 {
-	printf $(cd "$(dirname "${1}";)" && pwd -P;)/$(basename "${1}";)"\n"; #echo $(cd "$(/usr/bin/dirname "${1}")" && pwd -P)/$(/usr/bin/basename "${1}");
-}; # pfp, printfilepathname
-# pfp	print file pathname
+	printf "$(cd "$(dirname "${1}";)" && pwd -P;)/$(basename "${1}";)"'\n'; #echo $(cd "$(/usr/bin/dirname "${1}")" && pwd -P)/$(/usr/bin/basename "${1}");
+}; # pn, pathname
+# pn	return pathname
 
 lt()
 {
