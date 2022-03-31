@@ -95,6 +95,8 @@ sudo systemsetup -setusingnetworktime on # Enable network time use.
 
 sudo systemsetup -setnetworktimeserver "time.euro.apple.com" # Set network time server.
 
+softwareupdate --install-rosetta --agree-to-license #/usr/sbin/softwareupdate --install-rosetta --agree-to-license # Install Rosetta 2. https://support.apple.com/en-au/HT211861
+
 echo 'Directory Layout'
 
 sudo mkdir -p /usr/local/bin # Adapt to the SIP--- for the better, this time.
@@ -169,7 +171,7 @@ sudo -- sh -c -e 'echo "127.0.0.1	twitter.com" >> /etc/hosts'
 sudo -- sh -c -e 'echo "127.0.0.1	www.twitter.com" >> /etc/hosts'
 sudo -- sh -c -e 'echo "#127.0.0.1	youtube.com" >> /etc/hosts'
 sudo -- sh -c -e 'echo "#127.0.0.1	www.youtube.com" >> /etc/hosts'
-sudo dscacheutil -flushcache # Clear the DNS cache. # Clear the DNS cache. #lookupd -flushcache # Clear the DNS cache on Mac OS X 10.4 Tiger. #sudo dscacheutil -flushcache # Clear the DNS cache on Mac OS X 10.5 Leopard, 10.6 Snow Leopard. #sudo killall -HUP mDNSResponder # Clear the DNS cache on Mac OS X 10.7 Lion, 10.8 Mountain Lion, macOS 10.12 Sierra, 10.13 High Sierra, 10.14 Mojave, 11 Big Sur. #sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder # Clear the DNS cache on OS X 10.9 Mavericks, 10.11 El Capitan. #sudo discoveryutil mdnsflushcache; sudo discoveryutil udnsflushcaches # Clear the DNS cache on OS X 10.10 Yosemite.
+sudo dscacheutil -flushcache # Clear the DNS cache. #lookupd -flushcache # Clear the DNS cache on Mac OS X 10.4 Tiger. #sudo dscacheutil -flushcache # Clear the DNS cache on Mac OS X 10.5 Leopard, 10.6 Snow Leopard. #sudo killall -HUP mDNSResponder # Clear the DNS cache on Mac OS X 10.7 Lion, 10.8 Mountain Lion, macOS 10.12 Sierra, 10.13 High Sierra, 10.14 Mojave, 11 Big Sur. #sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder # Clear the DNS cache on OS X 10.9 Mavericks, 10.11 El Capitan. #sudo discoveryutil mdnsflushcache; sudo discoveryutil udnsflushcaches # Clear the DNS cache on OS X 10.10 Yosemite.
 printf '\xF0\x9F\x9A\xAE\n'
 # Put litter in its place.
 
@@ -367,6 +369,8 @@ echo "'Displays' & Display Server (NSGlobalDomain, com.apple.windowserver)"
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool TRUE # Enable Hi-DPI display modes. /!\ requires a restart.
 
 defaults write -g AppleFontSmoothing -int 2 # Enable medium subpixel font rendering on non-Apple LCD displays. (Enable Use LCD Font Smoothing When Available.)
+
+osascript -e 'activate "System Preferences"' -e 'tell application "System Events" to keystroke "L" using {command down}' -e 'quit application "System Preferences"' -e 'delay 0.5' -e 'tell application "System Events" to keystroke "L" using {command down}' -e 'delay 0.5' -e 'tell application "System Preferences"' -e 'reveal anchor "displaysDisplayTab" of pane "com.apple.preference.displays"' -e 'end tell' -e 'delay 0.5' -e 'tell application "System Events" to tell process "System Preferences" to tell window "Built-in Liquid Retina XDR Display"' -e 'click radio button "Scaled" of tab group 1' -e 'click radio button 4 of radio group 1 of group 1 of tab group 1' -e 'end tell' -e 'quit application "System Preferences"' # Provide more space for windows and apps. https://web.archive.org/web/20151204010816/https://support.apple.com/en-us/HT202471
 
 echo "'Printers' (com.apple.print.PrintingPrefs)"
 
@@ -629,17 +633,17 @@ sudo mdutil -E / > /dev/null # Rebuild index from scratch.
 
 #sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search # Disable Spotlight menu bar icon.
 
-echo "'Screenshooter' (com.apple.screencapture)"
+echo "'Screen Shooter' (com.apple.screencapture)"
 
-defaults write com.apple.screencapture type -string 'png' # Set the screenshot format to PNG. # Other options are bmp for Windows Bitmap, gif for GIF, jpg for JPEG, jp2 for JPEG2000, tif for TIFF, pict for Macintosh PICT and tga for TARGA.
+defaults write com.apple.screencapture type -string 'png' # Set the screen shot format to PNG. # Other options are bmp for Windows Bitmap, gif for GIF, jpg for JPEG, jp2 for JPEG2000, tif for TIFF, pict for Macintosh PICT and tga for TARGA.
 
-defaults write com.apple.screencapture name -string 'Screenshot' # Set screenshot filename to 'Screenshot ${YYYY}-${MM}-${DD} at ${h}.${mn}.${s}.${ext}'. # default option: 'Screen Shot'; custom options: '', and '\b' lead to a whitespace at the beginning of the filename that the latter cannot erase.
+defaults write com.apple.screencapture name -string 'Screen Shot' # Set screen shot filename to 'Screen Shot ${YYYY}-${MM}-${DD} at ${h}.${mn}.${s}.${ext}'. # default option: 'Screen Shot'; custom options: '', and '\b' lead to a whitespace at the beginning of the filename that the latter cannot erase.
 
-#defaults write com.apple.screencapture include-date -bool FALSE # Disable date in screenshot filename.
+#defaults write com.apple.screencapture include-date -bool FALSE # Disable date in screen shot filename.
 
-#defaults write com.apple.screencapture location -string "${HOME}/Desktop" # Set screenshot writing location to Desktop/.
+#defaults write com.apple.screencapture location -string "${HOME}/Desktop" # Set screen shot writing location to Desktop/.
 
-#defaults write com.apple.screencapture disable-shadow -bool TRUE # Disable shadows in screenshots.
+#defaults write com.apple.screencapture disable-shadow -bool TRUE # Disable shadows in screen shots.
 
 echo 'QuickLook (com.apple.finder)'
 
@@ -673,40 +677,40 @@ defaults write com.apple.dock persistent-others -array
 
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Firefox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Firefox app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iTerm.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an iTerm2 app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Server.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Server app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/VMware Fusion.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a WMware Fusion app item.
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Server.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Server app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Activity Monitor.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an Activity Monitor app item.
-defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Stickies.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Stickies app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/TextEdit.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a TextEdit app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/LibreOffice.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a LibreOffice app item.
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/GIMP-2.10.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a GIMP app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/GIMP-2.10.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a GIMP app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Inkscape.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an Inkscape app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Sketch.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Sketch app item.
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Inkscape.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an Inscape app item.
-defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Preview.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Preview app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/VLC.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a VLC Media Player app item.
-defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Calendar.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Calendar app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Contacts.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Contacts app item.
-defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/ProtonMail Bridge.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a ProtonMail Bridge app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Mail app item.
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Signal.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Signal app item.
-defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Signal.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Signal app item.
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
 #defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Utilities/Script Editor.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Script Editor app item. # found by running `find /{,System/,/Users/${USER}/}Applications -mindepth 1 -maxdepth 2 -type d -iname Script\ Editor.app`.
 #defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Xcode.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Xcode app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Jumpcut.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Jumpcut app item.
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/SizeUp.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a SizeUp app item.
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Dropbox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Dropbox app item.
-defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Rectangle.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Rectangle app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Dropbox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Dropbox app item.
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
 defaults write com.apple.dock persistent-others -array-add '{ "tile-data" = { "list-type" = 1; }; "tile-type" = "recents-tile"; }' # Create a recent items stack others item.
 defaults write com.apple.dock persistent-others -array-add '<dict><key>tile-data</key><dict><key>arrangement</key><integer>1</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Applications</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>' # Create an Applications others item.
 defaults write com.apple.dock persistent-others -array-add '<dict><key>tile-data</key><dict><key>arrangement</key><integer>2</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/kvpb/Downloads/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Downloads</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>' # Create a Downloads others item.
 defaults write com.apple.dock persistent-others -array-add '<dict><key>tile-data</key><dict><key>arrangement</key><integer>5</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/kvpb/Dropbox/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Dropbox</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>' # Create a Dropbox others item.
 defaults delete com.apple.dock mod-count
-defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create an app item area spacer item.
-defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create an other items area spacer item.
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create an app item area spacer item.
+#defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create an other items area spacer item.
 
 defaults write com.apple.dock mineffect -string "scale" # Set window minimaximazation effect to scale. # Do not set to hidden 'suck' which, y'know, sucks.
 
@@ -725,7 +729,7 @@ echo 'Mission Control (com.apple.dock)' # (i) has been substituted for Exposé.
 
 defaults write com.apple.dock mru-spaces -bool FALSE # Disable automatic spaces rearranging based on most recent use.
 
-#defaults write com.apple.dock expose-group-by-app -bool FALSE # Do not group windows by application. (Set the behavior of Mission Control behavior to that of Exposé.) (Disable Group Windows By Application.)
+#defaults write com.apple.dock expose-group-by-app -bool FALSE # Do not group windows by application. (Set the behavior of Mission Control behavior to that of Exposé.)
 
 defaults write com.apple.dock expose-animation-duration -float 0.1 # Speed animations up.
 
@@ -740,8 +744,6 @@ defaults write com.apple.dashboard mcx-disabled -bool TRUE # Disable the dashboa
 echo 'Launchpad (com.apple.dock)'
 
 defaults write com.apple.dock ResetLaunchPad -bool TRUE # Reset Launchpad organization to defaults.
-
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app" "/Applications/iOS Simulator.app" # Add iOS simulator to Launchpad.
 
 defaults write com.apple.dock showLaunchpadGestureEnabled -int 0 # Disable the pinch-with-thumb-and-three-fingers trackpad gesture. (Launchpad: Trackpad -> System preferences: TrackPad: More gestures.)
 
@@ -877,12 +879,12 @@ echo 'Safari & WebKit (com.apple.Safari)' # This section has been the first exam
 
 defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool TRUE
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool TRUE
-# Bind Tab to highlight webpage items. (Enable Press Tab to highlight each item on a webpage.)
-defaults write com.apple.Safari CommandClickMakesTabs -int 1 # Bind command-right click to open links in new tabs. (Enable ⌘-click opens a link in a new tab.)
+# Press tab to highlight each item on a webpage.
+defaults write com.apple.Safari CommandClickMakesTabs -int 1 # ⌘-click opens a link in a new tab.
 
-defaults write com.apple.Safari WebKitDefaultTextEncodingName -string "utf-8" # Set UTF-8 as default encoding. (Set Default Encoding to Unicode (UTF-8).)
-defaults write com.apple.Safari HistoryAgeInDaysLimit -int 2147483647 # Remove history items after Int32. ('Disable' history automatic removal.) (Set Remove History Items to After Int32.)
-defaults write com.apple.Safari LocalFileRestrictionsEnabled -bool TRUE # Disable local files access. (Disable Disable Local File Restrictions.)
+defaults write com.apple.Safari WebKitDefaultTextEncodingName -string "utf-8" # Set default encoding to Unicode (UTF-8).
+defaults write com.apple.Safari HistoryAgeInDaysLimit -int 2147483647 # Remove history items manually.
+defaults write com.apple.Safari LocalFileRestrictionsEnabled -bool TRUE # Do not access local files.
 defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool TRUE # Warn when visiting a fraudulent website.
 
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool TRUE
@@ -891,19 +893,19 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 
 defaults write com.apple.Safari WebKitMinimumFontSize -int 0
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2MinimumFontSize -int 0
-# Never use font sizes smaller than 9. (Enable Never use font sizes smaller than N.) (Set Never use font sizes smaller than to 9.)
-defaults write com.apple.Safari UserStyleSheetEnabled -int 0 # Set Style sheet to None selected.
+# Never use font sizes smaller than 9.
+defaults write com.apple.Safari UserStyleSheetEnabled -int 0 # Set style sheet to none selected.
 
-defaults write com.apple.Safari DownloadsPath -string "${HOME}/Downloads" # Set ${HOME}/Downloads/ as downloads storage path. (Set Save Downloaded Files to To Downloads/.)
-defaults write com.apple.Safari AutoOpenSafeDownloads -bool FALSE # Do not open 'safe' files after downloading. (Disable Open “Safe” Files After Downloading.)
+defaults write com.apple.Safari DownloadsPath -string "${HOME}/Downloads" # Save downloaded files to ${HOME}/Downloads/.
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool FALSE # Do not open 'safe' files after downloading.
 
 defaults write com.apple.Safari HomePage -string "https://www.perdu.com" # Set homepage URL to about:blank.
-defaults write com.apple.Safari NewWindowBehavior -int 0 # New windows open with homepage. (Set New windows open with to Homepage.)
-defaults write com.apple.Safari NewTabBehavior -int 0 # New tabs open with homepage. (Set New tabs open with to Homepage.)
+defaults write com.apple.Safari NewWindowBehavior -int 0 # New windows open with homepage.
+defaults write com.apple.Safari NewTabBehavior -int 0 # New tabs open with homepage.
 
-defaults write com.apple.Safari AlwaysRestoreSessionAtLaunch -bool TRUE # Safari opens with all windows from last session. (Enable Safari sessions restoration at launch.) (Set Safari opens with to All windows from last session.)
-defaults write com.apple.Safari OpenNewTabsInFront -bool FALSE # Do not make a new tab or window active when it opens. (Disable new tabs automatic activation.) # 'Activation' is when a window is brought to foreground.
-defaults write com.apple.Safari TabCreationPolicy -int 1 # Automatically open pages in tabs instead of windows. (Set pages to automatically open in tabs instead of windows.) (Set Open pages in tabs instead of windows to Automatically.)
+defaults write com.apple.Safari AlwaysRestoreSessionAtLaunch -bool TRUE # Safari opens with all windows from last session.
+defaults write com.apple.Safari OpenNewTabsInFront -bool FALSE # Do not make a new tab or window active when it opens. # 'Activation' is when a window is brought to foreground.
+defaults write com.apple.Safari TabCreationPolicy -int 1 # Automatically open pages in tabs instead of windows.
 
 defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically -bool FALSE
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool FALSE
@@ -911,23 +913,22 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 
 defaults write com.apple.Safari WebKitStorageBlockingPolicy -int 1
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2StorageBlockingPolicy -int 1
-# Block cookies and other website data from third parties and advertisers. (Set Block cookies and other website data to From third parties and advertisers.)
+# Block cookies and other website data from third parties and advertisers.
 defaults write com.apple.Safari WebKitPreferences.applePayCapabilityDisclosureAllowed -bool FALSE
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2ApplePayEnabled -bool FALSE
 # Deny websites to check whether Apple Pay is set up.
 
-defaults write com.apple.Safari SafariGeolocationPermissionPolicy -int 0 # Deny without prompting website use of location services. ('Disable' location services access.) (Set Limit website access to location services to Deny without prompting.)
-defaults write com.apple.Safari SuppressSearchSuggestions -bool TRUE # Prevent search engine from providing suggestions. (Block search engines suggestions providing.) (Enable Prevent search engine from providing suggestions.)
-defaults write com.apple.Safari PreloadTopHit -bool FALSE # Do not preload Top hit in the background. (Disable top hit preloading.) (Enable Do not preload Top hit in the background.)
-defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool TRUE # Ask websites not to track me. (Enable Do not track.) (Enable Ask websites not to track me.)
+defaults write com.apple.Safari SafariGeolocationPermissionPolicy -int 0 # Deny without prompting websites from accessing location services.
+defaults write com.apple.Safari SuppressSearchSuggestions -bool TRUE # Prevent search engine from providing suggestions.
+defaults write com.apple.Safari PreloadTopHit -bool FALSE # Do not preload Top Hit in the background.
+defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool TRUE # Ask websites not to track me.
 
 defaults write com.apple.Safari WebKitPreferences.invisibleMediaAutoplayNotPermitted -bool TRUE
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2InvisibleAutoplayNotPermitted -bool TRUE
-# Disable media autoplay.
+# Never auto-play.
 defaults write com.apple.Safari WebKitPreferences.allowsPictureInPictureMediaPlayback -bool FALSE
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2AllowsPictureInPictureMediaPlayback -bool FALSE
-# Disable PIP media playback.
-# For fuck's sake. I can't even believe that kind of crap was ever implemented in the first place. Who in the world's the shitmop who came out with these fabulous ideas?
+# 
 
 	user=`ls -l /dev/console | cut -d " " -f 4`
 
@@ -939,17 +940,19 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 	# Set all to Deny.
 
 	currentsettings=`sqlite3 ${database} 'select * from default_preferences;' 2> /dev/null`
-	for line in $currentsettings; do
-		if [[ $line != *"|1" ]]; then
-			line=`echo "$line" | awk -F "|" '{print $2}'`
-			sudo -u ${user} sqlite3 ${database} "update default_preferences set default_value = '1' where preference = '$line';"
-			sqlite3 $database 'select * from default_preferences;' | grep ${line}
+	for line in ${currentsettings};
+	do
+		if [[ $line != *"|1" ]];
+		then
+			line=`echo "${line}" | awk -F "|" '{print $2}'`
+			sudo -u ${user} sqlite3 ${database} "update default_preferences set default_value = '1' where preference = '${line}';"
+			sqlite3 ${database} 'select * from default_preferences;' | grep ${line}
 		fi; # If the current setting is not 1 (Deny), then set to Deny.
 	done;
 	# Find current entries in the database which are not set to Deny, and set them to Deny as needed.
 	propertylist="/Users/${user}/Library/Safari/UserMediaPermissions.plist" # (i) The UserMediaPermissions.plist file contains any permission for remote websites to interact with the camera, microphone, location services etc that deviate from the default Deny permission.
 	if [ -e $propertylist ]; then rm -f ${propertylist}; fi; # Delete the UserMediaPermissions.plist file to deny websites to access the camera, microphone, location etc.
-	# Set per-site preferences to deny Mopshit-Man & Wasteyard Woman to access everything by default.
+	# Set per-site preferences. (Deny everyone everything by default.)
 
 	sudo -u ${user} defaults write com.apple.Safari CanPromptForPushNotifications -bool FALSE # (i) The preferences file could just be deleted. However, should the user view the settings, this provides indication to them that it is not wanted to receive push notifications.
 	propertylist="/Users/${user}/Library/Safari/RemoteNotifications/Permissions.plist" # (i) The location of the Safari Notifications Preferences file.
@@ -999,8 +1002,8 @@ defaults write com.apple.Safari AutoFillMiscellaneousForms -bool FALSE # Do not 
 
 defaults write com.apple.Safari DefaultPageZoom -float 1.000000 # Set the default page zoom level to 100%.
 
-defaults write com.apple.Safari IncludeDevelopMenu -bool TRUE # Show Develop menu in menu bar. (Display develop menu in the menu bar.) (Enable Show Develop menu in menu bar.)
-defaults write com.apple.Safari ShowStatusBar -bool TRUE # Show status bar  ⌘/. (Display the status bar.) (Enable Show status bar  ⌘/.)
+defaults write com.apple.Safari IncludeDevelopMenu -bool TRUE # Show Develop menu in menu bar.
+defaults write com.apple.Safari ShowStatusBar -bool TRUE # Show status bar  ⌘/.
 
 defaults write com.apple.Safari BookmarksMenuIncludesRendezvous -bool FALSE # Disable bookmarks Bonjour menu.
 defaults write com.apple.Safari ProxiesInBookmarksBar "()" # Clear favorite bookmarks bar. (Remove Reading list and Top sites from the bookmarks bar.)
@@ -1009,7 +1012,7 @@ defaults write com.apple.Safari ShowFavoritesBar -bool FALSE # Hide favorite boo
 defaults write com.apple.Safari SidebarViewModeIdentifier -string "Bookmarks" # Display bookmarks sidebar.
 defaults write com.apple.Safari ShowSidebarInNewWindows -bool FALSE # Hide sidebar in new windows.
 
-defaults write com.apple.Safari TopSitesGridArrangement -int 0 # Top Sites shows 6 sites. (Display as few top sites as possible.) (Set Top sites shows to 6 sites.)
+defaults write com.apple.Safari TopSitesGridArrangement -int 0 # Top Sites shows 6 sites. (Display as few top sites as possible.)
 
 echo 'Mail (com.apple.mail)'
 
@@ -1066,30 +1069,30 @@ else
 	mkdir -p ${HOME}/{Miscellaneous,Work}
 fi
 # If Miscellaneous and Work aren't directories in ${HOME}/, substitute symbolic links by or add these directories.
-if [ -d "${HOME}/Downloads/{Documents,Pictures,Music,Movies,Miscellaneous}" ]
+if [ -d "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads" ]
 then
-	if [ -L "${HOME}/Downloads/{Documents,Pictures,Music,Movies,Miscellaneous}" ]
+	if [ -L "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads" ]
 	then
-		mv ${HOME}/Downloads/{Documents,Pictures,Music,Movies,Miscellaneous} ${HOME}/.Trash/
+		mv ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads ${HOME}/.Trash/
 		open -R ${HOME}/.Trash
-		mkdir ${HOME}/Downloads/{Documents,Pictures,Music,Movies,Miscellaneous}
+		mkdir ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads/
 	fi
 else
 	mkdir -p ${HOME}/Downloads/{Documents,Pictures,Music,Movies,Miscellaneous}
 fi
-# If Documents, Pictures, Music, Movies and Miscellaneous aren't directories in ${HOME}/Downloads/, substitute symbolic links by or add these directories.
-if [ -d "${HOME}/{DCIM,FCIM,Camera}" ]
+# If Downloads is not a directory in ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}, substitute symbolic links by or add this directory.
+if [ -d "${HOME}/{DCIM,Camera}" ]
 then
-	if [ -L "${HOME}/{DCIM,FCIM,Camera}" ]
+	if [ -L "${HOME}/{DCIM,Camera}" ]
 	then
-		mv ${HOME}/{DCIM,FCIM,Camera} ${HOME}/.Trash/
+		mv ${HOME}/{DCIM,Camera} ${HOME}/.Trash/
 		open -R ${HOME}/.Trash
-		mkdir ${HOME}/{DCIM,FCIM,Camera}
+		mkdir ${HOME}/{DCIM,Camera}
 	fi
 else
-	mkdir -p ${HOME}/{DCIM,FCIM,Camera}
+	mkdir -p ${HOME}/{DCIM,Camera}
 fi
-# If DCIM and Camera aren't directories in ${HOME}/, substitute symbolic links by or add these directories.
+# If DCIM and Camera are not directories in ${HOME}/, substitute symbolic links by or add these directories.
 
 ln -s ${HOME}/.files/.inputrc ${HOME}/.inputrc
 #ln -s ${HOME}/.files/.shrc ${HOME}/.shrc
@@ -1112,13 +1115,12 @@ ln -s ${HOME}/.files/.gitconfig ${HOME}/.gitconfig
 ln -s ${HOME}/.files/.gitignore_global ${HOME}/.gitignore_global
 mkdir -p ${HOME}/Library/Scripts && cp -R ${HOME}/.files/Library/Scripts/. ${HOME}/Library/Scripts/ #sudo rmdir ${HOME}/Library/Scripts && ln -s ${HOME}/.files/Library/Scripts ${HOME}/Library/Scripts && chmod -h 700 ${HOME}/Library/Scripts
 mkdir -p ${HOME}/Library/Services && cp -R ${HOME}/.files/Library/Services/. ${HOME}/Library/Services/ #sudo rmdir ${HOME}/Library/Services && ln -s ${HOME}/.files/Library/Services ${HOME}/Library/Services && chmod -h 700 ${HOME}/Library/Services
-ln -s ${HOME}/Downloads/Miscellaneous ${HOME}/Miscellaneous/Downloads
-ln -s ${HOME}/Downloads/Documents ${HOME}/Documents/Downloads
-ln -s ${HOME}/Downloads/Pictures ${HOME}/Pictures/Downloads
-ln -s ${HOME}/Downloads/Movies ${HOME}/Movies/Downloads
-ln -s ${HOME}/Downloads/Music ${HOME}/Music/Downloads
+ln -s ${HOME}/Miscellaneous/Downloads ${HOME}/Downloads/Miscellaneous
+ln -s ${HOME}/Documents/Downloads ${HOME}/Downloads/Documents
+ln -s ${HOME}/Pictures/Downloads ${HOME}/Downloads/Pictures
+ln -s ${HOME}/Movies/Downloads ${HOME}/Downloads/Movies
+ln -s ${HOME}/Music/Downloads ${HOME}/Downloads/Music
 ln -s ${HOME}/DCIM ${HOME}/Pictures/DCIM
-ln -s ${HOME}/FCIM ${HOME}/Pictures/FCIM
 ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
 # Create user-specific custom symbolic links.
 
@@ -1150,6 +1152,37 @@ echo 'iTerm2 (com.googlecode.iterm2)'
 
 defaults write com.googlecode.iterm2 PromptOnQuit -bool FALSE # Hide quit prompt.
 
+echo 'Firefox (org.mozilla.firefox)'
+
+defaults write com.apple.LaunchServices LSHandlers -array-add \
+                                                              '{LSHandlerRoleAll=org.mozilla.firefox;LSHandlerURLScheme=http;}' \
+                                                              '{LSHandlerRoleAll=org.mozilla.firefox;LSHandlerURLScheme=https;}' \
+                                                              '{LSHandlerContentType=public.html;LSHandlerRoleViewer=org.mozilla.firefox;}' \
+                                                              '{LSHandlerContentType=public.url;LSHandlerRoleViewer=org.mozilla.firefox;}'
+# Set Firefox as default web browser.
+
+echo 'Transmission (org.m0k.transmission)'
+
+defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool TRUE
+defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Transmission"
+# Set incomplete download path to ${HOME}/Downloads/Transmission.
+
+#defaults write org.m0k.transmission DeleteOriginalTorrent -bool TRUE # Move original torrent files to trash.
+
+defaults write org.m0k.transmission DownloadAsk -bool FALSE
+defaults write org.m0k.transmission MagnetOpenAsk -bool FALSE
+# Disable confirmation prompt before downloading.
+
+defaults write org.m0k.transmission WarningDonate -bool FALSE # Hide the donate message.
+defaults write org.m0k.transmission WarningLegal -bool FALSE # Hide the legal disclaimer.
+
+defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz" # Enable IP blocking, and set IP blocklist to John Tyree's.
+defaults write org.m0k.transmission BlocklistAutoUpdate -bool TRUE # Enable IP blocklist autoupdate.
+
+echo 'VMware Fusion (com.vmware.fusion)'
+
+defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (Set VMware Fusion: Preferences: General: Applications menu: Show in menu bar to Never.)
+
 echo 'Jumpcut (net.sf.Jumpcut)'
 
 defaults write net.sf.Jumpcut SUCheckAtStartup -bool TRUE # Check for updates on launch.
@@ -1178,40 +1211,9 @@ defaults write net.sf.Jumpcut wraparoundBezel -bool TRUE # Wraparound bezel. ('I
 
 #echo 'Rectangle (com.knollsoft.Rectangle)'
 
-echo 'Firefox (org.mozilla.firefox)'
-
-defaults write com.apple.LaunchServices LSHandlers -array-add \
-                                                              '{LSHandlerRoleAll=org.mozilla.firefox;LSHandlerURLScheme=http;}' \
-                                                              '{LSHandlerRoleAll=org.mozilla.firefox;LSHandlerURLScheme=https;}' \
-                                                              '{LSHandlerContentType=public.html;LSHandlerRoleViewer=org.mozilla.firefox;}' \
-                                                              '{LSHandlerContentType=public.url;LSHandlerRoleViewer=org.mozilla.firefox;}'
-# Set Firefox as default web browser.
-
 echo 'Sketch (com.bohemiancoding.sketch3)'
 
 defaults write com.bohemiancoding.sketch3 NSRequiresAquaSystemAppearance FALSE # Force dark mode. (Opt in to dark mode. https://web.archive.org/web/20190617025725/https://developer.apple.com/documentation/appkit/nsappearancecustomization/choosing_a_specific_appearance_for_your_macos_app)
-
-echo 'Transmission (org.m0k.transmission)'
-
-defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool TRUE
-defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Transmission"
-# Set incomplete download path to ${HOME}/Downloads/Transmission.
-
-#defaults write org.m0k.transmission DeleteOriginalTorrent -bool TRUE # Move original torrent files to trash.
-
-defaults write org.m0k.transmission DownloadAsk -bool FALSE
-defaults write org.m0k.transmission MagnetOpenAsk -bool FALSE
-# Disable confirmation prompt before downloading.
-
-defaults write org.m0k.transmission WarningDonate -bool FALSE # Hide the donate message.
-defaults write org.m0k.transmission WarningLegal -bool FALSE # Hide the legal disclaimer.
-
-defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz" # Enable IP blocking, and set IP blocklist to John Tyree's.
-defaults write org.m0k.transmission BlocklistAutoUpdate -bool TRUE # Enable IP blocklist autoupdate.
-
-echo 'VMware Fusion (com.vmware.fusion)'
-
-defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (Set VMware Fusion: Preferences: General: Applications menu: Show in menu bar to Never.)
 
 echo 'Tweetbot for Mac (com.tapbots.Tweetbot3Mac)'
 
@@ -1248,39 +1250,10 @@ fi
 #	+33 A BB BB BB BB
 #	local-part@domain
 #	https://www.linkedin.com/in/karlbertin
-#	https://twitter.com/kvpb777
+#	https://twitter.com/kvpbx
 #	https://github.com/kvpb
 #	https://www.instagram.com/add/karlbertin
 #	https://vm.tiktok.com/ZSwAmcFh/
-#
-# at some point, execute the scripts to install software
-# then execute the one to add some software as login items
-	# or rather call each script into the software's part
-	# and then call the one to add it as a login item
-		# or even write a .acos followup script to execute after that one and the reboot which would do these
-# `sh ${HOME}/.files/lib/scpt/AddLoginItems.sh iTerm2 Stickies ProtonMail\ Bridge Flux`
-# and maybe write RemoveLoginItems.sh to specify it to screw Steam, Spotify and some other bloatware which always adds itself back to the login items list
-# eventually, simmutable?
-# 
-# also, a good thing to do would be to make the script incremental
-#   and by that i mean that the script should just check for the version of macos
-#       but actually if i'm to do this well let's just write a .acos which takes care of it
-#   and then incrementally call parts such as .macos1012, .macos1013 etc up to the current version
-# eg if ran on macos 10.15 catalina then it outta call every script from the oldest compatible to the newest one so .macosx100 up to .macos1015
-# the problem with this is that some stuff is deprecated by apple over time
-#   so i can't do this
-# but i can do it another way
-# let's say i perfectly finished .osx109 and .osx1010
-# well then i can merge 'em all in a single .macos script whose commands
-#   when specific to a version or range of versions of macos
-# are chosen with an if statement
-# and then i can wrap all these in a single .acos
-# which determines the platform
-# and then executes the right script accordingly
-# this way i can include .ios into it
-# but first
-# let's fully finish .osx109, .osx1010 and .macos
-# also as long as i'm not done i must specify 'this command has been introduced in' just to ensure i don't get lost into this later
 
 #	Copyright 2014 Karl V. P. Bertin
 #
