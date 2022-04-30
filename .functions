@@ -68,6 +68,18 @@ function st
 	printf '%s\n' "${S}"
 } # st	sort
 
+function rb
+{
+	i=1;
+
+	if [ ${#} -eq 0 ]; #if [ -z "${@:${i}:1}" ];
+	then
+		irb;
+	else
+		ruby ${@:${i}};
+	fi;
+}
+
 sqlite3-dump()
 {
 	pathname=${1};
