@@ -16,6 +16,7 @@ done
 sudo port -q select --set python python310
 sudo port -q select --set python3 python310
 sudo port -q select --set python2 python27
+sudo port -q select --set ruby ruby18
 sudo port -q load openssh
 #sudo port -N selfupdate && sudo port -N upgrade outdated; sudo port -N reclaim
 exit 0
