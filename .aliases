@@ -16,41 +16,33 @@ alias	ffs='sudo $(history -p \!\!)'
 alias	d='cd '
 
 alias	..='cd ..' # Change the working directory to the parent of the current one.
-
 alias	...='cd ../..' # Change the working directory to the grand-parent of the current one.
-
 alias	....='cd ../../..' # Change the working direcrory to the grand-grand-parent of the current one.
-
 alias	.....='cd ../../../..' # Change the working directory to the grand-grand-grand-parent of the current one.
-
 alias	......='cd ../../../../..' # Change the working directory to the grand-grand-grand-grand-parent of the current one.
-
 alias	.......='cd ../../../../../..' # Change the working directory to the fossilized ancestor of the current one.
-
 alias	........='cd ../../../../../../..' # dude
+alias	.........='cd ../../../../../../../..' # no
 
-alias	r='cd /' # Change the working directory to the root.
+alias	rt='cd /' # Change the working directory to the root.
 
-alias	~='cd ${HOME}' # Change the working directory to the current user's home. # cd would do the same, and this is what I enter most, but it would break where the meaning of ~ changes.
-
-alias	.f='cd ${HOME}/.files && git status --short && printf "\n" && printf ".gitnote:\n" && cat .gitnote && printf "\n"' # Change the working directory to that of my dot-files, show the working tree status, then concatenate and print .gitnote.
-
-alias	ms='cd ${HOME}/Miscellaneous' # Change the working directory to the one of my miscellaneous files.
-
-alias	wk='cd ${HOME}/Work' # Change the working directory to the one of my work in progress.
-
-alias	fd16='cd /Volumes/KBS16GBFD'
-alias	fd64='cd /Volumes/KBS64GBFD'
-#alias	hd2='cd /Volumes/'
-#alias	hd4='cd /Volumes/'
+alias	vl='cd /Volumes'
+# Change the working directory to that of the mounted volumes.
+#alias	fd16='cd /Volumes/KBS16GBFD'
+#alias	fd64='cd /Volumes/KBS64GBFD'
+#alias	hd2='cd /Volumes/KVPBs2TBHDD'
+#alias	ssd1='cd /Volumes/KVPBs1TBSSD'
 # Change the working directory to one of my USB flash drives or other external storage.
-
 #alias	r1='cd /Volumes/KBSPCMD100/VOICE/FOLDER01'
 #alias	r2='cd /Volumes/KBSPCMD100/VOICE/FOLDER02'
 #alias	r3='cd /Volumes/KBSPCMD100/VOICE/FOLDER03'
 #alias	r4='cd /Volumes/KBSPCMD100/VOICE/FOLDER04'
 #alias	r5='cd /Volumes/KBSPCMD100/VOICE/FOLDER05'
 # Change the working directory to that of the recorded files of my audio recorder.
+
+alias	~='cd ${HOME}' # Change the working directory to the current user's home. # cd would do the same, and this is what I enter most, but it would break where the meaning of ~ changes.
+
+alias	.f='cd ${HOME}/.files && git status --short && printf "\n" && printf ".gitnote:\n" && cat .gitnote && printf "\n"' # Change the working directory to that of my dot-files, show the working tree status, then concatenate and print .gitnote.
 
 alias	dt='cd ${HOME}/Desktop' # Change the working directory to that of the current user's desktop.
 
@@ -66,9 +58,13 @@ alias	mc='cd ${HOME}/Music' # Change the working directory to the one of the cur
 
 alias	px='cd ${HOME}/Pictures' # Change the working directory to the one of the current user's pictures.
 
-alias	th='cd ${HOME}/.Trash' # Change the working directory to the one of the current user's trash.
+alias	ms='cd ${HOME}/Miscellaneous' # Change the working directory to the one of my miscellaneous files.
+
+alias	wk='cd ${HOME}/Work' # Change the working directory to the one of my work in progress.
 
 alias	tf='cd ${HOME}/Temporary' # Change the working directory to the one of the current user's temporary files.
+
+alias	th='cd ${HOME}/.Trash' # Change the working directory to the one of the current user's trash.
 
 alias	db='cd ${HOME}/Dropbox' # Change the working directory to the one of the current user's Dropbox.
 
@@ -76,12 +72,12 @@ alias	db='cd ${HOME}/Dropbox' # Change the working directory to the one of the c
 # (i) Bourne-Again Shell (bash) builtin.
 
 #alias	src='source '
+alias	sc='source '
 #alias	s='source '
 
 #	chdir
 # (i) Z Shell (zsh) builtin.
 
-#alias	chdir='cd '
 #alias	d='chdir '
 
 #	exec
@@ -92,7 +88,7 @@ alias	ns='cd && cls && nh '
 #	history
 
 alias	hy='history'
-alias	h='history | tail -n 20'
+#alias	h='history | tail -n 20'
 alias	_='!-2'
 
 #	printenv		print out the environment
@@ -110,7 +106,7 @@ alias	pe='(set -o posix; set) | cat'
 
 alias	vi='vim +star '
 alias	vim='vim +startinsert '
-alias	v='vi '
+alias	v='vim '
 
 #	mkdir			make directories
 
@@ -119,11 +115,11 @@ alias	md='mkdir '
 #	killall			kill processes by name
 
 alias	ka='killall '
-alias	k='killall '
+#alias	k='killall '
 
 #	ruby			Interpreted object-oriented scripting language
 
-#alias	rb='ruby '
+alias	rb='ruby '
 
 #	python			an interpreted, interactive, object-oriented programming language
 
@@ -133,22 +129,25 @@ alias	py3='python3 '
 
 #	JSC				https://trac.webkit.org/wiki/JSC
 
-alias	jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc '
+#alias	jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc '
+#alias	js='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc '
 
 #	node			server-side JavaScript runtime
 
-alias	njs='node '
-alias	nj='node '
-alias	js='node '
+#alias	njs='node '
+#alias	nj='node '
+alias	nd='node '
+#alias	js='node '
 
 #	osascript		execute OSA scripts (AppleScript, JavaScript, etc)
 
-alias	osas='osascript '
-alias	osa='osascript '
+#alias	osas='osascript '
+#alias	osa='osascript '
+alias	os='osascript '
 
 #	tar				manipulate tape archives
 
-alias	tgz='tar -czvf ' # Create a new archive containing the specified items then compress the resulting archive with gzip, listing each file name as it is read written to the archive.
+alias	tgz='tar -czfv ' # Create a new archive containing the specified items then compress the resulting archive with gzip, listing each file name as it is read written to the archive.
 
 #	rsync			faster, flexible replacement for rcp
 
@@ -156,22 +155,23 @@ alias	tgz='tar -czvf ' # Create a new archive containing the specified items the
 #alias	rsync-move='rsync -avz --progress -h --remove-source-files '
 #alias	rsync-synchronize='rsync -avzu --delete --progress -h '
 #alias	rsync-update='rsync -avzu --progress -h '
-# Someone's rsync aliases
+# someone's rsync aliases
 
 #	open			open files and directories
 
-alias	opn='open '
-alias	o='open '
+#alias	opn='open '
+alias	op='open '
+#alias	o='open '
 
 alias	te='open -e ' # Open file using TextEdit.
 
-alias	pw='open -b com.apple.Preview ' # Open file using Preview.
+#alias	pw='open -b com.apple.Preview ' # Open file using Preview.
 
-alias	qtp='open -b com.apple.QuickTimePlayerX ' # Open file using QuickTime Player.
+#alias	qtp='open -b com.apple.QuickTimePlayerX ' # Open file using QuickTime Player.
 
-alias	si='open -b com.apple.Safari ' # Open file using Safari.
+#alias	si='open -b com.apple.Safari ' # Open file using Safari.
 
-alias	vlc='open -b org.videolan.vlc ' # Open file using VLC Media Player.
+#alias	vlc='open -b org.videolan.vlc ' # Open file using VLC Media Player.
 
 #alias	aps='open -b com.adobe.Photoshop ' # Open file using Photoshop CS6.
 
@@ -181,7 +181,7 @@ alias	vlc='open -b org.videolan.vlc ' # Open file using VLC Media Player.
 
 #alias	mxl='open -b com.microsoft.Excel ' # Open file using Excel for Mac 2011.
 
-alias	gvi='open -b org.vim.MacVim ' # Open file using MacVim.
+#alias	gvi='open -b org.vim.MacVim ' # Open file using MacVim.
 
 alias	rf='open -R ' # Reveal files using Finder.
 
@@ -191,8 +191,8 @@ alias	dxa='xattr -rc .' # Remove every file's all extended attributes of the cur
 
 #	qlmanage		Quick Look server debug and management tool
 
-alias	QuickLook='qlmanage '
-alias	quicklook='qlmanage '
+#alias	QuickLook='qlmanage '
+#alias	quicklook='qlmanage '
 alias	ql='qlmanage '
 
 alias	qlp='qlmanage -p ' # Display the Quick Look generated preview for the specified files.
@@ -209,7 +209,7 @@ fi # Colorize the output of LS.
 alias	l='ls '
 
 alias	lh='ls -Ad .*' # List directory hidden files.
-#alias	lh2='la -1AdF .*'
+#alias	lh='la -1AdF .*'
 
 alias	lf='ls -AF | grep -v -e / -e \* -e @ -e = -e % -e \| -e \>' # List the regular files of the directory.
 
@@ -220,10 +220,9 @@ alias	ld='ls -d */' # List the subdirectories of the directory.
 alias	lhd='ls -d .*/ | tail -n +3' # List the hidden subdirectories of the directory.
 
 alias	la='ls -a ' # List all directory contents.
-#alias	la2='ls -1aF '
+#alias	la='ls -1aF '
 
 #alias	l='ls -1F ' # List simply directory contents.
-#alias	ls2='l '
 
 #	du				display disk usage statistics
 
@@ -239,13 +238,14 @@ alias	les='less '
 
 #	clear			clear the terminal screen
 
-alias	clr='clear '
+#alias	clr='clear '
+#alias	cl='clear '
 #alias	c='clear '
 
 #	PlistBuddy		read and write values to plists
 
-alias	PlistBuddy='/usr/libexec/PlistBuddy '
-alias	plistbuddy='/usr/libexec/PlistBuddy '
+#alias	PlistBuddy='/usr/libexec/PlistBuddy '
+#alias	plistbuddy='/usr/libexec/PlistBuddy '
 alias	pb='/usr/libexec/PlistBuddy '
 
 #	softwareupdate	system software update tool
@@ -254,13 +254,14 @@ alias	swu='softwareupdate '
 
 #	airport			get information for 802.11 interface
 
-alias	AirPort='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
-alias	airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
+#alias	AirPort='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
+#alias	airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
 alias	ap='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
 
 #	man				format and display the on-line manual pages
 
-alias	mn='man '
+alias	i='man '
+#alias	mn='man '
 
 alias	ascii='man ascii' # Output the man page of the ASCII character sets.
 
@@ -296,20 +297,20 @@ alias	rlp='ResetLaunchPad'
 
 # Computer Programs
 
-alias	RPwG='ruby ${HOME}/.files/bin/RPwG.rb'
-alias	rpwg='ruby ${HOME}/.files/bin/RPwG.rb'
-alias	rp='ruby ${HOME}/.files/bin/RPwG.rb'
+#alias	RPwG='ruby ${HOME}/.files/bin/RPwG.rb'
+#alias	rpwg='ruby ${HOME}/.files/bin/RPwG.rb'
+alias	rp='python3 ${HOME}/.files/bin/rpwg.py'
 
 alias	ct='ruby ${HOME}/.files/bin/CharacterCount.rb'
 
-alias	MakeTemporaryFolder='sh ${HOME}/.files/bin/CreateNewTemporaryFolder.sh'
-alias	maketemporaryfolder='sh ${HOME}/.files/bin/CreateNewTemporaryFolder.sh'
+#alias	MakeTemporaryFolder='sh ${HOME}/.files/bin/CreateNewTemporaryFolder.sh'
+#alias	maketemporaryfolder='sh ${HOME}/.files/bin/CreateNewTemporaryFolder.sh'
 alias	mtf='MakeTemporaryFolder && tf'
 
-alias	CreateTestFolders='sh ${HOME}/.files/bin/CreateNewTestFolders.sh'
-alias	createtestfolders='sh ${HOME}/.files/bin/CreateNewTestFolders.sh'
+#alias	CreateTestFolders='sh ${HOME}/.files/bin/CreateNewTestFolders.sh'
+#alias	createtestfolders='sh ${HOME}/.files/bin/CreateNewTestFolders.sh'
 alias	ctf='CreateTestFolders && tf'
 
-alias	SetVolume='sh ${HOME}/.files/bin/SetVolume.sh'
-alias	setvol='sh ${HOME}/.files/bin/SetVolume.sh'
+#alias	SetVolume='sh ${HOME}/.files/bin/SetVolume.sh'
+#alias	setvol='sh ${HOME}/.files/bin/SetVolume.sh'
 alias	sv='sh ${HOME}/.files/bin/SetVolume.sh'
