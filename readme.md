@@ -79,31 +79,31 @@ My VIM setup featuring a true TextEdit-like key mapping.
 
 ---
 
-<p align='center'><a href='https://github.com/kvpb/.files/blob/master/bin/RPwG.rb'><img src='https://gist.githack.com/kvpb/543e66fc06e322658f5877e9e2f77cda/raw/08ecb3022f7c7de3c1a16b05e59af04b92e19af5/RPwG.svg'></a></p>
+<p align='center'><a href='https://github.com/kvpb/.files/blob/master/bin/rpwg.py'><img src='https://gistcdn.githack.com/kvpb/c9d1aa35c62862e73c50836dc49dbc66/raw/221677c34f7b7327f0074bd02a6d9b8052755285/rpwg.svg'></a></p>
 
-## **Random Password Generator**<br>`RPwG.rb`
+## **Random Password Generator**<br>`rpwg.py`
 
 #### Where-is
 <details><summary><code>.files/</code><code>bin/</code></summary>
 
-- [x] `RPwG.rb`
+- [x] `rpwg.py`
 </details>
 
 #### What-is
 
-A program, written in Ruby, which pseudorandomly generates passwords.
+A pseudorandom password generator.
 
 #### How-to
 
 **UNIX & Linux:**  
-&nbsp;&nbsp;0.&nbsp;&nbsp;[Download Ruby,](https://www.ruby-lang.org/en/downloads/) and install it.  
-&nbsp;&nbsp;1.&nbsp;&nbsp;[Download RPwG.](https://github.com/kvpb/RPwG/releases/tag/1.10)  
-&nbsp;&nbsp;2.&nbsp;&nbsp;Launch a terminal emulator, e.g. [Terminal](https://web.archive.org/web/20190326164259/https://support.apple.com/guide/terminal/welcome/mac) or [GNOME Terminal](https://web.archive.org/web/20130207013917/http://help.gnome.org/users/gnome-terminal/stable/).  
-&nbsp;&nbsp;3.&nbsp;&nbsp;Type '`ruby `' (with a trailing space after 'ruby'), drag and drop the `RPwG.rb` file, and press Enter.  
-&nbsp;&nbsp;4.&nbsp;&nbsp;Follow the instructions of the script on the terminal, then copy and paste the resulting password.
+&nbsp;&nbsp;0.&nbsp;&nbsp;[Install Python 3.](https://wiki.python.org/moin/BeginnersGuide/Download)  
+&nbsp;&nbsp;1.&nbsp;&nbsp;[Get RPwG.](https://github.com/kvpb/rpwg/releases/tag/1.10)  
+&nbsp;&nbsp;2.&nbsp;&nbsp;Open a terminal emulator, e.g. [Terminal](https://web.archive.org/web/20190326164259/https://support.apple.com/guide/terminal/welcome/mac) or [GNOME Terminal](https://web.archive.org/web/20130207013917/http://help.gnome.org/users/gnome-terminal/stable/).  
+&nbsp;&nbsp;3.&nbsp;&nbsp;Type '`python `', drag and drop the `rpwg.py` file on the window, type '` --help`', and press the enter key.  
+&nbsp;&nbsp;4.&nbsp;&nbsp;Follow the instructions, and copy and paste your password.
 
 ~~**MS-DOS:**~~  
-&nbsp;&nbsp;Do yourself a favor: get either a Linux PC or a Mac.
+&nbsp;&nbsp;Do yourself a favor: either build a Linux PC, or get a Mac.
 
 ---
 <!--
