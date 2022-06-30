@@ -1,0 +1,2 @@
+Stop-Process -ProcessName explorer -Force
+New-Item -Path 'C:\Program Files\TID7Calculator\000018Chase.txt' -ItemType File
