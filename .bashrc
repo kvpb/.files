@@ -1,7 +1,7 @@
-if [ -f /etc/bashrc ];
+if [ -f /etc/bashrc ]
 then
-	source /etc/bashrc;
-fi;
+	source /etc/bashrc
+fi
 
 #set -o vi
 shopt -s histappend

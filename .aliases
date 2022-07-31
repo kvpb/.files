@@ -23,6 +23,8 @@ alias	......='cd ../../../../..' # Change the working directory to the grand-gra
 alias	.......='cd ../../../../../..' # Change the working directory to the fossilized ancestor of the current one.
 alias	........='cd ../../../../../../..' # dude
 alias	.........='cd ../../../../../../../..' # no
+alias	..........='cd ../../../../../../../../..' # 
+alias	...........='cd ../../../../../../../../../..' # 
 
 alias	rt='cd /' # Change the working directory to the root.
 
@@ -126,6 +128,8 @@ alias	rb='ruby '
 alias	py='python '
 alias	py2='python2 '
 alias	py3='python3 '
+
+alias	ct='python -c "import sys; print( len(sys.argv[1]) );" ' # Count the characters of a given string.
 
 #	JSC				https://trac.webkit.org/wiki/JSC
 
@@ -297,19 +301,21 @@ alias	rlp='ResetLaunchPad'
 
 # Computer Programs
 
-#alias	RPwG='ruby ${HOME}/.files/bin/RPwG.rb'
-#alias	rpwg='ruby ${HOME}/.files/bin/RPwG.rb'
-alias	rp='python3 ${HOME}/.files/bin/rpwg.py'
+#alias	RPwG='ruby ${HOME}/.files/bin/rpwg.py'
+#alias	rpwg='ruby ${HOME}/.files/bin/rpwg.py'
+alias	pw='python3 ${HOME}/.files/bin/rpwg.py'
 
-alias	ct='ruby ${HOME}/.files/bin/CharacterCount.rb'
+#alias	CountCharacters='ruby ${HOME}/.files/bin/CountCharacters.rb'
+#alias	countcharacters='ruby ${HOME}/.files/bin/CountCharacters.rb'
+#alias	ct='ruby ${HOME}/.files/bin/CountCharacters.rb'
 
-#alias	MakeTemporaryFolder='sh ${HOME}/.files/bin/CreateNewTemporaryFolder.sh'
-#alias	maketemporaryfolder='sh ${HOME}/.files/bin/CreateNewTemporaryFolder.sh'
-alias	mtf='MakeTemporaryFolder && tf'
+#alias	MakeTemporaryFolder='sh ${HOME}/.files/bin/CreateNewTemporaryFolder.sh && cd ${HOME}/Temporary'
+#alias	maketemporaryfolder='sh ${HOME}/.files/bin/CreateNewTemporaryFolder.sh && cd ${HOME}/Temporary'
+#alias	mtf='sh ${HOME}/.files/bin/CreateNewTemporaryFolder.sh && cd ${HOME}/Temporary'
 
-#alias	CreateTestFolders='sh ${HOME}/.files/bin/CreateNewTestFolders.sh'
-#alias	createtestfolders='sh ${HOME}/.files/bin/CreateNewTestFolders.sh'
-alias	ctf='CreateTestFolders && tf'
+#alias	CreateTestFolders='sh ${HOME}/.files/bin/CreateNewTestFolders.sh && cd ${HOME}/Temporary'
+#alias	createtestfolders='sh ${HOME}/.files/bin/CreateNewTestFolders.sh && cd ${HOME}/Temporary'
+alias	ctf='sh ${HOME}/.files/bin/CreateNewTestFolders.sh && cd ${HOME}/Temporary'
 
 #alias	SetVolume='sh ${HOME}/.files/bin/SetVolume.sh'
 #alias	setvol='sh ${HOME}/.files/bin/SetVolume.sh'
