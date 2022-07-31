@@ -1209,7 +1209,28 @@ defaults write net.sf.Jumpcut stickyBezel -bool FALSE # No sticky bezel. ('The b
 
 defaults write net.sf.Jumpcut wraparoundBezel -bool TRUE # Wraparound bezel. ('In the bezel, moving down from the last item takes you to the top and moving up from the first item takes you to the bottom.')
 
-#echo 'Rectangle (com.knollsoft.Rectangle)'
+echo 'Rectangle (com.knollsoft.Rectangle)'
+
+defaults write com.knollsoft.Rectangle gapSize = 0 # Set the gaps between windows to 0 px.
+defaults write com.knollsoft.Rectangle unsnapRestore = 1 # Restore window size when unsnapped.
+defaults write com.knollsoft.Rectangle moveCursorAcrossDisplays -integer 2 # Move cursor along with window across displays.
+defaults write com.knollsoft.Rectangle windowSnapping = 1 # Snap windows by dragging.
+
+defaults write com.knollsoft.Rectangle alternateDefaultShortcuts -integer 1 # Use Rectangle default shortcuts; do not use Spectacle default shortcuts.
+defaults write com.knollsoft.Rectangle allowAnyShortcut -integer 0 # Do not remove keyboard shortcut restrictions.
+defaults write com.knollsoft.Rectangle hideMenubarIcon -integer 0 # Do not hide menu bar icon.
+
+#defaults write com.knollsoft.Rectangle todoSidebarWidth = 400 # Set the todo application width to 400 px.
+#defaults write com.knollsoft.Rectangle reflowTodo = { keyCode = 45; modifierFlags = 786432; } # Set the reflow todo shortcut.
+#defaults write com.knollsoft.Rectangle subsequentExecutionMode = 0 # Set repeated commands to cycle 1 / 2, 2 / 3 and 1 / 3 on half actions. What the fuck does that even mean?
+#defaults write com.knollsoft.Rectangle todo -integer 2 # Do not show todo mode in menu.
+
+defaults write com.knollsoft.Rectangle launchOnLogin -integer 1 # Launch on login.
+defaults write com.knollsoft.Rectangle SUHasLaunchedBefore -integer 1 # Prevent it from introducing itself.
+
+defaults write com.knollsoft.Rectangle SULastCheckTime -string "1970-00-00 00:00:00 +0000"
+defaults write com.knollsoft.Rectangle SUEnableAutomaticChecks -integer 1
+# Check for updates automatically, and make it check on next launch.
 
 echo 'Sketch (com.bohemiancoding.sketch3)'
 
@@ -1223,6 +1244,25 @@ defaults write com.tapbots.Tweetbot3Mac "NSWindow Frame MainWindow" -string "690
 defaults write com.tapbots.Tweetbot3Mac SidebarType -string "compact"
 #defaults delete com.tapbots.Tweetbot3Mac lastUsedColumnWidth
 # Resize the windows and sidebar.
+
+echo 'KeyCastr (io.github.keycastr)'
+
+defaults write io.github.keycastr capturingHotKey '{length = 8, bytes = 0x0000060017000000}' # Toggle capturing with Shift-Control-5.
+
+defaults delete "NSWindow Frame KCBezelWindow default.bezelWindow" #defaults write io.github.keycastr "NSWindow Frame KCBezelWindow default.bezelWindow" -string "10 18 1920 105 0 0 1920 1055 "
+defaults delete "NSWindow Frame svelte visualizerFrame" #defaults write io.github.keycastr "NSWindow Frame svelte visualizerFrame" -string "-50 -46 200 100 0 0 1920 1055 "
+# Resize the window.
+defaults write io.github.keycastr selectedVisualizer = Svelte # Set the selected visualizer to Svelte.
+defaults write io.github.keycastr "svelte.allKeystrokes" -boolean 1 # Not command keys only.
+defaults write io.github.keycastr "mouse.displayOption" = 1 # Display mouse clicks.
+defaults write io.github.keycastr "svelte.displayAll" -boolean 1 # Display all keystrokes [in Svelte].
+
+defaults write io.github.keycastr displayIcon -int 1 # Display KeyCastr icon in the menu bar.
+
+defaults write io.github.keycastr SUSendProfileInfo -boolean 0 # Do not include anonymous system profile.
+defaults write io.github.keycastr SUHasLaunchedBefore -boolean 1 # Silence it on first launch.
+defaults write io.github.keycastr SULastCheckTime -string "1970-00-00 00:00:00 +0000" # Make it check for updates on next launch.
+defaults write io.github.keycastr SUEnableAutomaticChecks -boolean 1 # Check for updated at startup.
 
 for i in 'Activity Monitor' 'Calendar' 'Contacts' 'cfprefsd' 'Disk Utility' 'Dock' 'Finder' 'Mail' 'Messages' 'Safari' 'System Preferences' 'SystemUIServer' 'TextEdit' 'Xcode'
 do
@@ -1249,10 +1289,10 @@ fi
 #	+1 (DDD) DDD-DDDD
 #	+33 A BB BB BB BB
 #	local-part@domain
+#	local-part@domain
 #	https://www.linkedin.com/in/karlbertin
-#	https://twitter.com/kvpbx
+#	https://twitter.com/yougotkarld
 #	https://github.com/kvpb
-#	https://www.instagram.com/add/karlbertin
 #	https://vm.tiktok.com/ZSwAmcFh/
 
 #	Copyright 2014 Karl V. P. Bertin
