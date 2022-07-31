@@ -24,7 +24,7 @@ ne()
 		then
 			printf '\n' >> ${file};
 		else
-			:
+			:;
 		fi;
 	done;
 }; # ne, nfeol, writemissingNLatEOF
@@ -60,13 +60,13 @@ mcd()
 
 function st
 {
-	A=(${@})
-	s=${IFS}
-	IFS=' ' #IFS=$'\n'
-	S=($(sort <<< "${A[*]}"))
+	A=(${@});
+	s=${IFS};
+	IFS=' '; #IFS=$'\n'
+	S=($(sort <<< "${A[*]}"));
 	IFS=${s}; #unset IFS;
-	printf '%s\n' "${S}"
-} # st	sort
+	printf '%s\n' "${S}";
+}; # st	sort
 
 function rb
 {
@@ -78,7 +78,7 @@ function rb
 	else
 		ruby ${@:${i}};
 	fi;
-}
+};
 
 sqlite3-dump()
 {
@@ -173,11 +173,11 @@ dcal()
 
 np()
 {
-	t=$(date +"%Y-%m-%d-%H-%M-%S")
+	t=$(date +"%Y-%m-%d-%H-%M-%S");
 
-	:> ${HOME}/${t}_entry.txt
-	${EDITOR} ${HOME}/${t}_entry.txt
-} # np	new page
+	:> ${HOME}/${t}_entry.txt;
+	${EDITOR} ${HOME}/${t}_entry.txt;
+}; # np	new page
 
 cls()
 {
