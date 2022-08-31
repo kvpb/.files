@@ -18,7 +18,7 @@ exit 0;
 #	Karl V. P. B. `kvpb`
 #	+1 (DDD) DDD-DDDD
 #	local-part@domain
-#	https://www.linkedin.com/in/karlbertin
-#	https://twitter.com/kvpb777
-#	https://www.instagram.com/add/karlbertin
-#	https://vm.tiktok.com/ZSwAmcFh/
+#	https://www.linkedin.com/in/
+#	https://twitter.com/
+#	https://github.com/kvpb
+#	https://vm.tiktok.com//
