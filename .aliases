@@ -30,21 +30,10 @@ alias	rt='cd /' # Change the working directory to the root.
 
 alias	vl='cd /Volumes'
 # Change the working directory to that of the mounted volumes.
-#alias	fd16='cd /Volumes/KBS16GBFD'
-#alias	fd64='cd /Volumes/KBS64GBFD'
-#alias	hd2='cd /Volumes/KVPBs2TBHDD'
-#alias	ssd1='cd /Volumes/KVPBs1TBSSD'
-# Change the working directory to one of my USB flash drives or other external storage.
-#alias	r1='cd /Volumes/KBSPCMD100/VOICE/FOLDER01'
-#alias	r2='cd /Volumes/KBSPCMD100/VOICE/FOLDER02'
-#alias	r3='cd /Volumes/KBSPCMD100/VOICE/FOLDER03'
-#alias	r4='cd /Volumes/KBSPCMD100/VOICE/FOLDER04'
-#alias	r5='cd /Volumes/KBSPCMD100/VOICE/FOLDER05'
-# Change the working directory to that of the recorded files of my audio recorder.
 
 alias	~='cd ${HOME}' # Change the working directory to the current user's home. # cd would do the same, and this is what I enter most, but it would break where the meaning of ~ changes.
 
-alias	.f='cd ${HOME}/.files && git status --short && printf "\n" && printf ".gitnote:\n" && cat .gitnote && printf "\n"' # Change the working directory to that of my dot-files, show the working tree status, then concatenate and print .gitnote.
+alias	.f='cd ${HOME}/.files && git status --short && printf "%s\n" '.gitnote:' && cat .gitnote && printf "\n"' # Change the working directory to that of my dot-files, show the working tree status, then concatenate and print .gitnote.
 
 alias	dt='cd ${HOME}/Desktop' # Change the working directory to that of the current user's desktop.
 
@@ -84,8 +73,7 @@ alias	sc='source '
 
 #	exec
 
-alias	nh='exec ${SHELL} -l ' # Execute the default login shell as a login shell. (Replace the current shell process image with a new one.)
-alias	ns='cd && cls && nh '
+alias	ns='exec ${SHELL} -l ' # Execute the default login shell as a login shell. (Replace the current shell process image with a new one.)
 
 #	history
 
@@ -121,7 +109,7 @@ alias	ka='killall '
 
 #	ruby			Interpreted object-oriented scripting language
 
-alias	rb='ruby '
+#alias	rb='ruby '
 
 #	python			an interpreted, interactive, object-oriented programming language
 
@@ -130,6 +118,9 @@ alias	py2='python2 '
 alias	py3='python3 '
 
 alias	ct='python -c "import sys; print( len(sys.argv[1]) );" ' # Count the characters of a given string.
+
+alias	uc='python3 -c "import sys; print(sys.argv[1].upper());" ' # Increase the case of the first given string.
+alias	lc='python3 -c "import sys; print(sys.argv[1].lower());" ' # Lower the case of the first given string.
 
 #	JSC				https://trac.webkit.org/wiki/JSC
 
@@ -141,13 +132,13 @@ alias	ct='python -c "import sys; print( len(sys.argv[1]) );" ' # Count the chara
 #alias	njs='node '
 #alias	nj='node '
 alias	nd='node '
-#alias	js='node '
+alias	js='node '
 
 #	osascript		execute OSA scripts (AppleScript, JavaScript, etc)
 
 #alias	osas='osascript '
-#alias	osa='osascript '
-alias	os='osascript '
+alias	osa='osascript '
+#alias	os='osascript '
 
 #	tar				manipulate tape archives
 
@@ -255,6 +246,7 @@ alias	pb='/usr/libexec/PlistBuddy '
 #	softwareupdate	system software update tool
 
 alias	swu='softwareupdate '
+#alias	sw='softwareupdate '
 
 #	airport			get information for 802.11 interface
 
@@ -264,8 +256,9 @@ alias	ap='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Reso
 
 #	man				format and display the on-line manual pages
 
-alias	i='man '
-#alias	mn='man '
+alias	mn='man '
+#alias	hp='man '
+#alias	i='man '
 
 alias	ascii='man ascii' # Output the man page of the ASCII character sets.
 
@@ -273,12 +266,13 @@ alias	ascii='man ascii' # Output the man page of the ASCII character sets.
 
 # 	git				the stupid content tracker
 
-#alias	git='/usr/local/git/bin/git ' # Get fucked, Apple. /i\ requires Git for macOS from the official Git website. http://git-scm.com/
+#alias	git='/usr/local/git/bin/git ' # Get fucked, Apple. /i\ requires Git for macOS from the official website. http://git-scm.com/
 alias	g='git '
 
 #	fswatch			Ask for notification when the contents of the specified files of directory hierarchies are modified.
 
 alias	fsw='fswatch '
+#alias	fw='fswatch '
 
 #	octave
 
@@ -297,25 +291,11 @@ alias	mfa='MakeFinderAlias '
 
 alias	dds='DeleteDSStore'
 
-alias	rlp='ResetLaunchPad'
-
 # Computer Programs
 
 #alias	RPwG='ruby ${HOME}/.files/bin/rpwg.py'
 #alias	rpwg='ruby ${HOME}/.files/bin/rpwg.py'
 alias	pw='python3 ${HOME}/.files/bin/rpwg.py'
-
-#alias	CountCharacters='ruby ${HOME}/.files/bin/CountCharacters.rb'
-#alias	countcharacters='ruby ${HOME}/.files/bin/CountCharacters.rb'
-#alias	ct='ruby ${HOME}/.files/bin/CountCharacters.rb'
-
-#alias	MakeTemporaryFolder='sh ${HOME}/.files/bin/CreateNewTemporaryFolder.sh && cd ${HOME}/Temporary'
-#alias	maketemporaryfolder='sh ${HOME}/.files/bin/CreateNewTemporaryFolder.sh && cd ${HOME}/Temporary'
-#alias	mtf='sh ${HOME}/.files/bin/CreateNewTemporaryFolder.sh && cd ${HOME}/Temporary'
-
-#alias	CreateTestFolders='sh ${HOME}/.files/bin/CreateNewTestFolders.sh && cd ${HOME}/Temporary'
-#alias	createtestfolders='sh ${HOME}/.files/bin/CreateNewTestFolders.sh && cd ${HOME}/Temporary'
-alias	ctf='sh ${HOME}/.files/bin/CreateNewTestFolders.sh && cd ${HOME}/Temporary'
 
 #alias	SetVolume='sh ${HOME}/.files/bin/SetVolume.sh'
 #alias	setvol='sh ${HOME}/.files/bin/SetVolume.sh'
