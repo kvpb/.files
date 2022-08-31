@@ -2,13 +2,10 @@
 exec 2>> ${HOME}/Temporary/log
 set -xv
 
-#n=$[RANDOM%99+1] && while [ -e ${HOME}/Temporary/Folder${n} ]; do n=$[RANDOM%99+1]; done;
-workingdirectory=$(pwd;);
-
 printf '%s\n' ''
-printf '                         '; printf '\033[48:2:255:165:0m\033[48;2;255;255;255;0#m%s\033[m\n' '     | | |           .'
-printf '                         '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '     | | |-, | | |^\ |-  | |'
-printf '                         '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '  .  |/  |_/ |/  | | \__ |/'
+printf '                         '; printf '\033[48:2:255:165:0m\033[48;2;255;255;255;0#m%s\033[m\n' '     | | |           ,'
+printf '                         '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '     | | |-. | | |^. |-  | |'
+printf '                         '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '  .  |/| |_/ |/| | | \__ |/|'
 printf '%s\n' ''
 printf '                                 LICENSED BY\n'
 printf '                                 ${LICENSOR}\n'
@@ -42,6 +39,17 @@ printf '%s\n' 'dash dash/sh boolean false' | sudo debconf-set-selections
 sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 printf '%s\n' 'dash dash/sh boolean true' | sudo debconf-set-selections
 # Set the default system shell.
+
+printf '%s\n' 'Network'
+
+s[0]="${USER^^}" # requires BASH 4+.
+s[1]="$(. /etc/os-release && printf '%s' ${NAME})"
+[ -z "$(sudo dmesg | grep 'QEMU\|VirtualBox\|VMware\|Parallels' 2>/dev/null)" ] && s[2]='PC' || s[2]='VM'
+sudo hostname "${s_0}s${s_1}${s_2}"
+unset s
+# Set the host name of the operating system.
+
+sh ./bin/patchhosts.sh # Set the static table lookup for hostnames.
 
 printf '%s\n' 'Keyboard'
 
@@ -134,35 +142,35 @@ if [ -d "${HOME}/{Applications,bin,Miscellaneous,Work}" ]
 then
 	if [ -L "${HOME}/{Applications,bin,Miscellaneous,Work}" ]
 	then
-		mv "${HOME}/{Applications,bin,Miscellaneous,Work}" ${HOME}/.Trash/
+		mv "${HOME}/{Applications,bin,Miscellaneous,Work}" ${HOME}/.local/share/Trash/
 		mkdir "${HOME}/{Applications,bin,Miscellaneous,Work}"
 	fi
 else
 	mkdir -p "${HOME}/{Applications,bin,Miscellaneous,Work}"
 fi
 # If Applications, bin, Miscellaneous and Work are not directories in ${HOME}/, substitute symbolic links by or add these directories.
-if [ -d "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}" ]
+if [ -d "${HOME}/{Documents,Miscellaneous,Music,Pictures,Videos}/Downloads" ]
 then
-	if [ -L "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}" ]
+	if [ -L "${HOME}/{Documents,Miscellaneous,Music,Pictures,Videos}/Downloads" ]
 	then
-		mv "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}" ${HOME}/.local/share/Trash/files/
-		mkdir "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}"
+		mv "${HOME}/{Documents,Miscellaneous,Music,Pictures,Videos}/Downloads" ${HOME}/.local/share/Trash/
+		mkdir "${HOME}/{Documents,Miscellaneous,Music,Pictures,Videos}/Downloads"
 	fi
 else
-	mkdir -p "${HOME}/Downloads/{Documents,Miscellaneous,Music,Pictures,Videos}"
+	mkdir -p "${HOME}/{Documents,Miscellaneous,Music,Pictures,Videos}/Downloads"
 fi
-# If Documents, Pictures, Music, Movies and Miscellaneous are not directories in ${HOME}/Downloads/, substitute symbolic links by or add these directories.
-if [ -d "${HOME}/{Camera,DCIM}" ]
+# If Downloads is not a directory in ${HOME}/{Documents,Miscellaneous,Music,Pictures,Videos}/, substitute symbolic links by or add these directories.
+if [ -d "${HOME}/Pictures/{DCIM}" ]
 then
-	if [ -L "${HOME}/{Camera,DCIM}" ]
+	if [ -L "${HOME}/Pictures/{DCIM}" ]
 	then
-		mv "${HOME}/{Camera,DCIM}" ${HOME}/.local/share/Trash/files/
-		mkdir "${HOME}/{Camera,DCIM}"
+		mv "${HOME}/Pictures/{DCIM}" ${HOME}/.local/share/Trash/
+		mkdir "${HOME}/Pictures/{DCIM}"
 	fi
 else
-	mkdir -p "${HOME}/{Camera,DCIM}"
+	mkdir -p "${HOME}/Pictures/{DCIM}"
 fi
-# If DCIM and Camera are not directories in ${HOME}/, substitute symbolic links by or add these directories.
+# If DCIM is not a directory in ${HOME}/, substitute symbolic links by or add theis directories.
 
 for i in .inputrc .shrc .shinit .profile .exports .functions .aliases .bashrc .profile .exports .functions .aliases .bashrc .bash_login .bash_profile .bash_logout .bash_prompt .zshrc .zprofile .ssh .vimrc .vim .gitconfig .gitignore_global
 do
@@ -170,8 +178,8 @@ do
 	then
 		if [ -f ${i} -o -d ${i} ]
 		then
-			mv ${i} ${HOME}/.local/share/Trash/files/
-			xdg-open ${HOME}/.local/share/Trash/files/
+			mv ${i} ${HOME}/.local/share/Trash/
+			xdg-open ${HOME}/.local/share/Trash/
 		elif [ -L ${i} ]
 		then
 			unlink ${i}
@@ -182,9 +190,6 @@ ln -s ${HOME}/.files/.inputrc ${HOME}/.inputrc
 #ln -s ${HOME}/.files/.shrc ${HOME}/.shrc
 #ln -s ${HOME}/.files/.shinit ${HOME}/.shinit
 #ln -s ${HOME}/.files/.profile ${HOME}/.profile
-ln -s ${HOME}/.files/.exports ${HOME}/.exports
-ln -s ${HOME}/.files/.functions ${HOME}/.functions
-ln -s ${HOME}/.files/.aliases ${HOME}/.aliases
 ln -s ${HOME}/.files/.bashrc ${HOME}/.bashrc
 ln -s ${HOME}/.files/.bash_login ${HOME}/.bash_login
 ln -s ${HOME}/.files/.bash_profile ${HOME}/.bash_profile
@@ -197,13 +202,13 @@ ln -s ${HOME}/.files/.vimrc ${HOME}/.vimrc
 ln -s ${HOME}/.files/.vim ${HOME}/.vim
 ln -s ${HOME}/.files/.gitconfig ${HOME}/.gitconfig
 ln -s ${HOME}/.files/.gitignore_global ${HOME}/.gitignore_global
-ln -s ${HOME}/Downloads/Miscellaneous ${HOME}/Miscellaneous/Downloads
-ln -s ${HOME}/Downloads/Documents ${HOME}/Documents/Downloads
-ln -s ${HOME}/Downloads/Pictures ${HOME}/Pictures/Downloads
-ln -s ${HOME}/Downloads/Movies ${HOME}/Movies/Downloads
-ln -s ${HOME}/Downloads/Music ${HOME}/Music/Downloads
-ln -s ${HOME}/DCIM ${HOME}/Pictures/DCIM
-ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
+ln -s ${HOME}/Miscellaneous/Downloads ${HOME}/Downloads/Miscellaneous
+ln -s ${HOME}/Documents/Downloads ${HOME}/Downloads/Documents
+ln -s ${HOME}/Pictures/Downloads ${HOME}/Downloads/Pictures
+ln -s ${HOME}/Movies/Downloads ${HOME}/Downloads/Movies
+ln -s ${HOME}/Music/Downloads ${HOME}/Downloads/Music
+ln -s ${HOME}/Pictures/DCIM ${HOME}/DCIM
+ln -s ${HOME}/.local/share/Trash ${HOME}/.Trash
 # Create user-specific custom symbolic links.
 
 :> ${HOME}/.hushlogin # Write the .hushlogin file in the current user's home folder.
@@ -224,13 +229,23 @@ printf '%s\n' 'ZSH'
 
 sudo apt-get install -qq zsh # Download and update ZSH.
 
+printf '%s\n' 'Rust'
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh # Install Rust. https://www.rust-lang.org/tools/install
+
+printf '%s\n' 'Go'
+
+sudo apt-get install -qq golang #golang-go
+sudo apt-get install -qq gccgo #gccgo-go
+# Download and install Go.
+
 printf '%s\n' 'Python'
 
 sudo apt-get install -qq python3
 sudo apt-get remove -qq python-is-python2
 sudo apt-get install -qq python-is-python3
 sudo apt-get install -qq python2
-# Download and install Python 3.9 and 2.7.
+# Download and install Python 3.10 and 2.7.
 
 #printf '%s\n' 'Ruby'
 #
@@ -465,7 +480,11 @@ exit 0
 #	Ubuntu Configuration Script
 #
 #	Karl V. P. B. `kvpb`
+#	+1 (DDD) DDD-DDDD
 #	+33 A BB BB BB BB
 #	local-part@domain
-#
-#	
+#	local-part@domain
+#	https://www.linkedin.com/in/
+#	https://twitter.com/
+#	https://github.com/
+#	https://vm.tiktok.com//
