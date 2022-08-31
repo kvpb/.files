@@ -4,9 +4,9 @@
 
 ---
 
-<p align='center'><a href=''><img src='https://gistcdn.githack.com/kvpb/eadd16d889d601adf5646e2ef6370b25/raw/8a3fe18dbd9d86d5d10e7ceeab3ab365e70f3629/macospackagemanager.svg'></a></p>
+<p align='center'><a href=''><img src='https://gistcdn.githack.com/kvpb/807924c1f72cc407d798f22431559f3d/raw/e7828591fe13bb451b05ea0512d67f19e6c8fdb6/macospackagemanager.svg'></a></p>
 
-## **Apple Computer Operating System Setups**<br>`.acos` (`.macosx`, `.osx`, `.macos` & `.ios`) ![platform](https://gistcdn.githack.com/kvpb/e55c254ded3bc5eac9bc4f29c78ec75c/raw/314ede379206cfe49a33e68212af92b85e71866c/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
+## **Apple Computer Operating System Setups**<br>`.acos` (`.macosx`, `.osx`, `.macos` & `.ios`) ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
 
 #### Where-is
 <details><summary><code>.files/</code></summary>
@@ -35,7 +35,7 @@ cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kv
 
 ---
 
-## **Linux-Based Operating System Setups**<br>`.lbos` (`.archlinux`, `.ubuntu` & `.android`) ![platform](https://gistcdn.githack.com/kvpb/e55c254ded3bc5eac9bc4f29c78ec75c/raw/314ede379206cfe49a33e68212af92b85e71866c/ubuntu-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-linuxbox-F6F6F6D5E1ED.svg) ![platform](https://gistcdn.githack.com/kvpb/e55c254ded3bc5eac9bc4f29c78ec75c/raw/314ede379206cfe49a33e68212af92b85e71866c/android-F6F6F6D5E1ED1E72F21AD5FD-madeonan-1AD5FD1E72F2-androidphone-F6F6F6D5E1ED.svg)
+## **Linux-Based Operating System Setups**<br>`.lbos` (`.archlinux`, `.ubuntu` & `.android`) ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/ubuntu-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-linuxbox-F6F6F6D5E1ED.svg) ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/android-F6F6F6D5E1ED1E72F21AD5FD-madeonan-1AD5FD1E72F2-androidphone-F6F6F6D5E1ED.svg)
 
 #### Where-is
 <details><summary><code>.files/</code></summary>
@@ -79,7 +79,7 @@ My VIM setup featuring a true TextEdit-like key mapping.
 
 ---
 
-<p align='center'><a href='https://github.com/kvpb/.files/blob/master/bin/rpwg.py'><img src='https://gistcdn.githack.com/kvpb/c9d1aa35c62862e73c50836dc49dbc66/raw/221677c34f7b7327f0074bd02a6d9b8052755285/rpwg.svg'></a></p>
+<p align='center'><a href='https://github.com/kvpb/.files/blob/master/bin/rpwg.py'><img src='https://gistcdn.githack.com/kvpb/c9d1aa35c62862e73c50836dc49dbc66/raw/5c32c06d72b0169b6ed688efdd99d1d3d6d2eb31/rpwg.svg'></a></p>
 
 ## **Random Password Generator**<br>`rpwg.py`
 
@@ -153,10 +153,10 @@ The scratching system I built at university for better cleaner faster note-takin
 
 #### Author
 
-<p align='center'><a href='http://kvpb.co'><img src='https://gist.githack.com/kvpb/bfed748ac5c509985c89ea613a2bfd02/raw/8c0b311b7c848fabddf61672ba6bb72c8754fed9/karlbertinssymbol.svg'></a><br>
+<p align='center'><a href='http://kvpb.co'><img src='https://gistcdn.githack.com/kvpb/c80594e9079e857c55c36dec49a1a2d7/raw/eec54d5821dc092ad910635141c4e4feebf07565/kvpbssymbol.svg'></a><br>
 <b>Karl V. P. B. `<code>kvpb</code>`</b><br>
-<a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a>&nbsp;&nbsp;<a href='https://twitter.com/kvpb777'>Twitter</a>&nbsp;&nbsp;<a href='https://www.instagram.com/karlbertin/'>Instagram</a>&nbsp;&nbsp;<a href='https://vm.tiktok.com/ZSwAmcFh/'>TikTok</a><br>
+<a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a>&nbsp;&nbsp;<a href='https://twitter.com/kvpbx'>Twitter</a>&nbsp;&nbsp;<a href='https://vm.tiktok.com/ZSwAmcFh/'>TikTok</a><br>
 <br>
 <br>
 <br>
-<img src='https://gistcdn.githack.com/kvpb/c1ea1f389c9cba6fdcd5ef6c0b931734/raw/7ad080dcc064276a7acbaa33d617e0dc93a3a558/kvpbsesrbrating.svg'></p>
+<img src='https://gistcdn.githack.com/kvpb/f5f75716dd024cc48f8dc28176c0b642/raw/e5344bebf926b378faeb208724ae97f4e06639ca/kvpbsesrbrating.svg'></p>
