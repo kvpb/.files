@@ -1,3 +1,5 @@
+source ${HOME}/.bashrc
+
 # Options
 
 setopt INTERACTIVE_COMMENTS
@@ -17,13 +19,28 @@ bindkey "^[[B" history-beginning-search-forward
 
 # Functions
 
-source ${HOME}/.functions
-source ${HOME}/.zfunctions
+#source ${HOME}/.bashrc
+
+function mf ()
+{
+	for s in "${@}"
+	do
+		if [ -e "${s}" ]
+		then
+			printf "${s}: file exists\n"
+		else
+			zsh <<< "> ${s} <<< ''"
+		fi
+	done
+} # mf
+# mf	make files
+# touch tempers with the timestamps. mkfile does not create empty files. Sometimes, that's all you need.
 
 # Aliases
 
-source ${HOME}/.aliases
-#source ${HOME}/.zaliases
+#source ${HOME}/.bashrc
+
+#
 
 # ETC
 
@@ -48,7 +65,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 #	https://github.com/kvpb
 #	https://vm.tiktok.com//
 
-#	Copyright 2014 Karl V. P. Bertin
+#	Copyright 2014 Karl Vincent Pierre Bertin
 #
 #	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 #
