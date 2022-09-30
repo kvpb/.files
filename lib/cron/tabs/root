@@ -1,7 +1,7 @@
-00 18  *  *  * sudo port -N selfupdate > /dev/null 2>&1
-       @reboot sudo port -N selfupdate > /dev/null 2>&1
-00 18  *  *  * sudo port -N upgrade outdated > /dev/null 2>&1
-       @reboot sudo port -N upgrade outdated > /dev/null 2>&1
-00 18  *  *  * sudo port -N reclaim > /dev/null 2>&1
-       @reboot sudo port -N reclaim > /dev/null 2>&1
-00 18  *  * 00 [ ! -L /Volumes/KVPB\'s\ 1big\ Dock -a -d /Volumes/KVPB\'s\ 1big\ Dock -a ! -L /Volumes/KVPB\'s\ My\ Passport\ Pro\ 4TB -a -d /Volumes/KVPB\'s\ My\ Passport\ Pro\ 4TB ] && sudo rsync -aHAXv --delete /Volumes/KVPB\'s\ 1big\ Dock/ /Volumes/KVPB\'s\ My\ Passport\ Pro\ 4TB > /dev/null 2>&1
+00 12  *  *  3 /opt/local/bin/port -N selfupdate > /dev/null 2>&1
+       @reboot /opt/local/bin/port -N selfupdate > /dev/null 2>&1
+00 12  *  *  3 /opt/local/bin/port -N upgrade outdated > /dev/null 2>&1
+       @reboot /opt/local/bin/port -N upgrade outdated > /dev/null 2>&1
+00 12  *  *  3 /opt/local/bin/port -N reclaim > /dev/null 2>&1
+       @reboot /opt/local/bin/port -N reclaim > /dev/null 2>&1
+59 23 30  *  * [ ! -L /Volumes/KVPB\'s\ 1big\ Dock -a -d /Volumes/KVPB\'s\ 1big\ Dock -a ! -L /Volumes/KVPB\'s\ My\ Passport\ Pro\ 4TB -a -d /Volumes/KVPB\'s\ My\ Passport\ Pro\ 4TB ] && rsync -aHAXv --delete /Volumes/KVPB\'s\ 1big\ Dock/ /Volumes/KVPB\'s\ My\ Passport\ Pro\ 4TB > /dev/null 2>&1
