@@ -293,10 +293,13 @@ alias	dds='DeleteDSStore'
 
 # Computer Programs
 
-#alias	RPwG='ruby ${HOME}/.files/bin/rpwg.py'
-#alias	rpwg='ruby ${HOME}/.files/bin/rpwg.py'
-alias	pw='python3 ${HOME}/.files/bin/rpwg.py'
-
 #alias	SetVolume='sh ${HOME}/.files/bin/SetVolume.sh'
 #alias	setvol='sh ${HOME}/.files/bin/SetVolume.sh'
 alias	sv='sh ${HOME}/.files/bin/SetVolume.sh'
+
+alias	alarm='sh ${HOME}/.files/bin/alarm.sh'
+#alias	am='sh ${HOME}/.files/bin/alarm.sh'
+
+#alias	RPwG='ruby ${HOME}/.files/bin/rpwg.py'
+#alias	rpwg='python3 ${HOME}/.files/bin/rpwg.py'
+alias	pw='python3 ${HOME}/.files/bin/rpwg.py'
