@@ -1,4 +1,6 @@
-00 12  *  *  * /opt/local/bin/python3 /Users/kvpb/bin/autotss/autotss.py > /dev/null 2>&1
+00 12  *  *  3 rustup update
+00 12  *  *  3 git -C ${HOME}/.rbenv pull --rebase
+00 12  *  *  3 /opt/local/bin/python3 /Users/kvpb/bin/autotss/autotss.py > /dev/null 2>&1
        @reboot /opt/local/bin/python3 /Users/kvpb/bin/autotss/autotss.py > /dev/null 2>&1
-59 23  *  * 00 find ${HOME}/Library/{Caches,Saved\ Application\ State}/* -mindepth 0 -delete > /dev/null 2>&1
+59 23  *  *  0 find ${HOME}/Library/{Caches,Saved\ Application\ State}/* -mindepth 0 -delete > /dev/null 2>&1
        @reboot find ${HOME}/Library/{Caches,Saved\ Application\ State}/* -mindepth 0 -delete > /dev/null 2>&1
