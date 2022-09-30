@@ -88,6 +88,43 @@ sqlite3-dump()
 }; # sql, sqld, sqlite3-dump
 # sqlite3-dump	dump the database in an SQL text format
 
+g-p()
+{
+	local t=1
+	local s=""
+
+	if [ -f "${1}" ]
+	then
+		:
+	else
+		printf "%s\n" "Error: ${1} does not exist."
+		return 1
+	fi
+	case "${2}" in
+		"c" | "create" | "created" )
+			s="created"
+			;;
+		"u" | "update" | "updated" )
+			s="updated"
+			;;
+		#"d" | "delete" | "deleted" )
+		#	s="deleted"
+		#	;;
+		* )
+			t=0
+			;;
+	esac
+	git add "${1}"
+	if [ ${t} -eq 1 ]
+	then
+		git commit --message="${1} ${s}."
+	else
+		git commit --allow-empty-message --message=""
+	fi
+	git push
+} # g-p, git-push
+# g-p	
+
 pn()
 {
 	printf "$(cd "$(dirname "${1}";)" && pwd -P;)/$(basename "${1}";)"'\n'; #echo $(cd "$(/usr/bin/dirname "${1}")" && pwd -P)/$(/usr/bin/basename "${1}");
