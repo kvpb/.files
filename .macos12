@@ -60,7 +60,7 @@ say --voice=Fiona 'Ta-da!'
 # Display the title screen with the disclaimer.
 
 sudo -v # Ask for an administrator password.
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & # Update the sudo timestamp until the script is over.
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & # Update the sudo timestamp, until the script ends.
 
 #csrutil disable # Disable the System Integrity Protection. /!\ 'This tool needs to be executed from the Recovery OS.' (csrutil, OS X 10.11 El Capitan) (i) introduced in OS X 10.11 El Capitan. # I just type this here for the record.
 
@@ -73,7 +73,7 @@ echo 'Unnamed'
 
 sudo spctl --master-disable #sudo defaults write /var/db/SystemPolicy enabled -string NO # Allow apps downloaded from anywhere. (Disable GateKeeper.)
 
-chsh -s /bin/bash # Set BASH as login shell.
+chsh -s /bin/bash # Set BASH as the login shell.
 
 defaults write com.apple.LaunchServices LSQuarantine -bool FALSE # Do not warn when opening an application.
 
@@ -83,28 +83,42 @@ defaults write com.apple.LaunchServices LSQuarantine -bool FALSE # Do not warn w
 
 sudo systemsetup -setrestartfreeze on # Restart automatically if the computer freezes.
 
-defaults write -g AppleLanguages -array "en" "fr" # Set US english and FR french as preferred languages.
-defaults write -g AppleLocale -string "en_US@currency=EUR" # Set US english as format language and euro as currency.
-defaults write -g AppleMeasurementUnits -string "Centimeters" # Set centimeters as measurement unit.
-defaults write -g AppleMetricUnits -bool TRUE
-# Set the language and text formats.
+defaults write "Apple Global Domain" AppleLanguages -array "en-US" "fr" # Set US english and FR french as the preferred languages.
+defaults write "Apple Global Domain" AppleLocale -string "en_US@currency=EUR" # Set US english as the format language and euro as the currency.
+defaults write "Apple Global Domain" AppleMeasurementUnits -string "Centimeters" # Set centimeters as the measurement unit.
+defaults write "Apple Global Domain" AppleMetricUnits -boolean TRUE # Set the language and text formats.
+defaults write "Apple Global Domain" AppleICUForce24HourTime -boolean TRUE # Use a 24-hour clock.
+defaults write "Apple Global Domain" AppleTemperatureUnit -string "Celsius" # Give the temperature in Celsius.
 
 systemsetup -settimezone "Europe/Paris" > /dev/null # Set the timezone. (i) See `sudo systemsetup -listtimezones` for other values.
 
-sudo systemsetup -setusingnetworktime on # Enable network time use.
+sudo systemsetup -setusingnetworktime on # Use network time.
+sudo systemsetup -setnetworktimeserver "time.euro.apple.com" # Set date and time automatically via the network time server.
+defaults write "Apple Global Domain" AppleFirstWeekday -dict gregorian 2 # Set monday as the first day of the week and gregorian as the calendar.
 
-sudo systemsetup -setnetworktimeserver "time.euro.apple.com" # Set network time server.
+if [ $(bioutil --system --read | wc -l | sed 's/^ *//g'") -gt 2 ]
+then
+	sudo cp -av /etc/pam.d/sudo /etc/pam.d/sudo.bak
+	sudo awk 'NR==1 {print; print "auth       sufficient     pam_tid.so"} NR!=1' /etc/pam.d/sudo
+fi
+# Enable Touch ID in the command-line interface on Mac with Touch ID.
 
-softwareupdate --install-rosetta --agree-to-license #/usr/sbin/softwareupdate --install-rosetta --agree-to-license # Install Rosetta 2. https://support.apple.com/en-au/HT211861
+if [ $(uname -p) = "arm64" ]
+then
+	/usr/sbin/softwareupdate --install-rosetta --agree-to-license # Install Rosetta 2. https://support.apple.com/en-au/HT211861
+#else #elif [ $(uname -p) = 'i386' ]
+#	:
+fi
+# Install Rosetta 2 on ARM-based Mac.
 
 echo 'Directory Layout'
 
-sudo mkdir -p /usr/local/bin # Adapt to the SIP--- for the better, this time.
+sudo mkdir -p /usr/local/bin # Adapt to the SIP for the better this time.
 
 sudo ln -s /usr/libexec/PlistBuddy /usr/local/bin/PlistBuddy
 sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/local/bin/airport
 sudo ln -s /System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc /usr/local/bin/jsc
-# Write system-wide custom symbolic links. (i) From OS X 10.11 El Capitan onwards, the SIP prevents writing to /usr/ except /usr/local/. # In turn, /usr/local/bin was created beforehand.
+# Write system-wide custom symbolic links. (i) From OS X 10.11 El Capitan onwards, the SIP prevents one from writing to /usr/ except /usr/local/. # In turn, /usr/local/bin was created beforehand.
 
 if [ -e "/Applications/{Directory Utility,Network Utility,Finder,Archive Utility}.app" ];
 then
@@ -148,36 +162,36 @@ sudo -- sh -c -e 'echo "127.0.0.1	fr-fr.facebook.com" >> /etc/hosts'
 sudo -- sh -c -e 'echo "127.0.0.1	login.facebook.com" >> /etc/hosts'
 sudo -- sh -c -e 'echo "fe80::1%lo0	login.facebook.com" >> /etc/hosts'
 sudo -- sh -c -e 'echo "127.0.0.1	www.login.facebook.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0	www.login.facebook.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1	fbcdn.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0	fbcdn.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1	www.fbcdn.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0	www.fbcdn.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1	fbcdn.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0	fbcdn.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1	www.fbcdn.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0	www.fbcdn.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1	static.ak.fbcdn.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0	static.ak.fbcdn.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1	connect.facebook.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0	connect.facebook.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1	www.connect.facebook.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0	www.connect.facebook.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1	static.ak.connect.facebook.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0	static.ak.connect.facebook.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1	apps.facebook.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0	apps.facebook.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1	twitter.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1	www.twitter.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "#127.0.0.1	youtube.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "#127.0.0.1	www.youtube.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0 www.login.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1 fbcdn.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0 fbcdn.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1 www.fbcdn.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0 www.fbcdn.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1 fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0 fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1 www.fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0 www.fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1 static.ak.fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0 static.ak.fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1 connect.facebook.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0 connect.facebook.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1 www.connect.facebook.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0 www.connect.facebook.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1 static.ak.connect.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0 static.ak.connect.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1 apps.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0 apps.facebook.com" >> /etc/hosts'
+#sudo -- sh -c -e 'echo "127.0.0.1 twitter.com" >> /etc/hosts'
+#sudo -- sh -c -e 'echo "127.0.0.1 www.twitter.com" >> /etc/hosts'
+#sudo -- sh -c -e 'echo "#127.0.0.1 youtube.com" >> /etc/hosts'
+#sudo -- sh -c -e 'echo "#127.0.0.1 www.youtube.com" >> /etc/hosts'
 sudo dscacheutil -flushcache # Clear the DNS cache. #lookupd -flushcache # Clear the DNS cache on Mac OS X 10.4 Tiger. #sudo dscacheutil -flushcache # Clear the DNS cache on Mac OS X 10.5 Leopard, 10.6 Snow Leopard. #sudo killall -HUP mDNSResponder # Clear the DNS cache on Mac OS X 10.7 Lion, 10.8 Mountain Lion, macOS 10.12 Sierra, 10.13 High Sierra, 10.14 Mojave, 11 Big Sur. #sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder # Clear the DNS cache on OS X 10.9 Mavericks, 10.11 El Capitan. #sudo discoveryutil mdnsflushcache; sudo discoveryutil udnsflushcaches # Clear the DNS cache on OS X 10.10 Yosemite.
-printf '\xF0\x9F\x9A\xAE\n'
+printf "%s\n" '\xF0\x9F\x9A\xAE'
 # Put litter in its place.
 
-echo 'Login Window & Screen Saver (NSGlobalDomain, com.apple.loginwindow, com.apple.HIToolbox.loginwindow, com.apple.screensaver)'
+echo 'Login Window & Screen Saver (com.apple.loginwindow, com.apple.HIToolbox.loginwindow, com.apple.screensaver)'
 
-sudo defaults write /Library/Preferences/com.apple.loginwindow autoLoginUser "" # Disable automatic login.
+sudo defaults write /Library/Preferences/com.apple.loginwindow autoLoginUser "" # Turn automatic login off.
 
 sudo /usr/libexec/PlistBuddy -c "Add :AppleCurrentKeyboardLayoutInputSourceID string com.apple.keylayout.US" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
 sudo /usr/libexec/PlistBuddy -c "Set :AppleCurrentKeyboardLayoutInputSourceID com.apple.keylayout.US" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
@@ -224,13 +238,13 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 #read emailaddress
 #sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "${userfullname}'s ${macmodelname}.\nPlease contact ${phonenumber} or ${emailaddress} if found."
 # Set and display lock message. (i) userfullname and macmodelname variables have been set earlier, at Network: Computer name.
-sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Karl V. P. Bertin's ${macmodelname}.\nPlease contact both +33 6 33 78 48 93 and karlvp.bertin@gmail.com if found. USD10,000.00 reward." # Display set lock message. (i) computername variable has been set earlier at Network: Computer name.
+sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "Karl Vincent Pierre Bertin's ${macmodelname}.\nPlease contact both +33 7 69 61 92 64 and karl.v.p.bertin@gmail.com if found.\n\$10,000.00 reward." # Display set lock message. (i) computername variable has been set earlier at Network: Computer name.
 
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 # Require password immediately after sleep or screen saver begins. (Enable Require Password Immediately After Sleep Or Screen Saver Begins.)
 
-echo 'Keyboard & Touch Bar (NSGlobalDomain, com.apple.HIToolbox, com.apple.universalaccess)'
+echo 'Keyboard & Touch Bar (Apple Global Domain, com.apple.HIToolbox, com.apple.universalaccess)'
 
 sudo /usr/libexec/PlistBuddy -c "Add :AppleCurrentKeyboardLayoutInputSourceID string com.apple.keylayout.US" "/Library/Preferences/com.apple.HIToolbox.plist"
 sudo /usr/libexec/PlistBuddy -c "Set :AppleCurrentKeyboardLayoutInputSourceID com.apple.keylayout.US" "/Library/Preferences/com.apple.HIToolbox.plist"
@@ -276,27 +290,30 @@ sudo chown root:admin "/Library/Preferences/com.apple.HIToolbox.plist"
 sudo chmod 644 "/Library/Preferences/com.apple.HIToolbox.plist"
 # Add Unicode hex input system input keyboard layout.
 
-defaults write -g AppleKeyboardUIMode -int 3 # Enable full keyboard access for all controls.
+defaults write "Apple Global Domain" AppleKeyboardUIMode -integer 3 # Enable full keyboard access for all controls.
 
-defaults write -g NSUserKeyEquivalents '{Zoom = "@$m";}'
-# Add Shift-Command-M 'Maximize window' keyboard app shortcut. # It doesn't work so well, e.g. in Chrome, it fully expands a window resized to 50% of the desktop's width to fill the desktop, but it doesn't just refit the window to Chrome's default size which is a bit larger.
+defaults write "Apple Global Domain" NSUserKeyEquivalents '{Zoom = "@$m";}' # Add Shift-Command-M 'Maximize window' keyboard app shortcut. # It doesn't work so well, e.g. it fully expands a window resized to 50% of the width of the desktop to fill the desktop in Chrome, but it doesn't just refit the window to default size of Chrome, which is a bit larger.
 
 sudo defaults write com.apple.universalaccess slowKey -bool FALSE # Disable Slow Keys. /i\ required from macOS 10.12 Sierra onwards to set faster key repeat rates.
-defaults write -g ApplePressAndHoldEnabled -bool FALSE # Disable press-and-hold for keys.
-defaults write -g InitialKeyRepeat -int 10 # Set even shorter key repeat triggering delay. /!\ ≤10: NS SOM PARTY MN BRAV MYLOO (i) 15: GUI fastest
+defaults write "Apple Global Domain" ApplePressAndHoldEnabled -boolean FALSE # Disable press-and-hold for keys.
+defaults write "Apple Global Domain" InitialKeyRepeat -integer 10 # Set even shorter key repeat triggering delay. /!\ ≤10: NS SOM PARTY MN BRAV MYLOO (i) 15: GUI fastest
 #sudo defaults write com.apple.universalaccess slowKeyDelay -int 5
-defaults write -g KeyRepeat -int 1 # Set faster key repeat rate. (Enable key repeat.)
+defaults write "Apple Global Domain" KeyRepeat -integer 1 # Set faster key repeat rate. (Enable key repeat.)
 
 sudo defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool TRUE
 sudo defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 # Use scroll gesture with Strg (⌃) modifier key to zoom. # Because back then, I had a QWERTZ Model M keyboard. Deutsche Qualität.
 sudo defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool TRUE # Follow the keyboard focus while zoomed in.
 
-defaults write -g NSAutomaticSpellingCorrectionEnabled -bool FALSE # Disable automatic spell correction.
-
-defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool FALSE
-defaults write -g NSAutomaticDashSubstitutionEnabled -bool FALSE
+defaults write "Apple Global Domain" NSAutomaticTextCompletionEnabled -boolean FALSE # Disable automatic text completion.
+defaults write "Apple Global Domain" NSAutomaticQuoteSubstitutionEnabled -boolean FALSE
+defaults write "Apple Global Domain" NSAutomaticDashSubstitutionEnabled -boolean FALSE
 # Disable smart quotes and dashes; set smart double and single quotes to defaults.
+defaults write "Apple Global Domain" NSAutomaticSpellingCorrectionEnabled -boolean FALSE
+defaults write "Apple Global Domain" WebAutomaticSpellingCorrectionEnabled -boolean FALSE
+# Disable automatic spell correction.
+defaults write "Apple Global Domain" NSAutomaticPeriodSubstitutionEnabled -boolean FALSE # Disable automatic period substitution.
+defaults write "Apple Global Domain" NSAutomaticCapitalizationEnabled -boolean FALSE # Disable automatic capitalization.
 
 defaults write ${HOME}/Library/Preferences/.GlobalPreferences.plist NSUserDictionaryReplacementItems -array \
                                                                                                             '{ on = 1; replace = "\\llrda"; with = "\U27fa"; }' \
@@ -336,45 +353,55 @@ defaults write ${HOME}/Library/Preferences/.GlobalPreferences.plist NSUserDictio
 
 echo 'Mouse & Trackpad (NSGlobalDomain, com.apple.driver.AppleHIDMouse, com.apple.driver.AppleBluetoothMultitouch.trackpad, com.apple.dock)'
 
-defaults write com.apple.driver.AppleHIDMouse.plist Button2 -int 2 # Enable mouse secondary click.
+defaults write com.apple.driver.AppleHIDMouse.plist Button2 -int 2 # Enable the secondary click of the mouse.
 
-defaults -currentHost write -g com.apple.trackpad.trackpadCornerClickBehaviour -int 1
+defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -boolean TRUE
+defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -integer 2
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool TRUE
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 1
-defaults -currentHost write -g com.apple.trackpad.enableSecondaryClick -bool TRUE
-# Enable trackpad secondary click, and set it to click or tap with two fingers. # Enter `defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2` to map bottom-right click to secondary click.
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -integer 1
+defaults -currentHost write -globalDomain com.apple.trackpad.enableSecondaryClick -boolean TRUE
+defaults -currentHost write -globalDomain com.apple.trackpad.trackpadCornerClickBehaviour -integer 1
+# Enable the secondary click of the trackpad, and set it to click or tap with two fingers. # Enter `defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -integer 2` to map bottom-right click to secondary click.
 
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool TRUE
-defaults -currentHost write -g com.apple.mouse.tapBehavior -int 1
-defaults write -g com.apple.mouse.tapBehavior -int 1
-# Enable trackpad tap to click for current user and login screen.
+defaults write com.apple.AppleMultitouchTrackpad Click -boolean TRUE
+defaults write com.apple.AppleMultitouchTrackpad Clicking -boolean TRUE
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -boolean TRUE
+defaults -currentHost write "Apple Global Domain" com.apple.mouse.tapBehavior -integer 1
+defaults write "Apple Global Domain" com.apple.mouse.tapBehavior -integer 1
+# Enable trackpad tap to click for the current user and login screen.
 
-defaults write -g com.apple.mouse.scaling -int 3 # Set mouse tracking speed to fast. (i) 0: slow; 3: fast.
-#defaults write -g com.apple.scrollwheel.scaling -float 1.7 # Set mouse scroll wheel scrolling speed to fast. (i) 0: slow; 1.7: fast. /!\ seems to cause drag and drop in Finder to become slow to unresponsive.
-#defaults write -g com.apple.mouse.doubleClickThreshold -float 3.8625 # Set mouse double click needed speed to 75%. /!\ seems to cause drag and drop in Finder to become slow to unresponsive.
+defaults write -globalDomain com.apple.mouse.scaling -integer 3 # Set mouse tracking speed to fast. (i) 0: slow; 3: fast.
+#defaults write -globalDomain com.apple.scrollwheel.scaling -float 1.7 # Set mouse scroll wheel scrolling speed to fast. (i) 0: slow; 1.7: fast. /!\ seems to cause drag and drop in Finder to become slow to unresponsive.
+#defaults write -globalDomain com.apple.mouse.doubleClickThreshold -float 3.8625 # Set mouse double click needed speed to 75%. /!\ seems to cause drag and drop in Finder to become slow to unresponsive.
 
-defaults write -g com.apple.trackpad.scaling -int 3 # Set trackpad tracking speed to fast. (i) 0: slow; 3: fast.
+defaults write -globalDomain com.apple.trackpad.scaling -integer 3 # Set trackpad tracking speed to fast. (i) 0: slow; 3: fast.
 
-defaults write -g com.apple.swipescrolldirection -bool TRUE # Enable natural (OS X 10.7 Lion-style) scroll direction. (Enable System Preferences: TrackPad: Scroll & Zoom: Scroll Direction: natural.)
+defaults write -globalDomain com.apple.swipescrolldirection -boolean TRUE # Enable natural (OS X 10.7 Lion-style) scroll direction. (Enable System Preferences: TrackPad: Scroll & Zoom: Scroll Direction: natural.)
 
-defaults write -g AppleEnableSwipeNavigateWithScrolls -bool TRUE
-defaults -currentHost write -g com.apple.trackpad.threeFingerHorizSwipeGesture -int 0
+defaults write "Apple Global Domain" AppleEnableSwipeNavigateWithScrolls -boolean TRUE
+defaults -currentHost write -globalDomain com.apple.trackpad.threeFingerHorizSwipeGesture -integer 0
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 1
 # Scroll left or right with two fingers to swipe between pages. (Enable System preferences: TrackPad: More gestures: Swipe between pages: Scroll left or right with two fingers.)
 
 defaults write com.apple.dock showLaunchpadGestureEnabled -int 0 # Disable trackpad Launchpad gesture (pinch with thumb and three fingers).
 
-echo "'Displays' & Display Server (NSGlobalDomain, com.apple.windowserver)"
+echo "'Displays' & Display Server (Apple Global Domain, com.apple.windowserver)"
 
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool TRUE # Enable Hi-DPI display modes. /!\ requires a restart.
 
-defaults write -g AppleFontSmoothing -int 2 # Enable medium subpixel font rendering on non-Apple LCD displays. (Enable Use LCD Font Smoothing When Available.)
+defaults write "Apple Global Domain" AppleFontSmoothing -integer 2 # Enable medium subpixel font rendering on non-Apple LCD displays. (Enable Use LCD Font Smoothing When Available.)
 
-osascript -e 'activate "System Preferences"' -e 'tell application "System Events" to keystroke "L" using {command down}' -e 'quit application "System Preferences"' -e 'delay 0.5' -e 'tell application "System Events" to keystroke "L" using {command down}' -e 'delay 0.5' -e 'tell application "System Preferences"' -e 'reveal anchor "displaysDisplayTab" of pane "com.apple.preference.displays"' -e 'end tell' -e 'delay 0.5' -e 'tell application "System Events" to tell process "System Preferences" to tell window "Built-in Liquid Retina XDR Display"' -e 'click radio button "Scaled" of tab group 1' -e 'click radio button 4 of radio group 1 of group 1 of tab group 1' -e 'end tell' -e 'quit application "System Preferences"' # Provide more space for windows and apps. https://web.archive.org/web/20151204010816/https://support.apple.com/en-us/HT202471
+if [ $(sysctl -n hw.model) = 'MacBookPro11,3' -o $(sysctl -n hw.model) = 'MacBook10,1' ]
+then
+	osascript -e 'activate "System Preferences"' -e 'tell application "System Events" to keystroke "L" using {command down}' -e 'quit application "System Preferences"' -e 'delay 0.5' -e 'tell application "System Events" to keystroke "L" using {command down}' -e 'delay 0.5' -e 'tell application "System Preferences"' -e 'reveal anchor "displaysDisplayTab" of pane "com.apple.preference.displays"' -e 'end tell' -e 'delay 0.5' -e 'tell application "System Events" to tell process "System Preferences" to tell window "Built-in Retina Display"' -e 'click radio button "Scaled" of tab group 1' -e 'click radio button 5 of radio group 1 of group 1 of tab group 1' -e 'end tell' -e 'quit application "System Preferences"'
+elif [ $(sysctl -n hw.model) = "MacBookPro18,1" -o $(sysctl -n hw.model) = "MacBookPro18,2"]
+then
+	osascript -e 'activate "System Preferences"' -e 'tell application "System Events" to keystroke "L" using {command down}' -e 'quit application "System Preferences"' -e 'delay 0.5' -e 'tell application "System Events" to keystroke "L" using {command down}' -e 'delay 0.5' -e 'tell application "System Preferences"' -e 'reveal anchor "displaysDisplayTab" of pane "com.apple.preference.displays"' -e 'end tell' -e 'delay 0.5' -e 'tell application "System Events" to tell process "System Preferences" to tell window "Built-in Liquid Retina XDR Display"' -e 'click radio button "Scaled" of tab group 1' -e 'click radio button 4 of radio group 1 of group 1 of tab group 1' -e 'end tell' -e 'quit application "System Preferences"'
+fi # Provide more space for windows and apps. https://web.archive.org/web/20151204010816/https://support.apple.com/en-us/HT202471
 
 echo "'Printers' (com.apple.print.PrintingPrefs)"
 
-defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool TRUE # Automatically quit printer app when printing is over.
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool TRUE # Automatically quit the printer app, when it finishes printing.
 
 #echo "Airplay ('Displays' & Display server)"
 
@@ -426,21 +453,23 @@ sudo tmutil enable # Turn on Time Machine.
 
 #echo 'Siri'
 
-echo 'UX, Aqua (GUI), SUI & VUI (NSGlobalDomain, com.apple.systempreferences, com.apple.CrashReporter, com.apple.helpviewer, com.apple.systemuiserver)'
+echo 'UX, Aqua (GUI), SUI & VUI (Apple Global Domain, NSGlobalDomain, com.apple.systempreferences, com.apple.CrashReporter, com.apple.helpviewer, com.apple.systemuiserver)'
 
-defaults write -g NSDocumentSaveNewDocumentsToCloud -bool FALSE # Do not save to iCloud by default.
+defaults write "Apple Global Domain" NSDocumentSaveNewDocumentsToCloud -boolean FALSE # Do not save to iCloud by default.
 
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool FALSE # Do not reopen windows when logging back in. (Disable resume on restart.) (Disable Reopen windows when logging back in (Resume).)
 
-defaults write -g NSDisableAutomaticTermination -bool TRUE # Disable automatic termination of inactive applications.
+defaults write "Apple Global Domain" NSDisableAutomaticTermination -boolean TRUE # Disable automatic termination of inactive applications.
 
 #defaults write com.apple.CrashReporter DialogType -string "none" # Disable the crash reporter.
 
-defaults write com.apple.helpviewer DevMode -bool TRUE # Set Help viewer in non-floating mode.
+defaults write com.apple.helpviewer DevMode -bool TRUE # Set the help viewer in non-floating mode.
 
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user # Delete duplicates in Open With menu.
 
-defaults write -g NSWindowResizeTime -float 0.001 # Increase window resizing and fullscreen mode animation speed.
+defaults write "Apple Global Domain" NSWindowResizeTime -float 0.001 # Increase window resizing and fullscreen mode animation speed.
+
+defaults write "Apple Global Domain" AppleScrollerPagingBehavior -boolean TRUE # Click in the scroll bar to jump to the spot that's clicked.
 
 defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -bool TRUE
 defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Volume.menu"
@@ -499,21 +528,23 @@ defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextr
 defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Eject.menu"
 # Display eject (Menu Bar & Touch Bar (UX, Aqua (GUI), SUI & VUI)) menu bar item.
 
-defaults write -g NSTextShowsControlCharacters -bool TRUE # Display ASCII control characters using caret notation in plain text view.
+defaults write "Apple Global Domain" NSTextShowsControlCharacters -boolean TRUE # Display ASCII control characters using caret notation in plain text view.
 
-defaults write -g AppleICUForce12HourTime -bool FALSE # Set 24-hour time format. (Enable System Preferences: Date & Time: Clock: Time Options: Use a 24-hour clock.)
+#defaults write "Apple Global Domain" NSScrollAnimationEnabled -boolean FALSE # Disable smooth scrolling. (i) A trick for old Mac that mess up the animation.
 
-#defaults write -g NSScrollAnimationEnabled -bool FALSE # Disable smooth scrolling. (i) A trick for old Mac that mess up the animation.
-
-defaults write -g AppleShowScrollBars -string "Automatic" # Display scroll bars automatically. # Other values are WhenScrolling and Always.
+defaults write "Apple Global Domain" AppleShowScrollBars -string "Automatic" # Show scroll bars automatically based on mouse or trackpad. # Other values are WhenScrolling and Always.
 
 sudo defaults write com.apple.universalaccess reduceTransparency -bool FALSE # Set translucent menu bar (Enable Translucent Menu Bar.)
 
-#defaults write -g AppleHighlightColor -string "1.000000 0.937255 0.690196" # Set Highlight color to the yellow of OS X 10.10 Yosemite.
+defaults delete "Apple Global Domain" AppleAccentColor
+defaults delete "Apple Global Domain" AppleAquaColorVariant
+# Set accent color and Aqua color variant.
+defaults delete "Apple Global Domain" AppleHighlightColor
+# Set the highlight color to the accent color.
 
-#sudo defaults write -g _HIEnableThemeSwitchHotKey -bool TRUE # Enable Control-Option-Command-T theme switch hotkey. (i) introduced in OS X 10.10 Yosemite.
-defaults write -g NSRequiresAquaSystemAppearance -bool FALSE # Opt in to dark mode any app linked against the macOS 10.14 or later SDK. https://web.archive.org/web/20190617025725/https://developer.apple.com/documentation/appkit/nsappearancecustomization/choosing_a_specific_appearance_for_your_macos_app
-defaults write -g AppleInterfaceStyleSwitchesAutomatically -int 1 # Automatically adjust the appearance from light to dark during the day. https://support.apple.com/en-gb/guide/mac-help/mchl52e1c2d2/mac (i) introduced in macOS 11 Big Sur.
+defaults write "Apple Global Domain" NSRequiresAquaSystemAppearance -bool FALSE # Opt in to dark mode any app linked against the macOS 10.14 or later SDK. https://web.archive.org/web/20190617025725/https://developer.apple.com/documentation/appkit/nsappearancecustomization/choosing_a_specific_appearance_for_your_macos_app
+#defaults write "Apple Global Domain" AppleInterfaceStyle -string "Dark" # Color the appearance dark.
+defaults write "Apple Global Domain" AppleInterfaceStyleSwitchesAutomatically -boolean TRUE # Automatically adjust the appearance from light to dark during the day. https://support.apple.com/en-gb/guide/mac-help/mchl52e1c2d2/mac (i) introduced in macOS 11 Big Sur.
 
 #sudo nvram SystemAudioVolume=" " # Disable the startup sound. # Enter `sudo nvram -d SystemAudioVolume` to reenable the startup sound.
 
@@ -545,8 +576,8 @@ defaults write com.apple.finder NewWindowTarget -string "PfLo"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
 # Set home as new windows directory. # Use "PfDe" and "file://${HOME}/Desktop" for desktop or "PfLo" and "file:///path" for other paths.
 
-defaults write -g com.apple.springing.enabled -bool TRUE # Enable spring loading for directories.
-defaults write -g com.apple.springing.delay -float 0 # Set spring loading delay to null.
+defaults write -globalDomain com.apple.springing.enabled -bool TRUE # Enable spring loading for directories.
+defaults write -globalDomain com.apple.springing.delay -float 0 # Set spring loading delay to null.
 
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf" # Set Finder search to search the current folder.
 
@@ -564,9 +595,9 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
                                                           Privileges -bool TRUE
 # Expand General, Open With and Sharing & Permissions file info panes by default.
 
-defaults write -g NSNavPanelExpandedStateForSaveMode -bool TRUE
-defaults write -g PMPrintingExpandedStateForPrint -bool TRUE
-defaults write -g PMPrintingExpandedStateForPrint2 -bool TRUE
+defaults write -globalDomain NSNavPanelExpandedStateForSaveMode -boolean TRUE
+defaults write -globalDomain PMPrintingExpandedStateForPrint -boolean TRUE
+defaults write -globalDomain PMPrintingExpandedStateForPrint2 -boolean TRUE
 # Expand the save pane by default.
 
 rm -rf ${HOME}/Library/Application\ Support/Dock/desktoppicture.db && killall Dock
@@ -591,7 +622,7 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool TRUE # Display
 
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool TRUE # Display mounted servers on the desktop. (Enable Connected Servers.)
 
-defaults write -g AppleShowAllExtensions -bool TRUE # Show all filename extensions. (Enable Show All Filename Extensions.)
+defaults write -globalDomain AppleShowAllExtensions -boolean TRUE # Show all filename extensions. (Enable Show All Filename Extensions.)
 
 defaults write com.apple.finder AppleShowAllFiles -bool TRUE # Display hidden files.
 
@@ -694,7 +725,7 @@ defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Calendar.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Calendar app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Contacts.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Contacts app item.
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/ProtonMail Bridge.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a ProtonMail Bridge app item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Proton Mail Bridge.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a ProtonMail Bridge app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Mail app item.
 #defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Signal.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Signal app item.
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
@@ -728,6 +759,8 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 echo 'Mission Control (com.apple.dock)' # (i) has been substituted for Exposé.
 
 defaults write com.apple.dock mru-spaces -bool FALSE # Disable automatic spaces rearranging based on most recent use.
+
+defaults write "Apple Global Domain" AppleSpacesSwitchOnActivate -boolean FALSE # When I switch to an application, do not switch to a space with open windows for the application.
 
 #defaults write com.apple.dock expose-group-by-app -bool FALSE # Do not group windows by application. (Set the behavior of Mission Control behavior to that of Exposé.)
 
@@ -837,7 +870,7 @@ defaults write com.apple.TextEdit HeightInChars -int 24 # Set new document windo
 defaults write com.apple.TextEdit TabWidth -int 4 # Set tab width to 4 chars.
 defaults write com.apple.TextEdit AddExtensionToNewPlainTextFiles -bool FALSE # Do not add .txt extension plain text files at save. (Disable Add '.txt' extension to plain text files.)
 
-defaults write com.apple.TextEdit author -string "Karl V. P. Bertin" # Set new document author name to KVPB's.
+defaults write com.apple.TextEdit author -string "Karl Vincent Pierre Bertin" # Set new document author name to KVPB's.
 defaults write com.apple.TextEdit company -string "" # Set new document company name.
 defaults write com.apple.TextEdit copyright -string "" # Set new document copyright.
 
@@ -928,8 +961,6 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Never auto-play.
 defaults write com.apple.Safari WebKitPreferences.allowsPictureInPictureMediaPlayback -bool FALSE
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2AllowsPictureInPictureMediaPlayback -bool FALSE
-# 
-
 	user=`ls -l /dev/console | cut -d " " -f 4`
 
 	database="/Users/${user}/Library/Safari/PerSitePreferences.db"
@@ -1052,9 +1083,36 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 
 #echo 'Dictionary (com.apple.Dictionary, com.apple.DictionaryServices)'
 
+printf "%s\n" "Setup Assistant (com.apple.SetupAssistant)"
+
+defaults write com.apple.SetupAssistant RunNonInteractive -boolean TRUE # Finally found the fucker!
+#defaults write com.apple.SetupAssistant  -boolean TRUE # Do not set your language.
+#defaults write com.apple.SetupAssistant  -boolean TRUE # Do not select your country or region.
+defaults write com.apple.SetupAssistant DidSeeAccessibility -boolean TRUE # Do not view accessibility options.
+#defaults write com.apple.SetupAssistant  -boolean TRUE # Do not select your Wi-Fi network.
+defaults write com.apple.SetupAssistant DidSeePrivacy -boolean TRUE
+defaults write com.apple.SetupAssistant DidSeeTrueTonePrivacy -boolean TRUE
+# Do not care about data & privacy.
+defaults write com.apple.SetupAssistant DidSeeSyncSetup -boolean TRUE
+defaults write com.apple.SetupAssistant DidSeeSyncSetup2 -boolean TRUE
+# Do not transfer your information.
+defaults write com.apple.SetupAssistant DidSeeActivationLock -boolean TRUE
+defaults write com.apple.SetupAssistant DidSeeAppStore -boolean TRUE
+# Do not sign in with your Apple ID.
+defaults write com.apple.SetupAssistant DidSeeCloudSetup -boolean TRUE
+defaults write com.apple.SetupAssistant DidSeeiCloudLoginForStorageServices -boolean TRUE
+defaults write com.apple.SetupAssistant LastSeenCloudProductVersion $(sw_vers -productVersion)
+# Do not care about the App Store and iCloud.
+defaults write com.apple.SetupAssistant DidSeeScreenTime -boolean TRUE # Do not care about screen time.
+defaults write com.apple.SetupAssistant DidSeeSiriSetup -boolean TRUE # Disable Siri and "Hey, Siri".
+defaults write com.apple.SetupAssistant DidSeeTouchIDSetup -boolean TRUE # Do not set up Touch ID.
+defaults write com.apple.SetupAssistant DidSeeApplePaySetup -boolean TRUE # Do not set up Apple Pay.
+defaults write com.apple.SetupAssistant DidSeeAppearanceSetup -boolean TRUE # Do not choose your look.
+# https://support.apple.com/guide/macbook-pro/set-up-your-mac-apd831707cb3/mac
+
 cecho 'Second-Party Settings: User-Specific Filesystem Customs' ${lityellow}
 
-#git clone git:github.com/kvpb/.files.git ${HOME}/.files
+git clone git:github.com/kvpb/.files.git ${HOME}/.files
 # Clone my .files/ from my GitHub remote repo to ${HOME}/.
 
 if [ -d "${HOME}/{Miscellaneous,Work,Temporary}" ]
@@ -1098,9 +1156,6 @@ ln -s ${HOME}/.files/.inputrc ${HOME}/.inputrc
 #ln -s ${HOME}/.files/.shrc ${HOME}/.shrc
 #ln -s ${HOME}/.files/.shinit ${HOME}/.shinit
 #ln -s ${HOME}/.files/.profile ${HOME}/.profile
-ln -s ${HOME}/.files/.exports ${HOME}/.exports
-ln -s ${HOME}/.files/.functions ${HOME}/.functions
-ln -s ${HOME}/.files/.aliases ${HOME}/.aliases
 ln -s ${HOME}/.files/.bashrc ${HOME}/.bashrc
 ln -s ${HOME}/.files/.bash_login ${HOME}/.bash_login
 ln -s ${HOME}/.files/.bash_profile ${HOME}/.bash_profile
@@ -1132,19 +1187,32 @@ ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
 #sudo dscl . create /Users/kvpb Picture "/Users/${HOME}/Pictures/UserPictures/KVPB.tif"
 # Set user picture. https://support.apple.com/kb/PH25797
 
+sudo crontab ${HOME}/.files/lib/cron/tabs/root
+crontab ${HOME}/.files/lib/cron/tabs/kvpb
+# Install my cron tables.
+
 cecho 'Third-Party: System-Wide & User-Specific Xenogenetic Software & Preferences' ${lityellow}
 
 #echo 'MacPorts'
 #
-#curl -O https://distfiles.macports.org/MacPorts/MacPorts-2.7.1.tar.bz2
-#tar xf MacPorts-2.7.1.tar.bz2
+#curl -O https://github.com/macports/macports-base/releases/download/v2.7.2/MacPorts-2.7.2.tar.bz2
+#tar xjvf MacPorts-2.7.2.tar.bz2
 # '  1.  Download and extract the MacPorts 2.7.1 tarball. Either do so using your browser and the Finder, or use the given commands in a terminal window.'
-#cd MacPorts-2.7.1/
-#./configure
-#make
-#sudo make install
+#cd MacPorts-2.7.2
+#./configure && make && sudo make install
 # '  2.  Afterwards, perform the commands shown in the terminal window. If you wish to use a path other than /opt/local, follow the instructions for installing multiple copies of MacPorts instead.'
+#cd ../
+#rm -rf MacPorts-2.7.2*
+# '      Optionally:'
 # Download and install MacPorts. https://guide.macports.org/#installing.macports.source
+
+#echo 'Homebrew'
+#
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" # Download and install Homebrew. https://brew.sh/
+
+#echo 'Rust'
+#
+#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh # Download and install Rust. https://www.rust-lang.org/tools/install
 
 echo 'iTerm2 (com.googlecode.iterm2)'
 
@@ -1253,16 +1321,16 @@ defaults delete "NSWindow Frame KCBezelWindow default.bezelWindow" #defaults wri
 defaults delete "NSWindow Frame svelte visualizerFrame" #defaults write io.github.keycastr "NSWindow Frame svelte visualizerFrame" -string "-50 -46 200 100 0 0 1920 1055 "
 # Resize the window.
 defaults write io.github.keycastr selectedVisualizer = Svelte # Set the selected visualizer to Svelte.
-defaults write io.github.keycastr "svelte.allKeystrokes" -boolean 1 # Not command keys only.
+defaults write io.github.keycastr "svelte.allKeystrokes" -bool 1 # Not command keys only.
 defaults write io.github.keycastr "mouse.displayOption" = 1 # Display mouse clicks.
-defaults write io.github.keycastr "svelte.displayAll" -boolean 1 # Display all keystrokes [in Svelte].
+defaults write io.github.keycastr "svelte.displayAll" -bool 1 # Display all keystrokes [in Svelte].
 
 defaults write io.github.keycastr displayIcon -int 1 # Display KeyCastr icon in the menu bar.
 
-defaults write io.github.keycastr SUSendProfileInfo -boolean 0 # Do not include anonymous system profile.
-defaults write io.github.keycastr SUHasLaunchedBefore -boolean 1 # Silence it on first launch.
+defaults write io.github.keycastr SUSendProfileInfo -bool 0 # Do not include anonymous system profile.
+defaults write io.github.keycastr SUHasLaunchedBefore -bool 1 # Silence it on first launch.
 defaults write io.github.keycastr SULastCheckTime -string "1970-00-00 00:00:00 +0000" # Make it check for updates on next launch.
-defaults write io.github.keycastr SUEnableAutomaticChecks -boolean 1 # Check for updated at startup.
+defaults write io.github.keycastr SUEnableAutomaticChecks -bool 1 # Check for updated at startup.
 
 for i in 'Activity Monitor' 'Calendar' 'Contacts' 'cfprefsd' 'Disk Utility' 'Dock' 'Finder' 'Mail' 'Messages' 'Safari' 'System Preferences' 'SystemUIServer' 'TextEdit' 'Xcode'
 do
@@ -1273,7 +1341,7 @@ done
 echo ''
 cecho 'macOS 12 Monterey has been configured.' ${litcyan}
 
-cecho 'A restart is required for some of these changes to take effect. Restart...?, \e[4my\e[0mes or \e[4mn\e[0mo?' ${litgreen}
+cecho 'Some of these changes require logging out or restarting. Restart...?, \e[4my\e[0mes or \e[4mn\e[0mo?' ${litgreen}
 read -r input
 if [[ ${input} =~ ^([Yy]|[Yy][Ee][Ss]|[Yy][Ee][Aa][Hh])$ ]]
 then
@@ -1295,7 +1363,7 @@ fi
 #	https://github.com/kvpb
 #	https://vm.tiktok.com/ZSwAmcFh/
 
-#	Copyright 2014 Karl V. P. Bertin
+#	Copyright 2014 Karl Vincent Pierre Bertin
 #
 #	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 #
