@@ -34,3 +34,4 @@ iconv -f iso-8859-1 -t utf-8 < file > file.txt # Convert an ISO-8859-1-encoded f
 2022-07-03 19:14:32  for s in coursera sex-educateme qwasar bfrimerde; do rsync -auvh --delete /Volumes/KVPB\'s\ Rugged\ SSD\ Pro\ 1\ TB/Macintosh\ HD/Users/kvpb/Desktop/${s}/ ~/Desktop/${s}/; done
 2022-07-27 12:22:47  git add --all && git commit --allow-empty-message --message='' && git push; git rebase --interactive --root && git commit --amend --allow-empty-message --message='' && git rebase --continue; git rebase --committer-date-is-author-date --root && git push --force-with-lease; git log --reverse --pretty=fuller
 2022-07-27 12:39:17  git commit --amend --date="Day Mon n hh:mm:ss YYYY +ZZZZ" --no-edit --allow-empty-message --message=''
+2022-09-18 09:44:41  rbenv install --skip-existing $(rbenv install --list-all | grep -v - | tail -1) --verbose && rbenv global $(rbenv install --list-all | grep -v - | tail -1)
