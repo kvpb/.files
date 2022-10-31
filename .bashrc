@@ -35,7 +35,7 @@ export PATH=/usr/local/octave/3.8.0/bin:${PATH} # Octave 3.8.0 (GNU_Octave_3.8.0
 export PATH=${HOME}/.rbenv/bin:${PATH}
 eval "$(rbenv init -)"
 # RBEnv
-#source ${HOMEBREW_PREFIX}/opt/chruby/share/chruby/chruby.sh # CHRuby
+eval "$(thefuck --alias)" # The Fuck
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -246,7 +246,7 @@ pn()
 
 lt()
 {
-	printf '%s\n' {.{.?,[^.]},}*; #{..?*,.[^.]*,*}; #if [ $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^.]*;););) -gt 1 -a $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^*]*;););) -gt 1 ]; then printf '%s\n' {.{.?,[^.]},}*; else
+	printf "%s\n" {.{.?,[^.]},}*; #{..?*,.[^.]*,*}; #if [ $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^.]*;););) -gt 1 -a $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^*]*;););) -gt 1 ]; then printf '%s\n' {.{.?,[^.]},}*; else
 }; # lt, list
 # lt	builtin-only ls, the ls substitute from built-in commands
 
@@ -254,12 +254,12 @@ if ! ls -@eT > /dev/null 2>&1
 then
 	ll()
 	{
-		pwd && ls -aFGl;
+		pwd && ls -AFlG;
 	};
 else
 	ll()
 	{
-		pwd && ls -@aeFGlT;
+		pwd && ls -Ae@FTlG;
 	};
 fi; # ll, listlongly
 # ll	locate, and extendedly list all directory contents
@@ -328,6 +328,26 @@ np()
 	:> ${HOME}/${t}_entry.txt;
 	${EDITOR} ${HOME}/${t}_entry.txt;
 }; # np	new page
+
+gman()
+{
+	s_1_a=; # manual section
+	s_2_a=; # manual page
+
+	echo ${0} ${1} ${2} ${3}
+	case ${1} in
+		''|*[!0-9]* )
+			s_1_a="${1}"
+			s_2_a="${2}"
+			;;
+		*)
+			s_1_a=""
+			s_2_a="${2}"
+			;;
+	esac
+
+	man -t ${s_1_a} "${s_2_a}" | open -f -a Preview
+} # gman	graphically format and display on-line manual pages
 
 cls()
 {
@@ -693,6 +713,10 @@ alias oct='octave '
 #	mas-cli			A simple command line interface for the Mac App Store. Designed for scripting and automation.
 
 #alias mas='mas-cli '
+
+#	fuck			 Magnificent app which corrects your previous console command.
+
+alias gz='fuck '
 
 # Shell Functions
 
