@@ -35,3 +35,4 @@ iconv -f iso-8859-1 -t utf-8 < file > file.txt # Convert an ISO-8859-1-encoded f
 2022-07-27 12:22:47  git add --all && git commit --allow-empty-message --message='' && git push; git rebase --interactive --root && git commit --amend --allow-empty-message --message='' && git rebase --continue; git rebase --committer-date-is-author-date --root && git push --force-with-lease; git log --reverse --pretty=fuller
 2022-07-27 12:39:17  git commit --amend --date="Day Mon n hh:mm:ss YYYY +ZZZZ" --no-edit --allow-empty-message --message=''
 2022-09-18 09:44:41  rbenv install --skip-existing $(rbenv install --list-all | grep -v - | tail -1) --verbose && rbenv global $(rbenv install --list-all | grep -v - | tail -1)
+2022-10-14 13:31:52  man -t defaults | open -f -a Preview
