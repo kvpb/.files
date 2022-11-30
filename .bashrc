@@ -716,6 +716,7 @@ alias oct='octave '
 
 #	fuck			 Magnificent app which corrects your previous console command.
 
+alias f='fuck '
 alias gz='fuck '
 
 # Shell Functions
@@ -734,7 +735,7 @@ alias dds='DeleteDSStore'
 alias sv='sh ${HOME}/.files/bin/SetVolume.sh'
 
 alias alarm='sh ${HOME}/.files/bin/alarm.sh'
-#alias am='sh ${HOME}/.files/bin/alarm.sh'
+alias am='sh ${HOME}/.files/bin/alarm.sh'
 
 #alias RPwG='ruby ${HOME}/.files/bin/rpwg.py'
 alias rpwg='python3 ${HOME}/.files/bin/rpwg.py'
