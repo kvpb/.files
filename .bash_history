@@ -36,3 +36,5 @@ iconv -f iso-8859-1 -t utf-8 < file > file.txt # Convert an ISO-8859-1-encoded f
 2022-07-27 12:39:17  git commit --amend --date="Day Mon n hh:mm:ss YYYY +ZZZZ" --no-edit --allow-empty-message --message=''
 2022-09-18 09:44:41  rbenv install --skip-existing $(rbenv install --list-all | grep -v - | tail -1) --verbose && rbenv global $(rbenv install --list-all | grep -v - | tail -1)
 2022-10-14 13:31:52  man -t defaults | open -f -a Preview
+2022-11-22 11:18:08  cls; while true; do ae \( \( $[RANDOM] + $[RANDOM] \) + \( \( $[RANDOM] + $[RANDOM] \) \* 2 \** 16 \) \) % \( 10 \** 6 \) >> stdout.log; done
+2022-11-22 11:27:22  while true; do cls; egrep -x '.{1,1}' stdout.log; done
