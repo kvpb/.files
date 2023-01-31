@@ -523,6 +523,15 @@ alias pe='(set -o posix; set) | cat'
 
 # 'Internal' Programs (Commands)
 
+#	pico			simple text editor in the style of the Alpine Composer
+
+if [ $(which micro) ]
+then
+	alias pico='micro '
+	alias pc='micro '
+	alias p='micro '
+fi
+
 #	vi				Vi IMproved, a programmer's text editor
 #	vim
 
