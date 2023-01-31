@@ -1,0 +1,103 @@
+#	Copyright 2023 Karl Vincent Pierre Bertin
+#
+#	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+#
+#	1.	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#
+#	2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#
+#	3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+#
+#	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+color-link default "#c9d1d9,#163865" # 'Omit color-link default "[fg color],[bg color]" will make the background color match the terminal's, and transparency if set.' (https://github.com/zyedidia/micro/blob/master/runtime/help/colors.md)
+color-link comment "#8b949e,"
+color-link identifier "#d2a8ff,"
+color-link constant "#ff7b72,"
+color-link constant.number "#79c0ff,"
+color-link constant.string "#a5d6ff,"
+#color-link constant.string.char ","
+color-link statement "#ff7b72,"
+color-link symbol.operator ","
+color-link preproc "#ff7b72,"
+color-link type "#79c0ff,"
+color-link special "#ffa657,"
+#color-link underlined ","
+#color-link error "bold ,"
+#color-link todo "bold ,"
+#color-link hlsearch ","
+color-link statusline "#c9d1d9,#161b22"
+color-link tabbar ",#163865"
+color-link indent-char ","
+color-link line-number "#6e7681,"
+color-link current-line-number "#c9d1d9,"
+#color-link diff-added ","
+#color-link diff-modified ","
+#color-link diff-deleted ","
+#color-link gutter-error ","
+#color-link gutter-warning ","
+color-link cursor-line ",#1C1301"
+color-link color-column ",#1C1301"
+color-link type.extended "default" # No extended types (bool in C etc); plain brackets.
+#color-link symbol.brackets "default" # Plain brackets.
+#color-link symbol.tag ","
+#	Scheme Name  github-dark-default
+#	Background Color  rgba(56,139,253,0.4) # #163865 according to Sketch, if I make a new artboard, color its (export) background black (#000), draw two squares, color the first one R = 56, G = 139, B = 253, Alpha = 40, select the second one, use the color picker, pick the first one and copy and paste the resulting hex triplet.
+#	Text Color  #c9d1d9
+#	Comment Color  #8b949e
+#	Constant Color  #ff7b72
+#	String Color  #a5d6ff
+#	Number Color  #79c0ff
+#	Idenifier Color  #d2a8ff
+#	Statement Color  #ff7b72
+#	Preprocessor Statement Color  #ff7b72
+#	Type Color  #79c0ff
+#	Special Color  #ffa657 # I doubt it. I picked it on `Rng` of `use rand::Rng;` from main.rs of G7TIDreversecalculator. GitHub also displays it on `MAX` of `maximum_16bitunsigned = u16::MAX` in the same file for example.
+#	Underlined Color  
+#	Error Color  
+#	ToDo Color  
+#	Statusline Color  #161b22
+#	Indent-Char Color  
+#	Line Number Color  #6e7681
+#	Current Line Number Color  #c9d1d9
+#	Cursor Line Color  rgba(187,128,9,0.15) # #1C1301 according to Sketch the same way.
+#	Column Color  rgba(187,128,9,0.4) # #4B3304 according to Sketch.
+#	Gutter Error Color  
+#	Gutter Warning Color  
+#	
+#	# Theme: github-dark-default
+#	# Made using
+#	# https://github.com/handicraftsman/microtheme
+#	color-link default ","
+#	color-link comment ""
+#	color-link identifier ""
+#	color-link constant ""
+#	color-link statement ""
+#	color-link statement.operator ""
+#	color-link preproc ""
+#	color-link type ""
+#	color-link special ""
+#	color-link underlined ""
+#	color-link error ""
+#	color-link todo ""
+#	color-link statusline ""
+#	color-link indent-char ""
+#	color-link line-number ""
+#	color-link gutter-error ""
+#	color-link gutter-warning ""
+#	color-link cursor-line ""
+#	color-link current-line-number ""
+#	color-link color-column ""
+
+#	github-dark-default.micro
+#	GitHub's default dark appearance Micro color scheme
+#
+#	Karl V. P. B. `kvpb` AKA Karl Thomas George West `ktgw`
+#	+1 (DDD) DDD-DDDD
+#	+33 A BB BB BB BB
+#	local-part@domain
+#	local-part@domain
+#	https://www.linkedin.com/in//
+#	https://twitter.com/ktgwkvpb
+#	https://github.com/kvpb
+#	https://vm.tiktok.com/ZSwAmcFh/
