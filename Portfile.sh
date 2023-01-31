@@ -44,6 +44,7 @@ for s in \
 	tmux \
 	\
 	vim \
+	micro \
 	\
 	ffmpeg \
 	\
