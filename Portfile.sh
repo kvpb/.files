@@ -41,10 +41,12 @@ for s in \
 	curl \
 	wget \
 	\
-	tmux \
-	\
 	vim \
 	micro \
+	\
+	tmux \
+	\
+	unrar \
 	\
 	ffmpeg \
 	\
@@ -57,7 +59,7 @@ for s in \
 	findutils \
 	grep \
 	\
-	# To hell with outdated garbage!
+	
 do
 	#sudo port -f uninstall "${s}"
 	sudo port -q install "${s}"
