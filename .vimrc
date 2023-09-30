@@ -33,7 +33,7 @@ set timeoutlen=1000 ttimeoutlen=-1 " Until VIM receives the complete mapping or 
 set clipboard^=unnamed,unnamedplus " Use clipboard registers + or *. (i) The * and + registers point to the system clipboard on macOS and Windows; register + points to the system clipboard on Linux-based operating systems, and *, the selection clipboard.
 
 set mouse=a " Use the mouse in almost all modes.
-set ttymouse=xterm2 " Recognize mouse codes for this terminal type.
+"set ttymouse=xterm2 " Recognize mouse codes for this terminal type.
 
 nnoremap <C-Up> gg
 inoremap <C-Up> <Esc>gg<Insert>
