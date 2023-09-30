@@ -34,6 +34,11 @@ Thumbs.db
 
 *.save
 
+# Micro
+
+.config/micro/buffers/*
+.config/micro/backups/*
+
 # 'Git'
 
 #.gitkeep
