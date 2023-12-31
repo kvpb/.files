@@ -128,7 +128,7 @@ printf '%s\n' ''
 
 
 printf '%s\n' ''
-printf '%s\n' 'Android has been configured.'# ${litcyan}
+printf '%s\n' 'Android has been configured.'# ${litcyan} # https://android.googlesource.com/platform/system/core/+/master/shell_and_utilities/README.md
 
 printf '%s\n' 'A reboot is required for some of these changes to take effect. Reboot...?, \e[4my\e[0mes or \e[4mn\e[0mo?'# ${litgreen}
 read -r input
@@ -140,14 +140,21 @@ else
 fi
 exit 0
 
-# .android
-# Android Configuration Script
+#	.android
+#	Android Configuration Script
 #
-# Karl V. P. B. `kvpb`
-# +33 A BB BB BB BB
-# local-part@domain
+#	Karl V. P. B. `kvpb`
+#	+33 A BB BB BB BB
+#	local-part@domain
+
+#	Copyright 2021 Karl Vincent Pierre Bertin
 #
-# Four years. When a founder departs, this is the time it takes for a company to turn to shit, make its R&D go down the drain. Okay, I got that number out of my ass. Based on my own experience, it is frighteningly accurate. There are numerous examples of that.
-# 	Jobs died in late '11. For the three next years, Apple capitalized on its past successes, innovated less and less, made their product series shittier one after another. The 2013 Mac Pro was basically a viable Power Mac G4 Cube, though it is a great personal workstation. The 2014 15-inch MacBook Pro Retina was not nearly as good as the 2012 15-inch MacBook Pro, although it still was a decent pro-grade laptop. The 2014 27-inch iMac Retina had so many problems... The iPhone 6 was a joke. By 2015, the party was over. What innovations did they release since? The iMac Pro? The T2 chip? The iPhone XS Max? The 2019 Mac Pro? The M1 chip? Please, for fuck's sake. The only exceptions I can think of are the Watch Series 2, through which Apple succeeded where everyone else failed for almost a decade, the 2015 12-inch MacBook, which fit a bunch of particular uses, the AirPods Pro, which are the AirPods that actually hold in your freaking ears, and the iPhone X, by the means of which Apple finally although somewhat clumsily innovated again, and since Apple never did anything grand of their smartwatch, it remained confined to the costly gadget tier of technology, and because they stopped actually innovating, the next iPhone models have been the same lazy shit ever since.
-# 	Apple used to lead the fucking industry, at least innovation-wise. Mac Pro were, with HP's Z PC, some of the best workstations. MacBook were the best laptops--- intelligently designed, ergonomic, simple, sturdy, loaded with appropriate features... iPhone were the shit back in the days. macOS was the most reliable ergonomic UNIX-like operating system. Look what happened. Microsoft-- yes, Microsoft-- succeeded with the Surface, the Xbox and the Xbox Game Pass at what Apple keeps failing to make with the iPad, the Apple TV and Apple Arcade. The years following the release of the iPhone X, Samsung and even OnePlus made better top flagship phones, namely the 8 Pro and the S21 Ultra, that were still not as expensive as their iPhone counterparts. Google came up with Google Assistant, while Siri is a millstone around the neck of Apple. No one really superseded Apple in the laptop market, and you can't buy a decent one anymore, though a few startups may be about to bring some welcome change. There's no cucky 'I mean, come on' to even breathe. The only thing from Apple that skyrocketed is their pricing. Aside from the MacBook, I cannot think of any reason to stay on Apple hardware, and even then, it is solely for the lack of a better option out there. Jobs was what he was, but at least, the fucker had a vision. Apple used to own the game, as Jobs ran it. Cook does wonders for its market value, and he knows how to hire the best, but that's it.
-# 	So this is it. And this is what we've got. Unless some new kid on the block starts the next Apple, we'll be stuck for quite some time using expensive mediocre, un-innovative tools. Press F to pay respects.
+#	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+#
+#	1.  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#
+#	2.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#
+#	3.  Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+#
+#	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
