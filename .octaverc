@@ -11,10 +11,10 @@ function cls
 	mlock ();
 	clc, system("printf '\033[2J\033[3J\033[1;1H';");
 endfunction;
-# cls	MS-DOS, OS/2 & Microsoft Windows CLS: Clear the terminal screen, and move the cursor to the upper left corner, then write the VT100 escape code for resetting the terminal to the standard output under the control of the format.
+# MS-DOS, OS/2 & Microsoft Windows CLS
 
 # '.prompt'
 
 PS1 ('\[\033[7m\]\u@\h:\[\033[00m\]\[\033[4m\]\w\[\033[00m\]\n\[\033[7m\]\d at \t\[\033[00m\] \[\033[7m\]\s:\#>\[\033[00m\] ') #PS1 ('\[\033[7m\]\u@\h\[\033[00m\] \[\033[7m\]\d at \t\[\033[00m\] \[\033[7m\]\s:\#>\[\033[00m\] ') #PS1 ('\[\033[7m\]strftime("%Y.%m.%d@%H:%M:%S", localtime(time()))\[\033[00m\] \[\033[7m\]\u@\h\[\033[00m\] \[\033[7m\]\s:\#>\[\033[00m\] ')
 PS2 ('  ')
-# Karl Bertin's Octave Prompt
+# Karl V. P. B.'s Octave prompt
