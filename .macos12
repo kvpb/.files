@@ -422,7 +422,7 @@ sudo defaults write /Library/Preferences/com.apple.Bluetooth BluetoothAutoSeekPo
 #defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool" -int 80
 #defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Max" -int 80
 #defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Min" -int 80
-# 
+#
 
 if [ "$(defaults read /Library/Preferences/com.apple.Bluetooth ControllerPowerState)" = '0' ] # If Bluetooth is turned off,
 then
@@ -601,8 +601,8 @@ defaults write -globalDomain PMPrintingExpandedStateForPrint2 -boolean TRUE
 # Expand the save pane by default.
 
 rm -rf ${HOME}/Library/Application\ Support/Dock/desktoppicture.db && killall Dock
-#sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db 
-#sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db 
+#sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db
+#sqlite3 ${HOME}/Library/Application\ Support/Dock/desktoppicture.db
 # Set the wallpaper.
 
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv" # Set the default view to the columns one. (i) Other viewing modes are icnv for icons, Nlsv for newlines and Flwv for Cover flow.
@@ -1127,29 +1127,32 @@ else
 	mkdir -p ${HOME}/{Miscellaneous,Work,Temporary}
 fi
 # If Miscellaneous, Work and Temporary are not directories in ${HOME}/, substitute symbolic links by or make these directories.
-if [ -d "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads" ]
+if [ -d "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads" -o -d "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloaded" ]
 then
-	if [ -L "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads" ]
+	if [ -L "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads" -o -L "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloaded" ]
 	then
-		mv ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads ${HOME}/.Trash/
+		if [ -d "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloaded" ]
+			mv ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloaded ${HOME}/.Trash/
+		else
+			mv ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads ${HOME}/.Trash/
 		open -R ${HOME}/.Trash
-		mkdir ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads
+		mkdir ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloaded
 	fi
 else
 	mkdir -p ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}
 fi
-# If Downloads is not a directory in ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}, substitute symbolic links by or make this directory.
-if [ -d "${HOME}/Pictures/DCIM" ]
-then
-	if [ -L "${HOME}/Pictures/DCIM" ]
-	then
-		mv ${HOME}/Pictures/DCIM ${HOME}/.Trash/
-		open -R ${HOME}/.Trash
-		mkdir ${HOME}/Pictures/DCIM
-	fi
-else
-	mkdir -p ${HOME}/Pictures/DCIM
-fi
+# If Downloaded is not a directory in ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}, substitute symbolic links by or make this directory.
+#if [ -d "${HOME}/Pictures/DCIM" ]
+#then
+#	if [ -L "${HOME}/Pictures/DCIM" ]
+#	then
+#		mv ${HOME}/Pictures/DCIM ${HOME}/.Trash/
+#		open -R ${HOME}/.Trash
+#		mkdir ${HOME}/Pictures/DCIM
+#	fi
+#else
+#	mkdir -p ${HOME}/Pictures/DCIM
+#fi
 # If DCIM is not a directory in ${HOME}/Pictures/, substitute any symbolic link by or make this directory.
 
 ln -s ${HOME}/.files/.inputrc ${HOME}/.inputrc
@@ -1166,15 +1169,17 @@ ln -s ${HOME}/.files/.zprofile ${HOME}/.zprofile
 #ln -s ${HOME}/.files/.ssh ${HOME}/.ssh
 ln -s ${HOME}/.files/.vimrc ${HOME}/.vimrc
 ln -s ${HOME}/.files/.vim ${HOME}/.vim
+#ln -s ${HOME}/.files/.tmux.conf ${HOME}/.tmux.conf
 ln -s ${HOME}/.files/.gitconfig ${HOME}/.gitconfig
 ln -s ${HOME}/.files/.gitignore_global ${HOME}/.gitignore_global
+ln -s ${HOME}/.files/.config ${HOME}/.config
 mkdir -p ${HOME}/Library/Scripts && cp -R ${HOME}/.files/Library/Scripts/. ${HOME}/Library/Scripts/ #sudo rmdir ${HOME}/Library/Scripts && ln -s ${HOME}/.files/Library/Scripts ${HOME}/Library/Scripts && chmod -h 700 ${HOME}/Library/Scripts
 mkdir -p ${HOME}/Library/Services && cp -R ${HOME}/.files/Library/Services/. ${HOME}/Library/Services/ #sudo rmdir ${HOME}/Library/Services && ln -s ${HOME}/.files/Library/Services ${HOME}/Library/Services && chmod -h 700 ${HOME}/Library/Services
-ln -s ${HOME}/Miscellaneous/Downloads ${HOME}/Downloads/Miscellaneous
-ln -s ${HOME}/Documents/Downloads ${HOME}/Downloads/Documents
-ln -s ${HOME}/Pictures/Downloads ${HOME}/Downloads/Pictures
-ln -s ${HOME}/Movies/Downloads ${HOME}/Downloads/Movies
-ln -s ${HOME}/Music/Downloads ${HOME}/Downloads/Music
+ln -s ${HOME}/Miscellaneous/Downloaded ${HOME}/Downloads/Miscellaneous
+ln -s ${HOME}/Documents/Downloaded ${HOME}/Downloads/Documents
+ln -s ${HOME}/Pictures/Downloaded ${HOME}/Downloads/Pictures
+ln -s ${HOME}/Movies/Downloaded ${HOME}/Downloads/Movies
+ln -s ${HOME}/Music/Downloaded ${HOME}/Downloads/Music
 ln -s ${HOME}/DCIM ${HOME}/Pictures/DCIM
 ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
 # Create user-specific custom symbolic links.
@@ -1251,6 +1256,10 @@ echo 'VMware Fusion (com.vmware.fusion)'
 
 defaults write com.vmware.fusion showStartMenu3 -int 0 # Hide menu bar icon. (Set VMware Fusion: Preferences: General: Applications menu: Show in menu bar to Never.)
 
+#echo 'Zed (dev.zed.Zed)'
+#
+#ln -s ${HOME}/.files/.config/zed ${HOME}/.config/zed
+
 echo 'Jumpcut (net.sf.Jumpcut)'
 
 defaults write net.sf.Jumpcut SUCheckAtStartup -bool TRUE # Check for updates on launch.
@@ -1313,6 +1322,23 @@ defaults write com.tapbots.Tweetbot3Mac SidebarType -string "compact"
 #defaults delete com.tapbots.Tweetbot3Mac lastUsedColumnWidth
 # Resize the windows and sidebar.
 
+echo 'TomatoBar (com.github.ivoronin.TomatoBar)'
+
+defaults write com.github.ivoronin.TomatoBar workIntervalLength -integer 25 #52
+defaults write com.github.ivoronin.TomatoBar longRestIntervalLength -integer 25 #26
+defaults write com.github.ivoronin.TomatoBar shortRestIntervalLength -integer 5 #17
+defaults write com.github.ivoronin.TomatoBar stopAfterBreak -integer 0
+# Set the pomodoro timer.
+
+defaults write com.github.ivoronin.TomatoBar "LaunchAtLogin__hasMigrated" -boolean 1 # Launch it at login.
+defaults write com.github.ivoronin.TomatoBar "KeyboardShortcuts_startStopTimer" -string "{\\\"carbonKeyCode\\\":35,\\\"carbonModifiers\\\":6400}" # Pressing control-option-command-P starts it.
+defaults write com.github.ivoronin.TomatoBar isTickingEnabled -boolean 0 # Don't tick.
+defaults write com.github.ivoronin.TomatoBar isDingEnabled -boolean 0 # Don't ding.
+defaults write com.github.ivoronin.TomatoBar isWindupEnabled -boolean 0 # Don't do that.
+defaults write com.github.ivoronin.TomatoBar showTimerInMenuBar -boolean 1 # Show the timer in the menu bar.
+
+printf "%s\n" 'Go, Karl, get admitted!!'
+
 echo 'KeyCastr (io.github.keycastr)'
 
 defaults write io.github.keycastr capturingHotKey '{length = 8, bytes = 0x0000060017000000}' # Toggle capturing with Shift-Control-5.
@@ -1343,7 +1369,7 @@ cecho 'macOS 12 Monterey has been configured.' ${litcyan}
 
 cecho 'Some of these changes require logging out or restarting. Restart...?, \e[4my\e[0mes or \e[4mn\e[0mo?' ${litgreen}
 read -r input
-if [[ ${input} =~ ^([Yy]|[Yy][Ee][Ss]|[Yy][Ee][Aa][Hh])$ ]]
+if [[ ${input} =~ ^([Yy]|[Yy][Ee][Ss]|[Yy][Ee][Aa][Hh]|[Oo]|[Oo][Kk]|[1])$ ]]
 then
 	osascript -e 'tell app "System Events" to restart' # Restart without confirmation.
 else
@@ -1353,17 +1379,13 @@ fi
 #	.macos12
 #	macOS 12 Monterey Configuration Script
 #
-#	Karl V. P. B. `kvpb`
-#	+1 (DDD) DDD-DDDD
-#	+33 A BB BB BB BB
-#	local-part@domain
-#	local-part@domain
-#	https://www.linkedin.com/in/karlbertin
-#	https://twitter.com/yougotkarld
+#	Karl V. P. B. `kvpb`	Karl Thomas George West `ktgw`
+#	+33 A BB BB BB BB		+1 (DDD) DDD-DDDD
+#	local-part@domain		local-part@domain
+#	https://twitter.com/ktgwkvpb
 #	https://github.com/kvpb
-#	https://vm.tiktok.com/ZSwAmcFh/
 
-#	Copyright 2014 Karl Vincent Pierre Bertin
+#	Copyright 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Karl Vincent Pierre Bertin AKA Karl Thomas George West
 #
 #	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 #
