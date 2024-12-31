@@ -10,7 +10,8 @@ shopt -s histappend
 
 #   E N V I R O N M E N T   V A R I A B L E S
 
-# System Environment Variables (e.g. EDITOR, HOME, LOGNAME, MAIL, MANPATH, PAGER, PATH, SHELL, USER, VISUAL)
+#   s y s t e m   e n v i r o n m e n t   v a r i a b l e s
+#   e.g. EDITOR, HOME, LOGNAME, MAIL, MANPATH, PAGER, PATH, SHELL, USER, VISUAL
 
 export MANPATH=$(manpath)
 
@@ -20,21 +21,39 @@ then
 	export MANPATH=/opt/local/share/man:${MANPATH}
 fi
 # MacPorts (https://guide.macports.org/chunked/installing.shell.html)
-#[ "$(uname -s)" = "Darwin" -a -e /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)" # Homebrew (/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
+if [ "$(uname -s)" = "Darwin" -a -e /opt/homebrew/bin/brew ]
+then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+# Homebrew (/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
 . ${HOME}/.cargo/env # Rust & Cargo
 #[[ -x "/usr/local/opt/ruby/bin/ruby" ]] && export PATH=/usr/local/opt/ruby/bin:${PATH}
 export GEM_HOME=${HOME}/.gem
 export GEM_PATH=${GEM_HOME}:${GEM_PATH}
 # Ruby & RubyGems
-export PATH=/usr/local/bin:${PATH} # Python 3 (https://docs.python.org/3/using/mac.html)
-export PATH=/usr/local/bin:${PATH} # Node.js & NPM (node-v14.16.1.pkg)
+if [ -L $(brew --prefix)/opt/python ]
+then
+	export PATH=$(brew --prefix)/opt/python/bin:${PATH}
+else
+	export PATH=/usr/local/bin:${PATH}
+fi
+# Python 3 (https://docs.python.org/3/using/mac.html)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# NVM (https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
 export PATH=${HOME}/.npm-global/bin:${PATH}
 #export NPM_CONFIG_PREFIX=${HOME}/.npm-global
 # NPM (https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
+#export PATH=/usr/local/bin:${PATH} # Node.js & NPM (node-v14.16.1.pkg)
 export PATH=/usr/local/octave/3.8.0/bin:${PATH} # Octave 3.8.0 (GNU_Octave_3.8.0-6.dmg/README.txt)
 export PATH=${HOME}/.rbenv/bin:${PATH}
 eval "$(rbenv init -)"
 # RBEnv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
+# PYEnv
 eval "$(thefuck --alias)" # The Fuck
 
 export LANG=en_US.UTF-8
@@ -44,18 +63,20 @@ export VISUAL=vim
 export EDITOR=${VISUAL}
 
 export CLICOLOR=1
-if ls --color > /dev/null 2>&1 # If this silenced command evaluates to true,
-then # the implemented LS is the GNU LS,
+if [ $(man ls | tail -1 | cut -d' ' -f1) = 'GNU' ] #ls --color -d . > /dev/null 2>&1 # If this silenced command evaluates to true,
+then # LS is the GNU LS,
 	export LS_COLORS='di=34;46:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
-else # or else the implemented LS is the BSD LS.
+else #elif ls -G -d . > /dev/null 2>&1 # or LS is the BSD LS.
+#then
 	export LSCOLORS=egfxcxdxbxegedabagacad # Finder color scheme for LS; default value: exfxcxdxbxegedabagacad
 fi # Set the colors of LS.
 
 export BASH_SILENCE_DEPRECATION_WARNING=1 # https://web.archive.org/web/20190604031607/https://support.apple.com/en-us/HT208050
 
-# Shell Environment Variables (e.g. MAILCHECK, PS1, PS2)
+#   s h e l l   e n v i r o n m e n t   v a r i a b l e s
+#   e.g. MAILCHECK, PS1, PS2
 
-#shopt -s histappend # (i) should be run here first; already is ran in .bashrc.
+#shopt -s histappend # (i) should be run here first; already is in .bashrc.
 if [ ${BASH_VERSION::1} -lt 4 ]
 then
 	if [ ${BASH_VERSION:2:1} -lt 3 ] #if [ ${BASH_VERSION::3} -gt 3.2 ]
@@ -73,42 +94,26 @@ export HISTTIMEFORMAT="$(printf '\r\e[K')$(tput setaf 0)$(tput setab 7)%F %T$(tp
 export PROMPT_COMMAND='history -a; history -n'
 export PS1='\[\033[7m\]\u@\h:\[\033[00m\]\[\033[4m\]\w\[\033[00m\]\n\[\033[7m\]\D{%Y.%m.%d}@\t\[\033[00m\] \[\033[7m\]\$\[\033[00m\] ' #PS1='\[\033[7m\]\u@\h\[\033[00m\] \[\033[7m\]\D{%Y.%m.%d}@\t\[\033[00m\] \[\033[7m\]\$\[\033[00m\] ' #PS1='\[\033[7m\]\D{%Y.%m.%d}@\t\[\033[00m\] \[\033[7m\]\u@\h\$\[\033[00m\] '
 
-# User Environment Variables (e.g. PATH)
+#   u s e r   e n v i r o n m e n t   v a r i a b l e s
+#   e.g. PATH
 
 if [ $(uname -s) = 'Darwin' ]
 then
-#	#export DOT=/Users/${USER}/.files
-	export DOTFILES=/Users/${USER}/.files
-#	#export LIB=/Users/${USER}/Library
-	export LIBRARY=/Users/${USER}/Library
-#	#export BIN=/Users/${USER}/bin
-	export BINARIES=/Users/${USER}/bin
-#	#export APP=/Users/${USER}/Applications
-	export APPLICATIONS=/Users/${USER}/Applications
-#	#export WRK=/Users/${USER}/Work
-	export WORK=/Users/${USER}/Work
-#	#export MSC=/Users/${USER}/Miscellaneous
-	export MISCELLANEOUS=/Users/${USER}/Miscellaneous
-#	#export DOC=/Users/${USER}/Documents
-	export DOCUMENTS=/Users/${USER}/Documents
-#	#export PIC=/Users/${USER}/Pictures
-	export PICTURES=/Users/${USER}/Pictures
-#	#export SIC=/Users/${USER}/Music
-	export MUSIC=/Users/${USER}/Music
-#	#export MOV=/Users/${USER}/Movies
-	export MOVIES=/Users/${USER}/Movies
-#	#export DLD=/Users/${USER}/Downloads
-	export DOWNLOADS=/Users/${USER}/Downloads
-#	#export DSK=/Users/${USER}/Desktop
-	export DESKTOP=/Users/${USER}/Desktop
-#	#export PUB=/Users/${USER}/Public
-	export PUBLIC=/Users/${USER}/Public
-#	#export TMP=/Users/${USER}/Temporary
-	export TEMPORARY=/Users/${USER}/Temporary
-#	#export TRH=/Users/${USER}/.Trash
-	export TRASH=/Users/${USER}/.Trash
-#	#export VOL=/Volumes
-	export VOLUMES=/Volumes
+	export DOT=/Users/${USER}/.files
+	export LIB=/Users/${USER}/Library
+	export BIN=/Users/${USER}/bin
+	export APP=/Users/${USER}/Applications
+	export MSC=/Users/${USER}/Miscellaneous
+	export DOC=/Users/${USER}/Documents
+	export PIC=/Users/${USER}/Pictures
+	export SIC=/Users/${USER}/Music
+	export MOV=/Users/${USER}/Movies
+	export DLD=/Users/${USER}/Downloads
+	export DSK=/Users/${USER}/Desktop
+	export PUB=/Users/${USER}/Public
+	export TMP=/Users/${USER}/Temporary
+	export TRH=/Users/${USER}/.Trash
+	export VOL=/Volumes
 fi
 
 #   F U N C T I O N S   ( R O U T I N E S )
@@ -126,8 +131,8 @@ mf()
 		fi;
 	done;
 }; # mf, mkfl, makefiles
-# mf	make files
-# touch tempers with the timestamps. mkfile does not create empty files. Sometimes, that's all you need.
+# MF	make files
+# Touch tempers with the timestamps. MKFile does not create empty files. Sometimes, that's all you need.
 
 ne()
 {
@@ -140,14 +145,14 @@ ne()
 			:;
 		fi;
 	done;
-}; # ne, nfeol, writemissingNLatEOF
-# ne	write NL at EOF
-# The nae function inserts a newline after the pre-end-of-file line if that latter is not empty.
+}; # ne, nfeol, writemissingnlateof
+# NE	write NL at EOF
+# The nae routine inserts a newline after the pre-end-of-file line, if that latter is not empty.
 
 #md()
 #{
 #}; # md, mkdr, makedirectories
-# md	make directories
+# MD	make directories
 
 ms()
 {
@@ -155,21 +160,14 @@ ms()
 
 	python -c "import os, socket as s; s.socket(s.AF_UNIX).bind(os.environ['S'])";
 }; # ms, mksock, makesockets
-# ms	make sockets
+# MS	make sockets
 # https://serverfault.com/a/914572
 
 mcd()
 {
 	mkdir -p "${@}" && cd "${_}";
 }; # mcd, makeandchangedirectory
-# mcd	make directories, and change the working directory to it
-
-#dl()
-#{
-#	;
-#}; # dl, del, delete
-# del	delete file or directory
-# The del function deletes any file of any type.
+# MCD	make directories, and change the working directory to it
 
 function st
 {
@@ -179,7 +177,7 @@ function st
 	S=($(sort <<< "${A[*]}"));
 	IFS=${s}; #unset IFS;
 	printf '%s\n' "${S}";
-}; # st	sort
+}; # ST	sort
 
 function rb
 {
@@ -199,7 +197,15 @@ sqlite3-dump()
 
 	sqlite3 "${pathname}" -cmd ".dump" "";
 }; # sql, sqld, sqlite3-dump
-# sqlite3-dump	dump the database in an SQL text format
+# SQLite3-Dump	dump a database in an SQL text format
+
+csv()
+{
+	file_CSV=${1};
+
+	column -s, -t < "${1}" | less -#2 -N -S;
+}; # csv, rcsv, read-csv
+# CSV	read, format and print a CSV file
 
 g-p()
 {
@@ -236,19 +242,19 @@ g-p()
 	fi
 	git push
 } # g-p, git-push
-# g-p	
+# Git-Push	
 
 pn()
 {
 	printf "$(cd "$(dirname "${1}";)" && pwd -P;)/$(basename "${1}";)"'\n'; #echo $(cd "$(/usr/bin/dirname "${1}")" && pwd -P)/$(/usr/bin/basename "${1}");
 }; # pn, pathname
-# pn	return pathname
+# PN	return pathname
 
 lt()
 {
 	printf "%s\n" {.{.?,[^.]},}*; #{..?*,.[^.]*,*}; #if [ $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^.]*;););) -gt 1 -a $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^*]*;););) -gt 1 ]; then printf '%s\n' {.{.?,[^.]},}*; else
 }; # lt, list
-# lt	builtin-only ls, the ls substitute from built-in commands
+# LT	builtin-only LS, an LS substitute from built-in commands
 
 if ! ls -@eT > /dev/null 2>&1
 then
@@ -262,13 +268,13 @@ else
 		pwd && ls -Ae@FTlG;
 	};
 fi; # ll, listlongly
-# ll	locate, and extendedly list all directory contents
+# LL	locate yourself, and extendedly list all directory contents
 
 pv()
 {
 	( set -o posix && set ); #( set -o posix; set ) | less; # '(list)    list  is  executed  in  a  subshell  environment (see COMMAND EXECUTION ENVIRONMENT below).' man bash
 }; # pv, printvar, printvariables
-# pv	print variables
+# PV	print variables
 
 function ae
 {
@@ -281,7 +287,7 @@ function ae
 	(( i = ${s} )); #i=$(( ${s} ));
 	printf "%d\n" ${i};
 }; # ae, arithmeticevaluation
-# ae	builtin-only expr, the expr substitute from built-in commands
+# AE	builtin-only Expr, an Expr substitute from built-in commands
 
 rn()
 {
@@ -303,8 +309,8 @@ rn()
 		expr $(printf "${expression}";);
 	fi;
 }; # rn, randomnumber
-# rn	output random numbers
-# The rn function computes a pseudorandom number then prints it.
+# RN	output random numbers
+# The rn function computes a pseudorandom number and then prints it.
 
 ru()
 {
@@ -313,13 +319,14 @@ ru()
 
 	printf "${username}${number}"'\n';
 }; # ru, run, randomusername
-# ru	output random usernames
+# RU	output random usernames
 
 dcal()
 {
 	date | grep --context=6 --color "\b$(date +%e)\b" && cal | sed -n '1!p' | grep --context=6 --color "\b$(date +%e)\b";
 };
-# dcal	dated calendar: Display a calendar, substitute month of year with current date in full format, and highlight current day of month.
+# DCal	dated calendar
+# Display a calendar, substitutes the month of the year with the current date in full format and highlights the current day of the month.
 
 np()
 {
@@ -327,35 +334,16 @@ np()
 
 	:> ${HOME}/${t}_entry.txt;
 	${EDITOR} ${HOME}/${t}_entry.txt;
-}; # np	new page
-
-gman()
-{
-	s_1_a=; # manual section
-	s_2_a=; # manual page
-
-	echo ${0} ${1} ${2} ${3}
-	case ${1} in
-		''|*[!0-9]* )
-			s_1_a="${1}"
-			s_2_a="${2}"
-			;;
-		*)
-			s_1_a=""
-			s_2_a="${2}"
-			;;
-	esac
-
-	man -t ${s_1_a} "${s_2_a}" | open -f -a Preview
-} # gman	graphically format and display on-line manual pages
+}; # NP	new page
 
 cls()
 {
 	printf '\033[2J\033[3J\033[1;1H';
 }; # cs, cls, clearscreen
-# cls	builtin-only MS-DOS, OS/2 & Microsoft Windows CLS: Clear the terminal screen if this is possible, then write the VT100 escape code for resetting the terminal to the standard output under the control of the format.
+# CLS	builtin-only MS-DOS, OS/2 & Microsoft Windows CLS
+# Clears the terminal screen, if it can be done, and then writes the VT100 escape code, resets the terminal to the standard output under the control of the format.
 
-# Mac Shell Functions
+#   M a c   s h e l l   f u n c t i o n s
 
 MakeFinderAlias()
 {
@@ -378,20 +366,21 @@ MakeFinderAlias()
 	fi;
 }; # mfa, mkfras, MakeFinderAlias
 # MakeFinderAlias	make Finder aliases
-# The MakeFinderAlias function makes Finder aliases.
+# The MakeFinderAlias routine makes Finder aliases.
 
 DeleteDSStore()
 {
 	find . -name '.DS_Store' -delete -print; #find . -mindepth 0 -maxdepth 1 -name '.DS_Store' -delete -print;
 }; # ddss, DeleteDSStore
-# DeleteDSStore	.DS_Store Files Deletion: Find from the current directory any file named .DS_Store, remove it, and display the full file name of the standard output followed by a newline.
+# DeleteDSStore	.DS_Store files deletion
+# Finds from the current directory any file named .DS_Store, deletes it and displays the full file name of the standard output followed by a newline character.
 
 ResetLaunchPad()
 {
 	defaults write com.apple.dock ResetLaunchPad -boolean TRUE && killall Dock;
 }; # rlp, ResetLaunchPad
-# ResetLaunchPad	LaunchPad Reset
-# The ResetLaunchPad function resets LaunchPad's layout.
+# ResetLaunchPad	LaunchPad reset
+# The ResetLaunchPad routine resets the layout of LaunchPad.
 
 GetBundleID()
 {
@@ -403,7 +392,7 @@ GetBundleID()
 	done;
 };
 
-# Specific-Use Functions
+#   s p e c i f i c - u s e   f u n c t i o n s
 
 tqdc()
 {
@@ -417,7 +406,8 @@ tqdc()
 
 	find * -maxdepth 0 -type d -exec tar -v -c -f "${s_1}"'{}'"${s_2}"'.tar' {} \;; #find * -maxdepth 0 -type d -exec tar vcf "${s_0}" {} \;;
 }; # tqdc, tarqdlc, tapearchiveQobuzdownloadedcontent
-# tqdc	Qobuz downloaded content tape-archival: Create a new tape archive for each of the working directory's subdirectories.
+# TDQC	Qobuz downloaded content tape-archival
+# Creates a new tape archive for each subdirectory of the working directory.
 
 #fn()
 #{
@@ -430,28 +420,28 @@ tqdc()
 
 #   A L I A S E S
 
-# Shell Special Built-In Utilities (Commands)
+#   s h e l l   s p e c i a l   b u i l t - i n   u t i l i t i e s   ( c o m m a n d s )
 #
 #
 
-# Shell Builtin Utilities (Commands)
+#   s h e l l   b u i l t i n   u t i l i t i e s   ( c o m m a n d s )
 
-#	sudo			execute a command as another user
+#	SUDo
 
 #alias ffs='sudo $(!-1)'
 alias ffs='sudo $(history -p \!\!)'
 #alias ffs='sudo $(fc -ln -1)'
 
-#	cd				change the working directory
-# (i) Bourne Shell (sh) builtin.
+#	CD
+# (i) Bourne Shell (SH) builtin.
 
 alias d='cd '
 
 alias ..='cd ..' # Change the working directory to the parent of the current one.
-alias ...='cd ../..' # Change the working directory to the grand-parent of the current one.
-alias ....='cd ../../..' # Change the working direcrory to the grand-grand-parent of the current one.
-alias .....='cd ../../../..' # Change the working directory to the grand-grand-grand-parent of the current one.
-alias ......='cd ../../../../..' # Change the working directory to the grand-grand-grand-grand-parent of the current one.
+alias ...='cd ../..' # Change the working directory to the grandparent of the current one.
+alias ....='cd ../../..' # Change the working direcrory to the great-grandparent of the current one.
+alias .....='cd ../../../..' # Change the working directory to the great-great-grandparent of the current one.
+alias ......='cd ../../../../..' # Change the working directory to the great-great-great-grandparent of the current one.
 alias .......='cd ../../../../../..' # Change the working directory to the fossilized ancestor of the current one.
 alias ........='cd ../../../../../../..' # dude
 alias .........='cd ../../../../../../../..' # no
@@ -489,41 +479,39 @@ alias tf='cd ${HOME}/Temporary' # Change the working directory to the one of the
 
 alias th='cd ${HOME}/.Trash' # Change the working directory to the one of the current user's trash.
 
-alias db='cd ${HOME}/Dropbox' # Change the working directory to the one of the current user's Dropbox.
-
-#	source
-# (i) Bourne-Again Shell (bash) builtin.
+#	Source
+#	(i) Bourne-Again Shell (BASH) builtin.
 
 #alias src='source '
 alias sc='source '
 #alias s='source '
 
-#	chdir
-# (i) Z Shell (zsh) builtin.
+#	CHDir
+# (i) Z Shell (ZSH) builtin.
 
 #alias d='chdir '
 
-#	exec
+#	Exec
 
 alias ns='exec ${SHELL} -l ' # Execute the default login shell as a login shell. (Replace the current shell process image with a new one.)
 
-#	history
+#	History
 
 alias hy='history'
 #alias h='history | tail -n 20'
 alias _='!-2'
 
-#	printenv		print out the environment
+#	PrintEnv		print out the environment
 
 alias pe='(set -o posix; set) | cat'
 
-#	exit
+#	Exit
 
 #alias e='exit'
 
-# 'Internal' Programs (Commands)
+#   ' i n t e r n a l '   p r o g r a m s   ( c o m m a n d s )
 
-#	pico			simple text editor in the style of the Alpine Composer
+#	Pico
 
 if [ $(which micro) ]
 then
@@ -532,27 +520,27 @@ then
 	alias p='micro '
 fi
 
-#	vi				Vi IMproved, a programmer's text editor
-#	vim
+#	VI
+#	VIM
 
 alias vi='vim +star '
 alias vim='vim +startinsert '
 alias v='vim '
 
-#	mkdir			make directories
+#	MKDir
 
 alias md='mkdir '
 
-#	killall			kill processes by name
+#	KillAll
 
 alias ka='killall '
 #alias k='killall '
 
-#	ruby			Interpreted object-oriented scripting language
+#	Ruby
 
 #alias rb='ruby '
 
-#	python			an interpreted, interactive, object-oriented programming language
+#	Python
 
 alias py='python '
 alias py2='python2 '
@@ -563,69 +551,88 @@ alias ct='python -c "import sys; print( len(sys.argv[1]) );" ' # Count the chara
 alias uc='python3 -c "import sys; print(sys.argv[1].upper());" ' # Increase the case of the first given string.
 alias lc='python3 -c "import sys; print(sys.argv[1].lower());" ' # Lower the case of the first given string.
 
-#	JSC				https://trac.webkit.org/wiki/JSC
-
+#	JSC
+#
 #alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc '
 #alias js='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc '
 
-#	node			server-side JavaScript runtime
+#	Node
 
 #alias njs='node '
 #alias nj='node '
 alias nd='node '
 alias js='node '
 
-#	osascript		execute OSA scripts (AppleScript, JavaScript, etc)
+#	OSAScript
 
 #alias osas='osascript '
 alias osa='osascript '
 #alias os='osascript '
 
-#	tar				manipulate tape archives
+#	TAR
 
-alias tgz='tar -czfv ' # Create a new archive containing the specified items then compress the resulting archive with gzip, listing each file name as it is read written to the archive.
+alias tgz='tar -czfv ' # Create a new archive containing the specified items then compress the resulting archive with GZip, listing each file name as it is read written to the archive.
 
-#	rsync			faster, flexible replacement for rcp
+#	ZIP
+
+alias zip='ditto -c -k --sequesterRsrc --keepParent '
+
+#	RSync
 
 #alias rsync-copy='rsync -avz --progress -h '
 #alias rsync-move='rsync -avz --progress -h --remove-source-files '
 #alias rsync-synchronize='rsync -avzu --delete --progress -h '
 #alias rsync-update='rsync -avzu --progress -h '
-# somebody's rsync aliases
+# somebody else's RSync aliases
 
-#	open			open files and directories
+#	Open
 
 #alias opn='open '
-alias op='open '
-#alias o='open '
+#alias op='open '
+#alias on='open '
+alias o='open '
 
-alias te='open -e ' # Open file using TextEdit.
+alias te='open -e ' # Open file with TextEdit.
 
-#alias pw='open -b com.apple.Preview ' # Open file using Preview.
+alias vs='open -b com.microsoft.VSCode '
+#alias vsc='open -b com.microsoft.VSCode '
+# Open file with Visual Studio Code.
 
-#alias qtp='open -b com.apple.QuickTimePlayerX ' # Open file using QuickTime Player.
+alias pw='open -b com.apple.Preview ' # Open file with Preview.
 
-#alias si='open -b com.apple.Safari ' # Open file using Safari.
+#alias qt='open -b com.apple.QuickTimePlayerX '
+#alias qtp='open -b com.apple.QuickTimePlayerX '
+# Open file with QuickTime Player.
 
-#alias vlc='open -b org.videolan.vlc ' # Open file using VLC Media Player.
+#alias si='open -b com.apple.Safari ' # Open file with Safari.
 
-#alias aps='open -b com.adobe.Photoshop ' # Open file using Photoshop CS6.
+#alias vlc='open -b org.videolan.vlc ' # Open file with VLC Media Player.
 
-#alias pslr='open -b com.adobe.Lightroom6 ' # Open file using Photoshop Lightroom 6.
+#alias aps='open -b com.adobe.Photoshop '
+#alias ps='open -b com.adobe.Photoshop '
+# Open file with Photoshop CS6.
 
-#alias mwd='open -b com.microsoft.Word ' # Open file using Word for Mac 2011.
+#alias pslr='open -b com.adobe.Lightroom6 '
+#alias lr='open -b com.adobe.Lightroom6 '
+# Open file with Photoshop Lightroom 6.
 
-#alias mxl='open -b com.microsoft.Excel ' # Open file using Excel for Mac 2011.
+#alias mwd='open -b com.microsoft.Word '
+#alias wd='open -b com.microsoft.Word '
+# Open file with Word for Mac 2011.
 
-#alias gvi='open -b org.vim.MacVim ' # Open file using MacVim.
+#alias mxl='open -b com.microsoft.Excel '
+#alias xl='open -b com.microsoft.Excel '
+# Open file with Excel for Mac 2011.
 
-alias rf='open -R ' # Reveal files using Finder.
+#alias gvi='open -b org.vim.MacVim ' # Open file with MacVim.
 
-#	xattr			display and manipulate extended attributes
+alias rf='open -R ' # Show file in Finder.
+
+#	XAttr
 
 alias dxa='xattr -rc .' # Remove every file's all extended attributes of the current directory recursively.
 
-#	qlmanage		Quick Look server debug and management tool
+#	QLManage
 
 #alias QuickLook='qlmanage '
 #alias quicklook='qlmanage '
@@ -633,7 +640,7 @@ alias ql='qlmanage '
 
 alias	qlp='qlmanage -p ' # Display the Quick Look generated preview for the specified files.
 
-# 	ls				list directory contents
+# 	LS
 
 if ls --color > /dev/null 2>&1 # If this silenced command evaluates to true,
 then # the implemented LS is the GNU LS,
@@ -660,42 +667,46 @@ alias la='ls -a ' # List all directory contents.
 
 #alias l='ls -1F ' # List simply directory contents.
 
-#	du				display disk usage statistics
+#	DU
 
 alias du='du -c -d 0 -h ' # Display DU stats with a grand total, an entry for all files and directories 0 directories deep, human-readably.
 
-#	printf			formatted output
+#	PrintF
 #
 #
 
-#	less			opposite of more
+#	Less
 
-alias les='less '
+alias les='less ' # Ha, even less, motherfucker.
 
-#	clear			clear the terminal screen
+#	Clear
 #
 #alias clr='clear '
 #alias cl='clear '
 #alias c='clear '
 
-#	PlistBuddy		read and write values to plists
+#	PlistBuddy
 
 #alias PlistBuddy='/usr/libexec/PlistBuddy '
 #alias plistbuddy='/usr/libexec/PlistBuddy '
 alias pb='/usr/libexec/PlistBuddy '
 
-#	softwareupdate	system software update tool
+#	SoftwareUpdate
 
 alias swu='softwareupdate '
 #alias sw='softwareupdate '
 
-#	airport			get information for 802.11 interface
+#	AirPort
 
 #alias AirPort='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
 #alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
 alias ap='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
 
-#	man				format and display the on-line manual pages
+#	Caffeinate
+
+alias caffeinate='caffeinate -d -t $(( 60 * 60 ))'
+
+#	Man
 
 alias mn='man '
 #alias hp='man '
@@ -703,32 +714,41 @@ alias mn='man '
 
 alias ascii='man ascii' # Output the man page of the ASCII character sets.
 
-# External Programs (Commands)
+#   e x t e r n a l   p r o g r a m s   ( c o m m a n d s )
 
-# 	git				the stupid content tracker
+#	RBEnv
+
+alias rbenv-update='curl -fsSL https://rbenv.org/install.sh | bash'
+alias rbenv-install-latest='rbenv install $(rbenv install --list | grep --invert-match - | tail -1)'
+
+#	Octave
+
+alias oct='octave '
+
+# 	Git
 
 #alias git='/usr/local/git/bin/git ' # Get fucked, Apple. /i\ requires Git for macOS from the official website. http://git-scm.com/
 alias g='git '
 
-#	fswatch			Ask for notification when the contents of the specified files of directory hierarchies are modified.
+#	FSWatch
 
 alias fsw='fswatch '
 #alias fw='fswatch '
 
-#	octave
-
-alias oct='octave '
-
-#	mas-cli			A simple command line interface for the Mac App Store. Designed for scripting and automation.
-
+#	MAS-CLI
+#
 #alias mas='mas-cli '
 
-#	fuck			 Magnificent app which corrects your previous console command.
+#	The Fuck
 
 alias f='fuck '
 alias gz='fuck '
 
-# Shell Functions
+#	Homebrew
+
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew' # https://github.com/pyenv/pyenv?tab=readme-ov-file#homebrew-in-macos
+
+#   s h e l l   f u n c t i o n s
 
 #alias cs='cls'
 alias c='cls'
@@ -737,7 +757,7 @@ alias mfa='MakeFinderAlias '
 
 alias dds='DeleteDSStore'
 
-# Computer Programs
+#   c o m p u t e r   p r o g r a m s
 
 #alias SetVolume='sh ${HOME}/.files/bin/SetVolume.sh'
 #alias setvol='sh ${HOME}/.files/bin/SetVolume.sh'
@@ -756,16 +776,15 @@ bind -r '\C-s'
 stty -ixon
 
 #	.bashrc
-#	BASH Initialization File
+#	BASH initialization file
 #	https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_01.html
 #
-#	Karl V. P. B. `kvpb`
-#	+1 (DDD) DDD-DDDD
-#	local-part@domain
-#	https://www.linkedin.com/in/
-#	https://twitter.com/
-#	https://github.com/kvpb
-#	https://vm.tiktok.com//
+#	Karl V. P. B. `kvpb`	AKA Karl Thomas George West `ktgw`
+#	+33 A BB BB BB BB		+1 (DDD) DDD-DDDD
+#	local-part@domain		local-part@domain
+#	kvpb.fr					
+#	https://x.com/ktgwkvpb	
+#	https://github.com/kvpb	
 
 #	Copyright 2014 Karl Vincent Pierre Bertin
 #
