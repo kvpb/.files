@@ -27,10 +27,14 @@ export GEM_HOME=${HOME}/.gem
 export GEM_PATH=${GEM_HOME}:${GEM_PATH}
 # Ruby & RubyGems
 export PATH=/usr/local/bin:${PATH} # Python 3 (https://docs.python.org/3/using/mac.html)
-export PATH=/usr/local/bin:${PATH} # Node.js & NPM (node-v14.16.1.pkg)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# NVM (https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
 export PATH=${HOME}/.npm-global/bin:${PATH}
 #export NPM_CONFIG_PREFIX=${HOME}/.npm-global
 # NPM (https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
+#export PATH=/usr/local/bin:${PATH} # Node.js & NPM (node-v14.16.1.pkg)
 export PATH=/usr/local/octave/3.8.0/bin:${PATH} # Octave 3.8.0 (GNU_Octave_3.8.0-6.dmg/README.txt)
 export PATH=${HOME}/.rbenv/bin:${PATH}
 eval "$(rbenv init -)"
@@ -142,7 +146,7 @@ ne()
 	done;
 }; # ne, nfeol, writemissingNLatEOF
 # ne	write NL at EOF
-# The nae function inserts a newline after the pre-end-of-file line if that latter is not empty.
+# The nae routine inserts a newline after the pre-end-of-file line, if that latter is not empty.
 
 #md()
 #{
@@ -169,7 +173,7 @@ mcd()
 #	;
 #}; # dl, del, delete
 # del	delete file or directory
-# The del function deletes any file of any type.
+# The del routine deletes any file of any type.
 
 function st
 {
@@ -248,7 +252,7 @@ lt()
 {
 	printf "%s\n" {.{.?,[^.]},}*; #{..?*,.[^.]*,*}; #if [ $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^.]*;););) -gt 1 -a $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^*]*;););) -gt 1 ]; then printf '%s\n' {.{.?,[^.]},}*; else
 }; # lt, list
-# lt	builtin-only ls, the ls substitute from built-in commands
+# lt	builtin-only LS, an LS substitute from built-in commands
 
 if ! ls -@eT > /dev/null 2>&1
 then
@@ -262,7 +266,7 @@ else
 		pwd && ls -Ae@FTlG;
 	};
 fi; # ll, listlongly
-# ll	locate, and extendedly list all directory contents
+# ll	locate yourself, and extendedly list all directory contents
 
 pv()
 {
@@ -281,7 +285,7 @@ function ae
 	(( i = ${s} )); #i=$(( ${s} ));
 	printf "%d\n" ${i};
 }; # ae, arithmeticevaluation
-# ae	builtin-only expr, the expr substitute from built-in commands
+# ae	builtin-only Expr, an Expr substitute from built-in commands
 
 rn()
 {
@@ -304,7 +308,7 @@ rn()
 	fi;
 }; # rn, randomnumber
 # rn	output random numbers
-# The rn function computes a pseudorandom number then prints it.
+# The rn function computes a pseudorandom number and then prints it.
 
 ru()
 {
@@ -319,7 +323,8 @@ dcal()
 {
 	date | grep --context=6 --color "\b$(date +%e)\b" && cal | sed -n '1!p' | grep --context=6 --color "\b$(date +%e)\b";
 };
-# dcal	dated calendar: Display a calendar, substitute month of year with current date in full format, and highlight current day of month.
+# dcal	dated calendar
+# Display a calendar, substitutes the month of the year with the current date in full format and highlights the current day of the month.
 
 np()
 {
@@ -329,31 +334,12 @@ np()
 	${EDITOR} ${HOME}/${t}_entry.txt;
 }; # np	new page
 
-gman()
-{
-	s_1_a=; # manual section
-	s_2_a=; # manual page
-
-	echo ${0} ${1} ${2} ${3}
-	case ${1} in
-		''|*[!0-9]* )
-			s_1_a="${1}"
-			s_2_a="${2}"
-			;;
-		*)
-			s_1_a=""
-			s_2_a="${2}"
-			;;
-	esac
-
-	man -t ${s_1_a} "${s_2_a}" | open -f -a Preview
-} # gman	graphically format and display on-line manual pages
-
 cls()
 {
 	printf '\033[2J\033[3J\033[1;1H';
 }; # cs, cls, clearscreen
-# cls	builtin-only MS-DOS, OS/2 & Microsoft Windows CLS: Clear the terminal screen if this is possible, then write the VT100 escape code for resetting the terminal to the standard output under the control of the format.
+# cls	builtin-only MS-DOS, OS/2 & Microsoft Windows CLS
+# Clears the terminal screen, if it can be done, and then writes the VT100 escape code, resets the terminal to the standard output under the control of the format.
 
 # Mac Shell Functions
 
@@ -378,20 +364,21 @@ MakeFinderAlias()
 	fi;
 }; # mfa, mkfras, MakeFinderAlias
 # MakeFinderAlias	make Finder aliases
-# The MakeFinderAlias function makes Finder aliases.
+# The MakeFinderAlias routine makes Finder aliases.
 
 DeleteDSStore()
 {
 	find . -name '.DS_Store' -delete -print; #find . -mindepth 0 -maxdepth 1 -name '.DS_Store' -delete -print;
 }; # ddss, DeleteDSStore
-# DeleteDSStore	.DS_Store Files Deletion: Find from the current directory any file named .DS_Store, remove it, and display the full file name of the standard output followed by a newline.
+# DeleteDSStore	.DS_Store Files Deletion
+# Finds from the current directory any file named .DS_Store, deletes it and displays the full file name of the standard output followed by a newline character.
 
 ResetLaunchPad()
 {
 	defaults write com.apple.dock ResetLaunchPad -boolean TRUE && killall Dock;
 }; # rlp, ResetLaunchPad
 # ResetLaunchPad	LaunchPad Reset
-# The ResetLaunchPad function resets LaunchPad's layout.
+# The ResetLaunchPad routine resets the layout of LaunchPad.
 
 GetBundleID()
 {
@@ -417,7 +404,8 @@ tqdc()
 
 	find * -maxdepth 0 -type d -exec tar -v -c -f "${s_1}"'{}'"${s_2}"'.tar' {} \;; #find * -maxdepth 0 -type d -exec tar vcf "${s_0}" {} \;;
 }; # tqdc, tarqdlc, tapearchiveQobuzdownloadedcontent
-# tqdc	Qobuz downloaded content tape-archival: Create a new tape archive for each of the working directory's subdirectories.
+# tqdc	Qobuz downloaded content tape-archival
+# Creates a new tape archive for each subdirectory of the working directory.
 
 #fn()
 #{
@@ -448,10 +436,10 @@ alias ffs='sudo $(history -p \!\!)'
 alias d='cd '
 
 alias ..='cd ..' # Change the working directory to the parent of the current one.
-alias ...='cd ../..' # Change the working directory to the grand-parent of the current one.
-alias ....='cd ../../..' # Change the working direcrory to the grand-grand-parent of the current one.
-alias .....='cd ../../../..' # Change the working directory to the grand-grand-grand-parent of the current one.
-alias ......='cd ../../../../..' # Change the working directory to the grand-grand-grand-grand-parent of the current one.
+alias ...='cd ../..' # Change the working directory to the grandparent of the current one.
+alias ....='cd ../../..' # Change the working direcrory to the great-grandparent of the current one.
+alias .....='cd ../../../..' # Change the working directory to the great-great-grandparent of the current one.
+alias ......='cd ../../../../..' # Change the working directory to the great-great-great-grandparent of the current one.
 alias .......='cd ../../../../../..' # Change the working directory to the fossilized ancestor of the current one.
 alias ........='cd ../../../../../../..' # dude
 alias .........='cd ../../../../../../../..' # no
@@ -585,6 +573,10 @@ alias osa='osascript '
 
 alias tgz='tar -czfv ' # Create a new archive containing the specified items then compress the resulting archive with gzip, listing each file name as it is read written to the archive.
 
+#	zip				package and compress (archive) files
+
+alias zip='ditto -c -k --sequesterRsrc --keepParent '
+
 #	rsync			faster, flexible replacement for rcp
 
 #alias rsync-copy='rsync -avz --progress -h '
@@ -670,7 +662,7 @@ alias du='du -c -d 0 -h ' # Display DU stats with a grand total, an entry for al
 
 #	less			opposite of more
 
-alias les='less '
+alias les='less ' # Ha, even less, motherfucker.
 
 #	clear			clear the terminal screen
 #
@@ -695,6 +687,10 @@ alias swu='softwareupdate '
 #alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
 alias ap='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport '
 
+#	caffeinate
+
+alias caffeinate='caffeinate -d -t $(( 60 * 60 ))'
+
 #	man				format and display the on-line manual pages
 
 alias mn='man '
@@ -705,6 +701,15 @@ alias ascii='man ascii' # Output the man page of the ASCII character sets.
 
 # External Programs (Commands)
 
+#	rbenv			manage your application's Ruby environment
+
+alias rbenv-update='curl -fsSL https://rbenv.org/install.sh | bash'
+alias rbenv-install-latest='rbenv install $(rbenv install --list | grep --invert-match - | tail -1)'
+
+#	octave
+
+alias oct='octave '
+
 # 	git				the stupid content tracker
 
 #alias git='/usr/local/git/bin/git ' # Get fucked, Apple. /i\ requires Git for macOS from the official website. http://git-scm.com/
@@ -714,10 +719,6 @@ alias g='git '
 
 alias fsw='fswatch '
 #alias fw='fswatch '
-
-#	octave
-
-alias oct='octave '
 
 #	mas-cli			A simple command line interface for the Mac App Store. Designed for scripting and automation.
 
@@ -759,13 +760,12 @@ stty -ixon
 #	BASH Initialization File
 #	https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_01.html
 #
-#	Karl V. P. B. `kvpb`
-#	+1 (DDD) DDD-DDDD
-#	local-part@domain
-#	https://www.linkedin.com/in/
-#	https://twitter.com/
-#	https://github.com/kvpb
-#	https://vm.tiktok.com//
+#	Karl V. P. B. `kvpb`	AKA Karl Thomas George West `ktgw`
+#	+33 A BB BB BB BB		+1 (DDD) DDD-DDDD
+#	local-part@domain		local-part@domain
+#	kvpb.fr					
+#	https://x.com/ktgwkvpb	
+#	https://github.com/kvpb	
 
 #	Copyright 2014 Karl Vincent Pierre Bertin
 #
