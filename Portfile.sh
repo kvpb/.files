@@ -15,10 +15,10 @@ for s in \
 	\
 	`#rust` \
 	go \
-	python310 \
+	python312 \
 	python27 \
-	`#ruby31` \
-	nodejs18 \
+	`#ruby33` \
+	nodejs21 \
 	octave \
 	jq \
 	sqlite3 \
@@ -26,6 +26,7 @@ for s in \
 	`#ruby-build` \
 	`#rbenv` \
 	`#pyenv` \
+	`#nvm` \
 	\
 	xhyve \
 	\
@@ -59,7 +60,8 @@ for s in \
 	findutils \
 	grep \
 	\
-	
+	cmus
+	\
 do
 	#sudo port -f uninstall "${s}"
 	sudo port -q install "${s}"
@@ -67,7 +69,7 @@ done
 sudo port -q select --set python python310
 sudo port -q select --set python3 python310
 sudo port -q select --set python2 python27
-#sudo port -q select --set ruby ruby31
+#sudo port -q select --set ruby ruby33
 sudo port -q load openssh
 #sudo port -N selfupdate && sudo port -N upgrade outdated; sudo port -N reclaim
 exit 0
