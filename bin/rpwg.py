@@ -295,19 +295,16 @@ if __name__ == "__main__":
 
 #	rpwg.py
 #	Random Password Generator
-#	Version 1.51
+#	Version 1.52
 #
 #	Karl V. P. B. `kvpb` AKA Karl Thomas George West `ktgw`
-#	+1 (DDD) DDD-DDDD
-#	+33 A BB BB BB BB
-#	local-part@domain
-#	local-part@domain
-#	https://www.linkedin.com/in/
-#	https://twitter.com/ktgwkvpb
+#	+33 A BB BB BB BB		+1 (DDD) DDD-DDDD
+#	local-part@domain		local-part@domain
+#	kvpb.fr
+#	https://x.com/ktgwkvpb
 #	https://github.com/kvpb
-#	https://vm.tiktok.com/ZSwAmcFh/
 
-#	Copyright 2022 Karl Vincent Pierre Bertin
+#	Copyright 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Karl Vincent Pierre Bertin
 #
 #	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 #
