@@ -1,31 +1,25 @@
 <h3 align='center'><b>Karl's</b></h3>
 <h1 align='center'><b>DOTFILES</b></h1>
-<h3 align='center'><b>Runcoms, Configuration Files, Setups, Scripts, Templates & Hacks</b></h3>
+<h3 align='center'><b>runcoms, configuration files, setups, scripts, templates & hacks</b></h3>
 
 ---
 
 <p align='center'><a href=''><img src='https://gistcdn.githack.com/kvpb/807924c1f72cc407d798f22431559f3d/raw/e7828591fe13bb451b05ea0512d67f19e6c8fdb6/macospackagemanager.svg'></a></p>
 
-## **Apple Computer Operating System Setups**<br>`.acos` (`.macosx`, `.osx`, `.macos` & `.ios`) ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
+## **Apple computer operating system setups**<br>`.acos` (`.macosx`, `.osx`, `.macos` & `.ios`) ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
+#### Apple computers operating systems configuration scripts family.
 
-#### Where-is
 <details><summary><code>.files/</code></summary>
 
 - [x] `.acos`
-- [ ] `.macosx104`
 - [ ] `.macosx106`
 - [x] `.osx109`
 - [x] `.macos11`
+- [x] `.macos12`
 - [ ] `.ios`
 </details>
 
-#### What-is
-
-Apple computers operating systems configuration scripts family.
-
-#### How-to
-
-**NB:** Unless you know what you are doing, _do not execute these scripts as root!_ If you want to do it anyway, replace `/Users/${USER}` with `${HOME}`. Though if you did not know that already, you most likely should not do it.
+**N.B..**&nbsp;&nbsp;&nbsp;&nbsp;Unless you're experienced enough, _don't execute these scripts as root!_ If you wanna do it anyway, replace `/Users/${USER}` with `${HOME}`, though if you didn't know that already, you shouldn't do it.
 
 Launch a terminal emulator, e.g. [Terminal](https://web.archive.org/web/20190326164259/https://support.apple.com/guide/terminal/welcome/mac) or [MTerminal](https://web.archive.org/web/20141020160524/http://cydia.saurik.com/package/com.officialscheduler.mterminal/), and enter this:
 
@@ -35,24 +29,17 @@ cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kv
 
 ---
 
-## **Linux-Based Operating System Setups**<br>`.lbos` (`.archlinux`, `.ubuntu` & `.android`) ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/ubuntu-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-linuxbox-F6F6F6D5E1ED.svg) ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/android-F6F6F6D5E1ED1E72F21AD5FD-madeonan-1AD5FD1E72F2-androidphone-F6F6F6D5E1ED.svg)
+## **Linux-based operating system setups**<br>`.lbos` (`.archlinux`, `.fedoralinux` & `.android`) ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/ubuntu-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-linuxbox-F6F6F6D5E1ED.svg) ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/android-F6F6F6D5E1ED1E72F21AD5FD-madeonan-1AD5FD1E72F2-androidphone-F6F6F6D5E1ED.svg)
+#### Linux-based operating systems configuration scripts family.
 
-#### Where-is
 <details><summary><code>.files/</code></summary>
 
-- [ ] `.lbos`
-- [ ] `.archlinux`
-- [x] `.ubuntu`
+- [x] `.lbos`
+- [x] ~~`.archlinux`~~ ~~`.fedoralinux`~~ `.asahilinux`
 - [ ] `.android`
 </details>
 
-#### What-is
-
-Linux-based operating systems configuration scripts family.
-
-<!--#### How-to
-
-**NB:** Unless you know what you are doing, _do not execute these scripts as root!_ If you want to do it anyway, replace `/home/${USER}` with `${HOME}`.
+<!--**N.B..**&nbsp;&nbsp;&nbsp;&nbsp;Unless you're experienced enough, _don't execute these scripts as root!_ If you wanna do it anyway, replace `/home/${USER}` with `${HOME}`, though if you didn't know that already, you shouldn't do it.
 
 Launch a terminal emulator, e.g. [GNOME Terminal](https://terminator-gtk3.readthedocs.io/en/latest/), [Terminator](https://terminator-gtk3.readthedocs.io/en/latest/) or [Terminal Emulator for Android](https://play.google.com/store/apps/details?id=jackpal.androidterm), and enter this:
 
@@ -62,38 +49,26 @@ cd /home/${USER} && wget -qO- https://raw.githubusercontent.com/kvpb/.files/mast
 -->
 ---
 
-## **VIM Initializations**<br>`.vimrc` & `.vim/`
+## **VIM initializations**<br>`.vimrc` & `.vim/`
+#### My VIM setup featuring a true TextEdit-like key mapping.
 
-#### Where-is
 <details><summary><code>.files/</code></summary>
 
 - [x] `.vim/`
 - [x] `.vimrc`
-<!--- [x] `.bashrc` required as 'dependency'
-- [x] `.aliases` required as 'dependency'
---></details>
-
-#### What-is
-
-My VIM setup featuring a true TextEdit-like key mapping.
+<!--- [x] `.bashrc` required as 'dependency'--></details>
 
 ---
 
 <p align='center'><a href='https://github.com/kvpb/.files/blob/master/bin/rpwg.py'><img src='https://gistcdn.githack.com/kvpb/c9d1aa35c62862e73c50836dc49dbc66/raw/5c32c06d72b0169b6ed688efdd99d1d3d6d2eb31/rpwg.svg'></a></p>
 
 ## **Random Password Generator**<br>`rpwg.py`
+#### A pseudorandom password generator.
 
-#### Where-is
 <details><summary><code>.files/</code><code>bin/</code></summary>
 
 - [x] `rpwg.py`
 </details>
-
-#### What-is
-
-A pseudorandom password generator.
-
-#### How-to
 
 **UNIX & Linux:**  
 &nbsp;&nbsp;0.&nbsp;&nbsp;[Install Python 3.](https://wiki.python.org/moin/BeginnersGuide/Download)  
@@ -103,7 +78,7 @@ A pseudorandom password generator.
 &nbsp;&nbsp;4.&nbsp;&nbsp;Follow the instructions, and copy and paste your password.
 
 ~~**MS-DOS:**~~  
-&nbsp;&nbsp;Do yourself a favor: either build a Linux PC, or get a Mac.
+&nbsp;&nbsp;Either build a Linux PC, or get a Mac. You'll thank me later.
 
 ---
 <!--
@@ -154,8 +129,11 @@ The scratching system I built at university for better cleaner faster note-takin
 #### Author
 
 <p align='center'><a href='http://kvpb.co'><img src='https://gistcdn.githack.com/kvpb/c80594e9079e857c55c36dec49a1a2d7/raw/eec54d5821dc092ad910635141c4e4feebf07565/kvpbssymbol.svg'></a><br>
-<b>Karl V. P. B. `<code>kvpb</code>`</b><br>
-<a href='https://www.linkedin.com/in/karlbertin'>LinkedIn</a>&nbsp;&nbsp;<a href='https://twitter.com/kvpbx'>Twitter</a>&nbsp;&nbsp;<a href='https://vm.tiktok.com/ZSwAmcFh/'>TikTok</a><br>
+<b>Karl V. P. B. `<code>kvpb</code>`<br>
+カール・ビンセント・ピエール・ベルティン</b><br>
+<b>AKA&nbsp;&nbsp;Karl Thomas George West `<code>ktgw</code>`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カール・トーマス・ジョージ・ウェスト</b><br>
+<a href='https://x.com/ktgwkvpb'>X</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://bsky.app/profile/kvpb.bsky.social'>Bluesky</a><br>
 <br>
 <br>
 <br>
