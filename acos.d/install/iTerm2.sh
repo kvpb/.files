@@ -9,13 +9,11 @@ cd ~ # Change working directory to current user's.
 rmdir Temporary # Remove current user's temporary folder.
 exit 0
 
-#	InstalliTerm2OS108Plus.sh
-#	Install iTerm2 3.0.15 (OS 10.8+) latest OS X 10.9 Mavericks-compatible version
+#	(Install)iTerm2.sh
+#	Install iTerm2
 #
-#	Karl V. P. B. `kvpb`
-#	+1 (DDD) DDD-DDDD
-#	local-part@domain
-#	https://www.linkedin.com/in/
-#	https://twitter.com/
+#	Karl V. P. B. `kvpb`	Karl Thomas George West `ktgw`
+#	+33 A BB BB BB BB		+1 (DDD) DDD-DDDD
+#	local-part@domain		local-part@domain
+#	https://x.com/ktgwkvpb
 #	https://github.com/kvpb
-#	https://vm.tiktok.com//
