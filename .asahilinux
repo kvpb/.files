@@ -1,0 +1,491 @@
+#!/usr/bin/env bash
+exec 2>> ${HOME}/Temporary/log
+set -xv
+
+default='\033[0;39m'
+hidefault='\033[0;30;39m'
+white='\033[0;37m'
+hiwhite='\033[0;30;47m'
+litred='\033[0;91m'
+hilitred='\033[0;30;91m'
+litgreen='\033[0;92m'
+hilitgreen='\033[1;30;92m'
+litblue='\033[0;94m'
+hilitblue='\033[0;30;94m'
+litgray='\033[0;37m'
+hilitgray='\033[0;30;37m'
+litcyan='\033[0;96m'
+hilitcyan='\033[0;30;96m'
+litmagenta='\033[0;95m'
+hilitmagenta='\033[0;30;95m'
+lityellow='\033[0;93m'
+hilityellow='\033[0;30;93m'
+key='\033[0;30m'
+hikey='\033[0;97;40m'
+# Set graphics mode. (i) ANSI escape sequences format: \033[${textattribute};${foregroundcolor};${backgroundcolor}m (or esc[${value};...;${value}m).
+off=`tput sgr0` #${capname} = 'sgr0' # Turn off _all_ attribute modes.
+
+function cecho
+{
+	local string="${1}"
+	local attributemode="${2}"
+
+	echo "${attributemode}${string}${off}"
+	return
+} # Color Echo (João Cunha `joaocunha`) improved (Brandon Brown `brandonb927`) modified (Karl V. P. B. `kvpb`)
+
+printf '%s\n' ''
+printf '                  '; printf '\033[48:2:255:165:0m\033[48;2;255;255;255;0#m%s\033[m\n' '      /|         |    .  |    .              '
+printf '                  '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '     | | /`` /`| |`,  ,  |    ,  |`, \ | \_/ '
+printf '                  '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '  .  |/| __/ |/| | | _/\ |_, _/\ | \ /_| /`\ '
+printf '%s\n' ''
+printf '                                 LICENSED BY\n'
+printf '                                 ${LICENSOR}\n'
+printf '%s\n' ''
+printf '%s\n' "                            K K  V V  PPP  BB   '   SS"
+printf '%s\n' '                           KK   V V  PPP  BBB      S'
+printf '%s\n' '                          K K   V   P    BBB     SS'
+printf '%s\n' ''
+printf '%s\n' '                 WARNING: USE THIS SCRIPT AT YOUR OWN RISK.'
+printf '%s\n' ''
+printf '\033[48;2;255;165;255;0#m%s\033[m\n' " ALL THE COMPUTER PROGRAMS  AND SOFTWARE ARE PROVIDED 'AS IS'  WITHOUT WARRANTY"
+printf '%s\n' ' OF ANY KIND.  WE MAKE NO WARRANTIES,  EXPRESS  OR IMPLIED,  THAT THEY ARE FREE'
+printf '%s\n' ' OF ERROR,  OR ARE CONSISTENT  WITH ANY PARTICULAR STANDARD OF MERCHANTABILITY,'
+printf '%s\n' ' OR THAT THEY WILL MEET YOUR REQUIREMENTS FOR ANY PARTICULAR APPLICATION.  THEY'
+printf '%s\n' ' SHOULD NOT BE  RELIED ON FOR SOLVING A PROBLEM  WHOSE INCORRECT SOLUTION COULD'
+printf '%s\n' ' RESULT  IN  INJURY  TO  A  PERSON  OR  LOSS  OF  PROPERTY.  IF YOU DO USE THEM'
+printf '%s\n' ' IN SUCH A MANNER,  IT IS AT YOUR OWN RISK.  THE AUTHOR  AND PUBLISHER DISCLAIM'
+printf '%s\n' ' ALL LIABILITY FOR  DIRECT,  INDIRECT,  OR CONSEQUENTIAL DAMAGES RESULTING FROM'
+printf '%s\n' ' YOUR USE OF THE PROGRAMS.'
+printf '%s\n' ''
+# Display the title screen with disclaimer.
+
+sudo -v # Ask for an administrator password.
+#while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & # Update the sudo timestamp, until the script is over.
+
+printf '\033[48;2;255;255;0;0#m%s\033[m\n' 'First-Party Settings: Systemwide And User-Specific Preferences'
+
+#printf '%s\n' 'Unnamed'
+#
+#
+
+printf '%s\n' 'Network'
+
+s[0]="${USER^^}" # requires BASH 4+.
+s[1]="$(. /etc/os-release && printf '%s' ${NAME})"
+[ -z "$(sudo dmesg | grep 'QEMU\|VirtualBox\|VMware\|Parallels' 2>/dev/null)" ] && s[2]='PC' || s[2]='VM'
+sudo hostname "${s_0}s${s_1}${s_2}"
+unset s
+# Set the host name of the operating system.
+
+sh ./bin/patchhosts.sh # Set the static table lookup for hostnames.
+
+printf '%s\n' 'Keyboard'
+
+gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 20 # 
+gsettings set org.gnome.desktop.peripherals.keyboard delay 200 # 
+
+printf '%s\n' 'Dock'
+
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'LEFT' # 
+
+gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false # 
+
+gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items false # 
+
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 24 # 
+
+gsettings set org.gnome.shell favorite-apps "[
+	'terminator.desktop',
+	'org.gnome.Terminal.desktop',
+	'org.gnome.Nautilus.desktop',
+	'firefox.desktop',
+	'gnome-system-monitor_gnome-system-monitor.desktop',
+	'xpad.desktop',
+	'code.desktop',
+	'org.gnome.gedit.desktop',
+	'libreoffice-writer.desktop',
+	'gimp.desktop',
+	'inkscape.desktop',
+	'vlc.desktop',
+	'ProtonMail_Bridge.desktop',
+	'org.gnome.Geary.desktop',
+	'signal-desktop.desktop',
+	'org.kde.kaddressbook.desktop',
+	'transmission-gtk.desktop'
+]" # 
+
+printf '%s\n' 'Files'
+
+gsettings set org.gtk.Settings.FileChooser show-hidden 'true' # 
+
+gsettings set org.gnome.nautilus.preferences search-filter-time-type 'last_modified' # 
+gsettings set org.gnome.nautilus.preferences default-sort-order 'name' # 
+gsettings set org.gnome.nautilus.preferences recursive-search 'always' # 
+gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover false # 
+gsettings set org.gnome.nautilus.preferences default-sort-in-reverse-order false # 
+gsettings set org.gnome.nautilus.preferences show-hidden-files false # 
+gsettings set org.gnome.nautilus.preferences tabs-open-position 'after-current-tab' # 
+gsettings set org.gnome.nautilus.preferences always-use-location-entry false # 
+gsettings set org.gnome.nautilus.preferences show-image-thumbnails 'never' # 
+gsettings set org.gnome.nautilus.preferences confirm-trash true # 
+gsettings set org.gnome.nautilus.preferences search-view 'list-view' # 
+gsettings set org.gnome.nautilus.preferences thumbnail-limit uint64 10 # 
+gsettings set org.gnome.nautilus.preferences mouse-back-button 8 # 
+gsettings set org.gnome.nautilus.preferences click-policy 'double' # 
+gsettings set org.gnome.nautilus.preferences mouse-forward-button 9 # 
+gsettings set org.gnome.nautilus.preferences show-create-link true # 
+gsettings set org.gnome.nautilus.preferences show-directory-item-counts 'always' # 
+gsettings set org.gnome.nautilus.preferences mouse-use-extra-buttons true # 
+gsettings set org.gnome.nautilus.preferences executable-text-activation 'display' # 
+gsettings set org.gnome.nautilus.preferences show-delete-permanently true # 
+gsettings set org.gnome.nautilus.preferences fts-enabled true # 
+gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view' # 
+gsettings set org.gnome.nautilus.preferences use-experimental-views false # 
+gsettings set org.gnome.nautilus.preferences install-mime-activation true # 
+
+#gsettings set org.gnome.desktop.background picture-uri 'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png' # Set the default desktop background.
+gsettings set org.gnome.desktop.background picture-options 'none'
+gsettings set org.gnome.desktop.background primary-color '#000000'
+# Set the background of the desktop. # I want a permanent terminal emulator as a wallpaper. How do I get that?
+
+printf '\033[48;2;255;255;0;0#m%s\033[m\n' 'Second-Party Settings: User-Specific Filesystem Customs'
+
+cd \
+&& mkdir -p ${HOME}/Temporary \
+&& wget https://github.com/kvpb/.files/archive/master.zip --directory-prefix=${HOME}/Temporary \
+&& unzip ${HOME}/Temporary/master.zip -d ${HOME}/Temporary \
+&& mv ${HOME}/Temporary/.files-master ${HOME}/Temporary/.files \
+&& mv ${HOME}/Temporary/.files ${HOME}/.files \
+&& rm -rf ${HOME}/Temporary/master.zip
+&& cd ${workingdirectory}
+# Download .files/ from GitHub to ${HOME}/.
+
+mydirectories_array=( Applications bin Miscellaneous )
+for directory in "${mydirectories_array[@]}"
+do
+	if [ -d "${HOME}/${directory}" ]
+	then
+		if [ -L "${HOME}/${directory}" ]
+		then
+			mv "${HOME}/${directory}" ${HOME}/.local/share/Trash/
+			mkdir "${HOME}/${directory}"
+		fi
+	else
+		mkdir -p "${HOME}/${directory}"
+	fi
+done
+# If Applications, bin, Miscellaneous are not directories in ${HOME}/, substitute symbolic links by or add these directories.
+directories_array=( $(cd ${HOME} && ls) )
+excludeddirectories_array=( Desktop Downloads Templates Public )
+for excludeddirectory in "${excludeddirectories_array[@]}"
+do
+	for index in "${!directories_array[@]}"
+	do
+		if [[ ${directories_array[ index ]} = ${excludeddirectory} ]]
+		then
+			unset 'directories_array[ index ]'
+		fi
+	done
+done
+for directory in "${directories_array[@]}"
+do
+	if [ -d "${HOME}/${directory}/Downloaded" ]
+	then
+		if [ -L "${HOME}/${directory}/Downloaded" ]
+		then
+			mv "${HOME}/${directory}/Downloaded" ${HOME}/.local/share/Trash/
+			mkdir "${HOME}/${directory}/Downloaded"
+		fi
+	else
+		mkdir -p "${HOME}/${directory}/Downloaded"
+	fi
+done
+# If Downloaded is not a directory in ${HOME}/{Miscellaneous,Documents,Pictures,Videos,Music}/, substitute symbolic links by or add these directories.
+
+for file in .inputrc .shrc .shinit .profile .exports .functions .aliases .bashrc .profile .bashrc .bash_login .bash_profile .bash_logout .bash_prompt .zshrc .zprofile .ssh .vimrc .vim .gitconfig .gitignore_global
+do
+	if [ -e ${file} ]
+	then
+		if [ -f ${file} -o -d ${file} ]
+		then
+			mv ${file} ${HOME}/.local/share/Trash/
+			xdg-open ${HOME}/.local/share/Trash/
+		elif [ -L ${file} ]
+		then
+			unlink ${file}
+		fi
+	fi
+done
+ln -s ${HOME}/.files/.inputrc ${HOME}/.inputrc
+#ln -s ${HOME}/.files/.shrc ${HOME}/.shrc
+#ln -s ${HOME}/.files/.shinit ${HOME}/.shinit
+#ln -s ${HOME}/.files/.profile ${HOME}/.profile
+ln -s ${HOME}/.files/.bashrc ${HOME}/.bashrc
+ln -s ${HOME}/.files/.bash_login ${HOME}/.bash_login
+ln -s ${HOME}/.files/.bash_profile ${HOME}/.bash_profile
+ln -s ${HOME}/.files/.bash_logout ${HOME}/.bash_logout
+ln -s ${HOME}/.files/.bash_prompt ${HOME}/.bash_prompt
+ln -s ${HOME}/.files/.zshrc ${HOME}/.zshrc
+ln -s ${HOME}/.files/.zprofile ${HOME}/.zprofile
+#ln -s ${HOME}/.files/.ssh ${HOME}/.ssh
+ln -s ${HOME}/.files/.vimrc ${HOME}/.vimrc
+ln -s ${HOME}/.files/.vim ${HOME}/.vim
+ln -s ${HOME}/.files/.gitconfig ${HOME}/.gitconfig
+ln -s ${HOME}/.files/.gitignore_global ${HOME}/.gitignore_global
+ln -s ${HOME}/Miscellaneous/Downloaded ${HOME}/Downloads/Miscellaneous
+ln -s ${HOME}/Documents/Downloaded ${HOME}/Downloads/Documents
+ln -s ${HOME}/Pictures/Downloaded ${HOME}/Downloads/Pictures
+ln -s ${HOME}/Videos/Downloaded ${HOME}/Downloads/Videos
+ln -s ${HOME}/Music/Downloaded ${HOME}/Downloads/Music
+ln -s ${HOME}/Pictures/DCIM ${HOME}/DCIM
+ln -s ${HOME}/.local/share/Trash ${HOME}/.Trash
+# Create user-specific custom symbolic links.
+
+:> ${HOME}/.hushlogin # Write the .hushlogin file in the current user's home folder.
+
+#sed -i '/Icon/d' "/var/lib/AccountsService/${USER}"
+#find ${HOME} -mindepth 0 -type f -name Screen\ Shot\ 2015-11-04\ at\ 5.18.34\ PM.png -exec rsync -aHAX {} /home/kvpb/.face/ \;
+# Set my user picture.
+
+printf '\033[48;2;255;255;0;0#m%s\033[m\n' 'Third-Party: Systemwide And User-Specific Xenogenetic Software & Preferences'
+
+printf '%s\n' 'Snap'
+
+sudo dnf install snapd
+
+printf '%s\n' 'BASH'
+
+sudo dnf upgrade bash # Download and update BASH.
+
+printf '%s\n' 'ZSH'
+
+sudo dnf install zsh # Download and update ZSH.
+
+printf '\033[38:2:255:165:0m%s\033[m\n' 'Rust'
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh # Install Rust. https://www.rust-lang.org/tools/install
+
+#printf '%s\n' 'Go'
+#
+#sudo dnf install golang
+# Download and install Go.
+
+#cecho '%s\n' 'Ruby' ${litred}
+#
+#sudo dnf install ruby # Download and install Ruby.
+
+printf '%s\n' 'Python'
+
+sudo dnf install  python3
+# Download and install Python 3.
+
+printf '%s\n' 'Node.js & NPM'
+
+#sudo dnf install -y nodejs npm # Download and install Node.js & NPM.
+wget -qO- https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo dnf install  nodejs
+# Download and install Node.js 14.x LTS & NPM
+
+printf '%s\n' 'Octave'
+
+sudo dnf install  octave # Download and install Octave.
+
+printf '%s\n' 'Media Transfer Protocol (MTP)'
+
+sudo dnf install go-mtpfs
+sudo dnf install libmtp
+sudo dnf install mtpfs
+sudo dnf install mtp-tools
+sudo dnf install jmtpfs
+# Download and install MTP.
+
+printf '%s\n' 'KVM'
+
+sudo dnf install kvm # Download and install KVM.
+
+printf '%s\n' 'QEMU'
+
+sudo dnf install qemu # Download and install QEMU.
+
+printf '%s\n' 'OpenSSH'
+
+sudo dnf install ssh # Download and install OpenSSH.
+
+printf '%s\n' 'OpenSSL'
+
+sudo dnf install openssl # Download and install OpenSSL.
+
+printf '%s\n' 'MOSH'
+
+sudo dnf install mosh # Download and install MOSH.
+
+printf '%s\n' 'Git'
+
+sudo dnf upgrade git # Download and update Git.
+
+printf '%s\n' 'Wget'
+
+sudo dnf upgrade wget # Download and update Wget.
+
+printf '%s\n' 'CURL'
+
+sudo dnf install curl # Download and install CURL.
+
+printf '%s\n' 'XATTR'
+
+sudo dnf install xattr # Download and install XATTR.
+
+printf '%s\n' 'Vi Improved'
+
+sudo dnf install vim # Download and install VIM.
+
+printf '%s\n' 'FSWatch'
+
+sudo dnf install fswatch # Download and install FSWatch.
+
+printf '%s\n' 'Tree'
+
+sudo dnf install tree # Download and install Tree.
+
+printf '%s\n' 'HTOP'
+
+sudo dnf install htop # Download and install HTOP.
+
+printf '%s\n' 'The Fuck'
+
+sudo dnf install thefuck # Download and install The Fuck.
+
+printf '%s\n' 'TMUX'
+
+sudo dnf install tmux # Download and install TMUX.
+
+printf '%s\n' 'FFMPEG'
+
+sudo dnf install ffmpeg # Download and install FFMPEG.
+
+printf '%s\n' 'Terminator'
+
+sudo dnf install terminator # Download and install Terminator.
+
+#printf '%s\n' 'VMware Workstation Player'
+#
+#sudo apt-get install gcc build-essential -y
+#chmod +x VMware-Player-14.0.0-6661328.x86_64.bundle
+#gksudo bash VMware-Player-14.0.0-6661328.x86_64.bundle
+# Download and install VMware Workstation Player. https://help.ubuntu.com/community/VMware/Player
+
+printf '%s\n' 'Visual Studio Code'
+
+sudo snap install --classic code # Download and install VS Code. https://code.visualstudio.com/docs/setup/linux
+
+printf '%s\n' 'Xpad'
+
+sudo dnf install xpad # Download and install Xpad.
+
+printf '%s\n' 'LibreOffice'
+
+sudo dnf install libreoffice # Download and install LibreOffice.
+
+printf '%s\n' 'GIMP'
+
+sudo dnf install gimp # Download and install GIMP.
+
+printf '%s\n' 'Inkscape'
+
+sudo dnf install inkscape # Download and install Inkscape.
+
+printf '%s\n' 'Handbrake'
+
+sudo dnf install handbrake # Download and install Handbrake.
+
+#printf '%s\n' 'ProtonMail Bridge'
+#
+#wget https://protonmail.com/download/protonmail-bridge_1.2.1-1_amd64.deb # 'Download the file to the current working directory.'
+#sudo apt-get install debsig-verify debian-keyring # 'Install debsigs to be able to verify the package.'
+#gpg --dearmor --output debsig.gpg bridge_pubkey.gpg
+#sudo mkdir -p /usr/share/debsig/keyrings/E2C75D68E6234B07
+#sudo mv debsig.gpg /usr/share/debsig/keyrings/E2C75D68E6234B07
+# 'Import the public key into the keyring.'
+#sudo mkdir -p /etc/debsig/policies/E2C75D68E6234B07
+#sudo cp bridge.pol /etc/debsig/policies/E2C75D68E6234B07
+# 'Install the policy file.'
+#if [ $(debsig-verify protonmail-bridge_1.1.6-1_amd64.deb) = "debsig: Verified package from 'Proton Technologies AG (ProtonMail Bridge developers) <bridge@protonmail.ch>' (Proton Technologies AG)" ] # 'Check the DEB file.'
+#then
+#	sudo apt-get install ./protonmail-bridge_1.1.6-1_amd64.deb
+#fi # 'Install the package using [my] package manager.'
+#mv ./protonmail-bridge_1.1.6-1_amd64.deb ${HOME}/Downloads/
+# Download and install ProtonMail Bridge.
+#pmbdeb='protonmail-bridge_1.8.10-1_amd64.deb'
+#pmbdeburl="https://protonmail.com/download/bridge/${pmbdeb}"
+#wget -q ${pmbdeburl}
+#sudo apt-get install -qq ./${pmbdeb}
+#mv ${pmbdeb} ${HOME}/Downloads/
+# Download and install ProtonMail Bridge.
+
+printf '%s\n' 'Geary'
+
+sudo dnf install geary # Download and install Geary.
+
+printf '%s\n' 'KAddressBook'
+
+sudo dnf install akonadi*
+sudo dnf install kaddressbook
+# Download and install KAddressBook.
+
+printf '%s\n' 'Transmission'
+
+sudo dnf install transmission # Download and install Transmission.
+
+#printf '%s\n' 'Dropbox'
+#
+#if [ "$(uname -m)" = 'i386' -o "$(uname -m)" = 'i686' ]
+#then
+#	cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
+#	~/.dropbox-dist/dropboxd
+#elif [ "$(uname -m)" = 'x86_64' ]
+#then
+#	cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+#	~/.dropbox-dist/dropboxd
+#else
+#	:
+#fi
+# Download and install Dropbox. https://www.dropbox.com/install-linux
+
+#printf '%s\n' ''
+#
+#sudo dnf install   # Download and install .
+
+printf '\n'
+cecho '%s\n' 'The Linux-based operating system has been configured.' ${litcyan}
+
+cecho '%s\n' 'Setting the operating system with this script requires to reboot the computer. Reboot, \e[4my\e[0mes or \e[4mn\e[0mo?' ${litgreen}
+read -r input
+if [[ ${input} =~ ^([Yy]|[Yy][Ee][Ss]|[Yy][Ee][Aa][Hh]|[Oo]|[Oo][Kk]|[1])$ ]]
+then
+	sudo shutdown -r now # Reboot without confirmation.
+else
+	:
+fi
+exit 0
+
+#	~.archlinux~ .fedoralinux
+#	Asahi Linux Configuration Script
+#
+#	Karl V. P. B. `kvpb`	Karl Thomas George West `ktgw`
+#	+33 A BB BB BB BB		+1 (DDD) DDD-DDDD
+#	local-part@domain		local-part@domain
+#	https://twitter.com/ktgwkvpb
+#	https://github.com/kvpb
+
+#	Copyright 2020, 2021, 2022, 2023, 2024, 2025 Karl Vincent Pierre Bertin AKA Karl Thomas George West
+#
+#	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+#
+#	1.  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#
+#	2.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#
+#	3.  Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+#
+#	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
