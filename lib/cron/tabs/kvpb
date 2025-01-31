@@ -1,3 +1,4 @@
+59 23 31  *  0 brew update; brew upgrade; brew upgrade --cask --greedy; brew cleanup -s; brew doctor; brew missing; defaults write com.apple.dock ResetLaunchPad -boolean TRUE && killall Dock;
 00 12  *  *  3 rustup update
 00 12  *  *  3 git -C ${HOME}/.rbenv pull --rebase
 00 12  *  *  3 /opt/local/bin/python3 /Users/kvpb/bin/autotss/autotss.py > /dev/null 2>&1
