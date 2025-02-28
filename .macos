@@ -1,5 +1,23 @@
 #!/usr/bin/env bash
 
+ISA=$(uname -m) # ID the instruction set architecture.
+kernel=$(uname -s) # ID the kernel.
+version_systemsoftware=$(defaults read loginwindow SystemVersionStampAsString) # ID the version of the system software.
+[ ! -z ${version_systemsoftware} ] && version_major_systemsoftware=$(printf "${version_systemsoftware}" | cut -f1,1 -d'.') # ID the major version of the system software.
+[ ! -z ${version_systemsoftware} ] && version_minor_systemsoftware=$(printf "${version_systemsoftware}" | cut -d. -f2- | cut -f1,1 -d'.') # ID the minor version of the system software.
+if [ ${version_major_systemsoftware} -ge  8 ] || [ ${version_major_systemsoftware} -ge  7 ] && [ ${version_minor_systemsoftware} -ge  3 ]
+then
+	status_Gatekeeper=$(spctl --status | sed -E 's/.*(...abled).*/\1/g')
+fi # Is Gatekeeper enabled?
+if [ ${version_major_systemsoftware} -ge 11 ]
+then
+	status_SystemIntegrityProtection=$(csrutil status | sed -E 's/.*(...abled).*/\1/g')
+fi # Is System Integrity Protection enabled?
+[ ${version_major_systemsoftware} -ge 11 ] || [ ${version_minor_systemsoftware} -ge 12 ] && systemsoftware="${version_systemsoftware/#/macOS }"
+[ ${version_minor_systemsoftware} -ge  8 ] && [ ${version_minor_systemsoftware} -le 11 ] && systemsoftware="${version_systemsoftware/#/OS X }"
+[ ${version_minor_systemsoftware} -ge  0 ] && [ ${version_minor_systemsoftware} -le  7 ] && systemsoftware="${version_systemsoftware/#/Mac OS X }"
+# ID the system software.
+
 default='\033[0;39m'
 hidefault='\033[0;30;39m'
 white='\033[0;37m'
@@ -32,32 +50,32 @@ function cecho
 	return
 } # Color Echo (João Cunha `joaocunha`) improved (Brandon Brown `brandonb927`) custom (Karl Bertin `kvpb`)
 
-echo ''
-cecho "                         ^  (^)  /| (^) |V|         ," ${litred}
-cecho "            vV, ,^| ,^' ( )  \  / |  /  | | ,^, |^, |-  ,O. v^. ,O. , ," ${litred}
-cecho "         .  ||| '_| '_.  V  (_)   | /__ | | 'v' | | '_. '_. |   '_. '_|" ${litred}
-cecho "                                                                     _/" ${litred}
-cecho '                                 LICENSED BY' ${litred}
-cecho '                                 ${LICENSOR}' ${litred}
-echo ''
-cecho "                            K K  V V  PPP  BB   '" ${litred}
+cecho '                                                       //' ${litred}
+cecho '                                             ^  (^)    //|' ${litred}
+cecho '                                vV, ,^| ,^. ( )  \      V/' ${litred}
+cecho "                             .  ||| '_| '_.  V  (_) .|_  \\/\`.," ${litred}
+cecho '                                                    /\       `-.' ${litred}
+cecho "                                 LICENSED BY       \\\/        ,'" ${litred}
+cecho '                                 M Y S E L F    /,\/          `,' ${litred}
+cecho '                                                \' ${litred}
+cecho "                            K K  V V  PPP  BB  ,/'" ${litred}
 cecho '                           KK   V V  PPP  BBB     SS' ${litred}
 cecho '                          K K   V   P    BBB     SS' ${litred}
 echo ''
-cecho '                 WARNING: USE THIS SCRIPT AT YOUR OWN RISK.' ${litred}
+cecho '                 WARNING. USE THIS SCRIPT AT YOUR OWN RISK.' ${litred}
 echo ''
 cecho " ALL THE COMPUTER PROGRAMS  AND SOFTWARE ARE PROVIDED 'AS IS'  WITHOUT WARRANTY" ${litred}
 cecho ' OF ANY KIND.  WE MAKE NO WARRANTIES,  EXPRESS  OR IMPLIED,  THAT THEY ARE FREE' ${litred}
 cecho ' OF ERROR,  OR ARE CONSISTENT  WITH ANY PARTICULAR STANDARD OF MERCHANTABILITY,' ${litred}
 cecho ' OR THAT THEY WILL MEET YOUR REQUIREMENTS FOR ANY PARTICULAR APPLICATION.  THEY' ${litred}
-cecho ' SHOULD NOT BE  RELIED ON FOR SOLVING A PROBLEM  WHOSE INCORRECT SOLUTION COULD' ${litred}
+cecho ' SHOULD NOT BE RELIED ON  FOR SOLVING A PROBLEM  WHOSE INCORRECT SOLUTION COULD' ${litred}
 cecho ' RESULT  IN  INJURY  TO  A  PERSON  OR  LOSS  OF  PROPERTY.  IF YOU DO USE THEM' ${litred}
 cecho ' IN SUCH A MANNER,  IT IS AT YOUR OWN RISK.  THE AUTHOR  AND PUBLISHER DISCLAIM' ${litred}
-cecho ' ALL LIABILITY FOR  DIRECT,  INDIRECT,  OR CONSEQUENTIAL DAMAGES RESULTING FROM' ${litred}
+cecho ' ALL LIABILITY  FOR DIRECT,  INDIRECT,  OR CONSEQUENTIAL DAMAGES RESULTING FROM' ${litred}
 cecho ' YOUR USE OF THE PROGRAMS.' ${litred}
 echo ''
 say --voice=Fiona 'Ta-da!'
-# Display the title screen with the disclaimer.
+# Display the title screen with the disclaimer. # 2024.12.31@23:59:59. Yeah, no, I can't be maintaining 4 files in parallel at that point. I just can't doss around in configuration files anymore. My old Pro is limited to Big Sur, my Mac Pro, Sonoma, my MacBook, Ventura. This one runs Sequoia. This isn't 2013 anymore. The days of Snow Leopard and Mavericks are gone. Each of these versions of macOS differs from the others just enough for trouble. Some versions require older versions of apps, others, newer apps altogether. Older versions could be configured in some way, newer need to be in another entirely. Even Gatekeeper and System Integrity Protection have been changed. I gotta resort to merging all of my Apple computer operating system configuration scripts into one and support only the latest versions of macOS for my machines. And since no one jailbreaks iOS devices anymore, I should drop the one for iOS as well. So when some part of any of these scripts has to differ from the others, I just get that part of the one script to set macOS up the right way for each version. It only takes identifying the architecture, the version of macOS and maybe a few other extra parameters at the beginning of the script. I've programmed that many, many times.
 
 sudo -v # Ask for an administrator password.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & # Update the sudo timestamp, until the script ends.
@@ -96,7 +114,7 @@ sudo systemsetup -setusingnetworktime on # Use network time.
 sudo systemsetup -setnetworktimeserver "time.euro.apple.com" # Set date and time automatically via the network time server.
 defaults write "Apple Global Domain" AppleFirstWeekday -dict gregorian 2 # Set monday as the first day of the week and gregorian as the calendar.
 
-if [ $(bioutil --system --read | wc -l | sed 's/^ *//g'") -gt 2 ]
+if [ $(bioutil --system --read | wc -l | sed 's/^ *//g') -gt 2 ]
 then
 	sudo cp -av /etc/pam.d/sudo /etc/pam.d/sudo.bak
 	sudo awk 'NR==1 {print; print "auth       sufficient     pam_tid.so"} NR!=1' /etc/pam.d/sudo
@@ -706,39 +724,57 @@ defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.dock persistent-others -array
 # Delete Dock items.
 
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Library/CoreServices/Finder.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Finder app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Library/CoreServices/Applications/Archive Utility.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an Archive Utility app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Firefox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Firefox app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iTerm.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an iTerm2 app item.
 #defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Server.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Server app item.
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/VMware Fusion.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a WMware Fusion app item.
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Activity Monitor.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an Activity Monitor app item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Parallels Desktop.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a WMware Fusion app item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Visual Studio Code.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Visual Studio Code app item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Utilities/Activity Monitor.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an Activity Monitor app item.
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/TomatoBar.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a TomatoBar app item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Anki.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an Anki app item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Affluences.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an Affluences app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Stickies.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Stickies app item.
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/TextEdit.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a TextEdit app item.
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/LibreOffice.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a LibreOffice app item.
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/GIMP-2.10.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a GIMP app item.
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Inkscape.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an Inkscape app item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/TextEdit.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a TextEdit app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Microsoft Excel.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Microsoft Excel app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Microsoft Word.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Microsoft Word app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Microsoft PowerPoint.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Microsoft PowerPoint app item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/DaVinci Resolve/DaVinci Resolve.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a DaVinci Resolve app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Aperture.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an Aperture app item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Pixelmator Pro.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Pixelmator Pro app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Sketch.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Sketch app item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Basecamp.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Basecamp app item.
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Preview.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Preview app item.
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/VLC.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a VLC Media Player app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Gapplin.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Gapplin app item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/IINA.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an IINA app item.
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Affluences.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an Affluences app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Calendar.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Calendar app item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Calendr.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Calendr app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/TomatoBar.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a TomatoBar app item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Clock.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Clock app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Contacts.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Contacts app item.
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Proton Mail Bridge.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a ProtonMail Bridge app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Proton Mail Bridge.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a ProtonMail Bridge app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Mail app item.
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Signal.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Signal app item.
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/WhatsApp.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a WhatsApp app item.
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Utilities/Script Editor.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Script Editor app item. # found by running `find /{,System/,/Users/${USER}/}Applications -mindepth 1 -maxdepth 2 -type d -iname Script\ Editor.app`.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Utilities/Script Editor.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Script Editor app item. # found by executing `find /{,System/,/Users/${USER}/}Applications -mindepth 1 -maxdepth 2 -type d -iname Script\ Editor.app`.
 #defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Xcode.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Xcode app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Jumpcut.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Jumpcut app item.
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Rectangle.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Rectangle app item.
-#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Dropbox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Dropbox app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/AutoRaise.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create an AutoRaise app item.
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Transmission.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a Transmission app item.
+#defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/JDownloader 2/JDownloader2.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>' # Create a JDownloader2 app item.
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create a spacer item.
 defaults write com.apple.dock persistent-others -array-add '{ "tile-data" = { "list-type" = 1; }; "tile-type" = "recents-tile"; }' # Create a recent items stack others item.
 defaults write com.apple.dock persistent-others -array-add '<dict><key>tile-data</key><dict><key>arrangement</key><integer>1</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Applications</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>' # Create an Applications others item.
 defaults write com.apple.dock persistent-others -array-add '<dict><key>tile-data</key><dict><key>arrangement</key><integer>2</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/kvpb/Downloads/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Downloads</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>' # Create a Downloads others item.
-defaults write com.apple.dock persistent-others -array-add '<dict><key>tile-data</key><dict><key>arrangement</key><integer>5</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/kvpb/Dropbox/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Dropbox</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>' # Create a Dropbox others item.
+#defaults write com.apple.dock persistent-others -array-add '<dict><key>tile-data</key><dict><key>arrangement</key><integer>5</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/kvpb/Dropbox/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Dropbox</string><key>file-type</key><integer>2</integer><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>2</integer></dict><key>tile-type</key><string>directory-tile</string></dict>' # Create a Dropbox others item.
 defaults delete com.apple.dock mod-count
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create an app item area spacer item.
 #defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}' # Create an other items area spacer item.
@@ -1086,34 +1122,34 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 printf "%s\n" "Setup Assistant (com.apple.SetupAssistant)"
 
 defaults write com.apple.SetupAssistant RunNonInteractive -boolean TRUE # Finally found the fucker!
-#defaults write com.apple.SetupAssistant  -boolean TRUE # Do not set your language.
-#defaults write com.apple.SetupAssistant  -boolean TRUE # Do not select your country or region.
-defaults write com.apple.SetupAssistant DidSeeAccessibility -boolean TRUE # Do not view accessibility options.
-#defaults write com.apple.SetupAssistant  -boolean TRUE # Do not select your Wi-Fi network.
+#defaults write com.apple.SetupAssistant  -boolean TRUE # Don't set a language.
+#defaults write com.apple.SetupAssistant  -boolean TRUE # Don't select a country or region.
+defaults write com.apple.SetupAssistant DidSeeAccessibility -boolean TRUE # Don't view accessibility options.
+#defaults write com.apple.SetupAssistant  -boolean TRUE # Don't select a Wi-Fi network.
 defaults write com.apple.SetupAssistant DidSeePrivacy -boolean TRUE
 defaults write com.apple.SetupAssistant DidSeeTrueTonePrivacy -boolean TRUE
-# Do not care about data & privacy.
+# Don't care about data & privacy.
 defaults write com.apple.SetupAssistant DidSeeSyncSetup -boolean TRUE
 defaults write com.apple.SetupAssistant DidSeeSyncSetup2 -boolean TRUE
-# Do not transfer your information.
+# Don't transfer information.
 defaults write com.apple.SetupAssistant DidSeeActivationLock -boolean TRUE
 defaults write com.apple.SetupAssistant DidSeeAppStore -boolean TRUE
-# Do not sign in with your Apple ID.
+# Don't sign in with an Apple ID.
 defaults write com.apple.SetupAssistant DidSeeCloudSetup -boolean TRUE
 defaults write com.apple.SetupAssistant DidSeeiCloudLoginForStorageServices -boolean TRUE
 defaults write com.apple.SetupAssistant LastSeenCloudProductVersion $(sw_vers -productVersion)
-# Do not care about the App Store and iCloud.
-defaults write com.apple.SetupAssistant DidSeeScreenTime -boolean TRUE # Do not care about screen time.
-defaults write com.apple.SetupAssistant DidSeeSiriSetup -boolean TRUE # Disable Siri and "Hey, Siri".
-defaults write com.apple.SetupAssistant DidSeeTouchIDSetup -boolean TRUE # Do not set up Touch ID.
-defaults write com.apple.SetupAssistant DidSeeApplePaySetup -boolean TRUE # Do not set up Apple Pay.
-defaults write com.apple.SetupAssistant DidSeeAppearanceSetup -boolean TRUE # Do not choose your look.
+# Don't care about the App Store or iCloud.
+defaults write com.apple.SetupAssistant DidSeeScreenTime -boolean TRUE # Don't care about screen time.
+defaults write com.apple.SetupAssistant DidSeeSiriSetup -boolean TRUE # Disable Siri and 'Hey, Siri'.
+defaults write com.apple.SetupAssistant DidSeeTouchIDSetup -boolean TRUE # Don't set up Touch ID.
+defaults write com.apple.SetupAssistant DidSeeApplePaySetup -boolean TRUE # Don't set up Apple Pay.
+defaults write com.apple.SetupAssistant DidSeeAppearanceSetup -boolean TRUE # Don't choose a look.
 # https://support.apple.com/guide/macbook-pro/set-up-your-mac-apd831707cb3/mac
 
 cecho 'Second-Party Settings: User-Specific Filesystem Customs' ${lityellow}
 
 git clone git:github.com/kvpb/.files.git ${HOME}/.files
-# Clone my .files/ from my GitHub remote repo to ${HOME}/.
+# Clone .files/ from my GitHub remote repository to ${HOME}/.
 
 if [ -d "${HOME}/{Miscellaneous,Work,Temporary}" ]
 then
@@ -1126,7 +1162,7 @@ then
 else
 	mkdir -p ${HOME}/{Miscellaneous,Work,Temporary}
 fi
-# If Miscellaneous, Work and Temporary are not directories in ${HOME}/, substitute symbolic links by or make these directories.
+# If Miscellaneous, Work and Temporary aren't directories in ${HOME}/, substitute symbolic links by or create these.
 if [ -d "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads" -o -d "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloaded" ]
 then
 	if [ -L "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads" -o -L "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloaded" ]
@@ -1141,7 +1177,7 @@ then
 else
 	mkdir -p ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}
 fi
-# If Downloaded is not a directory in ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}, substitute symbolic links by or make this directory.
+# If Downloaded isn't a directory in ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}, substitute symbolic links by or create it.
 #if [ -d "${HOME}/Pictures/DCIM" ]
 #then
 #	if [ -L "${HOME}/Pictures/DCIM" ]
@@ -1153,40 +1189,58 @@ fi
 #else
 #	mkdir -p ${HOME}/Pictures/DCIM
 #fi
-# If DCIM is not a directory in ${HOME}/Pictures/, substitute any symbolic link by or make this directory.
+# If DCIM isn't a directory in ${HOME}/Pictures/, substitute any symbolic link by or create it. # That rubbish is tedious. Why not just RSync the memory cards of my cameras in Pictures/ directly instead? Oughta be better, much, much simpler. Finder and Photoshop Lightroom can handle the rest for me. Screw this crap.
 
-ln -s ${HOME}/.files/.inputrc ${HOME}/.inputrc
-#ln -s ${HOME}/.files/.shrc ${HOME}/.shrc
-#ln -s ${HOME}/.files/.shinit ${HOME}/.shinit
-#ln -s ${HOME}/.files/.profile ${HOME}/.profile
-ln -s ${HOME}/.files/.bashrc ${HOME}/.bashrc
-ln -s ${HOME}/.files/.bash_login ${HOME}/.bash_login
-ln -s ${HOME}/.files/.bash_profile ${HOME}/.bash_profile
-ln -s ${HOME}/.files/.bash_logout ${HOME}/.bash_logout
-ln -s ${HOME}/.files/.bash_prompt ${HOME}/.bash_prompt
-ln -s ${HOME}/.files/.zshrc ${HOME}/.zshrc
-ln -s ${HOME}/.files/.zprofile ${HOME}/.zprofile
-#ln -s ${HOME}/.files/.ssh ${HOME}/.ssh
-ln -s ${HOME}/.files/.vimrc ${HOME}/.vimrc
-ln -s ${HOME}/.files/.vim ${HOME}/.vim
-#ln -s ${HOME}/.files/.tmux.conf ${HOME}/.tmux.conf
-ln -s ${HOME}/.files/.gitconfig ${HOME}/.gitconfig
-ln -s ${HOME}/.files/.gitignore_global ${HOME}/.gitignore_global
-ln -s ${HOME}/.files/.config ${HOME}/.config
-mkdir -p ${HOME}/Library/Scripts && cp -R ${HOME}/.files/Library/Scripts/. ${HOME}/Library/Scripts/ #sudo rmdir ${HOME}/Library/Scripts && ln -s ${HOME}/.files/Library/Scripts ${HOME}/Library/Scripts && chmod -h 700 ${HOME}/Library/Scripts
-mkdir -p ${HOME}/Library/Services && cp -R ${HOME}/.files/Library/Services/. ${HOME}/Library/Services/ #sudo rmdir ${HOME}/Library/Services && ln -s ${HOME}/.files/Library/Services ${HOME}/Library/Services && chmod -h 700 ${HOME}/Library/Services
-ln -s ${HOME}/Miscellaneous/Downloaded ${HOME}/Downloads/Miscellaneous
-ln -s ${HOME}/Documents/Downloaded ${HOME}/Downloads/Documents
-ln -s ${HOME}/Pictures/Downloaded ${HOME}/Downloads/Pictures
-ln -s ${HOME}/Movies/Downloaded ${HOME}/Downloads/Movies
-ln -s ${HOME}/Music/Downloaded ${HOME}/Downloads/Music
-ln -s ${HOME}/DCIM ${HOME}/Pictures/DCIM
-ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
-# Create user-specific custom symbolic links.
+for file in \
+           .inputrc \
+           `#.shrc` \
+           `#.shinit` \
+           `#.profile` \
+           .bashrc \
+           .bash_login \
+           .bash_profile \
+           .bash_logout \
+           .bash_prompt \
+           .zshrc \
+           .zprofile \
+           `#.ssh` \
+           .vimrc \
+           .vim \
+           `#.tmux.conf` \
+           .gitconfig \
+           .gitignore_global \
+           .config
+do
+	ln -s ${HOME}/.files/${file} ${HOME}/${file}
+done
+for directory in \
+                 Scripts \
+                 Services
+do
+	mkdir -p ${HOME}/Library/${directory} && cp -R ${HOME}/.files/Library/${directory}/. ${HOME}/Library/${directory}/
+done
+#sudo rmdir ${HOME}/Library/Scripts && ln -s ${HOME}/.files/Library/Scripts ${HOME}/Library/Scripts && chmod -h 700 ${HOME}/Library/Scripts
+#sudo rmdir ${HOME}/Library/Services && ln -s ${HOME}/.files/Library/Services ${HOME}/Library/Services && chmod -h 700 ${HOME}/Library/Services
+for directory in \
+                 Miscellaneous \
+                 Documents \
+                 Pictures \
+                 Movies \
+                 Music
+do
+	ln -s ${HOME}/${directory}/Downloaded ${HOME}/Downloads/${directory}
+done
+#for directory in \
+#                 DCIM \
+#                 `#Camera`
+#do
+#	ln -s ${HOME}/${directory} ${HOME}/Pictures/${directory}
+#done
+# Create user-specific custom symbolic links. # See above.
 
-> ${HOME}/.hushlogin # Create the .hushlogin file in the current user's home folder. /!\ speeds up terminal emulator opening? https://news.ycombinator.com/item?id=3879833
+> ${HOME}/.hushlogin # Create .hushlogin in the current user's home folder. # Does it speed up opening terminal emulators? https://news.ycombinator.com/item?id=3879833
 
-#chflags nohidden ${HOME}/Library # Show the hidden Library folder. # This script also enables hidden files display which overrides this.
+#chflags nohidden ${HOME}/Library # Show the hidden Library folder. # This script also enables displaying hidden files. It overrides this.
 
 #dscl . delete /Users/kvpb Picture
 #sudo dscl . create /Users/kvpb Picture "/Users/${HOME}/Pictures/UserPictures/KVPB.tif"
@@ -1194,7 +1248,7 @@ ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
 
 sudo crontab ${HOME}/.files/lib/cron/tabs/root
 crontab ${HOME}/.files/lib/cron/tabs/kvpb
-# Install my cron tables.
+# Install my Cron tables.
 
 cecho 'Third-Party: System-Wide & User-Specific Xenogenetic Software & Preferences' ${lityellow}
 
@@ -1376,16 +1430,17 @@ else
 	exit 0
 fi
 
-#	.macos12
-#	macOS 12 Monterey Configuration Script
+#	.macos
+#	macOS configuration script
 #
 #	Karl V. P. B. `kvpb`	Karl Thomas George West `ktgw`
 #	+33 A BB BB BB BB		+1 (DDD) DDD-DDDD
 #	local-part@domain		local-part@domain
+#	kvpb.fr
 #	https://twitter.com/ktgwkvpb
 #	https://github.com/kvpb
 
-#	Copyright 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Karl Vincent Pierre Bertin AKA Karl Thomas George West
+#	Copyright 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Karl Vincent Pierre Bertin AKA Karl Thomas George West
 #
 #	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 #
