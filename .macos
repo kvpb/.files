@@ -1,5 +1,23 @@
 #!/usr/bin/env bash
 
+ISA=$(uname -m) # ID the instruction set architecture.
+kernel=$(uname -s) # ID the kernel.
+version_systemsoftware=$(defaults read loginwindow SystemVersionStampAsString) # ID the version of the system software.
+[ ! -z ${version_systemsoftware} ] && version_major_systemsoftware=$(printf "${version_systemsoftware}" | cut -f1,1 -d'.') # ID the major version of the system software.
+[ ! -z ${version_systemsoftware} ] && version_minor_systemsoftware=$(printf "${version_systemsoftware}" | cut -d. -f2- | cut -f1,1 -d'.') # ID the minor version of the system software.
+if [ ${version_major_systemsoftware} -ge  8 ] || [ ${version_major_systemsoftware} -ge  7 ] && [ ${version_minor_systemsoftware} -ge  3 ]
+then
+	status_Gatekeeper=$(spctl --status | sed -E 's/.*(...abled).*/\1/g')
+fi # Is Gatekeeper enabled?
+if [ ${version_major_systemsoftware} -ge 11 ]
+then
+	status_SystemIntegrityProtection=$(csrutil status | sed -E 's/.*(...abled).*/\1/g')
+fi # Is System Integrity Protection enabled?
+[ ${version_major_systemsoftware} -ge 11 ] || [ ${version_minor_systemsoftware} -ge 12 ] && systemsoftware="${version_systemsoftware/#/macOS }"
+[ ${version_minor_systemsoftware} -ge  8 ] && [ ${version_minor_systemsoftware} -le 11 ] && systemsoftware="${version_systemsoftware/#/OS X }"
+[ ${version_minor_systemsoftware} -ge  0 ] && [ ${version_minor_systemsoftware} -le  7 ] && systemsoftware="${version_systemsoftware/#/Mac OS X }"
+# ID the system software.
+
 default='\033[0;39m'
 hidefault='\033[0;30;39m'
 white='\033[0;37m'
@@ -33,10 +51,10 @@ function cecho
 } # Color Echo (João Cunha `joaocunha`) improved (Brandon Brown `brandonb927`) custom (Karl Bertin `kvpb`)
 
 echo ''
-cecho "                         ^  (^)  /| (^) |V|         ," ${litred}
-cecho "            vV, ,^| ,^' ( )  \  / |  /  | | ,^, |^, |-  ,O. v^. ,O. , ," ${litred}
-cecho "         .  ||| '_| '_.  V  (_)   | /__ | | 'v' | | '_. '_. |   '_. '_|" ${litred}
-cecho "                                                                     _/" ${litred}
+cecho "                                             ^  (^)" ${litred}
+cecho "                                vV, ,^| ,^' ( )  \\" ${litred}
+cecho "                             .  ||| '_| '_.  V  (_)" ${litred}
+echo ''
 cecho '                                 LICENSED BY' ${litred}
 cecho '                                 ${LICENSOR}' ${litred}
 echo ''
@@ -57,7 +75,7 @@ cecho ' ALL LIABILITY FOR  DIRECT,  INDIRECT,  OR CONSEQUENTIAL DAMAGES RESULTIN
 cecho ' YOUR USE OF THE PROGRAMS.' ${litred}
 echo ''
 say --voice=Fiona 'Ta-da!'
-# Display the title screen with the disclaimer.
+# Display the title screen with the disclaimer. # 2024.12.31@23:59:59. Yeah, no, I can't be maintaining 4 files in parallel at that point. I just can't doss around in configuration files anymore. My old Pro is limited to Big Sur, my Mac Pro, Sonoma, my MacBook, Ventura. This one runs Sequoia. This isn't 2013 anymore. The days of Snow Leopard and Mavericks are gone. Each of these versions of macOS differs from the others just enough for trouble. Some versions require older versions of apps, others, newer apps altogether. Older versions could be configured in some way, newer need to be in another entirely. Even Gatekeeper and System Integrity Protection have been changed. I gotta resort to merging all of my Apple computer operating system configuration scripts into one and support only the latest versions of macOS for my machines. And since no one jailbreaks iOS devices anymore, I should drop the one for iOS as well. So when some part of any of these scripts has to differ from the others, I just get that part of the one script to set macOS up the right way for each version. It only takes identifying the architecture, the version of macOS and maybe a few other extra parameters at the beginning of the script. I've programmed that many, many times.
 
 sudo -v # Ask for an administrator password.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & # Update the sudo timestamp, until the script ends.
@@ -1086,34 +1104,34 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 printf "%s\n" "Setup Assistant (com.apple.SetupAssistant)"
 
 defaults write com.apple.SetupAssistant RunNonInteractive -boolean TRUE # Finally found the fucker!
-#defaults write com.apple.SetupAssistant  -boolean TRUE # Do not set your language.
-#defaults write com.apple.SetupAssistant  -boolean TRUE # Do not select your country or region.
-defaults write com.apple.SetupAssistant DidSeeAccessibility -boolean TRUE # Do not view accessibility options.
-#defaults write com.apple.SetupAssistant  -boolean TRUE # Do not select your Wi-Fi network.
+#defaults write com.apple.SetupAssistant  -boolean TRUE # Don't set a language.
+#defaults write com.apple.SetupAssistant  -boolean TRUE # Don't select a country or region.
+defaults write com.apple.SetupAssistant DidSeeAccessibility -boolean TRUE # Don't view accessibility options.
+#defaults write com.apple.SetupAssistant  -boolean TRUE # Don't select a Wi-Fi network.
 defaults write com.apple.SetupAssistant DidSeePrivacy -boolean TRUE
 defaults write com.apple.SetupAssistant DidSeeTrueTonePrivacy -boolean TRUE
-# Do not care about data & privacy.
+# Don't care about data & privacy.
 defaults write com.apple.SetupAssistant DidSeeSyncSetup -boolean TRUE
 defaults write com.apple.SetupAssistant DidSeeSyncSetup2 -boolean TRUE
-# Do not transfer your information.
+# Don't transfer information.
 defaults write com.apple.SetupAssistant DidSeeActivationLock -boolean TRUE
 defaults write com.apple.SetupAssistant DidSeeAppStore -boolean TRUE
-# Do not sign in with your Apple ID.
+# Don't sign in with an Apple ID.
 defaults write com.apple.SetupAssistant DidSeeCloudSetup -boolean TRUE
 defaults write com.apple.SetupAssistant DidSeeiCloudLoginForStorageServices -boolean TRUE
 defaults write com.apple.SetupAssistant LastSeenCloudProductVersion $(sw_vers -productVersion)
-# Do not care about the App Store and iCloud.
-defaults write com.apple.SetupAssistant DidSeeScreenTime -boolean TRUE # Do not care about screen time.
-defaults write com.apple.SetupAssistant DidSeeSiriSetup -boolean TRUE # Disable Siri and "Hey, Siri".
-defaults write com.apple.SetupAssistant DidSeeTouchIDSetup -boolean TRUE # Do not set up Touch ID.
-defaults write com.apple.SetupAssistant DidSeeApplePaySetup -boolean TRUE # Do not set up Apple Pay.
-defaults write com.apple.SetupAssistant DidSeeAppearanceSetup -boolean TRUE # Do not choose your look.
+# Don't care about the App Store or iCloud.
+defaults write com.apple.SetupAssistant DidSeeScreenTime -boolean TRUE # Don't care about screen time.
+defaults write com.apple.SetupAssistant DidSeeSiriSetup -boolean TRUE # Disable Siri and 'Hey, Siri'.
+defaults write com.apple.SetupAssistant DidSeeTouchIDSetup -boolean TRUE # Don't set up Touch ID.
+defaults write com.apple.SetupAssistant DidSeeApplePaySetup -boolean TRUE # Don't set up Apple Pay.
+defaults write com.apple.SetupAssistant DidSeeAppearanceSetup -boolean TRUE # Don't choose a look.
 # https://support.apple.com/guide/macbook-pro/set-up-your-mac-apd831707cb3/mac
 
 cecho 'Second-Party Settings: User-Specific Filesystem Customs' ${lityellow}
 
 git clone git:github.com/kvpb/.files.git ${HOME}/.files
-# Clone my .files/ from my GitHub remote repo to ${HOME}/.
+# Clone .files/ from my GitHub remote repository to ${HOME}/.
 
 if [ -d "${HOME}/{Miscellaneous,Work,Temporary}" ]
 then
@@ -1126,7 +1144,7 @@ then
 else
 	mkdir -p ${HOME}/{Miscellaneous,Work,Temporary}
 fi
-# If Miscellaneous, Work and Temporary are not directories in ${HOME}/, substitute symbolic links by or make these directories.
+# If Miscellaneous, Work and Temporary aren't directories in ${HOME}/, substitute symbolic links by or create these.
 if [ -d "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads" -o -d "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloaded" ]
 then
 	if [ -L "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloads" -o -L "${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}/Downloaded" ]
@@ -1141,7 +1159,7 @@ then
 else
 	mkdir -p ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}
 fi
-# If Downloaded is not a directory in ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}, substitute symbolic links by or make this directory.
+# If Downloaded isn't a directory in ${HOME}/{Documents,Pictures,Music,Movies,Miscellaneous}, substitute symbolic links by or create it.
 #if [ -d "${HOME}/Pictures/DCIM" ]
 #then
 #	if [ -L "${HOME}/Pictures/DCIM" ]
@@ -1153,40 +1171,58 @@ fi
 #else
 #	mkdir -p ${HOME}/Pictures/DCIM
 #fi
-# If DCIM is not a directory in ${HOME}/Pictures/, substitute any symbolic link by or make this directory.
+# If DCIM isn't a directory in ${HOME}/Pictures/, substitute any symbolic link by or create it. # That rubbish is tedious. Why not just RSync the memory cards of my cameras in Pictures/ directly instead? Oughta be better, much, much simpler. Finder and Photoshop Lightroom can handle the rest for me. Screw this crap.
 
-ln -s ${HOME}/.files/.inputrc ${HOME}/.inputrc
-#ln -s ${HOME}/.files/.shrc ${HOME}/.shrc
-#ln -s ${HOME}/.files/.shinit ${HOME}/.shinit
-#ln -s ${HOME}/.files/.profile ${HOME}/.profile
-ln -s ${HOME}/.files/.bashrc ${HOME}/.bashrc
-ln -s ${HOME}/.files/.bash_login ${HOME}/.bash_login
-ln -s ${HOME}/.files/.bash_profile ${HOME}/.bash_profile
-ln -s ${HOME}/.files/.bash_logout ${HOME}/.bash_logout
-ln -s ${HOME}/.files/.bash_prompt ${HOME}/.bash_prompt
-ln -s ${HOME}/.files/.zshrc ${HOME}/.zshrc
-ln -s ${HOME}/.files/.zprofile ${HOME}/.zprofile
-#ln -s ${HOME}/.files/.ssh ${HOME}/.ssh
-ln -s ${HOME}/.files/.vimrc ${HOME}/.vimrc
-ln -s ${HOME}/.files/.vim ${HOME}/.vim
-#ln -s ${HOME}/.files/.tmux.conf ${HOME}/.tmux.conf
-ln -s ${HOME}/.files/.gitconfig ${HOME}/.gitconfig
-ln -s ${HOME}/.files/.gitignore_global ${HOME}/.gitignore_global
-ln -s ${HOME}/.files/.config ${HOME}/.config
-mkdir -p ${HOME}/Library/Scripts && cp -R ${HOME}/.files/Library/Scripts/. ${HOME}/Library/Scripts/ #sudo rmdir ${HOME}/Library/Scripts && ln -s ${HOME}/.files/Library/Scripts ${HOME}/Library/Scripts && chmod -h 700 ${HOME}/Library/Scripts
-mkdir -p ${HOME}/Library/Services && cp -R ${HOME}/.files/Library/Services/. ${HOME}/Library/Services/ #sudo rmdir ${HOME}/Library/Services && ln -s ${HOME}/.files/Library/Services ${HOME}/Library/Services && chmod -h 700 ${HOME}/Library/Services
-ln -s ${HOME}/Miscellaneous/Downloaded ${HOME}/Downloads/Miscellaneous
-ln -s ${HOME}/Documents/Downloaded ${HOME}/Downloads/Documents
-ln -s ${HOME}/Pictures/Downloaded ${HOME}/Downloads/Pictures
-ln -s ${HOME}/Movies/Downloaded ${HOME}/Downloads/Movies
-ln -s ${HOME}/Music/Downloaded ${HOME}/Downloads/Music
-ln -s ${HOME}/DCIM ${HOME}/Pictures/DCIM
-ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
-# Create user-specific custom symbolic links.
+for file in \
+           .inputrc \
+           `#.shrc` \
+           `#.shinit` \
+           `#.profile` \
+           .bashrc \
+           .bash_login \
+           .bash_profile \
+           .bash_logout \
+           .bash_prompt \
+           .zshrc \
+           .zprofile \
+           `#.ssh` \
+           .vimrc \
+           .vim \
+           `#.tmux.conf` \
+           .gitconfig \
+           .gitignore_global \
+           .config
+do
+	ln -s ${HOME}/.files/${file} ${HOME}/${file}
+done
+for directory in \
+                 Scripts \
+                 Services
+do
+	mkdir -p ${HOME}/Library/${directory} && cp -R ${HOME}/.files/Library/${directory}/. ${HOME}/Library/${directory}/
+done
+#sudo rmdir ${HOME}/Library/Scripts && ln -s ${HOME}/.files/Library/Scripts ${HOME}/Library/Scripts && chmod -h 700 ${HOME}/Library/Scripts
+#sudo rmdir ${HOME}/Library/Services && ln -s ${HOME}/.files/Library/Services ${HOME}/Library/Services && chmod -h 700 ${HOME}/Library/Services
+for directory in \
+                 Miscellaneous \
+                 Documents \
+                 Pictures \
+                 Movies \
+                 Music
+do
+	ln -s ${HOME}/${directory}/Downloaded ${HOME}/Downloads/${directory}
+done
+#for directory in \
+#                 DCIM \
+#                 `#Camera`
+#do
+#	ln -s ${HOME}/${directory} ${HOME}/Pictures/${directory}
+#done
+# Create user-specific custom symbolic links. # See above.
 
-> ${HOME}/.hushlogin # Create the .hushlogin file in the current user's home folder. /!\ speeds up terminal emulator opening? https://news.ycombinator.com/item?id=3879833
+> ${HOME}/.hushlogin # Create .hushlogin in the current user's home folder. # Does it speed up opening terminal emulators? https://news.ycombinator.com/item?id=3879833
 
-#chflags nohidden ${HOME}/Library # Show the hidden Library folder. # This script also enables hidden files display which overrides this.
+#chflags nohidden ${HOME}/Library # Show the hidden Library folder. # This script also enables displaying hidden files. It overrides this.
 
 #dscl . delete /Users/kvpb Picture
 #sudo dscl . create /Users/kvpb Picture "/Users/${HOME}/Pictures/UserPictures/KVPB.tif"
@@ -1194,7 +1230,7 @@ ln -s ${HOME}/Camera ${HOME}/Pictures/Camera
 
 sudo crontab ${HOME}/.files/lib/cron/tabs/root
 crontab ${HOME}/.files/lib/cron/tabs/kvpb
-# Install my cron tables.
+# Install my Cron tables.
 
 cecho 'Third-Party: System-Wide & User-Specific Xenogenetic Software & Preferences' ${lityellow}
 
