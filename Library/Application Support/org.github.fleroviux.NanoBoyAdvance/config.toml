@@ -1,0 +1,130 @@
+recent_files = [
+"/Users/kvpb/Miscellaneous/Dumped/SCREWBREAKERV49J01.GBA",
+"/Users/kvpb/Miscellaneous/Dumped/GBAZELDA MC BZMJ01.GBA",
+"/Users/kvpb/Miscellaneous/Dumped/HUBEST_VOL01B7IJ18.GBA",
+"/Users/kvpb/Miscellaneous/Dumped/POKEMON FIREBPRJ01.GBA",
+"/Users/kvpb/Miscellaneous/Dumped/MARIOVSDK   BM5E01.GBA",
+"/Users/kvpb/Miscellaneous/Dumped/METROID4USA AMTE01.GBA",
+"/Users/kvpb/Miscellaneous/Dumped/AGB-P-BSMJ  BSMJH4.GBA",
+"/Users/kvpb/Miscellaneous/Dumped/ZELDA 1     FZLE01.GBA",
+"/Users/kvpb/Miscellaneous/Dumped/SUPER MARIOCA3AE01.GBA",
+"/Users/kvpb/Miscellaneous/Dumped/POKEMON EMERBPEE01.GBA",
+]
+
+[window]
+show_fps = false
+fullscreen_show_menu = false
+fullscreen = false
+use_integer_scaling = true
+lock_aspect_ratio = true
+pause_emulator_when_inactive = true
+maximum_scale = 4
+scale = 2
+
+[video]
+lcd_ghosting = false
+color_correction = "agb"
+filter = "nearest"
+
+[input]
+hold_fast_forward = true
+fast_forward = [
+16777217,
+-1,
+-1,
+-1,
+0,
+]
+controller_guid = "030057564c050000e60c000000016800"
+
+[input.gba]
+l = [
+76,
+9,
+-1,
+-1,
+0,
+]
+down = [
+90,
+12,
+-1,
+-1,
+0,
+]
+r = [
+59,
+10,
+-1,
+-1,
+0,
+]
+left = [
+65,
+13,
+-1,
+-1,
+0,
+]
+right = [
+88,
+14,
+-1,
+-1,
+0,
+]
+a = [
+46,
+1,
+-1,
+-1,
+0,
+]
+start = [
+16777220,
+6,
+-1,
+-1,
+0,
+]
+select = [
+39,
+4,
+-1,
+-1,
+0,
+]
+up = [
+83,
+11,
+-1,
+-1,
+0,
+]
+b = [
+44,
+0,
+-1,
+-1,
+0,
+]
+
+
+[audio]
+mp2k_hle_force_reverb = true
+mp2k_hle_cubic = true
+mp2k_hle_enable = false
+volume = 100
+resampler = "cubic"
+
+[cartridge]
+solar_sensor_level = 23
+force_solar_sensor = false
+force_rtc = true
+save_type = "detect"
+
+[general]
+save_folder = ""
+bios_skip = false
+bios_path = "/Users/kvpb/Miscellaneous/Dumped/gba_bios.bin"
+
