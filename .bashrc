@@ -345,7 +345,7 @@ cls()
 
 #   M a c   s h e l l   f u n c t i o n s
 
-MakeFinderAlias()
+makeFinderalias()
 {
 	local Location=$(\pwd;);
 	local File=${1};
@@ -368,21 +368,21 @@ MakeFinderAlias()
 # MakeFinderAlias	make Finder aliases
 # The MakeFinderAlias routine makes Finder aliases.
 
-DeleteDSStore()
+deleteDS_Store()
 {
 	find . -name '.DS_Store' -delete -print; #find . -mindepth 0 -maxdepth 1 -name '.DS_Store' -delete -print;
 }; # ddss, DeleteDSStore
 # DeleteDSStore	.DS_Store files deletion
 # Finds from the current directory any file named .DS_Store, deletes it and displays the full file name of the standard output followed by a newline character.
 
-ResetLaunchPad()
+resetLaunchPad()
 {
 	defaults write com.apple.dock ResetLaunchPad -boolean TRUE && killall Dock;
 }; # rlp, ResetLaunchPad
 # ResetLaunchPad	LaunchPad reset
 # The ResetLaunchPad routine resets the layout of LaunchPad.
 
-GetBundleID()
+getbundleID()
 {
 	for i in ${#@}; do local A[${i}]=$(find /{,System/,/Users/${USER}/}Applications -mindepth 1 -maxdepth 1 -type d -iname ${i}); done;
 
@@ -391,6 +391,26 @@ GetBundleID()
 		/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' ${i}/Contents/Info.plist; #osascript -e 'ID of app "${i}"';
 	done;
 };
+
+relaunch()
+{
+	for argument in "${@}";
+	do
+		path_application=$(ps -ax | grep "${argument}.app" | head -n 1 ) \
+		&& path_application="${path_application#*/}" \
+		&& path_application="${path_application%/*}" \
+		&& path_application="${path_application%/*}" \
+		&& path_application="${path_application%/*}" \
+		&& path_application="/${path_application}";
+		sleep 2; # Otherwise makes _LSOpenURLsWithCompletionHandler() fail with error -600.
+		killall "${argument}";# && \
+		while pgrep -f "${argument}" >/dev/null 2>&1;
+		do
+			:
+		done; # Otherwise makes _LSOpenURLsWithCompletionHandler() fail with error -600.
+		open "${path_application}";
+	done;
+}
 
 #   s p e c i f i c - u s e   f u n c t i o n s
 
@@ -748,14 +768,18 @@ alias gz='fuck '
 
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew' # https://github.com/pyenv/pyenv?tab=readme-ov-file#homebrew-in-macos
 
+#	Ruby On Rails
+
+alias serve="rails assets:clobber; rails assets:precompile; rails server"
+
 #   s h e l l   f u n c t i o n s
 
 #alias cs='cls'
 alias c='cls'
 
-alias mfa='MakeFinderAlias '
+alias mfa='makeFinderalias '
 
-alias dds='DeleteDSStore'
+alias dds='deleteDS_Store'
 
 #   c o m p u t e r   p r o g r a m s
 
