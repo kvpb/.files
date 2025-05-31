@@ -25,13 +25,13 @@ cd /Users/${USER} && /bin/bash <(curl -fsSL https://raw.githubusercontent.com/kv
 
 ---
 
-## **Linux-based operating system setups**<br>~~`.archlinux`~~ ~~`.fedoralinux`~~ `.asahilinux` & `.android` ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/ubuntu-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-linuxbox-F6F6F6D5E1ED.svg) ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/android-F6F6F6D5E1ED1E72F21AD5FD-madeonan-1AD5FD1E72F2-androidphone-F6F6F6D5E1ED.svg)
+## **Linux-based operating system setups**<br>`.fedoralinux` ~~`.archlinux`~~ ~~& `.android`~~ ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/ubuntu-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-linuxbox-F6F6F6D5E1ED.svg) ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/android-F6F6F6D5E1ED1E72F21AD5FD-madeonan-1AD5FD1E72F2-androidphone-F6F6F6D5E1ED.svg)
 #### Linux-based operating systems configuration scripts family.
 
 <details><summary><code>.files/</code></summary>
 
-- [x] ~~`.archlinux`~~ ~~`.fedoralinux`~~ `.asahilinux`
-- [ ] `.android`
+- [x] ~~`.archlinux`~~ `.fedoralinux`
+- [ ] ~~`.android`~~
 </details>
 
 <!--**N.B..**&nbsp;&nbsp;&nbsp;&nbsp;Unless you're experienced enough, _don't execute these scripts as root!_ If you wanna do it anyway, replace `/home/${USER}` with `${HOME}`, though if you didn't know that already, you shouldn't do it.
