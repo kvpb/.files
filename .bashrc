@@ -89,7 +89,7 @@ fi
 export HISTFILESIZE=${HISTSIZE}
 export HISTFILE=${HOME}/.bash_history
 export HISTCONTROL=ignoredups:erasedups
-export HISTIGNORE=ls:pwd:cd:history
+export HISTIGNORE='cd*:d*:ls*:pwd*:git status*:git s*:g s*:git log*:git l*:g l*:history*:hy*:h*:clear:cls:c'
 export HISTTIMEFORMAT="$(printf '\r\e[K')$(tput setaf 0)$(tput setab 7)%F %T$(tput sgr0)  "
 export PROMPT_COMMAND='history -a; history -n'
 export PS1='\[\033[7m\]\u@\h:\[\033[00m\]\[\033[4m\]\w\[\033[00m\]\n\[\033[7m\]\D{%Y.%m.%d}@\t\[\033[00m\] \[\033[7m\]\$\[\033[00m\] ' #PS1='\[\033[7m\]\u@\h\[\033[00m\] \[\033[7m\]\D{%Y.%m.%d}@\t\[\033[00m\] \[\033[7m\]\$\[\033[00m\] ' #PS1='\[\033[7m\]\D{%Y.%m.%d}@\t\[\033[00m\] \[\033[7m\]\u@\h\$\[\033[00m\] '
