@@ -412,6 +412,13 @@ relaunch()
 	done;
 }
 
+wake()
+{
+	local n=${1};
+
+	caffeinate -d -t $(( n * 60 * 60 ));
+}
+
 #   s p e c i f i c - u s e   f u n c t i o n s
 
 tqdc()
@@ -514,6 +521,7 @@ alias sc='source '
 #	Exec
 
 alias ns='exec ${SHELL} -l ' # Execute the default login shell as a login shell. (Replace the current shell process image with a new one.)
+alias rl='exec ${SHELL} -l ' # Execute the default login shell as a login shell. (Replace the current shell process image with a new one.)
 
 #	History
 
@@ -658,7 +666,7 @@ alias dxa='xattr -rc .' # Remove every file's all extended attributes of the cur
 #alias quicklook='qlmanage '
 alias ql='qlmanage '
 
-alias	qlp='qlmanage -p ' # Display the Quick Look generated preview for the specified files.
+alias qlp='qlmanage -p ' # Display the Quick Look generated preview for the specified files.
 
 # 	LS
 
@@ -686,6 +694,8 @@ alias la='ls -a ' # List all directory contents.
 #alias la='ls -1aF '
 
 #alias l='ls -1F ' # List simply directory contents.
+
+alias lt="gfind . -mindepth 0 -maxdepth 1 -printf '%TY.%Tm.%Td %TH:%TM:%TS %f\n'" # Sort directory contents by ascending time modified, and list them.
 
 #	DU
 
@@ -775,7 +785,7 @@ alias serve="rails assets:clobber; rails assets:precompile; rails server"
 #   s h e l l   f u n c t i o n s
 
 #alias cs='cls'
-alias c='cls'
+alias c='clear && clear' #alias c='cls'
 
 alias mfa='makeFinderalias '
 
@@ -787,8 +797,8 @@ alias dds='deleteDS_Store'
 #alias setvol='sh ${HOME}/.files/bin/SetVolume.sh'
 alias sv='sh ${HOME}/.files/bin/SetVolume.sh'
 
-alias alarm='sh ${HOME}/.files/bin/alarm.sh'
-alias am='sh ${HOME}/.files/bin/alarm.sh'
+alias ring='sh ${HOME}/.files/bin/alarm.sh'
+alias rg='sh ${HOME}/.files/bin/alarm.sh'
 
 #alias RPwG='ruby ${HOME}/.files/bin/rpwg.py'
 alias rpwg='python3 ${HOME}/.files/bin/rpwg.py'
