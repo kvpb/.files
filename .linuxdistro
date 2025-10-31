@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-exec 2>> ${HOME}/Temporary/log
+exec 2>> ${HOME}/temporary/log
 set -xv
 
 default='\033[0;39m'
@@ -35,9 +35,9 @@ function cecho
 } # Color Echo (João Cunha `joaocunha`) improved (Brandon Brown `brandonb927`) modified (Karl V. P. B. `kvpb`)
 
 printf '%s\n' ''
-printf '                  '; printf '\033[48:2:255:165:0m\033[48;2;255;255;255;0#m%s\033[m\n' '                    /    .                  |                 ,                 '
-printf '                  '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '                    |    ,  |`, \ | \_/  -  |`\ /`| \`` /_\ /`|                 '
-printf '                  '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '                 .  /_, _|\ | \ /_| /`\     /_/ \_\ ,_\ \_  \_\                 '
+printf '                  '; printf '\033[48:2:255:165:0m\033[48;2;255;255;255;0#m%s\033[m\n' '    /    .                ,  .      ,_         '
+printf '                  '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' '    |    ,  |`, \ | \_/ /`|  ,  (`` |   |`. /`\'
+printf '                  '; printf '\033[48;2;255;165;0m\033[48;2;255;255;255;0#m%s\033[m\n' ' .  /_, _|\ | \ /_| /`\ \_\ _|\ ._) \_. |   \_/'
 printf '%s\n' ''
 printf '                                 LICENSED BY\n'
 printf '                                 ${LICENSOR}\n'
@@ -65,11 +65,11 @@ sudo -v # Ask for an administrator password.
 
 printf '\033[48;2;255;255;0;0#m%s\033[m\n' 'First-Party Settings: Systemwide And User-Specific Preferences'
 
-#printf '%s\n' 'Unnamed'
+#printf '%s\n' 'unnamed'
 #
 #
 
-printf '%s\n' 'Network'
+printf '%s\n' 'network'
 
 s[0]="${USER^^}" # requires BASH 4+.
 s[1]="$(. /etc/os-release && printf '%s' ${NAME})"
@@ -80,7 +80,7 @@ unset s
 
 sh ./bin/patchhosts.sh # Set the static table lookup for hostnames.
 
-printf '%s\n' 'Keyboard'
+printf '%s\n' 'keyboard'
 
 gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 20 # 
 gsettings set org.gnome.desktop.peripherals.keyboard delay 200 # 
@@ -190,18 +190,18 @@ do
 done
 for directory in "${directories_array[@]}"
 do
-	if [ -d "${HOME}/${directory}/Downloaded" ]
+	if [ -d "${HOME}/${directory}/downloaded" ]
 	then
-		if [ -L "${HOME}/${directory}/Downloaded" ]
+		if [ -L "${HOME}/${directory}/downloaded" ]
 		then
-			mv "${HOME}/${directory}/Downloaded" ${HOME}/.local/share/Trash/
-			mkdir "${HOME}/${directory}/Downloaded"
+			mv "${HOME}/${directory}/downloaded" ${HOME}/.local/share/Trash/
+			mkdir "${HOME}/${directory}/downloaded"
 		fi
 	else
-		mkdir -p "${HOME}/${directory}/Downloaded"
+		mkdir -p "${HOME}/${directory}/downloaded"
 	fi
 done
-# If Downloaded is not a directory in ${HOME}/{Miscellaneous,Documents,Pictures,Videos,Music}/, substitute symbolic links by or add these directories.
+# If downloaded is not a directory in ${HOME}/{Miscellaneous,Documents,Pictures,Videos,Music}/, substitute symbolic links by or add these directories.
 
 for file in .inputrc .shrc .shinit .profile .exports .functions .aliases .bashrc .profile .bashrc .bash_login .bash_profile .bash_logout .bash_prompt .zshrc .zprofile .ssh .vimrc .vim .gitconfig .gitignore_global
 do
@@ -233,11 +233,11 @@ ln -s ${HOME}/.files/.vimrc ${HOME}/.vimrc
 ln -s ${HOME}/.files/.vim ${HOME}/.vim
 ln -s ${HOME}/.files/.gitconfig ${HOME}/.gitconfig
 ln -s ${HOME}/.files/.gitignore_global ${HOME}/.gitignore_global
-ln -s ${HOME}/Miscellaneous/Downloaded ${HOME}/Downloads/Miscellaneous
-ln -s ${HOME}/Documents/Downloaded ${HOME}/Downloads/Documents
-ln -s ${HOME}/Pictures/Downloaded ${HOME}/Downloads/Pictures
-ln -s ${HOME}/Videos/Downloaded ${HOME}/Downloads/Videos
-ln -s ${HOME}/Music/Downloaded ${HOME}/Downloads/Music
+ln -s ${HOME}/Miscellaneous/downloaded ${HOME}/Downloads/Miscellaneous
+ln -s ${HOME}/Documents/downloaded ${HOME}/Downloads/Documents
+ln -s ${HOME}/Pictures/downloaded ${HOME}/Downloads/Pictures
+ln -s ${HOME}/Videos/downloaded ${HOME}/Downloads/Videos
+ln -s ${HOME}/Music/downloaded ${HOME}/Downloads/Music
 ln -s ${HOME}/Pictures/DCIM ${HOME}/DCIM
 ln -s ${HOME}/.local/share/Trash ${HOME}/.Trash
 # Create user-specific custom symbolic links.
@@ -457,7 +457,7 @@ sudo dnf install transmission # Download and install Transmission.
 #sudo dnf install   # Download and install .
 
 printf '\n'
-cecho '%s\n' 'The Linux-based operating system has been configured.' ${litcyan}
+cecho '%s\n' 'The Linux distro has been set.' ${litcyan}
 
 cecho '%s\n' 'Setting the operating system with this script requires to reboot the computer. Reboot, \e[4my\e[0mes or \e[4mn\e[0mo?' ${litgreen}
 read -r input
@@ -469,8 +469,8 @@ else
 fi
 exit 0
 
-#	.linux-basedoperatingsystem
-#	Linux-based operating system configuration script
+#	.linuxdistro
+#	configure the Linux distro
 #
 #	Karl V. P. B. `kvpb`	Karl Thomas George West `ktgw`
 #	+33 A BB BB BB BB		+1 (DDD) DDD-DDDD
