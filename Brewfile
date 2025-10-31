@@ -132,13 +132,14 @@ cask "firefox", args: { appdir: "/Applications" } # Firefox #brew install --cask
 # Opera
 cask "google-chrome", args: { force: true } # Chrome #brew install --cask
 
-#   c o m m u n i c a t i o n   p r o t o c o l s 
+#   c o m m u n i c a t i o n   p r o t o c o l s   &   f i l e   s h a r i n g   s o f t w a r e 
 
 #mas "Transmit", id: 1436522307 # Transmit
 #mas "FileZilla Pro", id: 1298486723 # FileZilla Pro
 cask "transmission" # Transmission
 #cask "android-file-transfer" # Android File Transfer
 #cask "" # Smart Switch
+cask "localsend" # LocalSend
 
 #   t y p e - 2   h y p e r v i s o r s 
 
@@ -153,11 +154,12 @@ cask "utm" if OS.mac?
 #   s y s t e m   u t i l i t i e s 
 
 cask "jumpcut" if OS.mac? # Jumpcut
+#brew "koekeishiya/formulae/yabai" if OS.mac? # Yabai
 #brew "autoraise" #brew services start autoraise
 #brew "autoraise", args: ["with-dalternative_task_switcher"]
 #brew "autoraise", args: ["with-dold_activation_method"]
 #brew "autoraise", ["with-dexperimental_focus_first"]
-cask "dimentium/autoraise/autoraiseapp"
+cask "dimentium/autoraise/autoraiseapp" if OS.mac?
 # AutoRaise
 
 #   m i s c e l l a n e o u s   u t i l i t i e s 
@@ -351,6 +353,10 @@ cask "qobuz-downloader" # Qobuz Downloader
 
 mas "Shazam", id: 897118787 # Shazam
 #cask "" # Grayjay
+
+#   u n i n s t a l l e r s 
+
+brew "pearcleaner" if OS.mac? # Pearcleaner
 
 #   V i s u a l   S t u d i o   C o d e   e x t e n s i o n s 
 
