@@ -1,6 +1,5 @@
 tap "homebrew/versions"
 tap "homebrew/cask" #brew tap
-tap "dimentium/autoraise" # AutoRaise #tap "user/tap-repo", "https://user@bitbucket.org/user/homebrew-tap-repo.git", force_auto_update: true
 
 #   C O M M A N D - L I N E   I N T E R F A C E 
 
@@ -38,6 +37,10 @@ brew "nvm" # NVM
 # Node.js & NVM
 
 brew "octave" # Octave
+
+#   e n v i r o n m e n t s 
+
+brew "jupyter" # Jupyter
 
 #   d a t a b a s e   e n g i n e s   &   d a t a b a s e   m a n a g e m e n t   s y s t e m 
 
@@ -112,11 +115,11 @@ cask_args appdir: "/Applications", require_sha: true # Set arguments for all `br
 
 #   p r o g r a m m i n g   l a n g u a g e s ,   r u n t i m e   e n v i r o n m e n t s   &   d e v e l o p m e n t   k i t s 
 
-cask "java" unless system "/usr/libexec/java_home --failfast" # Java
+#cask "java" unless system "/usr/libexec/java_home --failfast" # Java
 
 #   s e r v e r   o p e r a t i n g   s y s t e m 
 
-mas "Server", id: 883878097 # macOS Server
+#mas "Server", id: 883878097 # macOS Server
 
 #   t e r m i n a l   e m u l a t o r s   &   i n t e g r a t e d   d e v e l o p m e n t   e n v i r o n m e n t s 
 
@@ -126,19 +129,20 @@ cask "visual-studio-code" # Visual Studio Code
 
 #   f i l e   m a n a g e r s   &   w e b   b r o w s e r s 
 
-cask "firefox", args: { appdir: "/Applications" } # Firefox #brew install --cask --appdir=/Applications
+cask "firefox"#, args: { appdir: "/Applications" } # Firefox #brew install --cask --appdir=/Applications
 #cask "opera", greedy: true # Always upgrade the auto-updated or unversioned cask to the latest version.
 #mas "Opera", id: 404764921
 # Opera
 cask "google-chrome", args: { force: true } # Chrome #brew install --cask
 
-#   c o m m u n i c a t i o n   p r o t o c o l s 
+#   c o m m u n i c a t i o n   p r o t o c o l s   &   f i l e   s h a r i n g   s o f t w a r e 
 
 #mas "Transmit", id: 1436522307 # Transmit
 #mas "FileZilla Pro", id: 1298486723 # FileZilla Pro
 cask "transmission" # Transmission
 #cask "android-file-transfer" # Android File Transfer
 #cask "" # Smart Switch
+cask "localsend" # LocalSend
 
 #   t y p e - 2   h y p e r v i s o r s 
 
@@ -153,17 +157,12 @@ cask "utm" if OS.mac?
 #   s y s t e m   u t i l i t i e s 
 
 cask "jumpcut" if OS.mac? # Jumpcut
-#brew "autoraise" #brew services start autoraise
-#brew "autoraise", args: ["with-dalternative_task_switcher"]
-#brew "autoraise", args: ["with-dold_activation_method"]
-#brew "autoraise", ["with-dexperimental_focus_first"]
-cask "dimentium/autoraise/autoraiseapp"
-# AutoRaise
+cask "notunes" # NoTunes
+#cask "retroactive" if OS.mac? unless system("uname -p") == "arm" # Retroactive
 
 #   m i s c e l l a n e o u s   u t i l i t i e s 
 
 cask "protonmail-bridge" # ProtonMail Bridge
-cask "retroactive" if OS.mac? unless system("uname -p") == "arm" # Retroactive
 cask "tomatobar" if OS.mac? # TomatoBar
 cask "audio-hijack" if OS.mac? # Audio Hijack
 cask "hex-fiend" if OS.mac? # Hex Fiend
@@ -171,14 +170,8 @@ mas "Joystick Mapper", id: 528183797 # Joystick Mapper
 cask "8bitdo-ultimate-software"
 #mas "8BitDo Ultimate Software", id: 1532713768
 # 8bitdo Ultimate Software
-#mas "Magnet", id: 441258766 # Magnet
-cask "rectangle" if OS.mac? # Rectangle
-#cask "rectangle-pro" if OS.mac? # Rectangle Pro # I paid a license as a donation. Rectangle suffices.
-cask "nikitabobko/tap/aerospace" # AeroSpace
-#cask "Yoink" if OS.mac? # Yoink 
-#cask "filepane" if OS.mac? # Filepane
-#mas "Dropover", id: 1355679052 # Dropover
-#mas "Amphetamine", id: 937984704 # Amphetamine
+#cask "rectangle" if OS.mac? # Rectangle
+cask "rectangle-pro" if OS.mac? # Rectangle Pro # I paid a license as a donation. Rectangle suffices.
 cask "keepingyouawake" if OS.mac? # KeepingYouAwake
 mas "Coin Tick", id: 1141688067 # Coin Tick
 cask "keycastr" if OS.mac? # KeyCastr
@@ -258,11 +251,10 @@ mas "Aperture", id: 408981426 # Aperture
 cask "gimp" if OS.linux? # GIMP
 #mas "Pixelmator", id: 407963104 # Pixelmator
 mas "Pixelmator Pro", id: 1289583905 # Pixelmator Pro
-#cask "affinity-photo" # Affinity Photo
 
 #   v e c t o r   g r a p h i c s   e d i t o r s 
 
-cask "inkscape" if OS.linux? # Inkscape
+#cask "inkscape" if OS.linux? # Inkscape
 cask "sketch" if OS.mac? # Sketch
 #mas "Sketch 3", id: 852320343 # Sketch 3
 
@@ -281,7 +273,7 @@ mas "Gapplin", id: 768053424 # Gapplin
 #   m e d i a   p l a y e r   s o f t w a r e 
 
 cask "vlc" if OS.linux? # VLC
-cask "iina" if OS.mac? # IINA
+#cask "iina" if OS.mac? # IINA
 
 #   e m a i l   c l i e n t s 
 
@@ -342,7 +334,7 @@ cask "jdownloader" # JDownloader2
 
 #   d i g i t a l   d i s t r i b u t i o n   &   d i g i t a l   r i g h t s   m a n a g e m e n t   s e r v i c e s 
 
-cask "gog-galaxy" # GOG Galaxy
+#cask "gog-galaxy" # GOG Galaxy
 #cask "steam" # Steam
 cask "qobuz-downloader" # Qobuz Downloader
 #cask "spotify" # Spotify
@@ -351,6 +343,10 @@ cask "qobuz-downloader" # Qobuz Downloader
 
 mas "Shazam", id: 897118787 # Shazam
 #cask "" # Grayjay
+
+#   u n i n s t a l l e r s 
+
+brew "pearcleaner" if OS.mac? # Pearcleaner
 
 #   V i s u a l   S t u d i o   C o d e   e x t e n s i o n s 
 
