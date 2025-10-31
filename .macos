@@ -85,9 +85,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null & 
 #osascript -e 'tell application "System Preferences" to quit' # Quit any System Preferences pane to prevent them from overriding this script.
 killall System\ Preferences # Kill System Preferences.
 
-cecho 'First-Party Settings: Systemwide And User-Specific Preferences' ${lityellow}
+cecho 'first-party settings: system-wide and user-specific preferences' ${lityellow}
 
-echo 'Unnamed'
+echo 'unnamed'
 
 sudo spctl --master-disable #sudo defaults write /var/db/SystemPolicy enabled -string NO # Allow apps downloaded from anywhere. (Disable GateKeeper.)
 
@@ -101,7 +101,7 @@ defaults write com.apple.LaunchServices LSQuarantine -bool FALSE # Do not warn w
 
 sudo systemsetup -setrestartfreeze on # Restart automatically if the computer freezes.
 
-defaults write "Apple Global Domain" AppleLanguages -array "en-US" "fr" # Set US english and FR french as the preferred languages.
+defaults write "Apple Global Domain" AppleLanguages -array "en-US" "fr" # Set US English and FR French as the preferred languages.
 defaults write "Apple Global Domain" AppleLocale -string "en_US@currency=EUR" # Set US english as the format language and euro as the currency.
 defaults write "Apple Global Domain" AppleMeasurementUnits -string "Centimeters" # Set centimeters as the measurement unit.
 defaults write "Apple Global Domain" AppleMetricUnits -boolean TRUE # Set the language and text formats.
@@ -129,7 +129,7 @@ then
 fi
 # Install Rosetta 2 on ARM-based Mac.
 
-echo 'Directory Layout'
+echo 'directory layout'
 
 sudo mkdir -p /usr/local/bin # Adapt to the SIP for the better this time.
 
@@ -156,10 +156,10 @@ else
 fi
 # Write system-wide custom aliases.
 
-echo 'Network'
+echo 'network'
 
 macmodelname=$(system_profiler SPHardwareDataType | grep "Model Name" | cut -c19-)
-#echo "What is the owner of this Mac's name?"
+#echo "Who is the owner of this Mac?"
 #read userfullname
 userfullname='KVPB'
 sudo scutil --set ComputerName "${userfullname}'s ${macmodelname}"
@@ -180,36 +180,36 @@ sudo -- sh -c -e 'echo "127.0.0.1	fr-fr.facebook.com" >> /etc/hosts'
 sudo -- sh -c -e 'echo "127.0.0.1	login.facebook.com" >> /etc/hosts'
 sudo -- sh -c -e 'echo "fe80::1%lo0	login.facebook.com" >> /etc/hosts'
 sudo -- sh -c -e 'echo "127.0.0.1	www.login.facebook.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0 www.login.facebook.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1 fbcdn.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0 fbcdn.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1 www.fbcdn.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0 www.fbcdn.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1 fbcdn.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0 fbcdn.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1 www.fbcdn.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0 www.fbcdn.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1 static.ak.fbcdn.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0 static.ak.fbcdn.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1 connect.facebook.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0 connect.facebook.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1 www.connect.facebook.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0 www.connect.facebook.net" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1 static.ak.connect.facebook.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0 static.ak.connect.facebook.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "127.0.0.1 apps.facebook.com" >> /etc/hosts'
-sudo -- sh -c -e 'echo "fe80::1%lo0 apps.facebook.com" >> /etc/hosts'
-#sudo -- sh -c -e 'echo "127.0.0.1 twitter.com" >> /etc/hosts'
-#sudo -- sh -c -e 'echo "127.0.0.1 www.twitter.com" >> /etc/hosts'
-#sudo -- sh -c -e 'echo "#127.0.0.1 youtube.com" >> /etc/hosts'
-#sudo -- sh -c -e 'echo "#127.0.0.1 www.youtube.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	www.login.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	fbcdn.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	fbcdn.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	www.fbcdn.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	www.fbcdn.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	www.fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	www.fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	static.ak.fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	static.ak.fbcdn.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	connect.facebook.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	connect.facebook.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	www.connect.facebook.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	www.connect.facebook.net" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	static.ak.connect.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	static.ak.connect.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	apps.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "fe80::1%lo0	apps.facebook.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	twitter.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	www.twitter.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	youtube.com" >> /etc/hosts'
+sudo -- sh -c -e 'echo "127.0.0.1	www.youtube.com" >> /etc/hosts'
 sudo dscacheutil -flushcache # Clear the DNS cache. #lookupd -flushcache # Clear the DNS cache on Mac OS X 10.4 Tiger. #sudo dscacheutil -flushcache # Clear the DNS cache on Mac OS X 10.5 Leopard, 10.6 Snow Leopard. #sudo killall -HUP mDNSResponder # Clear the DNS cache on Mac OS X 10.7 Lion, 10.8 Mountain Lion, macOS 10.12 Sierra, 10.13 High Sierra, 10.14 Mojave, 11 Big Sur. #sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder # Clear the DNS cache on OS X 10.9 Mavericks, 10.11 El Capitan. #sudo discoveryutil mdnsflushcache; sudo discoveryutil udnsflushcaches # Clear the DNS cache on OS X 10.10 Yosemite.
 printf "%s\n" '\xF0\x9F\x9A\xAE'
 # Put litter in its place.
 
-echo 'Login Window & Screen Saver (com.apple.loginwindow, com.apple.HIToolbox.loginwindow, com.apple.screensaver)'
+echo 'login window & screen saver (com.apple.loginwindow, com.apple.HIToolbox.loginwindow, com.apple.screensaver)'
 
-sudo defaults write /Library/Preferences/com.apple.loginwindow autoLoginUser "" # Turn automatic login off.
+sudo defaults write /Library/Preferences/com.apple.loginwindow autoLoginUser "" # Don't automatically log in.
 
 sudo /usr/libexec/PlistBuddy -c "Add :AppleCurrentKeyboardLayoutInputSourceID string com.apple.keylayout.US" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
 sudo /usr/libexec/PlistBuddy -c "Set :AppleCurrentKeyboardLayoutInputSourceID com.apple.keylayout.US" "/var/tmp/com.apple.HIToolbox.loginwindow.plist"
@@ -250,7 +250,7 @@ sudo chmod 777 /Library/Preferences/com.apple.loginwindow.plist
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName # Display IP address, hostname, OS version etc when clicking the clock in the login window.
 
 #echo "What is the phone number with country code of the owner of this Mac?"
-#echo "(E.g. '+33 6 XX XX XX XX' for french mobile phone numbers.)"
+#echo "(E.g. '+33 6 XX XX XX XX' for French mobile phone numbers.)"
 #read phonenumber
 #echo "What is the email address of the owner of this Mac?"
 #read emailaddress
@@ -262,7 +262,7 @@ defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 # Require password immediately after sleep or screen saver begins. (Enable Require Password Immediately After Sleep Or Screen Saver Begins.)
 
-echo 'Keyboard & Touch Bar (Apple Global Domain, com.apple.HIToolbox, com.apple.universalaccess)'
+echo 'keyboard & touch bar (Apple Global Domain, com.apple.HIToolbox, com.apple.universalaccess)'
 
 sudo /usr/libexec/PlistBuddy -c "Add :AppleCurrentKeyboardLayoutInputSourceID string com.apple.keylayout.US" "/Library/Preferences/com.apple.HIToolbox.plist"
 sudo /usr/libexec/PlistBuddy -c "Set :AppleCurrentKeyboardLayoutInputSourceID com.apple.keylayout.US" "/Library/Preferences/com.apple.HIToolbox.plist"
@@ -369,7 +369,7 @@ defaults write ${HOME}/Library/Preferences/.GlobalPreferences.plist NSUserDictio
                                                                                                             '{ on = 1; replace = "\\alpha"; with = "\U03b1"; }'
 # Set the text substitutions.
 
-echo 'Mouse & Trackpad (NSGlobalDomain, com.apple.driver.AppleHIDMouse, com.apple.driver.AppleBluetoothMultitouch.trackpad, com.apple.dock)'
+echo 'mouse & trackpad (NSGlobalDomain, com.apple.driver.AppleHIDMouse, com.apple.driver.AppleBluetoothMultitouch.trackpad, com.apple.dock)'
 
 defaults write com.apple.driver.AppleHIDMouse.plist Button2 -int 2 # Enable the secondary click of the mouse.
 
@@ -451,7 +451,7 @@ then
 	# and restart the Bluetooth daemon.
 fi # Turn on Bluetooth. (i) From OS X 10.11 El Capitan onwards, blued was renamed bluetoothd.
 
-echo 'Data Storage Devices'
+echo 'data storage devices'
 
 #sudo nvram boot-args="mbasd=1" # Enable the MacBook Air SuperDrive on any Mac. (i) From OS X 10.11 El Capitan onwards, the SIP prevents writing firmware NVRAM variables. To disable SIP, start up the computer in macOS Recovery, launch Terminal, and enter `csrutil disable`. To enable SIP without restriction on writing to NVRAM, start up the computer in macOS Recovery, launch Terminal, and enter `csrutil enable --without nvram`.
 
@@ -1146,7 +1146,7 @@ defaults write com.apple.SetupAssistant DidSeeApplePaySetup -boolean TRUE # Don'
 defaults write com.apple.SetupAssistant DidSeeAppearanceSetup -boolean TRUE # Don't choose a look.
 # https://support.apple.com/guide/macbook-pro/set-up-your-mac-apd831707cb3/mac
 
-cecho 'Second-Party Settings: User-Specific Filesystem Customs' ${lityellow}
+cecho 'second-party settings: user-specific file system customs' ${lityellow}
 
 git clone git:github.com/kvpb/.files.git ${HOME}/.files
 # Clone .files/ from my GitHub remote repository to ${HOME}/.
@@ -1250,7 +1250,7 @@ sudo crontab ${HOME}/.files/lib/cron/tabs/root
 crontab ${HOME}/.files/lib/cron/tabs/kvpb
 # Install my Cron tables.
 
-cecho 'Third-Party: System-Wide & User-Specific Xenogenetic Software & Preferences' ${lityellow}
+cecho 'third-party: system-wide & user-specific xenogenetic software & preferences' ${lityellow}
 
 #echo 'MacPorts'
 #
@@ -1421,7 +1421,7 @@ done
 echo ''
 cecho 'macOS 12 Monterey has been configured.' ${litcyan}
 
-cecho 'Some of these changes require logging out or restarting. Restart...?, \e[4my\e[0mes or \e[4mn\e[0mo?' ${litgreen}
+cecho 'Some of these changes require logging out or restarting. Restart, \e[4my\e[0mes or \e[4mn\e[0mo?' ${litgreen}
 read -r input
 if [[ ${input} =~ ^([Yy]|[Yy][Ee][Ss]|[Yy][Ee][Aa][Hh]|[Oo]|[Oo][Kk]|[1])$ ]]
 then
@@ -1431,7 +1431,7 @@ else
 fi
 
 #	.macos
-#	macOS configuration script
+#	set macOS
 #
 #	Karl V. P. B. `kvpb`	Karl Thomas George West `ktgw`
 #	+33 A BB BB BB BB		+1 (DDD) DDD-DDDD
