@@ -5,7 +5,7 @@ history_control("ignoredups");
 #set(0, "DefaultAxesFontName", "Times New Roman"); # Set the default axes font to Times New Roman.
 #set(0, "DefaultAxesFontSize", 12); # Set the default axes font size to 12.
 
-# '.functions'
+#   r o u t i n e s   a n d   f u n c t i o n s 
 
 function cls
 	mlock ();
@@ -13,8 +13,7 @@ function cls
 endfunction;
 # MS-DOS, OS/2 & Microsoft Windows CLS
 
-# '.prompt'
+#   p r o m p t 
 
 PS1 ('\[\033[7m\]\u@\h:\[\033[00m\]\[\033[4m\]\w\[\033[00m\]\n\[\033[7m\]\d at \t\[\033[00m\] \[\033[7m\]\s:\#>\[\033[00m\] ') #PS1 ('\[\033[7m\]\u@\h\[\033[00m\] \[\033[7m\]\d at \t\[\033[00m\] \[\033[7m\]\s:\#>\[\033[00m\] ') #PS1 ('\[\033[7m\]strftime("%Y.%m.%d@%H:%M:%S", localtime(time()))\[\033[00m\] \[\033[7m\]\u@\h\[\033[00m\] \[\033[7m\]\s:\#>\[\033[00m\] ')
 PS2 ('  ')
-# Karl V. P. B.'s Octave prompt
