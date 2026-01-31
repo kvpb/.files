@@ -88,7 +88,7 @@ else
 fi
 export HISTFILESIZE=${HISTSIZE}
 export HISTFILE=${HOME}/.bash_history
-export HISTCONTROL=ignoredups:erasedups
+export HISTCONTROL=ignoredups
 export HISTIGNORE='cd*:d*:ls*:pwd*:git status*:git s*:g s*:git log*:git l*:g l*:history*:hy*:h*:clear:cls:c'
 export HISTTIMEFORMAT="$(printf '\r\e[K')$(tput setaf 0)$(tput setab 7)%F %T$(tput sgr0)  "
 export PROMPT_COMMAND='history -a; history -n'
@@ -96,6 +96,8 @@ export PS1='\[\033[7m\]\u@\h:\[\033[00m\]\[\033[4m\]\w\[\033[00m\]\n\[\033[7m\]\
 
 #   u s e r   e n v i r o n m e n t   v a r i a b l e s
 #   e.g. PATH
+
+export hot=/Users/kvpb/Documents/paris-vi/l2as/s4/ue2 # Can't explain---get in the car.
 
 if [ $(uname -s) = 'Darwin' ]
 then
@@ -179,21 +181,19 @@ function st
 	printf '%s\n' "${S}";
 }; # ST	sort
 
-function rb
+rb()
 {
-	i=1;
-
-	if [ ${#} -eq 0 ]; #if [ -z "${@:${i}:1}" ];
+	if [ "$#" -eq 0 ];
 	then
 		irb;
 	else
-		ruby ${@:${i}};
+		command ruby "$@";
 	fi;
 };
 
 sqlite3-dump()
 {
-	pathname=${1};
+	pathname="${1}";
 
 	sqlite3 "${pathname}" -cmd ".dump" "";
 }; # sql, sqld, sqlite3-dump
@@ -201,7 +201,7 @@ sqlite3-dump()
 
 csv()
 {
-	file_CSV=${1};
+	file_CSV="${1}";
 
 	column -s, -t < "${1}" | less -#2 -N -S;
 }; # csv, rcsv, read-csv
@@ -336,6 +336,50 @@ np()
 	${EDITOR} ${HOME}/${t}_entry.txt;
 }; # NP	new page
 
+ft() {
+	if [ "$#" -eq 0 ]
+	then
+		declare -F | awk '{print $3}'
+		return
+	fi
+	local name_function=$1
+	shift
+	if [ "$#" -eq 0 ] && [ -t 0 ]
+	then
+		if declare -F "$name_function" >/dev/null 2>&1
+		then
+			declare -f "$name_function"
+		else
+			printf "%s isn't a function.\n" "$name_function" >&2
+			return 1
+		fi
+		return
+	fi
+	local code_function
+	if [ "$#" -eq 0 ] && [ ! -t 0 ]
+	then
+		code_function=$( cat )
+	else
+		code_function=$*
+	fi
+	case "$code_function" in
+		*"{"* )
+			if [[ "$code_function" =~ ^[[:space:]]*\(\)[[:space:]]*\{ ]]
+			then
+				eval "${name_function}${code_function}"
+			elif [[ "$code_function" =~ ^[[:space:]]*\{ ]]
+			then
+				eval "${name_function}() ${code_function}"
+			else
+				eval "${name_function}() { ${code_function}; }"
+			fi
+			;;
+		* )
+			eval "${name_function}() { ${code_function}; }"
+			;;
+	esac
+}
+
 cls()
 {
 	printf '\033[2J\033[3J\033[1;1H';
@@ -370,7 +414,7 @@ makeFinderalias()
 
 deleteDS_Store()
 {
-	find . -name '.DS_Store' -delete -print; #find . -mindepth 0 -maxdepth 1 -name '.DS_Store' -delete -print;
+	find . -name '.DS_Store' -delete -print;
 }; # ddss, DeleteDSStore
 # DeleteDSStore	.DS_Store files deletion
 # Finds from the current directory any file named .DS_Store, deletes it and displays the full file name of the standard output followed by a newline character.
@@ -421,20 +465,46 @@ wake()
 
 #   s p e c i f i c - u s e   f u n c t i o n s
 
-tqdc()
+update()
 {
-	local s_1="${1}"; #prefix=
-	readonly s_1;
-	local s_2="${2}"; #suffix=
-	readonly s_2;
-	local s_3="tar"; #extension=
-	readonly s_3;
-	#local s_0="${s_1}'{}'${s_2}.${s_3}"; #filename= # Although POSIX-compliant shells, e.g. BSH, KSH, ASH, do not particularly interpret {}, FISH does, so quote it.
+	#local instructionsetarchitecture="${HOSTTYPE}"; #local instructionsetarchitecture="$( uname -m )"; #local s_0="${s_1}'{}'${s_2}.${s_3}"; # Although POSIX-compliant shells, e.g. BSH, KSH, ASH, do not particularly interpret {}, FISH does, so quote it.
+	#readonly instructionsetarchitecture;
+	local systemsoftware="$( uname -s )";
+	readonly systemsoftware;
+	#if [ "${systemsoftware}" = 'Linux' ];
+	#then
+		#local packagemanager="$()";
+		#readonly packagemanager;
+	#fi;
 
-	find * -maxdepth 0 -type d -exec tar -v -c -f "${s_1}"'{}'"${s_2}"'.tar' {} \;; #find * -maxdepth 0 -type d -exec tar vcf "${s_0}" {} \;;
-}; # tqdc, tarqdlc, tapearchiveQobuzdownloadedcontent
-# TDQC	Qobuz downloaded content tape-archival
-# Creates a new tape archive for each subdirectory of the working directory.
+	if [ -x /opt/local/bin/port ]; # If MacPorts is installed...
+	then
+		/opt/local/bin/port -N selfupdate > /dev/null 2>&1;
+		/opt/local/bin/port -N upgrade outdated > /dev/null 2>&1;
+		/opt/local/bin/port -N reclaim > /dev/null 2>&1;
+	fi;
+
+	if [ -x /opt/homebrew/bin/brew ] || [ -x /usr/local/bin/brew ] || command -v brew >/dev/null 2>&1; # If Homebrew is installed...
+	then
+		brew update;
+		brew upgrade;
+		brew upgrade --cask; #brew upgrade --cask --greedy;
+		brew cleanup -s;
+		brew doctor;
+		brew missing;
+	fi;
+
+	case "${systemsoftware}" in
+	Darwin) # macOS
+		defaults write com.apple.dock ResetLaunchPad -boolean TRUE;
+		killall Dock;
+		;;
+	Linux)
+		;;
+#	*)
+#		;;
+	esac;
+};
 
 #fn()
 #{
@@ -463,6 +533,8 @@ alias ffs='sudo $(history -p \!\!)'
 # (i) Bourne Shell (SH) builtin.
 
 alias d='cd '
+
+alias go='cd ${hot}' # Can't explain---get in the car.
 
 alias ..='cd ..' # Change the working directory to the parent of the current one.
 alias ...='cd ../..' # Change the working directory to the grandparent of the current one.
@@ -499,8 +571,6 @@ alias mc='cd ${HOME}/Music' # Change the working directory to the one of the cur
 alias px='cd ${HOME}/Pictures' # Change the working directory to the one of the current user's pictures.
 
 alias ms='cd ${HOME}/Miscellaneous' # Change the working directory to the one of my miscellaneous files.
-
-alias wk='cd ${HOME}/Work' # Change the working directory to the one of my work in progress.
 
 alias tf='cd ${HOME}/Temporary' # Change the working directory to the one of the current user's temporary files.
 
@@ -799,6 +869,8 @@ alias sv='sh ${HOME}/.files/bin/SetVolume.sh'
 
 alias ring='sh ${HOME}/.files/bin/alarm.sh'
 alias rg='sh ${HOME}/.files/bin/alarm.sh'
+
+alias wk='wake'
 
 #alias RPwG='ruby ${HOME}/.files/bin/rpwg.py'
 alias rpwg='python3 ${HOME}/.files/bin/rpwg.py'
