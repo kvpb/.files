@@ -26,19 +26,18 @@ unset m
 unset h
 
 #	alarm.sh
-#	macOS Command-Line Alarm
+#	macOS command-line alarm
 #
 #	Karl V. P. B. `kvpb` AKA Karl Thomas George West `ktgw`
-#	+1 (DDD) DDD-DDDD
-#	+33 A BB BB BB BB
+#	+33 A BB BB BB BB	+1 (DDD) DDD-DDDD
 #	local-part@domain
-#	local-part@domain
-#	https://www.linkedin.com/in//
-#	https://twitter.com/ktgwkvpb
+#	kvpb.fr
+#	https://x.com/ktgwkvpb
 #	https://github.com/kvpb
-#	https://vm.tiktok.com/ZSwAmcFh/
 #
-#	'... Mais quel genie. Il a allume un citron avec un ordinateur ! Mais quel genie !'
+#	'PHILIPPE ! JE SAIS OÙ TU T'CACHES ! VIENS ICI QUE J'TE BUTE, ENCULÉ !'
+#	'TA GUEULE ! VIENS ICI, SALE ENCULÉ !'
+#	'SALAUD !'
 
 #	Copyright 2022 Karl Vincent Pierre Bertin
 #
