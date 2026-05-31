@@ -26,7 +26,7 @@ then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 # Homebrew (/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
-. ${HOME}/.cargo/env # Rust & Cargo
+#. ${HOME}/.cargo/env # Rust & Cargo
 #[[ -x "/usr/local/opt/ruby/bin/ruby" ]] && export PATH=/usr/local/opt/ruby/bin:${PATH}
 export GEM_HOME=${HOME}/.gem
 export GEM_PATH=${GEM_HOME}:${GEM_PATH}
@@ -97,7 +97,7 @@ export PS1='\[\033[7m\]\u@\h:\[\033[00m\]\[\033[4m\]\w\[\033[00m\]\n\[\033[7m\]\
 #   u s e r   e n v i r o n m e n t   v a r i a b l e s
 #   e.g. PATH
 
-export hot=/Users/kvpb/Documents/paris-vi/l2as/s4/ue2 # Can't explain---get in the car.
+export hot=/Users/kvpb/Documents/paris-vi/l3as/ # Can't explain---get in the car.
 
 if [ $(uname -s) = 'Darwin' ]
 then
@@ -118,7 +118,7 @@ then
 	export VOL=/Volumes
 fi
 
-#   F U N C T I O N S   ( R O U T I N E S )
+#   F U N C T I O N S   O R   R O U T I N E S 
 
 mf()
 {
@@ -158,9 +158,9 @@ ne()
 
 ms()
 {
-	S="${1}";
+	#S="${1}"
 
-	python -c "import os, socket as s; s.socket(s.AF_UNIX).bind(os.environ['S'])";
+	python3 -c 'import socket, sys; s=socket.socket(socket.AF_UNIX); s.bind(sys.argv[1])' "$1"
 }; # ms, mksock, makesockets
 # MS	make sockets
 # https://serverfault.com/a/914572
@@ -173,12 +173,12 @@ mcd()
 
 function st
 {
-	A=(${@});
-	s=${IFS};
-	IFS=' '; #IFS=$'\n'
-	S=($(sort <<< "${A[*]}"));
-	IFS=${s}; #unset IFS;
-	printf '%s\n' "${S}";
+	A=("${@}")
+	s=${IFS}
+	IFS=' ' #IFS=$'\n'
+	S=($(sort <<< "${A[*]}"))
+	IFS=${s} #unset IFS
+	printf '%s\n' "${S[@]}"
 }; # ST	sort
 
 rb()
@@ -206,6 +206,39 @@ csv()
 	column -s, -t < "${1}" | less -#2 -N -S;
 }; # csv, rcsv, read-csv
 # CSV	read, format and print a CSV file
+
+function cntchr
+{
+	local string
+	local total_characterswithspaces=0
+	local amount_lines=0
+
+	if [ "${#}" -eq 0 ]
+	then
+		while IFS= read -r string
+		do
+			printf '%s\t%d\n' "${string}" "${#string}"
+			total_characterswithspaces=$(( total_characterswithspaces + ${#string} ))
+			amount_lines=$(( amount_lines + 1 ))
+		done
+		if [ "${amount_lines}" -gt 1 ]
+		then
+			total_characterswithspaces=$(( total_characterswithspaces + amount_lines - 1 ))
+		fi
+		printf 'total\t%d\n' "${total_characterswithspaces}"
+	else
+		for string in "${@}"
+		do
+			printf '%s\t%d\n' "${string}" "${#string}"
+			total_characterswithspaces=$(( total_characterswithspaces + ${#string} ))
+		done
+		if [ "${#}" -gt 1 ]
+		then
+			total_characterswithspaces=$(( total_characterswithspaces + ${#} - 1 ))
+		fi
+		printf 'total\t%d\n' "${total_characterswithspaces}"
+	fi
+} # cntchr, count_characters
 
 g-p()
 {
@@ -242,18 +275,18 @@ g-p()
 	fi
 	git push
 } # g-p, git-push
-# Git-Push	
+# Git-push	
 
 pn()
 {
-	printf "$(cd "$(dirname "${1}";)" && pwd -P;)/$(basename "${1}";)"'\n'; #echo $(cd "$(/usr/bin/dirname "${1}")" && pwd -P)/$(/usr/bin/basename "${1}");
-}; # pn, pathname
-# PN	return pathname
+	printf '%s/%s\n' "$(cd -- "$(dirname -- "${1}")" && pwd -P)" "$(basename -- "${1}")"
+} # pn, pathname
+# PN	print the pathname
 
-lt()
-{
-	printf "%s\n" {.{.?,[^.]},}*; #{..?*,.[^.]*,*}; #if [ $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^.]*;););) -gt 1 -a $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^*]*;););) -gt 1 ]; then printf '%s\n' {.{.?,[^.]},}*; else
-}; # lt, list
+#lt()
+#{
+#	printf "%s\n" {.{.?,[^.]},}*; #{..?*,.[^.]*,*}; #if [ $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^.]*;););) -gt 1 -a $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^*]*;););) -gt 1 ]; then printf '%s\n' {.{.?,[^.]},}*; else
+#}; # lt, list
 # LT	builtin-only LS, an LS substitute from built-in commands
 
 if ! ls -@eT > /dev/null 2>&1
@@ -289,6 +322,170 @@ function ae
 }; # ae, arithmeticevaluation
 # AE	builtin-only Expr, an Expr substitute from built-in commands
 
+function cdth
+{
+	local b='0123456789ABCDEF'
+	local i
+	local case=0 # Lower-case hexadecimals are gay.
+	local n_i
+	local n_x
+	local r
+
+	case "${1:-}" in                                  # Lower-case
+		lowercase | --lowercase | lc | -lc | l | -l ) # hexadecimals
+			case=1                                    # are
+			shift                                     # fucking
+			;;                                        # gay.
+	esac                                              # Cope.
+	if [ "${case}" -eq 1 ]
+	then
+		b="${b//A/a}"
+		b="${b//B/b}"
+		b="${b//C/c}"
+		b="${b//D/d}"
+		b="${b//E/e}"
+		b="${b//F/f}"
+	fi
+	for i in "${@}"
+	do
+		n_i="${i}"
+		n_x=''
+		if ! [[ "${n_i}" =~ ^-?[0-9]+$ ]]
+		then
+			printf "%s isn't a decimal integer.\n" "${i}" >&2
+			continue
+		fi
+		if [ "${n_i}" -lt 0 ]
+		then
+			n_i=$(( n_i + 2**32 ))
+		fi
+		if [ "${n_i}" -eq 0 ]
+		then
+			printf '0x0\n'
+			continue
+		fi
+		while [ "${n_i}" -gt 0 ]
+		do
+			r=$(( n_i % 16 ))
+			n_x="${b:${r}:1}${n_x}"
+			n_i=$(( n_i / 16 ))
+		done
+		printf '0x%s\n' "${n_x}"
+	done
+} # cdth, convert_decimal_to_hexadecimal
+
+function cttms
+{
+	if [ "${#}" -eq 0 ]
+	then
+		printf 'What time?\n' >&2
+		return 2
+	fi
+
+	local number_hours=0
+	local number_minutes=0
+	local number_seconds=0
+	local number_milliseconds=0
+	local time_milliseconds=0
+	local unit
+	local value
+
+	if [[ "${1}" == *:* ]]
+	then
+		if [ "${#}" -ne 1 ]
+		then
+			printf 'The colon-formatted time must be one argument.\n' >&2
+			return 2
+		fi
+		if [[ "${1}" =~ ^([0-9]+):([0-9]+):([0-9]+)(\.([0-9]{1,3}))?$ ]]
+		then
+			number_hours="${BASH_REMATCH[1]}"
+			number_minutes="${BASH_REMATCH[2]}"
+			number_seconds="${BASH_REMATCH[3]}"
+			number_milliseconds="${BASH_REMATCH[5]:-0}"
+			while [ "${#number_milliseconds}" -lt 3 ]
+			do
+				number_milliseconds="${number_milliseconds}0"
+			done
+		else
+			printf 'When the time is formatted with colons, use ${hours}:${minutes}:${seconds} or ${hours}:${minutes}:${seconds}.${milliseconds}.\n' >&2
+			return 2
+		fi
+	elif [[ " ${*} " == *" h "* || " ${*} " == *" hours "* || " ${*} " == *" mn "* || " ${*} " == *" minutes "* || " ${*} " == *" s "* || " ${*} " == *" seconds "* || " ${*} " == *" ms "* || " ${*} " == *" milliseconds "* ]]
+	then
+		while [ "${#}" -gt 0 ]
+		do
+			value="${1}"
+			shift
+			if ! [[ "${value}" =~ ^[0-9]+$ ]]
+			then
+				printf "%s isn't a positive integer.\n" "${value}" >&2
+				return 2
+			fi
+			if [ "${#}" -eq 0 ]
+			then
+				number_milliseconds="${value}"
+				break
+			fi
+			unit="${1}"
+			shift
+			case "${unit}" in
+				hours | h )
+					number_hours="${value}"
+					;;
+				minutes | mn )
+					number_minutes="${value}"
+					;;
+				seconds | s )
+					number_seconds="${value}"
+					;;
+				milliseconds | ms )
+					number_milliseconds="${value}"
+					;;
+				* )
+					printf "When the time is formatted with units, this routine expects 'hours' ('h'), 'minutes' ('mn'), 'seconds' ('s') and 'milliseconds' ('ms').\n" >&2
+					return 2
+					;;
+			esac
+		done
+	else
+		case "${#}" in
+			1 )
+				number_seconds="${1}"
+				;;
+			2 )
+				number_minutes="${1}"
+				number_seconds="${2}"
+				;;
+			3 )
+				number_hours="${1}"
+				number_minutes="${2}"
+				number_seconds="${3}"
+				;;
+			4 )
+				number_hours="${1}"
+				number_minutes="${2}"
+				number_seconds="${3}"
+				number_milliseconds="${4}"
+				;;
+			* )
+				printf 'The positional time must be seconds, minutes seconds, hours minutes seconds, or hours minutes seconds milliseconds.\n' >&2
+				return 2
+				;;
+		esac
+	fi
+	if     ! [[ "${number_hours}" =~ ^[0-9]+$ ]] \
+		|| ! [[ "${number_minutes}" =~ ^[0-9]+$ ]] \
+		|| ! [[ "${number_seconds}" =~ ^[0-9]+$ ]] \
+		|| ! [[ "${number_milliseconds}" =~ ^[0-9]+$ ]]
+	then
+		printf 'Only positive integer numbers are expected by this BASH routine.\n' >&2
+		return 2
+	fi
+	time_milliseconds=$(( number_hours * 60 * 60 * 1000 + number_minutes * 60 * 1000 + number_seconds * 1000 + number_milliseconds ))
+	printf '%d\n' ${time_milliseconds}
+} # cttms, convert_time_to_milliseconds
+
 rn()
 {
 	number=${RANDOM};
@@ -321,11 +518,11 @@ ru()
 }; # ru, run, randomusername
 # RU	output random usernames
 
-dcal()
+calwdat()
 {
 	date | grep --context=6 --color "\b$(date +%e)\b" && cal | sed -n '1!p' | grep --context=6 --color "\b$(date +%e)\b";
 };
-# DCal	dated calendar
+# CalWDat	calendar with date
 # Display a calendar, substitutes the month of the year with the current date in full format and highlights the current day of the month.
 
 np()
@@ -621,9 +818,9 @@ EOF
 			directory_title="${directory_live##*/}"
 			if [[ "${kernel}" == 'Darwin' ]]
 			then
-				timestamp="$(stat -f "%Sm" -t "%Y%m%d%H%M%S" "${directory_live}")" || return 1
+				timestamp="$(find "${directory_live}" -exec stat -f "%m %Sm" -t "%Y%m%d%H%M%S" {} + | sort -nr | sed -n '1s/^[0-9]* //p')" || return 1
 			else
-				timestamp="$(date -r "${directory_live}" +%Y%m%d%H%M%S)" || return 1
+				timestamp="$(find "${directory_live}" -printf '%T@ %TY%Tm%Td%TH%TM%TS\n' | sort -nr | sed -n '1s/^[^ ]* //;s/\..*$//p')" || return 1
 			fi
 			directory="${gamecode}/${timestamp}"
 			if [[ -e "${directory_backup_Wii}/${directory}/${directory_title}" ]]
@@ -721,6 +918,8 @@ alias tf='cd ${HOME}/Temporary' # Change the working directory to the one of the
 
 alias th='cd ${HOME}/.Trash' # Change the working directory to the one of the current user's trash.
 
+alias dp='cd ${HOME}/Library/Application Support/Dolphin' # Change the working directory to that of Dolphin.
+
 #	Source
 #	(i) Bourne-Again Shell (BASH) builtin.
 
@@ -755,13 +954,13 @@ alias pe='(set -o posix; set) | cat'
 #   ' i n t e r n a l '   p r o g r a m s   ( c o m m a n d s )
 
 #	Pico
-
-if [ $(which micro) ]
-then
-	alias pico='micro '
-	alias pc='micro '
-	alias p='micro '
-fi
+#
+#if [ $(which micro) ]
+#then
+#	alias pico='micro '
+#	alias pc='micro '
+#	alias p='micro '
+#fi
 
 #	VI
 #	VIM
@@ -1006,19 +1205,17 @@ alias mfa='makeFinderalias '
 
 alias dds='deleteDS_Store'
 
+alias wk='wake'
+
 #   c o m p u t e r   p r o g r a m s
 
-#alias SetVolume='sh ${HOME}/.files/bin/SetVolume.sh'
-#alias setvol='sh ${HOME}/.files/bin/SetVolume.sh'
-alias sv='sh ${HOME}/.files/bin/SetVolume.sh'
+alias getset='${HOME}/.files/bin/GetSet.scpt'
+alias gs='${HOME}/.files/bin/GetSet.scpt'
 
 alias ring='sh ${HOME}/.files/bin/alarm.sh'
 alias rg='sh ${HOME}/.files/bin/alarm.sh'
 
-alias wk='wake'
-
-#alias RPwG='ruby ${HOME}/.files/bin/rpwg.py'
-alias rpwg='python3 ${HOME}/.files/bin/rpwg.py'
+alias gp='python3 ${HOME}/.files/bin/rpwg.py'
 alias pw='python3 ${HOME}/.files/bin/rpwg.py'
 
 #   E T   C E T E R A
