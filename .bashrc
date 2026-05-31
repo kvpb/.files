@@ -506,6 +506,151 @@ update()
 	esac;
 };
 
+bakdolrvl()
+{
+	help_use()
+	{
+		cat <<'EOF'
+BAKDOLRVL
+Back up GameCube memory card files or Wii save files from Dolphin.
+
+use:
+  bakdolrvl (-)(-)g(ame)(c)(ube) GAME # e.g. bakdolrvl gc GALE01 for the North American Super Smash Bros. Melee
+  bakdolrvl (-)(-)w(ii) CODE # e.g. bakdolrvl w RPBJ for the Japanese Pokémon Battle Revolution
+Only the first four characters of six-character disc IDs are used; the last two digits of Wii title games are the maker code, e.g. 01 for Nintendo, 08 for Capcom... GameCube game codes and Wii title codes can be read from the window title of Dolphin with proper configuration.
+EOF
+	}
+
+	local kernel="$(uname -s)"
+	local command_copy=() \
+		&& { [ "${kernel}" = 'Darwin' ] && command_copy=( ditto ); } \
+		|| { [ -z "$(rsync -aHAX --numeric-ids --dry-run /etc/hosts "${TMPDIR:-/tmp}/" 2>&1)" ] && command_copy=( rsync -aHAX --numeric-ids ); } \
+		|| command_copy=( rsync -a --numeric-ids )
+	local argument_1="${1:-}"
+	local argument_2="${2:-}"
+	local root_Dolphin="${HOME}/Library/Application Support/Dolphin"
+	local directory_save_GameCube="${root_Dolphin}/GC"
+	local directory_save_Wii="${root_Dolphin}/Wii/title/00010000"
+	local directory_backup_GameCube="${root_Dolphin}/DOLBAK"
+	local directory_backup_Wii="${root_Dolphin}/RVLBAK"
+	local gamecode=""
+	local character=""
+	local gamecode_hexadecimal=""
+	local gamecode_hexadecimal_uppercase=""
+	local filename=""
+	local filename_extensionless=""
+	local directory=""
+	local directory_live=""
+	local directory_title=""
+	local timestamp=""
+	local i=0
+
+	while [[ "${argument_1}" == -* ]]
+	do
+		argument_1="${argument_1#-}"
+	done
+	case "${argument_1}" in
+		gamecube | gc | game | g | cube | c )
+			gamecode="${argument_2}"
+			if [[ -z "${gamecode}" || ! "${gamecode}" =~ ^[A-Za-z0-9]{4}([A-Za-z0-9]{2})?$ ]]
+			then
+				help_use >&2
+				return 2
+			fi
+			gamecode="$(printf '%s' "${gamecode}" | tr '[:lower:]' '[:upper:]')" #gamecode="${gamecode^^}"
+			gamecode="${gamecode:0:4}"
+			shopt -s nullglob
+			set -- "${directory_save_GameCube}"/*/"Card "*/*-"${gamecode}"-*.gci
+			shopt -u nullglob
+			if (( $# == 0 ))
+			then
+				printf 'GameCube memory card file not found.\n' >&2
+				return 2
+			fi
+			if (( $# > 1 ))
+			then
+				printf 'More than one GameCube memory card file found.\n' >&2
+				printf '%s\n' "$@" >&2
+				return 2
+			fi
+			directory_live="${1%/*}"
+			filename="${1##*/}"
+			filename_extensionless="${filename%.gci}"
+			if [[ "${kernel}" == 'Darwin' ]]
+			then
+				timestamp="$(stat -f "%Sm" -t "%Y%m%d%H%M%S" "${directory_live}/${filename}")" || return 1
+			else
+				timestamp="$(date -r "${directory_live}/${filename}" +%Y%m%d%H%M%S)" || return 1
+			fi
+			directory="${filename_extensionless}/${timestamp}"
+			if [[ -e "${directory_backup_GameCube}/${directory}/${filename}" ]]
+			then
+				printf '%s already backed up to %s/: GameCube memory card file already backed up.\n' "${filename}" "${directory_backup_GameCube}/${directory}"
+				return 0
+			fi
+			mkdir -p "${directory_backup_GameCube}/${directory}" \
+				&& "${command_copy[@]}" "${directory_live}/${filename}" "${directory_backup_GameCube}/${directory}/${filename}"
+			printf '%s backed up to %s/: GameCube memory card file backed up.\n' "${filename}" "${directory_backup_GameCube}/${directory}"
+			;;
+		wii | w )
+			gamecode="${argument_2}"
+			if [[ -z "${gamecode}" || ! "${gamecode}" =~ ^[A-Za-z0-9]{4}([A-Za-z0-9]{2})?$ ]]
+			then
+				help_use >&2
+				return 2
+			fi
+			gamecode="$(printf '%s' "${gamecode}" | tr '[:lower:]' '[:upper:]')" #gamecode="${gamecode^^}"
+			gamecode="${gamecode:0:4}"
+			gamecode_hexadecimal=""
+			for (( i = 0; i < ${#gamecode}; i++ ))
+			do
+				character="${gamecode:i:1}"
+				printf -v gamecode_hexadecimal '%s%02x' "${gamecode_hexadecimal}" "'${character}"
+			done
+			gamecode_hexadecimal_uppercase="$(printf '%s' "${gamecode_hexadecimal}" | tr '[:lower:]' '[:upper:]')" #gamecode_hexadecimal_uppercase="${gamecode_hexadecimal^^}"
+			directory_live="${directory_save_Wii}/${gamecode_hexadecimal}"
+			if [[ ! -d "${directory_live}" ]]
+			then
+				directory_live="${directory_save_Wii}/${gamecode_hexadecimal_uppercase}"
+			fi
+			if [[ ! -d "${directory_live}" ]]
+			then
+				printf 'Wii save file not found.\n' >&2
+				return 2
+			fi
+			directory_title="${directory_live##*/}"
+			if [[ "${kernel}" == 'Darwin' ]]
+			then
+				timestamp="$(stat -f "%Sm" -t "%Y%m%d%H%M%S" "${directory_live}")" || return 1
+			else
+				timestamp="$(date -r "${directory_live}" +%Y%m%d%H%M%S)" || return 1
+			fi
+			directory="${gamecode}/${timestamp}"
+			if [[ -e "${directory_backup_Wii}/${directory}/${directory_title}" ]]
+			then
+				printf '%s/ already backed up to %s/: Wii save data already backed up.\n' "${directory_title}" "${directory_backup_Wii}/${directory}"
+				return 0
+			fi
+			mkdir -p "${directory_backup_Wii}/${directory}" || return 1
+			if [[ "${kernel}" == 'Darwin' ]]
+			then
+				"${command_copy[@]}" "${directory_live}" "${directory_backup_Wii}/${directory}/${directory_title}" || return 1
+			else
+				"${command_copy[@]}" "${directory_live}" "${directory_backup_Wii}/${directory}/" || return 1
+			fi
+			printf '%s/ backed up to %s/: Wii save data backed up.\n' "${directory_title}" "${directory_backup_Wii}/${directory}"
+			;;
+		help | h | "" )
+			help_use
+			return 0
+			;;
+		*)
+			help_use >&2
+			return 2
+			;;
+	esac
+} #filename="01-GMSP-super_mario_sunshine.gci"; directory="${filename%.gci}/$(stat -f "%Sm" -t "%Y%m%d%H%M%S" "$filename")"; mkdir -p "$directory" && mv "$filename" "$directory/" && cp -av "$directory/$filename" ./
+
 #fn()
 #{
 #	;
