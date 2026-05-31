@@ -26,7 +26,7 @@ then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 # Homebrew (/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
-. ${HOME}/.cargo/env # Rust & Cargo
+#. ${HOME}/.cargo/env # Rust & Cargo
 #[[ -x "/usr/local/opt/ruby/bin/ruby" ]] && export PATH=/usr/local/opt/ruby/bin:${PATH}
 export GEM_HOME=${HOME}/.gem
 export GEM_PATH=${GEM_HOME}:${GEM_PATH}
@@ -97,7 +97,7 @@ export PS1='\[\033[7m\]\u@\h:\[\033[00m\]\[\033[4m\]\w\[\033[00m\]\n\[\033[7m\]\
 #   u s e r   e n v i r o n m e n t   v a r i a b l e s
 #   e.g. PATH
 
-export hot=/Users/kvpb/Documents/paris-vi/l2as/s4/ue2 # Can't explain---get in the car.
+export hot=/Users/kvpb/Documents/paris-vi/l3as/ # Can't explain---get in the car.
 
 if [ $(uname -s) = 'Darwin' ]
 then
@@ -118,7 +118,7 @@ then
 	export VOL=/Volumes
 fi
 
-#   F U N C T I O N S   ( R O U T I N E S )
+#   F U N C T I O N S   O R   R O U T I N E S 
 
 mf()
 {
@@ -158,9 +158,9 @@ ne()
 
 ms()
 {
-	S="${1}";
+	#S="${1}"
 
-	python -c "import os, socket as s; s.socket(s.AF_UNIX).bind(os.environ['S'])";
+	python3 -c 'import socket, sys; s=socket.socket(socket.AF_UNIX); s.bind(sys.argv[1])' "$1"
 }; # ms, mksock, makesockets
 # MS	make sockets
 # https://serverfault.com/a/914572
@@ -173,12 +173,12 @@ mcd()
 
 function st
 {
-	A=(${@});
-	s=${IFS};
-	IFS=' '; #IFS=$'\n'
-	S=($(sort <<< "${A[*]}"));
-	IFS=${s}; #unset IFS;
-	printf '%s\n' "${S}";
+	A=("${@}")
+	s=${IFS}
+	IFS=' ' #IFS=$'\n'
+	S=($(sort <<< "${A[*]}"))
+	IFS=${s} #unset IFS
+	printf '%s\n' "${S[@]}"
 }; # ST	sort
 
 rb()
@@ -206,6 +206,39 @@ csv()
 	column -s, -t < "${1}" | less -#2 -N -S;
 }; # csv, rcsv, read-csv
 # CSV	read, format and print a CSV file
+
+function cntchr
+{
+	local string
+	local total_characterswithspaces=0
+	local amount_lines=0
+
+	if [ "${#}" -eq 0 ]
+	then
+		while IFS= read -r string
+		do
+			printf '%s\t%d\n' "${string}" "${#string}"
+			total_characterswithspaces=$(( total_characterswithspaces + ${#string} ))
+			amount_lines=$(( amount_lines + 1 ))
+		done
+		if [ "${amount_lines}" -gt 1 ]
+		then
+			total_characterswithspaces=$(( total_characterswithspaces + amount_lines - 1 ))
+		fi
+		printf 'total\t%d\n' "${total_characterswithspaces}"
+	else
+		for string in "${@}"
+		do
+			printf '%s\t%d\n' "${string}" "${#string}"
+			total_characterswithspaces=$(( total_characterswithspaces + ${#string} ))
+		done
+		if [ "${#}" -gt 1 ]
+		then
+			total_characterswithspaces=$(( total_characterswithspaces + ${#} - 1 ))
+		fi
+		printf 'total\t%d\n' "${total_characterswithspaces}"
+	fi
+} # cntchr, count_characters
 
 g-p()
 {
@@ -242,18 +275,18 @@ g-p()
 	fi
 	git push
 } # g-p, git-push
-# Git-Push	
+# Git-push	
 
 pn()
 {
-	printf "$(cd "$(dirname "${1}";)" && pwd -P;)/$(basename "${1}";)"'\n'; #echo $(cd "$(/usr/bin/dirname "${1}")" && pwd -P)/$(/usr/bin/basename "${1}");
-}; # pn, pathname
-# PN	return pathname
+	printf '%s/%s\n' "$(cd -- "$(dirname -- "${1}")" && pwd -P)" "$(basename -- "${1}")"
+} # pn, pathname
+# PN	print the pathname
 
-lt()
-{
-	printf "%s\n" {.{.?,[^.]},}*; #{..?*,.[^.]*,*}; #if [ $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^.]*;););) -gt 1 -a $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^*]*;););) -gt 1 ]; then printf '%s\n' {.{.?,[^.]},}*; else
-}; # lt, list
+#lt()
+#{
+#	printf "%s\n" {.{.?,[^.]},}*; #{..?*,.[^.]*,*}; #if [ $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^.]*;););) -gt 1 -a $(printf $(f() { printf ${#}; } && f $(printf "%s${IFS}" .[^*]*;););) -gt 1 ]; then printf '%s\n' {.{.?,[^.]},}*; else
+#}; # lt, list
 # LT	builtin-only LS, an LS substitute from built-in commands
 
 if ! ls -@eT > /dev/null 2>&1
@@ -289,6 +322,212 @@ function ae
 }; # ae, arithmeticevaluation
 # AE	builtin-only Expr, an Expr substitute from built-in commands
 
+function cdth
+{
+	local b='0123456789ABCDEF'
+	local i
+	local case=0 # Lower-case hexadecimals are gay.
+	local n_i
+	local n_x
+	local r
+
+	case "${1:-}" in                                  # Lower-case
+		lowercase | --lowercase | lc | -lc | l | -l ) # hexadecimals
+			case=1                                    # are
+			shift                                     # fucking
+			;;                                        # gay.
+	esac                                              # Cope.
+	if [ "${case}" -eq 1 ]
+	then
+		b="${b//A/a}"
+		b="${b//B/b}"
+		b="${b//C/c}"
+		b="${b//D/d}"
+		b="${b//E/e}"
+		b="${b//F/f}"
+	fi
+	for i in "${@}"
+	do
+		n_i="${i}"
+		n_x=''
+		if ! [[ "${n_i}" =~ ^-?[0-9]+$ ]]
+		then
+			printf "%s isn't a decimal integer.\n" "${i}" >&2
+			continue
+		fi
+		if [ "${n_i}" -lt 0 ]
+		then
+			n_i=$(( n_i + 2**32 ))
+		fi
+		if [ "${n_i}" -eq 0 ]
+		then
+			printf '0x0\n'
+			continue
+		fi
+		while [ "${n_i}" -gt 0 ]
+		do
+			r=$(( n_i % 16 ))
+			n_x="${b:${r}:1}${n_x}"
+			n_i=$(( n_i / 16 ))
+		done
+		printf '0x%s\n' "${n_x}"
+	done
+} # cdth, convert_decimal_to_hexadecimal
+
+function chtd
+{
+	local b='0123456789ABCDEF' # base glyphs
+	local i
+	local c_16 # hexadecimal glyph
+	local n_i
+	local n_d
+	local prefix
+	local value_numeric # is given by the prefix.
+
+	for i in "${@}"
+	do
+		n_i="${i#0x}"
+		n_i="${n_i#0X}"
+		n_i="${n_i^^}"
+		n_d=0
+		if ! [[ "${n_i}" =~ ^[0-9A-F]+$ ]]
+		then
+			printf "%s isn't a hexadecimal integer.\n" "${i}" >&2
+			continue
+		fi
+		while [ -n "${n_i}" ]
+		do
+			c_16="${n_i:0:1}"
+			p="${b%%${c_16}*}"
+			if [ "${#prefix}" -eq "${#b}" ]
+			then
+				printf "%s isn't a hexadecimal integer.\n" "${i}" >&2
+				n_d=''
+				break
+			fi
+			value_numeric="${#prefix}"
+			n_d=$(( n_d * 16 + value_numeric ))
+			n_i="${n_i:1}"
+		done
+		if [ -n "${n_d}" ]
+		then
+			printf '%s\n' "${n_d}"
+		fi
+	done
+} # chtd, convert_hexadecimal_to_decimal
+
+function cttms
+{
+	if [ "${#}" -eq 0 ]
+	then
+		printf 'What time?\n' >&2
+		return 2
+	fi
+
+	local number_hours=0
+	local number_minutes=0
+	local number_seconds=0
+	local number_milliseconds=0
+	local time_milliseconds=0
+	local unit
+	local value
+
+	if [[ "${1}" == *:* ]]
+	then
+		if [ "${#}" -ne 1 ]
+		then
+			printf 'The colon-formatted time must be one argument.\n' >&2
+			return 2
+		fi
+		if [[ "${1}" =~ ^([0-9]+):([0-9]+):([0-9]+)(\.([0-9]{1,3}))?$ ]]
+		then
+			number_hours="${BASH_REMATCH[1]}"
+			number_minutes="${BASH_REMATCH[2]}"
+			number_seconds="${BASH_REMATCH[3]}"
+			number_milliseconds="${BASH_REMATCH[5]:-0}"
+			while [ "${#number_milliseconds}" -lt 3 ]
+			do
+				number_milliseconds="${number_milliseconds}0"
+			done
+		else
+			printf 'When the time is formatted with colons, use ${hours}:${minutes}:${seconds} or ${hours}:${minutes}:${seconds}.${milliseconds}.\n' >&2
+			return 2
+		fi
+	elif [[ " ${*} " == *" h "* || " ${*} " == *" hours "* || " ${*} " == *" mn "* || " ${*} " == *" minutes "* || " ${*} " == *" s "* || " ${*} " == *" seconds "* || " ${*} " == *" ms "* || " ${*} " == *" milliseconds "* ]]
+	then
+		while [ "${#}" -gt 0 ]
+		do
+			value="${1}"
+			shift
+			if ! [[ "${value}" =~ ^[0-9]+$ ]]
+			then
+				printf "%s isn't a positive integer.\n" "${value}" >&2
+				return 2
+			fi
+			if [ "${#}" -eq 0 ]
+			then
+				number_milliseconds="${value}"
+				break
+			fi
+			unit="${1}"
+			shift
+			case "${unit}" in
+				hours | h )
+					number_hours="${value}"
+					;;
+				minutes | mn )
+					number_minutes="${value}"
+					;;
+				seconds | s )
+					number_seconds="${value}"
+					;;
+				milliseconds | ms )
+					number_milliseconds="${value}"
+					;;
+				* )
+					printf "When the time is formatted with units, this routine expects 'hours' ('h'), 'minutes' ('mn'), 'seconds' ('s') and 'milliseconds' ('ms').\n" >&2
+					return 2
+					;;
+			esac
+		done
+	else
+		case "${#}" in
+			1 )
+				number_seconds="${1}"
+				;;
+			2 )
+				number_minutes="${1}"
+				number_seconds="${2}"
+				;;
+			3 )
+				number_hours="${1}"
+				number_minutes="${2}"
+				number_seconds="${3}"
+				;;
+			4 )
+				number_hours="${1}"
+				number_minutes="${2}"
+				number_seconds="${3}"
+				number_milliseconds="${4}"
+				;;
+			* )
+				printf 'The positional time must be seconds, minutes seconds, hours minutes seconds, or hours minutes seconds milliseconds.\n' >&2
+				return 2
+				;;
+		esac
+	fi
+	if     ! [[ "${number_hours}" =~ ^[0-9]+$ ]] \
+		|| ! [[ "${number_minutes}" =~ ^[0-9]+$ ]] \
+		|| ! [[ "${number_seconds}" =~ ^[0-9]+$ ]] \
+		|| ! [[ "${number_milliseconds}" =~ ^[0-9]+$ ]]
+	then
+		printf 'Only positive integer numbers are expected by this BASH routine.\n' >&2
+		return 2
+	fi
+	time_milliseconds=$(( number_hours * 60 * 60 * 1000 + number_minutes * 60 * 1000 + number_seconds * 1000 + number_milliseconds ))
+	printf '%d\n' ${time_milliseconds}
+} # cttms, convert_time_to_milliseconds
+
 rn()
 {
 	number=${RANDOM};
@@ -321,11 +560,11 @@ ru()
 }; # ru, run, randomusername
 # RU	output random usernames
 
-dcal()
+calwdat()
 {
 	date | grep --context=6 --color "\b$(date +%e)\b" && cal | sed -n '1!p' | grep --context=6 --color "\b$(date +%e)\b";
 };
-# DCal	dated calendar
+# CalWDat	calendar with date
 # Display a calendar, substitutes the month of the year with the current date in full format and highlights the current day of the month.
 
 np()
@@ -506,6 +745,169 @@ update()
 	esac;
 };
 
+bakdolrvl()
+{
+	help_use()
+	{
+		cat <<'EOF'
+BAKDOLRVL
+Back up GameCube memory card files or Wii save files from Dolphin.
+
+use:
+  bakdolrvl (-)(-)g(ame)(c)(ube) GAME # e.g. bakdolrvl gc GALE01 for the North American Super Smash Bros. Melee
+  bakdolrvl (-)(-)w(ii) CODE # e.g. bakdolrvl w RPBJ for the Japanese Pokémon Battle Revolution
+Only the first four characters of six-character disc IDs are used; the last two digits of Wii title games are the maker code, e.g. 01 for Nintendo, 08 for Capcom... GameCube game codes and Wii title codes can be read from the window title of Dolphin with proper configuration.
+EOF
+	}
+
+	local kernel="$(uname -s)"
+	local command_copy=() \
+		&& { [ "${kernel}" = 'Darwin' ] && command_copy=( ditto ); } \
+		|| { [ -z "$(rsync -aHAX --numeric-ids --dry-run /etc/hosts "${TMPDIR:-/tmp}/" 2>&1)" ] && command_copy=( rsync -aHAX --numeric-ids ); } \
+		|| command_copy=( rsync -a --numeric-ids )
+	local argument_1="${1:-}"
+	local argument_2="${2:-}"
+	local root_Dolphin="${HOME}/Library/Application Support/Dolphin"
+	local directory_save_GameCube="${root_Dolphin}/GC"
+	local directory_save_Wii="${root_Dolphin}/Wii/title/00010000"
+	local directory_backup_GameCube="${root_Dolphin}/DOLBAK"
+	local directory_backup_Wii="${root_Dolphin}/RVLBAK"
+	local gamecode=""
+	local character=""
+	local gamecode_hexadecimal=""
+	local gamecode_hexadecimal_uppercase=""
+	local filename=""
+	local filename_extensionless=""
+	local directory=""
+	local directory_live=""
+	local directory_title=""
+	local timestamp=""
+	local i=0
+
+	while [[ "${argument_1}" == -* ]]
+	do
+		argument_1="${argument_1#-}"
+	done
+	case "${argument_1}" in
+		gamecube | gc | game | g | cube | c )
+			gamecode="${argument_2}"
+			if [[ -z "${gamecode}" || ! "${gamecode}" =~ ^[A-Za-z0-9]{4}([A-Za-z0-9]{2})?$ ]]
+			then
+				help_use >&2
+				return 2
+			fi
+			gamecode="$(printf '%s' "${gamecode}" | tr '[:lower:]' '[:upper:]')" #gamecode="${gamecode^^}"
+			gamecode="${gamecode:0:4}"
+			shopt -s nullglob
+			set -- "${directory_save_GameCube}"/*/"Card "*/*-"${gamecode}"-*.gci
+			shopt -u nullglob
+			if (( $# == 0 ))
+			then
+				printf 'GameCube memory card file not found.\n' >&2
+				return 2
+			fi
+			if (( $# > 1 ))
+			then
+				printf 'More than one GameCube memory card file found.\n' >&2
+				printf '%s\n' "$@" >&2
+				return 2
+			fi
+			directory_live="${1%/*}"
+			filename="${1##*/}"
+			filename_extensionless="${filename%.gci}"
+			if [[ "${kernel}" == 'Darwin' ]]
+			then
+				timestamp="$(stat -f "%Sm" -t "%Y%m%d%H%M%S" "${directory_live}/${filename}")" || return 1
+			else
+				timestamp="$(date -r "${directory_live}/${filename}" +%Y%m%d%H%M%S)" || return 1
+			fi
+			directory="${filename_extensionless}/${timestamp}"
+			if [[ -e "${directory_backup_GameCube}/${directory}/${filename}" ]]
+			then
+				printf '%s already backed up to %s/: GameCube memory card file already backed up.\n' "${filename}" "${directory_backup_GameCube}/${directory}"
+				return 0
+			fi
+			mkdir -p "${directory_backup_GameCube}/${directory}" \
+				&& "${command_copy[@]}" "${directory_live}/${filename}" "${directory_backup_GameCube}/${directory}/${filename}"
+			printf '%s backed up to %s/: GameCube memory card file backed up.\n' "${filename}" "${directory_backup_GameCube}/${directory}"
+			;;
+		wii | w )
+			gamecode="${argument_2}"
+			if [[ -z "${gamecode}" || ! "${gamecode}" =~ ^[A-Za-z0-9]{4}([A-Za-z0-9]{2})?$ ]]
+			then
+				help_use >&2
+				return 2
+			fi
+			gamecode="$(printf '%s' "${gamecode}" | tr '[:lower:]' '[:upper:]')" #gamecode="${gamecode^^}"
+			gamecode="${gamecode:0:4}"
+			gamecode_hexadecimal=""
+			for (( i = 0; i < ${#gamecode}; i++ ))
+			do
+				character="${gamecode:i:1}"
+				printf -v gamecode_hexadecimal '%s%02x' "${gamecode_hexadecimal}" "'${character}"
+			done
+			gamecode_hexadecimal_uppercase="$(printf '%s' "${gamecode_hexadecimal}" | tr '[:lower:]' '[:upper:]')" #gamecode_hexadecimal_uppercase="${gamecode_hexadecimal^^}"
+			directory_live="${directory_save_Wii}/${gamecode_hexadecimal}"
+			if [[ ! -d "${directory_live}" ]]
+			then
+				directory_live="${directory_save_Wii}/${gamecode_hexadecimal_uppercase}"
+			fi
+			if [[ ! -d "${directory_live}" ]]
+			then
+				directories_live=()
+				while IFS= read -r directory_found
+				do
+					directories_live+=("${directory_found}")
+				done < <(find "${root_Dolphin}/Wii/title" -mindepth 2 -maxdepth 2 -type d \( -iname "${gamecode_hexadecimal}" -o -iname "${gamecode_hexadecimal_uppercase}" \) | sort)
+				if (( ${#directories_live[@]} == 0 ))
+				then
+					printf 'Wii save file not found.\n' >&2
+					return 2
+				elif (( ${#directories_live[@]} > 1 ))
+				then
+					printf 'More than one Wii save directory found, %s.\n' "${directories_live[*]}" >&2
+					return 2
+				fi
+				directory_live="${directories_live[0]}"
+			fi
+			if [[ ! -d "${directory_live}" ]]
+			then
+				printf 'Wii save file not found.\n' >&2
+				return 2
+			fi
+			directory_title="${directory_live##*/}"
+			if [[ "${kernel}" == 'Darwin' ]]
+			then
+				timestamp="$(find "${directory_live}" -exec stat -f "%m %Sm" -t "%Y%m%d%H%M%S" {} + | sort -nr | sed -n '1s/^[0-9]* //p')" || return 1
+			else
+				timestamp="$(find "${directory_live}" -printf '%T@ %TY%Tm%Td%TH%TM%TS\n' | sort -nr | sed -n '1s/^[^ ]* //;s/\..*$//p')" || return 1
+			fi
+			directory="${gamecode}/${timestamp}"
+			if [[ -e "${directory_backup_Wii}/${directory}/${directory_title}" ]]
+			then
+				printf '%s/ already backed up to %s/: Wii save data already backed up.\n' "${directory_title}" "${directory_backup_Wii}/${directory}"
+				return 0
+			fi
+			mkdir -p "${directory_backup_Wii}/${directory}" || return 1
+			if [[ "${kernel}" == 'Darwin' ]]
+			then
+				"${command_copy[@]}" "${directory_live}" "${directory_backup_Wii}/${directory}/${directory_title}" || return 1
+			else
+				"${command_copy[@]}" "${directory_live}" "${directory_backup_Wii}/${directory}/" || return 1
+			fi
+			printf '%s/ backed up to %s/: Wii save data backed up.\n' "${directory_title}" "${directory_backup_Wii}/${directory}"
+			;;
+		help | h | "" )
+			help_use
+			return 0
+			;;
+		*)
+			help_use >&2
+			return 2
+			;;
+	esac
+} #filename="01-GMSP-super_mario_sunshine.gci"; directory="${filename%.gci}/$(stat -f "%Sm" -t "%Y%m%d%H%M%S" "$filename")"; mkdir -p "$directory" && mv "$filename" "$directory/" && cp -av "$directory/$filename" ./
+
 #fn()
 #{
 #	;
@@ -554,8 +956,6 @@ alias vl='cd /Volumes'
 
 alias ~='cd ${HOME}' # Change the working directory to the current user's home. # cd would do the same, and this is what I enter most, but it would break where the meaning of ~ changes.
 
-alias .f='cd ${HOME}/.files && git status --short && printf "%s\n" '.gitnote:' && cat .gitnote && printf "\n"' # Change the working directory to that of my dot-files, show the working tree status, then concatenate and print .gitnote.
-
 alias dt='cd ${HOME}/Desktop' # Change the working directory to that of the current user's desktop.
 
 alias dx='cd ${HOME}/Documents' # Change the working directory to that of the current user's documents.
@@ -575,6 +975,8 @@ alias ms='cd ${HOME}/Miscellaneous' # Change the working directory to the one of
 alias tf='cd ${HOME}/Temporary' # Change the working directory to the one of the current user's temporary files.
 
 alias th='cd ${HOME}/.Trash' # Change the working directory to the one of the current user's trash.
+
+alias dp='cd ${HOME}/Library/Application Support/Dolphin' # Change the working directory to that of Dolphin.
 
 #	Source
 #	(i) Bourne-Again Shell (BASH) builtin.
@@ -610,13 +1012,13 @@ alias pe='(set -o posix; set) | cat'
 #   ' i n t e r n a l '   p r o g r a m s   ( c o m m a n d s )
 
 #	Pico
-
-if [ $(which micro) ]
-then
-	alias pico='micro '
-	alias pc='micro '
-	alias p='micro '
-fi
+#
+#if [ $(which micro) ]
+#then
+#	alias pico='micro '
+#	alias pc='micro '
+#	alias p='micro '
+#fi
 
 #	VI
 #	VIM
@@ -673,7 +1075,7 @@ alias tgz='tar -czfv ' # Create a new archive containing the specified items the
 
 #	ZIP
 
-alias zip='ditto -c -k --sequesterRsrc --keepParent '
+#alias zip='ditto -c -k --sequesterRsrc --keepParent '
 
 #	RSync
 
@@ -861,20 +1263,18 @@ alias mfa='makeFinderalias '
 
 alias dds='deleteDS_Store'
 
+alias wk='wake'
+
 #   c o m p u t e r   p r o g r a m s
 
-#alias SetVolume='sh ${HOME}/.files/bin/SetVolume.sh'
-#alias setvol='sh ${HOME}/.files/bin/SetVolume.sh'
-alias sv='sh ${HOME}/.files/bin/SetVolume.sh'
+alias getset='${HOME}/.files/bin/GetSet.scpt'
+alias gs='${HOME}/.files/bin/GetSet.scpt'
 
 alias ring='sh ${HOME}/.files/bin/alarm.sh'
 alias rg='sh ${HOME}/.files/bin/alarm.sh'
 
-alias wk='wake'
-
-#alias RPwG='ruby ${HOME}/.files/bin/rpwg.py'
-alias rpwg='python3 ${HOME}/.files/bin/rpwg.py'
-alias pw='python3 ${HOME}/.files/bin/rpwg.py'
+#alias gp='python3 ${HOME}/.files/bin/rpwg.py'
+#alias pw='python3 ${HOME}/.files/bin/rpwg.py'
 
 #   E T   C E T E R A
 
