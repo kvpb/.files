@@ -55,6 +55,52 @@ cd /home/${USER} && wget -qO- https://raw.githubusercontent.com/kvpb/.files/mast
 
 ---
 
+<p align='center'><a href='https://github.com/kvpb/.files/blob/master/bin/getset.scpt'><img src='https://gist.githack.com/kvpb/df4f18b9ed57ae5eeb1e10df4d5c0710/raw/5076e7aacafa2c2716bf96d876532692f4e7e95f/getset.png'></a></p>
+
+## **Get Set**<br>`getset.scpt` ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
+#### A command-line utility for the control of the hardware of my Mac.
+
+<details><summary><code>.files/</code><code>bin/</code></summary>
+
+- [x] `getset.scpt`</details>
+
+<pre><code><sup><b>kvpb@KVPB's MacBook Pro:</b><!--<u>--><ins>~</ins><!--</u>-->
+<b>2026.07.02@12:00:00 $</b></sup> getset
+volume: 6 %;
+screen brightness: 37 %;
+keyboard brightness: 10 %;
+resolution: 3456 * 2234 px Retina;
+
+Get Set
+Control the hardware of your Mac.
+
+use:
+  getset (s(ound))v(olume) ( n )
+  getset (s(creen))b(rightness) ( n )
+  getset k(eyboard)b(rightness) ( n )
+  getset (s(creen))r(esolution) ( n )</code></pre>
+
+<pre><code><sup><b>kvpb@KVPB's MacBook Pro:</b><ins>~</ins>
+<b>2026.07.02@19:00:00 $</b></sup> alias getset='${HOME}/.files/bin/GetSet.scpt'
+<sup><b>kvpb@KVPB's MacBook Pro:</b><ins>~</ins>
+<b>2026.07.02@19:00:07 $</b></sup> getset brightness 11
+11
+<sup><b>kvpb@KVPB's MacBook Pro:</b><ins>~</ins>
+<b>2026.07.02@19:00:10 $</b></sup> getset brightness
+68
+<sup><b>kvpb@KVPB's MacBook Pro:</b><ins>~</ins>
+<b>2026.07.02@19:00:13 $</b></sup> alias gs='getset'
+<sup><b>kvpb@KVPB's MacBook Pro:</b><ins>~</ins>
+<b>2026.07.02@19:00:15 $</b></sup> gs v 3
+3
+<sup><b>kvpb@KVPB's MacBook Pro:</b><ins>~</ins>
+<b>2026.07.02@19:00:16 $</b></sup> gs v
+18
+<sup><b>kvpb@KVPB's MacBook Pro:</b><ins>~</ins>
+<b>2026.07.02@19:00:17 $</b></sup> # Can't explain---get in the car.</code></pre>
+
+---
+
 <p align='center'><a href='https://github.com/kvpb/.files/blob/master/bin/rpwg.py'><img src='https://gistcdn.githack.com/kvpb/c9d1aa35c62862e73c50836dc49dbc66/raw/5c32c06d72b0169b6ed688efdd99d1d3d6d2eb31/rpwg.svg'></a></p>
 
 ## **random password generator**<br>`rpwg.py`
@@ -108,9 +154,6 @@ cd /home/${USER} && wget -qO- https://raw.githubusercontent.com/kvpb/.files/mast
 * [Lauri 'Lri' Ranta](http://lri.me/)'s [answer about Mac custom key bindings](https://web.archive.org/web/20130203125715/https://superuser.com/questions/463456/how-to-configure-keyboard-shortcuts-for-special-characters-on-os-x#463517) [2019.06.14, 14:30:00](https://web.archive.org/web/20190614130455/https://superuser.com/questions/463456/how-to-configure-keyboard-shortcuts-for-special-characters-on-os-x#463517)
 * [Jacob Rus](https://www.hcs.harvard.edu/~jrus/)'s [_Customizing the Cocoa text system_](https://web.archive.org/web/20060412153805/http://www.hcs.harvard.edu/~jrus/Site/Cocoa%20Text%20System.html) [2019.06.14, 14:31:00](https://web.archive.org/web/20190614131351/http://www.hcs.harvard.edu/~jrus/Site/Cocoa%20Text%20System.html)
 * [André Pang](http://algorithm.com.au)'s [`DefaultKetBinding.dict`](https://web.archive.org/web/20041104054838/http://www.algorithm.com.au/files/mac_os_x/DefaultKeyBinding.dict) [2019.06.14, 14:33:00](https://web.archive.org/web/20190614132419/http://algorithm.com.au/blog/files/54a269e385916faedf9560b7fd97a50c-279.html)
-* [Ryan P. C. McQuen](https://ryanpcmcquen.org/)'s [`true-monochrome_vim/colors/true-monochrome.vim`](https://raw.githubusercontent.com/ryanpcmcquen/true-monochrome_vim/master/colors/true-monochrome.vim) [2020.01.24](https://github.com/ryanpcmcquen/true-monochrome_vim/commit/e1bcbcf9deca4527ed19bb5cb1ed10fe1cd6b9e8#diff-9fb420887ac445c338b9ea01e7d7ed4b)
-* [Julien Castelain](http://julien.js.org/)'s [`vim-colors-green/colors/green.vim`](https://raw.githubusercontent.com/julien/vim-colors-green/master/colors/green.vim) [2020.01.24](https://github.com/julien/vim-colors-green/commit/c2ab216a1f8e9d15ddf25135200048326a76394b#diff-d8165931f5472490634f50524de08eca)
-* [Charlie Gunyon](http://charlieg.net/)'s [`amber/colors/amber.vim`](https://raw.githubusercontent.com/camgunz/amber/master/colors/amber.vim) [2020.01.24](https://github.com/camgunz/amber/commit/23d8e7a53e39e31c01c4fc1e353d95781fa08e49#diff-b3098a38cdf626efc0cc5ddbb858c1c4)
 * [Cormac Relf](https://github.com/cormacrelf)'s [`vim-colors-github/colors/github.vim`](https://raw.githubusercontent.com/cormacrelf/vim-colors-github/master/colors/github.vim) [2020.01.24](https://github.com/cormacrelf/vim-colors-github/commit/acb712c76bb73c20eb3d7e625a48b5ff59f150d0#diff-451fb194f8486978732fecc575e54723)
 * [Columbia University in the City of New York](https://www.columbia.edu/)'s [_Headlines_](https://web.archive.org/web/20041108032317/http://www.columbia.edu/itc/journalism/isaacs/client_edit/Headlines.html) [2020.02.20](http://www.columbia.edu/itc/journalism/isaacs/client_edit/Headlines.html)
 * [University of Kansas](https://www.ku.edu/)'s [_Making an impact---accurately_](https://web.archive.org/web/20060904173706/https://web.ku.edu/~edit/heads.html) [2020.02.20](https://web.ku.edu/~edit/heads.html)
