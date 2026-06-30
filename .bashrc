@@ -374,6 +374,48 @@ function cdth
 	done
 } # cdth, convert_decimal_to_hexadecimal
 
+function chtd
+{
+	local b='0123456789ABCDEF' # base glyphs
+	local i
+	local c_16 # hexadecimal glyph
+	local n_i
+	local n_d
+	local prefix
+	local value_numeric # is given by the prefix.
+
+	for i in "${@}"
+	do
+		n_i="${i#0x}"
+		n_i="${n_i#0X}"
+		n_i="${n_i^^}"
+		n_d=0
+		if ! [[ "${n_i}" =~ ^[0-9A-F]+$ ]]
+		then
+			printf "%s isn't a hexadecimal integer.\n" "${i}" >&2
+			continue
+		fi
+		while [ -n "${n_i}" ]
+		do
+			c_16="${n_i:0:1}"
+			p="${b%%${c_16}*}"
+			if [ "${#prefix}" -eq "${#b}" ]
+			then
+				printf "%s isn't a hexadecimal integer.\n" "${i}" >&2
+				n_d=''
+				break
+			fi
+			value_numeric="${#prefix}"
+			n_d=$(( n_d * 16 + value_numeric ))
+			n_i="${n_i:1}"
+		done
+		if [ -n "${n_d}" ]
+		then
+			printf '%s\n' "${n_d}"
+		fi
+	done
+} # chtd, convert_hexadecimal_to_decimal
+
 function cttms
 {
 	if [ "${#}" -eq 0 ]
