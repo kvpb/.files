@@ -1,10 +1,10 @@
-<h3 align='center'><b>Karl's</b></h3>
-<h1 align='center'><b>DOTFILES</b></h1>
+<p align='center'><a href=''><img src='https://gistcdn.githack.com/kvpb/bfc847c17e106fb8f99c9bdf05d408c7/raw/85b9d6a0f69f4f93984556af7276f97ebf7d5de2/aceofclubs.svg' alt="Karl Vincent Pierre Bertin AKA Karl Thomas George West's"></a></p>
+<p align='center'><a href=''><img src='https://gistcdn.githack.com/kvpb/2c0ef105a9e3d62e5cd6d5bcdc477283/raw/b7baa812247588a83b95ab40c44a1e4ca75d98e6/dotfiles.svg' alt="a logotype for Karl Vincent Pierre Bertin AKA Karl Thomas George West's dot files"></a></p>
 <h3 align='center'><b>runcoms, configuration files, setups, scripts, templates & hacks</b></h3>
 
 ---
 
-<p align='center'><a href=''><img src='https://gistcdn.githack.com/kvpb/807924c1f72cc407d798f22431559f3d/raw/e7828591fe13bb451b05ea0512d67f19e6c8fdb6/macospackagemanager.svg'></a></p>
+<p align='center'><a href=''><img src='https://gistcdn.githack.com/kvpb/807924c1f72cc407d798f22431559f3d/raw/e7828591fe13bb451b05ea0512d67f19e6c8fdb6/macospackagemanager.svg'  alt="a logotype for Karl Vincent Pierre Bertin AKA Karl Thomas George West's Apple operating system setups"></a></p>
 
 ## **Apple operating system setups**<br>`.macos` ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
 #### Apple operating systems configuration scripts family.
@@ -44,7 +44,9 @@ cd /home/${USER} && wget -qO- https://raw.githubusercontent.com/kvpb/.files/mast
 -->
 ---
 
-## **VIM initializations**<br>`.vimrc` & `.vim/`
+<p align='center'><a href=''><img src='https://gistcdn.githack.com/kvpb/ae48d0334c9cde468626d71c78ba5b74/raw/382a0eb529560e6965ec47af5fd6ae3359360213/viminitializations.svg' alt="a logotype for Karl Vincent Pierre Bertin AKA Karl Thomas George West's VIM initializations"></a></p>
+
+`.vimrc` & `.vim/`
 #### My VIM setup. And it maps keys true to TextEdit, though this requires BASH to be set accordingly.
 
 <details><summary><code>.files/</code></summary>
@@ -55,9 +57,9 @@ cd /home/${USER} && wget -qO- https://raw.githubusercontent.com/kvpb/.files/mast
 
 ---
 
-<p align='center'><a href='https://github.com/kvpb/.files/blob/master/bin/getset.scpt'><img src='https://gist.githack.com/kvpb/df4f18b9ed57ae5eeb1e10df4d5c0710/raw/5076e7aacafa2c2716bf96d876532692f4e7e95f/getset.png'></a></p>
+<p align='center'><a href='https://github.com/kvpb/.files/blob/master/bin/getset.scpt'><img src='https://gistcdn.githack.com/kvpb/df4f18b9ed57ae5eeb1e10df4d5c0710/raw/89302b068a3a0eab31a56591fa4abe2db5d55531/getset.svg'></a></p>
 
-## **Get Set**<br>`getset.scpt` ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
+`getset.scpt` ![platform](https://gistcdn.githack.com/kvpb/ed57eb3a03f2b5338fbede97e7cf296b/raw/ea6556bb04f592433023533ddbd931cc7d23e92b/apple-F6F6F6D5E1ED1E72F21AD5FD-madeona-1AD5FD1E72F2-mac-F6F6F6D5E1ED.svg)
 #### A command-line utility for the control of the hardware of my Mac.
 
 <details><summary><code>.files/</code><code>bin/</code></summary>
@@ -101,10 +103,10 @@ use:
 
 ---
 
-<p align='center'><a href='https://github.com/kvpb/.files/blob/master/bin/rpwg.py'><img src='https://gistcdn.githack.com/kvpb/c9d1aa35c62862e73c50836dc49dbc66/raw/5c32c06d72b0169b6ed688efdd99d1d3d6d2eb31/rpwg.svg'></a></p>
+<p align='center'><a href='https://github.com/kvpb/.files/blob/master/bin/rpwg.py'><img src='https://gistcdn.githack.com/kvpb/c9d1aa35c62862e73c50836dc49dbc66/raw/30e187c1f2b6143da1bc9a85adf63a307e902cac/rpwg.svg' alt="an illustration for Karl Vincent Pierre Bertin AKA Karl Thomas George West's cross-layout random password generator"></a></p>
 
 ## **random password generator**<br>`rpwg.py`
-#### A pseudorandom password generator.
+#### A cross-layout random password generator.
 
 <details><summary><code>.files/</code><code>bin/</code></summary>
 
