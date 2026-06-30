@@ -53,9 +53,10 @@
 	rd = rebase --committer-date-is-author-date
 	rda = rebase --committer-date-is-author-date --root
 	rc = rebase --continue
+	l = pull --rebase
 	d = diff
-	ll = log --reverse --pretty=fuller
-	l = log --max-count=10 --reverse --pretty=oneline
+	gl = log --reverse --pretty=fuller
+	g = log --max-count=10 --reverse --pretty=oneline
 	lf = log --reverse --pretty=fuller
 	s = status --short --untracked-files=no
 	sl = status --long
