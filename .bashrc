@@ -374,6 +374,48 @@ function cdth
 	done
 } # cdth, convert_decimal_to_hexadecimal
 
+function chtd
+{
+	local b='0123456789ABCDEF' # base glyphs
+	local i
+	local c_16 # hexadecimal glyph
+	local n_i
+	local n_d
+	local prefix
+	local value_numeric # is given by the prefix.
+
+	for i in "${@}"
+	do
+		n_i="${i#0x}"
+		n_i="${n_i#0X}"
+		n_i="${n_i^^}"
+		n_d=0
+		if ! [[ "${n_i}" =~ ^[0-9A-F]+$ ]]
+		then
+			printf "%s isn't a hexadecimal integer.\n" "${i}" >&2
+			continue
+		fi
+		while [ -n "${n_i}" ]
+		do
+			c_16="${n_i:0:1}"
+			p="${b%%${c_16}*}"
+			if [ "${#prefix}" -eq "${#b}" ]
+			then
+				printf "%s isn't a hexadecimal integer.\n" "${i}" >&2
+				n_d=''
+				break
+			fi
+			value_numeric="${#prefix}"
+			n_d=$(( n_d * 16 + value_numeric ))
+			n_i="${n_i:1}"
+		done
+		if [ -n "${n_d}" ]
+		then
+			printf '%s\n' "${n_d}"
+		fi
+	done
+} # chtd, convert_hexadecimal_to_decimal
+
 function cttms
 {
 	if [ "${#}" -eq 0 ]
@@ -809,6 +851,24 @@ EOF
 			if [[ ! -d "${directory_live}" ]]
 			then
 				directory_live="${directory_save_Wii}/${gamecode_hexadecimal_uppercase}"
+			fi
+			if [[ ! -d "${directory_live}" ]]
+			then
+				directories_live=()
+				while IFS= read -r directory_found
+				do
+					directories_live+=("${directory_found}")
+				done < <(find "${root_Dolphin}/Wii/title" -mindepth 2 -maxdepth 2 -type d \( -iname "${gamecode_hexadecimal}" -o -iname "${gamecode_hexadecimal_uppercase}" \) | sort)
+				if (( ${#directories_live[@]} == 0 ))
+				then
+					printf 'Wii save file not found.\n' >&2
+					return 2
+				elif (( ${#directories_live[@]} > 1 ))
+				then
+					printf 'More than one Wii save directory found, %s.\n' "${directories_live[*]}" >&2
+					return 2
+				fi
+				directory_live="${directories_live[0]}"
 			fi
 			if [[ ! -d "${directory_live}" ]]
 			then
