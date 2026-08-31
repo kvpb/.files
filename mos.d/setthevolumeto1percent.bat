@@ -1,0 +1,103 @@
+@echo off
+setlocal EnableExtensions
+
+
+set "NIRCMD="
+
+if exist "%~dp0nircmd.exe" set "NIRCMD=%~dp0nircmd.exe"
+if not defined NIRCMD if exist "C:\Tools\NirCmd\nircmd.exe" set "NIRCMD=C:\Tools\NirCmd\nircmd.exe"
+if not defined NIRCMD for /f "delims=" %%N in ('where nircmd.exe 2^>nul') do if not defined NIRCMD set "NIRCMD=%%N"
+
+if defined NIRCMD (
+    "%NIRCMD%" mutesysvolume 0
+    "%NIRCMD%" setsysvolume 655
+    exit /b %ERRORLEVEL%
+)
+
+set "CSC="
+if exist "%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\csc.exe" set "CSC=%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\csc.exe"
+if not defined CSC if exist "%WINDIR%\Microsoft.NET\Framework\v4.0.30319\csc.exe" set "CSC=%WINDIR%\Microsoft.NET\Framework\v4.0.30319\csc.exe"
+
+if not defined CSC (
+    echo Neither NirCmd nor the .NET Framework C# compiler was found.
+    pause
+    exit /b 1
+)
+
+set "BASE=%TEMP%\setvolume1_%RANDOM%_%RANDOM%"
+set "B64=%BASE%.b64"
+set "SRC=%BASE%.cs"
+set "EXE=%BASE%.exe"
+
+> "%B64%" (
+echo dXNpbmcgU3lzdGVtOwp1c2luZyBTeXN0ZW0uUnVudGltZS5JbnRlcm9wU2VydmljZXM7CgpbR3Vp
+echo ZCgiNUNERjJDODItODQxRS00NTQ2LTk3MjItMENGNzQwNzgyMjlBIildCltJbnRlcmZhY2VUeXBl
+echo KENvbUludGVyZmFjZVR5cGUuSW50ZXJmYWNlSXNJVW5rbm93bildCmludGVyZmFjZSBJQXVkaW9F
+echo bmRwb2ludFZvbHVtZQp7CiAgICBpbnQgUmVnaXN0ZXJDb250cm9sQ2hhbmdlTm90aWZ5KEludFB0
+echo ciBwTm90aWZ5KTsKICAgIGludCBVbnJlZ2lzdGVyQ29udHJvbENoYW5nZU5vdGlmeShJbnRQdHIg
+echo cE5vdGlmeSk7CiAgICBpbnQgR2V0Q2hhbm5lbENvdW50KG91dCB1aW50IGNoYW5uZWxDb3VudCk7
+echo CiAgICBpbnQgU2V0TWFzdGVyVm9sdW1lTGV2ZWwoZmxvYXQgbGV2ZWxEYiwgR3VpZCBldmVudENv
+echo bnRleHQpOwogICAgaW50IFNldE1hc3RlclZvbHVtZUxldmVsU2NhbGFyKGZsb2F0IGxldmVsLCBH
+echo dWlkIGV2ZW50Q29udGV4dCk7CiAgICBpbnQgR2V0TWFzdGVyVm9sdW1lTGV2ZWwob3V0IGZsb2F0
+echo IGxldmVsRGIpOwogICAgaW50IEdldE1hc3RlclZvbHVtZUxldmVsU2NhbGFyKG91dCBmbG9hdCBs
+echo ZXZlbCk7CiAgICBpbnQgU2V0Q2hhbm5lbFZvbHVtZUxldmVsKHVpbnQgY2hhbm5lbCwgZmxvYXQg
+echo bGV2ZWxEYiwgR3VpZCBldmVudENvbnRleHQpOwogICAgaW50IFNldENoYW5uZWxWb2x1bWVMZXZl
+echo bFNjYWxhcih1aW50IGNoYW5uZWwsIGZsb2F0IGxldmVsLCBHdWlkIGV2ZW50Q29udGV4dCk7CiAg
+echo ICBpbnQgR2V0Q2hhbm5lbFZvbHVtZUxldmVsKHVpbnQgY2hhbm5lbCwgb3V0IGZsb2F0IGxldmVs
+echo RGIpOwogICAgaW50IEdldENoYW5uZWxWb2x1bWVMZXZlbFNjYWxhcih1aW50IGNoYW5uZWwsIG91
+echo dCBmbG9hdCBsZXZlbCk7CiAgICBpbnQgU2V0TXV0ZShbTWFyc2hhbEFzKFVubWFuYWdlZFR5cGUu
+echo Qm9vbCldIGJvb2wgbXV0ZSwgR3VpZCBldmVudENvbnRleHQpOwogICAgaW50IEdldE11dGUob3V0
+echo IGJvb2wgbXV0ZSk7CiAgICBpbnQgR2V0Vm9sdW1lU3RlcEluZm8ob3V0IHVpbnQgc3RlcCwgb3V0
+echo IHVpbnQgc3RlcENvdW50KTsKICAgIGludCBWb2x1bWVTdGVwVXAoR3VpZCBldmVudENvbnRleHQp
+echo OwogICAgaW50IFZvbHVtZVN0ZXBEb3duKEd1aWQgZXZlbnRDb250ZXh0KTsKICAgIGludCBRdWVy
+echo eUhhcmR3YXJlU3VwcG9ydChvdXQgdWludCBtYXNrKTsKICAgIGludCBHZXRWb2x1bWVSYW5nZShv
+echo dXQgZmxvYXQgbWluRGIsIG91dCBmbG9hdCBtYXhEYiwgb3V0IGZsb2F0IGluY3JlbWVudERiKTsK
+echo fQoKW0d1aWQoIkE5NTY2NEQyLTk2MTQtNEYzNS1BNzQ2LURFOERCNjM2MTdFNiIpXQpbSW50ZXJm
+echo YWNlVHlwZShDb21JbnRlcmZhY2VUeXBlLkludGVyZmFjZUlzSVVua25vd24pXQppbnRlcmZhY2Ug
+echo SU1NRGV2aWNlRW51bWVyYXRvcgp7CiAgICBpbnQgRW51bUF1ZGlvRW5kcG9pbnRzKGludCBkYXRh
+echo RmxvdywgdWludCBzdGF0ZU1hc2ssIEludFB0ciBkZXZpY2VzKTsKICAgIGludCBHZXREZWZhdWx0
+echo QXVkaW9FbmRwb2ludChpbnQgZGF0YUZsb3csIGludCByb2xlLCBvdXQgSU1NRGV2aWNlIGRldmlj
+echo ZSk7Cn0KCltHdWlkKCJENjY2MDYzRi0xNTg3LTRFNDMtODFGMS1COTQ4RTgwNzM2M0YiKV0KW0lu
+echo dGVyZmFjZVR5cGUoQ29tSW50ZXJmYWNlVHlwZS5JbnRlcmZhY2VJc0lVbmtub3duKV0KaW50ZXJm
+echo YWNlIElNTURldmljZQp7CiAgICBpbnQgQWN0aXZhdGUoCiAgICAgICAgcmVmIEd1aWQgaW50ZXJm
+echo YWNlSWQsCiAgICAgICAgaW50IGNsYXNzQ29udGV4dCwKICAgICAgICBJbnRQdHIgYWN0aXZhdGlv
+echo blBhcmFtZXRlcnMsCiAgICAgICAgb3V0IElBdWRpb0VuZHBvaW50Vm9sdW1lIGVuZHBvaW50Vm9s
+echo dW1lCiAgICApOwp9CgpbQ29tSW1wb3J0XQpbR3VpZCgiQkNERTAzOTUtRTUyRi00NjdDLThFM0Qt
+echo QzQ1NzkyOTE2OTJFIildCmNsYXNzIE1NRGV2aWNlRW51bWVyYXRvckNvbU9iamVjdAp7Cn0KCnN0
+echo YXRpYyBjbGFzcyBTZXRWb2x1bWUxUGVyY2VudAp7CiAgICBzdGF0aWMgaW50IE1haW4oKQogICAg
+echo ewogICAgICAgIHRyeQogICAgICAgIHsKICAgICAgICAgICAgdmFyIGVudW1lcmF0b3IgPQogICAg
+echo ICAgICAgICAgICAgKElNTURldmljZUVudW1lcmF0b3IpbmV3IE1NRGV2aWNlRW51bWVyYXRvckNv
+echo bU9iamVjdCgpOwoKICAgICAgICAgICAgSU1NRGV2aWNlIGRldmljZTsKICAgICAgICAgICAgTWFy
+echo c2hhbC5UaHJvd0V4Y2VwdGlvbkZvckhSKAogICAgICAgICAgICAgICAgZW51bWVyYXRvci5HZXRE
+echo ZWZhdWx0QXVkaW9FbmRwb2ludCgwLCAxLCBvdXQgZGV2aWNlKQogICAgICAgICAgICApOwoKICAg
+echo ICAgICAgICAgR3VpZCBpbnRlcmZhY2VJZCA9IHR5cGVvZihJQXVkaW9FbmRwb2ludFZvbHVtZSku
+echo R1VJRDsKICAgICAgICAgICAgSUF1ZGlvRW5kcG9pbnRWb2x1bWUgZW5kcG9pbnQ7CgogICAgICAg
+echo ICAgICBNYXJzaGFsLlRocm93RXhjZXB0aW9uRm9ySFIoCiAgICAgICAgICAgICAgICBkZXZpY2Uu
+echo QWN0aXZhdGUoCiAgICAgICAgICAgICAgICAgICAgcmVmIGludGVyZmFjZUlkLAogICAgICAgICAg
+echo ICAgICAgICAgIDIzLAogICAgICAgICAgICAgICAgICAgIEludFB0ci5aZXJvLAogICAgICAgICAg
+echo ICAgICAgICAgIG91dCBlbmRwb2ludAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICApOwoK
+echo ICAgICAgICAgICAgTWFyc2hhbC5UaHJvd0V4Y2VwdGlvbkZvckhSKAogICAgICAgICAgICAgICAg
+echo ZW5kcG9pbnQuU2V0TXV0ZShmYWxzZSwgR3VpZC5FbXB0eSkKICAgICAgICAgICAgKTsKCiAgICAg
+echo ICAgICAgIE1hcnNoYWwuVGhyb3dFeGNlcHRpb25Gb3JIUigKICAgICAgICAgICAgICAgIGVuZHBv
+echo aW50LlNldE1hc3RlclZvbHVtZUxldmVsU2NhbGFyKDAuMDFmLCBHdWlkLkVtcHR5KQogICAgICAg
+echo ICAgICApOwoKICAgICAgICAgICAgcmV0dXJuIDA7CiAgICAgICAgfQogICAgICAgIGNhdGNoIChF
+echo eGNlcHRpb24gZXgpCiAgICAgICAgewogICAgICAgICAgICBDb25zb2xlLkVycm9yLldyaXRlTGlu
+echo ZShleC5NZXNzYWdlKTsKICAgICAgICAgICAgcmV0dXJuIDE7CiAgICAgICAgfQogICAgfQp9Cg==
+)
+
+certutil.exe -f -decode "%B64%" "%SRC%" >nul 2>&1
+if errorlevel 1 goto :fail
+
+"%CSC%" /nologo /target:exe /out:"%EXE%" "%SRC%" >nul
+if errorlevel 1 goto :fail
+
+"%EXE%"
+set "RC=%ERRORLEVEL%"
+del /q "%B64%" "%SRC%" "%EXE%" >nul 2>&1
+exit /b %RC%
+
+:fail
+echo Unable to build the temporary volume helper.
+del /q "%B64%" "%SRC%" "%EXE%" >nul 2>&1
+pause
+exit /b 2
