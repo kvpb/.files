@@ -956,8 +956,6 @@ alias vl='cd /Volumes'
 
 alias ~='cd ${HOME}' # Change the working directory to the current user's home. # cd would do the same, and this is what I enter most, but it would break where the meaning of ~ changes.
 
-alias .f='cd ${HOME}/.files && git status --short && printf "%s\n" '.gitnote:' && cat .gitnote && printf "\n"' # Change the working directory to that of my dot-files, show the working tree status, then concatenate and print .gitnote.
-
 alias dt='cd ${HOME}/Desktop' # Change the working directory to that of the current user's desktop.
 
 alias dx='cd ${HOME}/Documents' # Change the working directory to that of the current user's documents.
