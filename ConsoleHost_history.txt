@@ -1,3 +1,5 @@
+Get-AppxPackage -allusers Microsoft.Paint
+C:\Users\Win\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
 Stop-Process -ProcessName explorer -Force
 New-Item -Path 'C:\Program Files\TID7Calculator\000018Chase.txt' -ItemType File
 shell:::{ED834ED6-4B5A-4bfe-8F11-A626DCB6A921} -Microsoft.Personalization\pageWallpaper
@@ -7,3 +9,5 @@ cls; Stop-Process -Name VBA-rr-svn480; rm "C:\Users\kvpb\Program Files\VBA-ReRec
 cls; Stop-Process -Name PKHeX; Copy-Item "C:\Users\kvpb\Program Files\VBA-ReRecording\vba-rerecording v23.6 Binary (svn 480)\battery\PM_CRYSTAL BXTJC01.sav" "C:\Users\kvpb\Desktop\0.sav"; Invoke-Item "C:\Users\kvpb\Desktop\0.sav";
 dism /online /enable-feature /featurename:NetFX3 /Source:F:\sources\sxs /LimitAccess
 cd C:\Users\kvpb\Program^ Files\DiscImageCreator\Release_ANSI & DiscImageCreator.exe dvd E .iso <# GPAP01.iso, UGPJ01.iso, GMSJ01.iso, G4QJ01.iso, PZLJ01.iso, D43J01.iso #> 16 /raw # executed from Command Prompt.
+powershell.exe -ExecutionPolicy Bypass -File .\openfolders.ps1
+powershell.exe -ExecutionPolicy Bypass -File .\volume1.ps1
